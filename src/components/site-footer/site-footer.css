@@ -41,6 +41,14 @@
   gap: var(--s-4);
 }
 
+.site-footer__logo-img {
+  display: block;
+  height: 40px;
+  width: auto;
+  /* Beskyttelsesområde rundt logo (§9.3) */
+  margin-bottom: var(--s-2);
+}
+
 .site-footer__tagline {
   color: var(--mj-red);
   font-size: var(--fs-h4);
@@ -93,7 +101,4 @@
   align-items: center;
   justify-content: center;
   border-radius: var(--r-full);
-  background: rgba(255, 255, 255, 0.1);
-  color: var(--color-text-on-brand);
-}
-.site-footer__social a:hover { background: var(--mj-orange); color: var(--mj-ink); }
+  backgroun

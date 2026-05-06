@@ -31,25 +31,29 @@
 .site-header__logo {
   display: inline-flex;
   align-items: center;
+  text-decoration: none;
+}
+
+.site-header__logo-img {
+  display: block;
+  height: 36px;
+  width: auto;
+  /* Beskyttelsesområde — halve høyden på bokstaver i logo (§9.3) */
+  margin-block: var(--s-2);
+  margin-inline-end: var(--s-2);
+}
+
+@media (max-width: 767px) {
+  .site-header__logo-img { height: 28px; }
+}
+
+/* Tekst-fallback dersom logo ikke laster — vises kun hvis <img> feiler */
+.site-header__logo-text {
   font-family: var(--ff-sans);
   font-size: var(--fs-h4);
   font-weight: var(--fw-black);
   color: var(--mj-blue);
-  text-decoration: none;
   letter-spacing: var(--ls-tight);
-}
-.site-header__logo-mark {
-  width: 36px;
-  height: 36px;
-  margin-right: var(--s-2);
-  background: var(--mj-blue);
-  border-radius: var(--r-sm);
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  color: var(--mj-orange);
-  font-weight: var(--fw-black);
-  font-size: var(--fs-body);
 }
 
 .site-header__nav {
@@ -124,7 +128,4 @@
 .site-header__utility {
   background: var(--mj-blue);
   color: var(--color-text-on-brand);
-  font-size: var(--fs-caption);
-  padding: var(--s-2) var(--gutter);
-  text-align: center;
-}
+  font-si
