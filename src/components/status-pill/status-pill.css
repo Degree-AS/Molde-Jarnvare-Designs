@@ -1,0 +1,47 @@
+/**
+ * Status pill (§12.11) — for lagerstatus o.l.
+ * Use with --success / --warning / --error / --neutral
+ */
+
+.status-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--s-2);
+  height: 24px;
+  padding-inline: var(--s-3);
+  font-family: var(--ff-sans);
+  font-size: var(--fs-caption);
+  font-weight: var(--fw-semibold);
+  border-radius: var(--r-full);
+  white-space: nowrap;
+}
+
+.status-pill::before {
+  content: "";
+  width: 8px;
+  height: 8px;
+  border-radius: var(--r-full);
+  background: currentColor;
+  flex: 0 0 auto;
+}
+
+.status-pill--success {
+  background: var(--mj-success-bg);
+  color: var(--mj-success);
+}
+.status-pill--warning {
+  background: var(--mj-warning-bg);
+  color: var(--mj-warning);
+}
+.status-pill--error {
+  background: var(--mj-error-bg);
+  color: var(--mj-error);
+}
+.status-pill--info {
+  background: var(--mj-info-bg);
+  color: var(--mj-info);
+}
+.status-pill--neutral {
+  background: var(--mj-surface-2);
+  color: var(--color-text-secondary);
+}

@@ -1,0 +1,80 @@
+/**
+ * Modal / Dialog (§13.13)
+ *   <dialog class="modal"> ... </dialog>
+ */
+
+.modal-backdrop {
+  position: fixed;
+  inset: 0;
+  background: rgba(53, 55, 62, 0.55);
+  z-index: var(--z-overlay);
+}
+
+.modal {
+  position: fixed;
+  inset: 0;
+  margin: auto;
+  width: min(92vw, 560px);
+  max-height: 88vh;
+  padding: 0;
+  background: var(--color-bg-surface);
+  color: var(--color-text-primary);
+  border: 0;
+  border-radius: var(--r-lg);
+  box-shadow: var(--shadow-4);
+  z-index: var(--z-modal);
+  overflow: hidden;
+}
+
+.modal::backdrop {
+  background: rgba(53, 55, 62, 0.55);
+}
+
+.modal--lg { width: min(92vw, 800px); }
+.modal--sm { width: min(92vw, 400px); }
+
+.modal__header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--s-3);
+  padding: var(--s-5) var(--s-6);
+  border-bottom: var(--bw-1) solid var(--color-border-soft);
+}
+
+.modal__title {
+  font-size: var(--fs-h4);
+  font-weight: var(--fw-bold);
+  margin: 0;
+}
+
+.modal__close {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  background: transparent;
+  border: 0;
+  border-radius: var(--r-sm);
+  cursor: pointer;
+  color: var(--color-text-secondary);
+  font-size: var(--fs-h4);
+}
+.modal__close:hover { background: var(--mj-surface-1); color: var(--color-text-primary); }
+
+.modal__body {
+  padding: var(--s-6);
+  overflow-y: auto;
+  font-size: var(--fs-body);
+  line-height: var(--lh-relaxed);
+}
+
+.modal__footer {
+  display: flex;
+  justify-content: flex-end;
+  gap: var(--s-3);
+  padding: var(--s-5) var(--s-6);
+  border-top: var(--bw-1) solid var(--color-border-soft);
+  background: var(--mj-surface-1);
+}

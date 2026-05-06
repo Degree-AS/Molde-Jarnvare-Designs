@@ -1,0 +1,118 @@
+<!doctype html>
+<html lang="nb">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Kasse — Molde Jarnvare</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Source+Sans+3:wght@400;500;600;700;900&family=JetBrains+Mono:wght@400&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../styles/index.css">
+</head>
+<body>
+
+<header class="site-header">
+  <div class="site-header__inner">
+    <a class="site-header__logo" href="/"><span class="site-header__logo-mark">MJ</span> Molde Jarnvare</a>
+  </div>
+</header>
+
+<main class="container" style="padding-block: var(--s-7);">
+
+  <nav class="stepper" style="margin-bottom: var(--s-7);">
+    <div class="stepper__step is-complete"><span class="stepper__num"></span><span>Handlekurv</span></div>
+    <div class="stepper__connector is-complete"></div>
+    <div class="stepper__step is-active"><span class="stepper__num">2</span><span>Levering og betaling</span></div>
+    <div class="stepper__connector"></div>
+    <div class="stepper__step"><span class="stepper__num">3</span><span>Bekreft</span></div>
+  </nav>
+
+  <div style="display: grid; grid-template-columns: 1fr 380px; gap: var(--s-7);">
+
+    <form class="order-summary">
+
+      <section class="order-summary__section">
+        <div class="order-summary__section-header">
+          <h2 class="order-summary__section-title">Leveringsadresse</h2>
+        </div>
+        <div class="address-book">
+          <div class="address-book__list">
+            <button type="button" class="address-book__item is-selected">
+              <strong class="address-book__name">Verkstedet · Molde</strong>
+              <span class="address-book__address">Industriveien 12<br>6422 Molde</span>
+            </button>
+            <button type="button" class="address-book__item">
+              <strong class="address-book__name">Lager Kristiansund</strong>
+              <span class="address-book__address">Storgata 1<br>6500 Kristiansund</span>
+            </button>
+            <button type="button" class="address-book__item address-book__add">+ Ny adresse</button>
+          </div>
+        </div>
+      </section>
+
+      <section class="order-summary__section">
+        <div class="order-summary__section-header">
+          <h2 class="order-summary__section-title">Levering</h2>
+        </div>
+        <fieldset class="radio-group">
+          <label class="radio">
+            <input type="radio" name="delivery" checked><span class="radio__visual"></span>
+            <span class="radio__label"><strong>Standard levering</strong><span class="radio__desc">1–2 virkedager · kr 99,–</span></span>
+          </label>
+          <label class="radio">
+            <input type="radio" name="delivery"><span class="radio__visual"></span>
+            <span class="radio__label"><strong>Hent på Molde</strong><span class="radio__desc">Klar i dag · Industriveien 26</span></span>
+          </label>
+        </fieldset>
+      </section>
+
+      <section class="order-summary__section">
+        <div class="order-summary__section-header">
+          <h2 class="order-summary__section-title">Referanse</h2>
+        </div>
+        <div class="po-reference__row">
+          <div class="field">
+            <label class="field__label" for="po">PO-nummer</label>
+            <input class="input" id="po" placeholder="Frivillig">
+          </div>
+          <div class="field">
+            <label class="field__label" for="ref">Din referanse</label>
+            <input class="input" id="ref" placeholder="Prosjekt eller person">
+          </div>
+        </div>
+      </section>
+
+      <section class="order-summary__section">
+        <div class="order-summary__section-header">
+          <h2 class="order-summary__section-title">Betaling</h2>
+        </div>
+        <fieldset class="radio-group">
+          <label class="radio">
+            <input type="radio" name="pay" checked><span class="radio__visual"></span>
+            <span class="radio__label"><strong>Faktura</strong><span class="radio__desc">14 dager netto</span></span>
+          </label>
+          <label class="radio">
+            <input type="radio" name="pay"><span class="radio__visual"></span>
+            <span class="radio__label"><strong>Kort</strong><span class="radio__desc">Visa, Mastercard</span></span>
+          </label>
+        </fieldset>
+      </section>
+
+      <button class="btn btn--primary btn--lg">Gå til bekreftelse</button>
+    </form>
+
+    <aside class="cart-summary">
+      <h2 class="cart-summary__title">Din ordre</h2>
+      <div class="cart-summary__row"><span>3 varer</span><span>kr 10 024,–</span></div>
+      <div class="cart-summary__row"><span>Frakt</span><span>kr 99,–</span></div>
+      <div class="cart-summary__row"><span>Mva</span><span>kr 2 530,75</span></div>
+      <div class="cart-summary__row cart-summary__row--total"><span>Totalt</span><span>kr 12 653,75</span></div>
+    </aside>
+  </div>
+</main>
+
+<footer class="site-footer">
+  <div class="site-footer__inner"><div class="site-footer__bottom"><span>&copy; 2026 Molde Jarnvare AS</span></div></div>
+</footer>
+
+</body>
+</html>

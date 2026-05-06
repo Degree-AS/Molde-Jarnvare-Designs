@@ -1,0 +1,95 @@
+<!doctype html>
+<html lang="nb">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Min konto — Molde Jarnvare</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Source+Sans+3:wght@400;500;600;700;900&family=JetBrains+Mono:wght@400&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../styles/index.css">
+</head>
+<body>
+
+<header class="site-header">
+  <div class="site-header__inner">
+    <a class="site-header__logo" href="/"><span class="site-header__logo-mark">MJ</span> Molde Jarnvare</a>
+  </div>
+</header>
+
+<main class="container container--wide" style="padding-block: var(--s-7);">
+
+  <h1 class="t-h1" style="margin-bottom: var(--s-7);">Min konto</h1>
+
+  <div class="account-dashboard">
+    <nav class="account-dashboard__nav">
+      <a class="account-dashboard__nav-link" aria-current="page" href="#">Oversikt</a>
+      <a class="account-dashboard__nav-link" href="#">Ordrer</a>
+      <a class="account-dashboard__nav-link" href="#">Tilbud</a>
+      <a class="account-dashboard__nav-link" href="#">Sortilog</a>
+      <a class="account-dashboard__nav-link" href="#">Adresser</a>
+      <a class="account-dashboard__nav-link" href="#">Brukere</a>
+      <a class="account-dashboard__nav-link" href="#">Innstillinger</a>
+    </nav>
+
+    <div class="account-dashboard__main">
+      <section class="account-dashboard__widgets">
+        <div class="card">
+          <h3 class="card__title">Aktive ordrer</h3>
+          <div class="t-h1" style="font-variant-numeric: tabular-nums;">3</div>
+          <a class="link" href="#">Se alle</a>
+        </div>
+        <div class="card">
+          <h3 class="card__title">Åpne tilbud</h3>
+          <div class="t-h1" style="font-variant-numeric: tabular-nums;">2</div>
+          <a class="link" href="#">Vis tilbud</a>
+        </div>
+        <div class="card">
+          <h3 class="card__title">Forbruk hittil</h3>
+          <div class="t-h1" style="font-variant-numeric: tabular-nums;">kr 184 200,–</div>
+          <span style="color: var(--color-text-secondary); font-size: var(--fs-caption);">2026 · eks. mva</span>
+        </div>
+      </section>
+
+      <section class="card">
+        <header style="display: flex; justify-content: space-between; align-items: baseline;">
+          <h2 class="card__title">Siste ordrer</h2>
+          <a class="link" href="#">Se alle</a>
+        </header>
+        <div class="data-table__wrap">
+          <table class="data-table">
+            <thead><tr><th>Ordre</th><th>Dato</th><th>Status</th><th class="is-numeric">Sum</th><th></th></tr></thead>
+            <tbody>
+              <tr><td><code>234 519</code></td><td>05.05.2026</td><td><span class="status-pill status-pill--success">Sendt</span></td><td class="is-numeric">kr 12 530,–</td><td><a class="link" href="#">Detaljer</a></td></tr>
+              <tr><td><code>234 488</code></td><td>02.05.2026</td><td><span class="status-pill status-pill--info">Behandles</span></td><td class="is-numeric">kr 4 220,–</td><td><a class="link" href="#">Detaljer</a></td></tr>
+              <tr><td><code>234 401</code></td><td>28.04.2026</td><td><span class="status-pill status-pill--success">Levert</span></td><td class="is-numeric">kr 18 100,–</td><td><a class="link" href="#">Detaljer</a></td></tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <section class="two-bin">
+        <header class="two-bin__header"><h2 class="two-bin__title">2-boks-system</h2><a class="link" href="#">Administrer</a></header>
+        <div class="two-bin__bins">
+          <div class="two-bin__bin">
+            <span class="two-bin__bin-label">M8 × 40 mm A4 · Boks A</span>
+            <span class="two-bin__bin-qty">182 / 200 stk</span>
+            <span class="two-bin__bin-fill"><span style="width: 91%;"></span></span>
+          </div>
+          <div class="two-bin__bin two-bin__bin--low">
+            <span class="two-bin__bin-label">M8 × 40 mm A4 · Boks B</span>
+            <span class="two-bin__bin-qty">42 / 200 stk</span>
+            <span class="two-bin__bin-fill"><span style="width: 21%;"></span></span>
+          </div>
+        </div>
+      </section>
+    </div>
+  </div>
+
+</main>
+
+<footer class="site-footer">
+  <div class="site-footer__inner"><div class="site-footer__bottom"><span>&copy; 2026 Molde Jarnvare AS</span></div></div>
+</footer>
+
+</body>
+</html>

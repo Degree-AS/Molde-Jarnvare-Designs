@@ -1,0 +1,130 @@
+/**
+ * Site header / Site shell — header (§15.1)
+ * Sticky topp-navigasjon med logo, søk, kategori-meny og bruker-actions.
+ */
+
+.site-header {
+  position: sticky;
+  top: 0;
+  z-index: var(--z-sticky);
+  background: var(--color-bg-surface);
+  border-bottom: var(--bw-1) solid var(--color-border-soft);
+}
+
+.site-header__inner {
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  gap: var(--s-5);
+  align-items: center;
+  padding: var(--s-3) var(--gutter);
+  max-width: var(--container-wide);
+  margin-inline: auto;
+}
+
+@media (max-width: 767px) {
+  .site-header__inner {
+    grid-template-columns: auto 1fr auto;
+    gap: var(--s-3);
+  }
+}
+
+.site-header__logo {
+  display: inline-flex;
+  align-items: center;
+  font-family: var(--ff-sans);
+  font-size: var(--fs-h4);
+  font-weight: var(--fw-black);
+  color: var(--mj-blue);
+  text-decoration: none;
+  letter-spacing: var(--ls-tight);
+}
+.site-header__logo-mark {
+  width: 36px;
+  height: 36px;
+  margin-right: var(--s-2);
+  background: var(--mj-blue);
+  border-radius: var(--r-sm);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--mj-orange);
+  font-weight: var(--fw-black);
+  font-size: var(--fs-body);
+}
+
+.site-header__nav {
+  display: flex;
+  align-items: center;
+  gap: var(--s-5);
+}
+@media (max-width: 1023px) {
+  .site-header__nav { display: none; }
+}
+
+.site-header__nav-link {
+  font-size: var(--fs-body-sm);
+  font-weight: var(--fw-semibold);
+  color: var(--color-text-primary);
+  text-decoration: none;
+  padding: var(--s-2) 0;
+  border-bottom: var(--bw-2) solid transparent;
+}
+.site-header__nav-link:hover { color: var(--color-text-link); }
+.site-header__nav-link[aria-current="page"] { border-bottom-color: var(--color-action-primary); }
+
+.site-header__actions {
+  display: flex;
+  align-items: center;
+  gap: var(--s-2);
+}
+
+.site-header__action {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  border-radius: var(--r-sm);
+  background: transparent;
+  border: 0;
+  cursor: pointer;
+  color: var(--color-text-primary);
+}
+.site-header__action:hover { background: var(--mj-surface-1); }
+
+.site-header__action-badge {
+  position: absolute;
+  top: 4px;
+  right: 4px;
+}
+
+.site-header__search {
+  flex: 1;
+  max-width: 560px;
+  margin-inline: var(--s-5);
+}
+@media (max-width: 767px) {
+  .site-header__search { display: none; }
+}
+
+.site-header__menu-toggle {
+  display: none;
+  width: 40px;
+  height: 40px;
+  background: transparent;
+  border: 0;
+  cursor: pointer;
+}
+@media (max-width: 1023px) {
+  .site-header__menu-toggle { display: inline-flex; align-items: center; justify-content: center; }
+}
+
+/* Sub-bar / utility row (frakt-melding, åpningstider, etc.) */
+.site-header__utility {
+  background: var(--mj-blue);
+  color: var(--color-text-on-brand);
+  font-size: var(--fs-caption);
+  padding: var(--s-2) var(--gutter);
+  text-align: center;
+}

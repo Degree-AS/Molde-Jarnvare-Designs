@@ -1,0 +1,60 @@
+/**
+ * Price display (§14.3) — formatering iht. §11.1
+ */
+
+.price-display {
+  display: flex;
+  flex-direction: column;
+  gap: var(--s-1);
+  font-family: var(--ff-sans);
+}
+
+.price-display__value {
+  font-size: var(--fs-h2);
+  font-weight: var(--fw-bold);
+  color: var(--color-text-primary);
+  font-variant-numeric: tabular-nums;
+  line-height: var(--lh-tight);
+}
+
+.price-display__suffix {
+  font-size: var(--fs-caption);
+  font-weight: var(--fw-regular);
+  color: var(--color-text-secondary);
+  margin-inline-start: var(--s-1);
+}
+
+.price-display__meta {
+  display: flex;
+  align-items: center;
+  gap: var(--s-2);
+  font-size: var(--fs-caption);
+  color: var(--color-text-secondary);
+}
+
+.price-display__strike {
+  text-decoration: line-through;
+  color: var(--color-text-tertiary);
+  font-variant-numeric: tabular-nums;
+}
+
+.price-display__discount {
+  display: inline-flex;
+  align-items: center;
+  padding: 0 var(--s-2);
+  height: 20px;
+  font-size: var(--fs-overline);
+  font-weight: var(--fw-semibold);
+  background: var(--mj-error-bg);
+  color: var(--mj-error);
+  border-radius: var(--r-sm);
+  letter-spacing: var(--ls-wider);
+}
+
+.price-display--inline {
+  flex-direction: row;
+  align-items: baseline;
+  gap: var(--s-3);
+}
+
+.price-display--sm .price-display__value { font-size: var(--fs-h4); }
