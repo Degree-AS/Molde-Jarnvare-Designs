@@ -1,0 +1,2525 @@
+<!DOCTYPE html>
+<html lang="nb">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Molde Jarnvare — Designsystem</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Source+Sans+3:ital,wght@0,400;0,500;0,600;0,700;0,900;1,400;1,600&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  /* Brand */
+  --mj-blue: #0D2B7E;
+  --mj-blue-90: #25408B;
+  --mj-blue-10: #E7EAF2;
+  --mj-gray-dark: #35373E;
+  --mj-orange: #DB993D;
+  --mj-gray-light: #E0E0E0;
+  --mj-red: #9E2835;
+
+  --mj-ink: #35373E;
+  --mj-ink-2: #5D5F65;
+  --mj-ink-3: #85878B;
+  --mj-line: #D6D7D9;
+  --mj-line-soft: #E0E0E0;
+  --mj-surface-1: #F4F4F5;
+  --mj-surface-0: #F9F9F9;
+  --mj-white: #FFFFFF;
+
+  --mj-success: #1F7A3A;
+  --mj-warning: #B8851F;
+  --mj-error: #9E2835;
+
+  --ff-sans: "Source Sans 3", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  --ff-mono: "JetBrains Mono", "SF Mono", Menlo, Consolas, monospace;
+}
+
+*,*::before,*::after{ box-sizing: border-box; }
+html{ scroll-behavior: smooth; }
+body{
+  margin: 0;
+  font-family: var(--ff-sans);
+  font-size: 16px;
+  line-height: 1.6;
+  color: var(--mj-ink);
+  background: var(--mj-white);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+img,svg{ max-width: 100%; display: block; }
+button{ font-family: inherit; cursor: pointer; border: 0; background: transparent; }
+
+/* =========================================================================
+   LAYOUT
+   ========================================================================= */
+.shell{
+  display: grid;
+  grid-template-columns: 280px 1fr;
+  min-height: 100vh;
+}
+@media (max-width: 1024px){
+  .shell{ grid-template-columns: 1fr; }
+}
+
+/* Sidebar nav */
+.nav{
+  position: sticky; top: 0; align-self: start;
+  height: 100vh; overflow-y: auto;
+  background: var(--mj-blue);
+  color: var(--mj-white);
+  padding: 40px 32px;
+  border-right: 1px solid var(--mj-blue-90);
+}
+@media (max-width: 1024px){
+  .nav{
+    position: relative;
+    height: auto;
+    padding: 24px;
+  }
+}
+
+.nav__brand{
+  padding-bottom: 24px;
+  margin-bottom: 32px;
+  border-bottom: 1px solid rgba(255,255,255,0.15);
+}
+.nav__logo{
+  font-weight: 900;
+  font-size: 22px;
+  letter-spacing: -0.02em;
+  line-height: 1;
+  color: var(--mj-white);
+}
+.nav__sub{
+  font-family: var(--ff-mono);
+  font-size: 10px;
+  text-transform: uppercase;
+  letter-spacing: 0.18em;
+  color: var(--mj-orange);
+  margin-top: 8px;
+  font-weight: 600;
+}
+.nav__group{
+  font-family: var(--ff-mono);
+  font-size: 10px;
+  text-transform: uppercase;
+  letter-spacing: 0.18em;
+  color: rgba(255,255,255,0.5);
+  margin: 28px 0 8px;
+  font-weight: 600;
+}
+.nav__group:first-of-type{ margin-top: 0; }
+.nav__link{
+  display: block;
+  padding: 6px 0;
+  color: rgba(255,255,255,0.85);
+  font-size: 14px;
+  text-decoration: none;
+  transition: color 160ms cubic-bezier(0.2,0.6,0.2,1), padding 160ms cubic-bezier(0.2,0.6,0.2,1);
+  border-left: 2px solid transparent;
+  padding-left: 12px;
+  margin-left: -12px;
+}
+.nav__link:hover{
+  color: var(--mj-orange);
+}
+.nav__link.active{
+  color: var(--mj-white);
+  border-left-color: var(--mj-orange);
+  font-weight: 600;
+}
+
+/* Main content */
+.main{ background: var(--mj-white); }
+.section{
+  padding: 96px clamp(32px, 6vw, 96px);
+  max-width: 1200px;
+  border-bottom: 1px solid var(--mj-line-soft);
+}
+.section--alt{ background: var(--mj-surface-0); }
+.section--dark{
+  background: var(--mj-blue);
+  color: var(--mj-white);
+}
+.section--dark .section__num{ color: var(--mj-orange); }
+.section--dark .section__title{ color: var(--mj-white); }
+.section--dark .section__lead{ color: rgba(255,255,255,0.85); }
+.section--dark .block-title::before{ background: var(--mj-orange); }
+
+.section__num{
+  font-family: var(--ff-mono);
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.2em;
+  color: var(--mj-ink-2);
+  margin-bottom: 16px;
+  font-weight: 600;
+}
+.section__title{
+  font-size: clamp(36px, 5vw, 64px);
+  font-weight: 900;
+  line-height: 1;
+  letter-spacing: -0.025em;
+  color: var(--mj-blue);
+  margin: 0 0 20px;
+  max-width: 18ch;
+}
+.section--dark .section__title{ color: var(--mj-white); }
+.section__lead{
+  font-size: 19px;
+  line-height: 1.55;
+  color: var(--mj-ink-2);
+  max-width: 72ch;
+  margin: 0;
+}
+
+/* Block headings inside section */
+.block{ margin-top: 64px; }
+.block:first-of-type{ margin-top: 56px; }
+.block-title{
+  font-size: 24px;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+  color: var(--mj-ink);
+  margin: 0 0 8px;
+  padding-left: 20px;
+  position: relative;
+}
+.section--dark .block-title{ color: var(--mj-white); }
+.block-title::before{
+  content: "";
+  position: absolute;
+  left: 0; top: 8px; bottom: 8px;
+  width: 4px;
+  background: var(--mj-orange);
+}
+.block-desc{
+  color: var(--mj-ink-2);
+  margin: 0 0 32px;
+  max-width: 70ch;
+  padding-left: 20px;
+}
+.section--dark .block-desc{ color: rgba(255,255,255,0.8); }
+
+/* Hero */
+.hero{
+  background: var(--mj-blue);
+  color: var(--mj-white);
+  padding: 120px clamp(32px, 6vw, 96px);
+  position: relative;
+  overflow: hidden;
+}
+.hero::before{
+  content: "";
+  position: absolute;
+  top: -200px; right: -200px;
+  width: 600px; height: 600px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(219,153,61,0.2) 0%, transparent 60%);
+  pointer-events: none;
+}
+.hero__overline{
+  font-family: var(--ff-mono);
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: 0.25em;
+  color: var(--mj-orange);
+  margin-bottom: 24px;
+  font-weight: 600;
+}
+.hero__title{
+  font-size: clamp(48px, 8vw, 112px);
+  font-weight: 900;
+  line-height: 0.92;
+  letter-spacing: -0.03em;
+  margin: 0 0 32px;
+  max-width: 18ch;
+}
+.hero__title em{
+  font-style: normal;
+  color: var(--mj-orange);
+}
+.hero__lead{
+  font-size: 22px;
+  line-height: 1.5;
+  color: rgba(255,255,255,0.85);
+  max-width: 60ch;
+  margin: 0 0 48px;
+}
+.hero__meta{
+  display: flex;
+  gap: 48px;
+  flex-wrap: wrap;
+  padding-top: 32px;
+  border-top: 1px solid rgba(255,255,255,0.15);
+  position: relative;
+  z-index: 1;
+}
+.hero__meta-item{ font-family: var(--ff-mono); font-size: 13px; color: rgba(255,255,255,0.6); text-transform: uppercase; letter-spacing: 0.15em; }
+.hero__meta-item strong{
+  display: block;
+  margin-top: 6px;
+  font-family: var(--ff-sans);
+  font-size: 18px;
+  color: var(--mj-white);
+  text-transform: none;
+  letter-spacing: 0;
+  font-weight: 600;
+}
+
+/* =========================================================================
+   COLORS
+   ========================================================================= */
+.colors-grid{
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: 16px;
+}
+.color{
+  border-radius: 12px;
+  overflow: hidden;
+  border: 1px solid var(--mj-line);
+  background: var(--mj-white);
+  transition: transform 160ms cubic-bezier(0.2,0.6,0.2,1);
+}
+.color:hover{ transform: translateY(-2px); }
+.color__chip{
+  height: 140px;
+  position: relative;
+}
+.color__pin{
+  position: absolute;
+  top: 12px; right: 12px;
+  background: rgba(255,255,255,0.95);
+  color: var(--mj-ink);
+  font-family: var(--ff-mono);
+  font-size: 10px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  padding: 4px 8px;
+  border-radius: 4px;
+}
+.color__chip--dark .color__pin{ background: rgba(255,255,255,0.15); color: var(--mj-white); }
+.color__body{ padding: 16px 20px 20px; }
+.color__name{ font-weight: 700; font-size: 15px; margin-bottom: 2px; }
+.color__hex{
+  font-family: var(--ff-mono);
+  font-size: 12px;
+  color: var(--mj-ink-2);
+  margin-bottom: 8px;
+}
+.color__use{
+  font-size: 13px;
+  color: var(--mj-ink-2);
+  line-height: 1.5;
+}
+
+/* Pair display: brand vs status */
+.pair{
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+}
+@media (max-width: 720px){ .pair{ grid-template-columns: 1fr; } }
+.pair-card{
+  background: var(--mj-white);
+  border: 1px solid var(--mj-line);
+  border-radius: 12px;
+  padding: 24px;
+}
+.pair-card__title{
+  font-family: var(--ff-mono);
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.18em;
+  color: var(--mj-ink-2);
+  font-weight: 600;
+  margin-bottom: 16px;
+}
+.pair-card__visual{
+  height: 80px;
+  border-radius: 8px;
+  display: flex; align-items: center; justify-content: center;
+  font-weight: 700;
+  margin-bottom: 12px;
+  font-size: 14px;
+}
+
+/* =========================================================================
+   TYPOGRAPHY
+   ========================================================================= */
+.type-stack{
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+}
+.type-row{
+  display: grid;
+  grid-template-columns: 200px 1fr;
+  gap: 32px;
+  align-items: baseline;
+  padding-bottom: 32px;
+  border-bottom: 1px solid var(--mj-line-soft);
+}
+.type-row:last-child{ border-bottom: 0; }
+@media (max-width: 720px){
+  .type-row{ grid-template-columns: 1fr; gap: 12px; }
+}
+.type-label{
+  font-family: var(--ff-mono);
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  color: var(--mj-ink-2);
+  font-weight: 600;
+}
+.type-label strong{
+  display: block;
+  color: var(--mj-ink);
+  margin-bottom: 4px;
+  font-size: 13px;
+}
+
+.t-display { font-size: clamp(48px, 6vw, 88px); font-weight: 900; line-height: 1; letter-spacing: -0.025em; }
+.t-h1 { font-size: clamp(32px, 4vw, 56px); font-weight: 700; line-height: 1.05; letter-spacing: -0.015em; }
+.t-h2 { font-size: clamp(26px, 3vw, 40px); font-weight: 700; line-height: 1.1; letter-spacing: -0.01em; }
+.t-h3 { font-size: 24px; font-weight: 700; line-height: 1.2; }
+.t-body-lg { font-size: 18px; line-height: 1.6; }
+.t-body { font-size: 16px; line-height: 1.6; }
+.t-body-sm { font-size: 14px; line-height: 1.5; }
+.t-caption { font-size: 13px; color: var(--mj-ink-2); }
+.t-overline {
+  font-family: var(--ff-mono);
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.18em;
+  font-weight: 600;
+}
+.t-mono {
+  font-family: var(--ff-mono);
+  font-size: 14px;
+}
+.t-mono-sm {
+  font-family: var(--ff-mono);
+  font-size: 12px;
+}
+
+/* Font card showcase */
+.font-card{
+  background: var(--mj-white);
+  border: 1px solid var(--mj-line);
+  border-radius: 16px;
+  padding: 40px;
+  margin-bottom: 24px;
+}
+.font-card--dark{
+  background: var(--mj-gray-dark);
+  color: var(--mj-white);
+  border-color: var(--mj-gray-dark);
+}
+.font-card__sample{
+  font-size: clamp(48px, 6vw, 96px);
+  font-weight: 900;
+  line-height: 1;
+  letter-spacing: -0.03em;
+  margin-bottom: 24px;
+}
+.font-card--dark .font-card__sample{ color: var(--mj-orange); }
+.font-card__name{
+  font-size: 13px;
+  font-family: var(--ff-mono);
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  color: var(--mj-ink-2);
+  margin-bottom: 16px;
+  font-weight: 600;
+}
+.font-card--dark .font-card__name{ color: rgba(255,255,255,0.6); }
+.font-card__desc{
+  font-size: 16px;
+  color: var(--mj-ink-2);
+  max-width: 60ch;
+  line-height: 1.6;
+}
+.font-card--dark .font-card__desc{ color: rgba(255,255,255,0.85); }
+.font-card__alphabet{
+  font-size: 24px;
+  margin-top: 24px;
+  padding-top: 24px;
+  border-top: 1px solid var(--mj-line-soft);
+  letter-spacing: 0.02em;
+  word-break: break-all;
+}
+.font-card--dark .font-card__alphabet{ border-top-color: rgba(255,255,255,0.15); }
+
+/* =========================================================================
+   PRINCIPLE CARDS
+   ========================================================================= */
+.principles{
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 16px;
+}
+.principle{
+  background: var(--mj-white);
+  border: 1px solid var(--mj-line);
+  border-radius: 12px;
+  padding: 32px;
+  position: relative;
+  transition: all 240ms cubic-bezier(0.2,0.6,0.2,1);
+}
+.principle:hover{
+  border-color: var(--mj-blue);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 16px -4px rgba(13,43,126,0.15);
+}
+.principle__num{
+  font-family: var(--ff-mono);
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.18em;
+  color: var(--mj-orange);
+  margin-bottom: 12px;
+  font-weight: 700;
+}
+.principle__title{
+  font-size: 22px;
+  font-weight: 900;
+  letter-spacing: -0.01em;
+  color: var(--mj-blue);
+  margin-bottom: 12px;
+  text-transform: uppercase;
+}
+.principle__desc{
+  font-size: 15px;
+  color: var(--mj-ink-2);
+  line-height: 1.55;
+}
+
+/* =========================================================================
+   DO / DON'T
+   ========================================================================= */
+.dos{
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 24px;
+  margin-top: 40px;
+}
+@media (max-width: 720px){ .dos{ grid-template-columns: 1fr; } }
+.dos__card{
+  background: var(--mj-white);
+  border-radius: 12px;
+  padding: 28px;
+  border: 1px solid var(--mj-line);
+}
+.dos__card--good{ border-left: 4px solid var(--mj-success); }
+.dos__card--bad{ border-left: 4px solid var(--mj-error); }
+.dos__head{
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-family: var(--ff-mono);
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  font-weight: 700;
+  margin-bottom: 16px;
+}
+.dos__card--good .dos__head{ color: var(--mj-success); }
+.dos__card--bad .dos__head{ color: var(--mj-error); }
+.dos__head svg{ width: 18px; height: 18px; }
+.dos__list{ margin: 0; padding: 0; list-style: none; }
+.dos__list li{
+  font-size: 15px;
+  padding: 6px 0;
+  color: var(--mj-ink);
+  line-height: 1.5;
+}
+
+/* =========================================================================
+   SAMPLES (component visualizations)
+   ========================================================================= */
+.sample{
+  background: var(--mj-surface-0);
+  border: 1px solid var(--mj-line);
+  border-radius: 12px;
+  padding: 40px;
+  margin-bottom: 16px;
+}
+.sample--dark{ background: var(--mj-blue); color: var(--mj-white); }
+
+.sample-row{
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+  align-items: center;
+}
+
+/* Buttons sample */
+.btn{
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 12px 20px;
+  border-radius: 8px;
+  font-weight: 600;
+  font-size: 16px;
+  letter-spacing: 0.01em;
+  border: 1.5px solid transparent;
+  cursor: pointer;
+  transition: all 160ms cubic-bezier(0.2,0.6,0.2,1);
+  font-family: inherit;
+}
+.btn--primary{ background: var(--mj-blue); color: var(--mj-white); border-color: var(--mj-blue); }
+.btn--primary:hover{ background: #0A2369; transform: translateY(-1px); }
+.btn--secondary{ background: var(--mj-gray-dark); color: var(--mj-white); border-color: var(--mj-gray-dark); }
+.btn--outline{ background: transparent; color: var(--mj-blue); border-color: var(--mj-blue); }
+.btn--outline:hover{ background: var(--mj-blue); color: var(--mj-white); }
+.btn--ghost{ background: transparent; color: var(--mj-blue); padding: 12px; }
+.btn--ghost:hover{ background: var(--mj-blue-10); }
+.btn--lg{ padding: 14px 24px; font-size: 17px; }
+.btn--sm{ padding: 8px 16px; font-size: 14px; }
+
+/* Stock pill sample */
+.stock{
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-family: var(--ff-mono);
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  font-weight: 600;
+}
+.stock::before{
+  content: "";
+  width: 8px; height: 8px;
+  border-radius: 50%;
+  background: currentColor;
+}
+.stock--in{ color: var(--mj-success); }
+.stock--low{ color: var(--mj-warning); }
+.stock--out{ color: var(--mj-error); }
+
+/* Product card sample */
+.product-mini{
+  background: var(--mj-white);
+  border: 1px solid var(--mj-line);
+  border-radius: 12px;
+  overflow: hidden;
+  width: 280px;
+  transition: all 240ms cubic-bezier(0.2,0.6,0.2,1);
+}
+.product-mini:hover{
+  transform: translateY(-2px);
+  box-shadow: 0 4px 16px -4px rgba(53,55,62,0.12);
+  border-color: var(--mj-blue);
+}
+.product-mini__media{
+  aspect-ratio: 1/1;
+  background: var(--mj-surface-1);
+  display: flex; align-items: center; justify-content: center;
+  border-bottom: 1px solid var(--mj-line);
+  position: relative;
+}
+.product-mini__media svg{ width: 60%; height: 60%; opacity: 0.5; color: var(--mj-ink-2); }
+.product-mini__badge{
+  position: absolute;
+  top: 12px; left: 12px;
+  background: var(--mj-orange);
+  color: var(--mj-ink);
+  font-family: var(--ff-mono);
+  font-size: 10px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  padding: 4px 8px;
+  border-radius: 4px;
+}
+.product-mini__body{ padding: 16px; }
+.product-mini__brand{
+  font-family: var(--ff-mono);
+  font-size: 10px;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: var(--mj-ink-3);
+  font-weight: 600;
+  margin-bottom: 4px;
+}
+.product-mini__name{
+  font-size: 16px;
+  font-weight: 600;
+  line-height: 1.2;
+  margin-bottom: 4px;
+}
+.product-mini__sku{
+  font-family: var(--ff-mono);
+  font-size: 12px;
+  color: var(--mj-ink-2);
+  margin-bottom: 8px;
+}
+.product-mini__footer{
+  margin-top: 12px;
+  padding-top: 12px;
+  display: flex;
+  justify-content: space-between;
+  align-items: end;
+  border-top: 1px solid var(--mj-line-soft);
+}
+.product-mini__price{
+  font-size: 18px;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+}
+.product-mini__price-info{
+  display: block;
+  font-family: var(--ff-mono);
+  font-size: 10px;
+  color: var(--mj-ink-3);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  margin-top: 2px;
+}
+.product-mini__add{
+  width: 36px; height: 36px;
+  background: var(--mj-blue);
+  color: var(--mj-white);
+  border-radius: 4px;
+  display: flex; align-items: center; justify-content: center;
+}
+.product-mini__add svg{ width: 16px; height: 16px; }
+
+/* Form sample */
+.input{
+  width: 100%;
+  padding: 11px 16px;
+  border: 1.5px solid var(--mj-line);
+  border-radius: 4px;
+  background: var(--mj-white);
+  outline: 0;
+  font-family: inherit;
+  font-size: 16px;
+  transition: all 160ms cubic-bezier(0.2,0.6,0.2,1);
+}
+.input:focus{ border-color: var(--mj-blue); box-shadow: 0 0 0 3px rgba(13,43,126,0.2); }
+.field{
+  display: flex; flex-direction: column;
+  gap: 8px;
+}
+.field__label{
+  font-size: 14px;
+  font-weight: 600;
+}
+.field__hint{
+  font-size: 13px;
+  color: var(--mj-ink-2);
+  font-family: var(--ff-mono);
+}
+
+/* Alert sample */
+.alert{
+  padding: 16px 20px;
+  border-left: 4px solid;
+  border-radius: 4px;
+  display: flex;
+  gap: 12px;
+  align-items: flex-start;
+  margin-bottom: 12px;
+  background: var(--mj-white);
+}
+.alert svg{ width: 20px; height: 20px; flex-shrink: 0; margin-top: 2px; }
+.alert--info{ border-color: var(--mj-blue); background: var(--mj-blue-10); }
+.alert--info svg{ color: var(--mj-blue); }
+.alert--success{ border-color: var(--mj-success); background: #E8F2EA; }
+.alert--success svg{ color: var(--mj-success); }
+.alert--warning{ border-color: var(--mj-warning); background: #F8EFD9; }
+.alert--warning svg{ color: var(--mj-warning); }
+.alert--error{ border-color: var(--mj-error); background: #F4DDDF; }
+.alert--error svg{ color: var(--mj-error); }
+.alert strong{ display: block; margin-bottom: 4px; }
+.alert p{ margin: 0; font-size: 14px; color: var(--mj-ink-2); }
+
+/* =========================================================================
+   SPACING DEMO
+   ========================================================================= */
+.spacing-demo{
+  display: flex;
+  align-items: flex-end;
+  gap: 24px;
+  flex-wrap: wrap;
+  padding: 32px;
+  background: var(--mj-surface-0);
+  border-radius: 12px;
+  border: 1px solid var(--mj-line);
+}
+.spacing-demo__item{
+  text-align: center;
+}
+.spacing-demo__box{
+  background: var(--mj-orange);
+  margin: 0 auto 12px;
+  border-radius: 4px;
+}
+.spacing-demo__label{
+  font-family: var(--ff-mono);
+  font-size: 11px;
+  color: var(--mj-ink-2);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  line-height: 1.4;
+}
+.spacing-demo__label strong{
+  display: block;
+  color: var(--mj-ink);
+  font-weight: 700;
+}
+
+/* =========================================================================
+   TABLE
+   ========================================================================= */
+.table-wrap{
+  background: var(--mj-white);
+  border: 1px solid var(--mj-line);
+  border-radius: 12px;
+  overflow: hidden;
+}
+table{
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 14px;
+}
+th{
+  text-align: left;
+  font-family: var(--ff-mono);
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: var(--mj-ink-2);
+  font-weight: 600;
+  background: var(--mj-surface-0);
+  padding: 14px 20px;
+  border-bottom: 1.5px solid var(--mj-line);
+}
+td{
+  padding: 14px 20px;
+  border-bottom: 1px solid var(--mj-line-soft);
+  vertical-align: middle;
+}
+tr:last-child td{ border-bottom: 0; }
+.t-num{ font-family: var(--ff-mono); text-align: right; font-variant-numeric: tabular-nums; }
+.t-sku{ font-family: var(--ff-mono); font-size: 13px; color: var(--mj-ink-2); }
+
+/* =========================================================================
+   ICONS
+   ========================================================================= */
+.icon-grid{
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(110px, 1fr));
+  gap: 8px;
+}
+.icon-tile{
+  background: var(--mj-white);
+  border: 1px solid var(--mj-line);
+  border-radius: 8px;
+  padding: 20px 12px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  transition: all 160ms cubic-bezier(0.2,0.6,0.2,1);
+}
+.icon-tile:hover{ border-color: var(--mj-blue); }
+.icon-tile svg{ width: 24px; height: 24px; color: var(--mj-ink); }
+.icon-tile span{
+  font-family: var(--ff-mono);
+  font-size: 10px;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--mj-ink-2);
+  text-align: center;
+}
+
+/* =========================================================================
+   PAGE LAYOUTS PREVIEW
+   ========================================================================= */
+.page-preview{
+  background: var(--mj-white);
+  border: 1px solid var(--mj-line);
+  border-radius: 12px;
+  overflow: hidden;
+  margin-bottom: 16px;
+}
+.page-preview__bar{
+  background: var(--mj-surface-0);
+  padding: 12px 20px;
+  border-bottom: 1px solid var(--mj-line);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-family: var(--ff-mono);
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--mj-ink-2);
+}
+.page-preview__bar-dots{
+  display: flex; gap: 6px;
+}
+.page-preview__bar-dots span{
+  width: 10px; height: 10px;
+  border-radius: 50%;
+  background: var(--mj-line);
+}
+.page-preview__body{
+  display: flex;
+  height: 320px;
+}
+.page-preview__sidebar{
+  width: 80px;
+  background: var(--mj-surface-1);
+  padding: 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+.page-preview__sidebar > div{
+  height: 16px;
+  background: var(--mj-line);
+  border-radius: 2px;
+}
+.page-preview__sidebar > div:nth-child(1){ width: 60%; }
+.page-preview__sidebar > div:nth-child(2){ width: 80%; height: 24px; }
+.page-preview__sidebar > div:nth-child(3){ width: 50%; }
+.page-preview__sidebar > div:nth-child(4){ width: 70%; height: 24px; }
+.page-preview__main{
+  flex: 1;
+  padding: 20px;
+  display: flex; flex-direction: column;
+  gap: 12px;
+}
+.page-preview__main-block{
+  background: var(--mj-line-soft);
+  border-radius: 4px;
+  height: 16px;
+  width: 100%;
+}
+.page-preview__main-block--title{ height: 28px; width: 50%; background: var(--mj-blue); }
+.page-preview__main-block--cta{ height: 32px; width: 120px; background: var(--mj-blue); margin-top: 8px; }
+.page-preview__grid{
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 8px;
+  margin-top: 12px;
+}
+.page-preview__grid > div{
+  height: 100px;
+  background: var(--mj-surface-1);
+  border-radius: 4px;
+}
+
+/* =========================================================================
+   COMPONENT LIST
+   ========================================================================= */
+.comp-grid{
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  gap: 12px;
+}
+.comp-card{
+  background: var(--mj-white);
+  border: 1px solid var(--mj-line);
+  border-radius: 8px;
+  padding: 20px;
+}
+.comp-card__type{
+  font-family: var(--ff-mono);
+  font-size: 10px;
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  color: var(--mj-orange);
+  font-weight: 700;
+  margin-bottom: 8px;
+}
+.comp-card__name{
+  font-size: 16px;
+  font-weight: 700;
+  margin-bottom: 8px;
+}
+.comp-card__count{
+  font-family: var(--ff-mono);
+  font-size: 12px;
+  color: var(--mj-ink-2);
+}
+
+/* Pull-quote */
+.pull-quote{
+  font-size: 28px;
+  line-height: 1.3;
+  font-weight: 600;
+  color: var(--mj-blue);
+  border-left: 4px solid var(--mj-orange);
+  padding-left: 24px;
+  margin: 48px 0;
+  max-width: 24ch;
+}
+
+/* Footer of doc */
+.doc-footer{
+  background: var(--mj-blue);
+  color: var(--mj-white);
+  padding: 64px clamp(32px, 6vw, 96px);
+}
+.doc-footer__title{
+  font-size: 32px;
+  font-weight: 900;
+  letter-spacing: -0.02em;
+  margin-bottom: 16px;
+  color: var(--mj-white);
+}
+.doc-footer__lead{
+  font-size: 17px;
+  color: rgba(255,255,255,0.8);
+  max-width: 60ch;
+  margin-bottom: 32px;
+  line-height: 1.5;
+}
+.doc-footer__meta{
+  display: flex; gap: 48px; flex-wrap: wrap;
+  padding-top: 32px;
+  border-top: 1px solid rgba(255,255,255,0.15);
+  font-family: var(--ff-mono);
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  color: rgba(255,255,255,0.6);
+}
+
+/* Open questions box */
+.questions{
+  background: var(--mj-surface-0);
+  border: 2px solid var(--mj-orange);
+  border-radius: 12px;
+  padding: 32px;
+  margin-top: 24px;
+}
+.questions h3{
+  font-size: 22px;
+  margin: 0 0 8px;
+  color: var(--mj-blue);
+  font-weight: 900;
+  letter-spacing: -0.01em;
+}
+.questions p{
+  color: var(--mj-ink-2);
+  margin-bottom: 20px;
+}
+.questions ol{
+  padding-left: 20px;
+  margin: 0;
+}
+.questions li{
+  padding: 6px 0;
+  font-size: 15px;
+}
+.questions li strong{ color: var(--mj-blue); }
+
+/* Section anchor offset for sticky nav */
+.section[id]{ scroll-margin-top: 24px; }
+
+/* Mobile menu toggle */
+@media (max-width: 1024px){
+  .nav__group:not(:first-of-type){ display: none; }
+  .nav__link{ display: none; }
+  .nav.open .nav__group{ display: block; }
+  .nav.open .nav__link{ display: block; }
+  .nav__toggle{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    padding: 12px 0;
+    color: var(--mj-white);
+    font-family: inherit;
+    font-size: 14px;
+    font-weight: 600;
+    margin-top: 12px;
+  }
+  .nav__toggle::after{
+    content: "▾";
+    color: var(--mj-orange);
+  }
+}
+@media (min-width: 1025px){
+  .nav__toggle{ display: none; }
+}
+</style>
+</head>
+<body>
+
+<div class="shell">
+
+  <!-- ============================================================
+       SIDEBAR NAV
+       ============================================================ -->
+  <nav class="nav" id="sidenav">
+    <div class="nav__brand">
+      <div class="nav__logo">MOLDE JARNVARE</div>
+      <div class="nav__sub">DESIGNSYSTEM · v0.1</div>
+    </div>
+
+    <button class="nav__toggle" onclick="document.getElementById('sidenav').classList.toggle('open')">
+      Innhold
+    </button>
+
+    <div class="nav__group">Introduksjon</div>
+    <a class="nav__link" href="#intro">Hvorfor designsystem?</a>
+    <a class="nav__link" href="#prinsipper">Designprinsipper</a>
+    <a class="nav__link" href="#tone">Stemme &amp; tone</a>
+
+    <div class="nav__group">Visuelt språk</div>
+    <a class="nav__link" href="#farger">Farger</a>
+    <a class="nav__link" href="#typografi">Typografi</a>
+    <a class="nav__link" href="#avstand">Avstand &amp; layout</a>
+    <a class="nav__link" href="#ikoner">Ikoner</a>
+    <a class="nav__link" href="#bilder">Bilder</a>
+
+    <div class="nav__group">Innhold &amp; regler</div>
+    <a class="nav__link" href="#innholdsregler">Tall, pris og koder</a>
+    <a class="nav__link" href="#mikrokopi">Mikrokopi</a>
+
+    <div class="nav__group">Komponenter</div>
+    <a class="nav__link" href="#knapper">Knapper</a>
+    <a class="nav__link" href="#skjema">Skjema</a>
+    <a class="nav__link" href="#status">Statuser</a>
+    <a class="nav__link" href="#produktkort">Produktkort</a>
+    <a class="nav__link" href="#tabeller">Tabeller</a>
+    <a class="nav__link" href="#alle-komponenter">Alle komponenter</a>
+
+    <div class="nav__group">Sider</div>
+    <a class="nav__link" href="#sider">Sidemaler</a>
+
+    <div class="nav__group">Kvalitet</div>
+    <a class="nav__link" href="#tilgjengelighet">Tilgjengelighet</a>
+    <a class="nav__link" href="#fremtid">Hva kommer etter</a>
+
+    <div class="nav__group">Avklaring</div>
+    <a class="nav__link" href="#avklaringer">Spørsmål til dere</a>
+  </nav>
+
+  <!-- ============================================================
+       MAIN CONTENT
+       ============================================================ -->
+  <main class="main">
+
+    <!-- Hero -->
+    <header class="hero">
+      <div class="hero__overline">Designsystem · Versjon 0.1 · Mai 2026</div>
+      <h1 class="hero__title">
+        Slik bygger vi <em>nettstedet</em> deres.
+      </h1>
+      <p class="hero__lead">
+        Et designsystem er reglene og byggeklossene som sørger for at hjemmesiden og nettbutikken
+        kjennes som <em>Molde Jarnvare</em> — uansett hvor på siden man er, og uansett hvem som lager
+        innholdet. Dette dokumentet viser hvilke valg vi har tatt, hvorfor de er tatt, og hvordan
+        de henger sammen med deres eksisterende grafiske profil.
+      </p>
+      <div class="hero__meta">
+        <div class="hero__meta-item">Forankret i<strong>Grafisk profilbok 2025</strong></div>
+        <div class="hero__meta-item">Komponenter<strong>67 dokumentert</strong></div>
+        <div class="hero__meta-item">Sidemaler<strong>12 definert</strong></div>
+        <div class="hero__meta-item">Status<strong>Klar for gjennomgang</strong></div>
+      </div>
+    </header>
+
+    <!-- ============================================================
+         INTRO
+         ============================================================ -->
+    <section class="section" id="intro">
+      <div class="section__num">01 / Introduksjon</div>
+      <h2 class="section__title">Hvorfor et designsystem?</h2>
+      <p class="section__lead">
+        Når flere personer skal lage innhold, sider og funksjoner over tid — uten at resultatet skal
+        kjennes som et lappeteppe — trenger man et felles språk. Designsystemet er det språket.
+      </p>
+
+      <div class="block">
+        <h3 class="block-title">Hva designsystemet er</h3>
+        <p class="block-desc" style="padding-left: 0;">
+          Tre ting samtidig:
+        </p>
+        <div class="principles" style="margin-top: 32px;">
+          <div class="principle">
+            <div class="principle__num">REGEL</div>
+            <h4 class="principle__title">Et regelverk</h4>
+            <p class="principle__desc">
+              Det dokumenterer hvilke farger som brukes hvor, hvilke skrifter, og hvordan
+              avstander og hierarki settes opp. Det er svaret på "hvordan skal dette se ut?"
+            </p>
+          </div>
+          <div class="principle">
+            <div class="principle__num">BYGG</div>
+            <h4 class="principle__title">Et byggesett</h4>
+            <p class="principle__desc">
+              Det er en samling ferdige byggeklosser — knapper, skjema, produktkort, tabeller —
+              som utviklerne setter sammen til ferdige sider. Ingen lager nye knapper hver gang.
+            </p>
+          </div>
+          <div class="principle">
+            <div class="principle__num">AVTALE</div>
+            <h4 class="principle__title">En avtale mellom oss</h4>
+            <p class="principle__desc">
+              Når dere har godkjent dette, vet alle hva nettstedet skal være. Endringer skjer
+              kontrollert, ikke ad hoc i hver sak.
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <div class="pull-quote">
+        Profilboken er kilden til sannhet for brand. Designsystemet operasjonaliserer den for nett.
+      </div>
+
+      <div class="block">
+        <h3 class="block-title">Forholdet til profilboken</h3>
+        <p class="block-desc">
+          Den grafiske profilboken fra 2025 er forankret hos dere. Designsystemet *bygger på* den —
+          ikke erstatter. For alt profilboken dekker (logo, brand-farger, typografi, slagord, fotostil)
+          gjelder profilboken. Designsystemet *legger til* det som trengs spesifikt for nettsteder:
+          web-spesifikke skrifter, tilgjengelighetskrav, komponentregler og statusvariasjoner.
+        </p>
+      </div>
+    </section>
+
+    <!-- ============================================================
+         PRINSIPPER
+         ============================================================ -->
+    <section class="section section--alt" id="prinsipper">
+      <div class="section__num">02 / Fundament</div>
+      <h2 class="section__title">Seks prinsipper bak alle valg</h2>
+      <p class="section__lead">
+        Når vi er i tvil om en designbeslutning, går vi tilbake til disse seks prinsippene.
+        De er destillert fra møter med dere, profilboken, og det vi vet om kundene som bruker nettstedet.
+      </p>
+
+      <div class="principles" style="margin-top: 56px;">
+        <div class="principle">
+          <div class="principle__num">PRINSIPP 01</div>
+          <h4 class="principle__title">Fag først</h4>
+          <p class="principle__desc">
+            Lagerformennens hverdag styrer designet. Tekniske data, lagerstatus og artikkelnummer
+            skal alltid være tydelige og umiddelbart tilgjengelige — ikke gjemt under "Les mer".
+          </p>
+        </div>
+        <div class="principle">
+          <div class="principle__num">PRINSIPP 02</div>
+          <h4 class="principle__title">Partner, ikke leverandør</h4>
+          <p class="principle__desc">
+            Tonen er "på lag med" — ikke selger på telefon. Vi snakker som en kollega som kan faget.
+            Ingen jippo, ingen overdreven entusiasme, ingen utropstegn.
+          </p>
+        </div>
+        <div class="principle">
+          <div class="principle__num">PRINSIPP 03</div>
+          <h4 class="principle__title">Lokal forankring</h4>
+          <p class="principle__desc">
+            90% av salget er i Møre og Romsdal. Det er en del av identiteten — ikke noe vi skjuler.
+            Designet skal kjennes som et sted, ikke en generisk B2B-portal.
+          </p>
+        </div>
+        <div class="principle">
+          <div class="principle__num">PRINSIPP 04</div>
+          <h4 class="principle__title">Bredde og dybde</h4>
+          <p class="principle__desc">
+            33 000 artikler. Designet må håndtere det. Hierarki, filtrering og søk er
+            kjernefunksjonalitet, ikke pyntefag.
+          </p>
+        </div>
+        <div class="principle">
+          <div class="principle__num">PRINSIPP 05</div>
+          <h4 class="principle__title">Selgeren er ombord</h4>
+          <p class="principle__desc">
+            UI-en må fungere både som butikk for kunde og som verktøy for selger som handler
+            "på vegne av" en kunde — uten kompromiss for noen av dem.
+          </p>
+        </div>
+        <div class="principle">
+          <div class="principle__num">PRINSIPP 06</div>
+          <h4 class="principle__title">Strukturert innhold</h4>
+          <p class="principle__desc">
+            Innholdet bygges som typete blokker, ikke fri-tekst. Det gjør det vedlikeholdbart,
+            søkbart og fremtidsklart for AI-assistanse i innholdsproduksjon.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================================================
+         TONE
+         ============================================================ -->
+    <section class="section" id="tone">
+      <div class="section__num">03 / Stemme &amp; tone</div>
+      <h2 class="section__title">Hvordan vi snakker</h2>
+      <p class="section__lead">
+        Slagordet "På lag med industrien siden 1930" er ikke bare for forsiden — det styrer
+        språket overalt på nettstedet. Vi snakker som en erfaren kollega som kan faget.
+      </p>
+
+      <div class="block">
+        <h3 class="block-title">Hvem er vi når vi skriver</h3>
+        <div class="dos">
+          <div class="dos__card dos__card--good">
+            <div class="dos__head">
+              <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M4 10l4 4 8-8"/></svg>
+              Vi er
+            </div>
+            <ul class="dos__list">
+              <li>Faglige</li>
+              <li>Direkte</li>
+              <li>Varme</li>
+              <li>Trygge</li>
+              <li>Lokale</li>
+              <li>Praktiske</li>
+            </ul>
+          </div>
+          <div class="dos__card dos__card--bad">
+            <div class="dos__head">
+              <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 5l10 10M5 15l10-10"/></svg>
+              Vi er ikke
+            </div>
+            <ul class="dos__list">
+              <li>Akademiske</li>
+              <li>Bryske</li>
+              <li>Familiære</li>
+              <li>Selvsikre</li>
+              <li>Bygdedumme</li>
+              <li>Teknokratiske</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <div class="block">
+        <h3 class="block-title">Hvordan vi tiltaler kunden</h3>
+        <p class="block-desc">
+          Vi sier alltid "du" — aldri "De". B2B-konteksten betyr at leseren er en yrkeskollega.
+          Vi forklarer ikke hva en sekskantskrue er, men vi gjør det enkelt å finne riktig variant.
+          Vi sier "vi" om Molde Jarnvare, aldri "Molde Jarnvare" i tredje person.
+        </p>
+      </div>
+
+      <div class="block">
+        <h3 class="block-title">Mikrokopi — eksempler</h3>
+        <p class="block-desc">
+          Mikrokopi er de små tekstene overalt: knapper, feilmeldinger, hjelpetekster.
+          Her vises noen valgte eksempler som setter tonen.
+        </p>
+        <div class="dos">
+          <div class="dos__card dos__card--good">
+            <div class="dos__head">
+              <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M4 10l4 4 8-8"/></svg>
+              Slik
+            </div>
+            <ul class="dos__list">
+              <li><strong>"Legg i handlekurv"</strong> — verb først, klart</li>
+              <li><strong>"Be om tilbud"</strong> — handling beskrevet</li>
+              <li><strong>"Ordre 234 519 er mottatt"</strong> — rolig bekreftelse</li>
+              <li><strong>"Sjekk at e-post inneholder @"</strong> — feil med løsning</li>
+              <li><strong>"Få igjen — 6 stk"</strong> — direkte fakta</li>
+            </ul>
+          </div>
+          <div class="dos__card dos__card--bad">
+            <div class="dos__head">
+              <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 5l10 10M5 15l10-10"/></svg>
+              Ikke slik
+            </div>
+            <ul class="dos__list">
+              <li>"Klikk her" — sier ingenting</li>
+              <li>"Send forespørsel" — bla-bla</li>
+              <li>"Tusen takk for din bestilling!! 🎉" — overspilt</li>
+              <li>"Ugyldig data i felt" — mystisk</li>
+              <li>"Begrenset tilgjengelighet" — uklar advarsel</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================================================
+         FARGER
+         ============================================================ -->
+    <section class="section section--alt" id="farger">
+      <div class="section__num">04 / Visuelt språk</div>
+      <h2 class="section__title">Farger</h2>
+      <p class="section__lead">
+        Paletten kommer rett fra profilboken. Vi har lagt til funksjonelle farger for ting som
+        "på lager", "lav beholdning" og "feil" — men vi har valgt dem slik at de føles som en
+        utvidelse, ikke fremmede tilskudd.
+      </p>
+
+      <div class="block">
+        <h3 class="block-title">Brand — fra profilboken</h3>
+        <p class="block-desc">
+          De fem hovedfargene fra Grafisk profilbok 2025. Reflex blå er det dominerende — alltid.
+          De andre brukes som støttefarger og aksenter.
+        </p>
+
+        <div class="colors-grid">
+          <div class="color">
+            <div class="color__chip color__chip--dark" style="background: #0D2B7E;">
+              <span class="color__pin">PRIMÆR</span>
+            </div>
+            <div class="color__body">
+              <div class="color__name">Reflex blå</div>
+              <div class="color__hex">#0D2B7E</div>
+              <div class="color__use">Logo, header, footer, primærknapper, hovedoverskrifter.</div>
+            </div>
+          </div>
+          <div class="color">
+            <div class="color__chip color__chip--dark" style="background: #35373E;">
+              <span class="color__pin">SEKUNDÆR</span>
+            </div>
+            <div class="color__body">
+              <div class="color__name">Mørk grå</div>
+              <div class="color__hex">#35373E</div>
+              <div class="color__use">Brødtekst, sekundære overflater, sekundærknapper.</div>
+            </div>
+          </div>
+          <div class="color">
+            <div class="color__chip" style="background: #DB993D;">
+              <span class="color__pin">AKSENT</span>
+            </div>
+            <div class="color__body">
+              <div class="color__name">Orange</div>
+              <div class="color__hex">#DB993D</div>
+              <div class="color__use">Highlights, "nyhet"-merking, aksent på mørke flater.</div>
+            </div>
+          </div>
+          <div class="color">
+            <div class="color__chip" style="background: #E0E0E0;">
+              <span class="color__pin">FLATE</span>
+            </div>
+            <div class="color__body">
+              <div class="color__name">Lys grå</div>
+              <div class="color__hex">#E0E0E0</div>
+              <div class="color__use">Bakgrunnsflater, dividers, subtile skille mellom seksjoner.</div>
+            </div>
+          </div>
+          <div class="color">
+            <div class="color__chip color__chip--dark" style="background: #9E2835;">
+              <span class="color__pin">AKSENT</span>
+            </div>
+            <div class="color__body">
+              <div class="color__name">Rød</div>
+              <div class="color__hex">#9E2835</div>
+              <div class="color__use">Slagord, callouts, callouts og varselmeldinger.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="block">
+        <h3 class="block-title">Status og funksjon</h3>
+        <p class="block-desc">
+          For en nettbutikk trenger vi farger som ikke er definert i profilboken: "på lager",
+          "få igjen", "feil", "info". I stedet for å hente generiske SaaS-farger har vi valgt slik:
+          for <em>info</em> bruker vi profilbokens Reflex blå, for <em>feil</em> bruker vi profilbokens
+          rød. Da har vi bare to nye farger å introdusere — én grønn og én mørk gylden.
+        </p>
+
+        <div class="colors-grid">
+          <div class="color">
+            <div class="color__chip color__chip--dark" style="background: #1F7A3A;">
+              <span class="color__pin">NY</span>
+            </div>
+            <div class="color__body">
+              <div class="color__name">Grønn — på lager</div>
+              <div class="color__hex">#1F7A3A</div>
+              <div class="color__use">Lagerstatus "på lager", ordrebekreftelser, valideringssuksess.</div>
+            </div>
+          </div>
+          <div class="color">
+            <div class="color__chip color__chip--dark" style="background: #B8851F;">
+              <span class="color__pin">NY</span>
+            </div>
+            <div class="color__body">
+              <div class="color__name">Mørk gylden — advarsel</div>
+              <div class="color__hex">#B8851F</div>
+              <div class="color__use">Lav beholdning, ikke-kritiske advarsler. Mørkere variant av profilbokens orange.</div>
+            </div>
+          </div>
+          <div class="color">
+            <div class="color__chip color__chip--dark" style="background: #9E2835;">
+              <span class="color__pin">FRA PROFIL</span>
+            </div>
+            <div class="color__body">
+              <div class="color__name">Rød — feil</div>
+              <div class="color__hex">#9E2835</div>
+              <div class="color__use">Skjemafeil, "utsolgt", systemfeil. Gjenbruk av profilbokens rød.</div>
+            </div>
+          </div>
+          <div class="color">
+            <div class="color__chip color__chip--dark" style="background: #0D2B7E;">
+              <span class="color__pin">FRA PROFIL</span>
+            </div>
+            <div class="color__body">
+              <div class="color__name">Blå — info</div>
+              <div class="color__hex">#0D2B7E</div>
+              <div class="color__use">Informasjonsmeldinger, hint, system-notifications. Reflex blå.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="block">
+        <h3 class="block-title">Statusene i bruk</h3>
+        <p class="block-desc">
+          Slik ser de funksjonelle fargene ut når de brukes i kontekst.
+        </p>
+        <div class="sample">
+          <div style="margin-bottom: 24px; display: flex; gap: 32px; flex-wrap: wrap;">
+            <span class="stock stock--in">På lager · 4 200 stk</span>
+            <span class="stock stock--low">Få igjen · 6 stk</span>
+            <span class="stock stock--out">Utsolgt · Skaffes</span>
+          </div>
+          <div class="alert alert--info">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="square"><circle cx="12" cy="12" r="10"/><path d="M12 8v4M12 16h.01"/></svg>
+            <div>
+              <strong>Avtalt sortiment</strong>
+              <p>Du ser priser forhåndsavtalt mellom din bedrift og Molde Jarnvare.</p>
+            </div>
+          </div>
+          <div class="alert alert--success">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="square"><path d="M5 12l5 5 9-9"/></svg>
+            <div>
+              <strong>Ordre 234 519 er mottatt</strong>
+              <p>Pakkes nå på lageret i Molde. Forventet levering 7. mai 2026.</p>
+            </div>
+          </div>
+          <div class="alert alert--warning">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="square"><path d="M12 3l10 18H2L12 3z"/><path d="M12 9v5M12 17h.01"/></svg>
+            <div>
+              <strong>Lav lagerbeholdning</strong>
+              <p>Det er kun 6 stk igjen av denne varen. Ta kontakt med produktansvarlig for ledetid.</p>
+            </div>
+          </div>
+          <div class="alert alert--error">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="square"><circle cx="12" cy="12" r="10"/><path d="M9 9l6 6M15 9l-6 6"/></svg>
+            <div>
+              <strong>Sertifikat utløpt</strong>
+              <p>Sertifikatet for løfteutstyr (batch 18-A) gikk ut 12.04.2026. Fornyelse må gjennomføres.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================================================
+         TYPOGRAFI
+         ============================================================ -->
+    <section class="section" id="typografi">
+      <div class="section__num">05 / Visuelt språk</div>
+      <h2 class="section__title">Typografi</h2>
+      <p class="section__lead">
+        Profilboken peker på Aptos for Word og PowerPoint. Aptos kan dessverre ikke brukes på
+        offentlige nettsider av lisensgrunner, så på nettet bruker vi en font som ligger nært
+        i tone og uttrykk: Source Sans 3.
+      </p>
+
+      <div class="font-card">
+        <div class="font-card__name">Skrift på nett — brødtekst og overskrifter</div>
+        <div class="font-card__sample" style="font-weight: 900;">Source Sans 3</div>
+        <div class="font-card__desc">
+          En åpen, vennlig sans-serif designet av Adobe. Samme humanistiske tone som Aptos —
+          rolige bokstavformer, god lesbarhet på skjerm, full støtte for norske bokstaver.
+          Gratis å bruke kommersielt, godt egnet for både korte etiketter og lengre brødtekst.
+        </div>
+        <div class="font-card__alphabet">ABCDEFGHIJKLMNOPQRSTUVWXYZÆØÅ<br>abcdefghijklmnopqrstuvwxyzæøå<br>0123456789</div>
+      </div>
+
+      <div class="font-card font-card--dark">
+        <div class="font-card__name">Skrift for tekniske data</div>
+        <div class="font-card__sample" style="font-family: var(--ff-mono); font-weight: 600; font-size: clamp(36px, 4vw, 64px);">JetBrains Mono</div>
+        <div class="font-card__desc">
+          For artikkelnummer, NOBB-nummer, EAN-koder og tabellverdier. En monospace-font er
+          en font hvor alle bokstaver tar like mye plass — det gjør at tall radjusterer pent
+          i tabeller og at SKU-er er lette å skanne raskt.
+        </div>
+        <div class="font-card__alphabet" style="font-family: var(--ff-mono);">ART.NR 4815-162-30<br>NOBB 51234567 · EAN 7053900012345<br>M8 × 40 mm · DIN 933 · A4</div>
+      </div>
+
+      <div class="block">
+        <h3 class="block-title">Skala — hvor stor skriften er</h3>
+        <p class="block-desc">
+          Vi har en fast skala for hvor stor teksten skal være, slik at alle sider kjennes
+          balanserte. Skalaen tilpasser seg automatisk til skjermstørrelse — store skjermer får
+          store overskrifter, små skjermer får mer kompakte.
+        </p>
+        <div class="type-stack">
+          <div class="type-row">
+            <div class="type-label"><strong>Display</strong>Forside-hero<br>Kun unntaksvis</div>
+            <div class="t-display" style="color: var(--mj-blue);">Best på industri.</div>
+          </div>
+          <div class="type-row">
+            <div class="type-label"><strong>H1</strong>Sidetitler</div>
+            <div class="t-h1" style="color: var(--mj-blue);">Sekskantskruer M8 × 40 mm</div>
+          </div>
+          <div class="type-row">
+            <div class="type-label"><strong>H2</strong>Seksjonsoverskrifter</div>
+            <div class="t-h2" style="color: var(--mj-blue);">Festemidler i syrefast stål</div>
+          </div>
+          <div class="type-row">
+            <div class="type-label"><strong>H3</strong>Underseksjoner</div>
+            <div class="t-h3">Tekniske spesifikasjoner</div>
+          </div>
+          <div class="type-row">
+            <div class="type-label"><strong>Brødtekst stor</strong>Lead-tekst, intro</div>
+            <div class="t-body-lg" style="max-width: 60ch;">Vi har Møre og Romsdals største lager innen festemidler, verktøy og verneutstyr — med over 33 000 artikler og bred portefølje for industri, maritime næringer og landbruk.</div>
+          </div>
+          <div class="type-row">
+            <div class="type-label"><strong>Brødtekst</strong>Standard tekst</div>
+            <div class="t-body" style="max-width: 60ch;">Vi bistår gjennom hele kjøpsprosessen — fra rådgivning og dimensjonering til levering, og gjennom 2-boks-løsningen sørger vi for at lageret aldri går tomt på det viktigste.</div>
+          </div>
+          <div class="type-row">
+            <div class="type-label"><strong>Liten tekst</strong>Hjelpetekst, metadata</div>
+            <div class="t-caption">Levering 1–2 virkedager · Pris eks. mva · Frakt fra kr 99,–</div>
+          </div>
+          <div class="type-row">
+            <div class="type-label"><strong>Mono</strong>Tekniske koder</div>
+            <div class="t-mono">ART.NR 4815-162-30 · NOBB 51234567 · EAN 7053900012345</div>
+          </div>
+          <div class="type-row">
+            <div class="type-label"><strong>Eyebrow</strong>Kategori-tag, label</div>
+            <div class="t-overline" style="color: var(--mj-red);">PÅ LAG MED INDUSTRIEN SIDEN 1930</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================================================
+         AVSTAND
+         ============================================================ -->
+    <section class="section section--alt" id="avstand">
+      <div class="section__num">06 / Visuelt språk</div>
+      <h2 class="section__title">Avstand &amp; layout</h2>
+      <p class="section__lead">
+        Vi bruker en fast skala for avstander. Det betyr at alle mellomrom mellom elementer er
+        forhåndsdefinert — ikke vilkårlige som "13 piksler her" og "27 piksler der". Resultatet
+        er en visuell rytme som kjennes rolig.
+      </p>
+
+      <div class="block">
+        <h3 class="block-title">Avstandsskala</h3>
+        <p class="block-desc">
+          Vi bygger på 4-pikslers grid. Hopp i skalaen er gjennomtenkt slik at det alltid er
+          tydelig forskjell mellom "tett", "vanlig" og "luftig".
+        </p>
+        <div class="spacing-demo">
+          <div class="spacing-demo__item">
+            <div class="spacing-demo__box" style="width: 4px; height: 4px;"></div>
+            <div class="spacing-demo__label"><strong>4px</strong>Mikro</div>
+          </div>
+          <div class="spacing-demo__item">
+            <div class="spacing-demo__box" style="width: 8px; height: 8px;"></div>
+            <div class="spacing-demo__label"><strong>8px</strong>Tett</div>
+          </div>
+          <div class="spacing-demo__item">
+            <div class="spacing-demo__box" style="width: 16px; height: 16px;"></div>
+            <div class="spacing-demo__label"><strong>16px</strong>Standard</div>
+          </div>
+          <div class="spacing-demo__item">
+            <div class="spacing-demo__box" style="width: 24px; height: 24px;"></div>
+            <div class="spacing-demo__label"><strong>24px</strong>Romslig</div>
+          </div>
+          <div class="spacing-demo__item">
+            <div class="spacing-demo__box" style="width: 32px; height: 32px;"></div>
+            <div class="spacing-demo__label"><strong>32px</strong>Seksjonspad</div>
+          </div>
+          <div class="spacing-demo__item">
+            <div class="spacing-demo__box" style="width: 48px; height: 48px;"></div>
+            <div class="spacing-demo__label"><strong>48px</strong>Stor</div>
+          </div>
+          <div class="spacing-demo__item">
+            <div class="spacing-demo__box" style="width: 64px; height: 64px;"></div>
+            <div class="spacing-demo__label"><strong>64px</strong>Seksjonsskille</div>
+          </div>
+          <div class="spacing-demo__item">
+            <div class="spacing-demo__box" style="width: 96px; height: 96px;"></div>
+            <div class="spacing-demo__label"><strong>96px</strong>Sidepad</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="block">
+        <h3 class="block-title">Hjørner og linjer</h3>
+        <p class="block-desc">
+          Profilboken bruker avrundede hjørner på bilder og bokser. Vi følger den linjen
+          gjennomgående — knapper, kort og inputs har myke hjørner uten å bli "leke-aktige".
+        </p>
+        <div style="display: flex; gap: 24px; flex-wrap: wrap; align-items: end;">
+          <div style="background: var(--mj-blue); width: 80px; height: 80px; border-radius: 4px;"></div>
+          <div style="background: var(--mj-blue); width: 80px; height: 80px; border-radius: 8px;"></div>
+          <div style="background: var(--mj-blue); width: 80px; height: 80px; border-radius: 12px;"></div>
+          <div style="background: var(--mj-blue); width: 80px; height: 80px; border-radius: 20px;"></div>
+        </div>
+        <div style="display: flex; gap: 24px; flex-wrap: wrap; margin-top: 16px;">
+          <span class="t-overline" style="width: 80px; color: var(--mj-ink-2);">4PX<br><span style="font-weight: 400;">Knapper</span></span>
+          <span class="t-overline" style="width: 80px; color: var(--mj-ink-2);">8PX<br><span style="font-weight: 400;">Inputs, kort</span></span>
+          <span class="t-overline" style="width: 80px; color: var(--mj-ink-2);">12PX<br><span style="font-weight: 400;">Bokser</span></span>
+          <span class="t-overline" style="width: 80px; color: var(--mj-ink-2);">20PX<br><span style="font-weight: 400;">Bilder, hero</span></span>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================================================
+         IKONER
+         ============================================================ -->
+    <section class="section" id="ikoner">
+      <div class="section__num">07 / Visuelt språk</div>
+      <h2 class="section__title">Ikoner</h2>
+      <p class="section__lead">
+        Vi bruker strek-ikoner med konsekvent vekt. Ingen fyllte ikoner i denne versjonen —
+        det holder uttrykket rolig og industrielt, og passer profilbokens visuelle tone.
+      </p>
+
+      <div class="block">
+        <h3 class="block-title">Eksempler fra ikonbiblioteket</h3>
+        <p class="block-desc">
+          Bibliotek dekker navigation, e-handel, status, brukerkonto, filer, og MJ-spesifikke ikoner
+          for tjenester som 2-boks, Sortilog og QR-bestilling.
+        </p>
+        <div class="icon-grid">
+          <div class="icon-tile"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="square"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.35-4.35"/></svg><span>Søk</span></div>
+          <div class="icon-tile"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="square"><path d="M3 7h18l-2 12H5L3 7z"/><path d="M8 7V5a4 4 0 018 0v2"/></svg><span>Handlekurv</span></div>
+          <div class="icon-tile"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="square"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4 4-7 8-7s8 3 8 7"/></svg><span>Bruker</span></div>
+          <div class="icon-tile"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="square"><path d="M3 6h18M3 12h18M3 18h18"/></svg><span>Meny</span></div>
+          <div class="icon-tile"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="square"><path d="M3 7l9-4 9 4-9 4-9-4z"/><path d="M3 12l9 4 9-4M3 17l9 4 9-4"/></svg><span>Lager</span></div>
+          <div class="icon-tile"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="square"><rect x="4" y="4" width="7" height="7"/><rect x="13" y="4" width="7" height="7"/><rect x="4" y="13" width="7" height="7"/><rect x="13" y="13" width="7" height="7"/></svg><span>QR-kode</span></div>
+          <div class="icon-tile"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="square"><path d="M3 8h13l5 5v3h-2M3 8v8h2M5 16h11"/><circle cx="7" cy="16" r="2"/><circle cx="18" cy="16" r="2"/></svg><span>Levering</span></div>
+          <div class="icon-tile"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="square"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 3"/></svg><span>Ledetid</span></div>
+          <div class="icon-tile"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="square"><path d="M5 21h14M6 17h12M7 13h10M8 9h8M9 5h6"/></svg><span>Filter</span></div>
+          <div class="icon-tile"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="square"><path d="M21 11l-9 9-9-9 9-9 9 9z"/><path d="M12 7v8M8 11h8"/></svg><span>Sertifikat</span></div>
+          <div class="icon-tile"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="square"><path d="M14 3v6h6M14 3l6 6v12H4V3h10z"/></svg><span>Datablad</span></div>
+          <div class="icon-tile"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="square"><path d="M3 10h18l-1.5 10H4.5L3 10z"/><path d="M3 10l3-6h12l3 6"/></svg><span>2-boks</span></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================================================
+         BILDER
+         ============================================================ -->
+    <section class="section section--alt" id="bilder">
+      <div class="section__num">08 / Visuelt språk</div>
+      <h2 class="section__title">Bilder</h2>
+      <p class="section__lead">
+        Profilboken setter retningen: realistiske og autentiske industribilder. Skruer, bolter, mutre,
+        verktøy fotografert nært. Vi unngår stockfoto med smilende kontoransatte i nyvaskede skjorter.
+      </p>
+
+      <div class="block">
+        <h3 class="block-title">Prioritert rekkefølge</h3>
+        <p class="block-desc">
+          Når vi velger bilde til en side eller produkt, går vi nedover denne lista i orden:
+        </p>
+        <ol style="padding-left: 0; list-style: none; counter-reset: priority;">
+          <li style="display: flex; gap: 16px; padding: 16px 0; border-bottom: 1px solid var(--mj-line-soft); counter-increment: priority;">
+            <span style="font-family: var(--ff-mono); font-size: 14px; color: var(--mj-blue); font-weight: 700; min-width: 32px;">01</span>
+            <div>
+              <strong style="display: block; margin-bottom: 4px;">Faktiske produktbilder fra leverandør</strong>
+              <span style="color: var(--mj-ink-2); font-size: 14px;">Hentes fra PIM (produktinformasjons-system) der det er mulig.</span>
+            </div>
+          </li>
+          <li style="display: flex; gap: 16px; padding: 16px 0; border-bottom: 1px solid var(--mj-line-soft); counter-increment: priority;">
+            <span style="font-family: var(--ff-mono); font-size: 14px; color: var(--mj-blue); font-weight: 700; min-width: 32px;">02</span>
+            <div>
+              <strong style="display: block; margin-bottom: 4px;">Egne foto av lager, fasade og ansatte i jobb</strong>
+              <span style="color: var(--mj-ink-2); font-size: 14px;">Bygger lokal forankring og personlighet.</span>
+            </div>
+          </li>
+          <li style="display: flex; gap: 16px; padding: 16px 0; border-bottom: 1px solid var(--mj-line-soft); counter-increment: priority;">
+            <span style="font-family: var(--ff-mono); font-size: 14px; color: var(--mj-blue); font-weight: 700; min-width: 32px;">03</span>
+            <div>
+              <strong style="display: block; margin-bottom: 4px;">Egne foto av verktøy og utstyr i bruk</strong>
+              <span style="color: var(--mj-ink-2); font-size: 14px;">Viser produktene i sin sammenheng — på sveiseverkstedet, på lageret, ute i felten.</span>
+            </div>
+          </li>
+          <li style="display: flex; gap: 16px; padding: 16px 0; counter-increment: priority;">
+            <span style="font-family: var(--ff-mono); font-size: 14px; color: var(--mj-blue); font-weight: 700; min-width: 32px;">04</span>
+            <div>
+              <strong style="display: block; margin-bottom: 4px;">Generiske industri-bilder (siste utvei)</strong>
+              <span style="color: var(--mj-ink-2); font-size: 14px;">Brukes kun når ingen alternativer finnes. Aldri stockfoto av personer.</span>
+            </div>
+          </li>
+        </ol>
+      </div>
+
+      <div class="block">
+        <h3 class="block-title">Behandling og format</h3>
+        <p class="block-desc">
+          Avrundede hjørner per profilbok. WebP som standard format med JPEG-fallback for eldre nettlesere.
+          Alle bilder har "alt-tekst" som beskriver hva som er på bildet — det er både SEO og tilgjengelighet.
+        </p>
+      </div>
+    </section>
+
+    <!-- ============================================================
+         INNHOLDSREGLER
+         ============================================================ -->
+    <section class="section" id="innholdsregler">
+      <div class="section__num">09 / Innhold &amp; regler</div>
+      <h2 class="section__title">Tall, pris og koder</h2>
+      <p class="section__lead">
+        Konsistens i hvordan vi viser tall og priser er ikke pyntefag — det er hvordan vi viser
+        respekt for at innkjøpere skal kunne sammenligne, summere og dokumentere.
+      </p>
+
+      <div class="block">
+        <h3 class="block-title">Pris-formattering</h3>
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr>
+                <th>Situasjon</th>
+                <th>Slik viser vi det</th>
+                <th>Eksempel</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Stor pris uten øre</td>
+                <td>Tusenskilletegn med mellomrom, bindestrek for nullkroner</td>
+                <td class="t-num"><strong>kr 12 450,–</strong></td>
+              </tr>
+              <tr>
+                <td>Lavt beløp med øre</td>
+                <td>Komma som desimaltegn</td>
+                <td class="t-num"><strong>kr 2,80</strong></td>
+              </tr>
+              <tr>
+                <td>Mva-info</td>
+                <td>Liten, sekundær under hovedpris</td>
+                <td><strong>kr 2 490,–</strong> <span style="color: var(--mj-ink-2); font-size: 13px;">eks. mva</span></td>
+              </tr>
+              <tr>
+                <td>Avtalepris</td>
+                <td>Liten badge ved siden av</td>
+                <td><strong>kr 2,80</strong> <span style="background: var(--mj-blue); color: white; font-family: var(--ff-mono); font-size: 10px; padding: 2px 6px; border-radius: 4px; text-transform: uppercase; letter-spacing: 0.1em;">AVTALEPRIS</span></td>
+              </tr>
+              <tr>
+                <td>Veil. pris (kampanje)</td>
+                <td>Gjennomstrøket over kampanjepris</td>
+                <td><strong>kr 1 890,–</strong> <span style="color: var(--mj-ink-2); text-decoration: line-through; font-size: 14px;">kr 2 200,–</span></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <p style="margin-top: 16px; font-size: 14px; color: var(--mj-ink-2); padding-left: 20px;">
+          B2B-standard: pris er alltid eks. mva med mindre annet er angitt.
+        </p>
+      </div>
+
+      <div class="block">
+        <h3 class="block-title">Koder, nummer og enheter</h3>
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr>
+                <th>Type</th>
+                <th>Format</th>
+                <th>Eksempel</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Artikkelnummer</td>
+                <td>Mono, bindestrek mellom grupper</td>
+                <td class="t-sku">4815-162-30</td>
+              </tr>
+              <tr>
+                <td>NOBB-nummer</td>
+                <td>Mono</td>
+                <td class="t-sku">51234567</td>
+              </tr>
+              <tr>
+                <td>EAN/GTIN</td>
+                <td>Mono</td>
+                <td class="t-sku">7053900012345</td>
+              </tr>
+              <tr>
+                <td>Lengde</td>
+                <td>Tall + hardspace + enhet</td>
+                <td>40 mm, 5 m, 2,5 m</td>
+              </tr>
+              <tr>
+                <td>Antall</td>
+                <td>Tusenskilletegn over 999</td>
+                <td>200 stk · 4 200 stk</td>
+              </tr>
+              <tr>
+                <td>Dimensjon</td>
+                <td>Gjenge × lengde med &times;</td>
+                <td>M8 × 40 mm</td>
+              </tr>
+              <tr>
+                <td>Dato (kort)</td>
+                <td>DD.MM.YYYY</td>
+                <td>05.05.2026</td>
+              </tr>
+              <tr>
+                <td>Dato (lang)</td>
+                <td>D. måned ÅÅÅÅ</td>
+                <td>5. mai 2026</td>
+              </tr>
+              <tr>
+                <td>Telefon (norsk)</td>
+                <td>Mellomrom mellom 2-sifrete grupper</td>
+                <td class="t-mono">71 25 42 00</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================================================
+         KNAPPER
+         ============================================================ -->
+    <section class="section section--alt" id="knapper">
+      <div class="section__num">10 / Komponenter</div>
+      <h2 class="section__title">Knapper</h2>
+      <p class="section__lead">
+        Knapper er stedet hvor brukeren tar viktige valg. Vi har fire visuelle nivåer slik at
+        det alltid er tydelig hva som er hovedhandlingen og hva som er sekundært.
+      </p>
+
+      <div class="block">
+        <h3 class="block-title">Fire varianter — hver med sin rolle</h3>
+        <p class="block-desc">
+          Reglen: én primærknapp per skjerm. Den oransje (signal) brukes svært sparsomt — kun
+          for å trekke oppmerksomhet til kampanjer eller "ny"-merkinger.
+        </p>
+        <div class="sample">
+          <div class="sample-row">
+            <button class="btn btn--primary">Legg i handlekurv</button>
+            <button class="btn btn--secondary">Be om tilbud</button>
+            <button class="btn btn--outline">Last ned datablad</button>
+            <button class="btn btn--ghost">Avbryt</button>
+          </div>
+          <div style="margin-top: 24px; padding-top: 24px; border-top: 1px solid var(--mj-line-soft);">
+            <div class="t-overline" style="color: var(--mj-ink-2); margin-bottom: 12px;">Tre størrelser</div>
+            <div class="sample-row">
+              <button class="btn btn--primary btn--sm">Liten</button>
+              <button class="btn btn--primary">Standard</button>
+              <button class="btn btn--primary btn--lg">Stor</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="block">
+        <h3 class="block-title">Når vi bruker hva</h3>
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr>
+                <th>Variant</th>
+                <th>Brukes til</th>
+                <th>Eksempel</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><strong>Primær (blå)</strong></td>
+                <td>Hovedhandling — det vi vil bruker skal gjøre</td>
+                <td>Legg i handlekurv, Send bestilling</td>
+              </tr>
+              <tr>
+                <td><strong>Sekundær (mørk)</strong></td>
+                <td>Viktig handling, men ikke primær</td>
+                <td>Be om tilbud, Spør produktansvarlig</td>
+              </tr>
+              <tr>
+                <td><strong>Outline</strong></td>
+                <td>Tertiær handling, side om side med primær</td>
+                <td>Fortsett å handle, Last ned PDF</td>
+              </tr>
+              <tr>
+                <td><strong>Ghost</strong></td>
+                <td>Mindre viktige handlinger, lenker som knapper</td>
+                <td>Avbryt, Tilbake</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================================================
+         SKJEMA
+         ============================================================ -->
+    <section class="section" id="skjema">
+      <div class="section__num">11 / Komponenter</div>
+      <h2 class="section__title">Skjemaelementer</h2>
+      <p class="section__lead">
+        Skjemafelt er kjernen i en B2B-side: ordre-input, søk, login, address. Vi har designet
+        dem robuste og lesbare — slik at de fungerer godt selv i lange skjemaer med mange felt.
+      </p>
+
+      <div class="block">
+        <h3 class="block-title">Tekstfelt og hjelpetekst</h3>
+        <div class="sample">
+          <div style="max-width: 480px;">
+            <div class="field" style="margin-bottom: 24px;">
+              <label class="field__label">Artikkelnummer</label>
+              <input class="input" type="text" placeholder="f.eks. 4815-162-30">
+              <span class="field__hint">10 tegn maks · NOBB-nr godtas</span>
+            </div>
+            <div class="field" style="margin-bottom: 24px;">
+              <label class="field__label">Ønsket leveringsdato</label>
+              <input class="input" type="text" placeholder="DD.MM.YYYY">
+            </div>
+            <div class="field">
+              <label class="field__label">Innkjøpsordre / referanse</label>
+              <input class="input" type="text" placeholder="f.eks. PO-2026-0142">
+              <span class="field__hint">Vises på faktura. Kan inkludere kostnadssenter.</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================================================
+         PRODUKTKORT
+         ============================================================ -->
+    <section class="section section--alt" id="produktkort">
+      <div class="section__num">12 / Komponenter</div>
+      <h2 class="section__title">Produktkort</h2>
+      <p class="section__lead">
+        Produktkortet er den viktigste enheten på nettstedet. Det vises på forsiden, kategori-sider,
+        i søk og på handlekurv. Lagerstatus og artikkelnummer er alltid synlig — ikke gjemt under hover.
+      </p>
+
+      <div class="sample">
+        <div class="sample-row" style="gap: 24px;">
+          <div class="product-mini">
+            <div class="product-mini__media">
+              <span class="product-mini__badge">2-BOKS</span>
+              <svg viewBox="0 0 100 100" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="42" y="14" width="16" height="60"/><path d="M35 14 L42 8 L58 8 L65 14"/><path d="M42 22 L58 22 M42 30 L58 30 M42 38 L58 38 M42 46 L58 46 M42 54 L58 54 M42 62 L58 62"/></svg>
+            </div>
+            <div class="product-mini__body">
+              <div class="product-mini__brand">BUFAB</div>
+              <div class="product-mini__name">Sekskantskrue M8 × 40 mm DIN 933</div>
+              <div class="product-mini__sku">ART.NR 4815-162-30</div>
+              <span class="stock stock--in">På lager · 4 200 stk</span>
+              <div class="product-mini__footer">
+                <div>
+                  <div class="product-mini__price">kr 2,80</div>
+                  <span class="product-mini__price-info">pr. stk · eks. mva</span>
+                </div>
+                <button class="product-mini__add"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2"><path d="M8 2v12M2 8h12"/></svg></button>
+              </div>
+            </div>
+          </div>
+
+          <div class="product-mini">
+            <div class="product-mini__media">
+              <svg viewBox="0 0 100 100" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="50" cy="50" r="22"/><circle cx="50" cy="50" r="10"/><path d="M28 50h-8M80 50h-8M50 28v-8M50 80v-8"/></svg>
+            </div>
+            <div class="product-mini__body">
+              <div class="product-mini__brand">MAKITA</div>
+              <div class="product-mini__name">Slipemaskin DGA504Z 18V LXT</div>
+              <div class="product-mini__sku">ART.NR 8821-450-01</div>
+              <span class="stock stock--low">Få igjen · 6 stk</span>
+              <div class="product-mini__footer">
+                <div>
+                  <div class="product-mini__price">kr 2 490,–</div>
+                  <span class="product-mini__price-info">eks. mva</span>
+                </div>
+                <button class="product-mini__add"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2"><path d="M8 2v12M2 8h12"/></svg></button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="block">
+        <h3 class="block-title">Hva som er synlig — og hvorfor</h3>
+        <div class="dos">
+          <div class="dos__card dos__card--good">
+            <div class="dos__head">
+              <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M4 10l4 4 8-8"/></svg>
+              Alltid synlig
+            </div>
+            <ul class="dos__list">
+              <li><strong>Lagerstatus</strong> — fagfolk skanner siden for det først</li>
+              <li><strong>Artikkelnummer</strong> — selgerne bruker det daglig</li>
+              <li><strong>Pris med mva-info</strong> — ingen overraskelser</li>
+              <li><strong>Brand</strong> — viktig for kjent vare-kjenning</li>
+            </ul>
+          </div>
+          <div class="dos__card dos__card--bad">
+            <div class="dos__head">
+              <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 5l10 10M5 15l10-10"/></svg>
+              Aldri gjemt
+            </div>
+            <ul class="dos__list">
+              <li>Pris bak hover-effekt</li>
+              <li>Lagerstatus i lite grå tekst</li>
+              <li>Klikkbar overflate som ikke ser klikkbar ut</li>
+              <li>Animasjoner som forsinker viktig info</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================================================
+         TABELLER
+         ============================================================ -->
+    <section class="section" id="tabeller">
+      <div class="section__num">13 / Komponenter</div>
+      <h2 class="section__title">Tabeller</h2>
+      <p class="section__lead">
+        Tabellen er hjertet av B2B-siden — for hurtigbestilling, sortimentsavtaler, ordrehistorikk
+        og 2-boks-lister. Tette rader, monospace for tall og koder, og hover som markerer hele raden.
+      </p>
+
+      <div class="sample">
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr>
+                <th>Art.nr.</th>
+                <th>Beskrivelse</th>
+                <th>Lager</th>
+                <th class="t-num">Pris</th>
+                <th class="t-num">Antall</th>
+                <th class="t-num">Sum</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td class="t-sku">4815-162-30</td>
+                <td>Sekskantskrue M8 × 40 mm DIN 933</td>
+                <td><span class="stock stock--in">På lager</span></td>
+                <td class="t-num">2,80</td>
+                <td class="t-num">200</td>
+                <td class="t-num">560,00</td>
+              </tr>
+              <tr>
+                <td class="t-sku">8821-450-01</td>
+                <td>Slipemaskin DGA504Z 18V LXT 125 mm</td>
+                <td><span class="stock stock--low">Få igjen</span></td>
+                <td class="t-num">2 490,–</td>
+                <td class="t-num">1</td>
+                <td class="t-num">2 490,–</td>
+              </tr>
+              <tr>
+                <td class="t-sku">7733-220-50</td>
+                <td>Hydraulikkslange 1/2" × 5 m R2AT</td>
+                <td><span class="stock stock--out">Skaffes</span></td>
+                <td class="t-num">845,–</td>
+                <td class="t-num">2</td>
+                <td class="t-num">1 690,–</td>
+              </tr>
+              <tr>
+                <td class="t-sku">6602-101-12</td>
+                <td>Vernehjelm H700 Hvit m/justering</td>
+                <td><span class="stock stock--in">På lager</span></td>
+                <td class="t-num">285,–</td>
+                <td class="t-num">12</td>
+                <td class="t-num">3 420,–</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================================================
+         ALLE KOMPONENTER (oversikt)
+         ============================================================ -->
+    <section class="section section--alt" id="alle-komponenter">
+      <div class="section__num">14 / Komponentbibliotek</div>
+      <h2 class="section__title">67 komponenter dokumentert</h2>
+      <p class="section__lead">
+        Vi har vist de viktigste i seksjonene over. Her er oversikten over hele biblioteket —
+        gruppert etter kategori. Hver komponent har sin egen dokumentasjon med varianter,
+        bruksregler og kodesnutter.
+      </p>
+
+      <div class="block">
+        <h3 class="block-title">Primitiver — 16 stk</h3>
+        <p class="block-desc">De minste byggeklossene. Disse settes sammen til alt annet.</p>
+        <div class="comp-grid">
+          <div class="comp-card"><div class="comp-card__type">Action</div><div class="comp-card__name">Button</div><div class="comp-card__count">6 varianter · 4 størrelser</div></div>
+          <div class="comp-card"><div class="comp-card__type">Form</div><div class="comp-card__name">Input</div><div class="comp-card__count">7 typer · validering</div></div>
+          <div class="comp-card"><div class="comp-card__type">Form</div><div class="comp-card__name">Quantity stepper</div><div class="comp-card__count">For B2B-bestilling</div></div>
+          <div class="comp-card"><div class="comp-card__type">Form</div><div class="comp-card__name">Select / Dropdown</div><div class="comp-card__count">Native + custom</div></div>
+          <div class="comp-card"><div class="comp-card__type">Form</div><div class="comp-card__name">Textarea</div><div class="comp-card__count">Auto-grow</div></div>
+          <div class="comp-card"><div class="comp-card__type">Form</div><div class="comp-card__name">Checkbox</div><div class="comp-card__count">3 tilstander</div></div>
+          <div class="comp-card"><div class="comp-card__type">Form</div><div class="comp-card__name">Radio</div><div class="comp-card__count">Single + grupper</div></div>
+          <div class="comp-card"><div class="comp-card__type">Form</div><div class="comp-card__name">Switch</div><div class="comp-card__count">På/av-toggle</div></div>
+          <div class="comp-card"><div class="comp-card__type">Display</div><div class="comp-card__name">Badge</div><div class="comp-card__count">Numerisk + status</div></div>
+          <div class="comp-card"><div class="comp-card__type">Display</div><div class="comp-card__name">Tag / Chip</div><div class="comp-card__count">Removable, selectable</div></div>
+          <div class="comp-card"><div class="comp-card__type">Display</div><div class="comp-card__name">Status pill</div><div class="comp-card__count">Lager- og ordrestatus</div></div>
+          <div class="comp-card"><div class="comp-card__type">Feedback</div><div class="comp-card__name">Progress bar</div><div class="comp-card__count">Determinate + indet.</div></div>
+          <div class="comp-card"><div class="comp-card__type">Feedback</div><div class="comp-card__name">Spinner</div><div class="comp-card__count">3 størrelser</div></div>
+          <div class="comp-card"><div class="comp-card__type">Feedback</div><div class="comp-card__name">Skeleton loader</div><div class="comp-card__count">5 varianter</div></div>
+          <div class="comp-card"><div class="comp-card__type">Layout</div><div class="comp-card__name">Divider</div><div class="comp-card__count">Horisontal + label</div></div>
+          <div class="comp-card"><div class="comp-card__type">Action</div><div class="comp-card__name">Link</div><div class="comp-card__count">Inline + ekstern</div></div>
+        </div>
+      </div>
+
+      <div class="block">
+        <h3 class="block-title">Sammensatte komponenter — 19 stk</h3>
+        <p class="block-desc">Bygd av primitiver. Disse er det redaksjonen og redaktørene oftest jobber med.</p>
+        <div class="comp-grid">
+          <div class="comp-card"><div class="comp-card__type">Display</div><div class="comp-card__name">Card</div><div class="comp-card__count">4 varianter</div></div>
+          <div class="comp-card"><div class="comp-card__type">Display</div><div class="comp-card__name">Product card (grid)</div><div class="comp-card__count">PLP &amp; forside</div></div>
+          <div class="comp-card"><div class="comp-card__type">Display</div><div class="comp-card__name">Product card (list)</div><div class="comp-card__count">Tett listevisning</div></div>
+          <div class="comp-card"><div class="comp-card__type">Display</div><div class="comp-card__name">Category card</div><div class="comp-card__count">Visuell navigering</div></div>
+          <div class="comp-card"><div class="comp-card__type">Display</div><div class="comp-card__name">Person card</div><div class="comp-card__count">Produktansvarlige</div></div>
+          <div class="comp-card"><div class="comp-card__type">Display</div><div class="comp-card__name">Data table</div><div class="comp-card__count">Sortering, hover</div></div>
+          <div class="comp-card"><div class="comp-card__type">Nav</div><div class="comp-card__name">Pagination</div><div class="comp-card__count">4 varianter</div></div>
+          <div class="comp-card"><div class="comp-card__type">Nav</div><div class="comp-card__name">Tabs</div><div class="comp-card__count">3 stiler</div></div>
+          <div class="comp-card"><div class="comp-card__type">Nav</div><div class="comp-card__name">Breadcrumb</div><div class="comp-card__count">Hierarki-visning</div></div>
+          <div class="comp-card"><div class="comp-card__type">Nav</div><div class="comp-card__name">Stepper</div><div class="comp-card__count">Linear + non-linear</div></div>
+          <div class="comp-card"><div class="comp-card__type">Disclose</div><div class="comp-card__name">Accordion</div><div class="comp-card__count">Single + multiple</div></div>
+          <div class="comp-card"><div class="comp-card__type">Disclose</div><div class="comp-card__name">Tooltip</div><div class="comp-card__count">Hover/focus hint</div></div>
+          <div class="comp-card"><div class="comp-card__type">Overlay</div><div class="comp-card__name">Modal / Dialog</div><div class="comp-card__count">4 størrelser</div></div>
+          <div class="comp-card"><div class="comp-card__type">Overlay</div><div class="comp-card__name">Drawer / Side panel</div><div class="comp-card__count">Cart, filter, profile</div></div>
+          <div class="comp-card"><div class="comp-card__type">Feedback</div><div class="comp-card__name">Toast / Snackbar</div><div class="comp-card__count">4 varianter</div></div>
+          <div class="comp-card"><div class="comp-card__type">Feedback</div><div class="comp-card__name">Banner</div><div class="comp-card__count">Site-wide melding</div></div>
+          <div class="comp-card"><div class="comp-card__type">Feedback</div><div class="comp-card__name">Empty state</div><div class="comp-card__count">For tomme lister</div></div>
+          <div class="comp-card"><div class="comp-card__type">Feedback</div><div class="comp-card__name">Loading state</div><div class="comp-card__count">5 mønstre</div></div>
+          <div class="comp-card"><div class="comp-card__type">Feedback</div><div class="comp-card__name">Error state</div><div class="comp-card__count">Konstruktiv tilbakemelding</div></div>
+        </div>
+      </div>
+
+      <div class="block">
+        <h3 class="block-title">E-handel og B2B — 32 stk</h3>
+        <p class="block-desc">Spesifikke komponenter for nettbutikken — det meste tilpasset profesjonelle innkjøpere.</p>
+        <div class="comp-grid">
+          <div class="comp-card"><div class="comp-card__type">Produkt</div><div class="comp-card__name">Product gallery (PDP)</div><div class="comp-card__count">Med zoom og lightbox</div></div>
+          <div class="comp-card"><div class="comp-card__type">Produkt</div><div class="comp-card__name">Variant selector</div><div class="comp-card__count">Matrix for festemidler</div></div>
+          <div class="comp-card"><div class="comp-card__type">Produkt</div><div class="comp-card__name">Price display</div><div class="comp-card__count">4 varianter</div></div>
+          <div class="comp-card"><div class="comp-card__type">Produkt</div><div class="comp-card__name">Volume pricing</div><div class="comp-card__count">Mengderabatt-tabell</div></div>
+          <div class="comp-card"><div class="comp-card__type">Produkt</div><div class="comp-card__name">Stock indicator</div><div class="comp-card__count">Ledetid + lager</div></div>
+          <div class="comp-card"><div class="comp-card__type">Produkt</div><div class="comp-card__name">Stock notification</div><div class="comp-card__count">"Varsle meg"</div></div>
+          <div class="comp-card"><div class="comp-card__type">Cart</div><div class="comp-card__name">Add-to-cart</div><div class="comp-card__count">4 varianter</div></div>
+          <div class="comp-card"><div class="comp-card__type">Cart</div><div class="comp-card__name">"Be om tilbud"</div><div class="comp-card__count">B2B-flyt</div></div>
+          <div class="comp-card"><div class="comp-card__type">Cart</div><div class="comp-card__name">Mini cart (drawer)</div><div class="comp-card__count">Rask oversikt</div></div>
+          <div class="comp-card"><div class="comp-card__type">Cart</div><div class="comp-card__name">Cart line item</div><div class="comp-card__count">Med variant + qty</div></div>
+          <div class="comp-card"><div class="comp-card__type">Cart</div><div class="comp-card__name">Cart summary</div><div class="comp-card__count">Total + mva-breakdown</div></div>
+          <div class="comp-card"><div class="comp-card__type">Cart</div><div class="comp-card__name">Promo code input</div><div class="comp-card__count">Kollapsbar</div></div>
+          <div class="comp-card"><div class="comp-card__type">B2B</div><div class="comp-card__name">Quick order pad</div><div class="comp-card__count">SKU + qty hurtigbest.</div></div>
+          <div class="comp-card"><div class="comp-card__type">B2B</div><div class="comp-card__name">Reorder from history</div><div class="comp-card__count">Gjenta tidligere ordre</div></div>
+          <div class="comp-card"><div class="comp-card__type">B2B</div><div class="comp-card__name">Quote view</div><div class="comp-card__count">Mottatt tilbud</div></div>
+          <div class="comp-card"><div class="comp-card__type">B2B</div><div class="comp-card__name">Sales rep banner</div><div class="comp-card__count">"Handler på vegne av"</div></div>
+          <div class="comp-card"><div class="comp-card__type">B2B</div><div class="comp-card__name">Sortilog</div><div class="comp-card__count">Kundespesifikk liste</div></div>
+          <div class="comp-card"><div class="comp-card__type">B2B</div><div class="comp-card__name">2-boks dashboard</div><div class="comp-card__count">Forsyningsoversikt</div></div>
+          <div class="comp-card"><div class="comp-card__type">B2B</div><div class="comp-card__name">Datablad-arkiv</div><div class="comp-card__count">PDF-oversikt</div></div>
+          <div class="comp-card"><div class="comp-card__type">Checkout</div><div class="comp-card__name">Address form</div><div class="comp-card__count">Med org.nr-validering</div></div>
+          <div class="comp-card"><div class="comp-card__type">Checkout</div><div class="comp-card__name">Address book selector</div><div class="comp-card__count">Velg lagret adresse</div></div>
+          <div class="comp-card"><div class="comp-card__type">Checkout</div><div class="comp-card__name">PO number-felt</div><div class="comp-card__count">Innkjøpsordre/cost ctr</div></div>
+          <div class="comp-card"><div class="comp-card__type">Checkout</div><div class="comp-card__name">Order summary review</div><div class="comp-card__count">Siste sjekk før send</div></div>
+          <div class="comp-card"><div class="comp-card__type">Checkout</div><div class="comp-card__name">Order confirmation</div><div class="comp-card__count">Bekreftelsesside</div></div>
+          <div class="comp-card"><div class="comp-card__type">Account</div><div class="comp-card__name">Dashboard</div><div class="comp-card__count">Innloggingsside</div></div>
+          <div class="comp-card"><div class="comp-card__type">Account</div><div class="comp-card__name">Order history</div><div class="comp-card__count">Søk + filter</div></div>
+          <div class="comp-card"><div class="comp-card__type">PLP</div><div class="comp-card__name">Filter sidebar</div><div class="comp-card__count">Faceted search</div></div>
+          <div class="comp-card"><div class="comp-card__type">PLP</div><div class="comp-card__name">Filter chips</div><div class="comp-card__count">Aktive filtre</div></div>
+          <div class="comp-card"><div class="comp-card__type">PLP</div><div class="comp-card__name">Sort dropdown</div><div class="comp-card__count">6 sortvalg</div></div>
+          <div class="comp-card"><div class="comp-card__type">PLP</div><div class="comp-card__name">View switcher</div><div class="comp-card__count">Grid/list-toggle</div></div>
+          <div class="comp-card"><div class="comp-card__type">Search</div><div class="comp-card__name">Search bar</div><div class="comp-card__count">Med predictive</div></div>
+          <div class="comp-card"><div class="comp-card__type">Search</div><div class="comp-card__name">Predictive dropdown</div><div class="comp-card__count">Live forslag</div></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================================================
+         SIDEMALER
+         ============================================================ -->
+    <section class="section" id="sider">
+      <div class="section__num">15 / Sider</div>
+      <h2 class="section__title">Tolv sidemaler</h2>
+      <p class="section__lead">
+        Hvor og hvordan komponentene settes sammen til hele sider. Hver mal er beskrevet i
+        designsystemet — innhold, layout, ansvar og rekkefølge.
+      </p>
+
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(380px, 1fr)); gap: 24px; margin-top: 56px;">
+
+        <div class="page-preview">
+          <div class="page-preview__bar">
+            <span>Forside</span>
+            <div class="page-preview__bar-dots"><span></span><span></span><span></span></div>
+          </div>
+          <div class="page-preview__body">
+            <div class="page-preview__main">
+              <div class="page-preview__main-block" style="height: 80px; background: var(--mj-blue);"></div>
+              <div class="page-preview__main-block--title" style="background: var(--mj-line-soft); height: 12px; width: 30%;"></div>
+              <div class="page-preview__grid"><div></div><div></div><div></div></div>
+              <div class="page-preview__grid"><div></div><div></div><div></div></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="page-preview">
+          <div class="page-preview__bar">
+            <span>Kategoriside (PLP)</span>
+            <div class="page-preview__bar-dots"><span></span><span></span><span></span></div>
+          </div>
+          <div class="page-preview__body">
+            <div class="page-preview__sidebar">
+              <div></div><div></div><div></div><div></div>
+            </div>
+            <div class="page-preview__main">
+              <div class="page-preview__main-block--title"></div>
+              <div class="page-preview__grid"><div></div><div></div><div></div></div>
+              <div class="page-preview__grid"><div></div><div></div><div></div></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="page-preview">
+          <div class="page-preview__bar">
+            <span>Produktside (PDP)</span>
+            <div class="page-preview__bar-dots"><span></span><span></span><span></span></div>
+          </div>
+          <div class="page-preview__body">
+            <div class="page-preview__main" style="flex-direction: row; gap: 16px;">
+              <div style="flex: 1; background: var(--mj-surface-1); border-radius: 4px;"></div>
+              <div style="flex: 1; display: flex; flex-direction: column; gap: 8px;">
+                <div class="page-preview__main-block--title"></div>
+                <div class="page-preview__main-block" style="width: 80%;"></div>
+                <div class="page-preview__main-block" style="width: 60%;"></div>
+                <div style="height: 40px; background: var(--mj-blue); border-radius: 4px; margin-top: 16px;"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="page-preview">
+          <div class="page-preview__bar">
+            <span>Handlekurv</span>
+            <div class="page-preview__bar-dots"><span></span><span></span><span></span></div>
+          </div>
+          <div class="page-preview__body">
+            <div class="page-preview__main" style="flex-direction: row; gap: 16px;">
+              <div style="flex: 2; display: flex; flex-direction: column; gap: 8px;">
+                <div class="page-preview__main-block" style="height: 60px;"></div>
+                <div class="page-preview__main-block" style="height: 60px;"></div>
+                <div class="page-preview__main-block" style="height: 60px;"></div>
+              </div>
+              <div style="flex: 1; background: var(--mj-blue-10); border-radius: 4px; padding: 12px; display: flex; flex-direction: column; gap: 6px;">
+                <div style="height: 12px; background: var(--mj-line); border-radius: 2px;"></div>
+                <div style="height: 12px; background: var(--mj-line); border-radius: 2px; width: 70%;"></div>
+                <div style="height: 32px; background: var(--mj-blue); border-radius: 4px; margin-top: 12px;"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      <div class="block" style="margin-top: 48px;">
+        <h3 class="block-title">Komplett liste over sidemaler</h3>
+        <ul style="padding-left: 0; list-style: none; columns: 2; column-gap: 32px;">
+          <li style="padding: 8px 0; border-bottom: 1px solid var(--mj-line-soft); break-inside: avoid;"><strong>Forside</strong><br><span style="font-size: 13px; color: var(--mj-ink-2);">Anonym + innlogget B2B</span></li>
+          <li style="padding: 8px 0; border-bottom: 1px solid var(--mj-line-soft); break-inside: avoid;"><strong>Kategoriside (PLP)</strong><br><span style="font-size: 13px; color: var(--mj-ink-2);">Med filter og sortering</span></li>
+          <li style="padding: 8px 0; border-bottom: 1px solid var(--mj-line-soft); break-inside: avoid;"><strong>Produktside (PDP)</strong><br><span style="font-size: 13px; color: var(--mj-ink-2);">To-kolonners standardlayout</span></li>
+          <li style="padding: 8px 0; border-bottom: 1px solid var(--mj-line-soft); break-inside: avoid;"><strong>Søkeresultatside</strong><br><span style="font-size: 13px; color: var(--mj-ink-2);">Med faceted filter</span></li>
+          <li style="padding: 8px 0; border-bottom: 1px solid var(--mj-line-soft); break-inside: avoid;"><strong>Handlekurv</strong><br><span style="font-size: 13px; color: var(--mj-ink-2);">Med summary og hurtigbestilling</span></li>
+          <li style="padding: 8px 0; border-bottom: 1px solid var(--mj-line-soft); break-inside: avoid;"><strong>Utsjekk (Checkout)</strong><br><span style="font-size: 13px; color: var(--mj-ink-2);">3-stegs flyt</span></li>
+          <li style="padding: 8px 0; border-bottom: 1px solid var(--mj-line-soft); break-inside: avoid;"><strong>Ordrebekreftelse</strong><br><span style="font-size: 13px; color: var(--mj-ink-2);">Med PDF-nedlasting</span></li>
+          <li style="padding: 8px 0; border-bottom: 1px solid var(--mj-line-soft); break-inside: avoid;"><strong>Min konto-dashboard</strong><br><span style="font-size: 13px; color: var(--mj-ink-2);">For B2B-brukere</span></li>
+          <li style="padding: 8px 0; border-bottom: 1px solid var(--mj-line-soft); break-inside: avoid;"><strong>Ordrehistorikk</strong><br><span style="font-size: 13px; color: var(--mj-ink-2);">Med filter og søk</span></li>
+          <li style="padding: 8px 0; border-bottom: 1px solid var(--mj-line-soft); break-inside: avoid;"><strong>Login</strong><br><span style="font-size: 13px; color: var(--mj-ink-2);">Med "bli kunde"-flyt</span></li>
+          <li style="padding: 8px 0; border-bottom: 1px solid var(--mj-line-soft); break-inside: avoid;"><strong>Statisk innhold</strong><br><span style="font-size: 13px; color: var(--mj-ink-2);">Om oss, vilkår, personvern</span></li>
+          <li style="padding: 8px 0; border-bottom: 1px solid var(--mj-line-soft); break-inside: avoid;"><strong>404 / 500 / Vedlikehold</strong><br><span style="font-size: 13px; color: var(--mj-ink-2);">Feilsider med vei videre</span></li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- ============================================================
+         TILGJENGELIGHET
+         ============================================================ -->
+    <section class="section section--dark" id="tilgjengelighet">
+      <div class="section__num">16 / Kvalitet</div>
+      <h2 class="section__title">Tilgjengelighet for alle</h2>
+      <p class="section__lead">
+        Nettstedet skal kunne brukes av alle — også de som bruker skjermleser, kun tastatur,
+        eller har redusert syn. Det er offentlig krav i Norge, og det handler om respekt
+        for kundene som finnes der ute.
+      </p>
+
+      <div class="block">
+        <h3 class="block-title">Vi følger WCAG 2.2 AA</h3>
+        <p class="block-desc">
+          Det er den nasjonale standarden, og det vi bygger må møte den. Konkret betyr det:
+        </p>
+        <ul style="padding-left: 0; list-style: none; max-width: 720px;">
+          <li style="padding: 12px 0; border-bottom: 1px solid rgba(255,255,255,0.15); display: flex; gap: 16px;">
+            <span style="color: var(--mj-orange); font-family: var(--ff-mono); font-size: 12px; font-weight: 700; min-width: 80px;">FARGE</span>
+            <span>Tilstrekkelig kontrast mellom tekst og bakgrunn — minst 4.5:1 for brødtekst</span>
+          </li>
+          <li style="padding: 12px 0; border-bottom: 1px solid rgba(255,255,255,0.15); display: flex; gap: 16px;">
+            <span style="color: var(--mj-orange); font-family: var(--ff-mono); font-size: 12px; font-weight: 700; min-width: 80px;">TASTATUR</span>
+            <span>All interaktivitet kan brukes med tastatur alene — ingen avhengighet av mus</span>
+          </li>
+          <li style="padding: 12px 0; border-bottom: 1px solid rgba(255,255,255,0.15); display: flex; gap: 16px;">
+            <span style="color: var(--mj-orange); font-family: var(--ff-mono); font-size: 12px; font-weight: 700; min-width: 80px;">SKJERM­LESER</span>
+            <span>Semantisk HTML, ARIA-labels og logisk struktur for skjermlesere</span>
+          </li>
+          <li style="padding: 12px 0; border-bottom: 1px solid rgba(255,255,255,0.15); display: flex; gap: 16px;">
+            <span style="color: var(--mj-orange); font-family: var(--ff-mono); font-size: 12px; font-weight: 700; min-width: 80px;">BILDER</span>
+            <span>Alt-tekst på alle bilder som har innhold</span>
+          </li>
+          <li style="padding: 12px 0; border-bottom: 1px solid rgba(255,255,255,0.15); display: flex; gap: 16px;">
+            <span style="color: var(--mj-orange); font-family: var(--ff-mono); font-size: 12px; font-weight: 700; min-width: 80px;">BEVEGELSE</span>
+            <span>Animasjoner respekterer brukerens preferanser ("redusert bevegelse")</span>
+          </li>
+          <li style="padding: 12px 0; border-bottom: 1px solid rgba(255,255,255,0.15); display: flex; gap: 16px;">
+            <span style="color: var(--mj-orange); font-family: var(--ff-mono); font-size: 12px; font-weight: 700; min-width: 80px;">TOUCH</span>
+            <span>Klikkflater minst 44×44 piksler — fungerer godt med arbeidshansker</span>
+          </li>
+          <li style="padding: 12px 0; display: flex; gap: 16px;">
+            <span style="color: var(--mj-orange); font-family: var(--ff-mono); font-size: 12px; font-weight: 700; min-width: 80px;">ZOOM</span>
+            <span>Siden fungerer ved 200% zoom uten å ødelegge layout</span>
+          </li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- ============================================================
+         FREMTID
+         ============================================================ -->
+    <section class="section" id="fremtid">
+      <div class="section__num">17 / Veikart</div>
+      <h2 class="section__title">Hva kommer etter MVP</h2>
+      <p class="section__lead">
+        Vi har bevisst skåret bort funksjoner i denne første versjonen for å komme raskt
+        i produksjon med det viktigste. Her er hva som er parkert for senere — slik at det
+        er sporbart og prioriterbart.
+      </p>
+
+      <div class="block">
+        <h3 class="block-title">Funksjoner i v1.x og senere</h3>
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 24px; margin-top: 32px;">
+          <div>
+            <h4 style="color: var(--mj-blue); font-size: 17px; margin-bottom: 12px;">Avanserte komponenter</h4>
+            <ul style="font-size: 14px; color: var(--mj-ink-2); padding-left: 20px; margin: 0;">
+              <li>360° produktviewer</li>
+              <li>Video player wrapper</li>
+              <li>Custom dropdown med søk</li>
+              <li>Date range picker</li>
+              <li>Multi-select med tag-input</li>
+            </ul>
+          </div>
+          <div>
+            <h4 style="color: var(--mj-blue); font-size: 17px; margin-bottom: 12px;">B2B-utvidelser</h4>
+            <ul style="font-size: 14px; color: var(--mj-ink-2); padding-left: 20px; margin: 0;">
+              <li>Multi-bruker konto med roller</li>
+              <li>Approval workflow</li>
+              <li>Recurring orders</li>
+              <li>Returns / RMA flow</li>
+              <li>Punchout / OCI-integrasjon</li>
+            </ul>
+          </div>
+          <div>
+            <h4 style="color: var(--mj-blue); font-size: 17px; margin-bottom: 12px;">Innhold &amp; CMS</h4>
+            <ul style="font-size: 14px; color: var(--mj-ink-2); padding-left: 20px; margin: 0;">
+              <li>Strukturerte innholdsblokker</li>
+              <li>AI-assistert produksjon</li>
+              <li>Newsletter og kampanjer</li>
+              <li>Case-studies og testimonial</li>
+            </ul>
+          </div>
+          <div>
+            <h4 style="color: var(--mj-blue); font-size: 17px; margin-bottom: 12px;">Andre</h4>
+            <ul style="font-size: 14px; color: var(--mj-ink-2); padding-left: 20px; margin: 0;">
+              <li>Mørk modus</li>
+              <li>Engelsk språkversjon</li>
+              <li>A/B testing-infrastruktur</li>
+              <li>Live chat</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================================================
+         AVKLARINGER
+         ============================================================ -->
+    <section class="section section--alt" id="avklaringer">
+      <div class="section__num">18 / Til behandling</div>
+      <h2 class="section__title">Spørsmål til dere</h2>
+      <p class="section__lead">
+        Før vi starter på utvikling, er det noen valg vi må få bekreftet med dere. De er ikke
+        kritiske akkurat nå, men bør låses før utviklerteamet begynner å bygge.
+      </p>
+
+      <div class="questions">
+        <h3>Til godkjenning</h3>
+        <p>Disse er forhåndsdiskutert og foreslått, men trenger formelt OK fra dere:</p>
+        <ol>
+          <li><strong>Webfont-erstatning:</strong> Source Sans 3 i stedet for Aptos på nettsiden (siden Aptos ikke kan lisensieres som webfont)</li>
+          <li><strong>Status-farger:</strong> Grønn (#1F7A3A) og mørk gylden (#B8851F) som tillegg til profilbokens fem hovedfarger — kun for funksjonelle UI-statuser</li>
+        </ol>
+      </div>
+
+      <div class="questions" style="border-color: var(--mj-blue);">
+        <h3 style="color: var(--mj-blue);">Til diskusjon</h3>
+        <p>Disse trenger vi å snakke om før vi går videre:</p>
+        <ol>
+          <li><strong>Domene/URL-struktur:</strong> Hvilken URL skal nettstedet og B2B-shop ligge på?</li>
+          <li><strong>Språk:</strong> Skal v1 kun være på norsk, eller også engelsk fra start?</li>
+          <li><strong>Produktbilder:</strong> Hvordan henter vi inn produktbilder fra leverandører — egen PIM, eller direkte fra leverandørenes systemer?</li>
+          <li><strong>Betalingsmetoder:</strong> Faktura er hovedsaken — er andre betalingsmetoder aktuelle (kort, EHF)?</li>
+        </ol>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="doc-footer">
+      <div class="doc-footer__title">På lag med industrien siden 1930. På nett fra 2026.</div>
+      <p class="doc-footer__lead">
+        Designsystemet er et levende dokument. Når vi bygger og lærer, oppdaterer vi det.
+        Versjon 0.1 er starten — neste versjon kommer når vi har fått tilbakemelding fra dere
+        og vi går i gang med utvikling.
+      </p>
+      <div class="doc-footer__meta">
+        <span>Versjon<br><strong style="display: block; font-family: var(--ff-sans); font-size: 16px; color: var(--mj-white); text-transform: none; letter-spacing: 0; margin-top: 6px;">0.1 · Mai 2026</strong></span>
+        <span>Levert av<br><strong style="display: block; font-family: var(--ff-sans); font-size: 16px; color: var(--mj-white); text-transform: none; letter-spacing: 0; margin-top: 6px;">Degree</strong></span>
+        <span>Forankret i<br><strong style="display: block; font-family: var(--ff-sans); font-size: 16px; color: var(--mj-white); text-transform: none; letter-spacing: 0; margin-top: 6px;">Grafisk profilbok 2025</strong></span>
+      </div>
+    </footer>
+
+  </main>
+</div>
+
+<script>
+  // Highlight active section in nav as user scrolls
+  const sections = document.querySelectorAll('.section[id], .hero');
+  const navLinks = document.querySelectorAll('.nav__link');
+
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if(entry.isIntersecting){
+        const id = entry.target.id;
+        if(!id) return;
+        navLinks.forEach(link => {
+          link.classList.toggle('active', link.getAttribute('href') === '#' + id);
+        });
+      }
+    });
+  }, { rootMargin: '-30% 0px -60% 0px' });
+
+  sections.forEach(s => { if(s.id) observer.observe(s); });
+</script>
+
+</body>
+</html>
