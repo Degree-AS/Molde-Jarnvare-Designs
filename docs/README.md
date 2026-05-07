@@ -69,8 +69,8 @@ Slik kan kunden alltid sammenligne med tidligere godkjente versjoner.
 
 ## GitHub Pages
 
-Hvis Pages aktiveres med kilde `main` / `/docs`, blir **kun denne mappa**
-publisert på `https://degree-as.github.io/Molde-Jarnvare-Designs/`. `../src/`
-er IKKE tilgjengelig fra Pages — derfor må alle ressurser docs trenger
-(bilder, logoer) ligge under `docs/assets/`, og lenker som peker til
-`../src/...` fungerer ikke i produksjon (kun lokalt fra repoet).
+Hvis Pages aktiveres med kilde `main` / `/docs`, blir denne mappa publisert
+automatisk på `https://degree-as.github.io/Molde-Jarnvare-Designs/`. Da
+fungerer `index.html` som forsiden, og lenker fra den til `../src/pages/` og
+`../src/components/` virker også (Pages publiserer hele repoet, men starter
+nettleseren i `/docs`).
