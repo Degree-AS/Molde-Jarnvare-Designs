@@ -817,7 +817,7 @@ a{color:var(--mj-blue)}
     <p class="section__lead">B2B-spesifikke komponenter som skiller MJs nettbutikk fra en generisk e-handel.</p>
     <div class="cols">
       <div class="col-card"><div class="col-card__num">PDP</div><h4 class="col-card__title">Product gallery</h4><p class="col-card__desc">Thumb-stripe + main-bilde, klikkbart, byttbart.</p></div>
-      <div class="col-card"><div class="col-card__num">PDP</div><h4 class="col-card__title">Variant selector</h4><p class="col-card__desc">Lengde, dimensjon, materiale — som chip-grupper.</p></div>
+      <div class="col-card"><div class="col-card__num">PDP</div><h4 class="col-card__title">Variant selector</h4><p class="col-card__desc">To visninger: chip-grupper (få varianter, hanske-/skostørrelser) og matrise med antall + cart per rad (mange varianter, festemidler). Avtalt 12. mai 2026.</p></div>
       <div class="col-card"><div class="col-card__num">CART</div><h4 class="col-card__title">Quick order pad</h4><p class="col-card__desc">Hurtigbestilling via artikkelnummer-paste.</p></div>
       <div class="col-card"><div class="col-card__num">CART</div><h4 class="col-card__title">Mini cart drawer</h4><p class="col-card__desc">Glir inn fra høyre, viser kurv + total.</p></div>
       <div class="col-card"><div class="col-card__num">B2B</div><h4 class="col-card__title">Sortilog</h4><p class="col-card__desc">Kundespesifikk produktliste — favoritter med avtalepriser.</p></div>
@@ -850,23 +850,39 @@ a{color:var(--mj-blue)}
   <section class="section section--alt" id="tilgjengelighet">
     <div class="section__num">16 / Kvalitet</div>
     <h2 class="section__title">Tilgjengelighet — WCAG 2.2 AA</h2>
-    <p class="section__lead">Tilgjengelighet er ikke noe vi legger på til slutt. Det er en baseline-forutsetning som er bygd inn i hver komponent.</p>
+    <p class="section__lead">Tilgjengelighet er ikke noe vi legger på til slutt. Det er en baseline-forutsetning som er bygd inn i hver komponent — og dokumentert i et eget audit.</p>
+
+    <div class="callout" style="background:var(--mj-success-bg);border-left-color:var(--mj-success)"><strong>✓ Status per 12. mai 2026:</strong> Alle anvendelige AA-suksesskriterier oppfylt. Det ene kritiske audit-funnet (warning-token-kontrast på 2,86&nbsp;:&nbsp;1) er lukket — <code>--mj-warning</code> mørknet til <code>#7A580E</code>, gir nå 5,68&nbsp;:&nbsp;1 på status-pill og 6,50&nbsp;:&nbsp;1 på badge/stock/toast.</div>
+
     <h3>Hva vi gjør</h3>
     <ul>
-      <li><strong>Kontrast:</strong> Alle tekst-kombinasjoner møter 4.5:1 (brødtekst) eller 3:1 (stor tekst). Brand-orange er flagget som "kun dekorativ".</li>
+      <li><strong>Kontrast:</strong> Alle tekst-kombinasjoner møter 4,5&nbsp;:&nbsp;1 (brødtekst) eller 3&nbsp;:&nbsp;1 (stor tekst). Brand-orange er flagget som «kun dekorativ» (2,4&nbsp;:&nbsp;1 mot hvit).</li>
       <li><strong>Tastaturnavigasjon:</strong> Alle interaktive elementer har synlig fokus-indikator (<code>--focus-ring</code>). Tab-rekkefølge følger DOM.</li>
-      <li><strong>Berøringspunkter:</strong> Knapper og lenker er minst 44 × 44 px der mulig.</li>
-      <li><strong>Skjermlesere:</strong> Skjemafelt har <code>&lt;label&gt;</code>, ikoner har <code>aria-label</code>, dialoger varsler riktig rolle.</li>
-      <li><strong>Motion:</strong> <code>prefers-reduced-motion</code> respekteres globalt.</li>
-      <li><strong>Strukturert markup:</strong> Headings følger semantisk hierarki. Visuell styling er separat fra HTML-tag.</li>
+      <li><strong>Berøringspunkter:</strong> Standard knapper og inputs er 44 × 44 px. <code>.btn--sm</code> (36 px) og <code>.btn--xs</code> (28 px) er over WCAG 2.2 sin AA-grense på 24 px.</li>
+      <li><strong>Skjermlesere:</strong> Skjemafelt har <code>&lt;label&gt;</code>, ikon-knapper har <code>aria-label</code>, dialoger bruker native <code>&lt;dialog&gt;</code> som varsler riktig rolle. Variant-matrise har spesifik aria-label per cart-knapp («Legg M8 × 30 mm A4 syrefast i kurv, 100 stk»).</li>
+      <li><strong>Motion:</strong> <code>prefers-reduced-motion</code> respekteres globalt i <code>base/reset.css</code>.</li>
+      <li><strong>Strukturert markup:</strong> Headings følger semantisk hierarki (én h1 per side, h2 → h3 uten å hoppe nivåer). Visuell styling separert fra HTML-tag via utility-klasser.</li>
+      <li><strong>Sticky-header og fokus:</strong> <code>scroll-margin-top</code> sørger for at fokuserte elementer ikke skjules bak header (WCAG 2.2 2.4.11).</li>
     </ul>
+
     <h3>Hva vi tester</h3>
     <ul>
       <li>Manuell tastaturtest av hver komponent</li>
       <li>Skjermleser (NVDA/VoiceOver) på sidemaler</li>
       <li>Automatisk lint via axe-core eller tilsvarende i CI</li>
-      <li>Kontrast-verifisering ved nye fargevalg</li>
+      <li>Kontrast-verifisering ved nye fargevalg (WCAG-formel + visuell sjekk)</li>
+      <li>200&nbsp;% browser-zoom — layout skal ikke bryte, ingen horisontal scroll</li>
+      <li>Reduced-motion-flow gjennom hele kjøpsløpet</li>
     </ul>
+
+    <h3>Gjenstående arbeid</h3>
+    <p>To «major»-funn håndteres når komponentene kobles til JS-laget i Dynamicweb-integrasjonen — kan ikke løses i CSS alene:</p>
+    <ul>
+      <li><strong>Drawer-fokusfelle:</strong> Modal bruker native <code>&lt;dialog&gt;</code> (gratis fokusfelle), men drawer er custom og trenger JS-implementasjon for <kbd>Tab</kbd>-sirkulering og <kbd>Esc</kbd>-lukking.</li>
+      <li><strong>Toast aria-live:</strong> <code>.toast-region</code> trenger <code>role="status" aria-live="polite"</code> for at skjermlesere skal varsle nye toast-meldinger.</li>
+    </ul>
+
+    <div class="callout"><strong>Komplett audit-rapport:</strong> Se det dedikerte tilgjengelighetsdokumentet <a href="../docs/tilgjengelighet.html">tilgjengelighet.html</a> — der ligger full per-kriterium-gjennomgang, alle målte kontraster, tastatursnarveis-matrise per komponent, og det formelle audit-trailet.</div>
   </section>
 
   <section class="section" id="utviklere">
