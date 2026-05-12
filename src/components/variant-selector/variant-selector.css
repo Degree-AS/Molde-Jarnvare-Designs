@@ -1,7 +1,22 @@
 /**
  * Product variant selector (§14.2)
+ *
+ * To visninger — én komponent:
+ *
+ *   Chip-stil (default)     For få varianter (~3–8). Hanskestørrelser,
+ *                            skostørrelser, lengder. Én aktiv av gangen.
+ *
+ *   Matrise (--matrix)       For mange varianter (10+). Festemidler, bolter,
+ *                            der hver kombinasjon er en egen SKU. Tabell-
+ *                            visning med antall-felt per rad og samle-CTA
+ *                            som lar kunden legge flere varianter i kurv
+ *                            i én operasjon. Avtalt med Molde Jarnvare
+ *                            12. mai 2026.
  */
 
+/* ─────────────────────────────────────────────────────────────────────────
+ * Felles for begge visninger
+ * ────────────────────────────────────────────────────────────────────── */
 .variant-selector {
   display: flex;
   flex-direction: column;
@@ -19,6 +34,9 @@
   color: var(--color-text-secondary);
 }
 
+/* ─────────────────────────────────────────────────────────────────────────
+ * Chip-stil (default) — få varianter
+ * ────────────────────────────────────────────────────────────────────── */
 .variant-selector__options {
   display: flex;
   flex-wrap: wrap;
@@ -54,4 +72,112 @@
   opacity: 0.4;
   cursor: not-allowed;
   text-decoration: line-through;
+}
+
+/* ─────────────────────────────────────────────────────────────────────────
+ * Matrise (--matrix) — mange varianter
+ * Tabell der hver rad = én variant (SKU). Antall-felt per rad,
+ * felles "Legg valgte i kurv"-knapp under.
+ * ────────────────────────────────────────────────────────────────────── */
+.variant-selector--matrix { gap: var(--s-4); }
+
+.variant-selector__matrix {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: var(--fs-body-sm);
+  font-variant-numeric: tabular-nums;
+}
+
+.variant-selector__matrix thead th {
+  text-align: left;
+  padding: var(--s-2) var(--s-3);
+  background: var(--mj-surface-1);
+  font-family: var(--ff-sans);
+  font-size: var(--fs-overline);
+  font-weight: var(--fw-semibold);
+  letter-spacing: var(--ls-wider);
+  text-transform: uppercase;
+  color: var(--color-text-secondary);
+  border-bottom: var(--bw-2) solid var(--color-border-default);
+  white-space: nowrap;
+}
+.variant-selector__matrix thead th.is-numeric { text-align: right; }
+
+.variant-selector__matrix tbody th,
+.variant-selector__matrix tbody td {
+  padding: var(--s-3);
+  border-bottom: var(--bw-1) solid var(--color-border-soft);
+  vertical-align: middle;
+  text-align: left;
+}
+.variant-selector__matrix tbody td.is-numeric { text-align: right; }
+.variant-selector__matrix tbody tr:last-child th,
+.variant-selector__matrix tbody tr:last-child td { border-bottom: 0; }
+
+.variant-selector__matrix tbody th {
+  font-weight: var(--fw-semibold);
+  color: var(--color-text-primary);
+}
+
+.variant-selector__matrix tbody tr:hover {
+  background: var(--mj-surface-1);
+}
+
+.variant-selector__matrix-sku {
+  font-family: var(--ff-mono);
+  font-size: var(--fs-mono-sm);
+  color: var(--color-text-secondary);
+  white-space: nowrap;
+}
+
+.variant-selector__matrix-price {
+  font-weight: var(--fw-semibold);
+  color: var(--color-text-primary);
+}
+
+.variant-selector__matrix-qty {
+  display: flex;
+  justify-content: flex-end;
+}
+
+/* Disabled-rad (utsolgt / ikke tilgjengelig) */
+.variant-selector__matrix-row--disabled th,
+.variant-selector__matrix-row--disabled td {
+  color: var(--color-text-tertiary);
+}
+.variant-selector__matrix-row--disabled .variant-selector__matrix-qty { opacity: 0.5; pointer-events: none; }
+
+/* Footer — samle-CTA */
+.variant-selector__matrix-actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--s-4);
+  padding: var(--s-4);
+  background: var(--mj-surface-1);
+  border-radius: var(--r-md);
+}
+
+.variant-selector__matrix-summary {
+  font-size: var(--fs-body-sm);
+  color: var(--color-text-secondary);
+}
+.variant-selector__matrix-summary strong {
+  color: var(--color-text-primary);
+  font-weight: var(--fw-semibold);
+}
+
+/* Mobil: la tabellen scrolle horisontalt heller enn å bryte */
+@media (max-width: 640px) {
+  .variant-selector__matrix-wrap {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    margin-inline: calc(-1 * var(--s-4));
+    padding-inline: var(--s-4);
+  }
+  .variant-selector__matrix-actions {
+    flex-direction: column;
+    align-items: stretch;
+  }
 }
