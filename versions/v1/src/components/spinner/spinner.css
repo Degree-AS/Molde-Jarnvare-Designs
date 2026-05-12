@@ -1,0 +1,22 @@
+/**
+ * Spinner (§12.13)
+ */
+
+.spinner {
+  display: inline-block;
+  width: var(--icon-md);
+  height: var(--icon-md);
+  border: var(--bw-3) solid currentColor;
+  border-right-color: transparent;
+  border-radius: var(--r-full);
+  color: var(--color-action-primary);
+  animation: spinner-rotate var(--duration-slow) linear infinite;
+}
+
+.spinner--sm { width: var(--icon-sm); height: var(--icon-sm); border-width: var(--bw-2); }
+.spinner--lg { width: var(--icon-lg); height: var(--icon-lg); }
+.spinner--xl { width: var(--icon-xl); height: var(--icon-xl); border-width: var(--bw-4); }
+
+.spinner--on-brand { color: var(--color-text-on-brand); }
+
+@keyframes spinner-rotate { to { transform: rotate(360deg); } }

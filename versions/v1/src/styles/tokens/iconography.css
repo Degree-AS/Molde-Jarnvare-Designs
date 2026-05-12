@@ -1,0 +1,25 @@
+/**
+ * Iconography
+ * -----------------------------------------------------------------------------
+ * Source: DESIGN_SYSTEM.md §8.2
+ *
+ * Strek-ikoner med konsekvent stroke-vekt (1.6px), viewBox 0 0 24 24.
+ * Default farge: currentColor.
+ *
+ *   --icon-xs   Inline i tekst
+ *   --icon-sm   I knapper og inputs
+ *   --icon-md   Standard i navigation, badges
+ *   --icon-lg   Header-icons, kategorikort
+ *   --icon-xl   Featured services, kategori-tiles
+ *   --icon-2xl  Empty states, illustrative
+ * -----------------------------------------------------------------------------
+ */
+
+:root {
+  --icon-xs:  14px;
+  --icon-sm:  16px;
+  --icon-md:  20px;
+  --icon-lg:  24px;
+  --icon-xl:  32px;
+  --icon-2xl: 48px;
+}

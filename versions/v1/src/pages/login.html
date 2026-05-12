@@ -1,0 +1,70 @@
+<!doctype html>
+<html lang="nb">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Logg inn — Molde Jarnvare</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Source+Sans+3:wght@400;500;600;700;900&family=JetBrains+Mono:wght@400&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../styles/index.css">
+</head>
+<body>
+
+<header class="site-header">
+  <div class="site-header__inner">
+    <a class="site-header__logo" href="/" aria-label="Molde Jarnvare"><img src="../assets/logos/molde-jarnvare-positive.png" alt="Molde Jarnvare" class="site-header__logo-img"></a>
+  </div>
+
+  <div class="site-header__main">
+    <div class="site-header__main-inner">
+      <nav class="site-header__nav" aria-label="Hovedkategorier">
+        <a class="site-header__nav-link" href="#">Festemidler</a>
+        <a class="site-header__nav-link" href="#">Verktøy</a>
+        <a class="site-header__nav-link" href="#">Verneutstyr</a>
+        <a class="site-header__nav-link" href="#">Hydraulikk</a>
+        <a class="site-header__nav-link" href="#">Sveis</a>
+        <a class="site-header__nav-link" href="#">Industri</a>
+        <a class="site-header__nav-link" href="#">Hurtigbestilling</a>
+        <a class="site-header__nav-link site-header__nav-link--accent" href="#">Tilbud</a>
+      </nav>
+    </div>
+  </div>
+</header>
+
+<main class="container container--narrow" style="padding-block: var(--s-10); display: grid; place-items: center;">
+  <form class="card" style="width: min(100%, 420px); padding: var(--s-7);">
+    <h1 class="t-h2" style="margin: 0 0 var(--s-2);">Logg inn</h1>
+    <p style="color: var(--color-text-secondary); margin-bottom: var(--s-6);">
+      Med kundekonto ser du dine priser, ordrehistorikk og 2-boks-status.
+    </p>
+
+    <div class="field" style="margin-bottom: var(--s-4);">
+      <label class="field__label" for="email">E-post</label>
+      <input class="input" id="email" type="email" autocomplete="email" required>
+    </div>
+
+    <div class="field" style="margin-bottom: var(--s-3);">
+      <label class="field__label" for="pwd">Passord</label>
+      <input class="input" id="pwd" type="password" autocomplete="current-password" required>
+    </div>
+
+    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: var(--s-5);">
+      <label class="checkbox"><input type="checkbox"><span class="checkbox__visual"></span><span class="checkbox__label">Husk meg</span></label>
+      <a class="link" href="#">Glemt passord?</a>
+    </div>
+
+    <button class="btn btn--primary btn--full">Logg inn</button>
+
+    <hr class="divider divider--label" style="margin-block: var(--s-5);">
+    <p style="text-align: center;">
+      Ikke kunde ennå? <a class="link" href="#">Søk om kundekonto →</a>
+    </p>
+  </form>
+</main>
+
+<footer class="site-footer">
+  <div class="site-footer__inner"><div class="site-footer__bottom"><span>&copy; 2026 Molde Jarnvare AS</span></div></div>
+</footer>
+
+</body>
+</html>

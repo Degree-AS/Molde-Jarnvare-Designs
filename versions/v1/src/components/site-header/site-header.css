@@ -1,0 +1,124 @@
+/**
+ * Site header / Site shell — header (§15.1)
+ * Sticky topp-navigasjon med logo, søk, kategori-meny og bruker-actions.
+ */
+
+.site-header {
+  position: sticky;
+  top: 0;
+  z-index: var(--z-sticky);
+  background: var(--color-bg-surface);
+  border-bottom: var(--bw-1) solid var(--color-border-soft);
+}
+
+.site-header__inner {
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  gap: var(--s-5);
+  align-items: center;
+  padding: var(--s-3) var(--gutter);
+  max-width: var(--container-wide);
+  margin-inline: auto;
+}
+
+@media (max-width: 767px) {
+  .site-header__inner {
+    grid-template-columns: auto 1fr auto;
+    gap: var(--s-3);
+  }
+}
+
+.site-header__logo {
+  display: inline-flex;
+  align-items: center;
+  text-decoration: none;
+}
+
+.site-header__logo-img {
+  display: block;
+  height: 36px;
+  width: auto;
+  /* Beskyttelsesområde — halve høyden på bokstaver i logo (§9.3) */
+  margin-block: var(--s-2);
+  margin-inline-end: var(--s-2);
+}
+
+@media (max-width: 767px) {
+  .site-header__logo-img { height: 28px; }
+}
+
+/* Tekst-fallback dersom logo ikke laster — vises kun hvis <img> feiler */
+.site-header__logo-text {
+  font-family: var(--ff-sans);
+  font-size: var(--fs-h4);
+  font-weight: var(--fw-black);
+  color: var(--mj-blue);
+  letter-spacing: var(--ls-tight);
+}
+
+/* Hovedmeny — sekundær rad under logo+søk med kategori-lenker */
+.site-header__main {
+  border-top: var(--bw-1) solid var(--color-border-soft);
+  background: var(--mj-surface-0);
+}
+
+.site-header__main-inner {
+  max-width: var(--container-wide);
+  margin-inline: auto;
+  padding-inline: var(--gutter);
+}
+
+.site-header__nav {
+  display: flex;
+  align-items: stretch;
+  gap: var(--s-5);
+  height: 44px;
+  overflow-x: auto;
+  scrollbar-width: none;
+}
+.site-header__nav::-webkit-scrollbar { display: none; }
+
+@media (max-width: 767px) {
+  .site-header__main { display: none; }
+}
+
+.site-header__nav-link {
+  display: inline-flex;
+  align-items: center;
+  font-size: var(--fs-body-sm);
+  font-weight: var(--fw-semibold);
+  color: var(--color-text-primary);
+  text-decoration: none;
+  white-space: nowrap;
+  border-bottom: var(--bw-3) solid transparent;
+  padding-block: 2px;
+  transition:
+    color var(--duration-fast) var(--ease-standard),
+    border-color var(--duration-fast) var(--ease-standard);
+}
+.site-header__nav-link:hover { color: var(--color-action-primary); }
+.site-header__nav-link[aria-current="page"] {
+  color: var(--color-action-primary);
+  border-bottom-color: var(--color-action-primary);
+}
+
+/* Tilbud-lenken — orange aksent for å skille kampanje fra kategori */
+.site-header__nav-link--accent {
+  color: var(--mj-orange);
+}
+.site-header__nav-link--accent:hover {
+  color: var(--mj-orange);
+  filter: brightness(0.9);
+}
+
+.site-header__actions {
+  display: flex;
+  align-items: center;
+  gap: var(--s-2);
+}
+
+.site-header__action {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: cent

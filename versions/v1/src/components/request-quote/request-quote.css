@@ -1,0 +1,30 @@
+/**
+ * "Be om tilbud" (§14.8)
+ */
+
+.request-quote {
+  display: flex;
+  flex-direction: column;
+  gap: var(--s-4);
+  padding: var(--s-6);
+  background: var(--color-bg-surface);
+  border: var(--bw-1) solid var(--color-border-soft);
+  border-radius: var(--r-md);
+}
+
+.request-quote__title {
+  font-size: var(--fs-h4);
+  font-weight: var(--fw-bold);
+  margin: 0;
+}
+
+.request-quote__desc {
+  font-size: var(--fs-body-sm);
+  color: var(--color-text-secondary);
+}
+
+.request-quote__rows {
+  display: flex;
+  flex-direction: column;
+  gap: var(--s-3);
+}
