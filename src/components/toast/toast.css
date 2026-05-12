@@ -42,7 +42,7 @@
 }
 
 .toast--success { background: var(--mj-success); }
-.toast--warning { background: var(--mj-warning); color: var(--mj-ink); }
+.toast--warning { background: var(--mj-warning); color: var(--color-text-on-brand); }
 .toast--error   { background: var(--mj-error); }
 
 .toast__close {

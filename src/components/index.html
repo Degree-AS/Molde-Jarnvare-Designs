@@ -307,19 +307,124 @@
       </div>
     </div>
 
-    <h3>Volume tier / 2-boks</h3>
+    <h3>Variant selector — matrise (mange varianter)</h3>
+    <p style="font-size: var(--fs-body-sm); color: var(--color-text-secondary); margin: 0 0 var(--s-3);">
+      For festemidler og lignende der hver kombinasjon er en egen SKU (10+). Kunden kan angi antall per rad og legge flere varianter i kurv samtidig.
+    </p>
     <div class="demo demo--col">
-      <div class="volume-tier" style="width: 100%;">
-        <h4 class="volume-tier__title">Staffert pris</h4>
-        <table class="volume-tier__table">
-          <thead><tr><th>Antall</th><th>Pris/stk</th><th>Spar</th></tr></thead>
-          <tbody>
-            <tr class="volume-tier__row is-active"><td>1–199</td><td>kr 2,80</td><td>—</td></tr>
-            <tr class="volume-tier__row"><td>200–999</td><td>kr 2,55</td><td class="volume-tier__savings">−9 %</td></tr>
-            <tr class="volume-tier__row"><td>1 000+</td><td>kr 2,30</td><td class="volume-tier__savings">−18 %</td></tr>
-          </tbody>
-        </table>
+      <div class="variant-selector variant-selector--matrix" style="width: 100%;">
+        <div class="variant-selector__label"><span>Sekskantskrue M8 — velg variant(er)</span><span class="variant-selector__label-value">12 varianter</span></div>
+        <div class="variant-selector__matrix-wrap">
+          <table class="variant-selector__matrix">
+            <thead>
+              <tr>
+                <th scope="col">Variant</th>
+                <th scope="col">Art.nr</th>
+                <th scope="col">På lager</th>
+                <th scope="col" class="is-numeric">Pris/stk</th>
+                <th scope="col" class="is-numeric">Antall</th>
+                <th scope="col"><span class="sr-only">Legg til</span></th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <th scope="row">M8 × 20 mm  ·  A4 syrefast</th>
+                <td><span class="variant-selector__matrix-sku">4815-160-30</span></td>
+                <td><span class="stock-indicator stock-indicator--in">På lager</span></td>
+                <td class="is-numeric variant-selector__matrix-price">kr 1,90</td>
+                <td class="is-numeric">
+                  <div class="variant-selector__matrix-qty">
+                    <div class="qty-stepper">
+                      <button class="qty-stepper__btn" aria-label="Reduser antall">−</button>
+                      <input class="qty-stepper__input" type="number" value="0" min="0">
+                      <button class="qty-stepper__btn" aria-label="Øk antall">+</button>
+                    </div>
+                  </div>
+                </td>
+                <td>
+                  <button class="variant-selector__matrix-add" aria-label="Legg M8 × 20 mm A4 syrefast i kurv"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M2 4h2.5l3 12h11l2.5-8H7"/><circle cx="10" cy="20" r="1.6"/><circle cx="17" cy="20" r="1.6"/></svg></button>
+                </td>
+              </tr>
+              <tr>
+                <th scope="row">M8 × 30 mm  ·  A4 syrefast</th>
+                <td><span class="variant-selector__matrix-sku">4815-161-30</span></td>
+                <td><span class="stock-indicator stock-indicator--in">På lager</span></td>
+                <td class="is-numeric variant-selector__matrix-price">kr 2,30</td>
+                <td class="is-numeric">
+                  <div class="variant-selector__matrix-qty">
+                    <div class="qty-stepper">
+                      <button class="qty-stepper__btn" aria-label="Reduser antall">−</button>
+                      <input class="qty-stepper__input" type="number" value="100" min="0">
+                      <button class="qty-stepper__btn" aria-label="Øk antall">+</button>
+                    </div>
+                  </div>
+                </td>
+                <td>
+                  <button class="variant-selector__matrix-add" aria-label="Legg M8 × 30 mm A4 syrefast i kurv (100 stk)"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M2 4h2.5l3 12h11l2.5-8H7"/><circle cx="10" cy="20" r="1.6"/><circle cx="17" cy="20" r="1.6"/></svg></button>
+                </td>
+              </tr>
+              <tr>
+                <th scope="row">M8 × 40 mm  ·  A4 syrefast</th>
+                <td><span class="variant-selector__matrix-sku">4815-162-30</span></td>
+                <td><span class="stock-indicator stock-indicator--in">På lager <span class="stock-indicator__count">4 200 stk</span></span></td>
+                <td class="is-numeric variant-selector__matrix-price">kr 2,80</td>
+                <td class="is-numeric">
+                  <div class="variant-selector__matrix-qty">
+                    <div class="qty-stepper">
+                      <button class="qty-stepper__btn" aria-label="Reduser antall">−</button>
+                      <input class="qty-stepper__input" type="number" value="50" min="0">
+                      <button class="qty-stepper__btn" aria-label="Øk antall">+</button>
+                    </div>
+                  </div>
+                </td>
+                <td>
+                  <button class="variant-selector__matrix-add" aria-label="Legg M8 × 40 mm A4 syrefast i kurv (50 stk)"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M2 4h2.5l3 12h11l2.5-8H7"/><circle cx="10" cy="20" r="1.6"/><circle cx="17" cy="20" r="1.6"/></svg></button>
+                </td>
+              </tr>
+              <tr>
+                <th scope="row">M8 × 50 mm  ·  A4 syrefast</th>
+                <td><span class="variant-selector__matrix-sku">4815-163-30</span></td>
+                <td><span class="stock-indicator stock-indicator--low">Få igjen <span class="stock-indicator__count">12 stk</span></span></td>
+                <td class="is-numeric variant-selector__matrix-price">kr 3,20</td>
+                <td class="is-numeric">
+                  <div class="variant-selector__matrix-qty">
+                    <div class="qty-stepper">
+                      <button class="qty-stepper__btn" aria-label="Reduser antall">−</button>
+                      <input class="qty-stepper__input" type="number" value="0" min="0">
+                      <button class="qty-stepper__btn" aria-label="Øk antall">+</button>
+                    </div>
+                  </div>
+                </td>
+                <td>
+                  <button class="variant-selector__matrix-add" aria-label="Legg M8 × 50 mm A4 syrefast i kurv"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M2 4h2.5l3 12h11l2.5-8H7"/><circle cx="10" cy="20" r="1.6"/><circle cx="17" cy="20" r="1.6"/></svg></button>
+                </td>
+              </tr>
+              <tr class="variant-selector__matrix-row--disabled">
+                <th scope="row">M8 × 80 mm  ·  A4 syrefast</th>
+                <td><span class="variant-selector__matrix-sku">4815-164-30</span></td>
+                <td><span class="stock-indicator stock-indicator--out">Utsolgt</span></td>
+                <td class="is-numeric variant-selector__matrix-price">kr 4,50</td>
+                <td class="is-numeric">
+                  <div class="variant-selector__matrix-qty">
+                    <div class="qty-stepper">
+                      <button class="qty-stepper__btn" disabled aria-label="Reduser antall">−</button>
+                      <input class="qty-stepper__input" type="number" value="0" min="0" disabled>
+                      <button class="qty-stepper__btn" disabled aria-label="Øk antall">+</button>
+                    </div>
+                  </div>
+                </td>
+                <td>
+                  <button class="variant-selector__matrix-add" disabled aria-label="M8 × 80 mm A4 syrefast er utsolgt"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M2 4h2.5l3 12h11l2.5-8H7"/><circle cx="10" cy="20" r="1.6"/><circle cx="17" cy="20" r="1.6"/></svg></button>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
       </div>
+    </div>
+
+    <h3>2-boks-status</h3>
+    <div class="demo demo--col">
       <div class="two-bin" style="width: 100%;">
         <header class="two-bin__header"><h4 class="two-bin__title">2-boks · Sekskantskrue M8 × 40 mm</h4></header>
         <div class="two-bin__bins">
