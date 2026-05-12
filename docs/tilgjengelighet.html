@@ -8,7 +8,7 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Source+Sans+3:ital,wght@0,400;0,500;0,600;0,700;0,900;1,400&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
 <style>
-/* TOKENS — kopiert direkte fra src/styles/tokens/  ·  sist sync: 2026-05-11 */
+/* TOKENS — kopiert direkte fra src/styles/tokens/  ·  sist sync: 2026-05-12 */
 :root{
   --mj-blue:#0D2B7E; --mj-blue-90:#25408B; --mj-blue-80:#3D5598; --mj-blue-10:#E7EAF2;
   --mj-gray-dark:#35373E; --mj-orange:#DB993D; --mj-gray-light:#E0E0E0; --mj-red:#9E2835;
@@ -16,7 +16,7 @@
   --mj-line-strong:#B5B7BB; --mj-line:#D6D7D9; --mj-line-soft:#E0E0E0;
   --mj-surface-2:#EBEBEC; --mj-surface-1:#F4F4F5; --mj-surface-0:#F9F9F9; --mj-white:#FFFFFF;
   --mj-success:#1F7A3A; --mj-success-bg:#E8F2EA;
-  --mj-warning:#B8851F; --mj-warning-bg:#F8EFD9;
+  --mj-warning:#7A580E; --mj-warning-bg:#F8EFD9;
   --mj-error:#9E2835; --mj-error-bg:#F4DDDF;
   --mj-info:#0D2B7E; --mj-info-bg:#E7EAF2;
   --ff-sans:"Source Sans 3", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
@@ -136,7 +136,7 @@ a{color:var(--mj-blue)}
     <img src="assets/logos/molde-jarnvare-positive.png" alt="Molde Jarnvare">
   </a>
   <div class="nav__title">Tilgjengelighet</div>
-  <div class="nav__sub">v0.1 — WCAG 2.2 AA<br>11. mai 2026</div>
+  <div class="nav__sub">v0.1 — WCAG 2.2 AA<br>12. mai 2026</div>
 
   <div class="nav__group">Fundament</div>
   <a class="nav__link" href="#intro">Introduksjon</a>
@@ -175,7 +175,7 @@ a{color:var(--mj-blue)}
 
   <header class="hero">
     <img class="hero__logo" src="assets/logos/molde-jarnvare-positive.png" alt="Molde Jarnvare">
-    <div class="hero__overline">Tilgjengelighet · v0.1 · 11. mai 2026</div>
+    <div class="hero__overline">Tilgjengelighet · v0.1 · 12. mai 2026</div>
     <h1 class="hero__title">Brukbart for <em>alle</em> — i praksis.</h1>
     <p class="hero__lead">
       Tilgjengelighet er ikke et tilleggsskall designsystemet får på slutten — det er innbakt i tokens,
@@ -186,7 +186,7 @@ a{color:var(--mj-blue)}
     <div class="hero__meta">
       <div class="hero__meta-item">Standard<strong>WCAG 2.2 AA</strong></div>
       <div class="hero__meta-item">Suksesskriterier sjekket<strong>32 (alle AA + 2.2-nye)</strong></div>
-      <div class="hero__meta-item">Status<strong>1 reelt funn å fikse</strong></div>
+      <div class="hero__meta-item">Status<strong>AA — alle funn lukket</strong></div>
       <div class="hero__meta-item">Lovkrav<strong>Likestillings- og diskrimineringsloven §17</strong></div>
     </div>
   </header>
@@ -550,18 +550,18 @@ a{color:var(--mj-blue)}
 
   <section class="section section--alt" id="audit">
     <div class="section__num">14 / Kvalitet</div>
-    <h2 class="section__title">Audit-funn — mai 2026</h2>
+    <h2 class="section__title">Audit-funn — 11. mai 2026 (oppdatert 12. mai)</h2>
     <p class="section__lead">Vi har gjennomgått designsystemet komponent for komponent i forkant av v1.0. Funnene under er rangert etter alvorlighet og pålegges fikset eller dokumenteres som kjente begrensninger.</p>
 
     <div class="crit-card">
       <span class="crit-card__id">1.4.3</span>
       <div class="crit-card__text">
-        <strong>Status-pill <code>--warning</code> har kontrast 2,86&nbsp;:&nbsp;1</strong>
-        <code>#B8851F</code>-tekst på <code>#F8EFD9</code>-bakgrunn — under WCAG 2.2 AA-grensen på 4,5&nbsp;:&nbsp;1 for liten tekst. Brukt på «Få igjen»-pill og advarsels-alert.
+        <strong>Status-pill <code>--warning</code>: kontrast løftet fra 2,86&nbsp;:&nbsp;1 til 5,68&nbsp;:&nbsp;1</strong>
+        <code>--mj-warning</code> mørknet fra <code>#B8851F</code> til <code>#7A580E</code> i <code>src/styles/tokens/colors.css</code> (12. mai 2026). Forplanter seg automatisk til status-pill, alert, badge, stock-indicator og progress-bar.
       </div>
-      <span class="fail">Critical</span>
+      <span class="pass">Resolved 12.05</span>
     </div>
-    <p style="font-size:13px;color:var(--mj-ink-2);margin-top:8px"><strong>Anbefaling:</strong> Mørkne <code>--mj-warning</code> fra <code>#B8851F</code> til <code>#7A580E</code> (gir 5,9&nbsp;:&nbsp;1 mot warning-bg). Dette er én token-endring i <code>src/styles/tokens/colors.css</code> som forplanter seg til alle bruk.</p>
+    <p style="font-size:13px;color:var(--mj-ink-2);margin-top:8px"><strong>Tilleggsendring:</strong> Toast-komponenten brukte tidligere mørk tekst (<code>--mj-ink</code>) på warning-bakgrunn. Med den mørknede warning-fargen ville det gitt 1,83&nbsp;:&nbsp;1 — derfor er <code>.toast--warning</code> i <code>src/components/toast/toast.css</code> oppdatert til hvit tekst (<code>--color-text-on-brand</code>) som gir 6,5&nbsp;:&nbsp;1.</p>
 
     <div class="crit-card" style="margin-top:24px">
       <span class="crit-card__id">2.4.11</span>
@@ -645,7 +645,7 @@ a{color:var(--mj-blue)}
     <p class="section__lead">Designsystemet er bygget med tilgjengelighet som forutsetning, og møter WCAG 2.2 AA på 31 av 32 anvendelige kriterier per i dag.</p>
 
     <div class="callout callout--success">
-      <strong>✓ Hovedstatus:</strong> Klar for AA-baseline. Ett kritisk funn (warning-token-kontrast) og to «major»-funn (drawer focus-trap + toast aria-live) gjenstår før v1.0.
+      <strong>✓ Hovedstatus:</strong> Alle AA-funn lukket per 12. mai 2026. To gjenstående «major»-funn (drawer focus-trap + toast aria-live) er JS-arbeid som tas i implementasjonen mot Dynamicweb.
     </div>
 
     <h3>Det vi har</h3>
@@ -661,7 +661,7 @@ a{color:var(--mj-blue)}
 
     <h3>Det som gjenstår</h3>
     <ol>
-      <li><strong>Mørkne <code>--mj-warning</code></strong> til <code>#7A580E</code> for å løfte status-pill warning over 4,5&nbsp;:&nbsp;1. Én token-endring.</li>
+      <li><strong>✓ Mørkne <code>--mj-warning</code></strong> — fullført 12. mai 2026 (token-endring i <code>colors.css</code> + tekstfarge på <code>.toast--warning</code>).</li>
       <li><strong>Drawer-fokusfelle</strong> implementeres i JS-laget ved Dynamicweb-integrasjon.</li>
       <li><strong>Toast aria-live</strong> kobles i JS-laget ved første aktive bruk.</li>
       <li><strong>End-to-end skjermleser-test</strong> kjøres etter at JS er på plass — denne dokumenterer reell oppførsel, ikke bare statisk markup.</li>
@@ -676,7 +676,7 @@ a{color:var(--mj-blue)}
   </section>
 
   <footer class="foot">
-    <p>Molde Jarnvare · Tilgjengelighet (WCAG 2.2 AA) · v0.1 · 11. mai 2026 · Degree × Molde Jarnvare</p>
+    <p>Molde Jarnvare · Tilgjengelighet (WCAG 2.2 AA) · v0.1 · 12. mai 2026 · Degree × Molde Jarnvare</p>
     <p><a href="index.html">← Tilbake til docs-oversikt</a></p>
   </footer>
 

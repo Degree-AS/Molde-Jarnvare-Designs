@@ -73,7 +73,7 @@
    * ------------------------------------------------------------------------ */
   --mj-success:    #1F7A3A;
   --mj-success-bg: #E8F2EA;
-  --mj-warning:    #B8851F;
+  --mj-warning:    #7A580E; /* mørknet fra #B8851F (12. mai 2026) for å passere WCAG 2.2 AA på status-pill, alert, badge og stock-indicator */
   --mj-warning-bg: #F8EFD9;
   --mj-error:      #9E2835; /* = brand-rød */
   --mj-error-bg:   #F4DDDF;
