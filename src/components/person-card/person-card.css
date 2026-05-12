@@ -1,11 +1,17 @@
 /**
  * Person card / produktansvarlig (§13.5)
+ *
+ * Vertikalt oppsett: avatar på toppen, navn/rolle/kontakt sentrert under.
+ * Bytte fra horisontalt 12. mai 2026 — gir bedre plass til lengre roller
+ * og e-postadresser uten å bryte ut av kortet.
  */
 
 .person-card {
   display: flex;
+  flex-direction: column;
   align-items: center;
-  gap: var(--s-4);
+  text-align: center;
+  gap: var(--s-3);
   padding: var(--s-5);
   background: var(--color-bg-surface);
   border: var(--bw-1) solid var(--color-border-soft);
@@ -13,8 +19,8 @@
 }
 
 .person-card__avatar {
-  width: 64px;
-  height: 64px;
+  width: 80px;
+  height: 80px;
   flex: 0 0 auto;
   border-radius: var(--r-full);
   background: var(--mj-surface-1);
@@ -22,7 +28,10 @@
 }
 .person-card__avatar img { width: 100%; height: 100%; object-fit: cover; }
 
-.person-card__main { flex: 1; min-width: 0; }
+.person-card__main {
+  width: 100%;
+  min-width: 0;
+}
 
 .person-card__name {
   font-size: var(--fs-body);
@@ -33,14 +42,16 @@
 .person-card__role {
   font-size: var(--fs-caption);
   color: var(--color-text-secondary);
-  margin: 0;
+  margin: var(--s-1) 0 0;
 }
 
 .person-card__contact {
   display: flex;
   flex-direction: column;
   gap: var(--s-1);
-  margin-top: var(--s-2);
+  margin-top: var(--s-3);
+  word-break: break-word;
+  overflow-wrap: anywhere;
 }
 .person-card__contact a {
   font-size: var(--fs-body-sm);
