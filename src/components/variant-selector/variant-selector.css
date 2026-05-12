@@ -8,9 +8,9 @@
  *
  *   Matrise (--matrix)       For mange varianter (10+). Festemidler, bolter,
  *                            der hver kombinasjon er en egen SKU. Tabell-
- *                            visning med antall-felt per rad og samle-CTA
- *                            som lar kunden legge flere varianter i kurv
- *                            i én operasjon. Avtalt med Molde Jarnvare
+ *                            visning der hver rad har antall-felt + egen
+ *                            handlekurv-knapp — kunden "dytter" én rad
+ *                            av gangen til kurv. Avtalt med Molde Jarnvare
  *                            12. mai 2026.
  */
 
@@ -140,33 +140,44 @@
   justify-content: flex-end;
 }
 
+/* Legg-til-knapp per rad — handlekurv-ikon til høyre for antall-velger.
+   Ingen samle-CTA i footer; én rad = én aksjon. */
+.variant-selector__matrix-add {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  background: var(--color-action-primary);
+  color: var(--color-text-on-brand);
+  border: 0;
+  border-radius: var(--r-sm);
+  cursor: pointer;
+  transition: background var(--duration-fast) var(--ease-standard);
+}
+.variant-selector__matrix-add:hover { background: var(--color-action-primary-hover); }
+.variant-selector__matrix-add:active { background: var(--color-action-primary-active); }
+.variant-selector__matrix-add:disabled {
+  background: var(--mj-surface-2);
+  color: var(--color-text-tertiary);
+  cursor: not-allowed;
+}
+.variant-selector__matrix-add svg {
+  width: var(--icon-md);
+  height: var(--icon-md);
+  stroke: currentColor;
+  fill: none;
+  stroke-width: 1.6;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
 /* Disabled-rad (utsolgt / ikke tilgjengelig) */
 .variant-selector__matrix-row--disabled th,
 .variant-selector__matrix-row--disabled td {
   color: var(--color-text-tertiary);
 }
 .variant-selector__matrix-row--disabled .variant-selector__matrix-qty { opacity: 0.5; pointer-events: none; }
-
-/* Footer — samle-CTA */
-.variant-selector__matrix-actions {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  justify-content: space-between;
-  gap: var(--s-4);
-  padding: var(--s-4);
-  background: var(--mj-surface-1);
-  border-radius: var(--r-md);
-}
-
-.variant-selector__matrix-summary {
-  font-size: var(--fs-body-sm);
-  color: var(--color-text-secondary);
-}
-.variant-selector__matrix-summary strong {
-  color: var(--color-text-primary);
-  font-weight: var(--fw-semibold);
-}
 
 /* Mobil: la tabellen scrolle horisontalt heller enn å bryte */
 @media (max-width: 640px) {
@@ -175,9 +186,5 @@
     -webkit-overflow-scrolling: touch;
     margin-inline: calc(-1 * var(--s-4));
     padding-inline: var(--s-4);
-  }
-  .variant-selector__matrix-actions {
-    flex-direction: column;
-    align-items: stretch;
   }
 }
