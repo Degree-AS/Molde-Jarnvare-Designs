@@ -1,0 +1,47 @@
+/**
+ * Accordion (§13.11) — bygget på native <details>/<summary>.
+ */
+
+.accordion {
+  display: flex;
+  flex-direction: column;
+}
+
+.accordion__item {
+  border-bottom: var(--bw-1) solid var(--color-border-soft);
+}
+.accordion__item:first-child {
+  border-top: var(--bw-1) solid var(--color-border-soft);
+}
+
+.accordion__summary {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--s-3);
+  padding: var(--s-4) 0;
+  font-family: var(--ff-sans);
+  font-size: var(--fs-body);
+  font-weight: var(--fw-semibold);
+  color: var(--color-text-primary);
+  cursor: pointer;
+  list-style: none;
+}
+.accordion__summary::-webkit-details-marker { display: none; }
+.accordion__summary:focus-visible { outline: none; box-shadow: var(--focus-ring); border-radius: var(--r-sm); }
+
+.accordion__icon {
+  flex: 0 0 auto;
+  font-size: var(--fs-h4);
+  transition: transform var(--duration-fast) var(--ease-standard);
+}
+.accordion__icon::before { content: "+"; }
+
+.accordion__item[open] .accordion__icon::before { content: "−"; }
+
+.accordion__content {
+  padding: 0 0 var(--s-4);
+  font-size: var(--fs-body);
+  line-height: var(--lh-relaxed);
+  color: var(--color-text-primary);
+}

@@ -1,0 +1,27 @@
+/**
+ * Progress bar (§12.12)
+ */
+
+.progress {
+  display: block;
+  width: 100%;
+  height: 8px;
+  background: var(--mj-surface-2);
+  border-radius: var(--r-full);
+  overflow: hidden;
+}
+
+.progress__fill {
+  display: block;
+  height: 100%;
+  background: var(--color-action-primary);
+  border-radius: inherit;
+  transition: width var(--duration-normal) var(--ease-standard);
+}
+
+.progress--success .progress__fill { background: var(--mj-success); }
+.progress--warning .progress__fill { background: var(--mj-warning); }
+.progress--error   .progress__fill { background: var(--mj-error); }
+
+.progress--sm { height: 4px; }
+.progress--lg { height: 12px; }

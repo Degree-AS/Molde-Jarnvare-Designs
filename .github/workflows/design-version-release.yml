@@ -1,0 +1,46 @@
+name: Design-versjon → Release
+
+# Når en tagg design-vN pushes, lag en GitHub Release som peker til de frosne
+# sidene på GitHub Pages. Selve snapshotet (versions/vN/) lages med
+# scripts/cut-version.sh og commites på vanlig måte før taggen pushes.
+
+on:
+  push:
+    tags:
+      - 'design-v*'
+
+permissions:
+  contents: write
+
+jobs:
+  release:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Lag release
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          tag="${GITHUB_REF_NAME}"          # f.eks. design-v2
+          ver="${tag#design-}"              # f.eks. v2
+          base="https://degree-as.github.io/Molde-Jarnvare-Designs/versions/${ver}"
+          notes="$(mktemp)"
+          {
+            echo "Frosset versjon **${ver}** av designsystemet for Molde Jarnvare."
+            echo
+            echo "- [Designretningslinjer](${base}/docs/designsystem.html)"
+            echo "- [Komponentbibliotek](${base}/src/components/index.html)"
+            echo "- [Komponentblokker / sidemaler](${base}/src/pages/index.html)"
+            echo "- [Tilgjengelighet (WCAG 2.2 AA)](${base}/docs/tilgjengelighet.html)"
+            echo
+            echo "Status og godkjenning følges i [versjonsloggen](https://degree-as.github.io/Molde-Jarnvare-Designs/versions/) og i Design-protokollen i Notion."
+            echo
+            echo "## Endringer"
+            git tag --sort=-creatordate --list 'design-v*' | sed -n '2p' | while read -r prev; do
+              [ -n "$prev" ] && git log --pretty='- %s' "${prev}..${tag}"
+            done
+          } > "$notes"
+          gh release create "$tag" --title "Designsystem ${ver}" --notes-file "$notes"

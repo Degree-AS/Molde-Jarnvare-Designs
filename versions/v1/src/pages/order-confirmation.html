@@ -1,0 +1,69 @@
+<!doctype html>
+<html lang="nb">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Ordre mottatt — Molde Jarnvare</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Source+Sans+3:wght@400;500;600;700;900&family=JetBrains+Mono:wght@400&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../styles/index.css">
+</head>
+<body>
+
+<header class="site-header">
+  <div class="site-header__inner">
+    <a class="site-header__logo" href="/" aria-label="Molde Jarnvare"><img src="../assets/logos/molde-jarnvare-positive.png" alt="Molde Jarnvare" class="site-header__logo-img"></a>
+  </div>
+
+  <div class="site-header__main">
+    <div class="site-header__main-inner">
+      <nav class="site-header__nav" aria-label="Hovedkategorier">
+        <a class="site-header__nav-link" href="#">Festemidler</a>
+        <a class="site-header__nav-link" href="#">Verktøy</a>
+        <a class="site-header__nav-link" href="#">Verneutstyr</a>
+        <a class="site-header__nav-link" href="#">Hydraulikk</a>
+        <a class="site-header__nav-link" href="#">Sveis</a>
+        <a class="site-header__nav-link" href="#">Industri</a>
+        <a class="site-header__nav-link" href="#">Hurtigbestilling</a>
+        <a class="site-header__nav-link site-header__nav-link--accent" href="#">Tilbud</a>
+      </nav>
+    </div>
+  </div>
+</header>
+
+<main class="container container--narrow">
+  <div class="order-confirmation">
+    <div class="order-confirmation__icon">✓</div>
+    <h1 class="order-confirmation__title">Ordre mottatt</h1>
+    <p class="order-confirmation__id">Ordre 234 519</p>
+    <p class="order-confirmation__desc">
+      Vi har mottatt bestillingen din og har sendt en kvittering til
+      <strong>martin@degree.no</strong>. Du kan følge ordrestatus i Min konto.
+    </p>
+    <div class="order-confirmation__actions">
+      <a class="btn btn--primary" href="account.html">Gå til Min konto</a>
+      <a class="btn btn--outline" href="home.html">Tilbake til forsiden</a>
+    </div>
+  </div>
+
+  <section class="card" style="margin-top: var(--s-8);">
+    <h2 class="card__title">Leveringsoversikt</h2>
+    <div class="data-table__wrap">
+      <table class="data-table">
+        <thead><tr><th>Artikkel</th><th>SKU</th><th class="is-numeric">Antall</th><th class="is-numeric">Pris</th></tr></thead>
+        <tbody>
+          <tr><td>Sekskantskrue M8 × 40 mm A4</td><td><code>4815-162-30</code></td><td class="is-numeric">200</td><td class="is-numeric">kr 560,–</td></tr>
+          <tr><td>3M arbeidshansker, str. 10</td><td><code>7700-099-00</code></td><td class="is-numeric">6</td><td class="is-numeric">kr 474,–</td></tr>
+          <tr><td>Hilti TE 6-A36 borhammer</td><td><code>2210-507-12</code></td><td class="is-numeric">1</td><td class="is-numeric">kr 8 990,–</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+</main>
+
+<footer class="site-footer">
+  <div class="site-footer__inner"><div class="site-footer__bottom"><span>&copy; 2026 Molde Jarnvare AS</span></div></div>
+</footer>
+
+</body>
+</html>

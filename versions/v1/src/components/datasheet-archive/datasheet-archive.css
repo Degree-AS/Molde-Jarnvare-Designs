@@ -1,0 +1,50 @@
+/**
+ * Datablad / sertifikat-arkiv (§14.19)
+ */
+
+.datasheet-archive {
+  display: flex;
+  flex-direction: column;
+  gap: var(--s-2);
+}
+
+.datasheet-archive__item {
+  display: flex;
+  align-items: center;
+  gap: var(--s-3);
+  padding: var(--s-3) var(--s-4);
+  background: var(--color-bg-surface);
+  border: var(--bw-1) solid var(--color-border-soft);
+  border-radius: var(--r-sm);
+  text-decoration: none;
+  color: var(--color-text-primary);
+  transition: border-color var(--duration-fast) var(--ease-standard);
+}
+.datasheet-archive__item:hover { border-color: var(--color-border-brand); }
+
+.datasheet-archive__icon {
+  width: var(--icon-md);
+  height: var(--icon-md);
+  flex: 0 0 auto;
+  color: var(--mj-error);
+}
+
+.datasheet-archive__main { flex: 1; min-width: 0; }
+
+.datasheet-archive__title {
+  font-size: var(--fs-body-sm);
+  font-weight: var(--fw-semibold);
+  margin: 0;
+}
+
+.datasheet-archive__meta {
+  font-size: var(--fs-caption);
+  color: var(--color-text-secondary);
+}
+
+.datasheet-archive__size {
+  font-family: var(--ff-mono);
+  font-size: var(--fs-mono-sm);
+  color: var(--color-text-tertiary);
+  font-variant-numeric: tabular-nums;
+}

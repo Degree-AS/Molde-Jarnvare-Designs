@@ -1,0 +1,210 @@
+/**
+ * Hero
+ * -----------------------------------------------------------------------------
+ * Stort, visuelt åpningsfelt øverst på sider. Brukes på forside, kategorisider
+ * og kampanjesider. Inneholder eyebrow, tittel, lead-tekst, primære CTA-er og
+ * valgfri media (bilde / placeholder).
+ *
+ * Block:    .hero
+ * Modifier: .hero--dark   — Reflex-blå bakgrunn med hvit tekst
+ *           .hero--split  — to-kolonne layout med media på desktop
+ *
+ * Bygd med tokens fra src/styles/tokens. Ingen hardkodede verdier.
+ * -----------------------------------------------------------------------------
+ */
+
+.hero {
+  position: relative;
+  background: var(--color-bg-page);
+  color: var(--color-text-primary);
+  padding-block: var(--s-12);
+}
+
+@media (min-width: 1024px) {
+  .hero {
+    padding-block: var(--s-13);
+  }
+}
+
+.hero__inner {
+  width: 100%;
+  max-width: var(--container-wide);
+  margin-inline: auto;
+  padding-inline: var(--gutter);
+  display: grid;
+  gap: var(--s-9);
+}
+
+/* Split layout — media ved siden av tekst på desktop */
+@media (min-width: 1024px) {
+  .hero--split .hero__inner {
+    grid-template-columns: 7fr 5fr;
+    align-items: center;
+    gap: var(--s-10);
+  }
+}
+
+/* Innhold ----------------------------------------------------------------- */
+
+.hero__eyebrow {
+  font-family: var(--ff-sans);
+  font-size: var(--fs-overline);
+  font-weight: var(--fw-semibold);
+  line-height: var(--lh-normal);
+  letter-spacing: var(--ls-wider);
+  text-transform: uppercase;
+  color: var(--color-text-link);
+  margin: 0 0 var(--s-4);
+}
+
+.hero__title {
+  font-family: var(--ff-sans);
+  font-size: var(--fs-display);
+  font-weight: var(--fw-black);
+  line-height: var(--lh-tight);
+  letter-spacing: var(--ls-tight);
+  color: var(--color-text-primary);
+  margin: 0;
+  max-width: 18ch;
+}
+
+.hero__lead {
+  font-family: var(--ff-sans);
+  font-size: var(--fs-body-lg);
+  font-weight: var(--fw-regular);
+  line-height: var(--lh-relaxed);
+  color: var(--color-text-secondary);
+  max-width: 56ch;
+  margin: var(--s-5) 0 0;
+}
+
+.hero__actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--s-3);
+  margin-top: var(--s-7);
+}
+
+/* CTA — midlertidig inline-styling. Flyttes til Button-komponent når den
+   eksisterer. Da blir dette: <a class="btn btn--primary"> ... */
+
+.hero__cta {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--s-2);
+  height: 44px;
+  padding-inline: var(--s-6);
+  border-radius: var(--r-sm);
+  border: var(--bw-1) solid transparent;
+  font-family: var(--ff-sans);
+  font-size: var(--fs-body);
+  font-weight: var(--fw-semibold);
+  letter-spacing: var(--ls-wide);
+  text-decoration: none;
+  background: var(--color-action-primary);
+  color: var(--color-text-on-brand);
+  cursor: pointer;
+  transition:
+    background var(--duration-fast) var(--ease-standard),
+    box-shadow var(--duration-fast) var(--ease-standard),
+    border-color var(--duration-fast) var(--ease-standard);
+}
+
+.hero__cta:hover {
+  background: var(--color-action-primary-hover);
+}
+
+.hero__cta:active {
+  background: var(--color-action-primary-active);
+}
+
+.hero__cta:focus-visible {
+  outline: none;
+  box-shadow: var(--focus-ring);
+}
+
+.hero__cta--secondary {
+  background: transparent;
+  color: var(--color-action-primary);
+  border-color: var(--color-border-brand);
+}
+
+.hero__cta--secondary:hover {
+  background: var(--color-bg-brand-soft);
+}
+
+/* Media ------------------------------------------------------------------- */
+
+.hero__media {
+  position: relative;
+  border-radius: var(--r-xl);
+  overflow: hidden;
+  aspect-ratio: var(--ar-landscape-4-3);
+  background: var(--mj-surface-1);
+  box-shadow: var(--shadow-2);
+}
+
+.hero__media > img,
+.hero__media > picture > img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+/* Tom-tilstand: følger §10.5 — MJ-merke i 30 % transparens midtstilt */
+.hero__media:empty::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(135deg,
+      var(--mj-blue-20) 0%,
+      var(--mj-blue-40) 100%);
+}
+
+/* Dark-variant ----------------------------------------------------------- */
+
+.hero--dark {
+  background: var(--color-bg-brand);
+  color: var(--color-text-on-brand);
+}
+
+.hero--dark .hero__eyebrow {
+  /* Brand-orange har ~5.4:1 kontrast mot Reflex blå — OK for små CAPS */
+  color: var(--mj-orange);
+}
+
+.hero--dark .hero__title {
+  color: var(--color-text-on-brand);
+}
+
+.hero--dark .hero__lead {
+  color: var(--color-text-on-brand);
+  opacity: 0.85;
+}
+
+.hero--dark .hero__cta {
+  background: var(--mj-white);
+  color: var(--color-action-primary);
+}
+
+.hero--dark .hero__cta:hover {
+  background: var(--mj-blue-10);
+}
+
+.hero--dark .hero__cta--secondary {
+  background: transparent;
+  color: var(--color-text-on-brand);
+  border-color: rgba(255, 255, 255, 0.5);
+}
+
+.hero--dark .hero__cta--secondary:hover {
+  background: rgba(255, 255, 255, 0.1);
+  border-color: var(--color-text-on-brand);
+}
+
+.hero--dark .hero__cta:focus-visible {
+  box-shadow: 0 0 0 3px rgba(255, 255, 255, 0.5);
+}

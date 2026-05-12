@@ -1,0 +1,92 @@
+<!doctype html>
+<html lang="nb">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Hero — Molde Jarnvare designsystem</title>
+
+  <!-- Webfont (Source Sans 3 — webfont-erstatning for Aptos, jf. §5.1) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Source+Sans+3:wght@400;500;600;700;900&family=JetBrains+Mono:wght@400&display=swap"
+    rel="stylesheet">
+
+  <!-- Tokens og komponent -->
+  <link rel="stylesheet" href="../../styles/tokens/index.css">
+  <link rel="stylesheet" href="./hero.css">
+
+  <style>
+    /* Minimal preview-reset. Blir flyttet til src/styles/base/reset.css når den eksisterer. */
+    *, *::before, *::after { box-sizing: border-box; }
+    html { -webkit-text-size-adjust: 100%; }
+    body {
+      margin: 0;
+      font-family: var(--ff-sans);
+      color: var(--color-text-primary);
+      background: var(--color-bg-page);
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+    img { max-width: 100%; }
+
+    /* Etikett over hver variant — kun for denne previewen */
+    .preview-label {
+      max-width: var(--container-wide);
+      margin: 0 auto;
+      padding: var(--s-9) var(--gutter) var(--s-2);
+      font-family: var(--ff-sans);
+      font-size: var(--fs-overline);
+      font-weight: var(--fw-semibold);
+      letter-spacing: var(--ls-wider);
+      text-transform: uppercase;
+      color: var(--color-text-tertiary);
+    }
+    .preview-label:first-child { padding-top: var(--s-7); }
+  </style>
+</head>
+<body>
+
+  <!-- Variant 1: Lys, split med media -->
+  <p class="preview-label">Variant — light, split with media</p>
+  <section class="hero hero--split">
+    <div class="hero__inner">
+      <div class="hero__content">
+        <p class="hero__eyebrow">På lag med industrien</p>
+        <h1 class="hero__title">Verktøyet du trenger, på lager i Molde.</h1>
+        <p class="hero__lead">
+          Mer enn 30&nbsp;000 unike artikler — fra festemidler og verneutstyr til
+          hydraulikk og sveiseutstyr. Klart for henting eller levering i Møre og Romsdal.
+        </p>
+        <div class="hero__actions">
+          <a class="hero__cta" href="#">Søk i sortimentet</a>
+          <a class="hero__cta hero__cta--secondary" href="#">Be om tilbud</a>
+        </div>
+      </div>
+
+      <!-- Tom hero__media viser placeholder-gradient. Bytt med <img> i produksjon. -->
+      <div class="hero__media" role="img"
+           aria-label="Industrielle festemidler på lager hos Molde Jarnvare"></div>
+    </div>
+  </section>
+
+  <!-- Variant 2: Mørk, uten media -->
+  <p class="preview-label">Variant — dark, full width</p>
+  <section class="hero hero--dark">
+    <div class="hero__inner">
+      <div class="hero__content">
+        <p class="hero__eyebrow">Siden 1930</p>
+        <h1 class="hero__title">På lag med industrien.</h1>
+        <p class="hero__lead">
+          90&nbsp;% av omsetningen vår kommer fra Møre og Romsdal — fordi vi er der det
+          skjer, med varene du trenger på lager.
+        </p>
+        <div class="hero__actions">
+          <a class="hero__cta" href="#">Snakk med produktansvarlig</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</body>
+</html>

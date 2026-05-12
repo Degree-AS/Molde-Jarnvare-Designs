@@ -1,0 +1,48 @@
+/**
+ * Pagination (§13.7)
+ */
+
+.pagination {
+  display: flex;
+  align-items: center;
+  gap: var(--s-1);
+  font-family: var(--ff-sans);
+  font-size: var(--fs-body-sm);
+}
+
+.pagination__btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 36px;
+  height: 36px;
+  padding: 0 var(--s-3);
+  border-radius: var(--r-sm);
+  background: transparent;
+  color: var(--color-text-primary);
+  border: var(--bw-1) solid transparent;
+  cursor: pointer;
+  font-variant-numeric: tabular-nums;
+  transition: background var(--duration-fast) var(--ease-standard);
+}
+
+.pagination__btn:hover { background: var(--mj-surface-1); }
+.pagination__btn:focus-visible { outline: none; box-shadow: var(--focus-ring); }
+
+.pagination__btn[aria-current="page"],
+.pagination__btn.is-active {
+  background: var(--color-action-primary);
+  color: var(--color-text-on-brand);
+  font-weight: var(--fw-semibold);
+}
+
+.pagination__btn:disabled { opacity: 0.4; cursor: not-allowed; }
+
+.pagination__ellipsis {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 36px;
+  height: 36px;
+  color: var(--color-text-tertiary);
+}

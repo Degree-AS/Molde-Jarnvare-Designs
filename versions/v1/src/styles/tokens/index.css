@@ -1,0 +1,41 @@
+/**
+ * Molde Jarnvare — Design tokens
+ * -----------------------------------------------------------------------------
+ * Single entry-point for alle tokens. Importer denne filen én gang i
+ * applikasjonens rot-stylesheet:
+ *
+ *   @import "@mj/tokens";          // hvis pakket
+ *   @import "src/styles/tokens";   // direkte fra repo
+ *
+ * Tokens er definert som CSS custom properties på :root og er trygge å
+ * referere via var(--token-name) i komponent-CSS.
+ *
+ * Generert fra DESIGN_SYSTEM.md (v0.1).
+ * -----------------------------------------------------------------------------
+ */
+
+/* Primitives og semantic colors */
+@import "./colors.css";
+
+/* Type */
+@import "./typography.css";
+
+/* Space */
+@import "./spacing.css";
+
+/* Layout */
+@import "./layout.css";
+
+/* Borders, radii, elevation */
+@import "./borders.css";
+@import "./radii.css";
+@import "./shadows.css";
+
+/* Motion */
+@import "./motion.css";
+
+/* Iconography */
+@import "./iconography.css";
+
+/* Bilder */
+@import "./aspect-ratios.css";

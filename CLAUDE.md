@@ -67,10 +67,14 @@ Promote inline ad-hoc styling to a new component on the **second** use, not the 
 
 `src/pages/*.html` compose components into full pages. `src/pages/_partials.html` is a **non-runnable** reference of copy-paste blocks (header, footer, etc.) — do not link to it from a page; copy from it. When a backend templating engine is introduced later, `_partials.html` becomes the master layout.
 
+### Versioned snapshots — `versions/`
+
+`versions/vN/` are frozen `cp -R` copies of `docs/` + `src/` + `index.html` at the time the version was cut — same inner structure, so all relative links/imports inside the snapshot keep working untouched. They exist so the customer can approve a concrete version while later changes become a new one. `versions/index.html` is the human-facing version log (status + links + changelog), published at `/versions/`. Cut a new one with `scripts/cut-version.sh vN`, then add a block to `versions/index.html`, commit, and tag `design-vN` (the `.github/workflows/design-version-release.yml` workflow turns the tag into a GitHub Release). Never edit anything under `versions/vN/` after it's cut, and never let a snapshot link out of its own subtree. See `versions/README.md`.
+
 ## House rules when editing
 
 - Match existing comment density and Norwegian voice in CSS comments.
 - New token? Add to the right `src/styles/tokens/<file>.css` and re-export through `src/styles/tokens/index.css` if it's a new file.
 - New component? Create the dir, add the CSS, add the `@import` in `src/styles/index.css` in the correct §-section, and (recommended) add a standalone preview `<name>.html`.
-- Touching `docs/*.html`? Keep tokens inlined. Don't introduce `@import` to `src/`. If you change tokens that the snapshot uses, copy the new values into the inline `<style>` deliberately — or duplicate the file under `docs/archive/` first if the user wants to preserve the prior version.
+- Touching `docs/*.html`? Keep tokens inlined. Don't introduce `@import` to `src/`. If you change tokens that the snapshot uses, copy the new values into the inline `<style>` deliberately. To preserve a prior state, cut a `versions/vN/` snapshot (see above) — not an ad-hoc `docs/archive/` copy.
 - The Aptos brand font has a webfont substitute: Source Sans 3. JetBrains Mono for code/SKU/numbers.

@@ -1,0 +1,31 @@
+/**
+ * Banner (§13.16) — sidefyllt informasjonsstripe (frakt, varslinger).
+ */
+
+.banner {
+  display: flex;
+  align-items: center;
+  gap: var(--s-3);
+  padding: var(--s-3) var(--gutter);
+  font-family: var(--ff-sans);
+  font-size: var(--fs-body-sm);
+  background: var(--mj-info-bg);
+  color: var(--mj-info);
+  border-bottom: var(--bw-1) solid var(--mj-blue-20);
+}
+
+.banner--success { background: var(--mj-success-bg); color: var(--mj-success); border-bottom-color: rgba(31, 122, 58, 0.2); }
+.banner--warning { background: var(--mj-warning-bg); color: var(--mj-warning); border-bottom-color: rgba(184, 133, 31, 0.25); }
+.banner--error   { background: var(--mj-error-bg);   color: var(--mj-error);   border-bottom-color: rgba(158, 40, 53, 0.25); }
+.banner--brand   { background: var(--mj-orange);     color: var(--mj-ink); border-bottom-color: transparent; font-weight: var(--fw-semibold); }
+
+.banner__icon { flex: 0 0 auto; }
+.banner__content { flex: 1; }
+.banner__close {
+  background: transparent;
+  border: 0;
+  color: inherit;
+  cursor: pointer;
+  font-size: var(--fs-h4);
+  line-height: 1;
+}

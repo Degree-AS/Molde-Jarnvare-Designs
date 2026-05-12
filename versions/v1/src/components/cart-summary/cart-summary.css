@@ -1,0 +1,49 @@
+/**
+ * Cart summary (§14.11)
+ */
+
+.cart-summary {
+  display: flex;
+  flex-direction: column;
+  gap: var(--s-3);
+  padding: var(--s-6);
+  background: var(--color-bg-surface);
+  border: var(--bw-1) solid var(--color-border-soft);
+  border-radius: var(--r-md);
+}
+
+.cart-summary__title {
+  font-size: var(--fs-h4);
+  font-weight: var(--fw-bold);
+  margin: 0 0 var(--s-2);
+}
+
+.cart-summary__row {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  font-size: var(--fs-body-sm);
+  font-variant-numeric: tabular-nums;
+}
+
+.cart-summary__row--total {
+  padding-top: var(--s-3);
+  border-top: var(--bw-1) solid var(--color-border-default);
+  font-size: var(--fs-h4);
+  font-weight: var(--fw-bold);
+  margin-top: var(--s-2);
+}
+
+.cart-summary__label-meta {
+  display: block;
+  font-size: var(--fs-caption);
+  color: var(--color-text-secondary);
+  font-weight: var(--fw-regular);
+}
+
+.cart-summary__actions {
+  display: flex;
+  flex-direction: column;
+  gap: var(--s-2);
+  margin-top: var(--s-3);
+}
