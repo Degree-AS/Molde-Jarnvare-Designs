@@ -10,6 +10,23 @@ Working language: Norwegian (`lang="nb"`). Code/comments in Norwegian; keep it t
 
 The system was generated from a `DESIGN_SYSTEM.md` spec (v0.1) that is **not in this repo** — section numbers like §4, §12.1, §15.7 in comments/markup refer to it. Treat those references as anchors only; don't try to open the file.
 
+## How this repo is worked on (read this first)
+
+This repo is usually driven by a **non-technical user via Claude** — translate plain-language asks into the right plumbing, commit with a conventional-commit message, and push. Never make the user touch git. Small changes can go straight to `main`; use a short-lived branch + PR only if the user asks for review.
+
+Common requests and the correct response:
+
+- **"Change a color / spacing / type / token"** → edit the right file under `src/styles/tokens/` (re-export through `tokens/index.css` if it's a new file). If a `docs/*.html` snapshot uses that token, copy the new value into its inline `<style>` deliberately — `docs/` does not auto-update. Commit, push.
+- **"Add / change a component"** → follow the Component convention below (dir = block = filename, strict BEM, add the `@import` line in the correct §-section of `src/styles/index.css`, add a standalone preview). Commit, push.
+- **"Cut version N" / "freeze the current state" / "make a version for the customer to approve"** → run `scripts/cut-version.sh vN`; then add a new block at the **top** of the "Versjoner" list in `versions/index.html` (today's date, badge `Til godkjenning hos Molde Jarnvare`, links to the three artifacts, a short changelog vs the previous version); if relevant flip the previous block's badge to `Erstattet`; commit `chore(versions): klipp vN`; `git tag design-vN`; push branch + tags (the release workflow turns the tag into a GitHub Release). See `versions/README.md`.
+- **"<Customer> approved version N"** → in `versions/index.html` change vN's badge to `Godkjent <date>`; commit; push. (The human still records the approval in the Notion Design-protokoll — that lives outside this repo.)
+
+Hard rules:
+
+- **Routine edits to `docs/` or `src/` do NOT create a version.** Only cut a `versions/vN/` snapshot when explicitly asked for one.
+- **Never edit anything under an existing `versions/vN/`** — those are frozen by definition. To preserve a state, cut a new version.
+- Don't push tags or open releases unless the request was about cutting/approving a version.
+
 ## How to "run" things
 
 There is nothing to install or build. To preview:
