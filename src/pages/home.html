@@ -67,34 +67,86 @@
           <a class="hero__cta hero__cta--secondary" href="#">Be om tilbud</a>
         </div>
       </div>
-      <div class="hero__media" role="img" aria-label="Industrielle festemidler på lager hos Molde Jarnvare"></div>
+      <div class="hero__media"><img src="../assets/images/products/festemidler-hero.jpg" alt="Sortiment av festemidler — sekskantskruer, mutter, skiver i ulike dimensjoner"></div>
     </div>
   </section>
 
-  <!-- Kategorier -->
+  <!-- Produktansvarlige — kort vei til faglig dialog -->
   <section class="container" style="padding-block: var(--s-10);">
-    <h2 class="t-h2" style="margin-bottom: var(--s-7);">Hovedkategorier</h2>
+    <header style="margin-bottom: var(--s-7); max-width: 60ch;">
+      <h2 class="t-h2">Snakk med fagansvarlig</h2>
+      <p style="font-size: var(--fs-body-lg); color: var(--color-text-secondary); margin: var(--s-3) 0 0;">Du kommer alltid til en som kan faget. Ring eller skriv direkte til den som har ansvaret for det du leter etter.</p>
+    </header>
+
     <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: var(--s-4);">
-      <a class="category-card" href="#">
-        <span class="category-card__icon">🔩</span>
-        <h3 class="category-card__title">Festemidler</h3>
-        <span class="category-card__count">8 200 artikler</span>
-      </a>
-      <a class="category-card" href="#">
-        <span class="category-card__icon">🔧</span>
-        <h3 class="category-card__title">Verktøy</h3>
-        <span class="category-card__count">5 400 artikler</span>
-      </a>
-      <a class="category-card" href="#">
-        <span class="category-card__icon">⛑️</span>
-        <h3 class="category-card__title">Verneutstyr</h3>
-        <span class="category-card__count">3 100 artikler</span>
-      </a>
-      <a class="category-card category-card--brand" href="#">
-        <span class="category-card__icon">⚙️</span>
-        <h3 class="category-card__title">Hydraulikk</h3>
-        <span class="category-card__count">2 700 artikler</span>
-      </a>
+
+      <div class="person-card">
+        <div class="person-card__avatar"></div>
+        <div class="person-card__main">
+          <h3 class="person-card__name">Ola Nordmann</h3>
+          <p class="person-card__role">Produktansvarlig festemidler</p>
+          <p style="font-size: var(--fs-caption); color: var(--color-text-tertiary); margin: var(--s-1) 0 0;">8 200 artikler · DIN, ISO, A4 syrefast</p>
+          <div class="person-card__contact">
+            <a href="tel:71254201">71 25 42 01</a>
+            <a href="mailto:ola@moldejarnvare.no">ola@moldejarnvare.no</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="person-card">
+        <div class="person-card__avatar"></div>
+        <div class="person-card__main">
+          <h3 class="person-card__name">Kari Bergshaug</h3>
+          <p class="person-card__role">Produktansvarlig verktøy</p>
+          <p style="font-size: var(--fs-caption); color: var(--color-text-tertiary); margin: var(--s-1) 0 0;">5 400 artikler · håndverktøy, elektroverktøy, slipemidler</p>
+          <div class="person-card__contact">
+            <a href="tel:71254202">71 25 42 02</a>
+            <a href="mailto:kari@moldejarnvare.no">kari@moldejarnvare.no</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="person-card">
+        <div class="person-card__avatar"></div>
+        <div class="person-card__main">
+          <h3 class="person-card__name">Per Olav Stenløkk</h3>
+          <p class="person-card__role">Produktansvarlig verneutstyr</p>
+          <p style="font-size: var(--fs-caption); color: var(--color-text-tertiary); margin: var(--s-1) 0 0;">3 100 artikler · hansker, briller, hjelmer, fottøy</p>
+          <div class="person-card__contact">
+            <a href="tel:71254203">71 25 42 03</a>
+            <a href="mailto:per.olav@moldejarnvare.no">per.olav@moldejarnvare.no</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="person-card">
+        <div class="person-card__avatar"></div>
+        <div class="person-card__main">
+          <h3 class="person-card__name">Lars Indresøvde</h3>
+          <p class="person-card__role">Produktansvarlig hydraulikk</p>
+          <p style="font-size: var(--fs-caption); color: var(--color-text-tertiary); margin: var(--s-1) 0 0;">2 700 artikler · slanger, koblinger, sylindere</p>
+          <div class="person-card__contact">
+            <a href="tel:71254204">71 25 42 04</a>
+            <a href="mailto:lars@moldejarnvare.no">lars@moldejarnvare.no</a>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- "På lag med industrien" — visuelt break med marketing-bilde -->
+  <section style="background: var(--color-bg-surface-alt); padding-block: var(--s-10);">
+    <div class="container" style="display: grid; grid-template-columns: 1fr 1fr; gap: var(--s-9); align-items: center;">
+      <figure style="margin: 0;">
+        <img src="../assets/images/marketing/slangeverksted-presse.jpg" alt="Operatør presser en hydraulikkslange på Uniflex-maskin i serviceverkstedet" style="width: 100%; border-radius: var(--r-lg); aspect-ratio: 16/9; object-fit: cover;">
+      </figure>
+      <div>
+        <p style="font-size: var(--fs-overline); letter-spacing: var(--ls-wider); text-transform: uppercase; font-weight: var(--fw-semibold); color: var(--mj-blue); margin: 0 0 var(--s-3);">Service og verksted</p>
+        <h2 class="t-h2" style="margin: 0 0 var(--s-4);">Slangepressing samme dag</h2>
+        <p style="font-size: var(--fs-body-lg); color: var(--color-text-secondary); margin: 0 0 var(--s-5); max-width: 50ch;">Ta med slangen, send mål, eller la oss måle på stedet. Vi presser, trykktester og leverer — fra ett enkelt skift til komplette hydraulikkpakker.</p>
+        <a class="btn btn--outline btn--md" href="#">Les om serviceverkstedet</a>
+      </div>
     </div>
   </section>
 
