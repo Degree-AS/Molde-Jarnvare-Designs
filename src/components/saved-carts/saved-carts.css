@@ -1,7 +1,7 @@
 /**
- * Saved carts / lagrede handlekurver (§14.34)
+ * Saved carts / stored shopping carts (§14.34)
  *
- * En kunde kan ha én aktiv kurv + flere lagrede kurver (eks.
+ * En customer kan ha one active kurv + flere lagrede kurver (excl.
  * "Hjelset onsdag", "Tafjord uke 22"). Switch mellom dem flytter
  * lagret kurv til aktiv. Lagrede kurver respekterer prishistorikk —
  * pris kan ha endret seg siden lagring, vises som diff ved henting.
@@ -33,7 +33,7 @@
 .saved-cart__meta { font-size: var(--fs-caption); color: var(--color-text-secondary); margin: 2px 0 0; }
 .saved-cart__actions { display: flex; gap: var(--s-2); flex-wrap: wrap; }
 
-/* "Aktiv kurv"-banner over cart.html */
+/* "Active cart" banner above cart.html */
 .cart-switcher {
   display: flex;
   flex-wrap: wrap;

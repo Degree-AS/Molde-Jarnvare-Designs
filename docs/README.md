@@ -1,76 +1,77 @@
-# `/docs` — klient-vendt dokumentasjon
+# `/docs` — client-facing documentation
 
-Denne mappa inneholder **selvstendige HTML-presentasjoner** av designsystemet,
-ment for ledelsen, kunden og eksterne lesere. Skiller seg fra `src/`:
+This folder contains **self-contained HTML presentations** of the design
+system, aimed at MJ leadership, the client, and external readers. Different
+from `src/`:
 
-| Mappe | Hvem leser? | Hva ser de? |
-|-------|-------------|-------------|
-| `src/components/`, `src/pages/` | Utviklere & designere | Live markup + CSS, slik det faktisk vil fungere |
-| `docs/` | Kunde, ledelse, eksterne | Forklarende sider om *hvorfor* og *hvordan* |
+| Folder | Audience | Content |
+|---|---|---|
+| `src/components/`, `src/pages/` | Developers & designers | Live markup + CSS as it will actually work |
+| `docs/` | Client, leadership, external | Explanatory pages about *why* and *how* |
 
-## Hvorfor selvstendige filer
+## Why self-contained files
 
-Hver fil i `docs/` skal kunne sendes alene — som vedlegg, eller deles via en
-direkte lenke til én fil — uten at resten av repoet må følge med.
+Each file in `docs/` must be sendable on its own — as an attachment, or via
+a direct link to a single file — without the rest of the repo following along.
 
-Det betyr:
+That means:
 
-- **Tokens inlines** øverst i `<style>`. Ingen `@import` til `src/styles/`.
-- **Ingen relative paths** ut av mappa, bortsett fra navigerings-lenker fra
-  `index.html` til `src/pages/` og `src/components/` (disse er bekvemmelighet,
-  ikke avhengighet for selve dokumentet).
-- **Inline SVG-ikoner** istedenfor `<img>` der det går an.
+- **Tokens are inlined** in the top `<style>`. No `@import` to `src/styles/`.
+- **No relative paths** out of the folder, except for navigation links from
+  `index.html` to `src/pages/` and `src/components/` (those are convenience
+  links, not document dependencies).
+- **Inline SVG icons** instead of `<img>` where possible.
 
-Konsekvens: når vi oppdaterer en token i `src/styles/tokens/`, oppdateres ikke
-disse docs automatisk. De er **versjonerte snapshots**. Det er en feature: en
-docs-fil med dato 2026-05-06 viser systemet slik det var den dagen.
+Consequence: when we update a token in `src/styles/tokens/`, these docs do
+**not** update automatically. They are **versioned snapshots**. That is a
+feature: a docs file dated 2026-05-12 shows the system as it was that day.
 
-## Slik lager du en ny presentasjon
+## How to add a new presentation
 
-1. Kopier `designsystem.html` til et beskrivende navn:
-   - `brand-guide.html` for kortform-oversikt
-   - `presentasjon-2026-q2.html` for tids-spesifikk gjennomgang
-   - `tilgjengelighet.html` for tema-spesifikk dypdykk
+1. Copy `designsystem.html` to a descriptive filename:
+   - `brand-guide.html` for a short-form overview
+   - `presentation-2026-q2.html` for a time-specific walkthrough
+   - `accessibility-deep-dive.html` for a topic-specific deep dive
 
-2. Oppdater øverst i fila:
+2. Update the top of the file:
    - `<title>`
-   - `.hero__overline` (versjon + dato)
+   - `.hero__overline` (version + date)
    - `.hero__title`
    - `.hero__lead`
 
-3. Rediger seksjonene under. Hver seksjon har:
+3. Edit the sections below. Each section follows the pattern:
    ```html
-   <section class="section" id="seksjons-id">
-     <div class="section__num">NN / Kategori</div>
-     <h2 class="section__title">Seksjonstittel</h2>
-     <p class="section__lead">Ledetekst.</p>
+   <section class="section" id="section-id">
+     <div class="section__num">NN / Category</div>
+     <h2 class="section__title">Section title</h2>
+     <p class="section__lead">Lead text.</p>
      ...
    </section>
    ```
 
-4. Oppdater sidebar-navigasjonen (`.nav` på toppen) med korrekte ankre.
+4. Update the sidebar nav (`.nav` at the top) with the correct anchors.
 
-5. Legg en `<a class="card">` i `index.html` som peker på den nye fila.
+5. Add an `<a class="card">` entry to `index.html` pointing at the new file.
 
-## Versjonering av snapshots
+## Versioning snapshots
 
-Når dere har en stor revisjon (v0.2 → v1.0), behold den gamle fila og lag en
-ny. F.eks.:
+When there is a major revision (v0.2 → v1.0), keep the old file and create
+a new one. For example:
 
 ```
 docs/
-  designsystem.html             ← alltid nyeste versjon
+  designsystem.html             ← always the most recent version
   archive/
     designsystem-v0.1.html
     designsystem-v1.0.html
 ```
 
-Slik kan kunden alltid sammenligne med tidligere godkjente versjoner.
+This lets the client compare against earlier approved versions.
 
 ## GitHub Pages
 
-Hvis Pages aktiveres med kilde `main` / `/docs`, blir **kun denne mappa**
-publisert på `https://degree-as.github.io/Molde-Jarnvare-Designs/`. `../src/`
-er IKKE tilgjengelig fra Pages — derfor må alle ressurser docs trenger
-(bilder, logoer) ligge under `docs/assets/`, og lenker som peker til
-`../src/...` fungerer ikke i produksjon (kun lokalt fra repoet).
+When Pages is enabled with source `main` / `/docs`, **only this folder** is
+published at `https://degree-as.github.io/Molde-Jarnvare-Designs/`. `../src/`
+is NOT available on Pages — so any resource docs needs (images, logos)
+must live under `docs/assets/`, and links that point to `../src/...` work
+only locally from the repo, not on Pages.

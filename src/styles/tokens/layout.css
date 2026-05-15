@@ -3,8 +3,8 @@
  * -----------------------------------------------------------------------------
  * Source: DESIGN_SYSTEM.md §6.2, §6.3, §6.6
  *
- * Breakpoints, container-bredder, gutter og z-index.
- * Mobile-first: bruk @media (min-width: ...) i komponenter.
+ * Breakpoints, container widths, gutter and z-index.
+ * Mobile-first: use @media (min-width: ...) in components.
  * -----------------------------------------------------------------------------
  */
 
@@ -12,25 +12,25 @@
   /* ---------------------------------------------------------------------------
    * 6.2 Breakpoints
    * ------------------------------------------------------------------------ */
-  --bp-xs:  360px;  /* Liten mobil */
-  --bp-sm:  480px;  /* Stor mobil */
+  --bp-xs:  360px;  /* Small mobile */
+  --bp-sm:  480px;  /* Large mobile */
   --bp-md:  768px;  /* Tablet */
-  --bp-lg:  1024px; /* Liten desktop */
+  --bp-lg:  1024px; /* Small desktop */
   --bp-xl:  1280px; /* Standard desktop */
-  --bp-2xl: 1440px; /* Stor desktop */
+  --bp-2xl: 1440px; /* Large desktop */
 
   /* ---------------------------------------------------------------------------
-   * 6.3 Container-bredder
+   * 6.3 Container widths
    * ------------------------------------------------------------------------ */
-  --container-narrow:  720px;  /* Lang artikkel, juridisk tekst */
-  --container-default: 1280px; /* Standard sideinnhold */
-  --container-wide:    1440px; /* Forside-hero, brede produktrader */
-  --container-full:    100%;   /* Full bredde (header, footer, hero-bg) */
+  --container-narrow:  720px;  /* Long article, legal text */
+  --container-default: 1280px; /* Standard page content */
+  --container-wide:    1440px; /* Front page hero, wide product rows */
+  --container-full:    100%;   /* Full width (header, footer, hero bg) */
 
   --gutter: clamp(16px, 4vw, 48px);
 
   /* ---------------------------------------------------------------------------
-   * 6.6 Z-index-skala
+   * 6.6 Z-index scale
    * ------------------------------------------------------------------------ */
   --z-base:    0;
   --z-raised:  10;

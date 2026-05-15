@@ -1,12 +1,12 @@
 <!doctype html>
-<html lang="nb">
+<html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Molde Jarnvare — Designsystem (synkronisert med kode)</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
+<title>Molde Jarnvare — Design system (synchronised with code)</title>
+<link rel="preconnect" href="https://fonts.goandleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Source+Sans+3:ital,wght@0,400;0,500;0,600;0,700;0,900;1,400&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link href="https://fonts.goandleapis.com/css2?family=Source+Sans+3:ital,wght@0,400;0,500;0,600;0,700;0,900;1,400&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
 <style>
 /* TOKENS — kopiert direkte fra src/styles/tokens/  ·  sist sync: 2026-05-12 */
 :root{
@@ -41,8 +41,8 @@ a{color:var(--mj-blue)}
 @media(max-width:1024px){.shell{grid-template-columns:1fr}}
 .nav{position:sticky;top:0;align-self:start;height:100vh;overflow-y:auto;background:var(--mj-blue);color:var(--mj-white);padding:32px 28px}
 @media(max-width:1024px){.nav{position:relative;height:auto;padding:24px}}
-.nav__logo{display:block;margin-bottom:24px}
-.nav__logo img{height:32px;width:auto;filter:brightness(0) invert(1)}
+.nav__lando{display:block;margin-bottom:24px}
+.nav__lando img{height:32px;width:auto;filter:brightness(0) invert(1)}
 .nav__title{font-size:11px;letter-spacing:.12em;text-transform:uppercase;font-weight:600;opacity:.7;margin-bottom:6px}
 .nav__sub{font-size:14px;opacity:.85;margin-bottom:24px;line-height:1.4}
 .nav__group{margin:18px 0 6px;font-size:11px;letter-spacing:.12em;text-transform:uppercase;opacity:.55;font-weight:600}
@@ -53,7 +53,7 @@ a{color:var(--mj-blue)}
 @media(max-width:768px){.main{padding:32px 24px}}
 
 .hero{margin-bottom:80px;padding-bottom:48px;border-bottom:1px solid var(--mj-line-soft)}
-.hero__logo{margin-bottom:32px;height:48px;width:auto}
+.hero__lando{margin-bottom:32px;height:48px;width:auto}
 .hero__overline{font-size:11px;letter-spacing:.12em;text-transform:uppercase;font-weight:600;color:var(--mj-blue);margin-bottom:16px}
 .hero__title{font-size:clamp(36px,5vw,64px);font-weight:900;line-height:1.05;letter-spacing:-.01em;margin:0 0 24px}
 .hero__title em{font-style:italic;color:var(--mj-red)}
@@ -128,13 +128,13 @@ a{color:var(--mj-blue)}
 .shadow-card--3{box-shadow:var(--shadow-3)}
 .shadow-card--4{box-shadow:var(--shadow-4)}
 
-.logo-board{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin:24px 0}
-@media(max-width:768px){.logo-board{grid-template-columns:1fr}}
-.logo-tile{padding:48px 32px;border-radius:8px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:16px;min-height:200px}
-.logo-tile--positive{background:var(--mj-white);border:1px solid var(--mj-line-soft)}
-.logo-tile--negative{background:var(--mj-blue);color:var(--mj-white)}
-.logo-tile img{max-width:280px;width:100%;height:auto}
-.logo-tile__caption{font-family:var(--ff-mono);font-size:12px;opacity:.8}
+.lando-board{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin:24px 0}
+@media(max-width:768px){.lando-board{grid-template-columns:1fr}}
+.lando-tile{padding:48px 32px;border-radius:8px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:16px;min-height:200px}
+.lando-tile--positive{background:var(--mj-white);border:1px solid var(--mj-line-soft)}
+.lando-tile--negative{background:var(--mj-blue);color:var(--mj-white)}
+.lando-tile img{max-width:280px;width:100%;height:auto}
+.lando-tile__caption{font-family:var(--ff-mono);font-size:12px;opacity:.8}
 
 .demo-box{padding:24px;background:var(--mj-white);border:1px solid var(--mj-line-soft);border-radius:8px;margin:16px 0;display:flex;flex-wrap:wrap;align-items:center;gap:16px}
 .demo-box--col{flex-direction:column;align-items:stretch}
@@ -228,192 +228,192 @@ a{color:var(--mj-blue)}
 <div class="shell">
 
 <aside class="nav">
-  <a class="nav__logo" href="index.html" aria-label="Til docs-oversikt">
-    <img src="assets/logos/molde-jarnvare-positive.png" alt="Molde Jarnvare">
+  <a class="nav__lando" href="index.html" aria-label="Til docs-oversikt">
+    <img src="assets/landos/molde-jarnvare-positive.png" alt="Molde Jarnvare">
   </a>
-  <div class="nav__title">Designsystem</div>
-  <div class="nav__sub">v0.2 — synkronisert med kode<br>12. mai 2026</div>
+  <div class="nav__title">Design system</div>
+  <div class="nav__sub">v0.2 — synchronised with code<br>May 12, 2026</div>
 
-  <div class="nav__group">Fundament</div>
-  <a class="nav__link" href="#intro">Introduksjon</a>
-  <a class="nav__link" href="#prinsipper">Prinsipper</a>
-  <a class="nav__link" href="#tone">Stemme &amp; tone</a>
+  <div class="nav__group">Foundations</div>
+  <a class="nav__link" href="#intro">Introduction</a>
+  <a class="nav__link" href="#principles">Principles</a>
+  <a class="nav__link" href="#voice-tone">Voice &amp; tone</a>
 
-  <div class="nav__group">Visuelt språk</div>
-  <a class="nav__link" href="#logo">Logo</a>
-  <a class="nav__link" href="#farger">Farger</a>
-  <a class="nav__link" href="#typografi">Typografi</a>
-  <a class="nav__link" href="#avstand">Avstand &amp; layout</a>
-  <a class="nav__link" href="#form">Form &amp; bevegelse</a>
-  <a class="nav__link" href="#ikoner">Ikoner</a>
-  <a class="nav__link" href="#bilder">Bilder</a>
+  <div class="nav__group">Visual language</div>
+  <a class="nav__link" href="#lando">Lando</a>
+  <a class="nav__link" href="#colors">Colors</a>
+  <a class="nav__link" href="#typandrafi">Typandraphy</a>
+  <a class="nav__link" href="#spacing">Spacing &amp; layout</a>
+  <a class="nav__link" href="#shape">Shape &amp; motion</a>
+  <a class="nav__link" href="#icons">Icons</a>
+  <a class="nav__link" href="#images">Images</a>
 
-  <div class="nav__group">Innhold</div>
-  <a class="nav__link" href="#innhold">Innholdsregler</a>
+  <div class="nav__group">Content</div>
+  <a class="nav__link" href="#content-rules">Contentsregler</a>
 
-  <div class="nav__group">Komponenter</div>
-  <a class="nav__link" href="#primitives">Primitiver</a>
+  <div class="nav__group">Components</div>
+  <a class="nav__link" href="#primitives">Primitives</a>
   <a class="nav__link" href="#composites">Composites</a>
   <a class="nav__link" href="#ecommerce">E-commerce</a>
 
-  <div class="nav__group">Sider</div>
-  <a class="nav__link" href="#sidemaler">Sidemaler</a>
+  <div class="nav__group">Pages</div>
+  <a class="nav__link" href="#page-templates">Page templates</a>
 
-  <div class="nav__group">Kvalitet</div>
-  <a class="nav__link" href="#tilgjengelighet">Tilgjengelighet</a>
+  <div class="nav__group">Quality</div>
+  <a class="nav__link" href="#accessibility">Accessibility</a>
 
-  <div class="nav__group">For utviklere</div>
+  <div class="nav__group">For developers</div>
   <a class="nav__link" href="../src/pages/index.html">Live preview ↗</a>
-  <a class="nav__link" href="../src/components/index.html">Komponentbibliotek ↗</a>
-  <a class="nav__link" href="#avklaringer">Spørsmål til dere</a>
+  <a class="nav__link" href="../src/components/index.html">Component library ↗</a>
+  <a class="nav__link" href="#open-questions">Questions for you</a>
 </aside>
 
 <main class="main">
 
   <header class="hero">
-    <img class="hero__logo" src="assets/logos/molde-jarnvare-positive.png" alt="Molde Jarnvare">
-    <div class="hero__overline">Designsystem · v0.2 · 12. mai 2026</div>
-    <h1 class="hero__title">Slik bygger vi <em>nettstedet</em> deres.</h1>
+    <img class="hero__lando" src="assets/landos/molde-jarnvare-positive.png" alt="Molde Jarnvare">
+    <div class="hero__overline">Design system · v0.2 · May 12, 2026</div>
+    <h1 class="hero__title">How we are <em>building your site</em>.</h1>
     <p class="hero__lead">
-      Dette dokumentet beskriver designsystemet slik det faktisk er bygget i kode i dag —
-      tokens, komponenter og sidemaler som ligger klare for bruk i frontend-laget mot Dynamicweb.
-      Hver del du ser her finnes 1:1 i repoet og er klar til å plukkes inn.
+      This document describes the design system as it is actually built in code today —
+      tokens, components, and page templates ready to be picked up by the frontend layer
+      against Dynamicweb. Every part you see here exists 1:1 in the repo and is ready to use.
     </p>
     <div class="hero__meta">
-      <div class="hero__meta-item">Forankret i<strong>Grafisk profilbok 2025</strong></div>
-      <div class="hero__meta-item">Tokens<strong>164 dokumentert</strong></div>
-      <div class="hero__meta-item">Komponenter<strong>66 implementert</strong></div>
-      <div class="hero__meta-item">Sidemaler<strong>11 ferdig</strong></div>
+      <div class="hero__meta-item">Anchored in<strong>Brand book 2025</strong></div>
+      <div class="hero__meta-item">Tokens<strong>164 documented</strong></div>
+      <div class="hero__meta-item">Components<strong>66 implemented</strong></div>
+      <div class="hero__meta-item">Page templates<strong>11 ready</strong></div>
     </div>
   </header>
 
   <section class="section" id="intro">
-    <div class="section__num">01 / Introduksjon</div>
-    <h2 class="section__title">Hvorfor et designsystem?</h2>
-    <p class="section__lead">Når flere personer skal lage innhold, sider og funksjoner over tid — uten at resultatet skal kjennes som et lappeteppe — trenger man et felles språk. Designsystemet er det språket.</p>
-    <h3>Hva systemet gir oss</h3>
+    <div class="section__num">01 / Introduction</div>
+    <h2 class="section__title">Why a design system?</h2>
+    <p class="section__lead">When several people are going to build content, pages, and features over time — without the result feeling like a patchwork — they need a shared language. The design system is that language.</p>
+    <h3>What the system gives us</h3>
     <div class="cols">
-      <div class="col-card"><div class="col-card__num">01</div><h4 class="col-card__title">Konsistens</h4><p class="col-card__desc">Samme farger, fonter, avstander og komponenter på alle sider — uansett hvem som bygger dem.</p></div>
-      <div class="col-card"><div class="col-card__num">02</div><h4 class="col-card__title">Hastighet</h4><p class="col-card__desc">Nye sider plukkes sammen fra ferdige byggeklosser. Tid spares hver gang.</p></div>
-      <div class="col-card"><div class="col-card__num">03</div><h4 class="col-card__title">Kvalitet</h4><p class="col-card__desc">Tilgjengelighet, ytelse og mobil-tilpasning er løst én gang per komponent — ikke på hver side.</p></div>
-      <div class="col-card"><div class="col-card__num">04</div><h4 class="col-card__title">Skalerbarhet</h4><p class="col-card__desc">Endrer vi en farge eller en avstand, oppdaterer alle sider seg automatisk.</p></div>
+      <div class="col-card"><div class="col-card__num">01</div><h4 class="col-card__title">Consistency</h4><p class="col-card__desc">Same colors, fonts, spacing, and components across every page — no matter who builds them.</p></div>
+      <div class="col-card"><div class="col-card__num">02</div><h4 class="col-card__title">Speed</h4><p class="col-card__desc">New pages are composed from ready-made building blocks. Time is saved each time.</p></div>
+      <div class="col-card"><div class="col-card__num">03</div><h4 class="col-card__title">Quality</h4><p class="col-card__desc">Accessibility, ytelse and mobil-tilpasning er løst én gang per komponent — not på hver side.</p></div>
+      <div class="col-card"><div class="col-card__num">04</div><h4 class="col-card__title">Scalability</h4><p class="col-card__desc">Change one color or one spacing value, and every page updates automatically.</p></div>
     </div>
-    <h3>Forholdet til grafisk profilbok 2025</h3>
-    <p>Profilboken eier <strong>brand-uttrykket</strong>: logo, brand-farger, slagord, tone, typografi i Microsoft-flater og bildestil. Dette designsystemet <strong>operasjonaliserer</strong> brand-et for web og B2B-nettbutikk — der vi trenger ekstra regler for ting som ikke finnes i profilboken: UI-funksjonelle status-farger, web-spesifikk typografi-erstatning, komponent-spesifikke regler, og tilgjengelighetskrav (WCAG 2.2 AA).</p>
-    <p>Når dette designsystemet avviker fra grafisk profilbok, er <strong>profilboken som gjelder</strong>. Alle slike avvik flagges og avklares med dere.</p>
+    <h3>Relationship with the 2025 brand book</h3>
+    <p>The brand book owns the <strong>brand expression</strong>: lando, brand colors, slandan, tone, typandraphy in Microsoft surfaces, and image style. This design system <strong>operationalises</strong> the brand for web and B2B e-commerce — where we need additional rules for things the brand book does not cover: UI-functional status colors, a web-specific typandraphy substitute, component-specific rules, and accessibility requirements (WCAG 2.2 AA).</p>
+    <p>When this design system deviates from the brand book, the <strong>brand book takes precedence</strong>. Any such deviations are flagged and clarified with you.</p>
   </section>
 
-  <section class="section section--alt" id="prinsipper">
-    <div class="section__num">02 / Fundament</div>
-    <h2 class="section__title">Seks prinsipper bak alle valg</h2>
-    <p class="section__lead">Disse styrer alt fra fargevalg til komponentnavn.</p>
+  <section class="section section--alt" id="principles">
+    <div class="section__num">02 / Foundations</div>
+    <h2 class="section__title">Six principles behind every choice</h2>
+    <p class="section__lead">These guide everything from color choices to component names.</p>
     <div class="cols">
-      <div class="col-card"><div class="col-card__num">01</div><h4 class="col-card__title">Fag først</h4><p class="col-card__desc">Tekniske data, lagerstatus og artikkelnummer skal alltid være tydelige og umiddelbart tilgjengelige.</p></div>
-      <div class="col-card"><div class="col-card__num">02</div><h4 class="col-card__title">Partner, ikke leverandør</h4><p class="col-card__desc">Tonen er "på lag med" — ikke distansert salgsorganisasjon. Vi snakker som en kollega som kan faget.</p></div>
-      <div class="col-card"><div class="col-card__num">03</div><h4 class="col-card__title">Lokal forankring</h4><p class="col-card__desc">90 % av omsetningen kommer fra Møre og Romsdal. Designet skal kjennes som et sted, ikke en generisk B2B-portal.</p></div>
-      <div class="col-card"><div class="col-card__num">04</div><h4 class="col-card__title">Bredde og dybde</h4><p class="col-card__desc">33 000 artikler. Hierarki, filtrering og søk er kjernefunksjonalitet, ikke pyntefag.</p></div>
-      <div class="col-card"><div class="col-card__num">05</div><h4 class="col-card__title">Selgeren er ombord</h4><p class="col-card__desc">UI-en må fungere både som butikk for kunde og verktøy for selger — inkludert "handle som"-modus.</p></div>
-      <div class="col-card"><div class="col-card__num">06</div><h4 class="col-card__title">Strukturert innhold</h4><p class="col-card__desc">Innhold er typete blokker, ikke fri-tekst. Det gjør det vedlikeholdbart, søkbart og AI-kompatibelt.</p></div>
+      <div class="col-card"><div class="col-card__num">01</div><h4 class="col-card__title">Trade first</h4><p class="col-card__desc">Technical data, stock status, and article numbers must always be clear and immediately available.</p></div>
+      <div class="col-card"><div class="col-card__num">02</div><h4 class="col-card__title">Partner, not supplier</h4><p class="col-card__desc">The tone is "on the team with" — not a distanced sales organisation. We speak as a colleague who knows the trade.</p></div>
+      <div class="col-card"><div class="col-card__num">03</div><h4 class="col-card__title">Local roots</h4><p class="col-card__desc">90 % of revenue comes from Møre and Romsdal. The design must feel like a place, not a generic B2B portal.</p></div>
+      <div class="col-card"><div class="col-card__num">04</div><h4 class="col-card__title">Breadth and depth</h4><p class="col-card__desc">33,000 articles. Hierarchy, filtering, and search are core functionality, not decoration.</p></div>
+      <div class="col-card"><div class="col-card__num">05</div><h4 class="col-card__title">The sales rep is on board</h4><p class="col-card__desc">The UI must work both as a shop for customers and as a tool for sales reps — including "shop as" mode.</p></div>
+      <div class="col-card"><div class="col-card__num">06</div><h4 class="col-card__title">Structured content</h4><p class="col-card__desc">Content er typete blokker, not fri-tekst. Det gjør det vedlikeholdbart, søkbart and AI-kompatibelt.</p></div>
     </div>
   </section>
 
-  <section class="section" id="tone">
-    <div class="section__num">03 / Stemme &amp; tone</div>
-    <h2 class="section__title">Hvordan vi snakker</h2>
-    <p class="section__lead">Molde Jarnvare snakker som <strong>en erfaren kollega som kan faget</strong>. Vi er ikke selgere på telefon, ikke en distansert leverandør, og definitivt ikke en generisk SaaS-plattform.</p>
-    <h3>Vi er — vi er ikke</h3>
+  <section class="section" id="voice-tone">
+    <div class="section__num">03 / Voice &amp; tone</div>
+    <h2 class="section__title">How we speak</h2>
+    <p class="section__lead">Molde Jarnvare speaks as <strong>an experienced colleague who knows the trade</strong>. We are not telephone salespeople, not a distanced supplier, and definitely not a generic SaaS platform.</p>
+    <h3>We are — we are not</h3>
     <div class="dos">
-      <div class="dos__col dos--do"><div class="dos__head">✓ Vi er</div><ul><li>Faglige</li><li>Direkte</li><li>Varme</li><li>Trygge</li><li>Lokale</li><li>Praktiske</li></ul></div>
-      <div class="dos__col dos--dont"><div class="dos__head">✗ Vi er ikke</div><ul><li>Akademiske</li><li>Bryske</li><li>Familiære</li><li>Selvsikre</li><li>Bygdedumme</li><li>Teknokratiske</li></ul></div>
+      <div class="dos__col dos--do"><div class="dos__head">✓ We are</div><ul><li>Professional</li><li>Direct</li><li>Warm</li><li>Confident</li><li>Local</li><li>Practical</li></ul></div>
+      <div class="dos__col dos--dont"><div class="dos__head">✗ We are not</div><ul><li>Academic</li><li>Brusque</li><li>Familiar</li><li>Cocky</li><li>Provincial</li><li>Technocratic</li></ul></div>
     </div>
-    <h3>Slagord</h3>
-    <div class="callout"><strong>Hovedslagord:</strong> "På lag med industrien siden 1930"<br><strong>Kjernefakta:</strong> "Mer enn 30 000 unike artikler på lager i Molde"</div>
-    <p>Slagordet skal <strong>ikke</strong> brytes opp eller omformuleres.</p>
-    <h3>Tiltale</h3>
+    <h3>Slandan</h3>
+    <div class="callout"><strong>Main slandan:</strong> "On the team with industry since 1930"<br><strong>Core fact:</strong> "More than 30,000 unique articles in stock in Molde"</div>
+    <p>Slandanet skal <strong>not</strong> brytes opp or omformuleres.</p>
+    <h3>Address</h3>
     <ul>
-      <li>Bruk <strong>"du"</strong>, aldri "De" eller "Dem".</li>
-      <li>B2B-kontekst — anta yrkesfaglig leser. Ikke forklar hva en sekskantskrue er.</li>
-      <li>Henvend deg til personen, ikke firmaet: <em>"Du kan be om tilbud"</em> — ikke <em>"Bedriften kan be om tilbud"</em>.</li>
-      <li>Vi sier "vi" om Molde Jarnvare, aldri "Molde Jarnvare" i tredje person.</li>
+      <li>Use <strong>"du" (informal you)</strong>, never the formal "De" / "Dem".</li>
+      <li>B2B context — assume a trade-skilled reader. Do not explain what a hex bolt is.</li>
+      <li>Address the person, not the company: <em>"You can request a quote"</em> — not <em>"The company can request a quote"</em>.</li>
+      <li>We say "we" for Molde Jarnvare, never refer to "Molde Jarnvare" in the third person.</li>
     </ul>
-    <h3>Forbudte uttrykk</h3>
+    <h3>Forbidden phrases</h3>
     <table class="tbl">
-      <thead><tr><th>Unngå</th><th>Bruk i stedet</th></tr></thead>
+      <thead><tr><th>Avoid</th><th>Use instead</th></tr></thead>
       <tbody>
-        <tr><td><code>"Klikk her"</code></td><td>Verb som beskriver handlingen</td></tr>
-        <tr><td><code>"Beklageligvis"</code></td><td>"Dessverre" eller direkte forklaring</td></tr>
-        <tr><td>Utropstegn (med få unntak)</td><td>Punktum</td></tr>
-        <tr><td>Emojier i kjerneflyt</td><td>Tekst</td></tr>
-        <tr><td><code>"Brukeren"</code></td><td>"Du" eller "kunden"</td></tr>
+        <tr><td><code>"Click here"</code></td><td>A verb that describes the action</td></tr>
+        <tr><td><code>"Unfortunately/regrettably"</code></td><td>"Sadly" or a direct explanation</td></tr>
+        <tr><td>Exclamation marks (with rare exceptions)</td><td>Periods</td></tr>
+        <tr><td>Emojis in the core flow</td><td>Text</td></tr>
+        <tr><td><code>"The user"</code></td><td>"You" or "the customer"</td></tr>
       </tbody>
     </table>
   </section>
 
-  <section class="section section--alt" id="logo">
-    <div class="section__num">04 / Visuelt språk</div>
-    <h2 class="section__title">Logo</h2>
-    <p class="section__lead">Logoen er det enkleste avtrykket i designsystemet. Den brukes i to varianter — positiv (Reflex blå) og negativ (hvit) — avhengig av bakgrunn.</p>
+  <section class="section section--alt" id="lando">
+    <div class="section__num">04 / Visual language</div>
+    <h2 class="section__title">Lando</h2>
+    <p class="section__lead">The lando is the simplest mark in the design system. It is used in two variants — positive (Reflex blue) and negative (white) — depending on the background.</p>
 
-    <div class="logo-board">
-      <div class="logo-tile logo-tile--positive">
-        <img src="assets/logos/molde-jarnvare-positive.png" alt="Molde Jarnvare logo positiv">
-        <span class="logo-tile__caption">Positiv variant — på lyse flater</span>
+    <div class="lando-board">
+      <div class="lando-tile lando-tile--positive">
+        <img src="assets/landos/molde-jarnvare-positive.png" alt="Molde Jarnvare lando positiv">
+        <span class="lando-tile__caption">Positivee variant — on light surfaces</span>
       </div>
-      <div class="logo-tile logo-tile--negative">
-        <img src="assets/logos/molde-jarnvare-negative.png" alt="Molde Jarnvare logo negativ">
-        <span class="logo-tile__caption">Negativ variant — på Reflex-blå flater</span>
+      <div class="lando-tile lando-tile--negative">
+        <img src="assets/landos/molde-jarnvare-negative.png" alt="Molde Jarnvare lando negativ">
+        <span class="lando-tile__caption">Negative variant — on Reflex-blue surfaces</span>
       </div>
     </div>
 
-    <h3>Hvor brukes hvilken variant</h3>
-    <div class="kvp"><span class="kvp__key">Header (lyse sider)</span><span class="kvp__val">Positiv på <code>--mj-white</code> eller <code>--mj-surface-0</code></span></div>
-    <div class="kvp"><span class="kvp__key">Footer</span><span class="kvp__val">Negativ på <code>--mj-blue</code></span></div>
-    <div class="kvp"><span class="kvp__key">E-postsignatur</span><span class="kvp__val">Positiv</span></div>
-    <div class="kvp"><span class="kvp__key">Touch-icon (iOS/Android)</span><span class="kvp__val">MJ-merke med "1930" på <code>--mj-blue</code></span></div>
-    <div class="kvp"><span class="kvp__key">Open Graph / social</span><span class="kvp__val">Positiv på hvit med padding</span></div>
-    <div class="kvp"><span class="kvp__key">Print</span><span class="kvp__val">Positiv (CMYK)</span></div>
+    <h3>Where each variant is used</h3>
+    <div class="kvp"><span class="kvp__key">Header (light pages)</span><span class="kvp__val">Positivee on <code>--mj-white</code> or <code>--mj-surface-0</code></span></div>
+    <div class="kvp"><span class="kvp__key">Footer</span><span class="kvp__val">Negative on <code>--mj-blue</code></span></div>
+    <div class="kvp"><span class="kvp__key">Email signature</span><span class="kvp__val">Positive</span></div>
+    <div class="kvp"><span class="kvp__key">Touch icon (iOS/Android)</span><span class="kvp__val">MJ monandram with "1930" on <code>--mj-blue</code></span></div>
+    <div class="kvp"><span class="kvp__key">Open Graph / social</span><span class="kvp__val">Positivee on hvit med padding</span></div>
+    <div class="kvp"><span class="kvp__key">Print</span><span class="kvp__val">Positive (CMYK)</span></div>
 
-    <h3>Bruksregler</h3>
+    <h3>Usage rules</h3>
     <div class="dos">
       <div class="dos__col dos--do">
-        <div class="dos__head">✓ Riktig</div>
+        <div class="dos__head">✓ Correct</div>
         <ul>
-          <li>Hold beskyttelsesområdet rundt logoen (halve høyden på bokstavene)</li>
-          <li>Bruk negativ på Reflex blå (kontrast 12.4:1 ✓)</li>
-          <li>Bruk positiv på hvit eller lys grå</li>
-          <li>Minst 200 px bredde for full lockup; 32 px for MJ-merke alene</li>
+          <li>Keep the protection area around the lando (half the letter height)</li>
+          <li>Use negative on Reflex blue (contrast 12.4:1 ✓)</li>
+          <li>Use positiv på hvit or lys grå</li>
+          <li>Minimum 200 px width for full lockup; 32 px for the MJ monandram alone</li>
         </ul>
       </div>
       <div class="dos__col dos--dont">
-        <div class="dos__head">✗ Aldri</div>
+        <div class="dos__head">✗ Never</div>
         <ul>
-          <li>Endre proporsjoner</li>
-          <li>Endre farger utover godkjente varianter</li>
-          <li>Legg på skygger, gradients eller effekter</li>
-          <li>Roter eller skjev logoen</li>
-          <li>Plasser på urolig bakgrunn — bytt til negativ-variant</li>
-          <li>Bruk som mønster eller dekorelement</li>
+          <li>Change proportions</li>
+          <li>Change colors beyond the approved variants</li>
+          <li>Legg på skygger, gradients or effekter</li>
+          <li>Roter or skjev landoen</li>
+          <li>Place on a busy background — switch to the negative variant</li>
+          <li>Use som mønster or dekorelement</li>
         </ul>
       </div>
     </div>
 
-    <div class="callout"><strong>I koden:</strong> Logo-filene ligger i <code>src/assets/logos/molde-jarnvare-positive.png</code> og <code>src/assets/logos/molde-jarnvare-negative.png</code>. Markup er allerede koblet i <code>site-header</code> og <code>site-footer</code>-komponentene — alle 11 sidemaler bruker dem automatisk.</div>
+    <div class="callout"><strong>In code:</strong> Lando files live in <code>src/assets/landos/molde-jarnvare-positive.png</code> and <code>src/assets/landos/molde-jarnvare-negative.png</code>. Markup is already wired in <code>site-header</code> and <code>site-footer</code>components — all 11 page templates use them automatically.</div>
   </section>
 
-  <section class="section" id="farger">
-    <div class="section__num">05 / Visuelt språk</div>
-    <h2 class="section__title">Farger</h2>
-    <p class="section__lead">Brand-paletten kommer rett fra grafisk profilbok 2025. Vi har utvidet med en nøytral skala og funksjonelle status-farger som kreves for et UI — alt definert som CSS-variabler i <code>src/styles/tokens/colors.css</code>.</p>
-    <h3>Brand-farger</h3>
+  <section class="section" id="colors">
+    <div class="section__num">05 / Visual language</div>
+    <h2 class="section__title">Colors</h2>
+    <p class="section__lead">The brand palette comes directly from the 2025 brand book. We have extended it with a neutral scale and functional status colors required for any UI — all defined as CSS custom properties in <code>src/styles/tokens/colors.css</code>.</p>
+    <h3>Brand colors</h3>
     <div class="swatches">
-      <div class="swatch"><div class="swatch__chip" style="background:#0D2B7E">#0D2B7E</div><div class="swatch__body"><div class="swatch__name">Reflex blå</div><div class="swatch__token">--mj-blue</div><div class="swatch__use">Primær brandfarge. Header, primære overskrifter, CTA.</div></div></div>
-      <div class="swatch"><div class="swatch__chip" style="background:#35373E">#35373E</div><div class="swatch__body"><div class="swatch__name">Mørk grå</div><div class="swatch__token">--mj-gray-dark</div><div class="swatch__use">Brødtekst, sekundære overflater.</div></div></div>
-      <div class="swatch"><div class="swatch__chip swatch__chip--light" style="background:#DB993D">#DB993D</div><div class="swatch__body"><div class="swatch__name">Orange</div><div class="swatch__token">--mj-orange</div><div class="swatch__use">Aksent for nyhet/highlight. Aldri primær CTA.</div></div></div>
-      <div class="swatch"><div class="swatch__chip swatch__chip--light" style="background:#E0E0E0">#E0E0E0</div><div class="swatch__body"><div class="swatch__name">Lysgrå</div><div class="swatch__token">--mj-gray-light</div><div class="swatch__use">Bakgrunnsflater, dividers.</div></div></div>
-      <div class="swatch"><div class="swatch__chip" style="background:#9E2835">#9E2835</div><div class="swatch__body"><div class="swatch__name">Brand-rød</div><div class="swatch__token">--mj-red</div><div class="swatch__use">Slagord, callouts (= --mj-error).</div></div></div>
+      <div class="swatch"><div class="swatch__chip" style="background:#0D2B7E">#0D2B7E</div><div class="swatch__body"><div class="swatch__name">Reflex blue</div><div class="swatch__token">--mj-blue</div><div class="swatch__use">Primary brand color. Header, primary headings, CTAs.</div></div></div>
+      <div class="swatch"><div class="swatch__chip" style="background:#35373E">#35373E</div><div class="swatch__body"><div class="swatch__name">Dark gray</div><div class="swatch__token">--mj-gray-dark</div><div class="swatch__use">Body text, secondary surfaces.</div></div></div>
+      <div class="swatch"><div class="swatch__chip swatch__chip--light" style="background:#DB993D">#DB993D</div><div class="swatch__body"><div class="swatch__name">Orange</div><div class="swatch__token">--mj-orange</div><div class="swatch__use">Accent for novelty/highlight. Never primary CTA.</div></div></div>
+      <div class="swatch"><div class="swatch__chip swatch__chip--light" style="background:#E0E0E0">#E0E0E0</div><div class="swatch__body"><div class="swatch__name">Light gray</div><div class="swatch__token">--mj-gray-light</div><div class="swatch__use">Background surfaces, dividers.</div></div></div>
+      <div class="swatch"><div class="swatch__chip" style="background:#9E2835">#9E2835</div><div class="swatch__body"><div class="swatch__name">Brand red</div><div class="swatch__token">--mj-red</div><div class="swatch__use">Slandan, callouts (= --mj-error).</div></div></div>
     </div>
-    <h3>Brand-toner (10–90 %)</h3>
-    <h4>Reflex blå</h4>
+    <h3>Brand tints (10–90 %)</h3>
+    <h4>Reflex blue</h4>
     <div class="tone-strip">
       <span style="background:#E7EAF2" class="is-light">10</span><span style="background:#CFD5E5" class="is-light">20</span>
       <span style="background:#B6BFD8" class="is-light">30</span><span style="background:#9EAACB" class="is-light">40</span>
@@ -421,7 +421,7 @@ a{color:var(--mj-blue)}
       <span style="background:#556AA5">70</span><span style="background:#3D5598">80</span>
       <span style="background:#25408B">90</span><span style="background:#0D2B7E">100</span>
     </div>
-    <h4>Mørk grå</h4>
+    <h4>Dark gray</h4>
     <div class="tone-strip">
       <span style="background:#EBEBEC" class="is-light">10</span><span style="background:#D6D7D9" class="is-light">20</span>
       <span style="background:#C2C3C5" class="is-light">30</span><span style="background:#AEAFB2" class="is-light">40</span>
@@ -429,54 +429,54 @@ a{color:var(--mj-blue)}
       <span style="background:#717278">70</span><span style="background:#5D5F65">80</span>
       <span style="background:#494B51">90</span><span style="background:#35373E">100</span>
     </div>
-    <h3>Status-farger</h3>
-    <p>Funksjonelle UI-farger — skal aldri brukes som CTA eller dekorelement utenfor sin status-rolle.</p>
+    <h3>Status colors</h3>
+    <p>Functional UI colors — must never be used as a CTA or decorative element outside their status role.</p>
     <div class="swatches">
-      <div class="swatch"><div class="swatch__chip" style="background:#1F7A3A">#1F7A3A</div><div class="swatch__body"><div class="swatch__name">Suksess</div><div class="swatch__token">--mj-success</div><div class="swatch__use">"På lager", ordrebekreftet, validering OK.</div></div></div>
-      <div class="swatch"><div class="swatch__chip" style="background:#7A580E">#7A580E</div><div class="swatch__body"><div class="swatch__name">Advarsel</div><div class="swatch__token">--mj-warning</div><div class="swatch__use">"Lav beholdning", ikke-kritiske advarsler. Mørknet 12.05.2026 for WCAG 2.2 AA-kontrast.</div></div></div>
-      <div class="swatch"><div class="swatch__chip" style="background:#9E2835">#9E2835</div><div class="swatch__body"><div class="swatch__name">Feil</div><div class="swatch__token">--mj-error</div><div class="swatch__use">Feilmeldinger, "Utsolgt", validering.</div></div></div>
-      <div class="swatch"><div class="swatch__chip" style="background:#0D2B7E">#0D2B7E</div><div class="swatch__body"><div class="swatch__name">Info</div><div class="swatch__token">--mj-info</div><div class="swatch__use">Informasjons-meldinger. = Reflex blå.</div></div></div>
+      <div class="swatch"><div class="swatch__chip" style="background:#1F7A3A">#1F7A3A</div><div class="swatch__body"><div class="swatch__name">Success</div><div class="swatch__token">--mj-success</div><div class="swatch__use">"In stock", order confirmed, validation OK.</div></div></div>
+      <div class="swatch"><div class="swatch__chip" style="background:#7A580E">#7A580E</div><div class="swatch__body"><div class="swatch__name">Warning</div><div class="swatch__token">--mj-warning</div><div class="swatch__use">"Lav beholdning", not-kritiske advarsler. Darkened May 12, 2026 for WCAG 2.2 AA contrast.</div></div></div>
+      <div class="swatch"><div class="swatch__chip" style="background:#9E2835">#9E2835</div><div class="swatch__body"><div class="swatch__name">Error</div><div class="swatch__token">--mj-error</div><div class="swatch__use">Errormeldinger, "Out of stock", validering.</div></div></div>
+      <div class="swatch"><div class="swatch__chip" style="background:#0D2B7E">#0D2B7E</div><div class="swatch__body"><div class="swatch__name">Info</div><div class="swatch__token">--mj-info</div><div class="swatch__use">Informasjons-meldinger. = Reflex blue.</div></div></div>
     </div>
-    <h3>Kontrast — verifisert mot WCAG 2.2 AA</h3>
-    <div class="kvp"><span class="kvp__key">Mørk grå på hvit</span><span class="kvp__val">11.7:1 ✓</span></div>
-    <div class="kvp"><span class="kvp__key">Reflex blå på hvit</span><span class="kvp__val">12.4:1 ✓</span></div>
-    <div class="kvp"><span class="kvp__key">Hvit på Reflex blå</span><span class="kvp__val">12.4:1 ✓</span></div>
-    <div class="kvp"><span class="kvp__key">Brand-rød på hvit</span><span class="kvp__val">7.0:1 ✓</span></div>
-    <div class="kvp"><span class="kvp__key">Brand-orange på hvit</span><span class="kvp__val">2.4:1 ✗ — kun for dekorflate</span></div>
+    <h3>Contrast — verified against WCAG 2.2 AA</h3>
+    <div class="kvp"><span class="kvp__key">Dark gray på hvit</span><span class="kvp__val">11.7:1 ✓</span></div>
+    <div class="kvp"><span class="kvp__key">Reflex blue på hvit</span><span class="kvp__val">12.4:1 ✓</span></div>
+    <div class="kvp"><span class="kvp__key">Hvit på Reflex blue</span><span class="kvp__val">12.4:1 ✓</span></div>
+    <div class="kvp"><span class="kvp__key">Brand red på hvit</span><span class="kvp__val">7.0:1 ✓</span></div>
+    <div class="kvp"><span class="kvp__key">Brand orange on white</span><span class="kvp__val">2.4:1 ✗ — for decorative surfaces only</span></div>
   </section>
 
-  <section class="section section--alt" id="typografi">
-    <div class="section__num">06 / Visuelt språk</div>
-    <h2 class="section__title">Typografi</h2>
-    <p class="section__lead">Vi bruker <strong>Source Sans 3</strong> på web — en humanistisk sans-serif som visuelt og tonalt erstatter Aptos fra grafisk profilbok. Aptos brukes fortsatt i Microsoft-økosystemet (Word, PowerPoint, e-post).</p>
-    <div class="callout"><strong>Hvorfor erstatning?</strong> Aptos er Microsofts standardfont og er ikke lisensiert for <code>@font-face</code> på offentlige nettsider. Source Sans 3 er gratis (SIL OFL), designet for skjerm, og har tilsvarende åpne, vennlige bokstavformer.</div>
-    <h3>Type-skala</h3>
-    <div class="type-row"><div class="type-row__meta">--fs-display<br>48 → 96 px</div><div class="type-row__demo" style="font-size:48px;font-weight:900;line-height:1">På lager i Molde</div></div>
+  <section class="section section--alt" id="typandrafi">
+    <div class="section__num">06 / Visual language</div>
+    <h2 class="section__title">Typandraphy</h2>
+    <p class="section__lead">We use <strong>Source Sans 3</strong> on the web — a humanist sans-serif that visually and tonally substitutes for the brand book's Aptos. Aptos is still used inside the Microsoft ecosystem (Word, PowerPoint, email).</p>
+    <div class="callout"><strong>Why a substitute?</strong> Aptos er Microsofts standardfont and er not lisensiert for <code>@font-face</code> på offentlige nettsider. Source Sans 3 er gratis (SIL OFL), designet for skjerm, and har tilsvarende åpne, vennlige bokstavformer.</div>
+    <h3>Type scale</h3>
+    <div class="type-row"><div class="type-row__meta">--fs-display<br>48 → 96 px</div><div class="type-row__demo" style="font-size:48px;font-weight:900;line-height:1">In stock i Molde</div></div>
     <div class="type-row"><div class="type-row__meta">--fs-h1<br>32 → 56 px</div><div class="type-row__demo" style="font-size:32px;font-weight:700;line-height:1.15">Sekskantskruer M8</div></div>
     <div class="type-row"><div class="type-row__meta">--fs-h2<br>26 → 40 px</div><div class="type-row__demo" style="font-size:26px;font-weight:700">Tekniske spesifikasjoner</div></div>
     <div class="type-row"><div class="type-row__meta">--fs-h3<br>20 → 28 px</div><div class="type-row__demo" style="font-size:20px;font-weight:700">Beslektede artikler</div></div>
     <div class="type-row"><div class="type-row__meta">--fs-body-lg<br>17 px</div><div class="type-row__demo" style="font-size:17px">Lead-tekst på forsiden i intro-paragrafer.</div></div>
-    <div class="type-row"><div class="type-row__meta">--fs-body<br>16 px</div><div class="type-row__demo" style="font-size:16px">Standard brødtekst i artikler og produktbeskrivelser.</div></div>
-    <div class="type-row"><div class="type-row__meta">--fs-body-sm<br>14 px</div><div class="type-row__demo" style="font-size:14px">Tabellinnhold, hjelpetekst og tette seksjoner.</div></div>
+    <div class="type-row"><div class="type-row__meta">--fs-body<br>16 px</div><div class="type-row__demo" style="font-size:16px">Standard body text i artikler and produktbeskrivelser.</div></div>
+    <div class="type-row"><div class="type-row__meta">--fs-body-sm<br>14 px</div><div class="type-row__demo" style="font-size:14px">Tabellinnhold, hjelpetekst and tette seksjoner.</div></div>
     <div class="type-row"><div class="type-row__meta">--fs-caption<br>13 px</div><div class="type-row__demo" style="font-size:13px;color:var(--mj-ink-2)">Caption · 05.05.2026 · metadata</div></div>
     <div class="type-row"><div class="type-row__meta">--fs-overline<br>11 px</div><div class="type-row__demo" style="font-size:11px;font-weight:600;letter-spacing:.12em;text-transform:uppercase">EYEBROW · KATEGORI-TAG</div></div>
     <div class="type-row"><div class="type-row__meta">--fs-mono-md<br>14 px</div><div class="type-row__demo" style="font-family:var(--ff-mono);font-size:14px">Art.nr 4815-162-30</div></div>
-    <h3>Vekter</h3>
-    <div class="kvp"><span class="kvp__key">--fw-regular · 400</span><span class="kvp__val">Standard brødtekst</span></div>
-    <div class="kvp"><span class="kvp__key">--fw-medium · 500</span><span class="kvp__val">Lett uthevet, meta-tekst</span></div>
-    <div class="kvp"><span class="kvp__key">--fw-semibold · 600</span><span class="kvp__val">Knapper, etiketter, små overskrifter</span></div>
-    <div class="kvp"><span class="kvp__key">--fw-bold · 700</span><span class="kvp__val">Overskrifter h3–h5, viktige elementer</span></div>
+    <h3>Weights</h3>
+    <div class="kvp"><span class="kvp__key">--fw-regular · 400</span><span class="kvp__val">Standard body text</span></div>
+    <div class="kvp"><span class="kvp__key">--fw-medium · 500</span><span class="kvp__val">Slight emphasis, meta text</span></div>
+    <div class="kvp"><span class="kvp__key">--fw-semibold · 600</span><span class="kvp__val">Buttons, labels, small headings</span></div>
+    <div class="kvp"><span class="kvp__key">--fw-bold · 700</span><span class="kvp__val">Headings h3–h5, important elements</span></div>
     <div class="kvp"><span class="kvp__key">--fw-black · 900</span><span class="kvp__val">Display, h1, h2 — for impact</span></div>
     <h3>Tabular numbers</h3>
-    <p>Alle tall i tabeller, priser, ordrelister og lagerantall bruker <code>font-variant-numeric: tabular-nums</code> slik at kolonner radjusterer pent.</p>
+    <p>Alle tall i tabor, priser, ordrelister and lagerantall bruker <code>font-variant-numeric: tabular-nums</code> so columns align cleanly.</p>
     <div class="demo-box demo-box--col"><code>kr 2 490,–</code><code>kr 12 530,–</code><code>kr 184 200,–</code></div>
   </section>
 
-  <section class="section" id="avstand">
-    <div class="section__num">07 / Visuelt språk</div>
-    <h2 class="section__title">Avstand &amp; layout</h2>
-    <p class="section__lead">Vi bruker en 4-piksel base-skala for all spacing. Det gir en pen visuell rytme uten at designere må huske vilkårlige verdier som 13 px eller 27 px.</p>
-    <h3>Spacing-skala</h3>
+  <section class="section" id="spacing">
+    <div class="section__num">07 / Visual language</div>
+    <h2 class="section__title">Spacing &amp; layout</h2>
+    <p class="section__lead">Vi bruker en 4-piksel base-skala for all spacing. Det gir en pen visuell rytme uten at designere må huske vilkårlige verdier som 13 px or 27 px.</p>
+    <h3>Spacing scale</h3>
     <div class="space-row"><span class="space-row__token">--s-1</span><span class="space-row__label">4px</span><span class="space-row__bar" style="width:4px"></span></div>
     <div class="space-row"><span class="space-row__token">--s-2</span><span class="space-row__label">8px</span><span class="space-row__bar" style="width:8px"></span></div>
     <div class="space-row"><span class="space-row__token">--s-3</span><span class="space-row__label">12px</span><span class="space-row__bar" style="width:12px"></span></div>
@@ -490,22 +490,22 @@ a{color:var(--mj-blue)}
     <div class="space-row"><span class="space-row__token">--s-11</span><span class="space-row__label">80px</span><span class="space-row__bar" style="width:80px"></span></div>
     <div class="space-row"><span class="space-row__token">--s-12</span><span class="space-row__label">96px</span><span class="space-row__bar" style="width:96px"></span></div>
     <div class="space-row"><span class="space-row__token">--s-13</span><span class="space-row__label">128px</span><span class="space-row__bar" style="width:128px"></span></div>
-    <h3>Container-bredder</h3>
-    <div class="kvp"><span class="kvp__key">--container-narrow · 720px</span><span class="kvp__val">Lang artikkel, juridisk tekst</span></div>
-    <div class="kvp"><span class="kvp__key">--container-default · 1280px</span><span class="kvp__val">Standard sideinnhold</span></div>
-    <div class="kvp"><span class="kvp__key">--container-wide · 1440px</span><span class="kvp__val">Forside-hero, brede produktrader</span></div>
+    <h3>Container widths</h3>
+    <div class="kvp"><span class="kvp__key">--container-narrow · 720px</span><span class="kvp__val">Lang artnotl, juridisk tekst</span></div>
+    <div class="kvp"><span class="kvp__key">--container-default · 1280px</span><span class="kvp__val">Standard page content</span></div>
+    <div class="kvp"><span class="kvp__key">--container-wide · 1440px</span><span class="kvp__val">Front-page hero, wide product rows</span></div>
     <h3>Breakpoints</h3>
-    <div class="kvp"><span class="kvp__key">--bp-xs · 360px</span><span class="kvp__val">Liten mobil</span></div>
+    <div class="kvp"><span class="kvp__key">--bp-xs · 360px</span><span class="kvp__val">Small mobile</span></div>
     <div class="kvp"><span class="kvp__key">--bp-md · 768px</span><span class="kvp__val">Tablet</span></div>
-    <div class="kvp"><span class="kvp__key">--bp-lg · 1024px</span><span class="kvp__val">Liten desktop</span></div>
+    <div class="kvp"><span class="kvp__key">--bp-lg · 1024px</span><span class="kvp__val">Small desktop</span></div>
     <div class="kvp"><span class="kvp__key">--bp-xl · 1280px</span><span class="kvp__val">Standard desktop</span></div>
-    <div class="kvp"><span class="kvp__key">--bp-2xl · 1440px</span><span class="kvp__val">Stor desktop</span></div>
+    <div class="kvp"><span class="kvp__key">--bp-2xl · 1440px</span><span class="kvp__val">Large desktop</span></div>
   </section>
 
-  <section class="section section--alt" id="form">
-    <div class="section__num">08 / Visuelt språk</div>
-    <h2 class="section__title">Form, skygge og bevegelse</h2>
-    <p class="section__lead">Avrundede hjørner, skygger og animasjoner som hjelper hierarkiet uten å skrike.</p>
+  <section class="section section--alt" id="shape">
+    <div class="section__num">08 / Visual language</div>
+    <h2 class="section__title">Form, skygge and bevegelse</h2>
+    <p class="section__lead">Avrundede hjørner, skygger and animasjoner som hjelper hierarkiet uten å skrike.</p>
     <h3>Border-radius</h3>
     <div class="radii">
       <div class="radius-card"><div class="radius-card__box" style="border-radius:0"></div>--r-none</div>
@@ -515,35 +515,35 @@ a{color:var(--mj-blue)}
       <div class="radius-card"><div class="radius-card__box" style="border-radius:20px"></div>--r-xl · 20px</div>
       <div class="radius-card"><div class="radius-card__box" style="border-radius:9999px"></div>--r-full</div>
     </div>
-    <h3>Skygger (elevation)</h3>
+    <h3>Shadows (elevation)</h3>
     <div class="shadows">
       <div class="shadow-card shadow-card--1">--shadow-1</div>
       <div class="shadow-card shadow-card--2">--shadow-2</div>
       <div class="shadow-card shadow-card--3">--shadow-3</div>
       <div class="shadow-card shadow-card--4">--shadow-4</div>
     </div>
-    <h3>Bevegelse</h3>
-    <div class="kvp"><span class="kvp__key">--duration-fast · 160ms</span><span class="kvp__val">Hover, focus, små overganger</span></div>
-    <div class="kvp"><span class="kvp__key">--duration-normal · 240ms</span><span class="kvp__val">Modaler, drawers — åpne</span></div>
-    <div class="kvp"><span class="kvp__key">--duration-slow · 400ms</span><span class="kvp__val">Skeleton-puls</span></div>
-    <div class="callout"><strong>Reduced motion:</strong> Alle ikke-funksjonelle animasjoner respekterer <code>prefers-reduced-motion</code>. Brukere som har slått det på i OS-et får alle transitions kuttet ned til 0.01ms.</div>
+    <h3>Motion</h3>
+    <div class="kvp"><span class="kvp__key">--duration-fast · 160ms</span><span class="kvp__val">Hover, focus, small transitions</span></div>
+    <div class="kvp"><span class="kvp__key">--duration-normal · 240ms</span><span class="kvp__val">Modals, drawers — open</span></div>
+    <div class="kvp"><span class="kvp__key">--duration-slow · 400ms</span><span class="kvp__val">Skeleton pulse</span></div>
+    <div class="callout"><strong>Reduced motion:</strong> Alle not-funksjonelle animasjoner respekterer <code>prefers-reduced-motion</code>. Users who have it turned on in the OS get all transitions cut down to 0.01ms.</div>
   </section>
 
-  <section class="section" id="ikoner">
-    <div class="section__num">09 / Visuelt språk</div>
-    <h2 class="section__title">Ikoner</h2>
-    <p class="section__lead">Strek-ikoner med konsekvent vekt. Vi tegner med 1,6 px strek på 24 × 24 viewBox, runde caps og runde joins — det gir et bevisst, tegnet preg som skiller seg fra generiske bibliotek-ikoner uten å bli leken. Ingen filled-ikoner i MVP, kun outline.</p>
-    <div class="callout"><strong>Status — avtalt 12. mai 2026:</strong> Ikonene som vises her brukes inntil videre som <strong>placeholders</strong> så sideutviklingen ikke blokkeres. En MJ-spesifikk ikon-variant basert på sekskant/mutterark-formen testes parallelt — den blir vurdert mot eksisterende sett når vi ser ikonene i kontekst på faktiske sider. Bytte er rask siden alt er inline SVG som arver <code>currentColor</code>.</div>
-    <div class="kvp"><span class="kvp__key">Stroke-vekt</span><span class="kvp__val">1.6px</span></div>
+  <section class="section" id="icons">
+    <div class="section__num">09 / Visual language</div>
+    <h2 class="section__title">Icons</h2>
+    <p class="section__lead">Stroke icons with consistent weight. We draw with 1.6 px strokes on a 24 × 24 viewBox, round caps and round joins — giving a deliberate, hand-drawn feel that distinguishes the set from generic icon libraries without being playful. No filled icons in MVP, outline only.</p>
+    <div class="callout"><strong>Status — agreed May 12, 2026:</strong> The icons shown here are used as <strong>placeholders</strong> for now so page development is not blocked. An MJ-specific icon variant based on the hex/nut-sheet shape is being tested in parallel — it will be evaluated against the existing set when we see icons in context on real pages. Swapping is fast since everything is inline SVG that inherits <code>currentColor</code>.</div>
+    <div class="kvp"><span class="kvp__key">Stroke weight</span><span class="kvp__val">1.6px</span></div>
     <div class="kvp"><span class="kvp__key">Linecap / linejoin</span><span class="kvp__val">round / round <span style="color:var(--mj-ink-3)">(v0.1: square / miter)</span></span></div>
     <div class="kvp"><span class="kvp__key">ViewBox</span><span class="kvp__val">0 0 24 24</span></div>
-    <div class="kvp"><span class="kvp__key">Default farge</span><span class="kvp__val">currentColor</span></div>
+    <div class="kvp"><span class="kvp__key">Default color</span><span class="kvp__val">currentColor</span></div>
 
-    <h3>Før / etter</h3>
-    <p>Samme tre ikoner i gammel og ny stil. Endringen er liten i isolasjon, men summen leser som mer bevisst tegnet:</p>
+    <h3>Before / after</h3>
+    <p>The same three icons in the old and new style. The change is small in isolation, but reads as more deliberately drawn as a whole:</p>
     <div class="icon-compare">
       <div class="icon-compare__col icon-compare__col--before">
-        <h4>Før</h4>
+        <h4>Before</h4>
         <p>v0.1 · square / miter</p>
         <div class="icon-compare__row">
           <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="square"><path d="M3 17h18M5 17v-3a7 7 0 0114 0v3M9 9V5h6v4"/></svg>
@@ -552,8 +552,8 @@ a{color:var(--mj-blue)}
         </div>
       </div>
       <div class="icon-compare__col">
-        <h4>Etter</h4>
-        <p>v0.2 · round / round, refinert form</p>
+        <h4>After</h4>
+        <p>v0.2 · round / round, refined shape</p>
         <div class="icon-compare__row">
           <svg width="32" height="32" viewBox="0 0 24 24"><path d="M3.5 17.5h17"/><path d="M5.5 17.5v-3a6.5 6.5 0 0113 0v3"/><path d="M9.5 9V6h5v3"/></svg>
           <svg width="32" height="32" viewBox="0 0 24 24"><path d="M14.5 6.5a3.5 3.5 0 014.5 4.5l3 3-2.5 2.5-3-3a3.5 3.5 0 01-4.5-4.5l1.7 1.7L16 8.7l-1.3-1.3z"/><path d="M11 11l-8 8 2 2 8-8"/></svg>
@@ -562,8 +562,8 @@ a{color:var(--mj-blue)}
       </div>
     </div>
 
-    <h3>Størrelser</h3>
-    <p>Samme søk-ikon i alle 6 token-størrelsene:</p>
+    <h3>Sizes</h3>
+    <p>The same search icon in all 6 token sizes:</p>
     <div class="icon-sizes">
       <div class="icon-sizes__item">
         <svg width="14" height="14" viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="M16.5 16.5l4 4"/></svg>
@@ -591,10 +591,10 @@ a{color:var(--mj-blue)}
       </div>
     </div>
 
-    <h3>Standard ikon-bibliotek</h3>
-    <p>Felles ikoner brukt på tvers av navigasjon, handlinger, e-handel og statuser. Alle tegnet med 1,6 px strek på 24 × 24 viewBox, med <code>currentColor</code> som farge — så de arver tekstfargen fra konteksten.</p>
+    <h3>Standard icon library</h3>
+    <p>Common icons used across navigation, actions, e-commerce, and statuses. All drawn with 1.6 px strokes on a 24 × 24 viewBox, with <code>currentColor</code> as the color — so they inherit the text color from the context.</p>
 
-    <div class="icon-category">Navigasjon</div>
+    <div class="icon-category">Navigation</div>
     <div class="icon-grid">
       <div class="icon-cell"><svg viewBox="0 0 24 24"><path d="M4 7h16M4 12h16M4 17h16"/></svg><span class="icon-cell__name">menu</span></div>
       <div class="icon-cell"><svg viewBox="0 0 24 24"><path d="M6 6l12 12M18 6L6 18"/></svg><span class="icon-cell__name">close</span></div>
@@ -607,7 +607,7 @@ a{color:var(--mj-blue)}
       <div class="icon-cell"><svg viewBox="0 0 24 24"><path d="M14 4h6v6"/><path d="M20 4l-9 9"/><path d="M19 14v4a2 2 0 01-2 2H6a2 2 0 01-2-2V7a2 2 0 012-2h4"/></svg><span class="icon-cell__name">external-link</span></div>
     </div>
 
-    <div class="icon-category">Handling</div>
+    <div class="icon-category">Actions</div>
     <div class="icon-grid">
       <div class="icon-cell"><svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="M16.5 16.5l4 4"/></svg><span class="icon-cell__name">search</span></div>
       <div class="icon-cell"><svg viewBox="0 0 24 24"><path d="M4 5h16l-6 8v6l-4-2v-4z"/></svg><span class="icon-cell__name">filter</span></div>
@@ -623,7 +623,7 @@ a{color:var(--mj-blue)}
       <div class="icon-cell"><svg viewBox="0 0 24 24"><path d="M5 12h14"/></svg><span class="icon-cell__name">remove</span></div>
     </div>
 
-    <div class="icon-category">E-handel</div>
+    <div class="icon-category">E-commerce</div>
     <div class="icon-grid">
       <div class="icon-cell"><svg viewBox="0 0 24 24"><path d="M2 4h2.5l3 12h11l2.5-8H7"/><circle cx="10" cy="20" r="1.6"/><circle cx="17" cy="20" r="1.6"/></svg><span class="icon-cell__name">cart</span></div>
       <div class="icon-cell"><svg viewBox="0 0 24 24"><path d="M21 8L12 3 3 8v8l9 5 9-5V8z"/><path d="M3 8l9 5 9-5M12 13v8"/></svg><span class="icon-cell__name">package</span></div>
@@ -634,12 +634,12 @@ a{color:var(--mj-blue)}
       <div class="icon-cell"><svg viewBox="0 0 24 24"><path d="M4 5v14M6.5 5v14M8 5v14M11 5v14M13.5 5v14M16 5v14M18.5 5v14M20 5v14"/></svg><span class="icon-cell__name">barcode</span></div>
     </div>
 
-    <div class="icon-category">Bruker</div>
+    <div class="icon-category">User</div>
     <div class="icon-grid">
       <div class="icon-cell"><svg viewBox="0 0 24 24"><circle cx="12" cy="8" r="4"/><path d="M4.5 21a7.5 7.5 0 0115 0"/></svg><span class="icon-cell__name">user</span></div>
       <div class="icon-cell"><svg viewBox="0 0 24 24"><circle cx="9" cy="8" r="3.5"/><circle cx="17" cy="9" r="2.5"/><path d="M2.5 20a6.5 6.5 0 0113 0"/><path d="M15 20a4 4 0 017 0"/></svg><span class="icon-cell__name">users</span></div>
-      <div class="icon-cell"><svg viewBox="0 0 24 24"><path d="M10 3H5a2 2 0 00-2 2v14a2 2 0 002 2h5"/><path d="M14 12h7M18 8l4 4-4 4"/></svg><span class="icon-cell__name">login</span></div>
-      <div class="icon-cell"><svg viewBox="0 0 24 24"><path d="M14 3h5a2 2 0 012 2v14a2 2 0 01-2 2h-5"/><path d="M10 12H3M7 8l-4 4 4 4"/></svg><span class="icon-cell__name">logout</span></div>
+      <div class="icon-cell"><svg viewBox="0 0 24 24"><path d="M10 3H5a2 2 0 00-2 2v14a2 2 0 002 2h5"/><path d="M14 12h7M18 8l4 4-4 4"/></svg><span class="icon-cell__name">landin</span></div>
+      <div class="icon-cell"><svg viewBox="0 0 24 24"><path d="M14 3h5a2 2 0 012 2v14a2 2 0 01-2 2h-5"/><path d="M10 12H3M7 8l-4 4 4 4"/></svg><span class="icon-cell__name">landout</span></div>
       <div class="icon-cell"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><path d="M12 3v2.5M12 18.5V21M3 12h2.5M18.5 12H21M5.6 5.6l1.8 1.8M16.6 16.6l1.8 1.8M18.4 5.6l-1.8 1.8M5.6 18.4l1.8-1.8"/></svg><span class="icon-cell__name">settings</span></div>
       <div class="icon-cell"><svg viewBox="0 0 24 24"><path d="M18 8a6 6 0 10-12 0c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M10 21a2 2 0 004 0"/></svg><span class="icon-cell__name">bell</span></div>
       <div class="icon-cell"><svg viewBox="0 0 24 24"><circle cx="8" cy="12" r="4"/><path d="M12 12h10M18 12v3M22 12v4"/></svg><span class="icon-cell__name">key</span></div>
@@ -656,8 +656,8 @@ a{color:var(--mj-blue)}
       <div class="icon-cell"><svg viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="16" rx="1"/><path d="M3 10h18M8 3v4M16 3v4"/></svg><span class="icon-cell__name">calendar</span></div>
     </div>
 
-    <div class="icon-category">Industri / MJ-spesifikk <span style="color:var(--mj-warning);font-weight:600;font-size:10px;letter-spacing:.08em;text-transform:uppercase">· Placeholder · sideløp</span></div>
-    <p style="font-size:13px;color:var(--mj-ink-2);margin:0 0 12px">Tegnet for å bære MJ-profilen — hardware, ikke generisk fintech. Skal kjenne seg igjen ved 16 og 24 px. <strong>Vurderes parallelt med ev. sekskant/mutterark-variant fra MJ — endelig sett bestemmes når vi ser ikonene i kontekst på faktiske sider.</strong></p>
+    <div class="icon-category">Industry / MJ-specific <span style="color:var(--mj-warning);font-weight:600;font-size:10px;letter-spacing:.08em;text-transform:uppercase">· Placeholder · parallel track</span></div>
+    <p style="font-size:13px;color:var(--mj-ink-2);margin:0 0 12px">Tegnet for å bære MJ-profilen — hardware, not generisk fintech. Skal kjenne seg igjen ved 16 and 24 px. <strong>Being evaluated in parallel against an optional hex/nut-sheet variant from MJ — the final set is decided once we see icons in context on real pages.</strong></p>
     <div class="icon-grid">
       <div class="icon-cell"><svg viewBox="0 0 24 24"><path d="M9 3h6l3 3v3l-3 3H9L6 9V6z"/><path d="M11 12v9M9 14h6M9 17h6"/></svg><span class="icon-cell__name">bolt</span></div>
       <div class="icon-cell"><svg viewBox="0 0 24 24"><path d="M14.5 6.5a3.5 3.5 0 014.5 4.5l3 3-2.5 2.5-3-3a3.5 3.5 0 01-4.5-4.5l1.7 1.7L16 8.7l-1.3-1.3z"/><path d="M11 11l-8 8 2 2 8-8"/></svg><span class="icon-cell__name">wrench</span></div>
@@ -673,69 +673,69 @@ a{color:var(--mj-blue)}
       <div class="icon-cell"><svg viewBox="0 0 24 24"><rect x="3" y="6" width="8" height="13"/><rect x="13" y="6" width="8" height="13"/><path d="M3 12h8M13 12h8"/><path d="M5 6V5h4v1M15 6V5h4v1"/></svg><span class="icon-cell__name">boxes (2-boks)</span></div>
     </div>
 
-    <div class="icon-category">Sosial</div>
+    <div class="icon-category">Social</div>
     <div class="icon-grid">
       <div class="icon-cell"><svg viewBox="0 0 24 24"><path d="M14 8h3V4h-3a4 4 0 00-4 4v3H7v4h3v8h4v-8h3l1-4h-4V8c0-.5.5-1 1-1z"/></svg><span class="icon-cell__name">facebook</span></div>
       <div class="icon-cell"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M8 10v8"/><circle class="filled-dot" cx="8" cy="7" r="1"/><path d="M12 18v-5a3 3 0 016 0v5"/></svg><span class="icon-cell__name">linkedin</span></div>
       <div class="icon-cell"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="4"/><circle cx="12" cy="12" r="4"/><circle class="filled-dot" cx="17.5" cy="6.5" r="1"/></svg><span class="icon-cell__name">instagram</span></div>
     </div>
 
-    <div class="callout"><strong>Implementasjon:</strong> Ikoner brukes som inline SVG (ikke icon-fonts eller bilde-sprites). Det gir oss tre fordeler: (1) farge arves fra <code>currentColor</code> og bytter med tema, (2) tilgjengelighet er enkel via <code>aria-label</code>, og (3) ingen nettverkskall ekstra. Strek-defaults (1.6 px, round/round, fill:none) settes på <code>.icon-cell svg</code> i CSS, så markup forblir ren. Komplett kopier-lim-bibliotek finnes i <code>src/components/icons/icons.html</code>.</div>
+    <div class="callout"><strong>Implementation:</strong> Icons are used as inline SVG (not icon fonts or image sprites). This gives us three benefits: (1) color is inherited from <code>currentColor</code> and changes with the theme, (2) accessibility is easy via <code>aria-label</code>, and (3) no extra network calls. Stroke defaults (1.6 px, round/round, fill:none) are set on <code>.icon-cell svg</code> in CSS, so markup stays clean. The complete copy-paste library lives in <code>src/components/icons/icons.html</code>.</div>
   </section>
 
-  <section class="section section--alt" id="bilder">
-    <div class="section__num">10 / Visuelt språk</div>
-    <h2 class="section__title">Bilder</h2>
-    <p class="section__lead">Realistiske, autentiske industribilder — i tråd med profilbok 2025. Skruer, bolter, mutter, verktøy fotografert nært. Ingen stockfoto av smilende kontoransatte.</p>
-    <h3>Prioritert rekkefølge</h3>
+  <section class="section section--alt" id="images">
+    <div class="section__num">10 / Visual language</div>
+    <h2 class="section__title">Images</h2>
+    <p class="section__lead">Realistic, authentic industrial photography — in line with the 2025 brand book. Screws, bolts, nuts, tools shot close-up. No stock photos of smiling office workers.</p>
+    <h3>Priority order</h3>
     <ol>
-      <li>Faktiske produktbilder fra leverandør (PIM)</li>
-      <li>Egne foto av lager, fasade, ansatte i jobb</li>
-      <li>Egne foto av verktøy, festemidler, verneutstyr i bruk</li>
-      <li>Generiske industri-bilder (kun hvis ingen alternativer)</li>
+      <li>Actual product images from the supplier (PIM)</li>
+      <li>Own photos of the warehouse, facade, employees at work</li>
+      <li>Own photos of tools, fasteners, safety gear in use</li>
+      <li>Generic industry images (only when no alternatives exist)</li>
     </ol>
     <h3>Aspect ratios</h3>
-    <div class="kvp"><span class="kvp__key">--ar-square (1:1)</span><span class="kvp__val">Produktbilder, kategorikort</span></div>
-    <div class="kvp"><span class="kvp__key">--ar-landscape-4-3</span><span class="kvp__val">Artikkel-thumbnails</span></div>
-    <div class="kvp"><span class="kvp__key">--ar-landscape-16-9</span><span class="kvp__val">Hero-bilder, video-embed</span></div>
+    <div class="kvp"><span class="kvp__key">--ar-square (1:1)</span><span class="kvp__val">Product images, category cards</span></div>
+    <div class="kvp"><span class="kvp__key">--ar-landscape-4-3</span><span class="kvp__val">Artnotl-thumbnails</span></div>
+    <div class="kvp"><span class="kvp__key">--ar-landscape-16-9</span><span class="kvp__val">Hero images, video embeds</span></div>
     <div class="kvp"><span class="kvp__key">--ar-landscape-21-9</span><span class="kvp__val">Wide hero</span></div>
-    <div class="kvp"><span class="kvp__key">--ar-portrait-3-4</span><span class="kvp__val">Persongalleri</span></div>
+    <div class="kvp"><span class="kvp__key">--ar-portrait-3-4</span><span class="kvp__val">People gallery</span></div>
   </section>
 
-  <section class="section" id="innhold">
-    <div class="section__num">11 / Innhold &amp; regler</div>
-    <h2 class="section__title">Tall, pris og koder</h2>
-    <p class="section__lead">B2B-handel krever presisjon. Disse formatene skal følges hver gang et tall, en pris eller et artikkelnummer vises.</p>
-    <h3>Pris</h3>
-    <div class="kvp"><span class="kvp__key">Standard pris (eks. mva)</span><span class="kvp__val"><code>kr 2 490,–</code></span></div>
-    <div class="kvp"><span class="kvp__key">Pris med øre</span><span class="kvp__val"><code>kr 2,80</code> — komma som desimaltegn</span></div>
-    <div class="kvp"><span class="kvp__key">Stor pris</span><span class="kvp__val"><code>kr 12 450,–</code> — hardspace som tusenskilletegn</span></div>
-    <div class="kvp"><span class="kvp__key">Veil. pris</span><span class="kvp__val"><s>kr 3 200,–</s> — gjennomstrøket</span></div>
-    <div class="callout"><strong>Regel:</strong> Pris er alltid eks. mva med mindre annet er angitt — B2B-standard.</div>
-    <h3>SKU og artikkelnummer</h3>
-    <div class="kvp"><span class="kvp__key">Artikkelnummer</span><span class="kvp__val"><code>4815-162-30</code> — mono</span></div>
-    <div class="kvp"><span class="kvp__key">NOBB-nummer</span><span class="kvp__val"><code>51234567</code></span></div>
+  <section class="section" id="content-rules">
+    <div class="section__num">11 / Content &amp; regler</div>
+    <h2 class="section__title">Tall, pris and koder</h2>
+    <p class="section__lead">B2B-handel krever presisjon. Disse formatene skal følges hver gang et tall, en pris or et artnotlnummer vises.</p>
+    <h3>Price</h3>
+    <div class="kvp"><span class="kvp__key">Standard price (ex. VAT)</span><span class="kvp__val"><code>kr 2 490,–</code></span></div>
+    <div class="kvp"><span class="kvp__key">Price med øre</span><span class="kvp__val"><code>kr 2,80</code> — comma as decimal separator</span></div>
+    <div class="kvp"><span class="kvp__key">Large price</span><span class="kvp__val"><code>kr 12 450,–</code> — hard space as thousands separator</span></div>
+    <div class="kvp"><span class="kvp__key">Suggested price</span><span class="kvp__val"><s>kr 3 200,–</s> — struck through</span></div>
+    <div class="callout"><strong>Rule:</strong> Price er alltid eks. mva med mindre annet er angitt — B2B standard.</div>
+    <h3>SKU and artnotlnummer</h3>
+    <div class="kvp"><span class="kvp__key">Artnotlnummer</span><span class="kvp__val"><code>4815-162-30</code> — mono</span></div>
+    <div class="kvp"><span class="kvp__key">NOBB number</span><span class="kvp__val"><code>51234567</code></span></div>
     <div class="kvp"><span class="kvp__key">EAN/GTIN</span><span class="kvp__val"><code>7053900012345</code></span></div>
-    <h3>Måleenheter</h3>
-    <div class="kvp"><span class="kvp__key">Lengde</span><span class="kvp__val"><code>40 mm</code>, <code>5 m</code> — hardspace mellom tall og enhet</span></div>
-    <div class="kvp"><span class="kvp__key">Vekt</span><span class="kvp__val"><code>1,5 kg</code>, <code>500 g</code></span></div>
-    <div class="kvp"><span class="kvp__key">Antall</span><span class="kvp__val"><code>200 stk</code>, <code>4 200 stk</code></span></div>
-    <div class="kvp"><span class="kvp__key">Pakning</span><span class="kvp__val"><code>boks à 200 stk</code></span></div>
-    <div class="kvp"><span class="kvp__key">Dimensjon</span><span class="kvp__val"><code>M8 × 40 mm</code></span></div>
+    <h3>Units of measurement</h3>
+    <div class="kvp"><span class="kvp__key">Length</span><span class="kvp__val"><code>40 mm</code>, <code>5 m</code> — hardspace mellom tall and enhet</span></div>
+    <div class="kvp"><span class="kvp__key">Weight</span><span class="kvp__val"><code>1,5 kg</code>, <code>500 g</code></span></div>
+    <div class="kvp"><span class="kvp__key">Quantity</span><span class="kvp__val"><code>200 stk</code>, <code>4 200 stk</code></span></div>
+    <div class="kvp"><span class="kvp__key">Packaging</span><span class="kvp__val"><code>box of 200 pcs</code></span></div>
+    <div class="kvp"><span class="kvp__key">Dimension</span><span class="kvp__val"><code>M8 × 40 mm</code></span></div>
   </section>
 
   <section class="section section--alt" id="primitives">
-    <div class="section__num">12 / Komponenter</div>
-    <h2 class="section__title">Primitiver — 16 atomer</h2>
-    <p class="section__lead">De minste byggeklossene. Alle bygd med tokens, ingen hardkodede verdier.</p>
-    <h3>Knapper</h3>
-    <p>Seks varianter, fire størrelser. <strong>Maks én primær per skjerm</strong>. Plasser primær til høyre i action-grupper (norsk leserekkefølge).</p>
+    <div class="section__num">12 / Components</div>
+    <h2 class="section__title">Primitives — 16 atomer</h2>
+    <p class="section__lead">The smallest building blocks. All built with tokens, no hard-coded values.</p>
+    <h3>Buttons</h3>
+    <p>Six variants, four sizes. <strong>At most one primary per screen</strong>. Place primary on the right in action groups (Norwegian reading order).</p>
     <div class="demo-box">
       <button class="btn btn--primary">Primary</button>
       <button class="btn btn--secondary">Secondary</button>
       <button class="btn btn--outline">Outline</button>
       <button class="btn btn--ghost">Ghost</button>
-      <button class="btn btn--destructive">Slett</button>
+      <button class="btn btn--destructive">Delete</button>
     </div>
     <div class="demo-box">
       <button class="btn btn--primary btn--xs">XS · 28px</button>
@@ -743,21 +743,21 @@ a{color:var(--mj-blue)}
       <button class="btn btn--primary">MD · 44px</button>
       <button class="btn btn--primary btn--lg">LG · 52px</button>
     </div>
-    <h3>Skjemafelt</h3>
-    <p>Native HTML der det går. <code>&lt;label&gt;</code> alltid koblet via <code>for</code>/<code>id</code>. Valideringsfeil vises under feltet, ikke som popup.</p>
+    <h3>Form fields</h3>
+    <p>Native HTML where possible. <code>&lt;label&gt;</code> always linked via <code>for</code>/<code>id</code>. Valideringsfeil vises under feltet, not som popup.</p>
     <div class="demo-box demo-box--col">
       <div class="field">
-        <label class="field__label">Artikkelnummer</label>
+        <label class="field__label">Artnotlnummer</label>
         <input class="input" placeholder="f.eks. 4815-162-30">
         <span class="field__hint">10 tegn maks · NOBB-nr godtas</span>
       </div>
       <div class="field">
         <label class="field__label" style="color:var(--mj-error)">E-post</label>
-        <input class="input" value="ikke-en-epost" style="border-color:var(--mj-error)">
+        <input class="input" value="not-en-epost" style="border-color:var(--mj-error)">
         <span class="field__error">Ugyldig e-postadresse — sjekk at den inneholder @</span>
       </div>
     </div>
-    <h3>Badges, status pills, lagerstatus</h3>
+    <h3>Badges, status pills, stock indicators</h3>
     <div class="demo-box">
       <span class="badge">DEFAULT</span>
       <span class="badge badge--brand">NYHET</span>
@@ -767,170 +767,170 @@ a{color:var(--mj-blue)}
       <span class="badge badge--numeric">7</span>
     </div>
     <div class="demo-box">
-      <span class="status-pill status-pill--success">På lager</span>
-      <span class="status-pill status-pill--warning">Få igjen</span>
-      <span class="status-pill status-pill--error">Utsolgt</span>
-      <span class="status-pill status-pill--info">Bestillingsvare</span>
+      <span class="status-pill status-pill--success">In stock</span>
+      <span class="status-pill status-pill--warning">Low stock</span>
+      <span class="status-pill status-pill--error">Out of stock</span>
+      <span class="status-pill status-pill--info">Made to order</span>
     </div>
     <div class="demo-box demo-box--col">
-      <span class="stock stock--in">På lager <span class="stock__qty">4 200 stk</span></span>
-      <span class="stock stock--low">Få igjen <span class="stock__qty">6 stk</span></span>
-      <span class="stock stock--out">Utsolgt <span class="stock__qty">Skaffes</span></span>
+      <span class="stock stock--in">In stock <span class="stock__qty">4 200 stk</span></span>
+      <span class="stock stock--low">Low stock <span class="stock__qty">6 stk</span></span>
+      <span class="stock stock--out">Out of stock <span class="stock__qty">Skaffes</span></span>
     </div>
-    <h3>Andre primitiver</h3>
-    <p>I tillegg finnes: <strong>textarea, select, number stepper (med multiplum-støtte for boks-kjøp), checkbox, radio, switch, tag/chip, progress bar, spinner, skeleton, divider, link</strong>. Alle ligger som egne BEM-klasser i <code>src/components/</code>.</p>
+    <h3>Other primitives</h3>
+    <p>Also available: <strong>textarea, select, number stepper (med multiplum-støtte for boks-kjøp), checkbox, radio, switch, tag/chip, prandress bar, spinner, skeleton, divider, link</strong>. All live as their own BEM classes in <code>src/components/</code>.</p>
   </section>
 
   <section class="section" id="composites">
-    <div class="section__num">13 / Komponenter</div>
-    <h2 class="section__title">Composites — 19 sammensatte</h2>
-    <p class="section__lead">Bygd ved å kombinere primitiver: kort, tabeller, navigasjon, modaler, varslinger.</p>
-    <h3>Produktkort</h3>
+    <div class="section__num">13 / Components</div>
+    <h2 class="section__title">Composites — 19 compositions</h2>
+    <p class="section__lead">Bygd ved å kombinere primitiver: kort, tabor, navigasjon, modaler, varslinger.</p>
+    <h3>Product card</h3>
     <div class="demo-box">
       <div class="product-mini">
         <div class="product-mini__media">PRODUKTBILDE</div>
         <span class="product-mini__sku">4815-162-30</span>
         <h4 class="product-mini__title">Sekskantskrue M8 × 40 mm A4 syrefast</h4>
-        <span class="stock stock--in" style="font-size:12px">På lager</span>
+        <span class="stock stock--in" style="font-size:12px">In stock</span>
         <div class="product-mini__price">kr 2,80 <span class="product-mini__price-suffix">eks. mva</span></div>
       </div>
       <div class="product-mini">
         <div class="product-mini__media">PRODUKTBILDE</div>
         <span class="product-mini__sku">2210-507-12</span>
         <h4 class="product-mini__title">Hilti TE 6-A36 borhammer 36V</h4>
-        <span class="stock stock--in" style="font-size:12px">På lager</span>
+        <span class="stock stock--in" style="font-size:12px">In stock</span>
         <div class="product-mini__price">kr 8 990,– <span class="product-mini__price-suffix">eks. mva</span></div>
       </div>
     </div>
-    <h3>Varslinger</h3>
-    <div class="alert alert--info"><strong>ⓘ</strong><span>Bestillinger før kl. 14 sendes samme dag.</span></div>
-    <div class="alert alert--success"><strong>✓</strong><span>Ordre 234 519 er bekreftet og under behandling.</span></div>
-    <div class="alert alert--warning"><strong>⚠</strong><span>Lav beholdning på 3 av 8 varer — du kan fortsatt bestille.</span></div>
-    <div class="alert alert--error"><strong>✕</strong><span>Klarte ikke laste prislisten. Prøv igjen, eller kontakt oss.</span></div>
-    <h3>Andre composites</h3>
-    <p>I tillegg finnes: <strong>card (3 varianter), category card, person card, data table (med sticky header og sort), pagination, tabs, breadcrumb, stepper (checkout-flow), accordion, tooltip, modal/dialog, drawer, toast, banner, empty state, loading state, error state</strong>.</p>
+    <h3>Notifications</h3>
+    <div class="alert alert--info"><strong>ⓘ</strong><span>Orders placed before 2 pm ship the same day.</span></div>
+    <div class="alert alert--success"><strong>✓</strong><span>Ordre 234 519 er bekreftet and under behandling.</span></div>
+    <div class="alert alert--warning"><strong>⚠</strong><span>Low stock on 3 of 8 items — you can still order.</span></div>
+    <div class="alert alert--error"><strong>✕</strong><span>Klarte not laste prislisten. Prøv igjen, or kontakt oss.</span></div>
+    <h3>Other composites</h3>
+    <p>Also available: <strong>card (3 varianter), category card, person card, data table (med sticky header and sort), pagination, tabs, breadcrumb, stepper (checkout-flow), accordion, tooltip, modal/dialand, drawer, toast, banner, empty state, loading state, error state</strong>.</p>
   </section>
 
   <section class="section section--alt" id="ecommerce">
-    <div class="section__num">14 / Komponenter</div>
-    <h2 class="section__title">E-commerce — 31 spesialiserte</h2>
-    <p class="section__lead">B2B-spesifikke komponenter som skiller MJs nettbutikk fra en generisk e-handel.</p>
+    <div class="section__num">14 / Components</div>
+    <h2 class="section__title">E-commerce — 31 specialised</h2>
+    <p class="section__lead">B2B-spesifnot komponenter som skiller MJs nettbutikk fra en generisk e-handel.</p>
     <div class="cols">
       <div class="col-card"><div class="col-card__num">PDP</div><h4 class="col-card__title">Product gallery</h4><p class="col-card__desc">Thumb-stripe + main-bilde, klikkbart, byttbart.</p></div>
-      <div class="col-card"><div class="col-card__num">PDP</div><h4 class="col-card__title">Variant selector</h4><p class="col-card__desc">To visninger: chip-grupper (få varianter, hanske-/skostørrelser) og matrise med antall + cart per rad (mange varianter, festemidler). Avtalt 12. mai 2026.</p></div>
-      <div class="col-card"><div class="col-card__num">CART</div><h4 class="col-card__title">Quick order pad</h4><p class="col-card__desc">Hurtigbestilling via artikkelnummer-paste.</p></div>
-      <div class="col-card"><div class="col-card__num">CART</div><h4 class="col-card__title">Mini cart drawer</h4><p class="col-card__desc">Glir inn fra høyre, viser kurv + total.</p></div>
-      <div class="col-card"><div class="col-card__num">B2B</div><h4 class="col-card__title">Sortilog</h4><p class="col-card__desc">Kundespesifikk produktliste — favoritter med avtalepriser.</p></div>
-      <div class="col-card"><div class="col-card__num">B2B</div><h4 class="col-card__title">2-boks dashboard</h4><p class="col-card__desc">Visuell oversikt over 2-boks-system med fyllingsgrad.</p></div>
-      <div class="col-card"><div class="col-card__num">B2B</div><h4 class="col-card__title">Sales rep impersonation</h4><p class="col-card__desc">Orange varslingsbar når selger handler på vegne av kunde.</p></div>
-      <div class="col-card"><div class="col-card__num">PLP</div><h4 class="col-card__title">Filter sidebar &amp; chips</h4><p class="col-card__desc">Sticky sidebar med antall pr. valg, aktive chips på toppen.</p></div>
+      <div class="col-card"><div class="col-card__num">PDP</div><h4 class="col-card__title">Variant selector</h4><p class="col-card__desc">To visninger: chip-grupper (få varianter, hanske-/skostørrelser) and matrise med antall + cart per rad (mange varianter, festemidler). Avtalt May 12, 2026.</p></div>
+      <div class="col-card"><div class="col-card__num">CART</div><h4 class="col-card__title">Quick order pad</h4><p class="col-card__desc">Hurtigbestilling via artnotlnummer-paste.</p></div>
+      <div class="col-card"><div class="col-card__num">CART</div><h4 class="col-card__title">Mini cart drawer</h4><p class="col-card__desc">Slides in from the right, showing cart + total.</p></div>
+      <div class="col-card"><div class="col-card__num">B2B</div><h4 class="col-card__title">Sortiland</h4><p class="col-card__desc">Customer-specific product list — favorites with negotiated prices.</p></div>
+      <div class="col-card"><div class="col-card__num">B2B</div><h4 class="col-card__title">2-bin dashboard</h4><p class="col-card__desc">Visual overview of the 2-bin system with fill levels.</p></div>
+      <div class="col-card"><div class="col-card__num">B2B</div><h4 class="col-card__title">Sales rep impersonation</h4><p class="col-card__desc">Orange notification bar when a sales rep is shopping on behalf of a customer.</p></div>
+      <div class="col-card"><div class="col-card__num">PLP</div><h4 class="col-card__title">Filter sidebar &amp; chips</h4><p class="col-card__desc">Sticky sidebar with counts per option, active chips on top.</p></div>
     </div>
-    <p style="margin-top:24px">Pluss: predictive search, sort dropdown, view switcher, address book, PO-referanse, order history, account dashboard, datablad-arkiv, request quote, stock notify, promo code, reorder, og flere. <a href="../src/components/index.html">Se alle 66 i komponentbiblioteket →</a></p>
+    <p style="margin-top:24px">Pluss: predictive search, sort dropdown, view switcher, address book, PO-referanse, order history, account dashboard, datablad-arkiv, request quote, stock notify, promo code, reorder, and flere. <a href="../src/components/index.html">See all 66 in the component library →</a></p>
   </section>
 
-  <section class="section" id="sidemaler">
-    <div class="section__num">15 / Sidemaler</div>
-    <h2 class="section__title">11 ferdige sidemaler</h2>
-    <p class="section__lead">Alle viktige sidetyper er implementert som faktisk HTML/CSS — klare for kobling mot Dynamicweb-data.</p>
+  <section class="section" id="page-templates">
+    <div class="section__num">15 / Page templates</div>
+    <h2 class="section__title">11 ready-made page templates</h2>
+    <p class="section__lead">Alle viktige sidetyper er implemented som faktisk HTML/CSS — klare for kobling mot Dynamicweb-data.</p>
     <div class="page-thumbs">
-      <a class="page-thumb" href="../src/pages/home.html"><div class="page-thumb__num">15.2</div><h4 class="page-thumb__title">Forside</h4><p class="page-thumb__desc">Hero, kategorier, populære produkter, hurtigbestilling.</p></a>
-      <a class="page-thumb" href="../src/pages/category.html"><div class="page-thumb__num">15.3</div><h4 class="page-thumb__title">Kategoriside (PLP)</h4><p class="page-thumb__desc">Filtre + grid eller liste, sortering, pagination.</p></a>
-      <a class="page-thumb" href="../src/pages/product.html"><div class="page-thumb__num">15.4</div><h4 class="page-thumb__title">Produktside (PDP)</h4><p class="page-thumb__desc">Galleri, variant-matrise, pris, datablad-tabs.</p></a>
-      <a class="page-thumb" href="../src/pages/search.html"><div class="page-thumb__num">15.5</div><h4 class="page-thumb__title">Søkeresultat</h4><p class="page-thumb__desc">Treffliste med filter på siden.</p></a>
-      <a class="page-thumb" href="../src/pages/cart.html"><div class="page-thumb__num">15.6</div><h4 class="page-thumb__title">Handlekurv</h4><p class="page-thumb__desc">Linjer med antall, summering, promo-kode.</p></a>
-      <a class="page-thumb" href="../src/pages/checkout.html"><div class="page-thumb__num">15.7</div><h4 class="page-thumb__title">Kasse</h4><p class="page-thumb__desc">Adresse, levering, referanse, betaling.</p></a>
-      <a class="page-thumb" href="../src/pages/order-confirmation.html"><div class="page-thumb__num">15.8</div><h4 class="page-thumb__title">Ordrebekreftelse</h4><p class="page-thumb__desc">Bekreftelses-skjerm med sammendrag.</p></a>
-      <a class="page-thumb" href="../src/pages/account.html"><div class="page-thumb__num">15.9</div><h4 class="page-thumb__title">Min konto</h4><p class="page-thumb__desc">Dashboard, ordrer, 2-boks-status.</p></a>
-      <a class="page-thumb" href="../src/pages/login.html"><div class="page-thumb__num">15.10</div><h4 class="page-thumb__title">Logg inn</h4><p class="page-thumb__desc">Standard innloggings-skjema.</p></a>
-      <a class="page-thumb" href="../src/pages/static.html"><div class="page-thumb__num">15.11</div><h4 class="page-thumb__title">Static (Om oss)</h4><p class="page-thumb__desc">Lang-form innholdsside.</p></a>
-      <a class="page-thumb" href="../src/pages/404.html"><div class="page-thumb__num">15.12</div><h4 class="page-thumb__title">404</h4><p class="page-thumb__desc">Feilside med navigasjon tilbake.</p></a>
+      <a class="page-thumb" href="../src/pages/home.html"><div class="page-thumb__num">15.2</div><h4 class="page-thumb__title">Front page</h4><p class="page-thumb__desc">Hero, categories, popular products, quick order.</p></a>
+      <a class="page-thumb" href="../src/pages/category.html"><div class="page-thumb__num">15.3</div><h4 class="page-thumb__title">Category page (PLP)</h4><p class="page-thumb__desc">Filtre + grid or liste, sortering, pagination.</p></a>
+      <a class="page-thumb" href="../src/pages/product.html"><div class="page-thumb__num">15.4</div><h4 class="page-thumb__title">Product page (PDP)</h4><p class="page-thumb__desc">Gallery, variant matrix, price, datasheet tabs.</p></a>
+      <a class="page-thumb" href="../src/pages/search.html"><div class="page-thumb__num">15.5</div><h4 class="page-thumb__title">Search results</h4><p class="page-thumb__desc">Result list with filters on the page.</p></a>
+      <a class="page-thumb" href="../src/pages/cart.html"><div class="page-thumb__num">15.6</div><h4 class="page-thumb__title">Cart</h4><p class="page-thumb__desc">Lines with quantity, totals, promo code.</p></a>
+      <a class="page-thumb" href="../src/pages/checkout.html"><div class="page-thumb__num">15.7</div><h4 class="page-thumb__title">Checkout</h4><p class="page-thumb__desc">Address, delivery, reference, payment.</p></a>
+      <a class="page-thumb" href="../src/pages/order-confirmation.html"><div class="page-thumb__num">15.8</div><h4 class="page-thumb__title">Order confirmation</h4><p class="page-thumb__desc">Confirmation screen with summary.</p></a>
+      <a class="page-thumb" href="../src/pages/account.html"><div class="page-thumb__num">15.9</div><h4 class="page-thumb__title">My account</h4><p class="page-thumb__desc">Dashboard, orders, 2-bin status.</p></a>
+      <a class="page-thumb" href="../src/pages/landin.html"><div class="page-thumb__num">15.10</div><h4 class="page-thumb__title">Landg inn</h4><p class="page-thumb__desc">Standard innlandgings-skjema.</p></a>
+      <a class="page-thumb" href="../src/pages/static.html"><div class="page-thumb__num">15.11</div><h4 class="page-thumb__title">Static (About us)</h4><p class="page-thumb__desc">Long-form content page.</p></a>
+      <a class="page-thumb" href="../src/pages/404.html"><div class="page-thumb__num">15.12</div><h4 class="page-thumb__title">404</h4><p class="page-thumb__desc">Errorside med navigasjon tilbake.</p></a>
     </div>
   </section>
 
-  <section class="section section--alt" id="tilgjengelighet">
-    <div class="section__num">16 / Kvalitet</div>
-    <h2 class="section__title">Tilgjengelighet — WCAG 2.2 AA</h2>
-    <p class="section__lead">Tilgjengelighet er ikke noe vi legger på til slutt. Det er en baseline-forutsetning som er bygd inn i hver komponent — og dokumentert i et eget audit.</p>
+  <section class="section section--alt" id="accessibility">
+    <div class="section__num">16 / Quality</div>
+    <h2 class="section__title">Accessibility — WCAG 2.2 AA</h2>
+    <p class="section__lead">Accessibility er not noe vi legger på til slutt. Det er en baseline-forutsetning som er bygd inn i hver komponent — and documented i et eget audit.</p>
 
-    <div class="callout" style="background:var(--mj-success-bg);border-left-color:var(--mj-success)"><strong>✓ Status per 12. mai 2026:</strong> Alle anvendelige AA-suksesskriterier oppfylt. Det ene kritiske audit-funnet (warning-token-kontrast på 2,86&nbsp;:&nbsp;1) er lukket — <code>--mj-warning</code> mørknet til <code>#7A580E</code>, gir nå 5,68&nbsp;:&nbsp;1 på status-pill og 6,50&nbsp;:&nbsp;1 på badge/stock/toast.</div>
+    <div class="callout" style="background:var(--mj-success-bg);border-left-color:var(--mj-success)"><strong>✓ Status per May 12, 2026:</strong> All applicable AA success criteria met. The single critical audit finding (warning-token contrast at 2.86:1) is closed — <code>--mj-warning</code> darkened to <code>#7A580E</code>, gir nå 5,68&nbsp;:&nbsp;1 på status-pill and 6,50&nbsp;:&nbsp;1 på badge/stock/toast.</div>
 
-    <h3>Hva vi gjør</h3>
+    <h3>What we do</h3>
     <ul>
-      <li><strong>Kontrast:</strong> Alle tekst-kombinasjoner møter 4,5&nbsp;:&nbsp;1 (brødtekst) eller 3&nbsp;:&nbsp;1 (stor tekst). Brand-orange er flagget som «kun dekorativ» (2,4&nbsp;:&nbsp;1 mot hvit).</li>
-      <li><strong>Tastaturnavigasjon:</strong> Alle interaktive elementer har synlig fokus-indikator (<code>--focus-ring</code>). Tab-rekkefølge følger DOM.</li>
-      <li><strong>Berøringspunkter:</strong> Standard knapper og inputs er 44 × 44 px. <code>.btn--sm</code> (36 px) og <code>.btn--xs</code> (28 px) er over WCAG 2.2 sin AA-grense på 24 px.</li>
-      <li><strong>Skjermlesere:</strong> Skjemafelt har <code>&lt;label&gt;</code>, ikon-knapper har <code>aria-label</code>, dialoger bruker native <code>&lt;dialog&gt;</code> som varsler riktig rolle. Variant-matrise har spesifik aria-label per cart-knapp («Legg M8 × 30 mm A4 syrefast i kurv, 100 stk»).</li>
-      <li><strong>Motion:</strong> <code>prefers-reduced-motion</code> respekteres globalt i <code>base/reset.css</code>.</li>
-      <li><strong>Strukturert markup:</strong> Headings følger semantisk hierarki (én h1 per side, h2 → h3 uten å hoppe nivåer). Visuell styling separert fra HTML-tag via utility-klasser.</li>
-      <li><strong>Sticky-header og fokus:</strong> <code>scroll-margin-top</code> sørger for at fokuserte elementer ikke skjules bak header (WCAG 2.2 2.4.11).</li>
+      <li><strong>Contrast:</strong> Alle tekst-kombinasjoner møter 4,5&nbsp;:&nbsp;1 (brødtekst) or 3&nbsp;:&nbsp;1 (stor tekst). Brand-orange er flagget som «kun dekorativ» (2,4&nbsp;:&nbsp;1 mot hvit).</li>
+      <li><strong>Keyboard navigation:</strong> All interactive elements have a visible focus indicator (<code>--focus-ring</code>). Tab order follows the DOM.</li>
+      <li><strong>Touch targets:</strong> Standard knapper and inputs er 44 × 44 px. <code>.btn--sm</code> (36 px) and <code>.btn--xs</code> (28 px) clear WCAG 2.2 AA's 24 px floor.</li>
+      <li><strong>Screen readers:</strong> Form fields har <code>&lt;label&gt;</code>, icon buttons have <code>aria-label</code>, dialander bruker native <code>&lt;dialand&gt;</code> which announces the correct role. The variant matrix has a specific aria-label per cart button ("Add M8 × 30 mm A4 stainless to cart, 100 pcs").</li>
+      <li><strong>Motion:</strong> <code>prefers-reduced-motion</code> is respected globally in <code>base/reset.css</code>.</li>
+      <li><strong>Structured markup:</strong> Headings follow the semantic hierarchy (one h1 per page, h2 → h3 without skipping levels). Visual styling is separated from HTML tags via utility classes.</li>
+      <li><strong>Sticky-header and fokus:</strong> <code>scroll-margin-top</code> sørger for at fokuserte elementer not skjules bak header (WCAG 2.2 2.4.11).</li>
     </ul>
 
-    <h3>Hva vi tester</h3>
+    <h3>What we test</h3>
     <ul>
-      <li>Manuell tastaturtest av hver komponent</li>
-      <li>Skjermleser (NVDA/VoiceOver) på sidemaler</li>
-      <li>Automatisk lint via axe-core eller tilsvarende i CI</li>
-      <li>Kontrast-verifisering ved nye fargevalg (WCAG-formel + visuell sjekk)</li>
-      <li>200&nbsp;% browser-zoom — layout skal ikke bryte, ingen horisontal scroll</li>
-      <li>Reduced-motion-flow gjennom hele kjøpsløpet</li>
+      <li>Manual keyboard test of every component</li>
+      <li>Screen reader (NVDA/VoiceOver) on page templates</li>
+      <li>Automatisk lint via axe-core or tilsvarende i CI</li>
+      <li>Contrast verification for new color choices (WCAG formula + visual check)</li>
+      <li>200&nbsp;% browser-zoom — layout skal not bryte, ingen horisontal scroll</li>
+      <li>Reduced-motion flow through the entire purchase journey</li>
     </ul>
 
-    <h3>Gjenstående arbeid</h3>
-    <p>To «major»-funn håndteres når komponentene kobles til JS-laget i Dynamicweb-integrasjonen — kan ikke løses i CSS alene:</p>
+    <h3>Remaining work</h3>
+    <p>To «major»-funn håndteres når komponentene kobles til JS-laget i Dynamicweb-integrasjonen — kan not løses i CSS alene:</p>
     <ul>
-      <li><strong>Drawer-fokusfelle:</strong> Modal bruker native <code>&lt;dialog&gt;</code> (gratis fokusfelle), men drawer er custom og trenger JS-implementasjon for <kbd>Tab</kbd>-sirkulering og <kbd>Esc</kbd>-lukking.</li>
-      <li><strong>Toast aria-live:</strong> <code>.toast-region</code> trenger <code>role="status" aria-live="polite"</code> for at skjermlesere skal varsle nye toast-meldinger.</li>
+      <li><strong>Drawer focus trap:</strong> Modal uses native <code>&lt;dialand&gt;</code> (gratis fokusfelle), men drawer er custom and needs JS-implementasjon for <kbd>Tab</kbd>-sirkulering and <kbd>Esc</kbd>closing.</li>
+      <li><strong>Toast aria-live:</strong> <code>.toast-region</code> needs <code>role="status" aria-live="polite"</code> so that screen readers announce new toast messages.</li>
     </ul>
 
-    <div class="callout"><strong>Komplett audit-rapport:</strong> Se det dedikerte tilgjengelighetsdokumentet <a href="../docs/tilgjengelighet.html">tilgjengelighet.html</a> — der ligger full per-kriterium-gjennomgang, alle målte kontraster, tastatursnarveis-matrise per komponent, og det formelle audit-trailet.</div>
+    <div class="callout"><strong>Full audit report:</strong> See the dedicated accessibility document <a href="../docs/accessibility.html">accessibility.html</a> — it contains the full per-criterion walkthrough, all measured contrasts, the keyboard shortcut matrix per component, and the formal audit trail.</div>
   </section>
 
-  <section class="section" id="utviklere">
-    <div class="section__num">17 / For utviklere</div>
-    <h2 class="section__title">Hva utviklere trenger</h2>
-    <p class="section__lead">Alt designsystemet er kode er åpen i repoet. Disse to lenkene gir tilgang til hele biblioteket:</p>
+  <section class="section" id="for-developers">
+    <div class="section__num">17 / For developers</div>
+    <h2 class="section__title">What developers need</h2>
+    <p class="section__lead">The entire design system is open code in the repo. These two links give access to the full library:</p>
     <div class="page-thumbs">
       <a class="page-thumb" href="../src/components/index.html">
         <div class="page-thumb__num">↗ Kode</div>
-        <h4 class="page-thumb__title">Komponentbibliotek</h4>
-        <p class="page-thumb__desc">Alle 66 komponenter i én side, med ekte CSS — for utviklere og designere.</p>
+        <h4 class="page-thumb__title">Component library</h4>
+        <p class="page-thumb__desc">All 66 components on one page, with real CSS — for developers and designers.</p>
       </a>
       <a class="page-thumb" href="../src/pages/index.html">
         <div class="page-thumb__num">↗ Kode</div>
-        <h4 class="page-thumb__title">Sidemaler — live preview</h4>
-        <p class="page-thumb__desc">Alle 11 sidemaler kjørbare lokalt i nettleseren.</p>
+        <h4 class="page-thumb__title">Page templates — live preview</h4>
+        <p class="page-thumb__desc">All 11 page templates runnable locally in the browser.</p>
       </a>
     </div>
-    <h3>Repo-struktur</h3>
+    <h3>Repository structure</h3>
     <pre class="code-block">src/
   styles/
     tokens/          164 CSS custom properties
-    base/            reset, typography utilities
-    index.css        global entrypoint (importeres én gang i app)
-  components/        67 BEM-komponenter, én mappe per komponent
+    base/            reset, typandraphy utilities
+    index.css        global entry point (imported once in the app)
+  components/        67 BEM components, one folder per component
   patterns/          form-validation, print
-  pages/             11 sidemaler som ekte HTML
-  assets/logos/      positiv + negativ PNG
-docs/                klient-vendt presentasjon (denne fila + index)</pre>
+  pages/             11 page templates as real HTML
+  assets/landos/      positive + negative PNG
+docs/                client-facing presentation (this file + index)</pre>
   </section>
 
-  <section class="section section--alt" id="avklaringer">
+  <section class="section section--alt" id="open-questions">
     <div class="section__num">18 / Avklaring</div>
-    <h2 class="section__title">Spørsmål til dere</h2>
-    <p class="section__lead">Disse punktene vil vi gjerne drøfte før vi går videre til endelig versjon 1.0.</p>
+    <h2 class="section__title">Questions for you</h2>
+    <p class="section__lead">We would like to discuss these points before moving to the final version 1.0.</p>
     <ol>
-      <li><strong>Source Sans 3</strong> som webfont-erstatning for Aptos — er dette greit å bruke på offentlige nettsider? (Profilboken peker mot Aptos, som er Microsoft-låst.)</li>
-      <li><strong>Brand-orange (#DB993D)</strong> kan ikke brukes som tekstfarge på hvit bakgrunn (kontrast 2.4:1). Bekrefter dere at den kun brukes som dekorflate / bakgrunn for mørk tekst?</li>
-      <li><strong>Status-grønnen</strong> (#1F7A3A) — vi har valgt en dempet, mettet variant for å harmonere med Reflex blå. OK med det, eller ønsker dere noe lysere/friskere?</li>
-      <li><strong>Ikon-set</strong> — vi planlegger en MJ-spesifikk strek-ikoner (bolt, wrench, helmet, etc.). Skal vi tegne dem selv eller kjøpe lisens på et eksisterende set (Phosphor, Lucide)?</li>
-      <li><strong>Dark mode</strong> — ikke prioritert i MVP. OK å holde det utenfor v1.0?</li>
-      <li><strong>Logo i små flater</strong> — har dere et MJ-merke uten "1930"-tekst som vi kan bruke som favicon (16/32 px) og touch-icon? Den vi har nå er for bred for små bruksområder.</li>
+      <li><strong>Source Sans 3</strong> as a webfont substitute for Aptos — is this acceptable on public websites? (The brand book points to Aptos, which is Microsoft-locked.)</li>
+      <li><strong>Brand-orange (#DB993D)</strong> kan not brukes som tekstfarge på hvit bakgrunn (kontrast 2.4:1). Bekrefter dere at den kun brukes som dekorflate / bakgrunn for mørk tekst?</li>
+      <li><strong>The status green</strong> (#1F7A3A) — vi har valgt en dempet, mettet variant for å harmonere med Reflex blue. OK med det, or ønsker dere noe lysere/friskere?</li>
+      <li><strong>Icon set</strong> — we plan a set of MJ-specific stroke icons (bolt, wrench, helmet, etc.). Should we draw them ourselves or license an existing set (Phosphor, Lucide)?</li>
+      <li><strong>Dark mode</strong> — not prioritert i MVP. OK å holde det utenfor v1.0?</li>
+      <li><strong>Lando i små flater</strong> — har dere et MJ-merke uten "1930"-tekst som vi kan bruke som favicon (16/32 px) and touch-icon? Den vi har nå er for bred for små bruksområder.</li>
     </ol>
   </section>
 
   <footer class="foot">
-    <p>Molde Jarnvare designsystem · v0.2 · 12. mai 2026 · Degree × Molde Jarnvare</p>
-    <p><a href="index.html">← Tilbake til docs-oversikt</a></p>
+    <p>Molde Jarnvare designsystem · v0.2 · May 12, 2026 · Degree × Molde Jarnvare</p>
+    <p><a href="index.html">← Back to docs overview</a></p>
   </footer>
 
 </main>

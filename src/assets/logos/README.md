@@ -1,27 +1,37 @@
-# Logo-filer
+# `/src/assets/logos` — Molde Jarnvare logos
 
-Per **§9 Logo usage** i designsystemet skal følgende filer ligge her:
+Two variants, both PNG with a transparent background:
 
-| Fil | Variant | Bruk |
-|-----|---------|------|
-| `molde-jarnvare-positive.png` | Positiv (Reflex blå) | Header på lyse sider, e-postsignatur, print |
-| `molde-jarnvare-negative.png` | Negativ (hvit) | Footer på Reflex-blå bakgrunn, hero på mørk variant |
-| `mj-mark.png` *(valgfritt)* | Kun MJ-merke | Touch-icon, små flater under 200 px bredde |
-| `favicon.svg` *(valgfritt)* | Favicon | MJ-merke uten "1930" |
+| File | Use |
+|---|---|
+| `molde-jarnvare-positive.png` | Default — for light surfaces (white, surface-0) |
+| `molde-jarnvare-negative.png` | For dark surfaces (Reflex blue, dark gray) |
 
-## Anbefalinger
+Both variants are also mirrored under `docs/assets/logos/` because `docs/`
+files are self-contained and cannot reach out of their folder.
 
-- **SVG foretrekkes** når tilgjengelig — `.svg` versjoner kan legges side ved side med `.png` (markupen kan oppdateres til å bruke `<picture>` med både).
-- **Minimumsbredde 200 px** for full lockup (per §9.2).
-- **Ikke endre proporsjoner, farger, eller legg til effekter** (per §9.4 — eies av Grafia 2025).
+## Usage
 
-## Hvor brukes filene
+```html
+<a class="site-header__logo" href="/" aria-label="Molde Jarnvare">
+  <img src="../assets/logos/molde-jarnvare-positive.png"
+       alt="Molde Jarnvare"
+       class="site-header__logo-img">
+</a>
+```
 
-- `src/components/site-header/` — positiv variant
-- `src/components/site-footer/` — negativ variant
-- `src/pages/*.html` — direkte `<img>` referanser
+`alt` should be the company name, not the word "logo". `aria-label` on the
+anchor tells screen readers what clicking the logo does.
 
-Hvis filnavn endres må følgende oppdateres samtidig:
-`src/components/site-header/site-header.css`,
-`src/components/site-footer/site-footer.css`,
-og alle `src/pages/*.html` der `<img class="site-header__logo-img">` finnes.
+## Touch icon / favicon
+
+Not in this folder yet. The "MJ" monogram (without "1930") needed for
+favicon (16/32 px) and iOS/Android touch icon is one of the open questions
+flagged in `docs/designsystem.html` (§Avklaringer).
+
+## File specs
+
+- Format: PNG with alpha channel
+- Width: 800 px (positive), 800 px (negative)
+- File size: ~30 KB each
+- Source: brand book 2025 (Sept 24, 2025)

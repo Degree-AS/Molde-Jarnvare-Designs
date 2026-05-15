@@ -1,6 +1,6 @@
 /**
  * Base styles — entry point.
- * Forventer at tokens er importert først.
+ * Expects tokens to be imported first.
  */
 
 @import "./reset.css";

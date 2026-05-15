@@ -1,25 +1,25 @@
-# `/team` — portretter av ansatte
+# `/team` — employee portraits
 
-Brukes som avatar i `.person-card`-komponenten på forsiden og PDP-en.
+Used as avatars in the `.person-card` component on the front page and PDP.
 
-## Erstatte placeholder med ekte portretter
+## Replacing the placeholder with real portraits
 
-Filen `ansatt-portrett.jpg` er en placeholder (MJ-blå med initialene «MJ») som
-ligger her inntil de faktiske portrettene kommer fra fotograf.
+The file `ansatt-portrett.jpg` is a placeholder (MJ-blue with "MJ" initials)
+that lives here until the real portraits are delivered by the photographer.
 
-For å bytte til ekte portretter:
+To swap in real portraits:
 
-1. Dropp portrettene inn i denne mappen som JPG-filer
-2. Anbefalt navngivning: `<fornavn>-<etternavn>.jpg`, kebab-case, ASCII
+1. Drop the portraits into this folder as JPG files
+2. Recommended naming: `<firstname>-<lastname>.jpg`, kebab-case, ASCII
    - `ola-nordmann.jpg`
    - `kari-bergshaug.jpg`
-   - osv.
-3. Spec: kvadratisk crop, 400 × 400 px, JPEG kvalitet ~80, EXIF stripped, ≤ 60 KB
-4. Oppdater `img src` i `src/pages/home.html` og `src/pages/product.html` så
-   hver person-card peker på sitt portrett
+   - etc.
+3. Spec: square crop, 400 × 400 px, JPEG quality ~80, EXIF stripped, ≤ 60 KB
+4. Update the `img src` attributes in `src/pages/home.html` and
+   `src/pages/product.html` so each person-card points to its own portrait
 
-## I demo nå
+## In the current demo
 
-Mens alle person-kort peker på samme `ansatt-portrett.jpg` ser man hvordan
-designet fungerer med portretter, men det er bevisst tydelig at det er
-plassholder (samme bilde gjentatt + MJ-merket).
+All person-cards currently point to the same `ansatt-portrett.jpg`. This
+demonstrates how the design looks with portraits while keeping it obvious
+that the content is a placeholder (same image repeated + the MJ monogram).

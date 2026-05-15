@@ -1,6 +1,6 @@
 /**
  * Site header / Site shell — header (§15.1)
- * Sticky topp-navigasjon med logo, søk, kategori-meny og bruker-actions.
+ * Sticky top navigation with logo, search, category menu and user actions.
  */
 
 .site-header {
@@ -47,7 +47,7 @@
   .site-header__logo-img { height: 28px; }
 }
 
-/* Tekst-fallback dersom logo ikke laster — vises kun hvis <img> feiler */
+/* Text-fallback dersom logo ikke laster — vises kun hvis <img> feiler */
 .site-header__logo-text {
   font-family: var(--ff-sans);
   font-size: var(--fs-h4);
@@ -56,7 +56,7 @@
   letter-spacing: var(--ls-tight);
 }
 
-/* Hovedmeny — sekundær rad under logo+søk med kategori-lenker */
+/* Hovedmeny — sekundær row under logo+søk med kategori-lenker */
 .site-header__main {
   border-top: var(--bw-1) solid var(--color-border-soft);
   background: var(--mj-surface-0);
@@ -102,7 +102,7 @@
   border-bottom-color: var(--color-action-primary);
 }
 
-/* Tilbud-lenken — orange aksent for å skille kampanje fra kategori */
+/* Tilbud-lenken — orange aksent to skille kampanje fra kategori */
 .site-header__nav-link--accent {
   color: var(--mj-orange);
 }

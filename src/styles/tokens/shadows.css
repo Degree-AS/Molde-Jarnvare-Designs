@@ -3,11 +3,11 @@
  * -----------------------------------------------------------------------------
  * Source: DESIGN_SYSTEM.md §7.3
  *
- * Bruksregler:
- *   --shadow-1   Standard kort, dropdowns
- *   --shadow-2   Hover-tilstand på kort
- *   --shadow-3   Sticky elementer, popovers
- *   --shadow-4   Modaler, drawers
+ * Usage:
+ *   --shadow-1   Default card, dropdowns
+ *   --shadow-2   Hover state on cards
+ *   --shadow-3   Sticky elements, popovers
+ *   --shadow-4   Modals, drawers
  * -----------------------------------------------------------------------------
  */
 

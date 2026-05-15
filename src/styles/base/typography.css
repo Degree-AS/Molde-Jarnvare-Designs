@@ -1,11 +1,11 @@
 /**
  * Typography utility classes (§5.8)
  *
- * Bruksregel (§5.9): HTML-headings følger semantisk hierarki. Visuell styling
- * kobles via klasser, ikke via tag.
+ * Rule (§5.9): HTML headings follow the semantic hierarchy. Visual styling
+ * is applied via classes, not via the tag itself.
  *
- *   <h2 class="t-h1">Sekskantskruer</h2>      <!-- riktig -->
- *   <h1>Hjelpemelding</h1>                     <!-- feil — bryter semantikk -->
+ *   <h2 class="t-h1">Hex bolts</h2>            <!-- correct -->
+ *   <h1>Help message</h1>                       <!-- wrong — breaks semantics -->
  */
 
 .t-display {
