@@ -18,8 +18,8 @@ Common requests and the correct response:
 
 - **"Change a color / spacing / type / token"** → edit the right file under `src/styles/tokens/` (re-export through `tokens/index.css` if it's a new file). If a `docs/*.html` snapshot uses that token, copy the new value into its inline `<style>` deliberately — `docs/` does not auto-update. Commit, push.
 - **"Add / change a component"** → follow the Component convention below (dir = block = filename, strict BEM, add the `@import` line in the correct §-section of `src/styles/index.css`, add a standalone preview). Commit, push.
-- **"Cut version N" / "freeze the current state" / "make a version for the customer to approve"** → run `scripts/cut-version.sh vN`; then add a new block at the **top** of the "Versjoner" list in `versions/index.html` (today's date, badge `Til godkjenning hos Molde Jarnvare`, links to the three artifacts, a short changelog vs the previous version); if relevant flip the previous block's badge to `Erstattet`; commit `chore(versions): klipp vN`; `git tag design-vN`; push branch + tags (the release workflow turns the tag into a GitHub Release). See `versions/README.md`.
-- **"<Customer> approved version N"** → in `versions/index.html` change vN's badge to `Godkjent <date>`; commit; push. (The human still records the approval in the Notion Design-protokoll — that lives outside this repo.)
+- **"Cut version N" / "freeze the current state" / "make a version for the customer to approve"** → run `scripts/cut-version.sh vN`; then add a new block at the **top** of the "Versjoner" list in `versions/index.html` (today's date, badge `Til godkjenning hos Molde Jarnvare`, links to the three artifacts, a short changelog vs the previous version); if relevant flip the previous block's badge to `Erstattet`; commit `chore(versions): klipp vN`; `git tag design-vN`; push branch + tags (the release workflow turns the tag into a GitHub Release). Also add three rows to the Notion **Design protocol** DB (one per artifact: Design guidelines / Component library / Page templates) with `Status: Pending`, `Version: N`, and `Link` pointing to the matching `…/versions/vN/...` URL — see "Approval log — Notion Design protocol" below. See `versions/README.md`.
+- **"<Customer> approved version N"** → in `versions/index.html` change vN's badge to `Godkjent <date>`; commit; push. Then update the matching rows in the Notion **Design protocol** DB: `Status: Approved`, `Approved by: Leif Erling` (default approver on the Molde Jarnvare side — confirm if the user names someone else), `Approved date: <date>`. Flip the previous version's rows to `Replaced` if relevant. See "Approval log — Notion Design protocol" below.
 
 Hard rules:
 
@@ -87,6 +87,19 @@ Promote inline ad-hoc styling to a new component on the **second** use, not the 
 ### Versioned snapshots — `versions/`
 
 `versions/vN/` are frozen `cp -R` copies of `docs/` + `src/` + `index.html` at the time the version was cut — same inner structure, so all relative links/imports inside the snapshot keep working untouched. They exist so the customer can approve a concrete version while later changes become a new one. `versions/index.html` is the human-facing version log (status + links + changelog), published at `/versions/`. Cut a new one with `scripts/cut-version.sh vN`, then add a block to `versions/index.html`, commit, and tag `design-vN` (the `.github/workflows/design-version-release.yml` workflow turns the tag into a GitHub Release). Never edit anything under `versions/vN/` after it's cut, and never let a snapshot link out of its own subtree. See `versions/README.md`.
+
+### Approval log — Notion Design protocol
+
+The Degree-AS Notion workspace mirrors customer approvals as a database. One row per (artifact × version) — the audit trail; the repo holds the artifacts.
+
+- **Where:** Project front page → Documentation → **Design protocol**. Page id `35db5715-86c7-80d0-9b8f-e85081582838`, inline DB id `35db5715-86c7-8042-ae7b-000babc2c791`. English reference doc ("Versioning workflow") at `https://www.notion.so/361b571586c7819d9f2adfdf71a3fa8a`.
+- **Schema:** `Name` (title) · `Version` · `Status` (`Pending` / `Approved` / `Replaced`) · `Approved by` · `Approved date` · `Comment` · `Link`.
+- **Approver on the client side:** Leif Erling (Molde Jarnvare). Confirm with the user if a different name is mentioned.
+- **`Link` must point to the versioned URL**, never to the live one. ✅ `…/versions/vN/docs/designsystem.html` — ❌ `…/docs/designsystem.html` (changes every commit, breaks the approval chain).
+- **Three artifacts per version**, canonical URLs:
+  - Design guidelines: `https://degree-as.github.io/Molde-Jarnvare-Designs/versions/vN/docs/designsystem.html`
+  - Component library: `https://degree-as.github.io/Molde-Jarnvare-Designs/versions/vN/src/components/index.html`
+  - Page templates: `https://degree-as.github.io/Molde-Jarnvare-Designs/versions/vN/src/pages/index.html`
 
 ## House rules when editing
 
