@@ -1,9 +1,9 @@
 <!doctype html>
-<html lang="nb">
+<html lang="en">
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Molde Jarnvare — Designsystem-dokumentasjon</title>
+  <title>Molde Jarnvare — Design system documentation</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Source+Sans+3:wght@400;500;600;700;900&display=swap" rel="stylesheet">
@@ -19,153 +19,75 @@
       --mj-white: #FFFFFF;
     }
     *, *::before, *::after { box-sizing: border-box; }
-    body {
-      margin: 0;
-      font-family: "Source Sans 3", -apple-system, "Segoe UI", Roboto, sans-serif;
-      color: var(--mj-ink);
-      background: var(--mj-surface-0);
-      line-height: 1.6;
-    }
-    .wrap {
-      max-width: 880px;
-      margin: 0 auto;
-      padding: 80px 32px;
-    }
-    .eyebrow {
-      font-size: 11px;
-      font-weight: 600;
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
-      color: var(--mj-blue);
-    }
-    h1 {
-      font-size: clamp(36px, 5vw, 56px);
-      font-weight: 900;
-      line-height: 1.05;
-      letter-spacing: -0.01em;
-      margin: 16px 0 24px;
-    }
-    .lead {
-      font-size: 19px;
-      color: var(--mj-ink-2);
-      max-width: 60ch;
-      margin: 0 0 56px;
-    }
-    h2 {
-      font-size: 24px;
-      font-weight: 700;
-      margin: 56px 0 16px;
-      padding-bottom: 12px;
-      border-bottom: 2px solid var(--mj-line-soft);
-    }
-    .grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-      gap: 16px;
-      margin-bottom: 40px;
-    }
-    .card {
-      display: flex;
-      flex-direction: column;
-      gap: 8px;
-      padding: 24px;
-      background: var(--mj-white);
-      border: 1px solid var(--mj-line-soft);
-      border-radius: 8px;
-      text-decoration: none;
-      color: inherit;
-      transition: border-color .16s ease, box-shadow .16s ease, transform .16s ease;
-    }
-    .card:hover {
-      border-color: var(--mj-blue);
-      box-shadow: 0 4px 16px rgba(13,43,126,0.08);
-      transform: translateY(-2px);
-    }
-    .card__title {
-      font-size: 18px;
-      font-weight: 700;
-      margin: 0;
-    }
-    .card__meta {
-      font-size: 13px;
-      color: var(--mj-ink-3);
-    }
-    .card__desc {
-      font-size: 14px;
-      color: var(--mj-ink-2);
-      margin: 4px 0 0;
-    }
-    .card--placeholder {
-      border-style: dashed;
-      color: var(--mj-ink-3);
-      cursor: default;
-    }
-    .card--placeholder:hover {
-      transform: none;
-      box-shadow: none;
-      border-color: var(--mj-line-soft);
-    }
-    .footer-note {
-      margin-top: 64px;
-      padding-top: 24px;
-      border-top: 1px solid var(--mj-line-soft);
-      font-size: 14px;
-      color: var(--mj-ink-3);
-    }
+    body { margin: 0; font-family: "Source Sans 3", -apple-system, "Segoe UI", Roboto, sans-serif; color: var(--mj-ink); background: var(--mj-surface-0); line-height: 1.6; }
+    .wrap { max-width: 880px; margin: 0 auto; padding: 80px 32px; }
+    .eyebrow { font-size: 11px; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; color: var(--mj-blue); }
+    h1 { font-size: clamp(36px, 5vw, 56px); font-weight: 900; line-height: 1.05; letter-spacing: -0.01em; margin: 16px 0 24px; }
+    .lead { font-size: 19px; color: var(--mj-ink-2); max-width: 60ch; margin: 0 0 56px; }
+    h2 { font-size: 24px; font-weight: 700; margin: 56px 0 16px; padding-bottom: 12px; border-bottom: 2px solid var(--mj-line-soft); }
+    .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 16px; margin-bottom: 40px; }
+    .card { display: flex; flex-direction: column; gap: 8px; padding: 24px; background: var(--mj-white); border: 1px solid var(--mj-line-soft); border-radius: 8px; text-decoration: none; color: inherit; transition: border-color .16s ease, box-shadow .16s ease, transform .16s ease; }
+    .card:hover { border-color: var(--mj-blue); box-shadow: 0 4px 16px rgba(13,43,126,0.08); transform: translateY(-2px); }
+    .card__title { font-size: 18px; font-weight: 700; margin: 0; }
+    .card__meta { font-size: 13px; color: var(--mj-ink-3); }
+    .card__desc { font-size: 14px; color: var(--mj-ink-2); margin: 4px 0 0; }
+    .card--placeholder { border-style: dashed; color: var(--mj-ink-3); cursor: default; }
+    .card--placeholder:hover { transform: none; box-shadow: none; border-color: var(--mj-line-soft); }
+    .footer-note { margin-top: 64px; padding-top: 24px; border-top: 1px solid var(--mj-line-soft); font-size: 14px; color: var(--mj-ink-3); }
     .footer-note a { color: var(--mj-blue); }
   </style>
 </head>
 <body>
 <div class="wrap">
 
-  <span class="eyebrow">Molde Jarnvare · Designsystem</span>
-  <h1>Dokumentasjon &amp; presentasjoner</h1>
+  <span class="eyebrow">Molde Jarnvare · Design system</span>
+  <h1>Documentation &amp; presentations</h1>
   <p class="lead">
-    Klient-vendte gjennomganger av designsystemet — selvstendige HTML-filer som forklarer
-    valg, prinsipper, fargekartotek, typografi, komponenter og sidemaler. Hver fil er
-    portabel og kan sendes som vedlegg eller hostes som lenke.
+    Client-facing walkthroughs of the design system — self-contained HTML files that explain
+    decisions, principles, the color catalogue, typography, components and page templates.
+    Each file is portable and can be sent as an attachment or hosted as a link.
   </p>
 
-  <h2>Tilgjengelige dokumenter</h2>
+  <h2>Available documents</h2>
   <div class="grid">
     <a class="card" href="designsystem.html">
-      <span class="card__meta">v0.2 · 11. mai 2026 · synkronisert med kode</span>
-      <h3 class="card__title">Designsystem — gjennomgang for kunde</h3>
-      <p class="card__desc">Komplett gjennomgang: prinsipper, stemme &amp; tone, logo,
-        farger, typografi, avstand, form, ikoner, bilder, innholdsregler, alle 66 komponenter
-        og 11 sidemaler.</p>
+      <span class="card__meta">v0.2 · May 11, 2026 · synchronised with code</span>
+      <h3 class="card__title">Design system — client walkthrough</h3>
+      <p class="card__desc">Complete walkthrough: principles, voice &amp; tone, logo,
+        colors, typography, spacing, shape, icons, images, content rules, all 66 components
+        and 11 page templates.</p>
     </a>
     <div class="card card--placeholder">
-      <span class="card__meta">Forslag</span>
-      <h3 class="card__title">Brand guide-snapshot</h3>
-      <p class="card__desc">Kortere sammendrag for sosiale-medie-team / e-post-signatur-tema.</p>
+      <span class="card__meta">Suggested</span>
+      <h3 class="card__title">Brand guide snapshot</h3>
+      <p class="card__desc">Shorter summary for social-media team / email-signature theme.</p>
     </div>
-    <a class="card" href="tilgjengelighet.html">
-      <span class="card__meta">v0.1 · 12. mai 2026 · alle AA-funn lukket</span>
-      <h3 class="card__title">Tilgjengelighet — WCAG 2.2 AA</h3>
-      <p class="card__desc">Egen gjennomgang av tilgjengelighetskrav og hvordan komponentene møter dem — inkluderer konkrete audit-funn og anbefalinger før v1.0.</p>
+    <a class="card" href="accessibility.html">
+      <span class="card__meta">v0.1 · May 12, 2026 · all AA findings closed</span>
+      <h3 class="card__title">Accessibility — WCAG 2.2 AA</h3>
+      <p class="card__desc">Dedicated walkthrough of accessibility requirements and how the components meet them — with concrete audit findings and recommendations before v1.0.</p>
     </a>
   </div>
 
-  <h2>Live preview &amp; komponentbibliotek</h2>
+  <h2>Live preview &amp; component library</h2>
   <div class="grid">
     <a class="card" href="../src/pages/index.html">
-      <span class="card__meta">Utvikler-vendt</span>
-      <h3 class="card__title">Sidemaler — live preview</h3>
-      <p class="card__desc">Forside, PLP, PDP, handlekurv, kasse, min konto, login med ekte CSS.</p>
+      <span class="card__meta">Developer-facing</span>
+      <h3 class="card__title">Page templates — live preview</h3>
+      <p class="card__desc">Home, PLP, PDP, cart, checkout, my account, login with the real CSS.</p>
     </a>
     <a class="card" href="../src/components/index.html">
-      <span class="card__meta">Utvikler-vendt</span>
-      <h3 class="card__title">Komponentgalleri</h3>
-      <p class="card__desc">Alle 66 komponenter (§12–§14) i én side — for utviklere og designere.</p>
+      <span class="card__meta">Developer-facing</span>
+      <h3 class="card__title">Component gallery</h3>
+      <p class="card__desc">All 66 components (§12–§14) on one page — for developers and designers.</p>
     </a>
   </div>
 
   <p class="footer-note">
-    Hvordan legge til en ny presentasjon: kopier
-    <code>docs/designsystem.html</code> til et nytt filnavn,
-    rediger innhold, og legg en lenke i <code>docs/index.html</code>.
-    Se <a href="https://github.com/Degree-AS/Molde-Jarnvare-Designs/blob/main/docs/README.md">README for /docs</a> for fullstendig oppsett.
+    To add a new presentation: copy
+    <code>docs/designsystem.html</code> to a new filename,
+    edit the content, and add a link in <code>docs/index.html</code>.
+    See <a href="https://github.com/Degree-AS/Molde-Jarnvare-Designs/blob/main/docs/README.md">README for /docs</a> for the full setup.
   </p>
 
 </div>
