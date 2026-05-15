@@ -261,6 +261,7 @@ a{color:var(--mj-blue)}
 
   <div class="nav__group">Quality</div>
   <a class="nav__link" href="#accessibility">Accessibility</a>
+  <a class="nav__link" href="#responsive">Responsive design</a>
 
   <div class="nav__group">For developers</div>
   <a class="nav__link" href="../src/pages/index.html">Live preview ↗</a>
@@ -885,8 +886,73 @@ a{color:var(--mj-blue)}
     <div class="callout"><strong>Full audit report:</strong> See the dedicated accessibility document <a href="../docs/accessibility.html">accessibility.html</a> — it contains the full per-criterion walkthrough, all measured contrasts, the keyboard shortcut matrix per component, and the formal audit trail.</div>
   </section>
 
-  <section class="section" id="for-developers">
-    <div class="section__num">17 / For developers</div>
+  <section class="section" id="responsive">
+    <div class="section__num">17 / Quality</div>
+    <h2 class="section__title">Responsive design — mobile, tablet, desktop</h2>
+    <p class="section__lead">Our customers shop both from the warehouse floor on a phone and from a planning desk on a 1440 px monitor. Every page template must work end-to-end on both — no horizontal scroll, no hidden actions, no degraded reading experience. The same words and actions are available everywhere; only the layout differs.</p>
+
+    <h3>Philosophy</h3>
+    <ul>
+      <li><strong>Mobile-first.</strong> Base CSS describes the mobile layout. Larger screens add behavior via <code>@media (min-width: ...)</code>, never the other way around.</li>
+      <li><strong>Progressive enhancement.</strong> Tablet adds breathing room; desktop adds a second column. The core flow never changes.</li>
+      <li><strong>Touch first on every viewport.</strong> Tap targets are at least 40 × 40 px (44 × 44 px preferred) regardless of screen size. This keeps the system usable with a glove on a workbench, not only on a phone.</li>
+    </ul>
+
+    <h3>Canonical breakpoints</h3>
+    <p>The token file (<code>src/styles/tokens/layout.css</code>) defines six breakpoints — <code>--bp-xs</code> through <code>--bp-2xl</code> — but only three are used as <em>layout cutoffs</em> in practice. The other three are reserved for micro-adjustments inside a single component.</p>
+
+    <table class="tbl">
+      <thead>
+        <tr><th>Token</th><th>Pixel</th><th>Role</th></tr>
+      </thead>
+      <tbody>
+        <tr><td><code>--bp-md</code></td><td>768 px</td><td><strong>Tablet portrait.</strong> Two-column layouts may appear. PDP gallery moves alongside the buy box.</td></tr>
+        <tr><td><code>--bp-lg</code></td><td>1024 px</td><td><strong>Desktop / tablet landscape.</strong> Filter sidebar appears inline (no drawer). Header navigation is horizontal (no hamburger). Cart and checkout become two columns.</td></tr>
+        <tr><td><code>--bp-xl</code></td><td>1280 px</td><td><strong>Container cap.</strong> The default container stops growing — content is centered with side gutters.</td></tr>
+      </tbody>
+    </table>
+
+    <p style="font-size:14px;color:var(--mj-ink-3);margin-top:8px"><em>Note: CSS media queries can not resolve <code>var()</code>. Components write the literal pixel value (<code>@media (min-width: 1024px)</code>) with a comment naming the token (<code>/* --bp-lg */</code>). If a token's value ever changes, all references must be updated.</em></p>
+
+    <h3>Per-template patterns</h3>
+    <p>Each page template has its own way of degrading to mobile. The rule per template:</p>
+
+    <table class="tbl">
+      <thead>
+        <tr><th>Template</th><th>Mobile (&lt; 768)</th><th>Tablet (768–1023)</th><th>Desktop (≥ 1024)</th></tr>
+      </thead>
+      <tbody>
+        <tr><td><strong>Header</strong></td><td>Hamburger drawer for category nav. Logo + search + cart remain visible.</td><td>Same as mobile.</td><td>Horizontal category nav inline. Search bar centered.</td></tr>
+        <tr><td><strong>Home (§15.2)</strong></td><td>One column. Hero CTA full-width. Person cards and category cards stack 1 × N.</td><td>Two columns for cards.</td><td>Three or four columns for cards. Hero image and copy side-by-side.</td></tr>
+        <tr><td><strong>PLP / search (§15.3, §15.5)</strong></td><td>"Filter (3)" button opens drawer. Product grid is 2 cards wide.</td><td>Same drawer pattern. Grid 3 wide.</td><td>Sidebar inline left. Grid 4 wide on the right.</td></tr>
+        <tr><td><strong>PDP (§15.4)</strong></td><td>Gallery on top, info below, buy box sticky at the bottom for action visibility.</td><td>Gallery + buy box side-by-side. Description full-width below.</td><td>Same as tablet, wider.</td></tr>
+        <tr><td><strong>Cart (§15.6)</strong></td><td>Single column. Summary collapses to a sticky footer with total + checkout CTA.</td><td>Same as mobile.</td><td>Two columns: items left, summary right (sticky).</td></tr>
+        <tr><td><strong>Checkout (§15.7)</strong></td><td>Single column. Steps stacked. Summary as sticky footer.</td><td>Same as mobile.</td><td>Form left, summary right.</td></tr>
+        <tr><td><strong>Account sub-pages</strong></td><td>Tabs as horizontal scroll. Tables transform to a card-list (one row = one card).</td><td>Tables with horizontal scroll where needed.</td><td>Tables full-width inline.</td></tr>
+        <tr><td><strong>Login (§15.10), 404 (§15.12)</strong></td><td>Centered card, full-width on small viewports.</td><td>Same.</td><td>Centered card with generous side margins.</td></tr>
+      </tbody>
+    </table>
+
+    <h3>Testing</h3>
+    <ul>
+      <li>Open every page template at three sizes in Chrome DevTools: 375 (iPhone SE), 768 (iPad portrait), 1280 (laptop). No horizontal scroll, no clipped CTAs, no overlapping elements.</li>
+      <li>For client review, open the published GitHub Pages URL on a real phone — the deployment is the test.</li>
+      <li>Verify a real tablet in portrait, where the filter drawer and hamburger behavior is most visible.</li>
+      <li>Run 200&nbsp;% browser-zoom on desktop — layout must not break, no horizontal scroll (WCAG 1.4.10 Reflow).</li>
+    </ul>
+
+    <h3>What we deliberately do not do</h3>
+    <ul>
+      <li><strong>No "mobile-only" or "desktop-only" content.</strong> The same actions and information are available on every viewport. Only the layout differs.</li>
+      <li><strong>No horizontal scroll outside designated containers</strong> — the variant matrix on PDP and the account tables under 640 px are the only sanctioned scroll zones.</li>
+      <li><strong>No fixed pixel breakpoints outside the canonical three.</strong> If a component needs a micro-adjustment, it uses <code>--bp-xs/sm</code> (small mobile) or <code>--bp-2xl</code> (very wide). Adding a new canonical breakpoint requires a token-level discussion first.</li>
+    </ul>
+
+    <div class="callout"><strong>Preview:</strong> A side-by-side responsive overview of the main page templates is available at <a href="responsive.html">responsive.html</a>.</div>
+  </section>
+
+  <section class="section section--alt" id="for-developers">
+    <div class="section__num">18 / For developers</div>
     <h2 class="section__title">What developers need</h2>
     <p class="section__lead">The entire design system is open code in the repo. These two links give access to the full library:</p>
     <div class="page-thumbs">
@@ -914,8 +980,8 @@ a{color:var(--mj-blue)}
 docs/                client-facing presentation (this file + index)</pre>
   </section>
 
-  <section class="section section--alt" id="open-questions">
-    <div class="section__num">18 / Avklaring</div>
+  <section class="section" id="open-questions">
+    <div class="section__num">19 / Avklaring</div>
     <h2 class="section__title">Questions for you</h2>
     <p class="section__lead">We would like to discuss these points before moving to the final version 1.0.</p>
     <ol>
