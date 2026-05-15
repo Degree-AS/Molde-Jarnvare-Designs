@@ -1,25 +1,42 @@
 /**
- * Product gallery / PDP-bilder (§14.1)
+ * Product gallery / PDP images (§14.1)
+ *
+ * Responsive (§17, mobile-first):
+ *   Default (mobile)            Main image on top, thumbnails in a horizontal
+ *                               row below.
+ *   Tablet+ (≥ 768 / --bp-md)   Thumbnails in a vertical column on the left,
+ *                               main image on the right.
  */
 
 .product-gallery {
   display: grid;
-  grid-template-columns: 80px 1fr;
+  grid-template-columns: 1fr;
   gap: var(--s-3);
 }
-@media (max-width: 767px) {
-  .product-gallery { grid-template-columns: 1fr; }
+
+@media (min-width: 768px) /* --bp-md */ {
+  .product-gallery {
+    grid-template-columns: 80px 1fr;
+  }
 }
 
 .product-gallery__thumbs {
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   gap: var(--s-2);
-  overflow-y: auto;
-  max-height: 560px;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  order: 2; /* below main image on mobile */
 }
-@media (max-width: 767px) {
-  .product-gallery__thumbs { flex-direction: row; max-height: none; order: 2; }
+
+@media (min-width: 768px) /* --bp-md */ {
+  .product-gallery__thumbs {
+    flex-direction: column;
+    overflow-x: visible;
+    overflow-y: auto;
+    max-height: 560px;
+    order: 0;
+  }
 }
 
 .product-gallery__thumb {

@@ -1,0 +1,78 @@
+/**
+ * Commerce layout (§15.4, §15.6, §15.7)
+ *
+ * Two-column commerce flows that stack to one column on smaller viewports.
+ * Used by product.html (PDP), cart.html, and checkout.html.
+ *
+ * Three modifiers, three responsive cutoffs:
+ *
+ *   --pdp       Gallery + buy box / info.
+ *               Stacks under 768. Side-by-side from 768 (--bp-md).
+ *               Tablet portrait is wide enough for the gallery to sit next
+ *               to a compact buy box.
+ *
+ *   --cart      Cart items + order summary.
+ *               Stacks under 1024. 1fr + 360px from 1024 (--bp-lg).
+ *               Summary sits inline on desktop, naturally at the bottom on
+ *               mobile/tablet so the user reaches "Til kassen" by scrolling.
+ *
+ *   --checkout  Form steps + order summary.
+ *               Stacks under 1024. 1fr + 380px from 1024 (--bp-lg).
+ *               Wider summary column so the price breakdown stays readable
+ *               next to a relatively narrow form.
+ *
+ * Each modifier shares the mobile baseline (single column, gap --s-5).
+ *
+ * Sticky-footer CTA pattern (total + "Til kassen" pinned at viewport bottom
+ * on mobile) is deferred to the React port — it duplicates summary content
+ * and needs JS to keep totals in sync.
+ */
+
+.commerce-layout {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--s-5);
+}
+
+/* ─── PDP — gallery + buy box ────────────────────────────────────────── */
+@media (min-width: 768px) /* --bp-md */ {
+  .commerce-layout--pdp {
+    grid-template-columns: 1fr 1fr;
+    gap: var(--s-7);
+  }
+}
+
+@media (min-width: 1024px) /* --bp-lg */ {
+  .commerce-layout--pdp {
+    gap: var(--s-9);
+  }
+}
+
+/* ─── Cart — items + summary ─────────────────────────────────────────── */
+@media (min-width: 1024px) /* --bp-lg */ {
+  .commerce-layout--cart {
+    grid-template-columns: 1fr 360px;
+    gap: var(--s-7);
+  }
+}
+
+/* ─── Checkout — form + summary ──────────────────────────────────────── */
+@media (min-width: 1024px) /* --bp-lg */ {
+  .commerce-layout--checkout {
+    grid-template-columns: 1fr 380px;
+    gap: var(--s-7);
+  }
+}
+
+/* ─── Summary column: sticky on desktop, natural-flow on mobile ──────── */
+.commerce-layout__summary {
+  /* Mobile: just sits at the bottom of the stack */
+}
+
+@media (min-width: 1024px) /* --bp-lg */ {
+  .commerce-layout__summary {
+    position: sticky;
+    top: var(--s-5);
+    align-self: start;
+  }
+}
