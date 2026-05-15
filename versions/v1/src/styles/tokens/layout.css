@@ -1,0 +1,42 @@
+/**
+ * Layout
+ * -----------------------------------------------------------------------------
+ * Source: DESIGN_SYSTEM.md §6.2, §6.3, §6.6
+ *
+ * Breakpoints, container-bredder, gutter og z-index.
+ * Mobile-first: bruk @media (min-width: ...) i komponenter.
+ * -----------------------------------------------------------------------------
+ */
+
+:root {
+  /* ---------------------------------------------------------------------------
+   * 6.2 Breakpoints
+   * ------------------------------------------------------------------------ */
+  --bp-xs:  360px;  /* Liten mobil */
+  --bp-sm:  480px;  /* Stor mobil */
+  --bp-md:  768px;  /* Tablet */
+  --bp-lg:  1024px; /* Liten desktop */
+  --bp-xl:  1280px; /* Standard desktop */
+  --bp-2xl: 1440px; /* Stor desktop */
+
+  /* ---------------------------------------------------------------------------
+   * 6.3 Container-bredder
+   * ------------------------------------------------------------------------ */
+  --container-narrow:  720px;  /* Lang artikkel, juridisk tekst */
+  --container-default: 1280px; /* Standard sideinnhold */
+  --container-wide:    1440px; /* Forside-hero, brede produktrader */
+  --container-full:    100%;   /* Full bredde (header, footer, hero-bg) */
+
+  --gutter: clamp(16px, 4vw, 48px);
+
+  /* ---------------------------------------------------------------------------
+   * 6.6 Z-index-skala
+   * ------------------------------------------------------------------------ */
+  --z-base:    0;
+  --z-raised:  10;
+  --z-sticky:  100;
+  --z-overlay: 1000;
+  --z-modal:   1100;
+  --z-toast:   1200;
+  --z-tooltip: 1300;
+}

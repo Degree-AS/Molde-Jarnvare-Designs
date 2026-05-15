@@ -1,0 +1,199 @@
+<!doctype html>
+<html lang="nb">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Molde Jarnvare — På lag med industrien siden 1930</title>
+  <meta name="description" content="Mer enn 30 000 unike artikler på lager i Molde. Verktøy, festemidler, verneutstyr og industrirekvisita.">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Source+Sans+3:wght@400;500;600;700;900&family=JetBrains+Mono:wght@400&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../styles/index.css">
+</head>
+<body>
+
+<header class="site-header">
+  <div class="site-header__inner">
+    <a class="site-header__logo" href="/" aria-label="Molde Jarnvare"><img src="../assets/logos/molde-jarnvare-positive.png" alt="Molde Jarnvare" class="site-header__logo-img"></a>
+    <div class="site-header__search">
+      <form class="search-bar" role="search">
+        <svg class="search-bar__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.35-4.35"/></svg>
+        <input class="search-bar__input" type="search" placeholder="Søk i 30 000+ artikler, NOBB-nr, EAN…" />
+        <button class="search-bar__submit" type="submit">Søk</button>
+      </form>
+    </div>
+    <div class="site-header__actions">
+      <button class="site-header__action" aria-label="Min konto">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4 4-7 8-7s8 3 8 7"/></svg>
+      </button>
+      <button class="site-header__action" aria-label="Handlekurv (3)">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M6 6h15l-1.5 9H7.5z"/><circle cx="9" cy="20" r="1.5"/><circle cx="18" cy="20" r="1.5"/></svg>
+        <span class="badge badge--numeric site-header__action-badge">3</span>
+      </button>
+    </div>
+  </div>
+
+  <div class="site-header__main">
+    <div class="site-header__main-inner">
+      <nav class="site-header__nav" aria-label="Hovedkategorier">
+        <a class="site-header__nav-link" href="#">Festemidler</a>
+        <a class="site-header__nav-link" href="#">Verktøy</a>
+        <a class="site-header__nav-link" href="#">Verneutstyr</a>
+        <a class="site-header__nav-link" href="#">Hydraulikk</a>
+        <a class="site-header__nav-link" href="#">Sveis</a>
+        <a class="site-header__nav-link" href="#">Industri</a>
+        <a class="site-header__nav-link" href="#">Hurtigbestilling</a>
+        <a class="site-header__nav-link site-header__nav-link--accent" href="#">Tilbud</a>
+      </nav>
+    </div>
+  </div>
+</header>
+
+<main>
+
+  <!-- Hero -->
+  <section class="hero hero--split">
+    <div class="hero__inner">
+      <div class="hero__content">
+        <p class="hero__eyebrow">På lag med industrien</p>
+        <h1 class="hero__title">Verktøyet du trenger, på lager i Molde.</h1>
+        <p class="hero__lead">
+          Mer enn 30&nbsp;000 unike artikler — fra festemidler og verneutstyr til
+          hydraulikk og sveiseutstyr. Klart for henting eller levering i Møre og Romsdal.
+        </p>
+        <div class="hero__actions">
+          <a class="hero__cta" href="#">Søk i sortimentet</a>
+          <a class="hero__cta hero__cta--secondary" href="#">Be om tilbud</a>
+        </div>
+      </div>
+      <div class="hero__media" role="img" aria-label="Industrielle festemidler på lager hos Molde Jarnvare"></div>
+    </div>
+  </section>
+
+  <!-- Kategorier -->
+  <section class="container" style="padding-block: var(--s-10);">
+    <h2 class="t-h2" style="margin-bottom: var(--s-7);">Hovedkategorier</h2>
+    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: var(--s-4);">
+      <a class="category-card" href="#">
+        <span class="category-card__icon">🔩</span>
+        <h3 class="category-card__title">Festemidler</h3>
+        <span class="category-card__count">8 200 artikler</span>
+      </a>
+      <a class="category-card" href="#">
+        <span class="category-card__icon">🔧</span>
+        <h3 class="category-card__title">Verktøy</h3>
+        <span class="category-card__count">5 400 artikler</span>
+      </a>
+      <a class="category-card" href="#">
+        <span class="category-card__icon">⛑️</span>
+        <h3 class="category-card__title">Verneutstyr</h3>
+        <span class="category-card__count">3 100 artikler</span>
+      </a>
+      <a class="category-card category-card--brand" href="#">
+        <span class="category-card__icon">⚙️</span>
+        <h3 class="category-card__title">Hydraulikk</h3>
+        <span class="category-card__count">2 700 artikler</span>
+      </a>
+    </div>
+  </section>
+
+  <!-- Populære produkter -->
+  <section class="container" style="padding-block: var(--s-9);">
+    <header style="display: flex; justify-content: space-between; align-items: baseline; margin-bottom: var(--s-6);">
+      <h2 class="t-h2">Populært akkurat nå</h2>
+      <a class="link" href="#">Se alt →</a>
+    </header>
+    <div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: var(--s-4);">
+      <article class="product-card">
+        <div class="product-card__media"></div>
+        <span class="product-card__sku">4815-162-30</span>
+        <h3 class="product-card__title"><a href="#">Sekskantskrue M8 × 40 mm A4 syrefast</a></h3>
+        <span class="stock-indicator stock-indicator--in">På lager <span class="stock-indicator__count">4 200 stk</span></span>
+        <div class="product-card__price">kr 2,80<span class="product-card__price-suffix">eks. mva</span></div>
+        <div class="product-card__actions"><button class="btn btn--primary btn--sm btn--full">Legg i handlekurv</button></div>
+      </article>
+      <article class="product-card">
+        <div class="product-card__media"></div>
+        <span class="product-card__badges"><span class="badge badge--brand">NYHET</span></span>
+        <span class="product-card__sku">2210-507-12</span>
+        <h3 class="product-card__title"><a href="#">Hilti TE 6-A36 borhammer 36V</a></h3>
+        <span class="stock-indicator stock-indicator--in">På lager</span>
+        <div class="product-card__price">kr 8 990,–<span class="product-card__price-suffix">eks. mva</span></div>
+        <div class="product-card__actions"><button class="btn btn--primary btn--sm btn--full">Legg i handlekurv</button></div>
+      </article>
+      <article class="product-card">
+        <div class="product-card__media"></div>
+        <span class="product-card__badges"><span class="badge badge--warning">2-BOKS</span></span>
+        <span class="product-card__sku">7700-099-00</span>
+        <h3 class="product-card__title"><a href="#">3M arbeidshansker, str. 10</a></h3>
+        <span class="stock-indicator stock-indicator--low">Få igjen <span class="stock-indicator__count">6 stk</span></span>
+        <div class="product-card__price">kr 79,–<span class="product-card__price-suffix">eks. mva</span></div>
+        <div class="product-card__actions"><button class="btn btn--primary btn--sm btn--full">Legg i handlekurv</button></div>
+      </article>
+      <article class="product-card">
+        <div class="product-card__media"></div>
+        <span class="product-card__sku">5100-313-44</span>
+        <h3 class="product-card__title"><a href="#">ESAB Caddy Arc 151i sveiseapparat</a></h3>
+        <span class="stock-indicator stock-indicator--out">Utsolgt · Skaffes</span>
+        <div class="product-card__price">kr 6 450,–<span class="product-card__price-suffix">eks. mva</span></div>
+        <div class="product-card__actions"><button class="btn btn--outline btn--sm btn--full">Varsle meg</button></div>
+      </article>
+    </div>
+  </section>
+
+  <!-- Hurtigbestilling -->
+  <section style="background: var(--mj-surface-1); padding-block: var(--s-10); margin-block-start: var(--s-7);">
+    <div class="container container--narrow">
+      <div class="quick-order">
+        <h2 class="quick-order__title">Hurtigbestilling</h2>
+        <p class="quick-order__desc">Har du artikkelnumrene? Skriv eller lim inn liste, så er du ferdig på under et minutt.</p>
+        <div class="quick-order__row">
+          <input class="input" placeholder="Artikkelnummer eller NOBB-nr">
+          <input class="input" type="number" placeholder="Antall">
+          <button class="quick-order__remove" aria-label="Fjern">✕</button>
+        </div>
+        <div class="quick-order__row">
+          <input class="input" placeholder="Artikkelnummer eller NOBB-nr">
+          <input class="input" type="number" placeholder="Antall">
+          <button class="quick-order__remove" aria-label="Fjern">✕</button>
+        </div>
+        <button class="quick-order__add-row">+ Legg til rad</button>
+        <button class="btn btn--primary">Legg alle i handlekurv</button>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer class="site-footer">
+  <div class="site-footer__inner">
+    <div class="site-footer__grid">
+      <div class="site-footer__brand">
+        <img src="../assets/logos/molde-jarnvare-negative.png" alt="Molde Jarnvare" class="site-footer__logo-img">
+        <p class="site-footer__tagline">På lag med industrien siden 1930</p>
+        <p style="font-size: var(--fs-body-sm); opacity: 0.85;">Industriveien 26<br>6422 Molde<br>71 25 42 00 · post@moldejarnvare.no</p>
+      </div>
+      <div>
+        <h3 class="site-footer__col-title">Sortiment</h3>
+        <nav class="site-footer__list">
+          <a href="#">Festemidler</a><a href="#">Verktøy</a><a href="#">Verneutstyr</a><a href="#">Hydraulikk</a><a href="#">Sveis</a>
+        </nav>
+      </div>
+      <div>
+        <h3 class="site-footer__col-title">Kundeservice</h3>
+        <nav class="site-footer__list">
+          <a href="#">Min konto</a><a href="#">Bestilling og levering</a><a href="#">Retur og reklamasjon</a><a href="#">Be om tilbud</a><a href="#">Kontakt oss</a>
+        </nav>
+      </div>
+      <div>
+        <h3 class="site-footer__col-title">Om oss</h3>
+        <nav class="site-footer__list">
+          <a href="#">Historien</a><a href="#">Bærekraft</a><a href="#">Karriere</a><a href="#">Vilkår</a><a href="#">Personvern</a>
+        </nav>
+      </div>
+    </div>
+    <div class="site-footer__bottom">
+      <span>&copy; 2026 Molde Jarnvare AS · Org.nr 912 345 678</span>
+      <div class="site-footer__social" aria-label="Sosiale medier"><a href="#" aria-label="Facebook">f</a><a href="#" aria-label="LinkedIn">in</a></div>
+    <                                                                                                                                                    

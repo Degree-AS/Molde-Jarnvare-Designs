@@ -1,0 +1,39 @@
+/**
+ * Tooltip (§13.12)
+ *   <span class="tooltip" data-tooltip="Hjelpetekst">target</span>
+ */
+
+.tooltip {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  border-bottom: 1px dotted var(--color-text-tertiary);
+  cursor: help;
+}
+
+.tooltip[data-tooltip]::after {
+  content: attr(data-tooltip);
+  position: absolute;
+  bottom: calc(100% + var(--s-2));
+  left: 50%;
+  transform: translateX(-50%);
+  padding: var(--s-2) var(--s-3);
+  font-family: var(--ff-sans);
+  font-size: var(--fs-caption);
+  line-height: var(--lh-normal);
+  color: var(--color-text-on-brand);
+  background: var(--mj-gray-dark);
+  border-radius: var(--r-sm);
+  white-space: nowrap;
+  max-width: 320px;
+  white-space: normal;
+  width: max-content;
+  box-shadow: var(--shadow-2);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity var(--duration-fast) var(--ease-standard);
+  z-index: var(--z-tooltip);
+}
+
+.tooltip:hover::after,
+.tooltip:focus-within::after { opacity: 1; }

@@ -1,0 +1,42 @@
+/**
+ * Badge (§12.9) — liten markør for status, antall, kategori.
+ * Variants: default, brand, success, warning, error, info, numeric
+ */
+
+.badge {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--s-1);
+  height: 20px;
+  padding-inline: var(--s-2);
+  font-family: var(--ff-sans);
+  font-size: var(--fs-overline);
+  font-weight: var(--fw-semibold);
+  letter-spacing: var(--ls-wider);
+  text-transform: uppercase;
+  border-radius: var(--r-sm);
+  background: var(--mj-surface-2);
+  color: var(--color-text-primary);
+  white-space: nowrap;
+}
+
+.badge--brand    { background: var(--mj-blue);    color: var(--color-text-on-brand); }
+.badge--success  { background: var(--mj-success); color: var(--color-text-on-brand); }
+.badge--warning  { background: var(--mj-warning); color: var(--color-text-on-brand); }
+.badge--error    { background: var(--mj-error);   color: var(--color-text-on-brand); }
+.badge--info     { background: var(--mj-info);    color: var(--color-text-on-brand); }
+
+.badge--numeric {
+  min-width: 20px;
+  height: 20px;
+  padding: 0 var(--s-1);
+  border-radius: var(--r-full);
+  font-family: var(--ff-sans);
+  font-size: var(--fs-overline);
+  letter-spacing: 0;
+  text-transform: none;
+  background: var(--mj-blue);
+  color: var(--color-text-on-brand);
+  font-variant-numeric: tabular-nums;
+  justify-content: center;
+}

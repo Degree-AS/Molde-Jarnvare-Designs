@@ -1,0 +1,144 @@
+<!doctype html>
+<html lang="nb">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Molde Jarnvare — Designsystem · Versjonslogg</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Source+Sans+3:wght@400;500;600;700;900&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --mj-blue: #0D2B7E;
+      --mj-orange: #DB993D;
+      --mj-ink: #35373E;
+      --mj-ink-2: #5D5F65;
+      --mj-ink-3: #85878B;
+      --mj-line-soft: #E0E0E0;
+      --mj-surface-0: #F9F9F9;
+      --mj-white: #FFFFFF;
+      --mj-green: #2E7D32;
+      --mj-amber-bg: #FBF3E3;
+      --mj-green-bg: #E9F3EA;
+    }
+    *, *::before, *::after { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: "Source Sans 3", -apple-system, "Segoe UI", Roboto, sans-serif;
+      color: var(--mj-ink);
+      background: var(--mj-surface-0);
+      line-height: 1.6;
+    }
+    .wrap { max-width: 980px; margin: 0 auto; padding: 80px 32px; }
+    .eyebrow {
+      font-size: 11px; font-weight: 600; letter-spacing: 0.12em;
+      text-transform: uppercase; color: var(--mj-blue);
+    }
+    h1 {
+      font-size: clamp(36px, 5vw, 56px); font-weight: 900;
+      line-height: 1.05; letter-spacing: -0.01em; margin: 16px 0 24px;
+    }
+    .lead { font-size: 19px; color: var(--mj-ink-2); max-width: 64ch; margin: 0 0 56px; }
+    h2 {
+      font-size: 24px; font-weight: 700; margin: 56px 0 16px;
+      padding-bottom: 12px; border-bottom: 2px solid var(--mj-line-soft);
+    }
+    .version {
+      background: var(--mj-white); border: 1px solid var(--mj-line-soft);
+      border-radius: 8px; padding: 24px 28px; margin-bottom: 20px;
+    }
+    .version__head {
+      display: flex; flex-wrap: wrap; align-items: baseline; gap: 12px;
+      margin-bottom: 4px;
+    }
+    .version__no { font-size: 22px; font-weight: 700; margin: 0; }
+    .version__date { font-size: 14px; color: var(--mj-ink-3); }
+    .badge {
+      font-size: 12px; font-weight: 600; padding: 3px 10px; border-radius: 999px;
+      letter-spacing: 0.02em;
+    }
+    .badge--pending { background: var(--mj-amber-bg); color: #8a5a12; }
+    .badge--approved { background: var(--mj-green-bg); color: var(--mj-green); }
+    .badge--superseded { background: #EEE; color: var(--mj-ink-3); }
+    .version__note { font-size: 15px; color: var(--mj-ink-2); margin: 8px 0 16px; }
+    .links { display: flex; flex-wrap: wrap; gap: 10px; }
+    .links a {
+      font-size: 14px; font-weight: 600; text-decoration: none;
+      color: var(--mj-blue); border: 1px solid var(--mj-line-soft);
+      border-radius: 6px; padding: 8px 14px; transition: border-color .16s ease, background .16s ease;
+    }
+    .links a:hover { border-color: var(--mj-blue); background: #F4F6FB; }
+    .changes { margin: 12px 0 0; padding-left: 20px; font-size: 14px; color: var(--mj-ink-2); }
+    .changes li { margin: 2px 0; }
+    .footer-note {
+      margin-top: 64px; padding-top: 24px; border-top: 1px solid var(--mj-line-soft);
+      font-size: 14px; color: var(--mj-ink-3);
+    }
+    .footer-note a { color: var(--mj-blue); }
+    code {
+      font-family: "JetBrains Mono", ui-monospace, SFMono-Regular, Menlo, monospace;
+      font-size: 0.9em; background: #EEF0F4; padding: 1px 5px; border-radius: 4px;
+    }
+  </style>
+</head>
+<body>
+<div class="wrap">
+
+  <span class="eyebrow">Molde Jarnvare · Designsystem</span>
+  <h1>Versjonslogg</h1>
+  <p class="lead">
+    Hver versjon av designsystemet er en frosset kopi med stabil URL. Når Molde Jarnvare
+    godkjenner en versjon, dokumenteres det her og i Design-protokollen i Notion. Senere
+    endringer blir en ny versjon til godkjenning — den forrige forblir tilgjengelig på sin egen lenke.
+  </p>
+
+  <h2>Versjoner</h2>
+
+  <!-- ── v1 ───────────────────────────────────────────────────────────── -->
+  <div class="version">
+    <div class="version__head">
+      <h3 class="version__no">v1</h3>
+      <span class="version__date">12. mai 2026</span>
+      <span class="badge badge--pending">Til godkjenning hos Molde Jarnvare</span>
+    </div>
+    <p class="version__note">
+      Første komplette versjon: designretningslinjer, komponentbibliotek (67 komponenter)
+      og komponentblokker / sidemaler (11 maler).
+    </p>
+    <div class="links">
+      <a href="v1/docs/designsystem.html">Designretningslinjer</a>
+      <a href="v1/src/components/index.html">Komponentbibliotek</a>
+      <a href="v1/src/pages/index.html">Komponentblokker / sidemaler</a>
+      <a href="v1/docs/tilgjengelighet.html">Tilgjengelighet (WCAG 2.2 AA)</a>
+    </div>
+    <ul class="changes">
+      <li>Grunnlag — ingen tidligere versjon å sammenligne med.</li>
+    </ul>
+  </div>
+
+  <h2>Gjeldende arbeidsversjon</h2>
+  <div class="version">
+    <div class="version__head">
+      <h3 class="version__no">main</h3>
+      <span class="version__date">løpende</span>
+    </div>
+    <p class="version__note">
+      Siste arbeidsversjon — kan inneholde endringer som ennå ikke er klippet til en
+      nummerert versjon eller godkjent.
+    </p>
+    <div class="links">
+      <a href="../docs/designsystem.html">Designretningslinjer</a>
+      <a href="../src/components/index.html">Komponentbibliotek</a>
+      <a href="../src/pages/index.html">Komponentblokker / sidemaler</a>
+    </div>
+  </div>
+
+  <p class="footer-note">
+    Slik klippes en ny versjon: kjør <code>scripts/cut-version.sh v2</code>, legg til en
+    blokk øverst under «Versjoner» her, commit, og lag git-taggen <code>design-v2</code>.
+    Se <a href="https://github.com/Degree-AS/Molde-Jarnvare-Designs/blob/main/versions/README.md">versions/README.md</a> for fullstendig oppsett.
+  </p>
+
+</div>
+</body>
+</html>

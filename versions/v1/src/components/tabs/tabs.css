@@ -1,0 +1,51 @@
+/**
+ * Tabs (§13.8)
+ */
+
+.tabs {
+  display: flex;
+  flex-direction: column;
+  gap: var(--s-5);
+}
+
+.tabs__list {
+  display: flex;
+  gap: var(--s-1);
+  border-bottom: var(--bw-1) solid var(--color-border-default);
+  overflow-x: auto;
+  scrollbar-width: thin;
+}
+
+.tabs__tab {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  gap: var(--s-2);
+  padding: var(--s-3) var(--s-5);
+  font-family: var(--ff-sans);
+  font-size: var(--fs-body);
+  font-weight: var(--fw-semibold);
+  color: var(--color-text-secondary);
+  background: transparent;
+  border: 0;
+  border-bottom: var(--bw-3) solid transparent;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: color var(--duration-fast) var(--ease-standard),
+              border-color var(--duration-fast) var(--ease-standard);
+}
+
+.tabs__tab:hover { color: var(--color-text-primary); }
+.tabs__tab:focus-visible { outline: none; box-shadow: var(--focus-ring); border-radius: var(--r-sm); }
+
+.tabs__tab[aria-selected="true"],
+.tabs__tab.is-active {
+  color: var(--color-action-primary);
+  border-bottom-color: var(--color-action-primary);
+}
+
+.tabs__panel {
+  display: none;
+}
+.tabs__panel.is-active,
+.tabs__panel[aria-hidden="false"] { display: block; }

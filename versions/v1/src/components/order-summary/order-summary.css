@@ -1,0 +1,42 @@
+/**
+ * Order summary review (§14.23) — checkout-step der man verifiserer ordre.
+ */
+
+.order-summary {
+  display: flex;
+  flex-direction: column;
+  gap: var(--s-5);
+}
+
+.order-summary__section {
+  padding: var(--s-5);
+  background: var(--color-bg-surface);
+  border: var(--bw-1) solid var(--color-border-soft);
+  border-radius: var(--r-md);
+}
+
+.order-summary__section-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: var(--s-3);
+}
+
+.order-summary__section-title {
+  font-size: var(--fs-body);
+  font-weight: var(--fw-semibold);
+  margin: 0;
+}
+
+.order-summary__edit {
+  font-size: var(--fs-caption);
+  color: var(--color-text-link);
+  background: transparent;
+  border: 0;
+  cursor: pointer;
+}
+
+.order-summary__lines {
+  display: flex;
+  flex-direction: column;
+}

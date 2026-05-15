@@ -1,0 +1,60 @@
+/**
+ * Filter sidebar (PLP) (§14.27)
+ */
+
+.filter-sidebar {
+  display: flex;
+  flex-direction: column;
+  gap: var(--s-5);
+  padding: var(--s-5);
+  background: var(--color-bg-surface);
+  border: var(--bw-1) solid var(--color-border-soft);
+  border-radius: var(--r-md);
+  position: sticky;
+  top: var(--s-5);
+}
+
+.filter-sidebar__group {
+  display: flex;
+  flex-direction: column;
+  gap: var(--s-3);
+}
+
+.filter-sidebar__group-title {
+  font-size: var(--fs-body-sm);
+  font-weight: var(--fw-semibold);
+  text-transform: uppercase;
+  letter-spacing: var(--ls-wide);
+  color: var(--color-text-primary);
+  padding-bottom: var(--s-2);
+  border-bottom: var(--bw-1) solid var(--color-border-soft);
+}
+
+.filter-sidebar__options {
+  display: flex;
+  flex-direction: column;
+  gap: var(--s-2);
+  max-height: 220px;
+  overflow-y: auto;
+}
+
+.filter-sidebar__option {
+  display: flex;
+  justify-content: space-between;
+  font-size: var(--fs-body-sm);
+}
+.filter-sidebar__option-count {
+  font-size: var(--fs-caption);
+  color: var(--color-text-tertiary);
+  font-variant-numeric: tabular-nums;
+}
+
+.filter-sidebar__clear {
+  font-size: var(--fs-caption);
+  color: var(--color-text-link);
+  text-align: left;
+  background: transparent;
+  border: 0;
+  cursor: pointer;
+  padding: 0;
+}
