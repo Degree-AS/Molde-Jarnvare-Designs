@@ -1,0 +1,56 @@
+/**
+ * Address book selector (§14.21)
+ */
+
+.address-book {
+  display: flex;
+  flex-direction: column;
+  gap: var(--s-3);
+}
+
+.address-book__list {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  gap: var(--s-3);
+}
+
+.address-book__item {
+  display: flex;
+  flex-direction: column;
+  gap: var(--s-2);
+  padding: var(--s-4);
+  background: var(--color-bg-surface);
+  border: var(--bw-2) solid var(--color-border-soft);
+  border-radius: var(--r-md);
+  cursor: pointer;
+  text-align: left;
+  transition: border-color var(--duration-fast) var(--ease-standard);
+}
+.address-book__item:hover { border-color: var(--color-border-strong); }
+.address-book__item.is-selected,
+.address-book__item[aria-pressed="true"] {
+  border-color: var(--color-action-primary);
+  background: var(--color-bg-brand-soft);
+}
+
+.address-book__name {
+  font-size: var(--fs-body-sm);
+  font-weight: var(--fw-semibold);
+  margin: 0;
+}
+
+.address-book__address {
+  font-size: var(--fs-body-sm);
+  color: var(--color-text-secondary);
+  line-height: var(--lh-normal);
+}
+
+.address-book__add {
+  border: var(--bw-1) dashed var(--color-border-default);
+  background: transparent;
+  color: var(--color-text-secondary);
+  align-items: center;
+  justify-content: center;
+  min-height: 100px;
+}
+.address-book__add:hover { color: var(--color-text-link); border-color: var(--color-border-brand); }

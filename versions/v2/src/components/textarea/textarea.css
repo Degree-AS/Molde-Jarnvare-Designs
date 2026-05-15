@@ -1,0 +1,37 @@
+/**
+ * Textarea (§12.5) — 3 rows default, max 8 before scrolling.
+ * Uses the same look as .input.
+ */
+
+.textarea {
+  display: block;
+  width: 100%;
+  min-height: calc(var(--lh-relaxed) * 1em * 3 + var(--s-4));
+  max-height: calc(var(--lh-relaxed) * 1em * 8 + var(--s-4));
+  padding: var(--s-3) var(--s-4);
+  font-family: var(--ff-sans);
+  font-size: var(--fs-body);
+  line-height: var(--lh-relaxed);
+  color: var(--color-text-primary);
+  background: var(--color-bg-surface);
+  border: var(--bw-1) solid var(--color-border-default);
+  border-radius: var(--r-md);
+  resize: vertical;
+  transition:
+    border-color var(--duration-fast) var(--ease-standard),
+    box-shadow var(--duration-fast) var(--ease-standard);
+}
+
+.textarea::placeholder { color: var(--color-text-tertiary); }
+.textarea:hover { border-color: var(--color-border-strong); }
+.textarea:focus-visible {
+  outline: none;
+  border-color: var(--color-border-brand);
+  box-shadow: var(--focus-ring);
+}
+.textarea:disabled,
+.textarea[readonly] {
+  background: var(--mj-surface-1);
+  color: var(--color-text-tertiary);
+}
+.textarea--error

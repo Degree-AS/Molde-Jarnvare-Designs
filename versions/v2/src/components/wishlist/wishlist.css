@@ -1,0 +1,44 @@
+/**
+ * Wishlist / saved product list (§14.33)
+ *
+ * A customer can have multiple named lists (e.g. "Winter project 2026",
+ * "Standard fasteners", "Hjelset Wednesday"). Each list is a collection
+ * of products with quantities that can be converted to a cart or shared
+ * with a colleague on the same company account.
+ */
+
+.wishlist-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: var(--s-4);
+}
+
+.wishlist-card {
+  display: flex;
+  flex-direction: column;
+  gap: var(--s-2);
+  padding: var(--s-5);
+  background: var(--color-bg-surface);
+  border: var(--bw-1) solid var(--color-border-soft);
+  border-radius: var(--r-md);
+  text-decoration: none;
+  color: inherit;
+  transition: border-color var(--duration-fast) var(--ease-standard),
+              box-shadow var(--duration-fast) var(--ease-standard);
+}
+.wishlist-card:hover { border-color: var(--color-border-brand); box-shadow: var(--shadow-1); }
+
+.wishlist-card__name { font-size: var(--fs-h4); font-weight: var(--fw-semibold); margin: 0; }
+.wishlist-card__meta { font-size: var(--fs-caption); color: var(--color-text-secondary); }
+.wishlist-card__count { font-family: var(--ff-mono); font-size: var(--fs-mono-sm); }
+.wishlist-card__sum { margin-top: auto; font-variant-numeric: tabular-nums; font-weight: var(--fw-semibold); }
+.wishlist-card__owner {
+  display: inline-flex; align-items: center; gap: var(--s-2);
+  font-size: var(--fs-caption); color: var(--color-text-tertiary);
+}
+
+/* Line-item view of a single wishlist */
+.wishlist-items { width: 100%; border-collapse: collapse; font-size: var(--fs-body-sm); font-variant-numeric: tabular-nums; }
+.wishlist-items th { text-align: left; padding: var(--s-2) var(--s-3); background: var(--mj-surface-1); font-size: var(--fs-overline); font-weight: var(--fw-semibold); letter-spacing: var(--ls-wider); text-transform: uppercase; color: var(--color-text-secondary); border-bottom: var(--bw-2) solid var(--color-border-default); }
+.wishlist-items td { padding: var(--s-3); border-bottom: var(--bw-1) solid var(--color-border-soft); vertical-align: middle; }
+.wishlist-

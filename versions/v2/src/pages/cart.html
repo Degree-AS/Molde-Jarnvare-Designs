@@ -1,0 +1,176 @@
+<!doctype html>
+<html lang="nb">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Handlekurv — Molde Jarnvare</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Source+Sans+3:wght@400;500;600;700;900&family=JetBrains+Mono:wght@400&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../styles/index.css">
+</head>
+<body>
+
+<header class="site-header">
+  <div class="site-header__inner">
+    <a class="site-header__logo" href="/" aria-label="Molde Jarnvare"><img src="../assets/logos/molde-jarnvare-positive.png" alt="Molde Jarnvare" class="site-header__logo-img"></a>
+    <div class="site-header__search">
+      <form class="search-bar" role="search">
+        <svg class="search-bar__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.35-4.35"/></svg>
+        <input class="search-bar__input" type="search" placeholder="Søk i 30 000+ artikler, NOBB-nr, EAN…" />
+        <button class="search-bar__submit" type="submit">Søk</button>
+      </form>
+    </div>
+    <div class="site-header__actions">
+      <button class="site-header__action" aria-label="Min konto">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4 4-7 8-7s8 3 8 7"/></svg>
+      </button>
+      <button class="site-header__action" aria-label="Handlekurv (3)">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M6 6h15l-1.5 9H7.5z"/><circle cx="9" cy="20" r="1.5"/><circle cx="18" cy="20" r="1.5"/></svg>
+        <span class="badge badge--numeric site-header__action-badge">3</span>
+      </button>
+      <!-- Mobile-only hamburger trigger (hidden ≥ --bp-lg) -->
+      <button class="site-header__hamburger" type="button"
+              aria-label="Åpne hovedmeny"
+              aria-controls="site-nav-drawer"
+              aria-expanded="false">
+        <span class="site-header__hamburger-icon" aria-hidden="true"></span>
+      </button>
+    </div>
+  </div>
+
+  <div class="site-header__main">
+    <div class="site-header__main-inner">
+      <nav class="site-header__nav" aria-label="Hovedkategorier">
+        <a class="site-header__nav-link" href="#">Festemidler</a>
+        <a class="site-header__nav-link" href="#">Verktøy</a>
+        <a class="site-header__nav-link" href="#">Verneutstyr</a>
+        <a class="site-header__nav-link" href="#">Hydraulikk</a>
+        <a class="site-header__nav-link" href="#">Sveis</a>
+        <a class="site-header__nav-link" href="#">Industri</a>
+        <a class="site-header__nav-link" href="#">Hurtigbestilling</a>
+        <a class="site-header__nav-link site-header__nav-link--accent" href="#">Tilbud</a>
+      </nav>
+    </div>
+  </div>
+
+  <!--
+    Mobile nav drawer (visible < --bp-lg). The JS layer toggles
+    [data-open="true"] on hamburger click / Esc / backdrop click. For static
+    preview, add data-preview-open="true" to <header class="site-header"> above.
+  -->
+  <div class="site-header__drawer" id="site-nav-drawer" role="dialog" aria-modal="true" aria-label="Hovedmeny">
+    <div class="site-header__drawer-header">
+      <span class="t-overline" style="color: var(--mj-blue);">Meny</span>
+      <button class="site-header__drawer-close" type="button" aria-label="Lukk meny">&times;</button>
+    </div>
+    <nav class="site-header__drawer-nav" aria-label="Hovedkategorier (mobil)">
+      <a href="#">Festemidler</a>
+      <a href="#">Verktøy</a>
+      <a href="#">Verneutstyr</a>
+      <a href="#">Hydraulikk</a>
+      <a href="#">Sveis</a>
+      <a href="#">Industri</a>
+      <a href="#">Hurtigbestilling</a>
+      <a href="#" style="color: var(--mj-orange);">Tilbud</a>
+    </nav>
+  </div>
+</header>
+<div class="site-header__drawer-backdrop" aria-hidden="true"></div>
+
+<main class="container" style="padding-block: var(--s-7);">
+  <div class="cart-switcher" style="margin-bottom: var(--s-5);">
+    <div>
+      <span class="cart-switcher__label">Aktiv kurv:</span>
+      <span class="cart-switcher__name">&Aring;pen kurv</span>
+      <span style="color: var(--color-text-tertiary); margin-left: var(--s-2);">(7 varer)</span>
+    </div>
+    <div class="cart-switcher__actions">
+      <button class="btn btn--ghost btn--sm">Lagre som ny kurv...</button>
+      <a class="btn btn--outline btn--sm" href="account-carts.html">Bytt kurv (3 lagrede)</a>
+    </div>
+  </div>
+
+  <h1 class="t-h1" style="margin-bottom: var(--s-7);">Handlekurv</h1>
+
+  <div class="commerce-layout commerce-layout--cart">
+
+    <div>
+      <article class="cart-line">
+        <div class="cart-line__media"></div>
+        <div class="cart-line__main">
+          <h3 class="cart-line__title">Sekskantskrue M8 × 40 mm A4 syrefast</h3>
+          <span class="cart-line__sku">Art.nr 4815-162-30</span>
+          <div class="cart-line__qty">
+            <div class="qty-stepper qty-stepper--compact">
+              <button class="qty-stepper__btn">−</button>
+              <input class="qty-stepper__input" type="number" value="200" step="200">
+              <button class="qty-stepper__btn">+</button>
+              <span class="qty-stepper__unit">stk</span>
+            </div>
+          </div>
+        </div>
+        <div>
+          <div class="cart-line__price">kr 560,–</div>
+          <div class="cart-line__unit-price">kr 2,80 / stk</div>
+          <button class="cart-line__remove">Fjern</button>
+        </div>
+      </article>
+
+      <article class="cart-line">
+        <div class="cart-line__media"></div>
+        <div class="cart-line__main">
+          <h3 class="cart-line__title">3M arbeidshansker, str. 10</h3>
+          <span class="cart-line__sku">Art.nr 7700-099-00</span>
+          <div class="cart-line__qty">
+            <div class="qty-stepper qty-stepper--compact">
+              <button class="qty-stepper__btn">−</button>
+              <input class="qty-stepper__input" type="number" value="6">
+              <button class="qty-stepper__btn">+</button>
+              <span class="qty-stepper__unit">stk</span>
+            </div>
+          </div>
+        </div>
+        <div>
+          <div class="cart-line__price">kr 474,–</div>
+          <div class="cart-line__unit-price">kr 79,– / stk</div>
+          <button class="cart-line__remove">Fjern</button>
+        </div>
+      </article>
+
+      <article class="cart-line">
+        <div class="cart-line__media"></div>
+        <div class="cart-line__main">
+          <h3 class="cart-line__title">Hilti TE 6-A36 borhammer 36V</h3>
+          <span class="cart-line__sku">Art.nr 2210-507-12</span>
+          <div class="cart-line__qty">
+            <div class="qty-stepper qty-stepper--compact">
+              <button class="qty-stepper__btn">−</button>
+              <input class="qty-stepper__input" type="number" value="1">
+              <button class="qty-stepper__btn">+</button>
+              <span class="qty-stepper__unit">stk</span>
+            </div>
+          </div>
+        </div>
+        <div>
+          <div class="cart-line__price">kr 8 990,–</div>
+          <button class="cart-line__remove">Fjern</button>
+        </div>
+      </article>
+    </div>
+
+    <aside class="commerce-layout__summary" style="display: flex; flex-direction: column; gap: var(--s-4);">
+      <div class="cart-summary">
+        <h2 class="cart-summary__title">Oversikt</h2>
+        <div class="cart-summary__row"><span>Subtotal <span class="cart-summary__label-meta">3 varer</span></span><span>kr 10 024,–</span></div>
+        <div class="cart-summary__row"><span>Frakt</span><span>kr 0,–</span></div>
+        <div class="cart-summary__row"><span>Mva (25 %)</span><span>kr 2 506,–</span></div>
+        <div class="cart-summary__row cart-summary__row--total"><span>Totalt</span><span>kr 12 530,–</span></div>
+        <div class="cart-summary__actions">
+          <a class="btn btn--primary btn--lg btn--full" href="checkout.html">Til betaling</a>
+          <a class="btn btn--ghost btn--md btn--full" href="#">Lagre som bestillingsforslag</a>
+        </div>
+      </div>
+
+      <div class="promo-code">
+        <div class="promo-code__form">
+          <input class="input" placeholder=

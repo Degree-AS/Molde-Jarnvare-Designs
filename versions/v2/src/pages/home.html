@@ -1,0 +1,235 @@
+<!doctype html>
+<html lang="nb">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Molde Jarnvare — På lag med industrien siden 1930</title>
+  <meta name="description" content="Mer enn 30 000 unike artikler på lager i Molde. Verktøy, festemidler, verneutstyr og industrirekvisita.">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Source+Sans+3:wght@400;500;600;700;900&family=JetBrains+Mono:wght@400&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../styles/index.css">
+</head>
+<body>
+
+<header class="site-header">
+  <div class="site-header__inner">
+    <a class="site-header__logo" href="/" aria-label="Molde Jarnvare"><img src="../assets/logos/molde-jarnvare-positive.png" alt="Molde Jarnvare" class="site-header__logo-img"></a>
+    <div class="site-header__search">
+      <form class="search-bar" role="search">
+        <svg class="search-bar__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.35-4.35"/></svg>
+        <input class="search-bar__input" type="search" placeholder="Søk i 30 000+ artikler, NOBB-nr, EAN…" />
+        <button class="search-bar__submit" type="submit">Søk</button>
+      </form>
+    </div>
+    <div class="site-header__actions">
+      <button class="site-header__action" aria-label="Min konto">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4 4-7 8-7s8 3 8 7"/></svg>
+      </button>
+      <button class="site-header__action" aria-label="Handlekurv (3)">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M6 6h15l-1.5 9H7.5z"/><circle cx="9" cy="20" r="1.5"/><circle cx="18" cy="20" r="1.5"/></svg>
+        <span class="badge badge--numeric site-header__action-badge">3</span>
+      </button>
+      <!-- Mobile-only hamburger trigger (hidden ≥ --bp-lg) -->
+      <button class="site-header__hamburger" type="button"
+              aria-label="Åpne hovedmeny"
+              aria-controls="site-nav-drawer"
+              aria-expanded="false">
+        <span class="site-header__hamburger-icon" aria-hidden="true"></span>
+      </button>
+    </div>
+  </div>
+
+  <div class="site-header__main">
+    <div class="site-header__main-inner">
+      <nav class="site-header__nav" aria-label="Hovedkategorier">
+        <a class="site-header__nav-link" href="#">Festemidler</a>
+        <a class="site-header__nav-link" href="#">Verktøy</a>
+        <a class="site-header__nav-link" href="#">Verneutstyr</a>
+        <a class="site-header__nav-link" href="#">Hydraulikk</a>
+        <a class="site-header__nav-link" href="#">Sveis</a>
+        <a class="site-header__nav-link" href="#">Industri</a>
+        <a class="site-header__nav-link" href="#">Hurtigbestilling</a>
+        <a class="site-header__nav-link site-header__nav-link--accent" href="#">Tilbud</a>
+      </nav>
+    </div>
+  </div>
+
+  <!--
+    Mobile nav drawer (visible < --bp-lg). The JS layer toggles
+    [data-open="true"] on hamburger click / Esc / backdrop click. For static
+    preview, add data-preview-open="true" to <header class="site-header"> above.
+  -->
+  <div class="site-header__drawer" id="site-nav-drawer" role="dialog" aria-modal="true" aria-label="Hovedmeny">
+    <div class="site-header__drawer-header">
+      <span class="t-overline" style="color: var(--mj-blue);">Meny</span>
+      <button class="site-header__drawer-close" type="button" aria-label="Lukk meny">&times;</button>
+    </div>
+    <nav class="site-header__drawer-nav" aria-label="Hovedkategorier (mobil)">
+      <a href="#">Festemidler</a>
+      <a href="#">Verktøy</a>
+      <a href="#">Verneutstyr</a>
+      <a href="#">Hydraulikk</a>
+      <a href="#">Sveis</a>
+      <a href="#">Industri</a>
+      <a href="#">Hurtigbestilling</a>
+      <a href="#" style="color: var(--mj-orange);">Tilbud</a>
+    </nav>
+  </div>
+</header>
+<div class="site-header__drawer-backdrop" aria-hidden="true"></div>
+
+<main>
+
+  <!-- Hero -->
+  <section class="hero hero--split">
+    <div class="hero__inner">
+      <div class="hero__content">
+        <p class="hero__eyebrow">På lag med industrien</p>
+        <h1 class="hero__title">Verktøyet du trenger, på lager i Molde.</h1>
+        <p class="hero__lead">
+          Mer enn 30&nbsp;000 unike artikler — fra festemidler og verneutstyr til
+          hydraulikk og sveiseutstyr. Klart for henting eller levering i Møre og Romsdal.
+        </p>
+        <div class="hero__actions">
+          <a class="hero__cta" href="#">Søk i sortimentet</a>
+          <a class="hero__cta hero__cta--secondary" href="#">Be om tilbud</a>
+        </div>
+      </div>
+      <div class="hero__media"><img src="../assets/images/products/festemidler-hero.jpg" alt="Sortiment av festemidler — sekskantskruer, mutter, skiver i ulike dimensjoner"></div>
+    </div>
+  </section>
+
+  <!-- Product responsibles — kort vei til faglig dialog -->
+  <section class="container" style="padding-block: var(--s-10);">
+    <header style="margin-bottom: var(--s-7); max-width: 60ch;">
+      <h2 class="t-h2">Snakk med fagansvarlig</h2>
+      <p style="font-size: var(--fs-body-lg); color: var(--color-text-secondary); margin: var(--s-3) 0 0;">Du kommer alltid til en som kan faget. Ring eller skriv direkte til den som har ansvaret for det du leter etter.</p>
+    </header>
+
+    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: var(--s-4);">
+
+      <div class="person-card">
+        <div class="person-card__avatar"><img src="../assets/images/team/ansatt-portrett.jpg" alt=""></div>
+        <div class="person-card__main">
+          <h3 class="person-card__name">Ola Nordmann</h3>
+          <p class="person-card__role">Produktansvarlig festemidler</p>
+          <p style="font-size: var(--fs-caption); color: var(--color-text-tertiary); margin: var(--s-1) 0 0;">8 200 artikler · DIN, ISO, A4 syrefast</p>
+          <div class="person-card__contact">
+            <a href="tel:71254201">71 25 42 01</a>
+            <a href="mailto:ola@moldejarnvare.no">ola@moldejarnvare.no</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="person-card">
+        <div class="person-card__avatar"><img src="../assets/images/team/ansatt-portrett.jpg" alt=""></div>
+        <div class="person-card__main">
+          <h3 class="person-card__name">Kari Bergshaug</h3>
+          <p class="person-card__role">Produktansvarlig verktøy</p>
+          <p style="font-size: var(--fs-caption); color: var(--color-text-tertiary); margin: var(--s-1) 0 0;">5 400 artikler · håndverktøy, elektroverktøy, slipemidler</p>
+          <div class="person-card__contact">
+            <a href="tel:71254202">71 25 42 02</a>
+            <a href="mailto:kari@moldejarnvare.no">kari@moldejarnvare.no</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="person-card">
+        <div class="person-card__avatar"><img src="../assets/images/team/ansatt-portrett.jpg" alt=""></div>
+        <div class="person-card__main">
+          <h3 class="person-card__name">Per Olav Stenløkk</h3>
+          <p class="person-card__role">Produktansvarlig verneutstyr</p>
+          <p style="font-size: var(--fs-caption); color: var(--color-text-tertiary); margin: var(--s-1) 0 0;">3 100 artikler · hansker, briller, hjelmer, fottøy</p>
+          <div class="person-card__contact">
+            <a href="tel:71254203">71 25 42 03</a>
+            <a href="mailto:per.olav@moldejarnvare.no">per.olav@moldejarnvare.no</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="person-card">
+        <div class="person-card__avatar"><img src="../assets/images/team/ansatt-portrett.jpg" alt=""></div>
+        <div class="person-card__main">
+          <h3 class="person-card__name">Lars Indresøvde</h3>
+          <p class="person-card__role">Produktansvarlig hydraulikk</p>
+          <p style="font-size: var(--fs-caption); color: var(--color-text-tertiary); margin: var(--s-1) 0 0;">2 700 artikler · slanger, koblinger, sylindere</p>
+          <div class="person-card__contact">
+            <a href="tel:71254204">71 25 42 04</a>
+            <a href="mailto:lars@moldejarnvare.no">lars@moldejarnvare.no</a>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- "On the team with the industry" — visuelt break med marketing-bilde -->
+  <section style="background: var(--color-bg-surface-alt); padding-block: var(--s-10);">
+    <div class="container" style="display: grid; grid-template-columns: 1fr 1fr; gap: var(--s-9); align-items: center;">
+      <figure style="margin: 0;">
+        <img src="../assets/images/marketing/slangeverksted-presse.jpg" alt="Operatør presser en hydraulikkslange på Uniflex-maskin i serviceverkstedet" style="width: 100%; border-radius: var(--r-lg); aspect-ratio: 16/9; object-fit: cover;">
+      </figure>
+      <div>
+        <p style="font-size: var(--fs-overline); letter-spacing: var(--ls-wider); text-transform: uppercase; font-weight: var(--fw-semibold); color: var(--mj-blue); margin: 0 0 var(--s-3);">Service og verksted</p>
+        <h2 class="t-h2" style="margin: 0 0 var(--s-4);">Slangepressing samme dag</h2>
+        <p style="font-size: var(--fs-body-lg); color: var(--color-text-secondary); margin: 0 0 var(--s-5); max-width: 50ch;">Ta med slangen, send mål, eller la oss måle på stedet. Vi presser, trykktester og leverer — fra ett enkelt skift til komplette hydraulikkpakker.</p>
+        <a class="btn btn--outline btn--md" href="#">Les om serviceverkstedet</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Popular products -->
+  <section class="container" style="padding-block: var(--s-9);">
+    <header style="display: flex; justify-content: space-between; align-items: baseline; margin-bottom: var(--s-6);">
+      <h2 class="t-h2">Populært akkurat nå</h2>
+      <a class="link" href="#">Se alt →</a>
+    </header>
+    <div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: var(--s-4);">
+      <article class="product-card">
+        <div class="product-card__media"></div>
+        <span class="product-card__sku">4815-162-30</span>
+        <h3 class="product-card__title"><a href="#">Sekskantskrue M8 × 40 mm A4 syrefast</a></h3>
+        <span class="stock-indicator stock-indicator--in">På lager <span class="stock-indicator__count">4 200 stk</span></span>
+        <div class="product-card__price">kr 2,80<span class="product-card__price-suffix">eks. mva</span></div>
+        <div class="product-card__actions"><button class="btn btn--primary btn--sm btn--full">Legg i handlekurv</button></div>
+      </article>
+      <article class="product-card">
+        <div class="product-card__media"></div>
+        <span class="product-card__badges"><span class="badge badge--brand">NYHET</span></span>
+        <span class="product-card__sku">2210-507-12</span>
+        <h3 class="product-card__title"><a href="#">Hilti TE 6-A36 borhammer 36V</a></h3>
+        <span class="stock-indicator stock-indicator--in">På lager</span>
+        <div class="product-card__price">kr 8 990,–<span class="product-card__price-suffix">eks. mva</span></div>
+        <div class="product-card__actions"><button class="btn btn--primary btn--sm btn--full">Legg i handlekurv</button></div>
+      </article>
+      <article class="product-card">
+        <div class="product-card__media"></div>
+        <span class="product-card__badges"><span class="badge badge--warning">2-BOKS</span></span>
+        <span class="product-card__sku">7700-099-00</span>
+        <h3 class="product-card__title"><a href="#">3M arbeidshansker, str. 10</a></h3>
+        <span class="stock-indicator stock-indicator--low">Få igjen <span class="stock-indicator__count">6 stk</span></span>
+        <div class="product-card__price">kr 79,–<span class="product-card__price-suffix">eks. mva</span></div>
+        <div class="product-card__actions"><button class="btn btn--primary btn--sm btn--full">Legg i handlekurv</button></div>
+      </article>
+      <article class="product-card">
+        <div class="product-card__media"></div>
+        <span class="product-card__sku">5100-313-44</span>
+        <h3 class="product-card__title"><a href="#">ESAB Caddy Arc 151i sveiseapparat</a></h3>
+        <span class="stock-indicator stock-indicator--out">Utsolgt · Skaffes</span>
+        <div class="product-card__price">kr 6 450,–<span class="product-card__price-suffix">eks. mva</span></div>
+        <div class="product-card__actions"><button class="btn btn--outline btn--sm btn--full">Varsle meg</button></div>
+      </article>
+    </div>
+  </section>
+
+</main>
+
+<footer class="site-footer">
+  <div class="site-footer__inner">
+    <div class="site-footer__grid">
+      <div class="site-footer__brand">
+        <img src="../assets/logos/molde-jarnvare-negative.png" alt="Molde Jarnvare" class="site-footer__logo-img">
+        <p class="site-footer__tagline">På lag med industrien siden 1930</p>
+        <p style="font-size: var(--fs-body-sm

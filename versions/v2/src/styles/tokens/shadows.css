@@ -1,0 +1,27 @@
+/**
+ * Shadows / Elevation
+ * -----------------------------------------------------------------------------
+ * Source: DESIGN_SYSTEM.md §7.3
+ *
+ * Usage:
+ *   --shadow-1   Default card, dropdowns
+ *   --shadow-2   Hover state on cards
+ *   --shadow-3   Sticky elements, popovers
+ *   --shadow-4   Modals, drawers
+ * -----------------------------------------------------------------------------
+ */
+
+:root {
+  --shadow-0: none;
+
+  --shadow-1: 0 1px 2px rgba(53, 55, 62, 0.06),
+              0 1px 3px rgba(53, 55, 62, 0.10);
+
+  --shadow-2: 0 2px 4px rgba(53, 55, 62, 0.06),
+              0 4px 8px rgba(53, 55, 62, 0.08);
+
+  --shadow-3: 0 4px 8px rgba(53, 55, 62, 0.08),
+              0 12px 24px rgba(53, 55, 62, 0.10);
+
+  --shadow-4: 0 8px 16px rgba(53, 55, 62, 0.10),
+              0 24px 48px 

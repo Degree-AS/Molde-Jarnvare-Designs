@@ -1,0 +1,911 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Molde Jarnvare — Design system (synchronised with code)</title>
+<link rel="preconnect" href="https://fonts.goandleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.goandleapis.com/css2?family=Source+Sans+3:ital,wght@0,400;0,500;0,600;0,700;0,900;1,400&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+/* TOKENS — kopiert direkte fra src/styles/tokens/  ·  sist sync: 2026-05-12 */
+:root{
+  --mj-blue:#0D2B7E; --mj-blue-90:#25408B; --mj-blue-80:#3D5598; --mj-blue-70:#556AA5;
+  --mj-blue-60:#6E80B2; --mj-blue-50:#8695BE; --mj-blue-40:#9EAACB; --mj-blue-30:#B6BFD8;
+  --mj-blue-20:#CFD5E5; --mj-blue-10:#E7EAF2;
+  --mj-gray-dark:#35373E; --mj-orange:#DB993D; --mj-gray-light:#E0E0E0; --mj-red:#9E2835;
+  --mj-ink:#35373E; --mj-ink-2:#5D5F65; --mj-ink-3:#85878B;
+  --mj-line-strong:#B5B7BB; --mj-line:#D6D7D9; --mj-line-soft:#E0E0E0;
+  --mj-surface-2:#EBEBEC; --mj-surface-1:#F4F4F5; --mj-surface-0:#F9F9F9; --mj-white:#FFFFFF;
+  --mj-success:#1F7A3A; --mj-success-bg:#E8F2EA;
+  --mj-warning:#7A580E; --mj-warning-bg:#F8EFD9;
+  --mj-error:#9E2835; --mj-error-bg:#F4DDDF;
+  --mj-info:#0D2B7E; --mj-info-bg:#E7EAF2;
+  --ff-sans:"Source Sans 3", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  --ff-mono:"JetBrains Mono", "SF Mono", Menlo, Consolas, monospace;
+  --shadow-1:0 1px 2px rgba(53,55,62,.06), 0 1px 3px rgba(53,55,62,.10);
+  --shadow-2:0 2px 4px rgba(53,55,62,.06), 0 4px 8px rgba(53,55,62,.08);
+  --shadow-3:0 4px 8px rgba(53,55,62,.08), 0 12px 24px rgba(53,55,62,.10);
+  --shadow-4:0 8px 16px rgba(53,55,62,.10), 0 24px 48px rgba(53,55,62,.12);
+}
+
+*,*::before,*::after{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;font-family:var(--ff-sans);font-size:16px;line-height:1.6;color:var(--mj-ink);background:var(--mj-white);-webkit-font-smoothing:antialiased}
+img,svg{max-width:100%;display:block}
+button{font-family:inherit;cursor:pointer;border:0;background:transparent}
+code{font-family:var(--ff-mono);font-size:.92em}
+a{color:var(--mj-blue)}
+
+.shell{display:grid;grid-template-columns:280px 1fr;min-height:100vh}
+@media(max-width:1024px){.shell{grid-template-columns:1fr}}
+.nav{position:sticky;top:0;align-self:start;height:100vh;overflow-y:auto;background:var(--mj-blue);color:var(--mj-white);padding:32px 28px}
+@media(max-width:1024px){.nav{position:relative;height:auto;padding:24px}}
+.nav__lando{display:block;margin-bottom:24px}
+.nav__lando img{height:32px;width:auto;filter:brightness(0) invert(1)}
+.nav__title{font-size:11px;letter-spacing:.12em;text-transform:uppercase;font-weight:600;opacity:.7;margin-bottom:6px}
+.nav__sub{font-size:14px;opacity:.85;margin-bottom:24px;line-height:1.4}
+.nav__group{margin:18px 0 6px;font-size:11px;letter-spacing:.12em;text-transform:uppercase;opacity:.55;font-weight:600}
+.nav__link{display:block;padding:6px 0;color:var(--mj-white);text-decoration:none;font-size:14px;opacity:.85}
+.nav__link:hover{opacity:1;text-decoration:underline}
+
+.main{padding:64px 56px;max-width:980px}
+@media(max-width:768px){.main{padding:32px 24px}}
+
+.hero{margin-bottom:80px;padding-bottom:48px;border-bottom:1px solid var(--mj-line-soft)}
+.hero__lando{margin-bottom:32px;height:48px;width:auto}
+.hero__overline{font-size:11px;letter-spacing:.12em;text-transform:uppercase;font-weight:600;color:var(--mj-blue);margin-bottom:16px}
+.hero__title{font-size:clamp(36px,5vw,64px);font-weight:900;line-height:1.05;letter-spacing:-.01em;margin:0 0 24px}
+.hero__title em{font-style:italic;color:var(--mj-red)}
+.hero__lead{font-size:19px;color:var(--mj-ink-2);max-width:60ch;margin:0 0 32px}
+.hero__meta{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:16px;padding:24px;background:var(--mj-surface-1);border-radius:8px}
+.hero__meta-item{display:flex;flex-direction:column;font-size:13px;color:var(--mj-ink-2)}
+.hero__meta-item strong{color:var(--mj-ink);font-size:15px;font-weight:700;margin-top:4px}
+
+.section{padding-block:64px;border-bottom:1px solid var(--mj-line-soft)}
+.section:last-child{border-bottom:0}
+.section--alt{background:var(--mj-surface-1);margin-inline:-56px;padding-inline:56px}
+@media(max-width:768px){.section--alt{margin-inline:-24px;padding-inline:24px}}
+.section__num{font-size:11px;letter-spacing:.12em;text-transform:uppercase;font-weight:600;color:var(--mj-blue);margin-bottom:12px}
+.section__title{font-size:clamp(28px,3.5vw,44px);font-weight:800;line-height:1.1;margin:0 0 20px}
+.section__lead{font-size:18px;color:var(--mj-ink-2);max-width:62ch;margin:0 0 40px}
+.section h3{font-size:20px;font-weight:700;margin:40px 0 16px}
+.section h4{font-size:15px;font-weight:600;text-transform:uppercase;letter-spacing:.05em;color:var(--mj-ink-2);margin:24px 0 12px}
+.section ul,.section ol{padding-left:24px}
+.section li{margin-bottom:6px}
+
+.callout{padding:20px 24px;background:var(--mj-info-bg);border-left:4px solid var(--mj-blue);border-radius:4px;margin:24px 0;font-size:15px}
+
+.cols{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:16px;margin:24px 0}
+.col-card{padding:20px;background:var(--mj-white);border:1px solid var(--mj-line-soft);border-radius:8px}
+.col-card__num{font-family:var(--ff-mono);font-size:13px;color:var(--mj-blue);font-weight:600;margin-bottom:8px}
+.col-card__title{font-size:17px;font-weight:700;margin:0 0 8px}
+.col-card__desc{font-size:14px;color:var(--mj-ink-2);margin:0;line-height:1.5}
+
+.dos{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin:24px 0}
+@media(max-width:600px){.dos{grid-template-columns:1fr}}
+.dos__col{padding:20px;border-radius:8px;background:var(--mj-white);border:1px solid var(--mj-line-soft)}
+.dos__head{display:flex;align-items:center;gap:8px;font-weight:700;margin-bottom:12px}
+.dos--do .dos__head{color:var(--mj-success)}
+.dos--dont .dos__head{color:var(--mj-error)}
+.dos ul{margin:0;padding-left:20px;font-size:14px;color:var(--mj-ink-2)}
+
+.kvp{display:grid;grid-template-columns:1fr 2fr;gap:16px;align-items:baseline;padding:12px 0;border-bottom:1px solid var(--mj-line-soft);font-size:15px}
+.kvp__key{font-weight:600;color:var(--mj-ink)}
+.kvp__val{color:var(--mj-ink-2)}
+.kvp__val code{background:var(--mj-surface-2);padding:2px 6px;border-radius:3px}
+
+.swatches{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:16px;margin:24px 0}
+.swatch{display:flex;flex-direction:column;background:var(--mj-white);border:1px solid var(--mj-line-soft);border-radius:8px;overflow:hidden}
+.swatch__chip{height:88px;padding:12px;display:flex;align-items:flex-end;color:#fff;font-family:var(--ff-mono);font-size:12px;font-weight:600}
+.swatch__chip--light{color:var(--mj-ink)}
+.swatch__body{padding:12px 14px}
+.swatch__name{font-weight:700;font-size:14px;margin:0 0 2px}
+.swatch__token{font-family:var(--ff-mono);font-size:12px;color:var(--mj-ink-2)}
+.swatch__use{font-size:12px;color:var(--mj-ink-3);margin-top:6px;line-height:1.4}
+
+.tone-strip{display:grid;grid-template-columns:repeat(10,1fr);border-radius:6px;overflow:hidden;margin:8px 0 20px;border:1px solid var(--mj-line-soft)}
+.tone-strip span{padding:18px 8px;font-size:11px;font-family:var(--ff-mono);color:#fff;text-align:center;font-weight:600}
+.tone-strip span.is-light{color:var(--mj-ink)}
+
+.type-row{display:flex;align-items:baseline;gap:24px;padding:16px 0;border-bottom:1px solid var(--mj-line-soft)}
+.type-row__meta{flex:0 0 140px;font-family:var(--ff-mono);font-size:12px;color:var(--mj-ink-3);line-height:1.4}
+.type-row__demo{color:var(--mj-ink);overflow:hidden;text-overflow:ellipsis;white-space:nowrap;flex:1}
+
+.space-row{display:flex;align-items:center;gap:16px;padding:6px 0;font-size:14px}
+.space-row__bar{height:24px;background:var(--mj-blue);border-radius:3px}
+.space-row__label{font-family:var(--ff-mono);font-size:12px;color:var(--mj-ink-2);width:80px;flex:0 0 auto}
+.space-row__token{font-family:var(--ff-mono);color:var(--mj-blue);font-weight:600;width:64px;flex:0 0 auto}
+
+.radii{display:flex;gap:16px;flex-wrap:wrap;margin:24px 0}
+.radius-card{display:flex;flex-direction:column;align-items:center;gap:8px;font-size:12px;color:var(--mj-ink-2);font-family:var(--ff-mono)}
+.radius-card__box{width:72px;height:72px;background:var(--mj-blue-10);border:1px solid var(--mj-blue-30)}
+
+.shadows{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:24px;margin:24px 0}
+.shadow-card{padding:24px;background:var(--mj-white);border-radius:8px;text-align:center;font-family:var(--ff-mono);font-size:12px;color:var(--mj-ink-2)}
+.shadow-card--1{box-shadow:var(--shadow-1)}
+.shadow-card--2{box-shadow:var(--shadow-2)}
+.shadow-card--3{box-shadow:var(--shadow-3)}
+.shadow-card--4{box-shadow:var(--shadow-4)}
+
+.lando-board{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin:24px 0}
+@media(max-width:768px){.lando-board{grid-template-columns:1fr}}
+.lando-tile{padding:48px 32px;border-radius:8px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:16px;min-height:200px}
+.lando-tile--positive{background:var(--mj-white);border:1px solid var(--mj-line-soft)}
+.lando-tile--negative{background:var(--mj-blue);color:var(--mj-white)}
+.lando-tile img{max-width:280px;width:100%;height:auto}
+.lando-tile__caption{font-family:var(--ff-mono);font-size:12px;opacity:.8}
+
+.demo-box{padding:24px;background:var(--mj-white);border:1px solid var(--mj-line-soft);border-radius:8px;margin:16px 0;display:flex;flex-wrap:wrap;align-items:center;gap:16px}
+.demo-box--col{flex-direction:column;align-items:stretch}
+
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;height:44px;padding-inline:24px;border-radius:4px;border:1px solid transparent;font:inherit;font-weight:600;letter-spacing:.05em;text-decoration:none;cursor:pointer}
+.btn--primary{background:var(--mj-blue);color:#fff}
+.btn--secondary{background:var(--mj-gray-dark);color:#fff}
+.btn--outline{background:transparent;color:var(--mj-blue);border-color:var(--mj-blue)}
+.btn--ghost{background:transparent;color:var(--mj-blue)}
+.btn--destructive{background:var(--mj-error);color:#fff}
+.btn--xs{height:28px;padding-inline:12px;font-size:14px}
+.btn--sm{height:36px;padding-inline:16px;font-size:14px}
+.btn--lg{height:52px;padding-inline:32px;font-size:17px}
+
+.field{display:flex;flex-direction:column;gap:8px;margin:0 0 8px}
+.field__label{font-size:14px;font-weight:600}
+.field__hint{font-size:13px;color:var(--mj-ink-2)}
+.field__error{font-size:13px;color:var(--mj-error)}
+.input{height:44px;padding-inline:16px;font:inherit;color:var(--mj-ink);background:#fff;border:1px solid var(--mj-line);border-radius:8px;width:100%}
+
+.badge{display:inline-flex;align-items:center;height:20px;padding:0 8px;font-size:11px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;border-radius:4px;background:var(--mj-surface-2);color:var(--mj-ink)}
+.badge--brand{background:var(--mj-blue);color:#fff}
+.badge--warning{background:var(--mj-warning);color:#fff}
+.badge--success{background:var(--mj-success);color:#fff}
+.badge--error{background:var(--mj-error);color:#fff}
+.badge--numeric{min-width:20px;height:20px;padding:0 6px;border-radius:9999px;background:var(--mj-blue);color:#fff;letter-spacing:0;text-transform:none;justify-content:center}
+
+.status-pill{display:inline-flex;align-items:center;gap:8px;height:24px;padding:0 12px;font-size:13px;font-weight:600;border-radius:9999px}
+.status-pill::before{content:"";width:8px;height:8px;border-radius:9999px;background:currentColor}
+.status-pill--success{background:var(--mj-success-bg);color:var(--mj-success)}
+.status-pill--warning{background:var(--mj-warning-bg);color:var(--mj-warning)}
+.status-pill--error{background:var(--mj-error-bg);color:var(--mj-error)}
+.status-pill--info{background:var(--mj-info-bg);color:var(--mj-info)}
+
+.stock{display:inline-flex;align-items:center;gap:8px;font-size:14px;font-weight:600}
+.stock::before{content:"";width:10px;height:10px;border-radius:9999px;background:currentColor}
+.stock--in{color:var(--mj-success)}
+.stock--low{color:var(--mj-warning)}
+.stock--out{color:var(--mj-error)}
+.stock__qty{font-family:var(--ff-mono);font-size:12px;font-weight:400;color:var(--mj-ink-2)}
+
+.product-mini{background:var(--mj-white);border:1px solid var(--mj-line-soft);border-radius:8px;padding:16px;display:flex;flex-direction:column;gap:8px;width:200px}
+.product-mini__media{aspect-ratio:1/1;background:var(--mj-surface-1);border-radius:4px;display:flex;align-items:center;justify-content:center;color:var(--mj-ink-3);font-family:var(--ff-mono);font-size:11px}
+.product-mini__sku{font-family:var(--ff-mono);font-size:12px;color:var(--mj-ink-3)}
+.product-mini__title{font-size:14px;font-weight:600;line-height:1.3;margin:0}
+.product-mini__price{font-size:18px;font-weight:700;font-variant-numeric:tabular-nums}
+.product-mini__price-suffix{font-size:12px;font-weight:400;color:var(--mj-ink-2)}
+
+.alert{display:flex;align-items:flex-start;gap:12px;padding:14px 18px;border-radius:8px;font-size:14px;line-height:1.5;margin:8px 0}
+.alert--info{background:var(--mj-info-bg);color:var(--mj-info)}
+.alert--success{background:var(--mj-success-bg);color:var(--mj-success)}
+.alert--warning{background:var(--mj-warning-bg);color:var(--mj-warning)}
+.alert--error{background:var(--mj-error-bg);color:var(--mj-error)}
+
+.page-thumbs{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:16px;margin:24px 0}
+.page-thumb{display:block;padding:20px;background:var(--mj-white);border:1px solid var(--mj-line-soft);border-radius:8px;text-decoration:none;color:inherit}
+.page-thumb:hover{border-color:var(--mj-blue);box-shadow:var(--shadow-2)}
+.page-thumb__num{font-family:var(--ff-mono);font-size:11px;color:var(--mj-blue);font-weight:600;margin-bottom:8px}
+.page-thumb__title{font-size:16px;font-weight:700;margin:0 0 4px}
+.page-thumb__desc{font-size:13px;color:var(--mj-ink-2);margin:0}
+
+.tbl{width:100%;border-collapse:collapse;font-size:14px;margin-top:8px}
+.tbl th{text-align:left;padding:8px;background:var(--mj-surface-1);font-weight:600}
+.tbl td{padding:8px;border-bottom:1px solid var(--mj-line-soft)}
+
+.code-block{background:var(--mj-surface-1);padding:16px;border-radius:8px;font-family:var(--ff-mono);font-size:13px;overflow-x:auto;line-height:1.5;color:var(--mj-ink-2);white-space:pre}
+
+.foot{padding:48px 0 24px;color:var(--mj-ink-3);font-size:13px;text-align:center;border-top:1px solid var(--mj-line-soft);margin-top:64px}
+
+/* Icons (v0.2 — round caps + joins, refined shapes) */
+.icon-sizes{display:flex;align-items:center;justify-content:center;gap:32px;flex-wrap:wrap;padding:32px 24px;background:var(--mj-white);border:1px solid var(--mj-line-soft);border-radius:8px;margin:16px 0}
+.icon-sizes__item{display:flex;flex-direction:column;align-items:center;gap:8px;font-family:var(--ff-mono);font-size:11px;color:var(--mj-ink-2)}
+.icon-sizes__item svg{color:var(--mj-ink);stroke:currentColor;fill:none;stroke-width:1.6;stroke-linecap:round;stroke-linejoin:round}
+.icon-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(110px,1fr));gap:8px;margin:12px 0 24px}
+.icon-cell{display:flex;flex-direction:column;align-items:center;justify-content:flex-start;gap:10px;padding:18px 10px 12px;background:var(--mj-white);border:1px solid var(--mj-line-soft);border-radius:6px;text-align:center;min-height:88px}
+.icon-cell svg{width:24px;height:24px;color:var(--mj-ink);flex:0 0 auto;stroke:currentColor;fill:none;stroke-width:1.6;stroke-linecap:round;stroke-linejoin:round}
+.icon-cell svg .filled-dot{fill:currentColor;stroke:none}
+.icon-cell__name{font-family:var(--ff-mono);font-size:11px;color:var(--mj-ink-2);line-height:1.3;word-break:break-word}
+.icon-category{margin:24px 0 8px;font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--mj-ink-2);font-weight:600}
+.icon-compare{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin:12px 0 24px}
+.icon-compare__col{padding:20px;border-radius:8px;border:1px solid var(--mj-line-soft);background:var(--mj-white)}
+.icon-compare__col--before{background:var(--mj-surface-1)}
+.icon-compare__col h4{margin:0 0 4px;font-size:13px;font-weight:600;letter-spacing:.04em}
+.icon-compare__col p{font-size:11px;color:var(--mj-ink-3);margin:0 0 12px;font-family:var(--ff-mono)}
+.icon-compare__row{display:flex;align-items:center;gap:24px;padding:8px 0}
+.icon-compare__row svg{stroke:currentColor;fill:none;color:var(--mj-ink);stroke-width:1.6;stroke-linecap:round;stroke-linejoin:round}
+.icon-compare__col--before .icon-compare__row svg{stroke-linecap:square;stroke-linejoin:miter}
+</style>
+</head>
+<body>
+<div class="shell">
+
+<aside class="nav">
+  <a class="nav__lando" href="index.html" aria-label="Til docs-oversikt">
+    <img src="assets/landos/molde-jarnvare-positive.png" alt="Molde Jarnvare">
+  </a>
+  <div class="nav__title">Design system</div>
+  <div class="nav__sub">v0.2 — synchronised with code<br>May 12, 2026</div>
+
+  <div class="nav__group">Foundations</div>
+  <a class="nav__link" href="#intro">Introduction</a>
+  <a class="nav__link" href="#principles">Principles</a>
+  <a class="nav__link" href="#voice-tone">Voice &amp; tone</a>
+
+  <div class="nav__group">Visual language</div>
+  <a class="nav__link" href="#lando">Lando</a>
+  <a class="nav__link" href="#colors">Colors</a>
+  <a class="nav__link" href="#typandrafi">Typandraphy</a>
+  <a class="nav__link" href="#spacing">Spacing &amp; layout</a>
+  <a class="nav__link" href="#shape">Shape &amp; motion</a>
+  <a class="nav__link" href="#icons">Icons</a>
+  <a class="nav__link" href="#images">Images</a>
+
+  <div class="nav__group">Content</div>
+  <a class="nav__link" href="#content-rules">Contentsregler</a>
+
+  <div class="nav__group">Components</div>
+  <a class="nav__link" href="#primitives">Primitives</a>
+  <a class="nav__link" href="#composites">Composites</a>
+  <a class="nav__link" href="#ecommerce">E-commerce</a>
+
+  <div class="nav__group">Pages</div>
+  <a class="nav__link" href="#page-templates">Page templates</a>
+
+  <div class="nav__group">Quality</div>
+  <a class="nav__link" href="#accessibility">Accessibility</a>
+  <a class="nav__link" href="#responsive">Responsive design</a>
+
+  <div class="nav__group">For developers</div>
+  <a class="nav__link" href="../src/pages/index.html">Live preview ↗</a>
+  <a class="nav__link" href="../src/components/index.html">Component library ↗</a>
+  <a class="nav__link" href="#open-questions">Questions for you</a>
+</aside>
+
+<main class="main">
+
+  <header class="hero">
+    <img class="hero__lando" src="assets/landos/molde-jarnvare-positive.png" alt="Molde Jarnvare">
+    <div class="hero__overline">Design system · v0.2 · May 12, 2026</div>
+    <h1 class="hero__title">How we are <em>building your site</em>.</h1>
+    <p class="hero__lead">
+      This document describes the design system as it is actually built in code today —
+      tokens, components, and page templates ready to be picked up by the frontend layer
+      against Dynamicweb. Every part you see here exists 1:1 in the repo and is ready to use.
+    </p>
+    <div class="hero__meta">
+      <div class="hero__meta-item">Anchored in<strong>Brand book 2025</strong></div>
+      <div class="hero__meta-item">Tokens<strong>164 documented</strong></div>
+      <div class="hero__meta-item">Components<strong>66 implemented</strong></div>
+      <div class="hero__meta-item">Page templates<strong>11 ready</strong></div>
+    </div>
+  </header>
+
+  <section class="section" id="intro">
+    <div class="section__num">01 / Introduction</div>
+    <h2 class="section__title">Why a design system?</h2>
+    <p class="section__lead">When several people are going to build content, pages, and features over time — without the result feeling like a patchwork — they need a shared language. The design system is that language.</p>
+    <h3>What the system gives us</h3>
+    <div class="cols">
+      <div class="col-card"><div class="col-card__num">01</div><h4 class="col-card__title">Consistency</h4><p class="col-card__desc">Same colors, fonts, spacing, and components across every page — no matter who builds them.</p></div>
+      <div class="col-card"><div class="col-card__num">02</div><h4 class="col-card__title">Speed</h4><p class="col-card__desc">New pages are composed from ready-made building blocks. Time is saved each time.</p></div>
+      <div class="col-card"><div class="col-card__num">03</div><h4 class="col-card__title">Quality</h4><p class="col-card__desc">Accessibility, ytelse and mobil-tilpasning er løst én gang per komponent — not på hver side.</p></div>
+      <div class="col-card"><div class="col-card__num">04</div><h4 class="col-card__title">Scalability</h4><p class="col-card__desc">Change one color or one spacing value, and every page updates automatically.</p></div>
+    </div>
+    <h3>Relationship with the 2025 brand book</h3>
+    <p>The brand book owns the <strong>brand expression</strong>: lando, brand colors, slandan, tone, typandraphy in Microsoft surfaces, and image style. This design system <strong>operationalises</strong> the brand for web and B2B e-commerce — where we need additional rules for things the brand book does not cover: UI-functional status colors, a web-specific typandraphy substitute, component-specific rules, and accessibility requirements (WCAG 2.2 AA).</p>
+    <p>When this design system deviates from the brand book, the <strong>brand book takes precedence</strong>. Any such deviations are flagged and clarified with you.</p>
+  </section>
+
+  <section class="section section--alt" id="principles">
+    <div class="section__num">02 / Foundations</div>
+    <h2 class="section__title">Six principles behind every choice</h2>
+    <p class="section__lead">These guide everything from color choices to component names.</p>
+    <div class="cols">
+      <div class="col-card"><div class="col-card__num">01</div><h4 class="col-card__title">Trade first</h4><p class="col-card__desc">Technical data, stock status, and article numbers must always be clear and immediately available.</p></div>
+      <div class="col-card"><div class="col-card__num">02</div><h4 class="col-card__title">Partner, not supplier</h4><p class="col-card__desc">The tone is "on the team with" — not a distanced sales organisation. We speak as a colleague who knows the trade.</p></div>
+      <div class="col-card"><div class="col-card__num">03</div><h4 class="col-card__title">Local roots</h4><p class="col-card__desc">90 % of revenue comes from Møre and Romsdal. The design must feel like a place, not a generic B2B portal.</p></div>
+      <div class="col-card"><div class="col-card__num">04</div><h4 class="col-card__title">Breadth and depth</h4><p class="col-card__desc">33,000 articles. Hierarchy, filtering, and search are core functionality, not decoration.</p></div>
+      <div class="col-card"><div class="col-card__num">05</div><h4 class="col-card__title">The sales rep is on board</h4><p class="col-card__desc">The UI must work both as a shop for customers and as a tool for sales reps — including "shop as" mode.</p></div>
+      <div class="col-card"><div class="col-card__num">06</div><h4 class="col-card__title">Structured content</h4><p class="col-card__desc">Content er typete blokker, not fri-tekst. Det gjør det vedlikeholdbart, søkbart and AI-kompatibelt.</p></div>
+    </div>
+  </section>
+
+  <section class="section" id="voice-tone">
+    <div class="section__num">03 / Voice &amp; tone</div>
+    <h2 class="section__title">How we speak</h2>
+    <p class="section__lead">Molde Jarnvare speaks as <strong>an experienced colleague who knows the trade</strong>. We are not telephone salespeople, not a distanced supplier, and definitely not a generic SaaS platform.</p>
+    <h3>We are — we are not</h3>
+    <div class="dos">
+      <div class="dos__col dos--do"><div class="dos__head">✓ We are</div><ul><li>Professional</li><li>Direct</li><li>Warm</li><li>Confident</li><li>Local</li><li>Practical</li></ul></div>
+      <div class="dos__col dos--dont"><div class="dos__head">✗ We are not</div><ul><li>Academic</li><li>Brusque</li><li>Familiar</li><li>Cocky</li><li>Provincial</li><li>Technocratic</li></ul></div>
+    </div>
+    <h3>Slandan</h3>
+    <div class="callout"><strong>Main slandan:</strong> "On the team with industry since 1930"<br><strong>Core fact:</strong> "More than 30,000 unique articles in stock in Molde"</div>
+    <p>Slandanet skal <strong>not</strong> brytes opp or omformuleres.</p>
+    <h3>Address</h3>
+    <ul>
+      <li>Use <strong>"du" (informal you)</strong>, never the formal "De" / "Dem".</li>
+      <li>B2B context — assume a trade-skilled reader. Do not explain what a hex bolt is.</li>
+      <li>Address the person, not the company: <em>"You can request a quote"</em> — not <em>"The company can request a quote"</em>.</li>
+      <li>We say "we" for Molde Jarnvare, never refer to "Molde Jarnvare" in the third person.</li>
+    </ul>
+    <h3>Forbidden phrases</h3>
+    <table class="tbl">
+      <thead><tr><th>Avoid</th><th>Use instead</th></tr></thead>
+      <tbody>
+        <tr><td><code>"Click here"</code></td><td>A verb that describes the action</td></tr>
+        <tr><td><code>"Unfortunately/regrettably"</code></td><td>"Sadly" or a direct explanation</td></tr>
+        <tr><td>Exclamation marks (with rare exceptions)</td><td>Periods</td></tr>
+        <tr><td>Emojis in the core flow</td><td>Text</td></tr>
+        <tr><td><code>"The user"</code></td><td>"You" or "the customer"</td></tr>
+      </tbody>
+    </table>
+  </section>
+
+  <section class="section section--alt" id="lando">
+    <div class="section__num">04 / Visual language</div>
+    <h2 class="section__title">Lando</h2>
+    <p class="section__lead">The lando is the simplest mark in the design system. It is used in two variants — positive (Reflex blue) and negative (white) — depending on the background.</p>
+
+    <div class="lando-board">
+      <div class="lando-tile lando-tile--positive">
+        <img src="assets/landos/molde-jarnvare-positive.png" alt="Molde Jarnvare lando positiv">
+        <span class="lando-tile__caption">Positivee variant — on light surfaces</span>
+      </div>
+      <div class="lando-tile lando-tile--negative">
+        <img src="assets/landos/molde-jarnvare-negative.png" alt="Molde Jarnvare lando negativ">
+        <span class="lando-tile__caption">Negative variant — on Reflex-blue surfaces</span>
+      </div>
+    </div>
+
+    <h3>Where each variant is used</h3>
+    <div class="kvp"><span class="kvp__key">Header (light pages)</span><span class="kvp__val">Positivee on <code>--mj-white</code> or <code>--mj-surface-0</code></span></div>
+    <div class="kvp"><span class="kvp__key">Footer</span><span class="kvp__val">Negative on <code>--mj-blue</code></span></div>
+    <div class="kvp"><span class="kvp__key">Email signature</span><span class="kvp__val">Positive</span></div>
+    <div class="kvp"><span class="kvp__key">Touch icon (iOS/Android)</span><span class="kvp__val">MJ monandram with "1930" on <code>--mj-blue</code></span></div>
+    <div class="kvp"><span class="kvp__key">Open Graph / social</span><span class="kvp__val">Positivee on hvit med padding</span></div>
+    <div class="kvp"><span class="kvp__key">Print</span><span class="kvp__val">Positive (CMYK)</span></div>
+
+    <h3>Usage rules</h3>
+    <div class="dos">
+      <div class="dos__col dos--do">
+        <div class="dos__head">✓ Correct</div>
+        <ul>
+          <li>Keep the protection area around the lando (half the letter height)</li>
+          <li>Use negative on Reflex blue (contrast 12.4:1 ✓)</li>
+          <li>Use positiv på hvit or lys grå</li>
+          <li>Minimum 200 px width for full lockup; 32 px for the MJ monandram alone</li>
+        </ul>
+      </div>
+      <div class="dos__col dos--dont">
+        <div class="dos__head">✗ Never</div>
+        <ul>
+          <li>Change proportions</li>
+          <li>Change colors beyond the approved variants</li>
+          <li>Legg på skygger, gradients or effekter</li>
+          <li>Roter or skjev landoen</li>
+          <li>Place on a busy background — switch to the negative variant</li>
+          <li>Use som mønster or dekorelement</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="callout"><strong>In code:</strong> Lando files live in <code>src/assets/landos/molde-jarnvare-positive.png</code> and <code>src/assets/landos/molde-jarnvare-negative.png</code>. Markup is already wired in <code>site-header</code> and <code>site-footer</code>components — all 11 page templates use them automatically.</div>
+  </section>
+
+  <section class="section" id="colors">
+    <div class="section__num">05 / Visual language</div>
+    <h2 class="section__title">Colors</h2>
+    <p class="section__lead">The brand palette comes directly from the 2025 brand book. We have extended it with a neutral scale and functional status colors required for any UI — all defined as CSS custom properties in <code>src/styles/tokens/colors.css</code>.</p>
+    <h3>Brand colors</h3>
+    <div class="swatches">
+      <div class="swatch"><div class="swatch__chip" style="background:#0D2B7E">#0D2B7E</div><div class="swatch__body"><div class="swatch__name">Reflex blue</div><div class="swatch__token">--mj-blue</div><div class="swatch__use">Primary brand color. Header, primary headings, CTAs.</div></div></div>
+      <div class="swatch"><div class="swatch__chip" style="background:#35373E">#35373E</div><div class="swatch__body"><div class="swatch__name">Dark gray</div><div class="swatch__token">--mj-gray-dark</div><div class="swatch__use">Body text, secondary surfaces.</div></div></div>
+      <div class="swatch"><div class="swatch__chip swatch__chip--light" style="background:#DB993D">#DB993D</div><div class="swatch__body"><div class="swatch__name">Orange</div><div class="swatch__token">--mj-orange</div><div class="swatch__use">Accent for novelty/highlight. Never primary CTA.</div></div></div>
+      <div class="swatch"><div class="swatch__chip swatch__chip--light" style="background:#E0E0E0">#E0E0E0</div><div class="swatch__body"><div class="swatch__name">Light gray</div><div class="swatch__token">--mj-gray-light</div><div class="swatch__use">Background surfaces, dividers.</div></div></div>
+      <div class="swatch"><div class="swatch__chip" style="background:#9E2835">#9E2835</div><div class="swatch__body"><div class="swatch__name">Brand red</div><div class="swatch__token">--mj-red</div><div class="swatch__use">Slandan, callouts (= --mj-error).</div></div></div>
+    </div>
+    <h3>Brand tints (10–90 %)</h3>
+    <h4>Reflex blue</h4>
+    <div class="tone-strip">
+      <span style="background:#E7EAF2" class="is-light">10</span><span style="background:#CFD5E5" class="is-light">20</span>
+      <span style="background:#B6BFD8" class="is-light">30</span><span style="background:#9EAACB" class="is-light">40</span>
+      <span style="background:#8695BE" class="is-light">50</span><span style="background:#6E80B2">60</span>
+      <span style="background:#556AA5">70</span><span style="background:#3D5598">80</span>
+      <span style="background:#25408B">90</span><span style="background:#0D2B7E">100</span>
+    </div>
+    <h4>Dark gray</h4>
+    <div class="tone-strip">
+      <span style="background:#EBEBEC" class="is-light">10</span><span style="background:#D6D7D9" class="is-light">20</span>
+      <span style="background:#C2C3C5" class="is-light">30</span><span style="background:#AEAFB2" class="is-light">40</span>
+      <span style="background:#9A9B9F" class="is-light">50</span><span style="background:#85878B">60</span>
+      <span style="background:#717278">70</span><span style="background:#5D5F65">80</span>
+      <span style="background:#494B51">90</span><span style="background:#35373E">100</span>
+    </div>
+    <h3>Status colors</h3>
+    <p>Functional UI colors — must never be used as a CTA or decorative element outside their status role.</p>
+    <div class="swatches">
+      <div class="swatch"><div class="swatch__chip" style="background:#1F7A3A">#1F7A3A</div><div class="swatch__body"><div class="swatch__name">Success</div><div class="swatch__token">--mj-success</div><div class="swatch__use">"In stock", order confirmed, validation OK.</div></div></div>
+      <div class="swatch"><div class="swatch__chip" style="background:#7A580E">#7A580E</div><div class="swatch__body"><div class="swatch__name">Warning</div><div class="swatch__token">--mj-warning</div><div class="swatch__use">"Lav beholdning", not-kritiske advarsler. Darkened May 12, 2026 for WCAG 2.2 AA contrast.</div></div></div>
+      <div class="swatch"><div class="swatch__chip" style="background:#9E2835">#9E2835</div><div class="swatch__body"><div class="swatch__name">Error</div><div class="swatch__token">--mj-error</div><div class="swatch__use">Errormeldinger, "Out of stock", validering.</div></div></div>
+      <div class="swatch"><div class="swatch__chip" style="background:#0D2B7E">#0D2B7E</div><div class="swatch__body"><div class="swatch__name">Info</div><div class="swatch__token">--mj-info</div><div class="swatch__use">Informasjons-meldinger. = Reflex blue.</div></div></div>
+    </div>
+    <h3>Contrast — verified against WCAG 2.2 AA</h3>
+    <div class="kvp"><span class="kvp__key">Dark gray på hvit</span><span class="kvp__val">11.7:1 ✓</span></div>
+    <div class="kvp"><span class="kvp__key">Reflex blue på hvit</span><span class="kvp__val">12.4:1 ✓</span></div>
+    <div class="kvp"><span class="kvp__key">Hvit på Reflex blue</span><span class="kvp__val">12.4:1 ✓</span></div>
+    <div class="kvp"><span class="kvp__key">Brand red på hvit</span><span class="kvp__val">7.0:1 ✓</span></div>
+    <div class="kvp"><span class="kvp__key">Brand orange on white</span><span class="kvp__val">2.4:1 ✗ — for decorative surfaces only</span></div>
+  </section>
+
+  <section class="section section--alt" id="typandrafi">
+    <div class="section__num">06 / Visual language</div>
+    <h2 class="section__title">Typandraphy</h2>
+    <p class="section__lead">We use <strong>Source Sans 3</strong> on the web — a humanist sans-serif that visually and tonally substitutes for the brand book's Aptos. Aptos is still used inside the Microsoft ecosystem (Word, PowerPoint, email).</p>
+    <div class="callout"><strong>Why a substitute?</strong> Aptos er Microsofts standardfont and er not lisensiert for <code>@font-face</code> på offentlige nettsider. Source Sans 3 er gratis (SIL OFL), designet for skjerm, and har tilsvarende åpne, vennlige bokstavformer.</div>
+    <h3>Type scale</h3>
+    <div class="type-row"><div class="type-row__meta">--fs-display<br>48 → 96 px</div><div class="type-row__demo" style="font-size:48px;font-weight:900;line-height:1">In stock i Molde</div></div>
+    <div class="type-row"><div class="type-row__meta">--fs-h1<br>32 → 56 px</div><div class="type-row__demo" style="font-size:32px;font-weight:700;line-height:1.15">Sekskantskruer M8</div></div>
+    <div class="type-row"><div class="type-row__meta">--fs-h2<br>26 → 40 px</div><div class="type-row__demo" style="font-size:26px;font-weight:700">Tekniske spesifikasjoner</div></div>
+    <div class="type-row"><div class="type-row__meta">--fs-h3<br>20 → 28 px</div><div class="type-row__demo" style="font-size:20px;font-weight:700">Beslektede artikler</div></div>
+    <div class="type-row"><div class="type-row__meta">--fs-body-lg<br>17 px</div><div class="type-row__demo" style="font-size:17px">Lead-tekst på forsiden i intro-paragrafer.</div></div>
+    <div class="type-row"><div class="type-row__meta">--fs-body<br>16 px</div><div class="type-row__demo" style="font-size:16px">Standard body text i artikler and produktbeskrivelser.</div></div>
+    <div class="type-row"><div class="type-row__meta">--fs-body-sm<br>14 px</div><div class="type-row__demo" style="font-size:14px">Tabellinnhold, hjelpetekst and tette seksjoner.</div></div>
+    <div class="type-row"><div class="type-row__meta">--fs-caption<br>13 px</div><div class="type-row__demo" style="font-size:13px;color:var(--mj-ink-2)">Caption · 05.05.2026 · metadata</div></div>
+    <div class="type-row"><div class="type-row__meta">--fs-overline<br>11 px</div><div class="type-row__demo" style="font-size:11px;font-weight:600;letter-spacing:.12em;text-transform:uppercase">EYEBROW · KATEGORI-TAG</div></div>
+    <div class="type-row"><div class="type-row__meta">--fs-mono-md<br>14 px</div><div class="type-row__demo" style="font-family:var(--ff-mono);font-size:14px">Art.nr 4815-162-30</div></div>
+    <h3>Weights</h3>
+    <div class="kvp"><span class="kvp__key">--fw-regular · 400</span><span class="kvp__val">Standard body text</span></div>
+    <div class="kvp"><span class="kvp__key">--fw-medium · 500</span><span class="kvp__val">Slight emphasis, meta text</span></div>
+    <div class="kvp"><span class="kvp__key">--fw-semibold · 600</span><span class="kvp__val">Buttons, labels, small headings</span></div>
+    <div class="kvp"><span class="kvp__key">--fw-bold · 700</span><span class="kvp__val">Headings h3–h5, important elements</span></div>
+    <div class="kvp"><span class="kvp__key">--fw-black · 900</span><span class="kvp__val">Display, h1, h2 — for impact</span></div>
+    <h3>Tabular numbers</h3>
+    <p>Alle tall i tabor, priser, ordrelister and lagerantall bruker <code>font-variant-numeric: tabular-nums</code> so columns align cleanly.</p>
+    <div class="demo-box demo-box--col"><code>kr 2 490,–</code><code>kr 12 530,–</code><code>kr 184 200,–</code></div>
+  </section>
+
+  <section class="section" id="spacing">
+    <div class="section__num">07 / Visual language</div>
+    <h2 class="section__title">Spacing &amp; layout</h2>
+    <p class="section__lead">Vi bruker en 4-piksel base-skala for all spacing. Det gir en pen visuell rytme uten at designere må huske vilkårlige verdier som 13 px or 27 px.</p>
+    <h3>Spacing scale</h3>
+    <div class="space-row"><span class="space-row__token">--s-1</span><span class="space-row__label">4px</span><span class="space-row__bar" style="width:4px"></span></div>
+    <div class="space-row"><span class="space-row__token">--s-2</span><span class="space-row__label">8px</span><span class="space-row__bar" style="width:8px"></span></div>
+    <div class="space-row"><span class="space-row__token">--s-3</span><span class="space-row__label">12px</span><span class="space-row__bar" style="width:12px"></span></div>
+    <div class="space-row"><span class="space-row__token">--s-4</span><span class="space-row__label">16px</span><span class="space-row__bar" style="width:16px"></span></div>
+    <div class="space-row"><span class="space-row__token">--s-5</span><span class="space-row__label">20px</span><span class="space-row__bar" style="width:20px"></span></div>
+    <div class="space-row"><span class="space-row__token">--s-6</span><span class="space-row__label">24px</span><span class="space-row__bar" style="width:24px"></span></div>
+    <div class="space-row"><span class="space-row__token">--s-7</span><span class="space-row__label">32px</span><span class="space-row__bar" style="width:32px"></span></div>
+    <div class="space-row"><span class="space-row__token">--s-8</span><span class="space-row__label">40px</span><span class="space-row__bar" style="width:40px"></span></div>
+    <div class="space-row"><span class="space-row__token">--s-9</span><span class="space-row__label">48px</span><span class="space-row__bar" style="width:48px"></span></div>
+    <div class="space-row"><span class="space-row__token">--s-10</span><span class="space-row__label">64px</span><span class="space-row__bar" style="width:64px"></span></div>
+    <div class="space-row"><span class="space-row__token">--s-11</span><span class="space-row__label">80px</span><span class="space-row__bar" style="width:80px"></span></div>
+    <div class="space-row"><span class="space-row__token">--s-12</span><span class="space-row__label">96px</span><span class="space-row__bar" style="width:96px"></span></div>
+    <div class="space-row"><span class="space-row__token">--s-13</span><span class="space-row__label">128px</span><span class="space-row__bar" style="width:128px"></span></div>
+    <h3>Container widths</h3>
+    <div class="kvp"><span class="kvp__key">--container-narrow · 720px</span><span class="kvp__val">Lang artnotl, juridisk tekst</span></div>
+    <div class="kvp"><span class="kvp__key">--container-default · 1280px</span><span class="kvp__val">Standard page content</span></div>
+    <div class="kvp"><span class="kvp__key">--container-wide · 1440px</span><span class="kvp__val">Front-page hero, wide product rows</span></div>
+    <h3>Breakpoints</h3>
+    <div class="kvp"><span class="kvp__key">--bp-xs · 360px</span><span class="kvp__val">Small mobile</span></div>
+    <div class="kvp"><span class="kvp__key">--bp-md · 768px</span><span class="kvp__val">Tablet</span></div>
+    <div class="kvp"><span class="kvp__key">--bp-lg · 1024px</span><span class="kvp__val">Small desktop</span></div>
+    <div class="kvp"><span class="kvp__key">--bp-xl · 1280px</span><span class="kvp__val">Standard desktop</span></div>
+    <div class="kvp"><span class="kvp__key">--bp-2xl · 1440px</span><span class="kvp__val">Large desktop</span></div>
+  </section>
+
+  <section class="section section--alt" id="shape">
+    <div class="section__num">08 / Visual language</div>
+    <h2 class="section__title">Form, skygge and bevegelse</h2>
+    <p class="section__lead">Avrundede hjørner, skygger and animasjoner som hjelper hierarkiet uten å skrike.</p>
+    <h3>Border-radius</h3>
+    <div class="radii">
+      <div class="radius-card"><div class="radius-card__box" style="border-radius:0"></div>--r-none</div>
+      <div class="radius-card"><div class="radius-card__box" style="border-radius:4px"></div>--r-sm · 4px</div>
+      <div class="radius-card"><div class="radius-card__box" style="border-radius:8px"></div>--r-md · 8px</div>
+      <div class="radius-card"><div class="radius-card__box" style="border-radius:12px"></div>--r-lg · 12px</div>
+      <div class="radius-card"><div class="radius-card__box" style="border-radius:20px"></div>--r-xl · 20px</div>
+      <div class="radius-card"><div class="radius-card__box" style="border-radius:9999px"></div>--r-full</div>
+    </div>
+    <h3>Shadows (elevation)</h3>
+    <div class="shadows">
+      <div class="shadow-card shadow-card--1">--shadow-1</div>
+      <div class="shadow-card shadow-card--2">--shadow-2</div>
+      <div class="shadow-card shadow-card--3">--shadow-3</div>
+      <div class="shadow-card shadow-card--4">--shadow-4</div>
+    </div>
+    <h3>Motion</h3>
+    <div class="kvp"><span class="kvp__key">--duration-fast · 160ms</span><span class="kvp__val">Hover, focus, small transitions</span></div>
+    <div class="kvp"><span class="kvp__key">--duration-normal · 240ms</span><span class="kvp__val">Modals, drawers — open</span></div>
+    <div class="kvp"><span class="kvp__key">--duration-slow · 400ms</span><span class="kvp__val">Skeleton pulse</span></div>
+    <div class="callout"><strong>Reduced motion:</strong> Alle not-funksjonelle animasjoner respekterer <code>prefers-reduced-motion</code>. Users who have it turned on in the OS get all transitions cut down to 0.01ms.</div>
+  </section>
+
+  <section class="section" id="icons">
+    <div class="section__num">09 / Visual language</div>
+    <h2 class="section__title">Icons</h2>
+    <p class="section__lead">Stroke icons with consistent weight. We draw with 1.6 px strokes on a 24 × 24 viewBox, round caps and round joins — giving a deliberate, hand-drawn feel that distinguishes the set from generic icon libraries without being playful. No filled icons in MVP, outline only.</p>
+    <div class="callout"><strong>Status — agreed May 12, 2026:</strong> The icons shown here are used as <strong>placeholders</strong> for now so page development is not blocked. An MJ-specific icon variant based on the hex/nut-sheet shape is being tested in parallel — it will be evaluated against the existing set when we see icons in context on real pages. Swapping is fast since everything is inline SVG that inherits <code>currentColor</code>.</div>
+    <div class="kvp"><span class="kvp__key">Stroke weight</span><span class="kvp__val">1.6px</span></div>
+    <div class="kvp"><span class="kvp__key">Linecap / linejoin</span><span class="kvp__val">round / round <span style="color:var(--mj-ink-3)">(v0.1: square / miter)</span></span></div>
+    <div class="kvp"><span class="kvp__key">ViewBox</span><span class="kvp__val">0 0 24 24</span></div>
+    <div class="kvp"><span class="kvp__key">Default color</span><span class="kvp__val">currentColor</span></div>
+
+    <h3>Before / after</h3>
+    <p>The same three icons in the old and new style. The change is small in isolation, but reads as more deliberately drawn as a whole:</p>
+    <div class="icon-compare">
+      <div class="icon-compare__col icon-compare__col--before">
+        <h4>Before</h4>
+        <p>v0.1 · square / miter</p>
+        <div class="icon-compare__row">
+          <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="square"><path d="M3 17h18M5 17v-3a7 7 0 0114 0v3M9 9V5h6v4"/></svg>
+          <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="square"><path d="M14 6a4 4 0 014 4c0 1.2-.5 2.3-1.3 3.1l4.5 4.5-2 2-4.5-4.5A4 4 0 0114 14a4 4 0 01-4-4M14 6a4 4 0 00-4 4M10 8L4 14l3 3 6-6"/></svg>
+          <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="square"><circle cx="12" cy="12" r="3"/><path d="M19 12c0 .8-.1 1.5-.3 2.2l2.1 1.6-2 3.5-2.5-1a7 7 0 01-3.8 2.2L12 23h-4l-.5-2.5a7 7 0 01-3.8-2.2l-2.5 1-2-3.5 2.1-1.6c-.2-.7-.3-1.4-.3-2.2s.1-1.5.3-2.2L1 8.2l2-3.5 2.5 1a7 7 0 013.8-2.2L10 1h4l.5 2.5a7 7 0 013.8 2.2l2.5-1 2 3.5-2.1 1.6c.2.7.3 1.4.3 2.2z"/></svg>
+        </div>
+      </div>
+      <div class="icon-compare__col">
+        <h4>After</h4>
+        <p>v0.2 · round / round, refined shape</p>
+        <div class="icon-compare__row">
+          <svg width="32" height="32" viewBox="0 0 24 24"><path d="M3.5 17.5h17"/><path d="M5.5 17.5v-3a6.5 6.5 0 0113 0v3"/><path d="M9.5 9V6h5v3"/></svg>
+          <svg width="32" height="32" viewBox="0 0 24 24"><path d="M14.5 6.5a3.5 3.5 0 014.5 4.5l3 3-2.5 2.5-3-3a3.5 3.5 0 01-4.5-4.5l1.7 1.7L16 8.7l-1.3-1.3z"/><path d="M11 11l-8 8 2 2 8-8"/></svg>
+          <svg width="32" height="32" viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><path d="M12 3v2.5M12 18.5V21M3 12h2.5M18.5 12H21M5.6 5.6l1.8 1.8M16.6 16.6l1.8 1.8M18.4 5.6l-1.8 1.8M5.6 18.4l1.8-1.8"/></svg>
+        </div>
+      </div>
+    </div>
+
+    <h3>Sizes</h3>
+    <p>The same search icon in all 6 token sizes:</p>
+    <div class="icon-sizes">
+      <div class="icon-sizes__item">
+        <svg width="14" height="14" viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="M16.5 16.5l4 4"/></svg>
+        <span>--icon-xs · 14</span>
+      </div>
+      <div class="icon-sizes__item">
+        <svg width="16" height="16" viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="M16.5 16.5l4 4"/></svg>
+        <span>--icon-sm · 16</span>
+      </div>
+      <div class="icon-sizes__item">
+        <svg width="20" height="20" viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="M16.5 16.5l4 4"/></svg>
+        <span>--icon-md · 20</span>
+      </div>
+      <div class="icon-sizes__item">
+        <svg width="24" height="24" viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="M16.5 16.5l4 4"/></svg>
+        <span>--icon-lg · 24</span>
+      </div>
+      <div class="icon-sizes__item">
+        <svg width="32" height="32" viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="M16.5 16.5l4 4"/></svg>
+        <span>--icon-xl · 32</span>
+      </div>
+      <div class="icon-sizes__item">
+        <svg width="48" height="48" viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="M16.5 16.5l4 4"/></svg>
+        <span>--icon-2xl · 48</span>
+      </div>
+    </div>
+
+    <h3>Standard icon library</h3>
+    <p>Common icons used across navigation, actions, e-commerce, and statuses. All drawn with 1.6 px strokes on a 24 × 24 viewBox, with <code>currentColor</code> as the color — so they inherit the text color from the context.</p>
+
+    <div class="icon-category">Navigation</div>
+    <div class="icon-grid">
+      <div class="icon-cell"><svg viewBox="0 0 24 24"><path d="M4 7h16M4 12h16M4 17h16"/></svg><span class="icon-cell__name">menu</span></div>
+      <div class="icon-cell"><svg viewBox="0 0 24 24"><path d="M6 6l12 12M18 6L6 18"/></svg><span class="icon-cell__name">close</span></div>
+      <div class="icon-cell"><svg viewBox="0 0 24 24"><path d="M6 9l6 6 6-6"/></svg><span class="icon-cell__name">chevron-down</span></div>
+      <div class="icon-cell"><svg viewBox="0 0 24 24"><path d="M18 15l-6-6-6 6"/></svg><span class="icon-cell__name">chevron-up</span></div>
+      <div class="icon-cell"><svg viewBox="0 0 24 24"><path d="M9 6l6 6-6 6"/></svg><span class="icon-cell__name">chevron-right</span></div>
+      <div class="icon-cell"><svg viewBox="0 0 24 24"><path d="M15 6l-6 6 6 6"/></svg><span class="icon-cell__name">chevron-left</span></div>
+      <div class="icon-cell"><svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg><span class="icon-cell__name">arrow-right</span></div>
+      <div class="icon-cell"><svg viewBox="0 0 24 24"><path d="M19 12H5M11 6l-6 6 6 6"/></svg><span class="icon-cell__name">arrow-left / back</span></div>
+      <div class="icon-cell"><svg viewBox="0 0 24 24"><path d="M14 4h6v6"/><path d="M20 4l-9 9"/><path d="M19 14v4a2 2 0 01-2 2H6a2 2 0 01-2-2V7a2 2 0 012-2h4"/></svg><span class="icon-cell__name">external-link</span></div>
+    </div>
+
+    <div class="icon-category">Actions</div>
+    <div class="icon-grid">
+      <div class="icon-cell"><svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="M16.5 16.5l4 4"/></svg><span class="icon-cell__name">search</span></div>
+      <div class="icon-cell"><svg viewBox="0 0 24 24"><path d="M4 5h16l-6 8v6l-4-2v-4z"/></svg><span class="icon-cell__name">filter</span></div>
+      <div class="icon-cell"><svg viewBox="0 0 24 24"><path d="M7 4v16M4 7l3-3 3 3M17 20V4M14 17l3 3 3-3"/></svg><span class="icon-cell__name">sort</span></div>
+      <div class="icon-cell"><svg viewBox="0 0 24 24"><path d="M12 4v12M7 11l5 5 5-5M5 20h14"/></svg><span class="icon-cell__name">download</span></div>
+      <div class="icon-cell"><svg viewBox="0 0 24 24"><path d="M12 20V8M7 13l5-5 5 5M5 4h14"/></svg><span class="icon-cell__name">upload</span></div>
+      <div class="icon-cell"><svg viewBox="0 0 24 24"><path d="M16 3l5 5-12 12H4v-5L16 3z"/><path d="M14 5l5 5"/></svg><span class="icon-cell__name">edit</span></div>
+      <div class="icon-cell"><svg viewBox="0 0 24 24"><path d="M3 6h18M8 6V4a2 2 0 012-2h4a2 2 0 012 2v2M6 6v14a2 2 0 002 2h8a2 2 0 002-2V6"/><path d="M10 11v6M14 11v6"/></svg><span class="icon-cell__name">delete</span></div>
+      <div class="icon-cell"><svg viewBox="0 0 24 24"><circle cx="6" cy="12" r="2"/><circle cx="18" cy="6" r="2"/><circle cx="18" cy="18" r="2"/><path d="M8 11l8-4M8 13l8 4"/></svg><span class="icon-cell__name">share</span></div>
+      <div class="icon-cell"><svg viewBox="0 0 24 24"><path d="M6 9V3h12v6"/><rect x="2" y="9" width="20" height="9" rx="1"/><rect x="6" y="14" width="12" height="7"/></svg><span class="icon-cell__name">print</span></div>
+      <div class="icon-cell"><svg viewBox="0 0 24 24"><circle class="filled-dot" cx="5" cy="12" r="1.4"/><circle class="filled-dot" cx="12" cy="12" r="1.4"/><circle class="filled-dot" cx="19" cy="12" r="1.4"/></svg><span class="icon-cell__name">more-horizontal</span></div>
+      <div class="icon-cell"><svg viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></svg><span class="icon-cell__name">add</span></div>
+      <div class="icon-cell"><svg viewBox="0 0 24 24"><path d="M5 12h14"/></svg><span class="icon-cell__name">remove</span></div>
+    </div>
+
+    <div class="icon-category">E-commerce</div>
+    <div class="icon-grid">
+      <div class="icon-cell"><svg viewBox="0 0 24 24"><path d="M2 4h2.5l3 12h11l2.5-8H7"/><circle cx="10" cy="20" r="1.6"/><circle cx="17" cy="20" r="1.6"/></svg><span class="icon-cell__name">cart</span></div>
+      <div class="icon-cell"><svg viewBox="0 0 24 24"><path d="M21 8L12 3 3 8v8l9 5 9-5V8z"/><path d="M3 8l9 5 9-5M12 13v8"/></svg><span class="icon-cell__name">package</span></div>
+      <div class="icon-cell"><svg viewBox="0 0 24 24"><rect x="2" y="6" width="12" height="10" rx="1"/><path d="M14 10h5l3 3v3h-8"/><circle cx="6" cy="18" r="2"/><circle cx="18" cy="18" r="2"/></svg><span class="icon-cell__name">truck</span></div>
+      <div class="icon-cell"><svg viewBox="0 0 24 24"><path d="M5 3h11l4 4v14H5z"/><path d="M16 3v4h4"/><path d="M9 13h6M9 17h4"/></svg><span class="icon-cell__name">quote</span></div>
+      <div class="icon-cell"><svg viewBox="0 0 24 24"><path d="M12 20l-7-7a4.5 4.5 0 016.5-6L12 8l.5-1A4.5 4.5 0 0119 13l-7 7z"/></svg><span class="icon-cell__name">wishlist</span></div>
+      <div class="icon-cell"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="6" height="6"/><rect x="15" y="3" width="6" height="6"/><rect x="3" y="15" width="6" height="6"/><rect class="filled-dot" x="5" y="5" width="2" height="2"/><rect class="filled-dot" x="17" y="5" width="2" height="2"/><rect class="filled-dot" x="5" y="17" width="2" height="2"/><path d="M13 13h3v3M21 13v3M13 18v3M18 21h3"/></svg><span class="icon-cell__name">qr-code</span></div>
+      <div class="icon-cell"><svg viewBox="0 0 24 24"><path d="M4 5v14M6.5 5v14M8 5v14M11 5v14M13.5 5v14M16 5v14M18.5 5v14M20 5v14"/></svg><span class="icon-cell__name">barcode</span></div>
+    </div>
+
+    <div class="icon-category">User</div>
+    <div class="icon-grid">
+      <div class="icon-cell"><svg viewBox="0 0 24 24"><circle cx="12" cy="8" r="4"/><path d="M4.5 21a7.5 7.5 0 0115 0"/></svg><span class="icon-cell__name">user</span></div>
+      <div class="icon-cell"><svg viewBox="0 0 24 24"><circle cx="9" cy="8" r="3.5"/><circle cx="17" cy="9" r="2.5"/><path d="M2.5 20a6.5 6.5 0 0113 0"/><path d="M15 20a4 4 0 017 0"/></svg><span class="icon-cell__name">users</span></div>
+      <div class="icon-cell"><svg viewBox="0 0 24 24"><path d="M10 3H5a2 2 0 00-2 2v14a2 2 0 002 2h5"/><path d="M14 12h7M18 8l4 4-4 4"/></svg><span class="icon-cell__name">landin</span></div>
+      <div class="icon-cell"><svg viewBox="0 0 24 24"><path d="M14 3h5a2 2 0 012 2v14a2 2 0 01-2 2h-5"/><path d="M10 12H3M7 8l-4 4 4 4"/></svg><span class="icon-cell__name">landout</span></div>
+      <div class="icon-cell"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><path d="M12 3v2.5M12 18.5V21M3 12h2.5M18.5 12H21M5.6 5.6l1.8 1.8M16.6 16.6l1.8 1.8M18.4 5.6l-1.8 1.8M5.6 18.4l1.8-1.8"/></svg><span class="icon-cell__name">settings</span></div>
+      <div class="icon-cell"><svg viewBox="0 0 24 24"><path d="M18 8a6 6 0 10-12 0c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M10 21a2 2 0 004 0"/></svg><span class="icon-cell__name">bell</span></div>
+      <div class="icon-cell"><svg viewBox="0 0 24 24"><circle cx="8" cy="12" r="4"/><path d="M12 12h10M18 12v3M22 12v4"/></svg><span class="icon-cell__name">key</span></div>
+    </div>
+
+    <div class="icon-category">Status</div>
+    <div class="icon-grid">
+      <div class="icon-cell"><svg viewBox="0 0 24 24"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg><span class="icon-cell__name">check</span></div>
+      <div class="icon-cell"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M8 12.5l3 3 5-7"/></svg><span class="icon-cell__name">check-circle</span></div>
+      <div class="icon-cell"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 11v6"/><circle class="filled-dot" cx="12" cy="8" r="0.8"/></svg><span class="icon-cell__name">info</span></div>
+      <div class="icon-cell"><svg viewBox="0 0 24 24"><path d="M12 3.5l9.5 16.5h-19z"/><path d="M12 10v5"/><circle class="filled-dot" cx="12" cy="18" r="0.8"/></svg><span class="icon-cell__name">warning</span></div>
+      <div class="icon-cell"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M9 9l6 6M15 9l-6 6"/></svg><span class="icon-cell__name">error</span></div>
+      <div class="icon-cell"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg><span class="icon-cell__name">clock</span></div>
+      <div class="icon-cell"><svg viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="16" rx="1"/><path d="M3 10h18M8 3v4M16 3v4"/></svg><span class="icon-cell__name">calendar</span></div>
+    </div>
+
+    <div class="icon-category">Industry / MJ-specific <span style="color:var(--mj-warning);font-weight:600;font-size:10px;letter-spacing:.08em;text-transform:uppercase">· Placeholder · parallel track</span></div>
+    <p style="font-size:13px;color:var(--mj-ink-2);margin:0 0 12px">Tegnet for å bære MJ-profilen — hardware, not generisk fintech. Skal kjenne seg igjen ved 16 and 24 px. <strong>Being evaluated in parallel against an optional hex/nut-sheet variant from MJ — the final set is decided once we see icons in context on real pages.</strong></p>
+    <div class="icon-grid">
+      <div class="icon-cell"><svg viewBox="0 0 24 24"><path d="M9 3h6l3 3v3l-3 3H9L6 9V6z"/><path d="M11 12v9M9 14h6M9 17h6"/></svg><span class="icon-cell__name">bolt</span></div>
+      <div class="icon-cell"><svg viewBox="0 0 24 24"><path d="M14.5 6.5a3.5 3.5 0 014.5 4.5l3 3-2.5 2.5-3-3a3.5 3.5 0 01-4.5-4.5l1.7 1.7L16 8.7l-1.3-1.3z"/><path d="M11 11l-8 8 2 2 8-8"/></svg><span class="icon-cell__name">wrench</span></div>
+      <div class="icon-cell"><svg viewBox="0 0 24 24"><path d="M3.5 17.5h17"/><path d="M5.5 17.5v-3a6.5 6.5 0 0113 0v3"/><path d="M9.5 9V6h5v3"/></svg><span class="icon-cell__name">helmet</span></div>
+      <div class="icon-cell"><svg viewBox="0 0 24 24"><path d="M3 5h4v3c0 4 4 6 8 6 3 0 5 2 5 5v2h-4"/><path d="M3 4h4v4H3z"/></svg><span class="icon-cell__name">hose</span></div>
+      <div class="icon-cell"><svg viewBox="0 0 24 24"><path d="M3 17V8h6l3 4h6v5"/><circle cx="6" cy="19" r="2"/><circle cx="16" cy="19" r="2"/><path d="M19 17V5l-2 1.5v3M19 13h2.5M19 9h2.5"/></svg><span class="icon-cell__name">lift</span></div>
+      <div class="icon-cell"><svg viewBox="0 0 24 24"><path d="M5 19l8-8 4 4-8 8z"/><path d="M17 11l3-3"/><path d="M14 5l1 2M19 4l1 1M21 7l1 1"/></svg><span class="icon-cell__name">welding</span></div>
+      <div class="icon-cell"><svg viewBox="0 0 24 24"><path d="M3 8h11a3 3 0 100-6"/><path d="M3 16h16a3 3 0 110 6"/><path d="M3 12h9"/></svg><span class="icon-cell__name">air</span></div>
+      <div class="icon-cell"><svg viewBox="0 0 24 24"><path d="M9 3v6L4.5 19.5A1 1 0 005.4 21h13.2a1 1 0 00.9-1.5L15 9V3"/><path d="M8 3h8"/><path d="M7 14h10"/></svg><span class="icon-cell__name">chemical</span></div>
+      <div class="icon-cell"><svg viewBox="0 0 24 24"><circle cx="12" cy="9" r="6"/><circle cx="12" cy="9" r="2.5"/><path d="M9 14l-2 7 5-3 5 3-2-7"/></svg><span class="icon-cell__name">certificate</span></div>
+      <div class="icon-cell"><svg viewBox="0 0 24 24"><path d="M5 3h11l4 4v14H5z"/><path d="M16 3v4h4"/><path d="M8 12h8M8 16h6M8 8h4"/></svg><span class="icon-cell__name">datasheet</span></div>
+      <div class="icon-cell"><svg viewBox="0 0 24 24"><circle cx="11" cy="14" r="6.5"/><path d="M11 11v3l2.5 2"/><path d="M19 5l3 3-3 3"/><path d="M16 8h6"/></svg><span class="icon-cell__name">lead-time</span></div>
+      <div class="icon-cell"><svg viewBox="0 0 24 24"><rect x="3" y="6" width="8" height="13"/><rect x="13" y="6" width="8" height="13"/><path d="M3 12h8M13 12h8"/><path d="M5 6V5h4v1M15 6V5h4v1"/></svg><span class="icon-cell__name">boxes (2-boks)</span></div>
+    </div>
+
+    <div class="icon-category">Social</div>
+    <div class="icon-grid">
+      <div class="icon-cell"><svg viewBox="0 0 24 24"><path d="M14 8h3V4h-3a4 4 0 00-4 4v3H7v4h3v8h4v-8h3l1-4h-4V8c0-.5.5-1 1-1z"/></svg><span class="icon-cell__name">facebook</span></div>
+      <div class="icon-cell"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M8 10v8"/><circle class="filled-dot" cx="8" cy="7" r="1"/><path d="M12 18v-5a3 3 0 016 0v5"/></svg><span class="icon-cell__name">linkedin</span></div>
+      <div class="icon-cell"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="4"/><circle cx="12" cy="12" r="4"/><circle class="filled-dot" cx="17.5" cy="6.5" r="1"/></svg><span class="icon-cell__name">instagram</span></div>
+    </div>
+
+    <div class="callout"><strong>Implementation:</strong> Icons are used as inline SVG (not icon fonts or image sprites). This gives us three benefits: (1) color is inherited from <code>currentColor</code> and changes with the theme, (2) accessibility is easy via <code>aria-label</code>, and (3) no extra network calls. Stroke defaults (1.6 px, round/round, fill:none) are set on <code>.icon-cell svg</code> in CSS, so markup stays clean. The complete copy-paste library lives in <code>src/components/icons/icons.html</code>.</div>
+  </section>
+
+  <section class="section section--alt" id="images">
+    <div class="section__num">10 / Visual language</div>
+    <h2 class="section__title">Images</h2>
+    <p class="section__lead">Realistic, authentic industrial photography — in line with the 2025 brand book. Screws, bolts, nuts, tools shot close-up. No stock photos of smiling office workers.</p>
+    <h3>Priority order</h3>
+    <ol>
+      <li>Actual product images from the supplier (PIM)</li>
+      <li>Own photos of the warehouse, facade, employees at work</li>
+      <li>Own photos of tools, fasteners, safety gear in use</li>
+      <li>Generic industry images (only when no alternatives exist)</li>
+    </ol>
+    <h3>Aspect ratios</h3>
+    <div class="kvp"><span class="kvp__key">--ar-square (1:1)</span><span class="kvp__val">Product images, category cards</span></div>
+    <div class="kvp"><span class="kvp__key">--ar-landscape-4-3</span><span class="kvp__val">Artnotl-thumbnails</span></div>
+    <div class="kvp"><span class="kvp__key">--ar-landscape-16-9</span><span class="kvp__val">Hero images, video embeds</span></div>
+    <div class="kvp"><span class="kvp__key">--ar-landscape-21-9</span><span class="kvp__val">Wide hero</span></div>
+    <div class="kvp"><span class="kvp__key">--ar-portrait-3-4</span><span class="kvp__val">People gallery</span></div>
+  </section>
+
+  <section class="section" id="content-rules">
+    <div class="section__num">11 / Content &amp; regler</div>
+    <h2 class="section__title">Tall, pris and koder</h2>
+    <p class="section__lead">B2B-handel krever presisjon. Disse formatene skal følges hver gang et tall, en pris or et artnotlnummer vises.</p>
+    <h3>Price</h3>
+    <div class="kvp"><span class="kvp__key">Standard price (ex. VAT)</span><span class="kvp__val"><code>kr 2 490,–</code></span></div>
+    <div class="kvp"><span class="kvp__key">Price med øre</span><span class="kvp__val"><code>kr 2,80</code> — comma as decimal separator</span></div>
+    <div class="kvp"><span class="kvp__key">Large price</span><span class="kvp__val"><code>kr 12 450,–</code> — hard space as thousands separator</span></div>
+    <div class="kvp"><span class="kvp__key">Suggested price</span><span class="kvp__val"><s>kr 3 200,–</s> — struck through</span></div>
+    <div class="callout"><strong>Rule:</strong> Price er alltid eks. mva med mindre annet er angitt — B2B standard.</div>
+    <h3>SKU and artnotlnummer</h3>
+    <div class="kvp"><span class="kvp__key">Artnotlnummer</span><span class="kvp__val"><code>4815-162-30</code> — mono</span></div>
+    <div class="kvp"><span class="kvp__key">NOBB number</span><span class="kvp__val"><code>51234567</code></span></div>
+    <div class="kvp"><span class="kvp__key">EAN/GTIN</span><span class="kvp__val"><code>7053900012345</code></span></div>
+    <h3>Units of measurement</h3>
+    <div class="kvp"><span class="kvp__key">Length</span><span class="kvp__val"><code>40 mm</code>, <code>5 m</code> — hardspace mellom tall and enhet</span></div>
+    <div class="kvp"><span class="kvp__key">Weight</span><span class="kvp__val"><code>1,5 kg</code>, <code>500 g</code></span></div>
+    <div class="kvp"><span class="kvp__key">Quantity</span><span class="kvp__val"><code>200 stk</code>, <code>4 200 stk</code></span></div>
+    <div class="kvp"><span class="kvp__key">Packaging</span><span class="kvp__val"><code>box of 200 pcs</code></span></div>
+    <div class="kvp"><span class="kvp__key">Dimension</span><span class="kvp__val"><code>M8 × 40 mm</code></span></div>
+  </section>
+
+  <section class="section section--alt" id="primitives">
+    <div class="section__num">12 / Components</div>
+    <h2 class="section__title">Primitives — 16 atomer</h2>
+    <p class="section__lead">The smallest building blocks. All built with tokens, no hard-coded values.</p>
+    <h3>Buttons</h3>
+    <p>Six variants, four sizes. <strong>At most one primary per screen</strong>. Place primary on the right in action groups (Norwegian reading order).</p>
+    <div class="demo-box">
+      <button class="btn btn--primary">Primary</button>
+      <button class="btn btn--secondary">Secondary</button>
+      <button class="btn btn--outline">Outline</button>
+      <button class="btn btn--ghost">Ghost</button>
+      <button class="btn btn--destructive">Delete</button>
+    </div>
+    <div class="demo-box">
+      <button class="btn btn--primary btn--xs">XS · 28px</button>
+      <button class="btn btn--primary btn--sm">SM · 36px</button>
+      <button class="btn btn--primary">MD · 44px</button>
+      <button class="btn btn--primary btn--lg">LG · 52px</button>
+    </div>
+    <h3>Form fields</h3>
+    <p>Native HTML where possible. <code>&lt;label&gt;</code> always linked via <code>for</code>/<code>id</code>. Valideringsfeil vises under feltet, not som popup.</p>
+    <div class="demo-box demo-box--col">
+      <div class="field">
+        <label class="field__label">Artnotlnummer</label>
+        <input class="input" placeholder="f.eks. 4815-162-30">
+        <span class="field__hint">10 tegn maks · NOBB-nr godtas</span>
+      </div>
+      <div class="field">
+        <label class="field__label" style="color:var(--mj-error)">E-post</label>
+        <input class="input" value="not-en-epost" style="border-color:var(--mj-error)">
+        <span class="field__error">Ugyldig e-postadresse — sjekk at den inneholder @</span>
+      </div>
+    </div>
+    <h3>Badges, status pills, stock indicators</h3>
+    <div class="demo-box">
+      <span class="badge">DEFAULT</span>
+      <span class="badge badge--brand">NYHET</span>
+      <span class="badge badge--warning">2-BOKS</span>
+      <span class="badge badge--success">AVTALEPRIS</span>
+      <span class="badge badge--error">UTGÅTT</span>
+      <span class="badge badge--numeric">7</span>
+    </div>
+    <div class="demo-box">
+      <span class="status-pill status-pill--success">In stock</span>
+      <span class="status-pill status-pill--warning">Low stock</span>
+      <span class="status-pill status-pill--error">Out of stock</span>
+      <span class="status-pill status-pill--info">Made to order</span>
+    </div>
+    <div class="demo-box demo-box--col">
+      <span class="stock stock--in">In stock <span class="stock__qty">4 200 stk</span></span>
+      <span class="stock stock--low">Low stock <span class="stock__qty">6 stk</span></span>
+      <span class="stock stock--out">Out of stock <span class="stock__qty">Skaffes</span></span>
+    </div>
+    <h3>Other primitives</h3>
+    <p>Also available: <strong>textarea, select, number stepper (med multiplum-støtte for boks-kjøp), checkbox, radio, switch, tag/chip, prandress bar, spinner, skeleton, divider, link</strong>. All live as their own BEM classes in <code>src/components/</code>.</p>
+  </section>
+
+  <section class="section" id="composites">
+    <div class="section__num">13 / Components</div>
+    <h2 class="section__title">Composites — 19 compositions</h2>
+    <p class="section__lead">Bygd ved å kombinere primitiver: kort, tabor, navigasjon, modaler, varslinger.</p>
+    <h3>Product card</h3>
+    <div class="demo-box">
+      <div class="product-mini">
+        <div class="product-mini__media">PRODUKTBILDE</div>
+        <span class="product-mini__sku">4815-162-30</span>
+        <h4 class="product-mini__title">Sekskantskrue M8 × 40 mm A4 syrefast</h4>
+        <span class="stock stock--in" style="font-size:12px">In stock</span>
+        <div class="product-mini__price">kr 2,80 <span class="product-mini__price-suffix">eks. mva</span></div>
+      </div>
+      <div class="product-mini">
+        <div class="product-mini__media">PRODUKTBILDE</div>
+        <span class="product-mini__sku">2210-507-12</span>
+        <h4 class="product-mini__title">Hilti TE 6-A36 borhammer 36V</h4>
+        <span class="stock stock--in" style="font-size:12px">In stock</span>
+        <div class="product-mini__price">kr 8 990,– <span class="product-mini__price-suffix">eks. mva</span></div>
+      </div>
+    </div>
+    <h3>Notifications</h3>
+    <div class="alert alert--info"><strong>ⓘ</strong><span>Orders placed before 2 pm ship the same day.</span></div>
+    <div class="alert alert--success"><strong>✓</strong><span>Ordre 234 519 er bekreftet and under behandling.</span></div>
+    <div class="alert alert--warning"><strong>⚠</strong><span>Low stock on 3 of 8 items — you can still order.</span></div>
+    <div class="alert alert--error"><strong>✕</strong><span>Klarte not laste prislisten. Prøv igjen, or kontakt oss.</span></div>
+    <h3>Other composites</h3>
+    <p>Also available: <strong>card (3 varianter), category card, person card, data table (med sticky header and sort), pagination, tabs, breadcrumb, stepper (checkout-flow), accordion, tooltip, modal/dialand, drawer, toast, banner, empty state, loading state, error state</strong>.</p>
+  </section>
+
+  <section class="section section--alt" id="ecommerce">
+    <div class="section__num">14 / Components</div>
+    <h2 class="section__title">E-commerce — 31 specialised</h2>
+    <p class="section__lead">B2B-spesifnot komponenter som skiller MJs nettbutikk fra en generisk e-handel.</p>
+    <div class="cols">
+      <div class="col-card"><div class="col-card__num">PDP</div><h4 class="col-card__title">Product gallery</h4><p class="col-card__desc">Thumb-stripe + main-bilde, klikkbart, byttbart.</p></div>
+      <div class="col-card"><div class="col-card__num">PDP</div><h4 class="col-card__title">Variant selector</h4><p class="col-card__desc">To visninger: chip-grupper (få varianter, hanske-/skostørrelser) and matrise med antall + cart per rad (mange varianter, festemidler). Avtalt May 12, 2026.</p></div>
+      <div class="col-card"><div class="col-card__num">CART</div><h4 class="col-card__title">Quick order pad</h4><p class="col-card__desc">Hurtigbestilling via artnotlnummer-paste.</p></div>
+      <div class="col-card"><div class="col-card__num">CART</div><h4 class="col-card__title">Mini cart drawer</h4><p class="col-card__desc">Slides in from the right, showing cart + total.</p></div>
+      <div class="col-card"><div class="col-card__num">B2B</div><h4 class="col-card__title">Sortiland</h4><p class="col-card__desc">Customer-specific product list — favorites with negotiated prices.</p></div>
+      <div class="col-card"><div class="col-card__num">B2B</div><h4 class="col-card__title">2-bin dashboard</h4><p class="col-card__desc">Visual overview of the 2-bin system with fill levels.</p></div>
+      <div class="col-card"><div class="col-card__num">B2B</div><h4 class="col-card__title">Sales rep impersonation</h4><p class="col-card__desc">Orange notification bar when a sales rep is shopping on behalf of a customer.</p></div>
+      <div class="col-card"><div class="col-card__num">PLP</div><h4 class="col-card__title">Filter sidebar &amp; chips</h4><p class="col-card__desc">Sticky sidebar with counts per option, active chips on top.</p></div>
+    </div>
+    <p style="margin-top:24px">Pluss: predictive search, sort dropdown, view switcher, address book, PO-referanse, order history, account dashboard, datablad-arkiv, request quote, stock notify, promo code, reorder, and flere. <a href="../src/components/index.html">See all 66 in the component library →</a></p>
+  </section>
+
+  <section class="section" id="page-templates">
+    <div class="section__num">15 / Page templates</div>
+    <h2 class="section__title">11 ready-made page templates</h2>
+    <p class="section__lead">Alle viktige sidetyper er implemented som faktisk HTML/CSS — klare for kobling mot Dynamicweb-data.</p>
+    <div class="page-thumbs">
+      <a class="page-thumb" href="../src/pages/home.html"><div class="page-thumb__num">15.2</div><h4 class="page-thumb__title">Front page</h4><p class="page-thumb__desc">Hero, categories, popular products, quick order.</p></a>
+      <a class="page-thumb" href="../src/pages/category.html"><div class="page-thumb__num">15.3</div><h4 class="page-thumb__title">Category page (PLP)</h4><p class="page-thumb__desc">Filtre + grid or liste, sortering, pagination.</p></a>
+      <a class="page-thumb" href="../src/pages/product.html"><div class="page-thumb__num">15.4</div><h4 class="page-thumb__title">Product page (PDP)</h4><p class="page-thumb__desc">Gallery, variant matrix, price, datasheet tabs.</p></a>
+      <a class="page-thumb" href="../src/pages/search.html"><div class="page-thumb__num">15.5</div><h4 class="page-thumb__title">Search results</h4><p class="page-thumb__desc">Result list with filters on the page.</p></a>
+      <a class="page-thumb" href="../src/pages/cart.html"><div class="page-thumb__num">15.6</div><h4 class="page-thumb__title">Cart</h4><p class="page-thumb__desc">Lines with quantity, totals, promo code.</p></a>
+      <a class="page-thumb" href="../src/pages/checkout.html"><div class="page-thumb__num">15.7</div><h4 class="page-thumb__title">Checkout</h4><p class="page-thumb__desc">Address, delivery, reference, payment.</p></a>
+      <a class="page-thumb" href="../src/pages/order-confirmation.html"><div class="page-thumb__num">15.8</div><h4 class="page-thumb__title">Order confirmation</h4><p class="page-thumb__desc">Confirmation screen with summary.</p></a>
+      <a class="page-thumb" href="../src/pages/account.html"><div class="page-thumb__num">15.9</div><h4 class="page-thumb__title">My account</h4><p class="page-thumb__desc">Dashboard, orders, 2-bin status.</p></a>
+      <a class="page-thumb" href="../src/pages/landin.html"><div class="page-thumb__num">15.10</div><h4 class="page-thumb__title">Landg inn</h4><p class="page-thumb__desc">Standard innlandgings-skjema.</p></a>
+      <a class="page-thumb" href="../src/pages/static.html"><div class="page-thumb__num">15.11</div><h4 class="page-thumb__title">Static (About us)</h4><p class="page-thumb__desc">Long-form content page.</p></a>
+      <a class="page-thumb" href="../src/pages/404.html"><div class="page-thumb__num">15.12</div><h4 class="page-thumb__title">404</h4><p class="page-thumb__desc">Errorside med navigasjon tilbake.</p></a>
+    </div>
+  </section>
+
+  <section class="section section--alt" id="accessibility">
+    <div class="section__num">16 / Quality</div>
+    <h2 class="section__title">Accessibility — WCAG 2.2 AA</h2>
+    <p class="section__lead">Accessibility er not noe vi legger på til slutt. Det er en baseline-forutsetning som er bygd inn i hver komponent — and documented i et eget audit.</p>
+
+    <div class="callout" style="background:var(--mj-success-bg);border-left-color:var(--mj-success)"><strong>✓ Status per May 12, 2026:</strong> All applicable AA success criteria met. The single critical audit finding (warning-token contrast at 2.86:1) is closed — <code>--mj-warning</code> darkened to <code>#7A580E</code>, gir nå 5,68&nbsp;:&nbsp;1 på status-pill and 6,50&nbsp;:&nbsp;1 på badge/stock/toast.</div>
+
+    <h3>What we do</h3>
+    <ul>
+      <li><strong>Contrast:</strong> Alle tekst-kombinasjoner møter 4,5&nbsp;:&nbsp;1 (brødtekst) or 3&nbsp;:&nbsp;1 (stor tekst). Brand-orange er flagget som «kun dekorativ» (2,4&nbsp;:&nbsp;1 mot hvit).</li>
+      <li><strong>Keyboard navigation:</strong> All interactive elements have a visible focus indicator (<code>--focus-ring</code>). Tab order follows the DOM.</li>
+      <li><strong>Touch targets:</strong> Standard knapper and inputs er 44 × 44 px. <code>.btn--sm</code> (36 px) and <code>.btn--xs</code> (28 px) clear WCAG 2.2 AA's 24 px floor.</li>
+      <li><strong>Screen readers:</strong> Form fields har <code>&lt;label&gt;</code>, icon buttons have <code>aria-label</code>, dialander bruker native <code>&lt;dialand&gt;</code> which announces the correct role. The variant matrix has a specific aria-label per cart button ("Add M8 × 30 mm A4 stainless to cart, 100 pcs").</li>
+      <li><strong>Motion:</strong> <code>prefers-reduced-motion</code> is respected globally in <code>base/reset.css</code>.</li>
+      <li><strong>Structured markup:</strong> Headings follow the semantic hierarchy (one h1 per page, h2 → h3 without skipping levels). Visual styling is separated from HTML tags via utility classes.</li>
+      <li><strong>Sticky-header and fokus:</strong> <code>scroll-margin-top</code> sørger for at fokuserte elementer not skjules bak header (WCAG 2.2 2.4.11).</li>
+    </ul>
+
+    <h3>What we test</h3>
+    <ul>
+      <li>Manual keyboard test of every component</li>
+      <li>Screen reader (NVDA/VoiceOver) on page templates</li>
+      <li>Automatisk lint via axe-core or tilsvarende i CI</li>
+      <li>Contrast verification for new color choices (WCAG formula + visual check)</li>
+      <li>200&nbsp;% browser-zoom — layout skal not bryte, ingen horisontal scroll</li>
+      <li>Reduced-motion flow through the entire purchase journey</li>
+    </ul>
+
+    <h3>Remaining work</h3>
+    <p>To «major»-funn håndteres når komponentene kobles til JS-laget i Dynamicweb-integrasjonen — kan not løses i CSS alene:</p>
+    <ul>
+      <li><strong>Drawer focus trap:</strong> Modal uses native <code>&lt;dialand&gt;</code> (gratis fokusfelle), men drawer er custom and needs JS-implementasjon for <kbd>Tab</kbd>-sirkulering and <kbd>Esc</kbd>closing.</li>
+      <li><strong>Toast aria-live:</strong> <code>.toast-region</code> needs <code>role="status" aria-live="polite"</code> so that screen readers announce new toast messages.</li>
+    </ul>
+
+    <div class="callout"><strong>Full audit report:</strong> See the dedicated accessibility document <a href="../docs/accessibility.html">accessibility.html</a> — it contains the full per-criterion walkthrough, all measured contrasts, the keyboard shortcut matrix per component, and the formal audit trail.</div>
+  </section>
+
+  <section class="section" id="responsive">
+    <div class="section__num">17 / Quality</div>
+    <h2 class="section__title">Responsive design — mobile, tablet, desktop</h2>
+    <p class="section__lead">Our customers shop both from the warehouse floor on a phone and from a planning desk on a 1440 px monitor. Every page template must work end-to-end on both — no horizontal scroll, no hidden actions, no degraded reading experience. The same words and actions are available everywhere; only the layout differs.</p>
+
+    <h3>Philosophy</h3>
+    <ul>
+      <li><strong>Mobile-first.</strong> Base CSS describes the mobile layout. Larger screens add behavior via <code>@media (min-width: ...)</code>, never the other way around.</li>
+      <li><strong>Progressive enhancement.</strong> Tablet adds breathing room; desktop adds a second column. The core flow never changes.</li>
+      <li><strong>Touch first on every viewport.</strong> Tap targets are at least 40 × 40 px (44 × 44 px preferred) regardless of screen size. This keeps the system usable with a glove on a workbench, not only on a phone.</li>
+    </ul>
+
+    <h3>Canonical breakpoints</h3>
+    <p>The token file (<code>src/styles/tokens/layout.css</code>) defines six breakpoints — <code>--bp-xs</code> through <code>--bp-2xl</code> — but only three are used as <em>layout cutoffs</em> in practice. The other three are reserved for micro-adjustments inside a single component.</p>
+
+    <table class="tbl">
+      <thead>
+        <tr><th>Token</th><th>Pixel</th><th>Role</th></tr>
+      </thead>
+      <tbody>
+        <tr><td><code>--bp-md</code></td><td>768 px</td><td><strong>Tablet portrait.</strong> Two-column layouts may appear. PDP gallery moves alongside the buy box.</td></tr>
+        <tr><td><code>--bp-lg</code></td><td>1024 px</td><td><strong>Desktop / tablet landscape.</strong> Filter sidebar appears inline (no drawer). Header navigation is horizontal (no hamburger). Cart and checkout become two columns.</td></tr>
+        <tr><td><code>--bp-xl</code></td><td>1280 px</td><td><strong>Container cap.</strong

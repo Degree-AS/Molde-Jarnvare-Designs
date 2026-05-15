@@ -1,0 +1,71 @@
+/**
+ * Site header / Site shell — header (§15.1)
+ * Sticky top navigation with logo, search, category menu and user actions.
+ *
+ * Responsive (§17, mobile-first):
+ *   Default (mobile, < 768)  Logo + actions (cart, hamburger) on row 1.
+ *                            Search bar spans full width on row 2.
+ *                            Category nav is hidden — reached via hamburger drawer.
+ *   Tablet (768–1023)        Same as mobile. Hamburger still visible.
+ *   Desktop (≥ 1024 / --bp-lg) Logo, search, actions inline on one row.
+ *                              Category nav visible as second row. No hamburger.
+ *
+ * The hamburger button + drawer markup is optional in HTML — pages without it
+ * simply have no mobile nav (graceful degradation). Add markup per §15.1 to
+ * enable the mobile drawer pattern.
+ */
+
+.site-header {
+  position: sticky;
+  top: 0;
+  z-index: var(--z-sticky);
+  background: var(--color-bg-surface);
+  border-bottom: var(--bw-1) solid var(--color-border-soft);
+}
+
+/* ─────────────────────────────────────────────────────────────────────────
+ * Top row — logo + search + actions
+ * Mobile: two-row grid (logo/actions on row 1, search on row 2)
+ * Desktop: single-row grid (logo, search, actions inline)
+ * ────────────────────────────────────────────────────────────────────── */
+.site-header__inner {
+  display: grid;
+  grid-template-areas:
+    "logo    actions"
+    "search  search";
+  grid-template-columns: 1fr auto;
+  gap: var(--s-3);
+  align-items: center;
+  padding: var(--s-3) var(--gutter);
+  max-width: var(--container-wide);
+  margin-inline: auto;
+}
+
+@media (min-width: 1024px) /* --bp-lg */ {
+  .site-header__inner {
+    grid-template-areas: "logo search actions";
+    grid-template-columns: auto 1fr auto;
+    gap: var(--s-5);
+  }
+}
+
+/* ─────────────────────────────────────────────────────────────────────────
+ * Logo
+ * ────────────────────────────────────────────────────────────────────── */
+.site-header__logo {
+  grid-area: logo;
+  display: inline-flex;
+  align-items: center;
+  text-decoration: none;
+}
+
+.site-header__logo-img {
+  display: block;
+  height: 28px;
+  width: auto;
+  /* Logo clear-space — half the height of letters in logo (§9.3) */
+  margin-block: var(--s-2);
+  margin-inline-end: var(--s-2);
+}
+
+@media (mi

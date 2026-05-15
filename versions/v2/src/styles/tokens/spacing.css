@@ -1,0 +1,24 @@
+/**
+ * Spacing
+ * -----------------------------------------------------------------------------
+ * Source: DESIGN_SYSTEM.md §6.1
+ *
+ * 4px base scale. All padding/margin/gap values must come from this
+ * scale. No arbitrary values like 13px or 27px.
+ * -----------------------------------------------------------------------------
+ */
+
+:root {
+  --s-0:  0;
+  --s-1:  4px;
+  --s-2:  8px;
+  --s-3:  12px;
+  --s-4:  16px;
+  --s-5:  20px;
+  --s-6:  24px;
+  --s-7:  32px;
+  --s-8:  40px;
+  --s-9:  48px;
+  --s-10: 64px;
+  --s-11: 80px;
+  --s-12: 96

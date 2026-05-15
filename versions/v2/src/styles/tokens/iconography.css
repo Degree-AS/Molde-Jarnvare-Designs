@@ -1,0 +1,23 @@
+/**
+ * Iconography
+ * -----------------------------------------------------------------------------
+ * Source: DESIGN_SYSTEM.md §8.2
+ *
+ * Stroke icons with consistent stroke weight (1.6px), viewBox 0 0 24 24.
+ * Default color: currentColor.
+ *
+ *   --icon-xs   Inline in text
+ *   --icon-sm   In buttons and inputs
+ *   --icon-md   Standard in navigation, badges
+ *   --icon-lg   Header icons, category cards
+ *   --icon-xl   Featured services, category tiles
+ *   --icon-2xl  Empty states, illustrative
+ * -----------------------------------------------------------------------------
+ */
+
+:root {
+  --icon-xs:  14px;
+  --icon-sm:  16px;
+  --icon-md:  20px;
+  --icon-lg:  24px;
+  --icon-xl:  32px;

@@ -1,0 +1,33 @@
+/**
+ * Sortilog — customerspesifikk produktliste (§14.17)
+ */
+
+.sortilog {
+  display: flex;
+  flex-direction: column;
+  gap: var(--s-4);
+}
+
+.sortilog__header {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  gap: var(--s-3);
+}
+
+.sortilog__title {
+  font-size: var(--fs-h3);
+  font-weight: var(--fw-bold);
+  margin: 0;
+}
+
+.sortilog__count {
+  font-size: var(--fs-caption);
+  color: var(--color-text-secondary);
+  font-variant-numeric: tabular-nums;
+}
+
+.sortilog__list {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(240

@@ -1,0 +1,192 @@
+<!doctype html>
+<html lang="nb">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Ordre 234 519 — Molde Jarnvare</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Source+Sans+3:wght@400;500;600;700;900&family=JetBrains+Mono:wght@400&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../styles/index.css">
+</head>
+<body>
+
+<header class="site-header">
+  <div class="site-header__inner">
+    <a class="site-header__logo" href="/" aria-label="Molde Jarnvare"><img src="../assets/logos/molde-jarnvare-positive.png" alt="Molde Jarnvare" class="site-header__logo-img"></a>
+    <div class="site-header__search">
+      <form class="search-bar" role="search">
+        <svg class="search-bar__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.35-4.35"/></svg>
+        <input class="search-bar__input" type="search" placeholder="Søk i 30 000+ artikler, NOBB-nr, EAN…" />
+        <button class="search-bar__submit" type="submit">Søk</button>
+      </form>
+    </div>
+    <div class="site-header__actions">
+      <button class="site-header__action" aria-label="Min konto">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4 4-7 8-7s8 3 8 7"/></svg>
+      </button>
+      <button class="site-header__action" aria-label="Handlekurv (3)">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M6 6h15l-1.5 9H7.5z"/><circle cx="9" cy="20" r="1.5"/><circle cx="18" cy="20" r="1.5"/></svg>
+        <span class="badge badge--numeric site-header__action-badge">3</span>
+      </button>
+      <!-- Mobile-only hamburger trigger (hidden ≥ --bp-lg) -->
+      <button class="site-header__hamburger" type="button"
+              aria-label="Åpne hovedmeny"
+              aria-controls="site-nav-drawer"
+              aria-expanded="false">
+        <span class="site-header__hamburger-icon" aria-hidden="true"></span>
+      </button>
+    </div>
+  </div>
+
+  <div class="site-header__main">
+    <div class="site-header__main-inner">
+      <nav class="site-header__nav" aria-label="Hovedkategorier">
+        <a class="site-header__nav-link" href="#">Festemidler</a>
+        <a class="site-header__nav-link" href="#">Verktøy</a>
+        <a class="site-header__nav-link" href="#">Verneutstyr</a>
+        <a class="site-header__nav-link" href="#">Hydraulikk</a>
+        <a class="site-header__nav-link" href="#">Sveis</a>
+        <a class="site-header__nav-link" href="#">Industri</a>
+        <a class="site-header__nav-link" href="#">Hurtigbestilling</a>
+        <a class="site-header__nav-link site-header__nav-link--accent" href="#">Tilbud</a>
+      </nav>
+    </div>
+  </div>
+
+  <!--
+    Mobile nav drawer (visible < --bp-lg). The JS layer toggles
+    [data-open="true"] on hamburger click / Esc / backdrop click. For static
+    preview, add data-preview-open="true" to <header class="site-header"> above.
+  -->
+  <div class="site-header__drawer" id="site-nav-drawer" role="dialog" aria-modal="true" aria-label="Hovedmeny">
+    <div class="site-header__drawer-header">
+      <span class="t-overline" style="color: var(--mj-blue);">Meny</span>
+      <button class="site-header__drawer-close" type="button" aria-label="Lukk meny">&times;</button>
+    </div>
+    <nav class="site-header__drawer-nav" aria-label="Hovedkategorier (mobil)">
+      <a href="#">Festemidler</a>
+      <a href="#">Verktøy</a>
+      <a href="#">Verneutstyr</a>
+      <a href="#">Hydraulikk</a>
+      <a href="#">Sveis</a>
+      <a href="#">Industri</a>
+      <a href="#">Hurtigbestilling</a>
+      <a href="#" style="color: var(--mj-orange);">Tilbud</a>
+    </nav>
+  </div>
+</header>
+<div class="site-header__drawer-backdrop" aria-hidden="true"></div>
+
+<main class="container container--wide" style="padding-block: var(--s-7);">
+
+  <h1 class="t-h1" style="margin-bottom: var(--s-7);">Min konto</h1>
+
+  <div class="account-dashboard">
+    <nav class="account-dashboard__nav">
+      <a class="account-dashboard__nav-link" href="account.html">Oversikt</a>
+      <a class="account-dashboard__nav-link is-active" aria-current="page" href="account-orders.html">Ordrer</a>
+      <a class="account-dashboard__nav-link" href="#">Tilbud</a>
+      <a class="account-dashboard__nav-link" href="#">Sortilog</a>
+      <a class="account-dashboard__nav-link" href="account-wishlists.html">Handlelister</a>
+      <a class="account-dashboard__nav-link" href="account-carts.html">Lagrede kurver</a>
+      <a class="account-dashboard__nav-link" href="account-addresses.html">Adresser</a>
+      <a class="account-dashboard__nav-link" href="account-users.html">Brukere</a>
+      <a class="account-dashboard__nav-link" href="account-details.html">Innstillinger</a>
+    </nav>
+
+    <div class="account-dashboard__main">
+      <nav class="breadcrumb" style="margin-bottom: var(--s-4);">
+        <span class="breadcrumb__item"><a class="breadcrumb__link" href="account-orders.html">Ordrer</a></span>
+        <span class="breadcrumb__item" aria-current="page">Ordre 234 519</span>
+      </nav>
+
+      <header style="display: flex; flex-wrap: wrap; justify-content: space-between; align-items: baseline; gap: var(--s-4); margin-bottom: var(--s-6);">
+        <div>
+          <h2 class="t-h2" style="margin: 0 0 var(--s-2);">Ordre 234 519</h2>
+          <p style="color: var(--color-text-secondary); margin: 0;">Bestilt 05.05.2026 · PO-04812-1188 · <span class="status-pill status-pill--success" style="vertical-align: baseline;">Sendt</span></p>
+        </div>
+        <div style="display: flex; gap: var(--s-3);">
+          <button class="btn btn--outline btn--md">Last ned PDF</button>
+          <button class="btn btn--primary btn--md">Bestill p&aring; nytt</button>
+        </div>
+      </header>
+
+      <section class="account-dashboard__widgets">
+        <div class="card">
+          <h3 class="card__title" style="font-size: var(--fs-overline); text-transform: uppercase; letter-spacing: var(--ls-wider); color: var(--color-text-secondary);">Levering</h3>
+          <p style="margin: var(--s-2) 0 0; line-height: var(--lh-relaxed);"><strong>Verksted Hjelset</strong><br>Hjelsetvegen 47<br>6450 Hjelset</p>
+          <a class="link" href="#" style="font-size: var(--fs-body-sm);">Spor sending →</a>
+        </div>
+        <div class="card">
+          <h3 class="card__title" style="font-size: var(--fs-overline); text-transform: uppercase; letter-spacing: var(--ls-wider); color: var(--color-text-secondary);">Faktura</h3>
+          <p style="margin: var(--s-2) 0 0; line-height: var(--lh-relaxed);"><strong>Hovedkontor</strong><br>Sj&oslash;gata 12<br>6404 Molde</p>
+          <a class="link" href="#" style="font-size: var(--fs-body-sm);">Last ned faktura →</a>
+        </div>
+        <div class="card">
+          <h3 class="card__title" style="font-size: var(--fs-overline); text-transform: uppercase; letter-spacing: var(--ls-wider); color: var(--color-text-secondary);">Bestilt av</h3>
+          <p style="margin: var(--s-2) 0 0; line-height: var(--lh-relaxed);"><strong>Bjarte Vik</strong><br>Innkj&oslash;psansvarlig<br>bjarte@industriservice-vest.no</p>
+        </div>
+      </section>
+
+      <section class="card" style="margin-top: var(--s-6);">
+        <h3 class="card__title">Varelinjer</h3>
+        <div class="data-table__wrap data-table__wrap--responsive">
+          <table class="data-table">
+            <thead>
+              <tr>
+                <th>Art.nr</th>
+                <th>Produkt</th>
+                <th class="is-numeric">Antall</th>
+                <th class="is-numeric">Pris/stk</th>
+                <th class="is-numeric">Sum</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td data-label="Art.nr"><code>4815-162-30</code></td>
+                <td data-label="Produkt">Sekskantskrue M8 × 40 mm A4 syrefast</td>
+                <td class="is-numeric" data-label="Antall">2 000</td>
+                <td class="is-numeric" data-label="Pris/stk">kr 2,80</td>
+                <td class="is-numeric" data-label="Sum">kr 5 600,–</td>
+              </tr>
+              <tr>
+                <td data-label="Art.nr"><code>5012-008-00</code></td>
+                <td data-label="Produkt">Skive M8 A4 syrefast</td>
+                <td class="is-numeric" data-label="Antall">2 000</td>
+                <td class="is-numeric" data-label="Pris/stk">kr 0,85</td>
+                <td class="is-numeric" data-label="Sum">kr 1 700,–</td>
+              </tr>
+              <tr>
+                <td data-label="Art.nr"><code>2210-507-12</code></td>
+                <td data-label="Produkt">Hilti TE 6-A36 borhammer 36V</td>
+                <td class="is-numeric" data-label="Antall">1</td>
+                <td class="is-numeric" data-label="Pris/stk">kr 4 990,–</td>
+                <td class="is-numeric" data-label="Sum">kr 4 990,–</td>
+              </tr>
+              <tr>
+                <td colspan="4" style="text-align: right; font-weight: var(--fw-semibold);" data-label="Art.nr">Frakt</td>
+                <td class="is-numeric" data-label="Produkt">kr 240,–</td>
+              </tr>
+              <tr>
+                <td colspan="4" style="text-align: right; font-weight: var(--fw-semibold);" data-label="Art.nr">Sum eks. mva</td>
+                <td class="is-numeric" style="font-weight: var(--fw-semibold);" data-label="Produkt">kr 12 530,–</td>
+              </tr>
+              <tr>
+                <td colspan="4" style="text-align: right; color: var(--color-text-secondary);" data-label="Art.nr">Mva (25 %)</td>
+                <td class="is-numeric" style="color: var(--color-text-secondary);" data-label="Produkt">kr 3 132,50</td>
+              </tr>
+              <tr style="background: var(--mj-surface-1);">
+                <td colspan="4" style="text-align: right; font-weight: var(--fw-bold); font-size: var(--fs-body-lg);">Totalt</td>
+                <td class="is-numeric" style="font-weight: var(--fw-bold); font-size: var(--fs-body-lg);">kr 15 662,50</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <section class="card" style="margin-top: var(--s-6); background: var(--color-bg-brand-soft);">
+        <h3 class="card__title">Sp&oslash;rsm&aring;l om ordren?</h3>
+        <p style="margin: var(--s-2) 0 var(--s-4); color: var(--color-text-secondary);">Bjarte hos oss tar gjerne en kjapp prat — eller send e-post med ordrenummeret.</p>
+        <div style="display: flex; flex-wrap: wrap; gap: var(--s-3);">
+          <a class="btn btn--outline btn--sm" href="tel:71254201">71 25 42 01</a>
+          <a class="

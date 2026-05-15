@@ -1,0 +1,51 @@
+/**
+ * Form validation patterns (§16.1)
+ *
+ * Bruksregler:
+ * - Vis ikke feil før brukeren har fullført feltet (focus forlater).
+ * - Vis valideringsfeil under feltet, ikke som popup.
+ * - Bruk aria-describedby til helper- og feilmeldinger.
+ * - Generell feilmelding: "Sjekk feltene merket med rødt"
+ */
+
+/* Form-level error summary (vises øverst) */
+.form-error-summary {
+  display: flex;
+  flex-direction: column;
+  gap: var(--s-2);
+  padding: var(--s-4) var(--s-5);
+  background: var(--mj-error-bg);
+  color: var(--mj-error);
+  border-left: var(--bw-4) solid var(--mj-error);
+  border-radius: var(--r-sm);
+  font-size: var(--fs-body-sm);
+}
+
+.form-error-summary__title {
+  font-weight: var(--fw-semibold);
+  margin: 0;
+}
+
+.form-error-summary__list {
+  display: flex;
+  flex-direction: column;
+  gap: var(--s-1);
+  padding-left: var(--s-4);
+  list-style: disc;
+}
+
+/* Inline field error — see also .field__error in components/input/input.css */
+.field[data-error] .field__label { color: var(--mj-error); }
+
+/* Påkrevde felt — visuell markering */
+.field--required .field__label::after {
+  content: " *";
+  color: var(--mj-error);
+}
+
+/* Success state — for at brukeren skal vite at feltet er OK */
+.field[data-valid="true"] .input,
+.field[data-valid="true"] .textarea,
+.field[data-valid="true"] .select {
+  border-color: var(--mj-success);
+}

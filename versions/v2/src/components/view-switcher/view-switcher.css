@@ -1,0 +1,35 @@
+/**
+ * View switcher (§14.30) — grid vs list toggle.
+ */
+
+.view-switcher {
+  display: inline-flex;
+  border: var(--bw-1) solid var(--color-border-default);
+  border-radius: var(--r-sm);
+  overflow: hidden;
+}
+
+.view-switcher__btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  background: transparent;
+  border: 0;
+  cursor: pointer;
+  color: var(--color-text-secondary);
+  transition: background var(--duration-fast) var(--ease-standard);
+}
+
+.view-switcher__btn:hover { background: var(--mj-surface-1); }
+
+.view-switcher__btn[aria-pressed="true"],
+.view-switcher__btn.is-active {
+  background: var(--color-action-primary);
+  color: var(--color-text-on-brand);
+}
+
+.view-switcher__btn + .view-switcher__btn {
+  border-left: var(--bw-1) solid var(--color-border-default);
+}

@@ -1,0 +1,51 @@
+/**
+ * Site footer / Site shell — footer (§15.1)
+ * Dark Reflex blue background with negative logo (per §9.1).
+ *
+ * Responsive (§17, mobile-first):
+ *   Default (mobile, < 640)         Single-column stack of footer groups.
+ *   Small mobile/tablet (≥ 640)     Two columns.
+ *   Desktop (≥ 1024 / --bp-lg)      Four columns — brand block (2fr) + three nav columns.
+ *
+ * Bottom row (copyright + social) always uses flex-wrap, never forces overflow.
+ */
+
+.site-footer {
+  background: var(--mj-blue);
+  color: var(--color-text-on-brand);
+  padding-block: var(--s-9) var(--s-6);
+  margin-top: var(--s-10);
+}
+
+@media (min-width: 1024px) /* --bp-lg */ {
+  .site-footer { padding-block: var(--s-11) var(--s-8); margin-top: var(--s-12); }
+}
+
+.site-footer__inner {
+  max-width: var(--container-wide);
+  margin-inline: auto;
+  padding-inline: var(--gutter);
+}
+
+/* ─────────────────────────────────────────────────────────────────────────
+ * Grid — mobile-first
+ * ────────────────────────────────────────────────────────────────────── */
+.site-footer__grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--s-6);
+  padding-bottom: var(--s-7);
+  border-bottom: var(--bw-1) solid rgba(255, 255, 255, 0.15);
+}
+
+@media (min-width: 640px) /* --bp-sm */ {
+  .site-footer__grid { grid-template-columns: 1fr 1fr; gap: var(--s-6); }
+}
+
+@media (min-width: 1024px) /* --bp-lg */ {
+  .site-footer__grid { grid-template-columns: 2fr repeat(3, 1fr); gap: var(--s-7); padding-bottom: var(--s-8); }
+}
+
+/* ─────────────────────────────────────────────────────────────────────────
+ * Brand block (logo + tagline)
+ * ─────────────────────────────────────�

@@ -1,0 +1,101 @@
+/**
+ * Typography utility classes (§5.8)
+ *
+ * Rule (§5.9): HTML headings follow the semantic hierarchy. Visual styling
+ * is applied via classes, not via the tag itself.
+ *
+ *   <h2 class="t-h1">Hex bolts</h2>            <!-- correct -->
+ *   <h1>Help message</h1>                       <!-- wrong — breaks semantics -->
+ */
+
+.t-display {
+  font-family: var(--ff-sans);
+  font-size: var(--fs-display);
+  font-weight: var(--fw-black);
+  line-height: var(--lh-tight);
+  letter-spacing: var(--ls-tight);
+}
+
+.t-h1 {
+  font-family: var(--ff-sans);
+  font-size: var(--fs-h1);
+  font-weight: var(--fw-bold);
+  line-height: var(--lh-snug);
+}
+
+.t-h2 {
+  font-family: var(--ff-sans);
+  font-size: var(--fs-h2);
+  font-weight: var(--fw-bold);
+  line-height: var(--lh-snug);
+}
+
+.t-h3 {
+  font-family: var(--ff-sans);
+  font-size: var(--fs-h3);
+  font-weight: var(--fw-bold);
+  line-height: var(--lh-normal);
+}
+
+.t-h4 {
+  font-family: var(--ff-sans);
+  font-size: var(--fs-h4);
+  font-weight: var(--fw-semibold);
+  line-height: var(--lh-normal);
+}
+
+.t-h5 {
+  font-family: var(--ff-sans);
+  font-size: var(--fs-h5);
+  font-weight: var(--fw-semibold);
+  line-height: var(--lh-normal);
+}
+
+.t-body-lg {
+  font-family: var(--ff-sans);
+  font-size: var(--fs-body-lg);
+  font-weight: var(--fw-regular);
+  line-height: var(--lh-relaxed);
+}
+
+.t-body {
+  font-family: var(--ff-sans);
+  font-size: var(--fs-body);
+  font-weight: var(--fw-regular);
+  line-height: var(--lh-relaxed);
+}
+
+.t-body-sm {
+  font-family: var(--ff-sans);
+  font-size: var(--fs-body-sm);
+  font-weight: var(--fw-regular);
+  line-height: var(--lh-relaxed);
+}
+
+.t-caption {
+  font-family: var(--ff-sans);
+  font-size: var(--fs-caption);
+  font-weight: var(--fw-regular);
+  line-height: var(--lh-normal);
+  color: var(--color-text-secondary);
+}
+
+.t-overline {
+  font-family: var(--ff-sans);
+  font-size: var(--fs-overline);
+  font-weight: var(--fw-semibold);
+  line-height: var(--lh-normal);
+  letter-spacing: var(--ls-wider);
+  text-transform: uppercase;
+}
+
+.t-mono-md {
+  font-family: var(--ff-mono);
+  font-size: var(--fs-mono-md);
+  font-weight: var(--fw-regular);
+  font-variant-numeric: tabular-nums;
+}
+
+.t-mono-sm {
+  font-family: var(--ff-mono);
+  font

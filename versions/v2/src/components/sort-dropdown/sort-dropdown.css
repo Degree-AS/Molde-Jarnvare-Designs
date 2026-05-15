@@ -1,0 +1,21 @@
+/**
+ * Sort dropdown (§14.29) — uses .select with a label in front.
+ */
+
+.sort-dropdown {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--s-2);
+  font-size: var(--fs-body-sm);
+}
+
+.sort-dropdown__label {
+  color: var(--color-text-secondary);
+  white-space: nowrap;
+}
+
+.sort-dropdown .select {
+  width: auto;
+  min-width: 200px;
+  height: 36px;
+  font-size: v

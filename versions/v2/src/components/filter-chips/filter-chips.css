@@ -1,0 +1,29 @@
+/**
+ * Filter chips — active filters (§14.28) — builds on .chip--removable.
+ */
+
+.filter-chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--s-2);
+  align-items: center;
+}
+
+.filter-chips__label {
+  font-size: var(--fs-caption);
+  color: var(--color-text-secondary);
+  text-transform: uppercase;
+  letter-spacing: var(--ls-wider);
+}
+
+.filter-chips__clear-all {
+  font-size: var(--fs-caption);
+  color: var(--color-text-link);
+  background: transparent;
+  border: 0;
+  cursor: pointer;
+  padding: var(--s-1) var(--s-2);
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+.filter-chips__clear-all:hover { color: var(

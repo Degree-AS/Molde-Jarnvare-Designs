@@ -94,12 +94,56 @@
 
   <h2>Versjoner</h2>
 
+  <!-- ── v2 ───────────────────────────────────────────────────────────── -->
+  <div class="version">
+    <div class="version__head">
+      <h3 class="version__no">v2</h3>
+      <span class="version__date">15. mai 2026</span>
+      <span class="badge badge--pending">Til godkjenning hos Molde Jarnvare</span>
+    </div>
+    <p class="version__note">
+      Responsivt designsystem — alle sidemaler tilpasset mobil, tablet og desktop.
+      Internasjonalisering av kode og dokumentasjon (engelsk for utviklerne, norsk
+      synlig for kundene).
+    </p>
+    <div class="links">
+      <a href="v2/docs/designsystem.html">Designretningslinjer</a>
+      <a href="v2/src/components/index.html">Komponentbibliotek</a>
+      <a href="v2/src/pages/index.html">Komponentblokker / sidemaler</a>
+      <a href="v2/docs/accessibility.html">Tilgjengelighet (WCAG 2.2 AA)</a>
+      <a href="v2/docs/responsive.html">Responsiv-preview</a>
+    </div>
+    <ul class="changes">
+      <li><strong>Responsivt designsystem (§17):</strong> kanoniske breakpoints
+        (768 / 1024 / 1280), per-sidemal-mønstre dokumentert, mobile-first
+        CSS-konvensjon innført.</li>
+      <li><strong>Site shell:</strong> header med hamburger-meny + slide-in drawer
+        under 1024, footer som kollapser fra 4 → 2 → 1 kolonne.</li>
+      <li><strong>PLP / søk:</strong> filter-sidebar blir off-canvas drawer på
+        mobil/tablet ("Filter (3)"-trigger), produktgrid 2 → 3 → 4 kolonner.</li>
+      <li><strong>PDP / cart / checkout:</strong> to-kolonne-layout stables til én
+        kolonne på mobil. PDP-galleri viser thumbnails horisontalt under hovedbilde
+        på mobil, vertikal kolonne på tablet+.</li>
+      <li><strong>Konto-tabeller:</strong> orders, brukere og ordredetaljer blir
+        kort-liste på mobil — én rad = ett kort, kolonnenavn vist som label på
+        hver verdi.</li>
+      <li><strong>Ny <code>docs/responsive.html</code>:</strong> side-om-side-preview
+        av hovedsidemalene i tre viewport-størrelser, for kundegodkjenning.</li>
+      <li><strong>Internasjonalisering:</strong> all CSS, dokumentasjon, README-er
+        og dev-kommentarer oversatt til engelsk; synlig kundeinnhold (sidetekst,
+        knapper) forblir norsk. <code>CONTRIBUTING.md</code> lagt til for nye
+        utviklere.</li>
+      <li><strong>Søkeresultater:</strong> filter-sidebar lagt til med søke-relevante
+        filtre (Kategori, Merke, Pris, Kampanje) i tillegg til de som speiler PLP.</li>
+    </ul>
+  </div>
+
   <!-- ── v1 ───────────────────────────────────────────────────────────── -->
   <div class="version">
     <div class="version__head">
       <h3 class="version__no">v1</h3>
       <span class="version__date">12. mai 2026</span>
-      <span class="badge badge--pending">Til godkjenning hos Molde Jarnvare</span>
+      <span class="badge badge--superseded">Erstattet av v2</span>
     </div>
     <p class="version__note">
       Første komplette versjon: designretningslinjer, komponentbibliotek (67 komponenter)

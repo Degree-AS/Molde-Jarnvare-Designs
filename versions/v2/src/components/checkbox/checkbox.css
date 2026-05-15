@@ -1,0 +1,71 @@
+/**
+ * Checkbox (§12.6) — zero or more options.
+ * States: unchecked, checked, indeterminate, disabled
+ */
+
+.checkbox {
+  display: inline-flex;
+  align-items: flex-start;
+  gap: var(--s-3);
+  cursor: pointer;
+  user-select: none;
+  font-family: var(--ff-sans);
+  font-size: var(--fs-body);
+  color: var(--color-text-primary);
+}
+
+.checkbox input[type="checkbox"] {
+  position: absolute;
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.checkbox__visual {
+  flex: 0 0 auto;
+  width: 20px;
+  height: 20px;
+  margin-top: 2px;
+  background: var(--color-bg-surface);
+  border: var(--bw-2) solid var(--color-border-strong);
+  border-radius: var(--r-sm);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  transition: background var(--duration-fast) var(--ease-standard),
+              border-color var(--duration-fast) var(--ease-standard);
+}
+
+.checkbox__visual::after {
+  content: "";
+  width: 12px;
+  height: 6px;
+  border-left: var(--bw-3) solid var(--mj-white);
+  border-bottom: var(--bw-3) solid var(--mj-white);
+  transform: rotate(-45deg) translate(1px, -1px);
+  opacity: 0;
+}
+
+.checkbox:hover .checkbox__visual { border-color: var(--color-border-brand); }
+
+.checkbox input:focus-visible + .checkbox__visual { box-shadow: var(--focus-ring); }
+
+.checkbox input:checked + .checkbox__visual {
+  background: var(--color-action-primary);
+  border-color: var(--color-action-primary);
+}
+.checkbox input:checked + .checkbox__visual::after { opacity: 1; }
+
+.checkbox input:indeterminate + .checkbox__visual {
+  background: var(--color-action-primary);
+  border-color: var(--color-action-primary);
+}
+.checkbox input:indeterminate + .checkbox__visual::after {
+  width: 10px; height: 0;
+  border-left: 0;
+  border-bottom: var(--bw-3) solid var(--mj-white);
+  transform: none;
+  opacity: 1;
+}
+
+.checkbox input:disabled ~ * { opacity: 0.5; cursor

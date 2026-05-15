@@ -1,0 +1,122 @@
+/**
+ * Colors
+ * -----------------------------------------------------------------------------
+ * Source: DESIGN_SYSTEM.md §4
+ *
+ * This file contains two layers of color tokens:
+ *
+ *   1. Primitive tokens (--mj-*)
+ *      Raw brand and UI colors. These describe what the color *is*.
+ *      Do not use directly in components when a semantic token exists.
+ *
+ *   2. Semantic tokens (--color-*, --focus-ring*)
+ *      Role-based tokens that describe what the color is *used for*.
+ *      Components should reference these so themes can be swapped without
+ *      touching component CSS.
+ * -----------------------------------------------------------------------------
+ */
+
+:root {
+  /* ---------------------------------------------------------------------------
+   * 4.1 Brand colors (from 2025 brand book)
+   * ------------------------------------------------------------------------ */
+  --mj-blue:       #0D2B7E; /* Reflex Blue C — primary brand color */
+  --mj-gray-dark:  #35373E; /* Cool Gray 10 — body text, secondary surfaces */
+  --mj-orange:     #DB993D; /* Orange 021 C — accent (never primary CTA) */
+  --mj-gray-light: #E0E0E0; /* 420 C — background surfaces, dividers */
+  --mj-red:        #9E2835; /* 187 C — slogans, callouts, errors */
+
+  /* ---------------------------------------------------------------------------
+   * 4.2 Brand colors as percentage tints
+   * ------------------------------------------------------------------------ */
+
+  /* Reflex blue (#0D2B7E) as tints */
+  --mj-blue-90: #25408B;
+  --mj-blue-80: #3D5598;
+  --mj-blue-70: #556AA5;
+  --mj-blue-60: #6E80B2;
+  --mj-blue-50: #8695BE;
+  --mj-blue-40: #9EAACB;
+  --mj-blue-30: #B6BFD8;
+  --mj-blue-20: #CFD5E5;
+  --mj-blue-10: #E7EAF2;
+
+  /* Dark gray (#35373E) as tints */
+  --mj-gray-dark-90: #494B51;
+  --mj-gray-dark-80: #5D5F65;
+  --mj-gray-dark-70: #717278;
+  --mj-gray-dark-60: #85878B;
+  --mj-gray-dark-50: #9A9B9F;
+  --mj-gray-dark-40: #AEAFB2;
+  --mj-gray-dark-30: #C2C3C5;
+  --mj-gray-dark-20: #D6D7D9;
+  --mj-gray-dark-10: #EBEBEC;
+
+  /* ---------------------------------------------------------------------------
+   * 4.3 Neutral scale (extended for UI)
+   * ------------------------------------------------------------------------ */
+  --mj-ink:         #35373E; /* = brand book dark gray. Primary text */
+  --mj-ink-2:       #5D5F65; /* Secondary text, metadata, helper text */
+  --mj-ink-3:       #85878B; /* Tertiary text, disabled labels */
+  --mj-line-strong: #B5B7BB; /* Strong lines, disabled borders */
+  --mj-line:        #D6D7D9; /* Standard borders, dividers */
+  --mj-line-soft:   #E0E0E0; /* = brand book light gray. Subtle lines */
+  --mj-surface-2:   #EBEBEC; /* Hover surfaces, alternate table rows */
+  --mj-surface-1:   #F4F4F5; /* Light section surfaces */
+  --mj-surface-0:   #F9F9F9; /* Page background (from brand book web sketch) */
+  --mj-white:       #FFFFFF; /* Card background, modals, primary surfaces */
+
+  /* ---------------------------------------------------------------------------
+   * 4.4 Status colors (UI-functional)
+   * Functional colors — never use as CTA or decorative element
+   * outside their status role.
+   * ------------------------------------------------------------------------ */
+  --mj-success:    #1F7A3A;
+  --mj-success-bg: #E8F2EA;
+  --mj-warning:    #7A580E; /* darkened from #B8851F (May 12, 2026) to pass WCAG 2.2 AA on status-pill, alert, badge, and stock-indicator */
+  --mj-warning-bg: #F8EFD9;
+  --mj-error:      #9E2835; /* = brand red */
+  --mj-error-bg:   #F4DDDF;
+  --mj-info:       #0D2B7E; /* = brand blue */
+  --mj-info-bg:    #E7EAF2;
+
+  /* ---------------------------------------------------------------------------
+   * 4.6 Functional UI tokens (semantic)
+   * Tokens that describe what the color is *used for*, not what it *is*.
+   * ------------------------------------------------------------------------ */
+
+  /* Text */
+  --color-text-primary:    var(--mj-ink);
+  --color-text-secondary:  var(--mj-ink-2);
+  --color-text-tertiary:   var(--mj-ink-3);
+  --color-text-on-brand:   var(--mj-white);
+  --color-text-on-dark:    var(--mj-white);
+  --color-text-link:       var(--mj-blue);
+  --color-text-link-hover: var(--mj-blue-80);
+  --color-text-error:      var(--mj-error);
+
+  /* Background */
+  --color-bg-page:        var(--mj-surface-0);
+  --color-bg-surface:     var(--mj-white);
+  --color-bg-surface-alt: var(--mj-surface-1);
+  --color-bg-brand:       var(--mj-blue);
+  --color-bg-brand-soft:  var(--mj-blue-10);
+  --color-bg-inverse:     var(--mj-gray-dark);
+
+  /* Borders */
+  --color-border-default: var(--mj-line);
+  --color-border-strong:  var(--mj-line-strong);
+  --color-border-soft:    var(--mj-line-soft);
+  --color-border-brand:   var(--mj-blue);
+  --color-border-focus:   var(--mj-blue);
+
+  /* Action / interactive */
+  --color-action-primary:          var(--mj-blue);
+  --color-action-primary-hover:    #0A2369;
+  --color-action-primary-active:   #081C55;
+  --color-action-secondary:        var(--mj-gray-dark);
+  --color-action-secondary-hover:  #2A2C32;
+  --color-accent:                  var(--mj-orange);
+  --color-accent-hover:            #C5862F;
+
+  /* Focus r

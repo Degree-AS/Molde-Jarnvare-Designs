@@ -1,0 +1,46 @@
+/**
+ * Tag / Chip (§12.10) — filter, kategori, fjerneable verdi.
+ * Variants: default, --removable, --selectable
+ */
+
+.chip {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--s-2);
+  height: 28px;
+  padding-inline: var(--s-3);
+  font-family: var(--ff-sans);
+  font-size: var(--fs-body-sm);
+  font-weight: var(--fw-medium);
+  color: var(--color-text-primary);
+  background: var(--mj-surface-2);
+  border: var(--bw-1) solid transparent;
+  border-radius: var(--r-full);
+  cursor: default;
+  white-space: nowrap;
+}
+
+.chip--selectable { cursor: pointer; transition: background var(--duration-fast) var(--ease-standard); }
+.chip--selectable:hover { background: var(--mj-surface-1); border-color: var(--color-border-default); }
+.chip--selectable[aria-pressed="true"],
+.chip--selectable.is-selected {
+  background: var(--color-bg-brand-soft);
+  color: var(--color-action-primary);
+  border-color: var(--color-border-brand);
+}
+
+.chip--removable { padding-inline-end: var(--s-2); }
+.chip__remove {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 18px; height: 18px;
+  border-radius: var(--r-full);
+  background: transparent;
+  border: 0;
+  cursor: pointer;
+  color: inherit;
+  font-size: 16px;
+  line-height: 1;
+}
+.chip__remove:hover { background: rgba(0, 0, 0, 0.08); }

@@ -1,0 +1,222 @@
+<!doctype html>
+<html lang="nb">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Ansatte — Molde Jarnvare</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Source+Sans+3:wght@400;500;600;700;900&family=JetBrains+Mono:wght@400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../styles/index.css">
+</head>
+<body>
+<header class="site-header">
+  <div class="site-header__inner">
+    <a class="site-header__logo" href="/" aria-label="Molde Jarnvare"><img src="../assets/logos/molde-jarnvare-positive.png" alt="Molde Jarnvare" class="site-header__logo-img"></a>
+    <div class="site-header__search">
+      <form class="search-bar" role="search">
+        <svg class="search-bar__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.35-4.35"/></svg>
+        <input class="search-bar__input" type="search" placeholder="Søk i 30 000+ artikler, NOBB-nr, EAN…" />
+        <button class="search-bar__submit" type="submit">Søk</button>
+      </form>
+    </div>
+    <div class="site-header__actions">
+      <button class="site-header__action" aria-label="Min konto">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4 4-7 8-7s8 3 8 7"/></svg>
+      </button>
+      <button class="site-header__action" aria-label="Handlekurv (3)">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M6 6h15l-1.5 9H7.5z"/><circle cx="9" cy="20" r="1.5"/><circle cx="18" cy="20" r="1.5"/></svg>
+        <span class="badge badge--numeric site-header__action-badge">3</span>
+      </button>
+      <!-- Mobile-only hamburger trigger (hidden ≥ --bp-lg) -->
+      <button class="site-header__hamburger" type="button"
+              aria-label="Åpne hovedmeny"
+              aria-controls="site-nav-drawer"
+              aria-expanded="false">
+        <span class="site-header__hamburger-icon" aria-hidden="true"></span>
+      </button>
+    </div>
+  </div>
+
+  <div class="site-header__main">
+    <div class="site-header__main-inner">
+      <nav class="site-header__nav" aria-label="Hovedkategorier">
+        <a class="site-header__nav-link" href="#">Festemidler</a>
+        <a class="site-header__nav-link" href="#">Verktøy</a>
+        <a class="site-header__nav-link" href="#">Verneutstyr</a>
+        <a class="site-header__nav-link" href="#">Hydraulikk</a>
+        <a class="site-header__nav-link" href="#">Sveis</a>
+        <a class="site-header__nav-link" href="#">Industri</a>
+        <a class="site-header__nav-link" href="#">Hurtigbestilling</a>
+        <a class="site-header__nav-link site-header__nav-link--accent" href="#">Tilbud</a>
+      </nav>
+    </div>
+  </div>
+
+  <!--
+    Mobile nav drawer (visible < --bp-lg). The JS layer toggles
+    [data-open="true"] on hamburger click / Esc / backdrop click. For static
+    preview, add data-preview-open="true" to <header class="site-header"> above.
+  -->
+  <div class="site-header__drawer" id="site-nav-drawer" role="dialog" aria-modal="true" aria-label="Hovedmeny">
+    <div class="site-header__drawer-header">
+      <span class="t-overline" style="color: var(--mj-blue);">Meny</span>
+      <button class="site-header__drawer-close" type="button" aria-label="Lukk meny">&times;</button>
+    </div>
+    <nav class="site-header__drawer-nav" aria-label="Hovedkategorier (mobil)">
+      <a href="#">Festemidler</a>
+      <a href="#">Verktøy</a>
+      <a href="#">Verneutstyr</a>
+      <a href="#">Hydraulikk</a>
+      <a href="#">Sveis</a>
+      <a href="#">Industri</a>
+      <a href="#">Hurtigbestilling</a>
+      <a href="#" style="color: var(--mj-orange);">Tilbud</a>
+    </nav>
+  </div>
+</header>
+<div class="site-header__drawer-backdrop" aria-hidden="true"></div>
+<main class="container container--wide" style="padding-block: var(--s-7);">
+
+  <nav class="breadcrumb" style="margin-bottom: var(--s-5);">
+    <span class="breadcrumb__item"><a class="breadcrumb__link" href="home.html">Forside</a></span>
+    <span class="breadcrumb__item" aria-current="page">Ansatte</span>
+  </nav>
+
+  <header style="max-width: 60ch; margin-bottom: var(--s-7);">
+    <h1 class="t-h1" style="margin: 0 0 var(--s-3);">M&oslash;t oss</h1>
+    <p class="t-body-lg" style="color: var(--color-text-secondary); margin: 0;">
+      Du skal alltid komme til en som kan faget. Her er produktansvarlige, selgere og serviceverkstedet &mdash; ring den som har ansvaret for det du lurer p&aring;.
+    </p>
+  </header>
+
+  <!-- Product responsibles -->
+  <section style="margin-bottom: var(--s-9);">
+    <h2 class="t-h2" style="margin: 0 0 var(--s-5);">Produktansvarlige</h2>
+    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: var(--s-4);">
+
+      <div class="person-card">
+        <div class="person-card__avatar"><img src="../assets/images/team/ansatt-portrett.jpg" alt=""></div>
+        <div class="person-card__main">
+          <h3 class="person-card__name">Ola Nordmann</h3>
+          <p class="person-card__role">Produktansvarlig festemidler</p>
+          <p style="font-size: var(--fs-caption); color: var(--color-text-tertiary); margin: var(--s-1) 0 0;">8 200 artikler &middot; DIN, ISO, A4 syrefast</p>
+          <div class="person-card__contact">
+            <a href="tel:71254201">71 25 42 01</a>
+            <a href="mailto:ola@moldejarnvare.no">ola@moldejarnvare.no</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="person-card">
+        <div class="person-card__avatar"><img src="../assets/images/team/ansatt-portrett.jpg" alt=""></div>
+        <div class="person-card__main">
+          <h3 class="person-card__name">Kari Bergshaug</h3>
+          <p class="person-card__role">Produktansvarlig verkt&oslash;y</p>
+          <p style="font-size: var(--fs-caption); color: var(--color-text-tertiary); margin: var(--s-1) 0 0;">5 400 artikler &middot; h&aring;ndverkt&oslash;y, elektroverkt&oslash;y, slipemidler</p>
+          <div class="person-card__contact">
+            <a href="tel:71254202">71 25 42 02</a>
+            <a href="mailto:kari@moldejarnvare.no">kari@moldejarnvare.no</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="person-card">
+        <div class="person-card__avatar"><img src="../assets/images/team/ansatt-portrett.jpg" alt=""></div>
+        <div class="person-card__main">
+          <h3 class="person-card__name">Per Olav Stenl&oslash;kk</h3>
+          <p class="person-card__role">Produktansvarlig verneutstyr</p>
+          <p style="font-size: var(--fs-caption); color: var(--color-text-tertiary); margin: var(--s-1) 0 0;">3 100 artikler &middot; hansker, briller, hjelmer, fott&oslash;y</p>
+          <div class="person-card__contact">
+            <a href="tel:71254203">71 25 42 03</a>
+            <a href="mailto:per.olav@moldejarnvare.no">per.olav@moldejarnvare.no</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="person-card">
+        <div class="person-card__avatar"><img src="../assets/images/team/ansatt-portrett.jpg" alt=""></div>
+        <div class="person-card__main">
+          <h3 class="person-card__name">Lars Indres&oslash;vde</h3>
+          <p class="person-card__role">Produktansvarlig hydraulikk</p>
+          <p style="font-size: var(--fs-caption); color: var(--color-text-tertiary); margin: var(--s-1) 0 0;">2 700 artikler &middot; slanger, koblinger, sylindere</p>
+          <div class="person-card__contact">
+            <a href="tel:71254204">71 25 42 04</a>
+            <a href="mailto:lars@moldejarnvare.no">lars@moldejarnvare.no</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="person-card">
+        <div class="person-card__avatar"><img src="../assets/images/team/ansatt-portrett.jpg" alt=""></div>
+        <div class="person-card__main">
+          <h3 class="person-card__name">Anette Vatne</h3>
+          <p class="person-card__role">Produktansvarlig sveis og industri</p>
+          <p style="font-size: var(--fs-caption); color: var(--color-text-tertiary); margin: var(--s-1) 0 0;">2 100 artikler &middot; sveiseapparater, gass, slipemidler</p>
+          <div class="person-card__contact">
+            <a href="tel:71254205">71 25 42 05</a>
+            <a href="mailto:anette@moldejarnvare.no">anette@moldejarnvare.no</a>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- Sales reps + service -->
+  <section style="margin-bottom: var(--s-9);">
+    <h2 class="t-h2" style="margin: 0 0 var(--s-5);">Selgere &amp; kundekontakt</h2>
+    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: var(--s-4);">
+
+      <div class="person-card">
+        <div class="person-card__avatar"><img src="../assets/images/team/ansatt-portrett.jpg" alt=""></div>
+        <div class="person-card__main">
+          <h3 class="person-card__name">Bjarte Vik</h3>
+          <p class="person-card__role">Kundeansvarlig Vest</p>
+          <div class="person-card__contact">
+            <a href="tel:71254220">71 25 42 20</a>
+            <a href="mailto:bjarte@moldejarnvare.no">bjarte@moldejarnvare.no</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="person-card">
+        <div class="person-card__avatar"><img src="../assets/images/team/ansatt-portrett.jpg" alt=""></div>
+        <div class="person-card__main">
+          <h3 class="person-card__name">Knut Helland</h3>
+          <p class="person-card__role">Kundeansvarlig Indre Romsdal</p>
+          <div class="person-card__contact">
+            <a href="tel:71254221">71 25 42 21</a>
+            <a href="mailto:knut@moldejarnvare.no">knut@moldejarnvare.no</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="person-card">
+        <div class="person-card__avatar"><img src="../assets/images/team/ansatt-portrett.jpg" alt=""></div>
+        <div class="person-card__main">
+          <h3 class="person-card__name">Marit Hammer&oslash;y</h3>
+          <p class="person-card__role">Ordrekontor</p>
+          <div class="person-card__contact">
+            <a href="tel:71254230">71 25 42 30</a>
+            <a href="mailto:ordrer@moldejarnvare.no">ordrer@moldejarnvare.no</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="person-card">
+        <div class="person-card__avatar"><img src="../assets/images/team/ansatt-portrett.jpg" alt=""></div>
+        <div class="person-card__main">
+          <h3 class="person-card__name">Serviceverksted</h3>
+          <p class="person-card__role">Slangepressing &amp; trykktest</p>
+          <div class="person-card__contact">
+            <a href="tel:71254240">71 25 42 40</a>
+            <a href="mailto:verksted@moldejarnvare.no">verksted@moldejarnvare.no</a>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <div class="callout">
+    Vi har totalt 24 ansatte fordelt p&aring; sort

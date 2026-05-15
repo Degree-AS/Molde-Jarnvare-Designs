@@ -1,0 +1,175 @@
+<!doctype html>
+<html lang="nb">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Kontakt — Molde Jarnvare</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Source+Sans+3:wght@400;500;600;700;900&family=JetBrains+Mono:wght@400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../styles/index.css">
+</head>
+<body>
+<header class="site-header">
+  <div class="site-header__inner">
+    <a class="site-header__logo" href="/" aria-label="Molde Jarnvare"><img src="../assets/logos/molde-jarnvare-positive.png" alt="Molde Jarnvare" class="site-header__logo-img"></a>
+    <div class="site-header__search">
+      <form class="search-bar" role="search">
+        <svg class="search-bar__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.35-4.35"/></svg>
+        <input class="search-bar__input" type="search" placeholder="Søk i 30 000+ artikler, NOBB-nr, EAN…" />
+        <button class="search-bar__submit" type="submit">Søk</button>
+      </form>
+    </div>
+    <div class="site-header__actions">
+      <button class="site-header__action" aria-label="Min konto">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4 4-7 8-7s8 3 8 7"/></svg>
+      </button>
+      <button class="site-header__action" aria-label="Handlekurv (3)">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M6 6h15l-1.5 9H7.5z"/><circle cx="9" cy="20" r="1.5"/><circle cx="18" cy="20" r="1.5"/></svg>
+        <span class="badge badge--numeric site-header__action-badge">3</span>
+      </button>
+      <!-- Mobile-only hamburger trigger (hidden ≥ --bp-lg) -->
+      <button class="site-header__hamburger" type="button"
+              aria-label="Åpne hovedmeny"
+              aria-controls="site-nav-drawer"
+              aria-expanded="false">
+        <span class="site-header__hamburger-icon" aria-hidden="true"></span>
+      </button>
+    </div>
+  </div>
+
+  <div class="site-header__main">
+    <div class="site-header__main-inner">
+      <nav class="site-header__nav" aria-label="Hovedkategorier">
+        <a class="site-header__nav-link" href="#">Festemidler</a>
+        <a class="site-header__nav-link" href="#">Verktøy</a>
+        <a class="site-header__nav-link" href="#">Verneutstyr</a>
+        <a class="site-header__nav-link" href="#">Hydraulikk</a>
+        <a class="site-header__nav-link" href="#">Sveis</a>
+        <a class="site-header__nav-link" href="#">Industri</a>
+        <a class="site-header__nav-link" href="#">Hurtigbestilling</a>
+        <a class="site-header__nav-link site-header__nav-link--accent" href="#">Tilbud</a>
+      </nav>
+    </div>
+  </div>
+
+  <!--
+    Mobile nav drawer (visible < --bp-lg). The JS layer toggles
+    [data-open="true"] on hamburger click / Esc / backdrop click. For static
+    preview, add data-preview-open="true" to <header class="site-header"> above.
+  -->
+  <div class="site-header__drawer" id="site-nav-drawer" role="dialog" aria-modal="true" aria-label="Hovedmeny">
+    <div class="site-header__drawer-header">
+      <span class="t-overline" style="color: var(--mj-blue);">Meny</span>
+      <button class="site-header__drawer-close" type="button" aria-label="Lukk meny">&times;</button>
+    </div>
+    <nav class="site-header__drawer-nav" aria-label="Hovedkategorier (mobil)">
+      <a href="#">Festemidler</a>
+      <a href="#">Verktøy</a>
+      <a href="#">Verneutstyr</a>
+      <a href="#">Hydraulikk</a>
+      <a href="#">Sveis</a>
+      <a href="#">Industri</a>
+      <a href="#">Hurtigbestilling</a>
+      <a href="#" style="color: var(--mj-orange);">Tilbud</a>
+    </nav>
+  </div>
+</header>
+<div class="site-header__drawer-backdrop" aria-hidden="true"></div>
+<main class="container container--wide" style="padding-block: var(--s-7);">
+
+  <nav class="breadcrumb" style="margin-bottom: var(--s-5);">
+    <span class="breadcrumb__item"><a class="breadcrumb__link" href="home.html">Forside</a></span>
+    <span class="breadcrumb__item" aria-current="page">Kontakt</span>
+  </nav>
+
+  <header style="max-width: 60ch; margin-bottom: var(--s-7);">
+    <h1 class="t-h1" style="margin: 0 0 var(--s-3);">Kontakt oss</h1>
+    <p class="t-body-lg" style="color: var(--color-text-secondary); margin: 0;">
+      Vi tar telefonen i &aring;pningstiden, svarer p&aring; e-post samme dag i ukedager, og st&aring;r alltid klare i butikken i Sj&oslash;gata 12.
+    </p>
+  </header>
+
+  <div style="display: grid; grid-template-columns: 1fr 1fr; gap: var(--s-7);">
+
+    <!-- Contact form -->
+    <section class="card">
+      <h2 class="card__title">Send oss en melding</h2>
+      <p style="color: var(--color-text-secondary); font-size: var(--fs-body-sm); margin: var(--s-2) 0 var(--s-5);">Vi svarer normalt innen 2 timer i &aring;pningstiden.</p>
+
+      <form style="display: flex; flex-direction: column; gap: var(--s-4);">
+        <div class="field">
+          <label class="field__label field__label--required" for="contact-name">Navn</label>
+          <input class="input" id="contact-name" autocomplete="name">
+        </div>
+        <div class="field">
+          <label class="field__label" for="contact-company">Bedrift</label>
+          <input class="input" id="contact-company" autocomplete="organization">
+        </div>
+        <div class="field">
+          <label class="field__label field__label--required" for="contact-email">E-post</label>
+          <input class="input" id="contact-email" type="email" autocomplete="email">
+        </div>
+        <div class="field">
+          <label class="field__label" for="contact-phone">Telefon</label>
+          <input class="input" id="contact-phone" type="tel" autocomplete="tel">
+        </div>
+        <div class="field">
+          <label class="field__label field__label--required" for="contact-topic">Tema</label>
+          <select class="select" id="contact-topic">
+            <option>Velg tema</option>
+            <option>Foresp&oslash;rsel om tilbud</option>
+            <option>Sp&oslash;rsm&aring;l om produkt</option>
+            <option>Slangepressing / verksted</option>
+            <option>Reklamasjon</option>
+            <option>Annet</option>
+          </select>
+        </div>
+        <div class="field">
+          <label class="field__label field__label--required" for="contact-message">Melding</label>
+          <textarea class="textarea" id="contact-message" rows="6" placeholder="Skriv meldingen din her..."></textarea>
+        </div>
+
+        <div style="margin-top: var(--s-3);">
+          <button class="btn btn--primary btn--md">Send melding</button>
+          <p style="font-size: var(--fs-caption); color: var(--color-text-tertiary); margin: var(--s-3) 0 0;">
+            Vi behandler personopplysninger i tr&aring;d med GDPR. <a class="link" href="#">Les v&aring;r personvernerkl&aelig;ring</a>.
+          </p>
+        </div>
+      </form>
+    </section>
+
+    <!-- Practical info -->
+    <aside style="display: flex; flex-direction: column; gap: var(--s-5);">
+
+      <section class="card">
+        <h2 class="card__title">Bes&oslash;k oss</h2>
+        <p style="margin: var(--s-3) 0; line-height: var(--lh-relaxed);">
+          <strong>Molde Jarnvare AS</strong><br>
+          Sj&oslash;gata 12<br>
+          6404 Molde<br>
+          <a class="link" href="#" style="font-size: var(--fs-body-sm);">&Aring;pne i kart &rarr;</a>
+        </p>
+
+        <h3 style="font-size: var(--fs-body); font-weight: var(--fw-semibold); margin: var(--s-4) 0 var(--s-2);">&Aring;pningstider</h3>
+        <table style="font-size: var(--fs-body-sm); width: 100%;">
+          <tr><td style="padding: 4px 0;">Mandag &ndash; fredag</td><td style="text-align: right; font-variant-numeric: tabular-nums;">07:00 &ndash; 16:00</td></tr>
+          <tr><td style="padding: 4px 0;">L&oslash;rdag</td><td style="text-align: right; font-variant-numeric: tabular-nums;">09:00 &ndash; 13:00</td></tr>
+          <tr><td style="padding: 4px 0;">S&oslash;ndag</td><td style="text-align: right; color: var(--color-text-secondary);">Stengt</td></tr>
+        </table>
+
+        <h3 style="font-size: var(--fs-body); font-weight: var(--fw-semibold); margin: var(--s-4) 0 var(--s-2);">Direkte</h3>
+        <p style="margin: 0; line-height: var(--lh-relaxed); font-size: var(--fs-body-sm);">
+          Sentralbord: <a class="link" href="tel:71254200">71 25 42 00</a><br>
+          Ordrer: <a class="link" href="mailto:ordrer@moldejarnvare.no">ordrer@moldejarnvare.no</a><br>
+          Verksted: <a class="link" href="mailto:verksted@moldejarnvare.no">verksted@moldejarnvare.no</a>
+        </p>
+      </section>
+
+      <div class="callout">
+        <strong>Skal du snakke fag?</strong> Hver produktkategori har sin egen ansvarlige. <a class="link" href="team.html">Se hvem du skal ringe direkte &rarr;</a>
+      </div>
+
+      <section class="card">
+        <h2 class="card__title">Akutt utenfor &aring;pningstid</h2>
+        <p style="margin: var(--s-3) 0; font-size: var(--fs-body-sm); line-height: var(--lh-relaxed);">For driftskritiske oppdrag &mdash; produksjon st&aring;r og du m&aring; ha en del i natt &mdash; ring vaktnummer.</p>
+        <a class="btn btn
