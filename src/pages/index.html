@@ -15,24 +15,49 @@
     <span class="t-overline" style="color: var(--mj-blue);">Molde Jarnvare</span>
     <h1 class="t-h1" style="margin: var(--s-2) 0;">Designsystem — preview</h1>
     <p class="t-body-lg" style="color: var(--color-text-secondary);">
-      Live preview av sider og komponenter. Bygd fra DESIGN_SYSTEM.md (v0.1).
+      Live preview av sider og komponenter. Sidene under er gruppert etter omfang i kontrakten.
     </p>
   </header>
 
   <section style="margin-bottom: var(--s-7);">
-    <h2 class="t-h3" style="margin-bottom: var(--s-4);">Sider (§15)</h2>
+    <h2 class="t-h3" style="margin-bottom: var(--s-4);">Hovedsider (§15)</h2>
     <div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: var(--s-3);">
       <a class="card card--interactive" href="home.html"><strong class="card__title">Forside</strong><span style="color: var(--color-text-secondary);">§15.2</span></a>
       <a class="card card--interactive" href="category.html"><strong class="card__title">Kategoriside (PLP)</strong><span style="color: var(--color-text-secondary);">§15.3</span></a>
       <a class="card card--interactive" href="product.html"><strong class="card__title">Produktside (PDP)</strong><span style="color: var(--color-text-secondary);">§15.4</span></a>
-      <a class="card card--interactive" href="search.html"><strong class="card__title">Søkeresultat</strong><span style="color: var(--color-text-secondary);">§15.5</span></a>
+      <a class="card card--interactive" href="search.html"><strong class="card__title">S&oslash;keresultat</strong><span style="color: var(--color-text-secondary);">§15.5</span></a>
       <a class="card card--interactive" href="cart.html"><strong class="card__title">Handlekurv</strong><span style="color: var(--color-text-secondary);">§15.6</span></a>
       <a class="card card--interactive" href="checkout.html"><strong class="card__title">Kasse</strong><span style="color: var(--color-text-secondary);">§15.7</span></a>
       <a class="card card--interactive" href="order-confirmation.html"><strong class="card__title">Ordrebekreftelse</strong><span style="color: var(--color-text-secondary);">§15.8</span></a>
-      <a class="card card--interactive" href="account.html"><strong class="card__title">Min konto</strong><span style="color: var(--color-text-secondary);">§15.9</span></a>
       <a class="card card--interactive" href="login.html"><strong class="card__title">Logg inn</strong><span style="color: var(--color-text-secondary);">§15.10</span></a>
       <a class="card card--interactive" href="static.html"><strong class="card__title">Static (Om oss)</strong><span style="color: var(--color-text-secondary);">§15.11</span></a>
       <a class="card card--interactive" href="404.html"><strong class="card__title">404</strong><span style="color: var(--color-text-secondary);">§15.12</span></a>
+    </div>
+  </section>
+
+  <section style="margin-bottom: var(--s-7);">
+    <h2 class="t-h3" style="margin-bottom: var(--s-2);">Min konto — sub-sider (§15.9)</h2>
+    <p style="color: var(--color-text-secondary); font-size: var(--fs-body-sm); margin: 0 0 var(--s-4);">
+      Hver tab i kontodashbordet har sin egen sidemal. Dekker e-commerce-kontraktens punkter:
+      kundedetaljer, adresser, brukere, ordrehistorikk.
+    </p>
+    <div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: var(--s-3);">
+      <a class="card card--interactive" href="account.html"><strong class="card__title">Oversikt</strong><span style="color: var(--color-text-secondary);">dashboard</span></a>
+      <a class="card card--interactive" href="account-orders.html"><strong class="card__title">Ordrer</strong><span style="color: var(--color-text-secondary);">historikk + filter</span></a>
+      <a class="card card--interactive" href="account-order-detail.html"><strong class="card__title">Ordredetalj</strong><span style="color: var(--color-text-secondary);">enkelt-ordre</span></a>
+      <a class="card card--interactive" href="account-addresses.html"><strong class="card__title">Adresser</strong><span style="color: var(--color-text-secondary);">faktura + levering</span></a>
+      <a class="card card--interactive" href="account-users.html"><strong class="card__title">Brukere</strong><span style="color: var(--color-text-secondary);">firmakonto-tilgang</span></a>
+      <a class="card card--interactive" href="account-details.html"><strong class="card__title">Innstillinger</strong><span style="color: var(--color-text-secondary);">kunde-detaljer</span></a>
+    </div>
+  </section>
+
+  <section style="margin-bottom: var(--s-7);">
+    <h2 class="t-h3" style="margin-bottom: var(--s-2);">Andre — ikke del av denne fasen</h2>
+    <p style="color: var(--color-text-secondary); font-size: var(--fs-body-sm); margin: 0 0 var(--s-4);">
+      Blokker som finnes i designsystemet men ligger utenfor v1-kontrakten. Parkert som synlig backlog.
+    </p>
+    <div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: var(--s-3);">
+      <a class="card card--interactive" href="out-of-scope.html" style="border-style: dashed;"><strong class="card__title">Andre blokker</strong><span style="color: var(--color-text-secondary);">2-boks + Hurtigbestilling</span></a>
     </div>
   </section>
 
@@ -42,4 +67,8 @@
       <a class="card card--interactive" href="../components/index.html"><strong class="card__title">Alle komponenter</strong><span style="color: var(--color-text-secondary);">§12 + §13 + §14</span></a>
       <a class="card card--interactive" href="../components/hero/hero.html"><strong class="card__title">Hero (separat)</strong><span style="color: var(--color-text-secondary);">isolert preview</span></a>
     </div>
-  </
+  </section>
+</main>
+
+</body>
+</html>

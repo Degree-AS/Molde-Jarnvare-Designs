@@ -1,0 +1,133 @@
+<!doctype html>
+<html lang="nb">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Andre — ikke del av denne fasen — Molde Jarnvare</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Source+Sans+3:wght@400;500;600;700;900&family=JetBrains+Mono:wght@400&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../styles/index.css">
+</head>
+<body>
+
+<header class="site-header">
+  <div class="site-header__inner">
+    <a class="site-header__logo" href="/" aria-label="Molde Jarnvare"><img src="../assets/logos/molde-jarnvare-positive.png" alt="Molde Jarnvare" class="site-header__logo-img"></a>
+  </div>
+
+  <div class="site-header__main">
+    <div class="site-header__main-inner">
+      <nav class="site-header__nav" aria-label="Hovedkategorier">
+        <a class="site-header__nav-link" href="#">Festemidler</a>
+        <a class="site-header__nav-link" href="#">Verkt&oslash;y</a>
+        <a class="site-header__nav-link" href="#">Verneutstyr</a>
+        <a class="site-header__nav-link" href="#">Hydraulikk</a>
+        <a class="site-header__nav-link" href="#">Sveis</a>
+        <a class="site-header__nav-link" href="#">Industri</a>
+        <a class="site-header__nav-link" href="#">Hurtigbestilling</a>
+        <a class="site-header__nav-link site-header__nav-link--accent" href="#">Tilbud</a>
+      </nav>
+    </div>
+  </div>
+</header>
+
+<main class="container container--wide" style="padding-block: var(--s-7);">
+
+  <header style="margin-bottom: var(--s-7); max-width: 70ch;">
+    <span class="t-overline" style="color: var(--mj-warning);">Parkering · ikke kontraktbestemt</span>
+    <h1 class="t-h1" style="margin: var(--s-2) 0;">Andre — ikke del av denne fasen</h1>
+    <p class="t-body-lg" style="color: var(--color-text-secondary); margin: 0;">
+      Blokker som finnes i designsystemet, men som ligger utenfor kontrakt-omfanget for v1.
+      Vises her som synlig backlog for fremtidige faser — slik at vi vet hva som finnes,
+      uten at de feilaktig presenteres som «ferdig levert» p&aring; kontrakt-sidene.
+    </p>
+  </header>
+
+  <div class="callout">
+    <strong>Status:</strong> Komponentene under er allerede bygget og lever i komponentbiblioteket.
+    De er hentet ut fra Min konto-sidemalen (2-boks-system) og Forsiden (Hurtigbestilling) der de tidligere
+    sto, slik at v1-leveransen reflekterer det som faktisk er avtalt. Aktivering i v2/v3 er en kort konfigurasjons-
+    og databindings-oppgave — selve designet st&aring;r klart.
+  </div>
+
+  <!-- Blokk 1: 2-boks-system -->
+  <section style="margin-top: var(--s-9);">
+    <header style="display: flex; justify-content: space-between; align-items: baseline; gap: var(--s-4); margin-bottom: var(--s-3); flex-wrap: wrap;">
+      <div>
+        <p class="t-overline" style="color: var(--mj-blue); margin: 0;">Blokk · tidligere p&aring; Min konto</p>
+        <h2 class="t-h2" style="margin: var(--s-2) 0 0;">2-boks-system</h2>
+      </div>
+      <span class="badge badge--warning">Ikke kontraktbestemt</span>
+    </header>
+    <p style="color: var(--color-text-secondary); max-width: 60ch; margin: 0 0 var(--s-4);">
+      Visualiserer fyllingsgrad for kundens 2-boks-system med f&oslash;lings-varsler ved lav beholdning.
+      Krever integrasjon med MJs lagerf&oslash;lings-system per kunde.
+    </p>
+
+    <section class="two-bin">
+      <header class="two-bin__header"><h3 class="two-bin__title">2-boks-system</h3><a class="link" href="#">Administrer</a></header>
+      <div class="two-bin__bins">
+        <div class="two-bin__bin">
+          <span class="two-bin__bin-label">M8 × 40 mm A4 · Boks A</span>
+          <span class="two-bin__bin-qty">182 / 200 stk</span>
+          <span class="two-bin__bin-fill"><span style="width: 91%;"></span></span>
+        </div>
+        <div class="two-bin__bin two-bin__bin--low">
+          <span class="two-bin__bin-label">M8 × 40 mm A4 · Boks B</span>
+          <span class="two-bin__bin-qty">42 / 200 stk</span>
+          <span class="two-bin__bin-fill"><span style="width: 21%;"></span></span>
+        </div>
+      </div>
+    </section>
+  </section>
+
+  <hr class="divider" style="margin-block: var(--s-10);">
+
+  <!-- Blokk 2: Hurtigbestilling -->
+  <section>
+    <header style="display: flex; justify-content: space-between; align-items: baseline; gap: var(--s-4); margin-bottom: var(--s-3); flex-wrap: wrap;">
+      <div>
+        <p class="t-overline" style="color: var(--mj-blue); margin: 0;">Blokk · tidligere p&aring; Forsiden</p>
+        <h2 class="t-h2" style="margin: var(--s-2) 0 0;">Hurtigbestilling</h2>
+      </div>
+      <span class="badge badge--warning">Ikke kontraktbestemt</span>
+    </header>
+    <p style="color: var(--color-text-secondary); max-width: 60ch; margin: 0 0 var(--s-4);">
+      Bulk-bestilling via artikkelnummer-liste eller copy-paste fra Excel. Krever validering mot PIM
+      og pris-oppslag mot Business Central — derfor parkert til v2.
+    </p>
+
+    <div style="background: var(--mj-surface-1); padding: var(--s-7); border-radius: var(--r-lg);">
+      <div class="container container--narrow" style="padding: 0;">
+        <div class="quick-order">
+          <h3 class="quick-order__title">Hurtigbestilling</h3>
+          <p class="quick-order__desc">Har du artikkelnumrene? Skriv eller lim inn liste, s&aring; er du ferdig p&aring; under et minutt.</p>
+          <div class="quick-order__row">
+            <input class="input" placeholder="Artikkelnummer eller NOBB-nr">
+            <input class="input" type="number" placeholder="Antall">
+            <button class="quick-order__remove" aria-label="Fjern">✕</button>
+          </div>
+          <div class="quick-order__row">
+            <input class="input" placeholder="Artikkelnummer eller NOBB-nr">
+            <input class="input" type="number" placeholder="Antall">
+            <button class="quick-order__remove" aria-label="Fjern">✕</button>
+          </div>
+          <button class="quick-order__add-row">+ Legg til rad</button>
+          <button class="btn btn--primary">Legg alle i handlekurv</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer style="margin-top: var(--s-10); padding-top: var(--s-6); border-top: 1px solid var(--mj-line-soft); color: var(--color-text-tertiary); font-size: var(--fs-caption);">
+    <p style="margin: 0;">Denne sidemalen er kun ment for intern visning og kunde-statusm&oslash;ter. Den lenkes ikke fra produksjons-navigasjon.</p>
+  </footer>
+
+</main>
+
+<footer class="site-footer">
+  <div class="site-footer__inner"><div class="site-footer__bottom"><span>&copy; 2026 Molde Jarnvare AS</span></div></div>
+</footer>
+
+</body>
+</html>
