@@ -77,4 +77,5 @@ Always reference semantic tokens from `src/styles/tokens/`:
 .btn--primary { background: #0D2B7E; }
 ```
 
-If a needed value doesn't exist as a token, add it to
+If a needed value doesn't exist as a token, add it to the right tokens file
+first (with justification in the comment), then use it.

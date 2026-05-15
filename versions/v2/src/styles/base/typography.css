@@ -98,4 +98,7 @@
 
 .t-mono-sm {
   font-family: var(--ff-mono);
-  font
+  font-size: var(--fs-mono-sm);
+  font-weight: var(--fw-regular);
+  font-variant-numeric: tabular-nums;
+}

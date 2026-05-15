@@ -35,4 +35,4 @@
   font-weight: var(--fw-semibold);
   cursor: pointer;
 }
-.sales-impersonation_
+.sales-impersonation__exit:hover { background: #1F2025; }

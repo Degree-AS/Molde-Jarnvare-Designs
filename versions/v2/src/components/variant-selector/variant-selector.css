@@ -180,4 +180,11 @@
 .variant-selector__matrix-row--disabled .variant-selector__matrix-qty { opacity: 0.5; pointer-events: none; }
 
 /* Mobile: let the table scroll horizontally instead of breaking */
-@media (max-width: 640
+@media (max-width: 640px) {
+  .variant-selector__matrix-wrap {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    margin-inline: calc(-1 * var(--s-4));
+    padding-inline: var(--s-4);
+  }
+}

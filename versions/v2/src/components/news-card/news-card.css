@@ -58,4 +58,7 @@
   display: flex;
   gap: var(--s-3);
   font-size: var(--fs-caption);
-  color: var(--color-text-
+  color: var(--color-text-tertiary);
+  margin-top: auto;
+  padding-top: var(--s-2);
+}

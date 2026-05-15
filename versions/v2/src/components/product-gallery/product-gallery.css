@@ -52,4 +52,21 @@
   transition: border-color var(--duration-fast) var(--ease-standard);
 }
 .product-gallery__thumb img { width: 100%; height: 100%; object-fit: contain; }
-.product-gallery__thumb:hover { border-color: var(--color-border-strong)
+.product-gallery__thumb:hover { border-color: var(--color-border-strong); }
+.product-gallery__thumb.is-active,
+.product-gallery__thumb[aria-current="true"] {
+  border-color: var(--color-action-primary);
+  border-width: var(--bw-2);
+}
+
+.product-gallery__main {
+  aspect-ratio: var(--ar-square);
+  background: var(--color-bg-surface);
+  border: var(--bw-1) solid var(--color-border-soft);
+  border-radius: var(--r-md);
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.product-gallery__main img { width: 100%; height: 100%; object-fit: contain; }

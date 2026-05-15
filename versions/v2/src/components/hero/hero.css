@@ -200,4 +200,11 @@
   border-color: rgba(255, 255, 255, 0.5);
 }
 
-.hero--dark .hero_
+.hero--dark .hero__cta--secondary:hover {
+  background: rgba(255, 255, 255, 0.1);
+  border-color: var(--color-text-on-brand);
+}
+
+.hero--dark .hero__cta:focus-visible {
+  box-shadow: 0 0 0 3px rgba(255, 255, 255, 0.5);
+}

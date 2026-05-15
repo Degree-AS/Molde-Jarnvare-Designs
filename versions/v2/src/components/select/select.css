@@ -32,4 +32,6 @@
 }
 .select:disabled {
   background-color: var(--mj-surface-1);
-  color: var(--color-text-te
+  color: var(--color-text-tertiary);
+  cursor: not-allowed;
+}

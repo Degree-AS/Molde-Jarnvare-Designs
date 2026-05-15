@@ -34,4 +34,4 @@
   background: var(--mj-surface-1);
   color: var(--color-text-tertiary);
 }
-.textarea--error
+.textarea--error { border-color: var(--mj-error); }

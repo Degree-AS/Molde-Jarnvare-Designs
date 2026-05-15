@@ -31,4 +31,5 @@
   font-size: var(--fs-mono-sm);
   font-weight: var(--fw-regular);
   color: var(--color-text-secondary);
-  font-
+  font-variant-numeric: tabular-nums;
+}

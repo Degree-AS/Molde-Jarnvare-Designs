@@ -60,4 +60,5 @@
   --ls-tight:  -0.01em; /* Large displays */
   --ls-normal: 0;       /* Body text, headings */
   --ls-wide:   0.05em;  /* Buttons, small caps */
-  --
+  --ls-wider:  0.12em;  /* Overline, eyebrow, mono-uppercase */
+}

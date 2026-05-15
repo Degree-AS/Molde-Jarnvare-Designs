@@ -42,4 +42,6 @@
 .accordion__content {
   padding: 0 0 var(--s-4);
   font-size: var(--fs-body);
-  line-height: var(--lh-rela
+  line-height: var(--lh-relaxed);
+  color: var(--color-text-primary);
+}

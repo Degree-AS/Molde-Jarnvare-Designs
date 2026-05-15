@@ -60,4 +60,6 @@
 }
 .mini-cart__total-value {
   font-size: var(--fs-h4);
-  font-we
+  font-weight: var(--fw-bold);
+  font-variant-numeric: tabular-nums;
+}

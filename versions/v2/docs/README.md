@@ -73,4 +73,5 @@ This lets the client compare against earlier approved versions.
 When Pages is enabled with source `main` / `/docs`, **only this folder** is
 published at `https://degree-as.github.io/Molde-Jarnvare-Designs/`. `../src/`
 is NOT available on Pages — so any resource docs needs (images, logos)
-must live under `docs/assets/`, and links
+must live under `docs/assets/`, and links that point to `../src/...` work
+only locally from the repo, not on Pages.

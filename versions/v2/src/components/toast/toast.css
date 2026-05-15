@@ -58,4 +58,6 @@
 .toast__close:hover { opacity: 1; }
 
 @keyframes toast-in {
-  from { transform: translateY(8p
+  from { transform: translateY(8px); opacity: 0; }
+  to   { transform: none; opacity: 1; }
+}

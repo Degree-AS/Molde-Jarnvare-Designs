@@ -75,4 +75,4 @@
   font-size: var(--fs-body-lg);
   color: var(--color-text-primary);
 }
-.news
+.news-article__body img { border-radius: var(--r-md); margin-block: var(--s-5); }

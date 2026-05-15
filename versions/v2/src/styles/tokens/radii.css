@@ -18,4 +18,5 @@
   --r-md:   8px;    /* Cards, input fields */
   --r-lg:   12px;   /* Larger boxes, modals */
   --r-xl:   20px;   /* Hero images, large surfaces */
-  --r-full: 9999px; /* Pills,
+  --r-full: 9999px; /* Pills, round buttons */
+}

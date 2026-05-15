@@ -26,4 +26,4 @@
   text-decoration: underline;
   text-underline-offset: 2px;
 }
-.filter-chips__clear-all:hover { color: var(
+.filter-chips__clear-all:hover { color: var(--color-text-link-hover); }

@@ -60,4 +60,4 @@ or use relative paths out of `docs/`.
    (e.g. `{{ cms.image.product_hero }}`)
 2. `git rm -r src/assets/images/marketing` (and likewise) to remove the
    placeholders
-3. Keep `herita
+3. Keep `heritage/` if those should remain static brand assets (usually yes)
