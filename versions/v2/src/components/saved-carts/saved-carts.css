@@ -47,4 +47,4 @@
 }
 .cart-switcher__label { color: var(--color-text-secondary); }
 .cart-switcher__name { font-weight: var(--fw-semibold); }
-.cart-switc
+.cart-switcher__actions { display: flex; gap: var(--s-2); }

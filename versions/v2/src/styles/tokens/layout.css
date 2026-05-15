@@ -37,4 +37,6 @@
   --z-sticky:  100;
   --z-overlay: 1000;
   --z-modal:   1100;
-  --z
+  --z-toast:   1200;
+  --z-tooltip: 1300;
+}

@@ -50,4 +50,30 @@ table td {
 /*
  * Form-grid utility (§17 Responsive).
  * Two-column form grid on tablet/desktop, single-column on mobile.
- * Used for address forms, user details, customer settings
+ * Used for address forms, user details, customer settings, etc.
+ *
+ *   <div class="form-grid">
+ *     <div class="form-field">…</div>
+ *     <div class="form-field">…</div>
+ *   </div>
+ */
+.form-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--s-4);
+}
+
+@media (min-width: 768px) /* --bp-md */ {
+  .form-grid { grid-template-columns: 1fr 1fr; }
+}
+
+/* Visually hidden — for screen reader text */
+.sr-only {
+  position: absolute;
+  width: 1px; height: 1px;
+  padding: 0; margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}

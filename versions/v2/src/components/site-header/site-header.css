@@ -68,4 +68,248 @@
   margin-inline-end: var(--s-2);
 }
 
-@media (mi
+@media (min-width: 1024px) /* --bp-lg */ {
+  .site-header__logo-img { height: 36px; }
+}
+
+/* Text fallback if logo image fails to load */
+.site-header__logo-text {
+  font-family: var(--ff-sans);
+  font-size: var(--fs-h4);
+  font-weight: var(--fw-black);
+  color: var(--mj-blue);
+  letter-spacing: var(--ls-tight);
+}
+
+/* ─────────────────────────────────────────────────────────────────────────
+ * Search slot
+ * ────────────────────────────────────────────────────────────────────── */
+.site-header__search { grid-area: search; }
+
+/* ─────────────────────────────────────────────────────────────────────────
+ * Action area — cart icon, account, hamburger (mobile only)
+ * ────────────────────────────────────────────────────────────────────── */
+.site-header__actions {
+  grid-area: actions;
+  display: flex;
+  align-items: center;
+  gap: var(--s-2);
+}
+
+.site-header__action {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  background: transparent;
+  border: 0;
+  border-radius: var(--r-sm);
+  cursor: pointer;
+  color: var(--color-text-primary);
+  font-size: 20px;
+  transition: background var(--duration-fast) var(--ease-standard);
+}
+.site-header__action:hover { background: var(--color-bg-surface-alt); }
+.site-header__action:focus-visible { outline: none; box-shadow: var(--focus-ring); }
+
+.site-header__action-badge {
+  position: absolute;
+  top: 4px;
+  right: 4px;
+  transform: translate(50%, -50%);
+}
+
+/* ─────────────────────────────────────────────────────────────────────────
+ * Hamburger button — visible only under --bp-lg
+ * ────────────────────────────────────────────────────────────────────── */
+.site-header__hamburger {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  background: transparent;
+  border: 0;
+  border-radius: var(--r-sm);
+  cursor: pointer;
+  color: var(--color-text-primary);
+  transition: background var(--duration-fast) var(--ease-standard);
+}
+.site-header__hamburger:hover { background: var(--color-bg-surface-alt); }
+.site-header__hamburger:focus-visible { outline: none; box-shadow: var(--focus-ring); }
+
+@media (min-width: 1024px) /* --bp-lg */ {
+  .site-header__hamburger { display: none; }
+}
+
+/* Three-line "burger" icon, drawn from pseudo-elements */
+.site-header__hamburger-icon {
+  position: relative;
+  display: block;
+  width: 20px;
+  height: 2px;
+  background: currentColor;
+  border-radius: 1px;
+}
+.site-header__hamburger-icon::before,
+.site-header__hamburger-icon::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: currentColor;
+  border-radius: 1px;
+}
+.site-header__hamburger-icon::before { top: -6px; }
+.site-header__hamburger-icon::after  { top:  6px; }
+
+/* ─────────────────────────────────────────────────────────────────────────
+ * Category nav (second row) — visible only on desktop
+ * On mobile/tablet, categories are reached via the hamburger drawer.
+ * ────────────────────────────────────────────────────────────────────── */
+.site-header__main {
+  display: none;
+  border-top: var(--bw-1) solid var(--color-border-soft);
+  background: var(--mj-surface-0);
+}
+
+@media (min-width: 1024px) /* --bp-lg */ {
+  .site-header__main { display: block; }
+}
+
+.site-header__main-inner {
+  max-width: var(--container-wide);
+  margin-inline: auto;
+  padding-inline: var(--gutter);
+}
+
+.site-header__nav {
+  display: flex;
+  align-items: stretch;
+  gap: var(--s-5);
+  height: 44px;
+  overflow-x: auto;
+  scrollbar-width: none;
+}
+.site-header__nav::-webkit-scrollbar { display: none; }
+
+.site-header__nav-link {
+  display: inline-flex;
+  align-items: center;
+  font-size: var(--fs-body-sm);
+  font-weight: var(--fw-semibold);
+  color: var(--color-text-primary);
+  text-decoration: none;
+  white-space: nowrap;
+  border-bottom: var(--bw-3) solid transparent;
+  padding-block: 2px;
+  transition:
+    color var(--duration-fast) var(--ease-standard),
+    border-color var(--duration-fast) var(--ease-standard);
+}
+.site-header__nav-link:hover { color: var(--color-action-primary); }
+.site-header__nav-link[aria-current="page"] {
+  color: var(--color-action-primary);
+  border-bottom-color: var(--color-action-primary);
+}
+
+/* "Tilbud" link — orange accent to distinguish campaign from category */
+.site-header__nav-link--accent { color: var(--mj-orange); }
+.site-header__nav-link--accent:hover {
+  color: var(--mj-orange);
+  filter: brightness(0.9);
+}
+
+/* ─────────────────────────────────────────────────────────────────────────
+ * Mobile nav drawer (rendered out-of-flow, slides in from the right)
+ * Toggled by JS on the hamburger via [data-open]. For static preview, set
+ * [data-preview-open="true"] on .site-header.
+ * ────────────────────────────────────────────────────────────────────── */
+.site-header__drawer {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  width: min(320px, 85vw);
+  background: var(--color-bg-surface);
+  z-index: var(--z-modal);
+  transform: translateX(100%);
+  transition: transform var(--duration-base) var(--ease-standard);
+  box-shadow: var(--shadow-4);
+  overflow-y: auto;
+}
+.site-header__drawer[data-open="true"],
+.site-header[data-preview-open="true"] .site-header__drawer {
+  transform: translateX(0);
+}
+
+@media (min-width: 1024px) /* --bp-lg */ {
+  .site-header__drawer { display: none; }
+}
+
+.site-header__drawer-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: var(--s-3) var(--s-5);
+  border-bottom: var(--bw-1) solid var(--color-border-soft);
+}
+
+.site-header__drawer-close {
+  width: 44px;
+  height: 44px;
+  background: transparent;
+  border: 0;
+  border-radius: var(--r-sm);
+  cursor: pointer;
+  font-size: 24px;
+  color: var(--color-text-primary);
+}
+.site-header__drawer-close:hover { background: var(--color-bg-surface-alt); }
+.site-header__drawer-close:focus-visible { outline: none; box-shadow: var(--focus-ring); }
+
+.site-header__drawer-nav {
+  display: flex;
+  flex-direction: column;
+  padding: var(--s-3) 0;
+}
+.site-header__drawer-nav a {
+  display: block;
+  padding: var(--s-4) var(--s-5);
+  font-size: var(--fs-body);
+  font-weight: var(--fw-semibold);
+  color: var(--color-text-primary);
+  text-decoration: none;
+  border-bottom: var(--bw-1) solid var(--color-border-soft);
+}
+.site-header__drawer-nav a:hover {
+  color: var(--color-action-primary);
+  background: var(--color-bg-surface-alt);
+}
+.site-header__drawer-nav a[aria-current="page"] {
+  color: var(--color-action-primary);
+  background: var(--color-bg-surface-alt);
+}
+
+/* Drawer backdrop — sits behind the drawer, dimming the page */
+.site-header__drawer-backdrop {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.4);
+  z-index: calc(var(--z-modal) - 1);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity var(--duration-base) var(--ease-standard);
+}
+.site-header__drawer-backdrop[data-open="true"],
+.site-header[data-preview-open="true"] ~ .site-header__drawer-backdrop {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+@media (min-width: 1024px) /* --bp-lg */ {
+  .site-header__drawer-backdrop { display: none; }
+}

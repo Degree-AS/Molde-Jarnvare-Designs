@@ -42,4 +42,6 @@
   color: var(--mj-info);
 }
 .status-pill--neutral {
-  background: var(--mj-surface-
+  background: var(--mj-surface-2);
+  color: var(--color-text-secondary);
+}

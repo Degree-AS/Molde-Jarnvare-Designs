@@ -22,4 +22,4 @@ To swap in real portraits:
 
 All person-cards currently point to the same `ansatt-portrett.jpg`. This
 demonstrates how the design looks with portraits while keeping it obvious
-that the content is a placeholder (same image repea
+that the content is a placeholder (same image repeated + the MJ monogram).

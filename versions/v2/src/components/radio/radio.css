@@ -75,4 +75,7 @@
   line-height: var(--lh-normal);
   color: var(--color-text-primary);
 }
-.radio__de
+.radio__desc {
+  font-size: var(--fs-caption);
+  color: var(--color-text-secondary);
+}

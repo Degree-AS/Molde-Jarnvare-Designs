@@ -908,4 +908,98 @@ a{color:var(--mj-blue)}
       <tbody>
         <tr><td><code>--bp-md</code></td><td>768 px</td><td><strong>Tablet portrait.</strong> Two-column layouts may appear. PDP gallery moves alongside the buy box.</td></tr>
         <tr><td><code>--bp-lg</code></td><td>1024 px</td><td><strong>Desktop / tablet landscape.</strong> Filter sidebar appears inline (no drawer). Header navigation is horizontal (no hamburger). Cart and checkout become two columns.</td></tr>
-        <tr><td><code>--bp-xl</code></td><td>1280 px</td><td><strong>Container cap.</strong
+        <tr><td><code>--bp-xl</code></td><td>1280 px</td><td><strong>Container cap.</strong> The default container stops growing — content is centered with side gutters.</td></tr>
+      </tbody>
+    </table>
+
+    <p style="font-size:14px;color:var(--mj-ink-3);margin-top:8px"><em>Note: CSS media queries can not resolve <code>var()</code>. Components write the literal pixel value (<code>@media (min-width: 1024px)</code>) with a comment naming the token (<code>/* --bp-lg */</code>). If a token's value ever changes, all references must be updated.</em></p>
+
+    <h3>Per-template patterns</h3>
+    <p>Each page template has its own way of degrading to mobile. The rule per template:</p>
+
+    <table class="tbl">
+      <thead>
+        <tr><th>Template</th><th>Mobile (&lt; 768)</th><th>Tablet (768–1023)</th><th>Desktop (≥ 1024)</th></tr>
+      </thead>
+      <tbody>
+        <tr><td><strong>Header</strong></td><td>Hamburger drawer for category nav. Logo + search + cart remain visible.</td><td>Same as mobile.</td><td>Horizontal category nav inline. Search bar centered.</td></tr>
+        <tr><td><strong>Home (§15.2)</strong></td><td>One column. Hero CTA full-width. Person cards and category cards stack 1 × N.</td><td>Two columns for cards.</td><td>Three or four columns for cards. Hero image and copy side-by-side.</td></tr>
+        <tr><td><strong>PLP / search (§15.3, §15.5)</strong></td><td>"Filter (3)" button opens drawer. Product grid is 2 cards wide.</td><td>Same drawer pattern. Grid 3 wide.</td><td>Sidebar inline left. Grid 4 wide on the right.</td></tr>
+        <tr><td><strong>PDP (§15.4)</strong></td><td>Gallery on top, info below, buy box sticky at the bottom for action visibility.</td><td>Gallery + buy box side-by-side. Description full-width below.</td><td>Same as tablet, wider.</td></tr>
+        <tr><td><strong>Cart (§15.6)</strong></td><td>Single column. Summary collapses to a sticky footer with total + checkout CTA.</td><td>Same as mobile.</td><td>Two columns: items left, summary right (sticky).</td></tr>
+        <tr><td><strong>Checkout (§15.7)</strong></td><td>Single column. Steps stacked. Summary as sticky footer.</td><td>Same as mobile.</td><td>Form left, summary right.</td></tr>
+        <tr><td><strong>Account sub-pages</strong></td><td>Tabs as horizontal scroll. Tables transform to a card-list (one row = one card).</td><td>Tables with horizontal scroll where needed.</td><td>Tables full-width inline.</td></tr>
+        <tr><td><strong>Login (§15.10), 404 (§15.12)</strong></td><td>Centered card, full-width on small viewports.</td><td>Same.</td><td>Centered card with generous side margins.</td></tr>
+      </tbody>
+    </table>
+
+    <h3>Testing</h3>
+    <ul>
+      <li>Open every page template at three sizes in Chrome DevTools: 375 (iPhone SE), 768 (iPad portrait), 1280 (laptop). No horizontal scroll, no clipped CTAs, no overlapping elements.</li>
+      <li>For client review, open the published GitHub Pages URL on a real phone — the deployment is the test.</li>
+      <li>Verify a real tablet in portrait, where the filter drawer and hamburger behavior is most visible.</li>
+      <li>Run 200&nbsp;% browser-zoom on desktop — layout must not break, no horizontal scroll (WCAG 1.4.10 Reflow).</li>
+    </ul>
+
+    <h3>What we deliberately do not do</h3>
+    <ul>
+      <li><strong>No "mobile-only" or "desktop-only" content.</strong> The same actions and information are available on every viewport. Only the layout differs.</li>
+      <li><strong>No horizontal scroll outside designated containers</strong> — the variant matrix on PDP and the account tables under 640 px are the only sanctioned scroll zones.</li>
+      <li><strong>No fixed pixel breakpoints outside the canonical three.</strong> If a component needs a micro-adjustment, it uses <code>--bp-xs/sm</code> (small mobile) or <code>--bp-2xl</code> (very wide). Adding a new canonical breakpoint requires a token-level discussion first.</li>
+    </ul>
+
+    <div class="callout"><strong>Preview:</strong> A side-by-side responsive overview of the main page templates is available at <a href="responsive.html">responsive.html</a>.</div>
+  </section>
+
+  <section class="section section--alt" id="for-developers">
+    <div class="section__num">18 / For developers</div>
+    <h2 class="section__title">What developers need</h2>
+    <p class="section__lead">The entire design system is open code in the repo. These two links give access to the full library:</p>
+    <div class="page-thumbs">
+      <a class="page-thumb" href="../src/components/index.html">
+        <div class="page-thumb__num">↗ Kode</div>
+        <h4 class="page-thumb__title">Component library</h4>
+        <p class="page-thumb__desc">All 66 components on one page, with real CSS — for developers and designers.</p>
+      </a>
+      <a class="page-thumb" href="../src/pages/index.html">
+        <div class="page-thumb__num">↗ Kode</div>
+        <h4 class="page-thumb__title">Page templates — live preview</h4>
+        <p class="page-thumb__desc">All 11 page templates runnable locally in the browser.</p>
+      </a>
+    </div>
+    <h3>Repository structure</h3>
+    <pre class="code-block">src/
+  styles/
+    tokens/          164 CSS custom properties
+    base/            reset, typandraphy utilities
+    index.css        global entry point (imported once in the app)
+  components/        67 BEM components, one folder per component
+  patterns/          form-validation, print
+  pages/             11 page templates as real HTML
+  assets/landos/      positive + negative PNG
+docs/                client-facing presentation (this file + index)</pre>
+  </section>
+
+  <section class="section" id="open-questions">
+    <div class="section__num">19 / Avklaring</div>
+    <h2 class="section__title">Questions for you</h2>
+    <p class="section__lead">We would like to discuss these points before moving to the final version 1.0.</p>
+    <ol>
+      <li><strong>Source Sans 3</strong> as a webfont substitute for Aptos — is this acceptable on public websites? (The brand book points to Aptos, which is Microsoft-locked.)</li>
+      <li><strong>Brand-orange (#DB993D)</strong> kan not brukes som tekstfarge på hvit bakgrunn (kontrast 2.4:1). Bekrefter dere at den kun brukes som dekorflate / bakgrunn for mørk tekst?</li>
+      <li><strong>The status green</strong> (#1F7A3A) — vi har valgt en dempet, mettet variant for å harmonere med Reflex blue. OK med det, or ønsker dere noe lysere/friskere?</li>
+      <li><strong>Icon set</strong> — we plan a set of MJ-specific stroke icons (bolt, wrench, helmet, etc.). Should we draw them ourselves or license an existing set (Phosphor, Lucide)?</li>
+      <li><strong>Dark mode</strong> — not prioritert i MVP. OK å holde det utenfor v1.0?</li>
+      <li><strong>Lando i små flater</strong> — har dere et MJ-merke uten "1930"-tekst som vi kan bruke som favicon (16/32 px) and touch-icon? Den vi har nå er for bred for små bruksområder.</li>
+    </ol>
+  </section>
+
+  <footer class="foot">
+    <p>Molde Jarnvare designsystem · v0.2 · May 12, 2026 · Degree × Molde Jarnvare</p>
+    <p><a href="index.html">← Back to docs overview</a></p>
+  </footer>
+
+</main>
+</div>
+</body>
+</html>

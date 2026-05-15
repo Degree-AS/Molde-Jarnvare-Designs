@@ -54,4 +54,6 @@
   overflow-wrap: anywhere;
 }
 .person-card__contact a {
-  font-size
+  font-size: var(--fs-body-sm);
+  color: var(--color-text-link);
+}

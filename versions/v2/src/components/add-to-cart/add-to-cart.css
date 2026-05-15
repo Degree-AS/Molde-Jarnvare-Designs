@@ -19,4 +19,5 @@
 }
 
 @media (max-width: 480px) {
-  .add-to-cart .bt
+  .add-to-cart .btn { width: 100%; }
+}

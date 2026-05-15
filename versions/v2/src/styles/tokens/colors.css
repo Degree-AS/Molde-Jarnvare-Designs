@@ -119,4 +119,7 @@
   --color-accent:                  var(--mj-orange);
   --color-accent-hover:            #C5862F;
 
-  /* Focus r
+  /* Focus ring */
+  --focus-ring:       0 0 0 3px rgba(13, 43, 126, 0.3);
+  --focus-ring-error: 0 0 0 3px rgba(158, 40, 53, 0.3);
+}

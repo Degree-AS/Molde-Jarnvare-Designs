@@ -52,4 +52,4 @@
 
 .switch input:focus-visible + .switch__track { box-shadow: var(--focus-ring); }
 
-.switch inpu
+.switch input:disabled ~ * { opacity: 0.5; cursor: not-allowed; }

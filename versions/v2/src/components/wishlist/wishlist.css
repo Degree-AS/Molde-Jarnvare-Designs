@@ -41,4 +41,4 @@
 .wishlist-items { width: 100%; border-collapse: collapse; font-size: var(--fs-body-sm); font-variant-numeric: tabular-nums; }
 .wishlist-items th { text-align: left; padding: var(--s-2) var(--s-3); background: var(--mj-surface-1); font-size: var(--fs-overline); font-weight: var(--fw-semibold); letter-spacing: var(--ls-wider); text-transform: uppercase; color: var(--color-text-secondary); border-bottom: var(--bw-2) solid var(--color-border-default); }
 .wishlist-items td { padding: var(--s-3); border-bottom: var(--bw-1) solid var(--color-border-soft); vertical-align: middle; }
-.wishlist-
+.wishlist-items td.is-numeric { text-align: right; }

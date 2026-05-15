@@ -34,4 +34,4 @@ flagged in `docs/designsystem.html` (§Avklaringer).
 - Format: PNG with alpha channel
 - Width: 800 px (positive), 800 px (negative)
 - File size: ~30 KB each
-- Sour
+- Source: brand book 2025 (Sept 24, 2025)
