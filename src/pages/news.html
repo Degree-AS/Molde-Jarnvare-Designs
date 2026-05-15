@@ -1,0 +1,122 @@
+<!doctype html>
+<html lang="nb">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Aktuelt — Molde Jarnvare</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Source+Sans+3:wght@400;500;600;700;900&family=JetBrains+Mono:wght@400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../styles/index.css">
+</head>
+<body>
+<header class="site-header"><div class="site-header__inner"><a class="site-header__logo" href="/" aria-label="Molde Jarnvare"><img src="../assets/logos/molde-jarnvare-positive.png" alt="Molde Jarnvare" class="site-header__logo-img"></a></div><div class="site-header__main"><div class="site-header__main-inner"><nav class="site-header__nav" aria-label="Hovedkategorier"><a class="site-header__nav-link" href="#">Festemidler</a><a class="site-header__nav-link" href="#">Verkt&oslash;y</a><a class="site-header__nav-link" href="#">Verneutstyr</a><a class="site-header__nav-link" href="#">Hydraulikk</a><a class="site-header__nav-link" href="#">Sveis</a><a class="site-header__nav-link" href="#">Industri</a><a class="site-header__nav-link" href="#">Hurtigbestilling</a><a class="site-header__nav-link site-header__nav-link--accent" href="#">Tilbud</a></nav></div></div></header>
+<main class="container container--wide" style="padding-block: var(--s-9);">
+
+  <header style="margin-bottom: var(--s-7); max-width: 60ch;">
+    <span class="t-overline" style="color: var(--mj-blue);">Aktuelt</span>
+    <h1 class="t-h1" style="margin: var(--s-2) 0;">Nyheter, fag og verkstedhistorier</h1>
+    <p class="t-body-lg" style="color: var(--color-text-secondary);">F&oslash;lg med p&aring; sortimentet, sertifiseringer, faglige innsikter og hva som skjer i verkstedet i Molde.</p>
+  </header>
+
+  <!-- Featured article -->
+  <a class="news-card" href="news-article.html" style="margin-bottom: var(--s-7); grid-template-columns: 1fr 1fr; display: grid;">
+    <div class="news-card__media" style="aspect-ratio: auto;"><img src="../assets/images/marketing/slangeverksted-presse.jpg" alt="Slangepressing"></div>
+    <div class="news-card__body" style="justify-content: center; padding: var(--s-7);">
+      <span class="news-card__tag">Verksted</span>
+      <h2 class="news-card__title" style="font-size: var(--fs-h2);">Slangepressing samme dag &mdash; slik fungerer det</h2>
+      <p class="news-card__excerpt">Hva b&oslash;r du ha klart f&oslash;r du sender slangen til presse hos oss? Vi g&aring;r gjennom de viktigste m&aring;lene, koblingstyper og leveringstider.</p>
+      <p class="news-card__meta"><span>14. mai 2026</span><span>&middot;</span><span>Lars Indres&oslash;vde</span><span>&middot;</span><span>4 min lesetid</span></p>
+    </div>
+  </a>
+
+  <section style="margin-bottom: var(--s-7);">
+    <header style="display: flex; justify-content: space-between; align-items: baseline; margin-bottom: var(--s-5);">
+      <h2 class="t-h2" style="margin: 0;">Siste artikler</h2>
+      <div style="display: flex; gap: var(--s-2);">
+        <select class="select" style="height: 36px;">
+          <option>Alle kategorier</option>
+          <option>Sortiment</option>
+          <option>Verksted</option>
+          <option>Sertifiseringer</option>
+          <option>Industri</option>
+        </select>
+      </div>
+    </header>
+
+    <div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: var(--s-5);">
+
+      <a class="news-card" href="news-article.html">
+        <div class="news-card__media"><img src="../assets/images/products/festemidler-hero.jpg" alt=""></div>
+        <div class="news-card__body">
+          <span class="news-card__tag">Sortiment</span>
+          <h3 class="news-card__title">Nye A4 syrefaste festemidler fra Bossard</h3>
+          <p class="news-card__excerpt">Utvidet sortiment for marin- og offshore-bruk &mdash; nye dimensjoner i M6-M16 p&aring; lager fra mai.</p>
+          <p class="news-card__meta"><span>12.05.2026</span><span>&middot;</span><span>Ola Nordmann</span></p>
+        </div>
+      </a>
+
+      <a class="news-card" href="news-article.html">
+        <div class="news-card__media"><img src="../assets/images/marketing/lager-plukk-fra-bins.jpg" alt=""></div>
+        <div class="news-card__body">
+          <span class="news-card__tag">2-boks-system</span>
+          <h3 class="news-card__title">N&aring;r 2-boks-systemet l&oslash;nner seg</h3>
+          <p class="news-card__excerpt">Eksempler fra fire kunder p&aring; hvordan kanban-styring av festemidler frigj&oslash;r tid og kapital.</p>
+          <p class="news-card__meta"><span>05.05.2026</span><span>&middot;</span><span>Kari Bergshaug</span></p>
+        </div>
+      </a>
+
+      <a class="news-card" href="news-article.html">
+        <div class="news-card__media"><img src="../assets/images/marketing/ordrekontor.jpg" alt=""></div>
+        <div class="news-card__body">
+          <span class="news-card__tag">Sertifiseringer</span>
+          <h3 class="news-card__title">ISO 9001:2024 fornyet</h3>
+          <p class="news-card__excerpt">Vi har f&aring;tt fornyet kvalitetssertifisering &mdash; her er hva det betyr for deg som kunde.</p>
+          <p class="news-card__meta"><span>28.04.2026</span><span>&middot;</span><span>Bjarte Vik</span></p>
+        </div>
+      </a>
+
+      <a class="news-card" href="news-article.html">
+        <div class="news-card__media"><img src="../assets/images/marketing/serviceverksted.jpg" alt=""></div>
+        <div class="news-card__body">
+          <span class="news-card__tag">Verksted</span>
+          <h3 class="news-card__title">Trykktesting &mdash; n&aring;r og hvorfor</h3>
+          <p class="news-card__excerpt">Forsikring, vedlikehold og driftssikkerhet. Slik vurderer du om trykktest er n&oslash;dvendig.</p>
+          <p class="news-card__meta"><span>20.04.2026</span><span>&middot;</span><span>Per Olav Stenl&oslash;kk</span></p>
+        </div>
+      </a>
+
+      <a class="news-card" href="news-article.html">
+        <div class="news-card__media"><img src="../assets/images/products/hydraulikk-detalj-1.jpg" alt=""></div>
+        <div class="news-card__body">
+          <span class="news-card__tag">Hydraulikk</span>
+          <h3 class="news-card__title">Riktig kobling p&aring; f&oslash;rste fors&oslash;k</h3>
+          <p class="news-card__excerpt">Sjekkliste over de seks vanligste feilene n&aring;r kunder bestiller hydraulikkoblinger.</p>
+          <p class="news-card__meta"><span>15.04.2026</span><span>&middot;</span><span>Lars Indres&oslash;vde</span></p>
+        </div>
+      </a>
+
+      <a class="news-card" href="news-article.html">
+        <div class="news-card__media"><img src="../assets/images/products/sortiment-detalj-1.jpg" alt=""></div>
+        <div class="news-card__body">
+          <span class="news-card__tag">Industri</span>
+          <h3 class="news-card__title">M&oslash;re og Romsdal &mdash; industriregionen</h3>
+          <p class="news-card__excerpt">Hvor 90 % av omsetningen v&aring;r kommer fra &mdash; og hvorfor det betyr noe.</p>
+          <p class="news-card__meta"><span>08.04.2026</span><span>&middot;</span><span>Bjarte Vik</span></p>
+        </div>
+      </a>
+
+    </div>
+  </section>
+
+  <nav class="pagination" style="justify-content: center;">
+    <button class="pagination__btn" disabled aria-label="Forrige">&lsaquo;</button>
+    <button class="pagination__btn" aria-current="page">1</button>
+    <button class="pagination__btn">2</button>
+    <button class="pagination__btn">3</button>
+    <button class="pagination__btn" aria-label="Neste">&rsaquo;</button>
+  </nav>
+
+</main>
+<footer class="site-footer"><div class="site-footer__inner"><div class="site-footer__bottom"><span>&copy; 2026 Molde Jarnvare AS</span></div></div></footer>
+</body>
+</html>

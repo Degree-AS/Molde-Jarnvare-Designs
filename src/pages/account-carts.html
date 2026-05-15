@@ -1,0 +1,100 @@
+<!doctype html>
+<html lang="nb">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Lagrede kurver — Molde Jarnvare</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Source+Sans+3:wght@400;500;600;700;900&family=JetBrains+Mono:wght@400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../styles/index.css">
+</head>
+<body>
+<header class="site-header"><div class="site-header__inner"><a class="site-header__logo" href="/" aria-label="Molde Jarnvare"><img src="../assets/logos/molde-jarnvare-positive.png" alt="Molde Jarnvare" class="site-header__logo-img"></a></div><div class="site-header__main"><div class="site-header__main-inner"><nav class="site-header__nav" aria-label="Hovedkategorier"><a class="site-header__nav-link" href="#">Festemidler</a><a class="site-header__nav-link" href="#">Verkt&oslash;y</a><a class="site-header__nav-link" href="#">Verneutstyr</a><a class="site-header__nav-link" href="#">Hydraulikk</a><a class="site-header__nav-link" href="#">Sveis</a><a class="site-header__nav-link" href="#">Industri</a><a class="site-header__nav-link" href="#">Hurtigbestilling</a><a class="site-header__nav-link site-header__nav-link--accent" href="#">Tilbud</a></nav></div></div></header>
+<main class="container container--wide" style="padding-block: var(--s-7);">
+  <h1 class="t-h1" style="margin-bottom: var(--s-7);">Min konto</h1>
+  <div class="account-dashboard">
+    <nav class="account-dashboard__nav">
+      <a class="account-dashboard__nav-link" href="account.html">Oversikt</a>
+      <a class="account-dashboard__nav-link" href="account-orders.html">Ordrer</a>
+      <a class="account-dashboard__nav-link" href="#">Tilbud</a>
+      <a class="account-dashboard__nav-link" href="#">Sortilog</a>
+      <a class="account-dashboard__nav-link" href="account-wishlists.html">Handlelister</a>
+      <a class="account-dashboard__nav-link is-active" aria-current="page" href="account-carts.html">Lagrede kurver</a>
+      <a class="account-dashboard__nav-link" href="account-addresses.html">Adresser</a>
+      <a class="account-dashboard__nav-link" href="account-users.html">Brukere</a>
+      <a class="account-dashboard__nav-link" href="account-details.html">Innstillinger</a>
+    </nav>
+    <div class="account-dashboard__main">
+      <header style="display: flex; justify-content: space-between; align-items: baseline; gap: var(--s-4); margin-bottom: var(--s-6); flex-wrap: wrap;">
+        <div>
+          <h2 class="t-h2" style="margin: 0 0 var(--s-2);">Lagrede kurver</h2>
+          <p style="color: var(--color-text-secondary); margin: 0; max-width: 60ch;">
+            Du kan ha flere kurver samtidig &mdash; lagre en delvis ferdig bestilling, bytt mellom kurver
+            for ulike prosjekter eller bytter mellom prosjekt og standard p&aring;fyll. &Eacute;n kurv er alltid
+            aktiv (den du redigerer i kasse-flowen).
+          </p>
+        </div>
+        <a class="btn btn--primary" href="cart.html">G&aring; til aktiv kurv</a>
+      </header>
+
+      <section class="saved-carts">
+
+        <div class="saved-cart is-active">
+          <div>
+            <p class="saved-cart__name">&Aring;pen kurv</p>
+            <p class="saved-cart__meta">Aktiv n&aring; &middot; 7 varer &middot; kr 4 220,&ndash; &middot; sist endret 15:42</p>
+          </div>
+          <div class="saved-cart__actions">
+            <a class="btn btn--outline btn--sm" href="cart.html">&Aring;pne</a>
+            <button class="btn btn--ghost btn--sm">Lagre som...</button>
+          </div>
+        </div>
+
+        <div class="saved-cart">
+          <div>
+            <p class="saved-cart__name">Hjelset onsdag</p>
+            <p class="saved-cart__meta">Lagret 13.05.2026 av Bjarte &middot; 12 varer &middot; ca. kr 8 200,&ndash;</p>
+          </div>
+          <div class="saved-cart__actions">
+            <button class="btn btn--outline btn--sm">Bytt til denne</button>
+            <button class="btn btn--ghost btn--sm">Sl&aring; sammen med aktiv</button>
+            <button class="btn btn--ghost btn--sm" aria-label="Slett">✕</button>
+          </div>
+        </div>
+
+        <div class="saved-cart">
+          <div>
+            <p class="saved-cart__name">Tafjord uke 22</p>
+            <p class="saved-cart__meta">Lagret 11.05.2026 av Knut Helland &middot; 18 varer &middot; ca. kr 14 250,&ndash;</p>
+          </div>
+          <div class="saved-cart__actions">
+            <button class="btn btn--outline btn--sm">Bytt til denne</button>
+            <button class="btn btn--ghost btn--sm">Sl&aring; sammen med aktiv</button>
+            <button class="btn btn--ghost btn--sm" aria-label="Slett">✕</button>
+          </div>
+        </div>
+
+        <div class="saved-cart">
+          <div>
+            <p class="saved-cart__name">M&aring;nedlig p&aring;fyll</p>
+            <p class="saved-cart__meta">Lagret 02.05.2026 av Marit &middot; 32 varer &middot; ca. kr 18 970,&ndash;</p>
+          </div>
+          <div class="saved-cart__actions">
+            <button class="btn btn--outline btn--sm">Bytt til denne</button>
+            <button class="btn btn--ghost btn--sm">Sl&aring; sammen med aktiv</button>
+            <button class="btn btn--ghost btn--sm" aria-label="Slett">✕</button>
+          </div>
+        </div>
+
+      </section>
+
+      <div class="callout" style="margin-top: var(--s-7);">
+        <strong>Priser i lagrede kurver:</strong> Priser kan ha endret seg siden kurven ble lagret. Ved &laquo;Bytt til denne&raquo; oppdaterer vi priser automatisk og viser eventuelle endringer
+        som diff f&oslash;r du g&aring;r videre til kasse.
+      </div>
+    </div>
+  </div>
+</main>
+<footer class="site-footer"><div class="site-footer__inner"><div class="site-footer__bottom"><span>&copy; 2026 Molde Jarnvare AS</span></div></div></footer>
+</body>
+</html>

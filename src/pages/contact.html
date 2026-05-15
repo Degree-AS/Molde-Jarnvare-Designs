@@ -1,0 +1,119 @@
+<!doctype html>
+<html lang="nb">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Kontakt — Molde Jarnvare</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Source+Sans+3:wght@400;500;600;700;900&family=JetBrains+Mono:wght@400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../styles/index.css">
+</head>
+<body>
+<header class="site-header"><div class="site-header__inner"><a class="site-header__logo" href="/" aria-label="Molde Jarnvare"><img src="../assets/logos/molde-jarnvare-positive.png" alt="Molde Jarnvare" class="site-header__logo-img"></a></div><div class="site-header__main"><div class="site-header__main-inner"><nav class="site-header__nav" aria-label="Hovedkategorier"><a class="site-header__nav-link" href="#">Festemidler</a><a class="site-header__nav-link" href="#">Verkt&oslash;y</a><a class="site-header__nav-link" href="#">Verneutstyr</a><a class="site-header__nav-link" href="#">Hydraulikk</a><a class="site-header__nav-link" href="#">Sveis</a><a class="site-header__nav-link" href="#">Industri</a><a class="site-header__nav-link" href="#">Hurtigbestilling</a><a class="site-header__nav-link site-header__nav-link--accent" href="#">Tilbud</a></nav></div></div></header>
+<main class="container container--wide" style="padding-block: var(--s-7);">
+
+  <nav class="breadcrumb" style="margin-bottom: var(--s-5);">
+    <span class="breadcrumb__item"><a class="breadcrumb__link" href="home.html">Forside</a></span>
+    <span class="breadcrumb__item" aria-current="page">Kontakt</span>
+  </nav>
+
+  <header style="max-width: 60ch; margin-bottom: var(--s-7);">
+    <h1 class="t-h1" style="margin: 0 0 var(--s-3);">Kontakt oss</h1>
+    <p class="t-body-lg" style="color: var(--color-text-secondary); margin: 0;">
+      Vi tar telefonen i &aring;pningstiden, svarer p&aring; e-post samme dag i ukedager, og st&aring;r alltid klare i butikken i Sj&oslash;gata 12.
+    </p>
+  </header>
+
+  <div style="display: grid; grid-template-columns: 1fr 1fr; gap: var(--s-7);">
+
+    <!-- Kontakt-skjema -->
+    <section class="card">
+      <h2 class="card__title">Send oss en melding</h2>
+      <p style="color: var(--color-text-secondary); font-size: var(--fs-body-sm); margin: var(--s-2) 0 var(--s-5);">Vi svarer normalt innen 2 timer i &aring;pningstiden.</p>
+
+      <form style="display: flex; flex-direction: column; gap: var(--s-4);">
+        <div class="field">
+          <label class="field__label field__label--required" for="contact-name">Navn</label>
+          <input class="input" id="contact-name" autocomplete="name">
+        </div>
+        <div class="field">
+          <label class="field__label" for="contact-company">Bedrift</label>
+          <input class="input" id="contact-company" autocomplete="organization">
+        </div>
+        <div class="field">
+          <label class="field__label field__label--required" for="contact-email">E-post</label>
+          <input class="input" id="contact-email" type="email" autocomplete="email">
+        </div>
+        <div class="field">
+          <label class="field__label" for="contact-phone">Telefon</label>
+          <input class="input" id="contact-phone" type="tel" autocomplete="tel">
+        </div>
+        <div class="field">
+          <label class="field__label field__label--required" for="contact-topic">Tema</label>
+          <select class="select" id="contact-topic">
+            <option>Velg tema</option>
+            <option>Foresp&oslash;rsel om tilbud</option>
+            <option>Sp&oslash;rsm&aring;l om produkt</option>
+            <option>Slangepressing / verksted</option>
+            <option>Reklamasjon</option>
+            <option>Annet</option>
+          </select>
+        </div>
+        <div class="field">
+          <label class="field__label field__label--required" for="contact-message">Melding</label>
+          <textarea class="textarea" id="contact-message" rows="6" placeholder="Skriv meldingen din her..."></textarea>
+        </div>
+
+        <div style="margin-top: var(--s-3);">
+          <button class="btn btn--primary btn--md">Send melding</button>
+          <p style="font-size: var(--fs-caption); color: var(--color-text-tertiary); margin: var(--s-3) 0 0;">
+            Vi behandler personopplysninger i tr&aring;d med GDPR. <a class="link" href="#">Les v&aring;r personvernerkl&aelig;ring</a>.
+          </p>
+        </div>
+      </form>
+    </section>
+
+    <!-- Praktisk info -->
+    <aside style="display: flex; flex-direction: column; gap: var(--s-5);">
+
+      <section class="card">
+        <h2 class="card__title">Bes&oslash;k oss</h2>
+        <p style="margin: var(--s-3) 0; line-height: var(--lh-relaxed);">
+          <strong>Molde Jarnvare AS</strong><br>
+          Sj&oslash;gata 12<br>
+          6404 Molde<br>
+          <a class="link" href="#" style="font-size: var(--fs-body-sm);">&Aring;pne i kart &rarr;</a>
+        </p>
+
+        <h3 style="font-size: var(--fs-body); font-weight: var(--fw-semibold); margin: var(--s-4) 0 var(--s-2);">&Aring;pningstider</h3>
+        <table style="font-size: var(--fs-body-sm); width: 100%;">
+          <tr><td style="padding: 4px 0;">Mandag &ndash; fredag</td><td style="text-align: right; font-variant-numeric: tabular-nums;">07:00 &ndash; 16:00</td></tr>
+          <tr><td style="padding: 4px 0;">L&oslash;rdag</td><td style="text-align: right; font-variant-numeric: tabular-nums;">09:00 &ndash; 13:00</td></tr>
+          <tr><td style="padding: 4px 0;">S&oslash;ndag</td><td style="text-align: right; color: var(--color-text-secondary);">Stengt</td></tr>
+        </table>
+
+        <h3 style="font-size: var(--fs-body); font-weight: var(--fw-semibold); margin: var(--s-4) 0 var(--s-2);">Direkte</h3>
+        <p style="margin: 0; line-height: var(--lh-relaxed); font-size: var(--fs-body-sm);">
+          Sentralbord: <a class="link" href="tel:71254200">71 25 42 00</a><br>
+          Ordrer: <a class="link" href="mailto:ordrer@moldejarnvare.no">ordrer@moldejarnvare.no</a><br>
+          Verksted: <a class="link" href="mailto:verksted@moldejarnvare.no">verksted@moldejarnvare.no</a>
+        </p>
+      </section>
+
+      <div class="callout">
+        <strong>Skal du snakke fag?</strong> Hver produktkategori har sin egen ansvarlige. <a class="link" href="team.html">Se hvem du skal ringe direkte &rarr;</a>
+      </div>
+
+      <section class="card">
+        <h2 class="card__title">Akutt utenfor &aring;pningstid</h2>
+        <p style="margin: var(--s-3) 0; font-size: var(--fs-body-sm); line-height: var(--lh-relaxed);">For driftskritiske oppdrag &mdash; produksjon st&aring;r og du m&aring; ha en del i natt &mdash; ring vaktnummer.</p>
+        <a class="btn btn--outline btn--md" href="tel:71254288">Vakttelefon: 71 25 42 88</a>
+      </section>
+
+    </aside>
+  </div>
+
+</main>
+<footer class="site-footer"><div class="site-footer__inner"><div class="site-footer__bottom"><span>&copy; 2026 Molde Jarnvare AS</span></div></div></footer>
+</body>
+</html>
