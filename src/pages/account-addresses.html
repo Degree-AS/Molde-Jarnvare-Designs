@@ -1,0 +1,164 @@
+<!doctype html>
+<html lang="nb">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Adresser — Molde Jarnvare</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Source+Sans+3:wght@400;500;600;700;900&family=JetBrains+Mono:wght@400&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../styles/index.css">
+</head>
+<body>
+
+<header class="site-header">
+  <div class="site-header__inner">
+    <a class="site-header__logo" href="/" aria-label="Molde Jarnvare"><img src="../assets/logos/molde-jarnvare-positive.png" alt="Molde Jarnvare" class="site-header__logo-img"></a>
+  </div>
+
+  <div class="site-header__main">
+    <div class="site-header__main-inner">
+      <nav class="site-header__nav" aria-label="Hovedkategorier">
+        <a class="site-header__nav-link" href="#">Festemidler</a>
+        <a class="site-header__nav-link" href="#">Verkt&oslash;y</a>
+        <a class="site-header__nav-link" href="#">Verneutstyr</a>
+        <a class="site-header__nav-link" href="#">Hydraulikk</a>
+        <a class="site-header__nav-link" href="#">Sveis</a>
+        <a class="site-header__nav-link" href="#">Industri</a>
+        <a class="site-header__nav-link" href="#">Hurtigbestilling</a>
+        <a class="site-header__nav-link site-header__nav-link--accent" href="#">Tilbud</a>
+      </nav>
+    </div>
+  </div>
+</header>
+
+<main class="container container--wide" style="padding-block: var(--s-7);">
+
+  <h1 class="t-h1" style="margin-bottom: var(--s-7);">Min konto</h1>
+
+  <div class="account-dashboard">
+    <nav class="account-dashboard__nav">
+      <a class="account-dashboard__nav-link" href="account.html">Oversikt</a>
+      <a class="account-dashboard__nav-link" href="account-orders.html">Ordrer</a>
+      <a class="account-dashboard__nav-link" href="#">Tilbud</a>
+      <a class="account-dashboard__nav-link" href="#">Sortilog</a>
+      <a class="account-dashboard__nav-link is-active" aria-current="page" href="account-addresses.html">Adresser</a>
+      <a class="account-dashboard__nav-link" href="account-users.html">Brukere</a>
+      <a class="account-dashboard__nav-link" href="account-details.html">Innstillinger</a>
+    </nav>
+
+    <div class="account-dashboard__main">
+      <header style="display: flex; justify-content: space-between; align-items: baseline; margin-bottom: var(--s-6);">
+        <div>
+          <h2 class="t-h2" style="margin: 0 0 var(--s-2);">Adresser</h2>
+          <p style="color: var(--color-text-secondary); margin: 0;">Faktura- og leveringsadresser bedriften bruker.</p>
+        </div>
+        <button class="btn btn--primary">+ Ny adresse</button>
+      </header>
+
+      <section class="address-book">
+        <div class="address-book__list">
+
+          <article class="address-book__item is-selected">
+            <header style="display: flex; justify-content: space-between; gap: var(--s-2);">
+              <strong>Hovedkontor</strong>
+              <span class="badge badge--brand">Faktura</span>
+            </header>
+            <div style="font-size: var(--fs-body-sm); line-height: var(--lh-relaxed); color: var(--color-text-secondary);">
+              Industriservice Vest AS<br>
+              Sj&oslash;gata 12<br>
+              6404 Molde<br>
+              Norge
+            </div>
+            <footer style="display: flex; gap: var(--s-3); margin-top: var(--s-2);">
+              <a class="link" href="#">Rediger</a>
+              <a class="link" href="#">Sett som standard</a>
+            </footer>
+          </article>
+
+          <article class="address-book__item">
+            <header style="display: flex; justify-content: space-between; gap: var(--s-2);">
+              <strong>Verksted Hjelset</strong>
+              <span class="badge">Leveringssted</span>
+            </header>
+            <div style="font-size: var(--fs-body-sm); line-height: var(--lh-relaxed); color: var(--color-text-secondary);">
+              Industriservice Vest AS<br>
+              Hjelsetvegen 47<br>
+              6450 Hjelset<br>
+              Norge
+            </div>
+            <footer style="display: flex; gap: var(--s-3); margin-top: var(--s-2);">
+              <a class="link" href="#">Rediger</a>
+              <a class="link" href="#">Slett</a>
+            </footer>
+          </article>
+
+          <article class="address-book__item">
+            <header style="display: flex; justify-content: space-between; gap: var(--s-2);">
+              <strong>Anleggsplass Tafjord</strong>
+              <span class="badge">Leveringssted</span>
+            </header>
+            <div style="font-size: var(--fs-body-sm); line-height: var(--lh-relaxed); color: var(--color-text-secondary);">
+              Att: Knut Helland<br>
+              Tafjordvegen 88<br>
+              6210 Valld&aring;l<br>
+              Norge
+            </div>
+            <footer style="display: flex; gap: var(--s-3); margin-top: var(--s-2);">
+              <a class="link" href="#">Rediger</a>
+              <a class="link" href="#">Slett</a>
+            </footer>
+          </article>
+
+        </div>
+      </section>
+
+      <section class="card" style="margin-top: var(--s-7);">
+        <h3 class="card__title">Legg til ny adresse</h3>
+        <div class="address-form" style="display: grid; grid-template-columns: 1fr 1fr; gap: var(--s-4); margin-top: var(--s-4);">
+          <div class="field">
+            <label class="field__label field__label--required" for="addr-label">Adresse-navn</label>
+            <input class="input" id="addr-label" placeholder="F.eks. Verksted Stranda">
+            <span class="field__hint">Vises i listen over adresser.</span>
+          </div>
+          <div class="field">
+            <label class="field__label" for="addr-recipient">Att.</label>
+            <input class="input" id="addr-recipient" placeholder="Kontaktperson (valgfritt)">
+          </div>
+          <div class="field" style="grid-column: 1 / -1;">
+            <label class="field__label field__label--required" for="addr-street">Gateadresse</label>
+            <input class="input" id="addr-street">
+          </div>
+          <div class="field">
+            <label class="field__label field__label--required" for="addr-zip">Postnummer</label>
+            <input class="input" id="addr-zip" inputmode="numeric" maxlength="4">
+          </div>
+          <div class="field">
+            <label class="field__label field__label--required" for="addr-city">Sted</label>
+            <input class="input" id="addr-city">
+          </div>
+          <div class="field" style="grid-column: 1 / -1;">
+            <fieldset style="border: 0; padding: 0; margin: 0;">
+              <legend class="field__label" style="margin-bottom: var(--s-2);">Bruksomr&aring;de</legend>
+              <div style="display: flex; gap: var(--s-5);">
+                <label class="checkbox"><input type="checkbox"><span class="checkbox__visual"></span><span>Fakturaadresse</span></label>
+                <label class="checkbox"><input type="checkbox" checked><span class="checkbox__visual"></span><span>Leveringsadresse</span></label>
+              </div>
+            </fieldset>
+          </div>
+        </div>
+        <div style="margin-top: var(--s-5);">
+          <button class="btn btn--primary">Lagre adresse</button>
+          <button class="btn btn--ghost" style="margin-left: var(--s-3);">Avbryt</button>
+        </div>
+      </section>
+    </div>
+  </div>
+
+</main>
+
+<footer class="site-footer">
+  <div class="site-footer__inner"><div class="site-footer__bottom"><span>&copy; 2026 Molde Jarnvare AS</span></div></div>
+</footer>
+
+</body>
+</html>
