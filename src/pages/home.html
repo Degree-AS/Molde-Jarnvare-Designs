@@ -31,6 +31,13 @@
         <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M6 6h15l-1.5 9H7.5z"/><circle cx="9" cy="20" r="1.5"/><circle cx="18" cy="20" r="1.5"/></svg>
         <span class="badge badge--numeric site-header__action-badge">3</span>
       </button>
+      <!-- Mobile-only hamburger trigger (hidden ≥ --bp-lg) -->
+      <button class="site-header__hamburger" type="button"
+              aria-label="Åpne hovedmeny"
+              aria-controls="site-nav-drawer"
+              aria-expanded="false">
+        <span class="site-header__hamburger-icon" aria-hidden="true"></span>
+      </button>
     </div>
   </div>
 
@@ -48,7 +55,30 @@
       </nav>
     </div>
   </div>
+
+  <!--
+    Mobile nav drawer (visible < --bp-lg). The JS layer toggles
+    [data-open="true"] on hamburger click / Esc / backdrop click. For static
+    preview, add data-preview-open="true" to <header class="site-header"> above.
+  -->
+  <div class="site-header__drawer" id="site-nav-drawer" role="dialog" aria-modal="true" aria-label="Hovedmeny">
+    <div class="site-header__drawer-header">
+      <span class="t-overline" style="color: var(--mj-blue);">Meny</span>
+      <button class="site-header__drawer-close" type="button" aria-label="Lukk meny">&times;</button>
+    </div>
+    <nav class="site-header__drawer-nav" aria-label="Hovedkategorier (mobil)">
+      <a href="#">Festemidler</a>
+      <a href="#">Verktøy</a>
+      <a href="#">Verneutstyr</a>
+      <a href="#">Hydraulikk</a>
+      <a href="#">Sveis</a>
+      <a href="#">Industri</a>
+      <a href="#">Hurtigbestilling</a>
+      <a href="#" style="color: var(--mj-orange);">Tilbud</a>
+    </nav>
+  </div>
 </header>
+<div class="site-header__drawer-backdrop" aria-hidden="true"></div>
 
 <main>
 
