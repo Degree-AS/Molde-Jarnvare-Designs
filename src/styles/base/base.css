@@ -47,6 +47,26 @@ table td {
 .container--wide   { max-width: var(--container-wide); }
 .container--full   { max-width: 100%; }
 
+/*
+ * Form-grid utility (§17 Responsive).
+ * Two-column form grid on tablet/desktop, single-column on mobile.
+ * Used for address forms, user details, customer settings, etc.
+ *
+ *   <div class="form-grid">
+ *     <div class="form-field">…</div>
+ *     <div class="form-field">…</div>
+ *   </div>
+ */
+.form-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--s-4);
+}
+
+@media (min-width: 768px) /* --bp-md */ {
+  .form-grid { grid-template-columns: 1fr 1fr; }
+}
+
 /* Visually hidden — for screen reader text */
 .sr-only {
   position: absolute;

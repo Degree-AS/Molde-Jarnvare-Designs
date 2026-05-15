@@ -99,7 +99,7 @@
       </header>
 
       <section class="card">
-        <div class="data-table__wrap">
+        <div class="data-table__wrap data-table__wrap--responsive">
           <table class="data-table">
             <thead>
               <tr>
@@ -113,39 +113,39 @@
             </thead>
             <tbody>
               <tr>
-                <td><strong>Bjarte Vik</strong><br><span style="font-size: var(--fs-caption); color: var(--color-text-secondary);">bjarte@industriservice-vest.no</span></td>
-                <td><span class="badge badge--brand">Admin</span></td>
-                <td class="is-numeric" style="color: var(--color-text-secondary);">Ingen grense</td>
-                <td class="is-numeric">kr 42 510,&ndash;</td>
-                <td>I dag</td>
+                <td data-label="Navn"><strong>Bjarte Vik</strong><br><span style="font-size: var(--fs-caption); color: var(--color-text-secondary);">bjarte@industriservice-vest.no</span></td>
+                <td data-label="Rolle"><span class="badge badge--brand">Admin</span></td>
+                <td class="is-numeric" style="color: var(--color-text-secondary);" data-label="Beløpsgrense / ordre">Ingen grense</td>
+                <td class="is-numeric" data-label="Brukt denne måneden">kr 42 510,&ndash;</td>
+                <td data-label="Sist innlogget">I dag</td>
                 <td>—</td>
               </tr>
               <tr>
-                <td><strong>Marit Hammer&oslash;y</strong><br><span style="font-size: var(--fs-caption); color: var(--color-text-secondary);">marit@industriservice-vest.no</span></td>
-                <td><span class="badge">Bestiller</span></td>
-                <td class="is-numeric">kr 25 000,&ndash; / ordre</td>
-                <td class="is-numeric">kr 18 200,&ndash;</td>
-                <td>I g&aring;r</td>
+                <td data-label="Navn"><strong>Marit Hammer&oslash;y</strong><br><span style="font-size: var(--fs-caption); color: var(--color-text-secondary);">marit@industriservice-vest.no</span></td>
+                <td data-label="Rolle"><span class="badge">Bestiller</span></td>
+                <td class="is-numeric" data-label="Beløpsgrense / ordre">kr 25 000,&ndash; / ordre</td>
+                <td class="is-numeric" data-label="Brukt denne måneden">kr 18 200,&ndash;</td>
+                <td data-label="Sist innlogget">I g&aring;r</td>
                 <td><a class="link" href="#">Rediger</a></td>
               </tr>
               <tr>
-                <td><strong>Knut Helland</strong><br><span style="font-size: var(--fs-caption); color: var(--color-text-secondary);">knut@industriservice-vest.no</span></td>
-                <td><span class="badge">Bestiller</span></td>
-                <td class="is-numeric">kr 10 000,&ndash; / ordre</td>
-                <td class="is-numeric">kr 9 850,&ndash;</td>
-                <td>3 dager siden</td>
+                <td data-label="Navn"><strong>Knut Helland</strong><br><span style="font-size: var(--fs-caption); color: var(--color-text-secondary);">knut@industriservice-vest.no</span></td>
+                <td data-label="Rolle"><span class="badge">Bestiller</span></td>
+                <td class="is-numeric" data-label="Beløpsgrense / ordre">kr 10 000,&ndash; / ordre</td>
+                <td class="is-numeric" data-label="Brukt denne måneden">kr 9 850,&ndash;</td>
+                <td data-label="Sist innlogget">3 dager siden</td>
                 <td><a class="link" href="#">Rediger</a></td>
               </tr>
               <tr>
-                <td><strong>Anette Vatne</strong><br><span style="font-size: var(--fs-caption); color: var(--color-text-secondary);">anette@industriservice-vest.no</span></td>
-                <td><span class="badge">Kun innsyn</span></td>
-                <td class="is-numeric" style="color: var(--color-text-tertiary);">N/A</td>
-                <td class="is-numeric" style="color: var(--color-text-tertiary);">—</td>
-                <td>2 uker siden</td>
+                <td data-label="Navn"><strong>Anette Vatne</strong><br><span style="font-size: var(--fs-caption); color: var(--color-text-secondary);">anette@industriservice-vest.no</span></td>
+                <td data-label="Rolle"><span class="badge">Kun innsyn</span></td>
+                <td class="is-numeric" style="color: var(--color-text-tertiary);" data-label="Beløpsgrense / ordre">N/A</td>
+                <td class="is-numeric" style="color: var(--color-text-tertiary);" data-label="Brukt denne måneden">—</td>
+                <td data-label="Sist innlogget">2 uker siden</td>
                 <td><a class="link" href="#">Rediger</a></td>
               </tr>
               <tr>
-                <td colspan="6" style="background: var(--mj-surface-1); color: var(--color-text-secondary); font-style: italic;">
+                <td colspan="6" style="background: var(--mj-surface-1); color: var(--color-text-secondary); font-style: italic;" data-label="Navn">
                   Invitert: <strong style="font-style: normal;">Lars Indresund</strong> &lt;lars@industriservice-vest.no&gt; &middot; Venter p&aring; aksept &middot; <a class="link" href="#">Send p&aring;nytt</a>
                 </td>
               </tr>
@@ -158,7 +158,7 @@
         <h3 class="card__title">Rediger bruker: Marit Hammer&oslash;y</h3>
         <p style="color: var(--color-text-secondary); font-size: var(--fs-body-sm); margin: 0 0 var(--s-5);">Skjema-eksempel for inline-redigering. I produksjon &aring;pnes dette som modal eller ekspandert rad.</p>
 
-        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: var(--s-4);">
+        <div class="form-grid">
 
           <div class="field">
             <label class="field__label">Rolle</label>
