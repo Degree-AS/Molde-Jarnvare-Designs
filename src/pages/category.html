@@ -90,10 +90,16 @@
     <p style="color: var(--color-text-secondary); margin-top: var(--s-2);">8 240 artikler · sortert etter relevans</p>
   </header>
 
-  <div style="display: grid; grid-template-columns: 280px 1fr; gap: var(--s-7);">
+  <div class="plp-layout">
 
     <!-- Filter sidebar -->
-    <aside class="filter-sidebar">
+    <aside class="plp-layout__filter" id="plp-filter" aria-label="Filtre">
+      <div class="plp-layout__filter-header">
+        <h2 class="plp-layout__filter-title">Filtre</h2>
+        <button class="plp-layout__filter-close" type="button" aria-label="Lukk filtre">&times;</button>
+      </div>
+      <div class="plp-layout__filter-body">
+        <div class="filter-sidebar">
       <div class="filter-sidebar__group">
         <h3 class="filter-sidebar__group-title">Kategori</h3>
         <div class="filter-sidebar__options">
@@ -115,19 +121,23 @@
         <label class="checkbox"><input type="checkbox" checked><span class="checkbox__visual"></span><span class="checkbox__label">Kun varer på lager</span></label>
       </div>
       <button class="filter-sidebar__clear">Nullstill alle filtre</button>
+    </div>
+      </div>
     </aside>
 
     <div>
       <!-- Active filters + sort row -->
-      <div style="display: flex; flex-wrap: wrap; gap: var(--s-4); align-items: center; justify-content: space-between; margin-bottom: var(--s-5);">
-        <div class="filter-chips">
-          <span class="filter-chips__label">Aktive filtre</span>
-          <span class="chip chip--removable">M6 <button class="chip__remove" aria-label="Fjern">✕</button></span>
-          <span class="chip chip--removable">M8 <button class="chip__remove" aria-label="Fjern">✕</button></span>
-          <span class="chip chip--removable">A4 syrefast <button class="chip__remove" aria-label="Fjern">✕</button></span>
-          <button class="filter-chips__clear-all">Fjern alle</button>
-        </div>
-        <div style="display: flex; gap: var(--s-3); align-items: center;">
+      <div class="plp-layout__toolbar">
+          <button class="plp-layout__filter-trigger" type="button" aria-controls="plp-filter" aria-expanded="false">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true">
+              <line x1="4" y1="6" x2="20" y2="6"/>
+              <line x1="6" y1="12" x2="18" y2="12"/>
+              <line x1="9" y1="18" x2="15" y2="18"/>
+            </svg>
+            Filter
+            <span class="plp-layout__filter-trigger-count">3</span>
+          </button>
+          <div style="display: flex; gap: var(--s-3); align-items: center;">
           <div class="sort-dropdown">
             <span class="sort-dropdown__label">Sorter:</span>
             <select class="select"><option>Relevans</option><option>Pris stigende</option><option>Pris synkende</option><option>Nyhet</option></select>
@@ -137,10 +147,20 @@
             <button class="view-switcher__btn" aria-label="List view">☰</button>
           </div>
         </div>
-      </div>
+        </div>
+
+        <div class="plp-layout__chips-row">
+          <div class="filter-chips">
+          <span class="filter-chips__label">Aktive filtre</span>
+          <span class="chip chip--removable">M6 <button class="chip__remove" aria-label="Fjern">✕</button></span>
+          <span class="chip chip--removable">M8 <button class="chip__remove" aria-label="Fjern">✕</button></span>
+          <span class="chip chip--removable">A4 syrefast <button class="chip__remove" aria-label="Fjern">✕</button></span>
+          <button class="filter-chips__clear-all">Fjern alle</button>
+        </div>
+        </div>
 
       <!-- Product grid -->
-      <div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: var(--s-4);">
+      <div class="plp-layout__grid">
         <article class="product-card">
           <div class="product-card__media"></div>
           <span class="product-card__sku">4815-162-30</span>
@@ -187,6 +207,8 @@
       </nav>
     </div>
   </div>
+
+  <div class="plp-layout__backdrop" aria-hidden="true"></div>
 
 </main>
 

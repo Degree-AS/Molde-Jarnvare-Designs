@@ -81,6 +81,7 @@
 @import "../components/account-dashboard/account-dashboard.css";
 @import "../components/order-history/order-history.css";
 @import "../components/filter-sidebar/filter-sidebar.css";
+@import "../components/plp-layout/plp-layout.css";
 @import "../components/filter-chips/filter-chips.css";
 @import "../components/sort-dropdown/sort-dropdown.css";
 @import "../components/view-switcher/view-switcher.css";
