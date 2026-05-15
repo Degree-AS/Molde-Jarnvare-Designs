@@ -1,6 +1,6 @@
 /**
  * Modern CSS reset
- * Avhengig av tokens fra src/styles/tokens.
+ * Depends on tokens from src/styles/tokens.
  */
 
 *, *::before, *::after { box-sizing: border-box; }

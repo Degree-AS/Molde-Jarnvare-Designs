@@ -1,21 +1,21 @@
 /**
  * Product variant selector (§14.2)
  *
- * To visninger — én komponent:
+ * Two views — one component:
  *
- *   Chip-stil (default)     For få varianter (~3–8). Hanskestørrelser,
- *                            skostørrelser, lengder. Én aktiv av gangen.
+ *   Chip style (default)     For few variants (~3–8). Glove sizes,
+ *                            shoe sizes, lengths. One active at a time.
  *
- *   Matrise (--matrix)       For mange varianter (10+). Festemidler, bolter,
- *                            der hver kombinasjon er en egen SKU. Tabell-
- *                            visning der hver rad har antall-felt + egen
- *                            handlekurv-knapp — kunden "dytter" én rad
- *                            av gangen til kurv. Avtalt med Molde Jarnvare
- *                            12. mai 2026.
+ *   Matrix (--matrix)       For many variants (10+). Fasteners, bolts,
+ *                            where each combination is its own SKU. Tabell-
+ *                            visning der each row har quantity field + egen
+ *                            handlekurv-knapp — the customer "pushes" one row
+ *                            one at a time to the cart. Agreed with Molde Jarnvare
+ *                            May 12, 2026.
  */
 
 /* ─────────────────────────────────────────────────────────────────────────
- * Felles for begge visninger
+ * Common to both views
  * ────────────────────────────────────────────────────────────────────── */
 .variant-selector {
   display: flex;
@@ -35,7 +35,7 @@
 }
 
 /* ─────────────────────────────────────────────────────────────────────────
- * Chip-stil (default) — få varianter
+ * Chip style (default) — få varianter
  * ────────────────────────────────────────────────────────────────────── */
 .variant-selector__options {
   display: flex;
@@ -75,9 +75,9 @@
 }
 
 /* ─────────────────────────────────────────────────────────────────────────
- * Matrise (--matrix) — mange varianter
- * Tabell der hver rad = én variant (SKU). Antall-felt per rad +
- * egen handlekurv-knapp i siste kolonne. Én rad = én aksjon.
+ * Matrix (--matrix) — mange varianter
+ * Table where each row = én variant (SKU). Quantity field per row +
+ * dedicated cart button in the last column. One row = one action.
  * ────────────────────────────────────────────────────────────────────── */
 .variant-selector--matrix { gap: var(--s-4); }
 
@@ -140,8 +140,8 @@
   justify-content: flex-end;
 }
 
-/* Legg-til-knapp per rad — handlekurv-ikon til høyre for antall-velger.
-   Ingen samle-CTA i footer; én rad = én aksjon. */
+/* Add-to-cart button per row — shopping cart icon to the right of the quantity selector.
+   No bulk CTA in the footer; one row = one action. */
 .variant-selector__matrix-add {
   display: inline-flex;
   align-items: center;
@@ -172,14 +172,14 @@
   stroke-linejoin: round;
 }
 
-/* Disabled-rad (utsolgt / ikke tilgjengelig) */
+/* Disabled row (out of stock / unavailable) */
 .variant-selector__matrix-row--disabled th,
 .variant-selector__matrix-row--disabled td {
   color: var(--color-text-tertiary);
 }
 .variant-selector__matrix-row--disabled .variant-selector__matrix-qty { opacity: 0.5; pointer-events: none; }
 
-/* Mobil: la tabellen scrolle horisontalt heller enn å bryte */
+/* Mobile: let the table scroll horizontally instead of breaking */
 @media (max-width: 640px) {
   .variant-selector__matrix-wrap {
     overflow-x: auto;

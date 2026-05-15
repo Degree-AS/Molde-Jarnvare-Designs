@@ -1,9 +1,8 @@
 /**
  * News article layout (§15.13)
  *
- * Lang-form artikkel-mal med ingress, hero-bilde, brødtekst og
- * relaterte artikler. Innholds-bredde begrenset til ~70ch for
- * lesbarhet.
+ * Long-form article template with lead, hero image, body text and
+ * related articles. Content width capped at ~70ch for readability.
  */
 
 .news-article {

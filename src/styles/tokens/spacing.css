@@ -3,8 +3,8 @@
  * -----------------------------------------------------------------------------
  * Source: DESIGN_SYSTEM.md §6.1
  *
- * 4px base scale. Alle padding/margin/gap-verdier skal hentes fra denne
- * skalaen. Ingen vilkårlige verdier som 13px eller 27px.
+ * 4px base scale. All padding/margin/gap values must come from this
+ * scale. No arbitrary values like 13px or 27px.
  * -----------------------------------------------------------------------------
  */
 

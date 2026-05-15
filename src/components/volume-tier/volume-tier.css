@@ -1,0 +1,50 @@
+/**
+ * Volume pricing tier (§14.4) — tiered pricing.
+ */
+
+.volume-tier {
+  display: flex;
+  flex-direction: column;
+  gap: var(--s-3);
+}
+
+.volume-tier__title {
+  font-size: var(--fs-body-sm);
+  font-weight: var(--fw-semibold);
+  color: var(--color-text-primary);
+}
+
+.volume-tier__table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: var(--fs-body-sm);
+  font-variant-numeric: tabular-nums;
+}
+
+.volume-tier__table th,
+.volume-tier__table td {
+  padding: var(--s-2) var(--s-3);
+  border-bottom: var(--bw-1) solid var(--color-border-soft);
+  text-align: right;
+}
+.volume-tier__table th:first-child,
+.volume-tier__table td:first-child { text-align: left; }
+
+.volume-tier__table thead th {
+  font-size: var(--fs-overline);
+  letter-spacing: var(--ls-wider);
+  text-transform: uppercase;
+  color: var(--color-text-secondary);
+  font-weight: var(--fw-semibold);
+  border-bottom: var(--bw-2) solid var(--color-border-default);
+}
+
+.volume-tier__row.is-active {
+  background: var(--color-bg-brand-soft);
+  font-weight: var(--fw-semibold);
+}
+
+.volume-tier__savings {
+  color: var(--mj-success);
+  font-weight: var(--fw-semibold);
+}

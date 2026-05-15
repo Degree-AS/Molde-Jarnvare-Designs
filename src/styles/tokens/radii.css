@@ -3,20 +3,20 @@
  * -----------------------------------------------------------------------------
  * Source: DESIGN_SYSTEM.md §7.2
  *
- * Profilboken bruker avrundede hjørner på bilder og bokser.
+ * The brand book uses rounded corners on images and boxes.
  *
- * Bruksregel:
- *   - Bilder og store bokser: --r-lg eller --r-xl
- *   - Kort:                   --r-md
- *   - Knapper og inputs:      --r-sm eller --r-md
+ * Usage:
+ *   - Images and large boxes: --r-lg or --r-xl
+ *   - Cards:                  --r-md
+ *   - Buttons and inputs:     --r-sm or --r-md
  * -----------------------------------------------------------------------------
  */
 
 :root {
   --r-none: 0;
-  --r-sm:   4px;    /* Knapper, små bokser */
-  --r-md:   8px;    /* Kort, input-felt */
-  --r-lg:   12px;   /* Større bokser, modaler */
-  --r-xl:   20px;   /* Hero-bilder, store flater */
-  --r-full: 9999px; /* Pills, runde knapper */
+  --r-sm:   4px;    /* Buttons, small boxes */
+  --r-md:   8px;    /* Cards, input fields */
+  --r-lg:   12px;   /* Larger boxes, modals */
+  --r-xl:   20px;   /* Hero images, large surfaces */
+  --r-full: 9999px; /* Pills, round buttons */
 }

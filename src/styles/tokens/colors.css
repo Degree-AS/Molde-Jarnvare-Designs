@@ -18,19 +18,19 @@
 
 :root {
   /* ---------------------------------------------------------------------------
-   * 4.1 Brand-farger (fra profilbok 2025)
+   * 4.1 Brand colors (from 2025 brand book)
    * ------------------------------------------------------------------------ */
-  --mj-blue:       #0D2B7E; /* Reflex Blue C — primær brandfarge */
-  --mj-gray-dark:  #35373E; /* Cool Gray 10 — brødtekst, sekundære overflater */
-  --mj-orange:     #DB993D; /* Orange 021 C — aksent (ikke primær CTA) */
-  --mj-gray-light: #E0E0E0; /* 420 C — bakgrunnsflater, dividers */
-  --mj-red:        #9E2835; /* 187 C — slagord, callouts, feilmeldinger */
+  --mj-blue:       #0D2B7E; /* Reflex Blue C — primary brand color */
+  --mj-gray-dark:  #35373E; /* Cool Gray 10 — body text, secondary surfaces */
+  --mj-orange:     #DB993D; /* Orange 021 C — accent (never primary CTA) */
+  --mj-gray-light: #E0E0E0; /* 420 C — background surfaces, dividers */
+  --mj-red:        #9E2835; /* 187 C — slogans, callouts, errors */
 
   /* ---------------------------------------------------------------------------
-   * 4.2 Brand-farger i prosenttoner
+   * 4.2 Brand colors as percentage tints
    * ------------------------------------------------------------------------ */
 
-  /* Reflex blå (#0D2B7E) i prosenttoner */
+  /* Reflex blue (#0D2B7E) as tints */
   --mj-blue-90: #25408B;
   --mj-blue-80: #3D5598;
   --mj-blue-70: #556AA5;
@@ -41,7 +41,7 @@
   --mj-blue-20: #CFD5E5;
   --mj-blue-10: #E7EAF2;
 
-  /* Mørk grå (#35373E) i prosenttoner */
+  /* Dark gray (#35373E) as tints */
   --mj-gray-dark-90: #494B51;
   --mj-gray-dark-80: #5D5F65;
   --mj-gray-dark-70: #717278;
@@ -53,39 +53,39 @@
   --mj-gray-dark-10: #EBEBEC;
 
   /* ---------------------------------------------------------------------------
-   * 4.3 Nøytral skala (utvidet for UI)
+   * 4.3 Neutral scale (extended for UI)
    * ------------------------------------------------------------------------ */
-  --mj-ink:         #35373E; /* = profilbokens Mørk grå. Primær tekst */
-  --mj-ink-2:       #5D5F65; /* Sekundær tekst, metadata, hjelpetekst */
-  --mj-ink-3:       #85878B; /* Tertiær tekst, deaktiverte etiketter */
-  --mj-line-strong: #B5B7BB; /* Sterke linjer, deaktiverte borders */
+  --mj-ink:         #35373E; /* = brand book dark gray. Primary text */
+  --mj-ink-2:       #5D5F65; /* Secondary text, metadata, helper text */
+  --mj-ink-3:       #85878B; /* Tertiary text, disabled labels */
+  --mj-line-strong: #B5B7BB; /* Strong lines, disabled borders */
   --mj-line:        #D6D7D9; /* Standard borders, dividers */
-  --mj-line-soft:   #E0E0E0; /* = profilbokens Lysgrå. Subtile linjer */
-  --mj-surface-2:   #EBEBEC; /* Hover-flater, alternativ rad i tabell */
-  --mj-surface-1:   #F4F4F5; /* Lyse seksjonsflater */
-  --mj-surface-0:   #F9F9F9; /* Sidebakgrunn (fra profilbokens nettside-skisse) */
-  --mj-white:       #FFFFFF; /* Kortbakgrunn, modaler, hovedflater */
+  --mj-line-soft:   #E0E0E0; /* = brand book light gray. Subtle lines */
+  --mj-surface-2:   #EBEBEC; /* Hover surfaces, alternate table rows */
+  --mj-surface-1:   #F4F4F5; /* Light section surfaces */
+  --mj-surface-0:   #F9F9F9; /* Page background (from brand book web sketch) */
+  --mj-white:       #FFFFFF; /* Card background, modals, primary surfaces */
 
   /* ---------------------------------------------------------------------------
-   * 4.4 Status-farger (UI-funksjonelle)
-   * Funksjonelle farger — skal ikke brukes som CTA eller dekorelement
-   * utenfor sin status-rolle.
+   * 4.4 Status colors (UI-functional)
+   * Functional colors — never use as CTA or decorative element
+   * outside their status role.
    * ------------------------------------------------------------------------ */
   --mj-success:    #1F7A3A;
   --mj-success-bg: #E8F2EA;
-  --mj-warning:    #7A580E; /* mørknet fra #B8851F (12. mai 2026) for å passere WCAG 2.2 AA på status-pill, alert, badge og stock-indicator */
+  --mj-warning:    #7A580E; /* darkened from #B8851F (May 12, 2026) to pass WCAG 2.2 AA on status-pill, alert, badge, and stock-indicator */
   --mj-warning-bg: #F8EFD9;
-  --mj-error:      #9E2835; /* = brand-rød */
+  --mj-error:      #9E2835; /* = brand red */
   --mj-error-bg:   #F4DDDF;
-  --mj-info:       #0D2B7E; /* = brand-blå */
+  --mj-info:       #0D2B7E; /* = brand blue */
   --mj-info-bg:    #E7EAF2;
 
   /* ---------------------------------------------------------------------------
-   * 4.6 Funksjonelle UI-tokens (semantic)
-   * Tokens som beskriver hva fargen brukes *til*, ikke hva den *er*.
+   * 4.6 Functional UI tokens (semantic)
+   * Tokens that describe what the color is *used for*, not what it *is*.
    * ------------------------------------------------------------------------ */
 
-  /* Tekst */
+  /* Text */
   --color-text-primary:    var(--mj-ink);
   --color-text-secondary:  var(--mj-ink-2);
   --color-text-tertiary:   var(--mj-ink-3);
@@ -95,7 +95,7 @@
   --color-text-link-hover: var(--mj-blue-80);
   --color-text-error:      var(--mj-error);
 
-  /* Bakgrunn */
+  /* Background */
   --color-bg-page:        var(--mj-surface-0);
   --color-bg-surface:     var(--mj-white);
   --color-bg-surface-alt: var(--mj-surface-1);
@@ -110,7 +110,7 @@
   --color-border-brand:   var(--mj-blue);
   --color-border-focus:   var(--mj-blue);
 
-  /* Action / interaktiv */
+  /* Action / interactive */
   --color-action-primary:          var(--mj-blue);
   --color-action-primary-hover:    #0A2369;
   --color-action-primary-active:   #081C55;
@@ -119,7 +119,7 @@
   --color-accent:                  var(--mj-orange);
   --color-accent-hover:            #C5862F;
 
-  /* Fokusring */
+  /* Focus ring */
   --focus-ring:       0 0 0 3px rgba(13, 43, 126, 0.3);
   --focus-ring-error: 0 0 0 3px rgba(158, 40, 53, 0.3);
 }

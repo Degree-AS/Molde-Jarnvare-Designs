@@ -1,9 +1,9 @@
 /**
- * Person card / produktansvarlig (§13.5)
+ * Person card / product responsible (§13.5)
  *
- * Vertikalt oppsett: avatar på toppen, navn/rolle/kontakt sentrert under.
- * Bytte fra horisontalt 12. mai 2026 — gir bedre plass til lengre roller
- * og e-postadresser uten å bryte ut av kortet.
+ * Vertical layout: avatar on top, name/role/contact centred below.
+ * Switched from horizontal on May 12, 2026 — gives more room for longer roles
+ * and email addresses without breaking out of the card.
  */
 
 .person-card {

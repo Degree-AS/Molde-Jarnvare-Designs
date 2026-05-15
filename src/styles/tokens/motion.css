@@ -3,13 +3,13 @@
  * -----------------------------------------------------------------------------
  * Source: DESIGN_SYSTEM.md §7.4, §7.5
  *
- * Bruksregler:
+ * Usage:
  *   - Hover/focus:           --duration-fast    + --ease-standard
- *   - Modaler/drawers åpne:  --duration-normal  + --ease-decelerate
- *   - Modaler/drawers lukke: --duration-fast    + --ease-accelerate
- *   - Skeleton-loading puls: --duration-slow
+ *   - Modal/drawer open:     --duration-normal  + --ease-decelerate
+ *   - Modal/drawer close:    --duration-fast    + --ease-accelerate
+ *   - Skeleton loading pulse:--duration-slow
  *
- * Prefers-reduced-motion håndteres globalt — se base/reset, ikke her.
+ * Prefers-reduced-motion is handled globally — see base/reset, not here.
  * -----------------------------------------------------------------------------
  */
 

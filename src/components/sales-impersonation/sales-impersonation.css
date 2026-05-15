@@ -1,6 +1,6 @@
 /**
- * Sales rep impersonation banner (§14.16) — selger handler på vegne av kunde.
- * Persistent øverst på siden, bruker brand-orange (per §13.16 banner--brand).
+ * Sales rep impersonation banner (§14.16) — sales rep acting on behalf of a customer.
+ * Persistent at the top of the page, uses brand orange (per §13.16 banner--brand).
  */
 
 .sales-impersonation {

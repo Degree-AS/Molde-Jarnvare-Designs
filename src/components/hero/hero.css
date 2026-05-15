@@ -1,15 +1,15 @@
 /**
  * Hero
  * -----------------------------------------------------------------------------
- * Stort, visuelt åpningsfelt øverst på sider. Brukes på forside, kategorisider
- * og kampanjesider. Inneholder eyebrow, tittel, lead-tekst, primære CTA-er og
- * valgfri media (bilde / placeholder).
+ * Large, visual opening field at the top of pages. Used on the front page,
+ * category pages, and campaign pages. Contains eyebrow, title, lead text,
+ * primary CTAs and optional media (image / placeholder).
  *
  * Block:    .hero
- * Modifier: .hero--dark   — Reflex-blå bakgrunn med hvit tekst
- *           .hero--split  — to-kolonne layout med media på desktop
+ * Modifiers: .hero--dark   — Reflex-blue background with white text
+ *           .hero--split  — two-column layout with media on desktop
  *
- * Bygd med tokens fra src/styles/tokens. Ingen hardkodede verdier.
+ * Built with tokens from src/styles/tokens. No hard-coded values.
  * -----------------------------------------------------------------------------
  */
 
@@ -44,7 +44,7 @@
   }
 }
 
-/* Innhold ----------------------------------------------------------------- */
+/* Content ----------------------------------------------------------------- */
 
 .hero__eyebrow {
   font-family: var(--ff-sans);
