@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Søkeresultat — Molde Jarnvare</title>
+  <title>Søkeresultat for «bolt» — Molde Jarnvare</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link href="https://fonts.googleapis.com/css2?family=Source+Sans+3:wght@400;500;600;700;900&family=JetBrains+Mono:wght@400&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="../styles/index.css">
@@ -17,8 +17,11 @@
       <form class="search-bar" role="search" style="position: relative;">
         <svg class="search-bar__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.35-4.35"/></svg>
         <input class="search-bar__input" type="search" value="bolt" />
-        <button class="search-bar__submit">Søk</button>
+        <button class="search-bar__submit" type="submit">Søk</button>
       </form>
+    </div>
+    <div class="site-header__actions">
+      <button class="site-header__action" aria-label="Handlekurv (3)">🛒 <span class="badge badge--numeric site-header__action-badge">3</span></button>
     </div>
   </div>
 
@@ -38,30 +41,204 @@
   </div>
 </header>
 
-<main class="container" style="padding-block: var(--s-7);">
-  <h1 class="t-h2" style="margin-bottom: var(--s-3);">Søkeresultat for «bolt»</h1>
-  <p style="color: var(--color-text-secondary); margin-bottom: var(--s-6);">142 treff i sortimentet</p>
+<main class="container container--wide" style="padding-block: var(--s-7);">
 
-  <div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: var(--s-4);">
-    <article class="product-card">
-      <div class="product-card__media"></div>
-      <span class="product-card__sku">4815-162-30</span>
-      <h3 class="product-card__title"><a href="#">Sekskantskrue M8 × 40 mm A4 syrefast</a></h3>
-      <span class="stock-indicator stock-indicator--in">På lager</span>
-      <div class="product-card__price">kr 2,80<span class="product-card__price-suffix">eks. mva</span></div>
-    </article>
-    <article class="product-card">
-      <div class="product-card__media"></div>
-      <span class="product-card__sku">4830-180-50</span>
-      <h3 class="product-card__title"><a href="#">Maskinskrue M10 × 50 mm galvanisert</a></h3>
-      <span class="stock-indicator stock-indicator--in">På lager</span>
-      <div class="product-card__price">kr 4,20<span class="product-card__price-suffix">eks. mva</span></div>
-    </article>
+  <header style="margin-bottom: var(--s-6);">
+    <h1 class="t-h1">Søkeresultat for «bolt»</h1>
+    <p style="color: var(--color-text-secondary); margin-top: var(--s-2);">142 treff på tvers av sortimentet · sortert etter relevans</p>
+  </header>
+
+  <div style="display: grid; grid-template-columns: 280px 1fr; gap: var(--s-7);">
+
+    <!-- Filter sidebar -->
+    <aside class="filter-sidebar">
+
+      <!-- Search-specific: top-level category (search spans multiple departments) -->
+      <div class="filter-sidebar__group">
+        <h3 class="filter-sidebar__group-title">Kategori</h3>
+        <div class="filter-sidebar__options">
+          <label class="checkbox"><input type="checkbox" checked><span class="checkbox__visual"></span><span class="checkbox__label">Festemidler (118)</span></label>
+          <label class="checkbox"><input type="checkbox"><span class="checkbox__visual"></span><span class="checkbox__label">Verktøy (14)</span></label>
+          <label class="checkbox"><input type="checkbox"><span class="checkbox__visual"></span><span class="checkbox__label">Hydraulikk (6)</span></label>
+          <label class="checkbox"><input type="checkbox"><span class="checkbox__visual"></span><span class="checkbox__label">Industri (4)</span></label>
+        </div>
+      </div>
+
+      <div class="filter-sidebar__group">
+        <h3 class="filter-sidebar__group-title">Underkategori</h3>
+        <div class="filter-sidebar__options">
+          <label class="checkbox"><input type="checkbox"><span class="checkbox__visual"></span><span class="checkbox__label">Sekskantskruer (62)</span></label>
+          <label class="checkbox"><input type="checkbox"><span class="checkbox__visual"></span><span class="checkbox__label">Maskinskruer (28)</span></label>
+          <label class="checkbox"><input type="checkbox"><span class="checkbox__visual"></span><span class="checkbox__label">Boltsakser (8)</span></label>
+          <label class="checkbox"><input type="checkbox"><span class="checkbox__visual"></span><span class="checkbox__label">Bolt-tang (6)</span></label>
+        </div>
+      </div>
+
+      <!-- Search-specific: dimension/spec range — only meaningful when multiple sub-categories share a numeric attribute -->
+      <div class="filter-sidebar__group">
+        <h3 class="filter-sidebar__group-title">Dimensjon</h3>
+        <div class="filter-sidebar__options">
+          <label class="checkbox"><input type="checkbox"><span class="checkbox__visual"></span><span class="checkbox__label">M6 (32)</span></label>
+          <label class="checkbox"><input type="checkbox"><span class="checkbox__visual"></span><span class="checkbox__label">M8 (44)</span></label>
+          <label class="checkbox"><input type="checkbox"><span class="checkbox__visual"></span><span class="checkbox__label">M10 (38)</span></label>
+          <label class="checkbox"><input type="checkbox"><span class="checkbox__visual"></span><span class="checkbox__label">M12 (12)</span></label>
+        </div>
+      </div>
+
+      <div class="filter-sidebar__group">
+        <h3 class="filter-sidebar__group-title">Materiale</h3>
+        <div class="filter-sidebar__options">
+          <label class="checkbox"><input type="checkbox"><span class="checkbox__visual"></span><span class="checkbox__label">A2 syrefast (28)</span></label>
+          <label class="checkbox"><input type="checkbox"><span class="checkbox__visual"></span><span class="checkbox__label">A4 syrefast (52)</span></label>
+          <label class="checkbox"><input type="checkbox"><span class="checkbox__visual"></span><span class="checkbox__label">Galvanisert (42)</span></label>
+          <label class="checkbox"><input type="checkbox"><span class="checkbox__visual"></span><span class="checkbox__label">Sort/ubehandlet (18)</span></label>
+        </div>
+      </div>
+
+      <!-- Search-specific: brand filter (cross-category, mainly relevant on broad searches) -->
+      <div class="filter-sidebar__group">
+        <h3 class="filter-sidebar__group-title">Merke</h3>
+        <div class="filter-sidebar__options">
+          <label class="checkbox"><input type="checkbox"><span class="checkbox__visual"></span><span class="checkbox__label">Würth (48)</span></label>
+          <label class="checkbox"><input type="checkbox"><span class="checkbox__visual"></span><span class="checkbox__label">Vink (32)</span></label>
+          <label class="checkbox"><input type="checkbox"><span class="checkbox__visual"></span><span class="checkbox__label">Bjørn AS (22)</span></label>
+          <label class="checkbox"><input type="checkbox"><span class="checkbox__visual"></span><span class="checkbox__label">Festmid (18)</span></label>
+        </div>
+      </div>
+
+      <!-- Search-specific: price range filter, useful when results span price brackets -->
+      <div class="filter-sidebar__group">
+        <h3 class="filter-sidebar__group-title">Pris</h3>
+        <div class="filter-sidebar__options">
+          <label class="checkbox"><input type="checkbox"><span class="checkbox__visual"></span><span class="checkbox__label">Under kr 5 (44)</span></label>
+          <label class="checkbox"><input type="checkbox"><span class="checkbox__visual"></span><span class="checkbox__label">kr 5–25 (62)</span></label>
+          <label class="checkbox"><input type="checkbox"><span class="checkbox__visual"></span><span class="checkbox__label">kr 25–100 (24)</span></label>
+          <label class="checkbox"><input type="checkbox"><span class="checkbox__visual"></span><span class="checkbox__label">Over kr 100 (12)</span></label>
+        </div>
+      </div>
+
+      <div class="filter-sidebar__group">
+        <h3 class="filter-sidebar__group-title">Lager</h3>
+        <label class="checkbox"><input type="checkbox" checked><span class="checkbox__visual"></span><span class="checkbox__label">Kun varer på lager</span></label>
+      </div>
+
+      <!-- Search-specific: campaign filter, surfaces deals across categories -->
+      <div class="filter-sidebar__group">
+        <h3 class="filter-sidebar__group-title">Kampanje</h3>
+        <label class="checkbox"><input type="checkbox"><span class="checkbox__visual"></span><span class="checkbox__label">På tilbud (8)</span></label>
+      </div>
+
+      <button class="filter-sidebar__clear">Nullstill alle filtre</button>
+    </aside>
+
+    <div>
+      <!-- Active filters + sort row -->
+      <div style="display: flex; flex-wrap: wrap; gap: var(--s-4); align-items: center; justify-content: space-between; margin-bottom: var(--s-5);">
+        <div class="filter-chips">
+          <span class="filter-chips__label">Aktive filtre</span>
+          <span class="chip chip--removable">Festemidler <button class="chip__remove" aria-label="Fjern">✕</button></span>
+          <span class="chip chip--removable">På lager <button class="chip__remove" aria-label="Fjern">✕</button></span>
+          <button class="filter-chips__clear-all">Fjern alle</button>
+        </div>
+        <div style="display: flex; gap: var(--s-3); align-items: center;">
+          <div class="sort-dropdown">
+            <span class="sort-dropdown__label">Sorter:</span>
+            <select class="select"><option>Relevans</option><option>Pris stigende</option><option>Pris synkende</option><option>Nyhet</option><option>Mest solgt</option></select>
+          </div>
+          <div class="view-switcher">
+            <button class="view-switcher__btn" aria-pressed="true" aria-label="Grid view">▦</button>
+            <button class="view-switcher__btn" aria-label="List view">☰</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Product grid -->
+      <div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: var(--s-4);">
+        <article class="product-card">
+          <div class="product-card__media"></div>
+          <span class="product-card__sku">4815-162-30</span>
+          <h3 class="product-card__title"><a href="#">Sekskantskrue M8 × 40 mm A4 syrefast</a></h3>
+          <span class="stock-indicator stock-indicator--in">På lager <span class="stock-indicator__count">4 200 stk</span></span>
+          <div class="product-card__price">kr 2,80<span class="product-card__price-suffix">eks. mva</span></div>
+          <div class="product-card__actions"><button class="btn btn--primary btn--sm btn--full">Legg i handlekurv</button></div>
+        </article>
+        <article class="product-card">
+          <div class="product-card__media"></div>
+          <span class="product-card__sku">4830-180-50</span>
+          <h3 class="product-card__title"><a href="#">Maskinskrue M10 × 50 mm galvanisert</a></h3>
+          <span class="stock-indicator stock-indicator--in">På lager <span class="stock-indicator__count">1 800 stk</span></span>
+          <div class="product-card__price">kr 4,20<span class="product-card__price-suffix">eks. mva</span></div>
+          <div class="product-card__actions"><button class="btn btn--primary btn--sm btn--full">Legg i handlekurv</button></div>
+        </article>
+        <article class="product-card">
+          <div class="product-card__media"></div>
+          <span class="product-card__sku">4815-162-60</span>
+          <h3 class="product-card__title"><a href="#">Sekskantskrue M8 × 60 mm A4 syrefast</a></h3>
+          <span class="stock-indicator stock-indicator--low">Få igjen <span class="stock-indicator__count">90 stk</span></span>
+          <div class="product-card__price">kr 3,40<span class="product-card__price-suffix">eks. mva</span></div>
+          <div class="product-card__actions"><button class="btn btn--primary btn--sm btn--full">Legg i handlekurv</button></div>
+        </article>
+        <article class="product-card">
+          <div class="product-card__media"></div>
+          <span class="product-card__sku">7220-080-00</span>
+          <h3 class="product-card__title"><a href="#">Boltkutter 600 mm — Knipex</a></h3>
+          <span class="stock-indicator stock-indicator--in">På lager <span class="stock-indicator__count">12 stk</span></span>
+          <div class="product-card__price">kr 1 240,–<span class="product-card__price-suffix">eks. mva</span></div>
+          <div class="product-card__actions"><button class="btn btn--primary btn--sm btn--full">Legg i handlekurv</button></div>
+        </article>
+        <article class="product-card">
+          <div class="product-card__media"></div>
+          <span class="product-card__sku">4815-110-30</span>
+          <h3 class="product-card__title"><a href="#">Sekskantskrue M6 × 30 mm A4 syrefast</a></h3>
+          <span class="stock-indicator stock-indicator--in">På lager</span>
+          <div class="product-card__price">kr 1,90<span class="product-card__price-suffix">eks. mva</span></div>
+          <div class="product-card__actions"><button class="btn btn--primary btn--sm btn--full">Legg i handlekurv</button></div>
+        </article>
+        <article class="product-card">
+          <div class="product-card__media"></div>
+          <span class="product-card__sku">4830-180-80</span>
+          <h3 class="product-card__title"><a href="#">Maskinskrue M10 × 80 mm galvanisert</a></h3>
+          <span class="stock-indicator stock-indicator--in">På lager</span>
+          <div class="product-card__price">kr 5,60<span class="product-card__price-suffix">eks. mva</span></div>
+          <div class="product-card__actions"><button class="btn btn--primary btn--sm btn--full">Legg i handlekurv</button></div>
+        </article>
+        <article class="product-card">
+          <div class="product-card__media"></div>
+          <span class="product-card__sku">4815-200-40</span>
+          <h3 class="product-card__title"><a href="#">Sekskantskrue M12 × 40 mm galvanisert</a></h3>
+          <span class="stock-indicator stock-indicator--in">På lager <span class="stock-indicator__count">2 600 stk</span></span>
+          <div class="product-card__price">kr 6,80<span class="product-card__price-suffix">eks. mva</span></div>
+          <div class="product-card__actions"><button class="btn btn--primary btn--sm btn--full">Legg i handlekurv</button></div>
+        </article>
+        <article class="product-card">
+          <div class="product-card__media"></div>
+          <span class="product-card__sku">4815-162-40</span>
+          <h3 class="product-card__title"><a href="#">Sekskantskrue M8 × 50 mm A4 syrefast</a></h3>
+          <span class="stock-indicator stock-indicator--out">Ikke på lager</span>
+          <div class="product-card__price">kr 3,10<span class="product-card__price-suffix">eks. mva</span></div>
+          <div class="product-card__actions"><button class="btn btn--secondary btn--sm btn--full">Sett på venteliste</button></div>
+        </article>
+      </div>
+
+      <!-- Pagination -->
+      <nav class="pagination" style="justify-content: center; margin-top: var(--s-8);">
+        <button class="pagination__btn" disabled>← Forrige</button>
+        <button class="pagination__btn" aria-current="page">1</button>
+        <button class="pagination__btn">2</button>
+        <button class="pagination__btn">3</button>
+        <span class="pagination__ellipsis">…</span>
+        <button class="pagination__btn">12</button>
+        <button class="pagination__btn">Neste →</button>
+      </nav>
+    </div>
   </div>
+
 </main>
 
 <footer class="site-footer">
-  <div class="site-footer__inner"><div class="site-footer__bottom"><span>&copy; 2026 Molde Jarnvare AS</span></div></div>
+  <div class="site-footer__inner">
+    <div class="site-footer__bottom"><span>&copy; 2026 Molde Jarnvare AS</span></div>
+  </div>
 </footer>
 
 </body>
