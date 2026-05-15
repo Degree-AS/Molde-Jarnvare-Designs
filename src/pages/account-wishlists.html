@@ -13,13 +13,36 @@
 <header class="site-header">
   <div class="site-header__inner">
     <a class="site-header__logo" href="/" aria-label="Molde Jarnvare"><img src="../assets/logos/molde-jarnvare-positive.png" alt="Molde Jarnvare" class="site-header__logo-img"></a>
+    <div class="site-header__search">
+      <form class="search-bar" role="search">
+        <svg class="search-bar__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.35-4.35"/></svg>
+        <input class="search-bar__input" type="search" placeholder="Søk i 30 000+ artikler, NOBB-nr, EAN…" />
+        <button class="search-bar__submit" type="submit">Søk</button>
+      </form>
+    </div>
+    <div class="site-header__actions">
+      <button class="site-header__action" aria-label="Min konto">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4 4-7 8-7s8 3 8 7"/></svg>
+      </button>
+      <button class="site-header__action" aria-label="Handlekurv (3)">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M6 6h15l-1.5 9H7.5z"/><circle cx="9" cy="20" r="1.5"/><circle cx="18" cy="20" r="1.5"/></svg>
+        <span class="badge badge--numeric site-header__action-badge">3</span>
+      </button>
+      <!-- Mobile-only hamburger trigger (hidden ≥ --bp-lg) -->
+      <button class="site-header__hamburger" type="button"
+              aria-label="Åpne hovedmeny"
+              aria-controls="site-nav-drawer"
+              aria-expanded="false">
+        <span class="site-header__hamburger-icon" aria-hidden="true"></span>
+      </button>
+    </div>
   </div>
 
   <div class="site-header__main">
     <div class="site-header__main-inner">
       <nav class="site-header__nav" aria-label="Hovedkategorier">
         <a class="site-header__nav-link" href="#">Festemidler</a>
-        <a class="site-header__nav-link" href="#">Verkt&oslash;y</a>
+        <a class="site-header__nav-link" href="#">Verktøy</a>
         <a class="site-header__nav-link" href="#">Verneutstyr</a>
         <a class="site-header__nav-link" href="#">Hydraulikk</a>
         <a class="site-header__nav-link" href="#">Sveis</a>
@@ -29,7 +52,30 @@
       </nav>
     </div>
   </div>
+
+  <!--
+    Mobile nav drawer (visible < --bp-lg). The JS layer toggles
+    [data-open="true"] on hamburger click / Esc / backdrop click. For static
+    preview, add data-preview-open="true" to <header class="site-header"> above.
+  -->
+  <div class="site-header__drawer" id="site-nav-drawer" role="dialog" aria-modal="true" aria-label="Hovedmeny">
+    <div class="site-header__drawer-header">
+      <span class="t-overline" style="color: var(--mj-blue);">Meny</span>
+      <button class="site-header__drawer-close" type="button" aria-label="Lukk meny">&times;</button>
+    </div>
+    <nav class="site-header__drawer-nav" aria-label="Hovedkategorier (mobil)">
+      <a href="#">Festemidler</a>
+      <a href="#">Verktøy</a>
+      <a href="#">Verneutstyr</a>
+      <a href="#">Hydraulikk</a>
+      <a href="#">Sveis</a>
+      <a href="#">Industri</a>
+      <a href="#">Hurtigbestilling</a>
+      <a href="#" style="color: var(--mj-orange);">Tilbud</a>
+    </nav>
+  </div>
 </header>
+<div class="site-header__drawer-backdrop" aria-hidden="true"></div>
 
 <main class="container container--wide" style="padding-block: var(--s-7);">
 
@@ -102,8 +148,4 @@
 </main>
 
 <footer class="site-footer">
-  <div class="site-footer__inner"><div class="site-footer__bottom"><span>&copy; 2026 Molde Jarnvare AS</span></div></div>
-</footer>
-
-</body>
-</html>
+  <div class="site-footer__inner"><div class=
