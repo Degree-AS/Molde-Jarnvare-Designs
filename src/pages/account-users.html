@@ -1,64 +1,37 @@
 <!doctype html>
 <html lang="nb">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Brukere — Molde Jarnvare</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link href="https://fonts.googleapis.com/css2?family=Source+Sans+3:wght@400;500;600;700;900&family=JetBrains+Mono:wght@400&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="../styles/index.css">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Brukere — Molde Jarnvare</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Source+Sans+3:wght@400;500;600;700;900&family=JetBrains+Mono:wght@400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../styles/index.css">
 </head>
 <body>
-
-<header class="site-header">
-  <div class="site-header__inner">
-    <a class="site-header__logo" href="/" aria-label="Molde Jarnvare"><img src="../assets/logos/molde-jarnvare-positive.png" alt="Molde Jarnvare" class="site-header__logo-img"></a>
-  </div>
-
-  <div class="site-header__main">
-    <div class="site-header__main-inner">
-      <nav class="site-header__nav" aria-label="Hovedkategorier">
-        <a class="site-header__nav-link" href="#">Festemidler</a>
-        <a class="site-header__nav-link" href="#">Verkt&oslash;y</a>
-        <a class="site-header__nav-link" href="#">Verneutstyr</a>
-        <a class="site-header__nav-link" href="#">Hydraulikk</a>
-        <a class="site-header__nav-link" href="#">Sveis</a>
-        <a class="site-header__nav-link" href="#">Industri</a>
-        <a class="site-header__nav-link" href="#">Hurtigbestilling</a>
-        <a class="site-header__nav-link site-header__nav-link--accent" href="#">Tilbud</a>
-      </nav>
-    </div>
-  </div>
-</header>
-
+<header class="site-header"><div class="site-header__inner"><a class="site-header__logo" href="/" aria-label="Molde Jarnvare"><img src="../assets/logos/molde-jarnvare-positive.png" alt="Molde Jarnvare" class="site-header__logo-img"></a></div><div class="site-header__main"><div class="site-header__main-inner"><nav class="site-header__nav" aria-label="Hovedkategorier"><a class="site-header__nav-link" href="#">Festemidler</a><a class="site-header__nav-link" href="#">Verkt&oslash;y</a><a class="site-header__nav-link" href="#">Verneutstyr</a><a class="site-header__nav-link" href="#">Hydraulikk</a><a class="site-header__nav-link" href="#">Sveis</a><a class="site-header__nav-link" href="#">Industri</a><a class="site-header__nav-link" href="#">Hurtigbestilling</a><a class="site-header__nav-link site-header__nav-link--accent" href="#">Tilbud</a></nav></div></div></header>
 <main class="container container--wide" style="padding-block: var(--s-7);">
-
   <h1 class="t-h1" style="margin-bottom: var(--s-7);">Min konto</h1>
-
   <div class="account-dashboard">
     <nav class="account-dashboard__nav">
       <a class="account-dashboard__nav-link" href="account.html">Oversikt</a>
       <a class="account-dashboard__nav-link" href="account-orders.html">Ordrer</a>
       <a class="account-dashboard__nav-link" href="#">Tilbud</a>
       <a class="account-dashboard__nav-link" href="#">Sortilog</a>
+      <a class="account-dashboard__nav-link" href="account-wishlists.html">Handlelister</a>
+      <a class="account-dashboard__nav-link" href="account-carts.html">Lagrede kurver</a>
       <a class="account-dashboard__nav-link" href="account-addresses.html">Adresser</a>
       <a class="account-dashboard__nav-link is-active" aria-current="page" href="account-users.html">Brukere</a>
       <a class="account-dashboard__nav-link" href="account-details.html">Innstillinger</a>
     </nav>
-
     <div class="account-dashboard__main">
       <header style="display: flex; justify-content: space-between; align-items: baseline; margin-bottom: var(--s-6); gap: var(--s-4); flex-wrap: wrap;">
         <div>
           <h2 class="t-h2" style="margin: 0 0 var(--s-2);">Brukere</h2>
-          <p style="color: var(--color-text-secondary); margin: 0; max-width: 60ch;">Kollegaer som handler p&aring; firmakontoen. Kun Admin kan invitere nye brukere og endre roller.</p>
+          <p style="color: var(--color-text-secondary); margin: 0; max-width: 60ch;">Kollegaer som handler p&aring; firmakontoen. Kun Admin kan invitere nye brukere, sette bel&oslash;psgrenser og endre roller.</p>
         </div>
         <button class="btn btn--primary">+ Inviter ny bruker</button>
       </header>
-
-      <div class="alert alert--warning" style="margin-bottom: var(--s-5);">
-        <strong>⚠ Til avklaring med Molde Jarnvare:</strong>
-        <span>Skal kunder selv kunne administrere brukere/roller p&aring; egen firmakonto i v1, eller starter vi enklere (alle brukere er likestilte, MJ legger til/fjerner p&aring; foresp&oslash;rsel)? Denne malen viser fullversjonen.</span>
-      </div>
 
       <section class="card">
         <div class="data-table__wrap">
@@ -66,44 +39,49 @@
             <thead>
               <tr>
                 <th>Navn</th>
-                <th>E-post</th>
                 <th>Rolle</th>
+                <th class="is-numeric">Bel&oslash;psgrense / ordre</th>
+                <th class="is-numeric">Brukt denne m&aring;neden</th>
                 <th>Sist innlogget</th>
                 <th></th>
               </tr>
             </thead>
             <tbody>
               <tr>
-                <td><strong>Bjarte Vik</strong><br><span style="font-size: var(--fs-caption); color: var(--color-text-secondary);">Innkj&oslash;psansvarlig</span></td>
-                <td>bjarte@industriservice-vest.no</td>
+                <td><strong>Bjarte Vik</strong><br><span style="font-size: var(--fs-caption); color: var(--color-text-secondary);">bjarte@industriservice-vest.no</span></td>
                 <td><span class="badge badge--brand">Admin</span></td>
+                <td class="is-numeric" style="color: var(--color-text-secondary);">Ingen grense</td>
+                <td class="is-numeric">kr 42 510,&ndash;</td>
                 <td>I dag</td>
                 <td>—</td>
               </tr>
               <tr>
-                <td><strong>Marit Hammer&oslash;y</strong><br><span style="font-size: var(--fs-caption); color: var(--color-text-secondary);">Verkstedformann</span></td>
-                <td>marit@industriservice-vest.no</td>
+                <td><strong>Marit Hammer&oslash;y</strong><br><span style="font-size: var(--fs-caption); color: var(--color-text-secondary);">marit@industriservice-vest.no</span></td>
                 <td><span class="badge">Bestiller</span></td>
+                <td class="is-numeric">kr 25 000,&ndash; / ordre</td>
+                <td class="is-numeric">kr 18 200,&ndash;</td>
                 <td>I g&aring;r</td>
                 <td><a class="link" href="#">Rediger</a></td>
               </tr>
               <tr>
-                <td><strong>Knut Helland</strong><br><span style="font-size: var(--fs-caption); color: var(--color-text-secondary);">Anleggsleder Tafjord</span></td>
-                <td>knut@industriservice-vest.no</td>
+                <td><strong>Knut Helland</strong><br><span style="font-size: var(--fs-caption); color: var(--color-text-secondary);">knut@industriservice-vest.no</span></td>
                 <td><span class="badge">Bestiller</span></td>
+                <td class="is-numeric">kr 10 000,&ndash; / ordre</td>
+                <td class="is-numeric">kr 9 850,&ndash;</td>
                 <td>3 dager siden</td>
                 <td><a class="link" href="#">Rediger</a></td>
               </tr>
               <tr>
-                <td><strong>Anette Vatne</strong><br><span style="font-size: var(--fs-caption); color: var(--color-text-secondary);">Regnskap</span></td>
-                <td>anette@industriservice-vest.no</td>
+                <td><strong>Anette Vatne</strong><br><span style="font-size: var(--fs-caption); color: var(--color-text-secondary);">anette@industriservice-vest.no</span></td>
                 <td><span class="badge">Kun innsyn</span></td>
+                <td class="is-numeric" style="color: var(--color-text-tertiary);">N/A</td>
+                <td class="is-numeric" style="color: var(--color-text-tertiary);">—</td>
                 <td>2 uker siden</td>
                 <td><a class="link" href="#">Rediger</a></td>
               </tr>
               <tr>
-                <td colspan="5" style="background: var(--mj-surface-1); color: var(--color-text-secondary); font-style: italic;">
-                  Invitert: <strong style="font-style: normal;">Lars Indresund</strong> &lt;lars@industriservice-vest.no&gt; · Venter p&aring; aksept · <a class="link" href="#">Send p&aring;nytt</a>
+                <td colspan="6" style="background: var(--mj-surface-1); color: var(--color-text-secondary); font-style: italic;">
+                  Invitert: <strong style="font-style: normal;">Lars Indresund</strong> &lt;lars@industriservice-vest.no&gt; &middot; Venter p&aring; aksept &middot; <a class="link" href="#">Send p&aring;nytt</a>
                 </td>
               </tr>
             </tbody>
@@ -112,24 +90,60 @@
       </section>
 
       <section class="card" style="margin-top: var(--s-6);">
+        <h3 class="card__title">Rediger bruker: Marit Hammer&oslash;y</h3>
+        <p style="color: var(--color-text-secondary); font-size: var(--fs-body-sm); margin: 0 0 var(--s-5);">Skjema-eksempel for inline-redigering. I produksjon &aring;pnes dette som modal eller ekspandert rad.</p>
+
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: var(--s-4);">
+
+          <div class="field">
+            <label class="field__label">Rolle</label>
+            <div class="radio-group">
+              <label class="radio"><input type="radio" name="role"><span class="radio__visual"></span><span>Admin &mdash; kan administrere brukere og kontoinnstillinger</span></label>
+              <label class="radio"><input type="radio" name="role" checked><span class="radio__visual"></span><span>Bestiller &mdash; kan handle for firmakontoen</span></label>
+              <label class="radio"><input type="radio" name="role"><span class="radio__visual"></span><span>Kun innsyn &mdash; kan se ordrer og fakturaer, ikke bestille</span></label>
+            </div>
+          </div>
+
+          <div style="display: flex; flex-direction: column; gap: var(--s-4);">
+            <div class="field">
+              <label class="field__label" for="user-limit-order">Bel&oslash;psgrense pr. ordre (eks. mva)</label>
+              <input class="input" id="user-limit-order" type="text" value="25 000" inputmode="numeric">
+              <span class="field__hint">Bestillinger over denne summen krever Admin-godkjenning.</span>
+            </div>
+            <div class="field">
+              <label class="field__label" for="user-limit-month">Bel&oslash;psgrense pr. m&aring;ned (valgfritt)</label>
+              <input class="input" id="user-limit-month" type="text" placeholder="Ingen grense" inputmode="numeric">
+              <span class="field__hint">Total handel for kalenderm&aring;neden. Resettes 1. hver m&aring;ned.</span>
+            </div>
+            <label class="checkbox" style="margin-top: var(--s-2);">
+              <input type="checkbox" checked>
+              <span class="checkbox__visual"></span>
+              <span>Send varsel til Admin n&aring;r grensen overskrides</span>
+            </label>
+          </div>
+
+        </div>
+
+        <div style="margin-top: var(--s-6);">
+          <button class="btn btn--primary">Lagre endringer</button>
+          <button class="btn btn--ghost" style="margin-left: var(--s-3);">Avbryt</button>
+        </div>
+      </section>
+
+      <section class="card" style="margin-top: var(--s-6);">
         <h3 class="card__title">Rollene betyr</h3>
         <dl style="display: grid; grid-template-columns: 140px 1fr; gap: var(--s-3) var(--s-5); margin: var(--s-4) 0 0;">
           <dt><span class="badge badge--brand">Admin</span></dt>
-          <dd style="margin: 0;">Kan bestille, godkjenne, og administrere brukere/adresser/innstillinger.</dd>
+          <dd style="margin: 0;">Kan bestille uten grense, godkjenne andres ordrer, og administrere brukere/adresser/innstillinger.</dd>
           <dt><span class="badge">Bestiller</span></dt>
-          <dd style="margin: 0;">Kan bestille og se firma-historikk. Kan ikke endre brukere eller fakturaadresse.</dd>
+          <dd style="margin: 0;">Kan bestille inntil sin bel&oslash;psgrense. Over grensen sendes bestillingen til Admin for godkjenning. Kan ikke endre brukere eller fakturaadresse.</dd>
           <dt><span class="badge">Kun innsyn</span></dt>
           <dd style="margin: 0;">Kan se ordrer og fakturaer, men ikke bestille. Typisk regnskap eller controller.</dd>
         </dl>
       </section>
     </div>
   </div>
-
 </main>
-
-<footer class="site-footer">
-  <div class="site-footer__inner"><div class="site-footer__bottom"><span>&copy; 2026 Molde Jarnvare AS</span></div></div>
-</footer>
-
+<footer class="site-footer"><div class="site-footer__inner"><div class="site-footer__bottom"><span>&copy; 2026 Molde Jarnvare AS</span></div></div></footer>
 </body>
 </html>

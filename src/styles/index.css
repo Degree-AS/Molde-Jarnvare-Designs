@@ -94,3 +94,9 @@
 /* Patterns (§16) */
 @import "../patterns/form-validation.css";
 @import "../patterns/print.css";
+
+/* Nye komponenter — v2-utvidelse */
+@import "../components/wishlist/wishlist.css";
+@import "../components/saved-carts/saved-carts.css";
+@import "../components/news-card/news-card.css";
+@import "../components/news-article/news-article.css";
