@@ -4,9 +4,9 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Molde Jarnvare — Design system (synchronised with code)</title>
-<link rel="preconnect" href="https://fonts.goandleapis.com">
+<link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.goandleapis.com/css2?family=Source+Sans+3:ital,wght@0,400;0,500;0,600;0,700;0,900;1,400&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Source+Sans+3:ital,wght@0,400;0,500;0,600;0,700;0,900;1,400&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
 <style>
 /* TOKENS — kopiert direkte fra src/styles/tokens/  ·  sist sync: 2026-05-12 */
 :root{
@@ -639,8 +639,8 @@ a{color:var(--mj-blue)}
     <div class="icon-grid">
       <div class="icon-cell"><svg viewBox="0 0 24 24"><circle cx="12" cy="8" r="4"/><path d="M4.5 21a7.5 7.5 0 0115 0"/></svg><span class="icon-cell__name">user</span></div>
       <div class="icon-cell"><svg viewBox="0 0 24 24"><circle cx="9" cy="8" r="3.5"/><circle cx="17" cy="9" r="2.5"/><path d="M2.5 20a6.5 6.5 0 0113 0"/><path d="M15 20a4 4 0 017 0"/></svg><span class="icon-cell__name">users</span></div>
-      <div class="icon-cell"><svg viewBox="0 0 24 24"><path d="M10 3H5a2 2 0 00-2 2v14a2 2 0 002 2h5"/><path d="M14 12h7M18 8l4 4-4 4"/></svg><span class="icon-cell__name">landin</span></div>
-      <div class="icon-cell"><svg viewBox="0 0 24 24"><path d="M14 3h5a2 2 0 012 2v14a2 2 0 01-2 2h-5"/><path d="M10 12H3M7 8l-4 4 4 4"/></svg><span class="icon-cell__name">landout</span></div>
+      <div class="icon-cell"><svg viewBox="0 0 24 24"><path d="M10 3H5a2 2 0 00-2 2v14a2 2 0 002 2h5"/><path d="M14 12h7M18 8l4 4-4 4"/></svg><span class="icon-cell__name">login</span></div>
+      <div class="icon-cell"><svg viewBox="0 0 24 24"><path d="M14 3h5a2 2 0 012 2v14a2 2 0 01-2 2h-5"/><path d="M10 12H3M7 8l-4 4 4 4"/></svg><span class="icon-cell__name">logout</span></div>
       <div class="icon-cell"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><path d="M12 3v2.5M12 18.5V21M3 12h2.5M18.5 12H21M5.6 5.6l1.8 1.8M16.6 16.6l1.8 1.8M18.4 5.6l-1.8 1.8M5.6 18.4l1.8-1.8"/></svg><span class="icon-cell__name">settings</span></div>
       <div class="icon-cell"><svg viewBox="0 0 24 24"><path d="M18 8a6 6 0 10-12 0c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M10 21a2 2 0 004 0"/></svg><span class="icon-cell__name">bell</span></div>
       <div class="icon-cell"><svg viewBox="0 0 24 24"><circle cx="8" cy="12" r="4"/><path d="M12 12h10M18 12v3M22 12v4"/></svg><span class="icon-cell__name">key</span></div>
@@ -779,7 +779,7 @@ a{color:var(--mj-blue)}
       <span class="stock stock--out">Out of stock <span class="stock__qty">Skaffes</span></span>
     </div>
     <h3>Other primitives</h3>
-    <p>Also available: <strong>textarea, select, number stepper (med multiplum-støtte for boks-kjøp), checkbox, radio, switch, tag/chip, prandress bar, spinner, skeleton, divider, link</strong>. All live as their own BEM classes in <code>src/components/</code>.</p>
+    <p>Also available: <strong>textarea, select, number stepper (med multiplum-støtte for boks-kjøp), checkbox, radio, switch, tag/chip, progress bar, spinner, skeleton, divider, link</strong>. All live as their own BEM classes in <code>src/components/</code>.</p>
   </section>
 
   <section class="section" id="composites">

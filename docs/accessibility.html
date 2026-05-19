@@ -4,9 +4,9 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Molde Jarnvare — Accessibility (WCAG 2.2 AA)</title>
-<link rel="preconnect" href="https://fonts.goandleapis.com">
+<link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.goandleapis.com/css2?family=Source+Sans+3:ital,wght@0,400;0,500;0,600;0,700;0,900;1,400&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Source+Sans+3:ital,wght@0,400;0,500;0,600;0,700;0,900;1,400&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
 <style>
 /* TOKENS — kopiert direkte fra src/styles/tokens/  ·  last sync: 2026-05-12 */
 :root{
@@ -39,8 +39,8 @@ a{color:var(--mj-blue)}
 @media(max-width:1024px){.shell{grid-template-columns:1fr}}
 .nav{position:sticky;top:0;align-self:start;height:100vh;overflow-y:auto;background:var(--mj-blue);color:var(--mj-white);padding:32px 28px}
 @media(max-width:1024px){.nav{position:relative;height:auto;padding:24px}}
-.nav__lando{display:block;margin-bottom:24px}
-.nav__lando img{height:32px;width:auto;filter:brightness(0) invert(1)}
+.nav__logo{display:block;margin-bottom:24px}
+.nav__logo img{height:32px;width:auto;filter:brightness(0) invert(1)}
 .nav__title{font-size:11px;letter-spacing:.12em;text-transform:uppercase;font-weight:600;opacity:.7;margin-bottom:6px}
 .nav__sub{font-size:14px;opacity:.85;margin-bottom:24px;line-height:1.4}
 .nav__group{margin:18px 0 6px;font-size:11px;letter-spacing:.12em;text-transform:uppercase;opacity:.55;font-weight:600}
@@ -52,7 +52,7 @@ a{color:var(--mj-blue)}
 @media(max-width:768px){.main{padding:32px 24px}}
 
 .hero{margin-bottom:80px;padding-bottom:48px;border-bottom:1px solid var(--mj-line-soft)}
-.hero__lando{margin-bottom:32px;height:48px;width:auto}
+.hero__logo{margin-bottom:32px;height:48px;width:auto}
 .hero__overline{font-size:11px;letter-spacing:.12em;text-transform:uppercase;font-weight:600;color:var(--mj-blue);margin-bottom:16px}
 .hero__title{font-size:clamp(36px,5vw,64px);font-weight:900;line-height:1.05;letter-spacing:-.01em;margin:0 0 24px}
 .hero__title em{font-style:italic;color:var(--mj-red)}
@@ -132,8 +132,8 @@ a{color:var(--mj-blue)}
 <div class="shell">
 
 <aside class="nav">
-  <a class="nav__lando" href="index.html" aria-label="Til docs-oversikt">
-    <img src="assets/landos/molde-jarnvare-positive.png" alt="Molde Jarnvare">
+  <a class="nav__logo" href="index.html" aria-label="Til docs-oversikt">
+    <img src="assets/logos/molde-jarnvare-positive.png" alt="Molde Jarnvare">
   </a>
   <div class="nav__title">Accessibility</div>
   <div class="nav__sub">v0.1 — WCAG 2.2 AA<br>May 12, 2026</div>
@@ -174,14 +174,14 @@ a{color:var(--mj-blue)}
 <main class="main">
 
   <header class="hero">
-    <img class="hero__lando" src="assets/landos/molde-jarnvare-positive.png" alt="Molde Jarnvare">
+    <img class="hero__logo" src="assets/logos/molde-jarnvare-positive.png" alt="Molde Jarnvare">
     <div class="hero__overline">Accessibility · v0.1 · May 12, 2026</div>
     <h1 class="hero__title">Usable for <em>everyone</em> — in practice.</h1>
     <p class="hero__lead">
       Accessibility is not a shell bolted on at the end — it is baked into the tokens,
       components, and page templates from the first line of code. This document explains
       how the Molde Jarnvare site meets WCAG 2.2 AA, what is established as the baseline, and
-      where we stol have work to do before production launch.
+      where we still have work to do before production launch.
     </p>
     <div class="hero__meta">
       <div class="hero__meta-item">Standard<strong>WCAG 2.2 AA</strong></div>
@@ -211,7 +211,7 @@ a{color:var(--mj-blue)}
 
     <div class="kvp"><span class="kvp__key">Main standard</span><span class="kvp__val">WCAG 2.2 level AA — all 32 applicable success criteria</span></div>
     <div class="kvp"><span class="kvp__key">Media targets</span><span class="kvp__val">Norwegian B2B context (lang="nb"), desktop + mobile</span></div>
-    <div class="kvp"><span class="kvp__key">Assistive technolandy</span><span class="kvp__val">NVDA + Firefox, VoiceOver + Safari, Tab-only keyboard, 200&nbsp;% zoom</span></div>
+    <div class="kvp"><span class="kvp__key">Assistive technology</span><span class="kvp__val">NVDA + Firefox, VoiceOver + Safari, Tab-only keyboard, 200&nbsp;% zoom</span></div>
     <div class="kvp"><span class="kvp__key">Out of scope</span><span class="kvp__val">AAA level (target, not requirement), PDF user documents (separate process)</span></div>
 
     <h3>The new 2.2 criteria</h3>
@@ -248,13 +248,13 @@ a{color:var(--mj-blue)}
           <td><code>3.3.7</code> Redundant Entry</td>
           <td>The user should not have to enter the same info twice in the same flow.</td>
           <td><span class="pass">Pass</span></td>
-          <td>Checkout pre-fills the address from the account, offers a "Use invoice address as delivery address" tandgle, and remembers the PO reference from the previous order.</td>
+          <td>Checkout pre-fills the address from the account, offers a "Use invoice address as delivery address" toggle, and remembers the PO reference from the previous order.</td>
         </tr>
         <tr>
           <td><code>3.3.8</code> Accessible Authentication (Minimum)</td>
-          <td>Authentication must not require a candnitive test (recandnise images, repeat nonsense text).</td>
+          <td>Authentication must not require a cognitive test (recognise images, repeat nonsense text).</td>
           <td><span class="pass">Pass</span></td>
-          <td>Landin uses email + password (standard), supports password managers via <code>autocomplete</code>. No CAPTCHA.</td>
+          <td>Login uses email + password (standard), supports password managers via <code>autocomplete</code>. No CAPTCHA.</td>
         </tr>
       </tbody>
     </table>
@@ -269,7 +269,7 @@ a{color:var(--mj-blue)}
     <ul>
       <li><strong>Product images</strong> get alt text describing the product, not the photo. <code>alt="Hilti TE 6-A36 borhammer 36V"</code> — not <code>alt="produktbilde"</code>.</li>
       <li><strong>Decorative images</strong> use empty <code>alt=""</code> so screen readers skip them.</li>
-      <li><strong>Landos</strong> use <code>alt="Molde Jarnvare"</code> — the company name, not the word "lando".</li>
+      <li><strong>Logos</strong> use <code>alt="Molde Jarnvare"</code> — the company name, not the word "logo".</li>
       <li><strong>Information-bearing icons</strong> (cart, account) are wrapped in a button/link with <code>aria-label</code>. Inline SVG inherits <code>currentColor</code> for correct theming.</li>
       <li><strong>Icons next to text</strong> are marked <code>aria-hidden="true"</code> — the text already conveys the meaning.</li>
       <li><strong>CSS background images with content</strong> get <code>role="img"</code> + <code>aria-label</code> on the container (e.g. hero banner).</li>
@@ -278,7 +278,7 @@ a{color:var(--mj-blue)}
     <div class="callout">
       <strong>Code example — button without visible text:</strong><br>
       <code>&lt;button class="site-header__action" aria-label="Handlekurv (3)"&gt;🛒&lt;/button&gt;</code><br>
-      Skjermleseren leser «Handlekurv 3, knapp» — not «handlevandn-emoji, knapp».
+      Skjermleseren leser «Handlekurv 3, knapp» — not «handlevogn-emoji, knapp».
     </div>
 
     <h3>What we test</h3>
@@ -295,7 +295,7 @@ a{color:var(--mj-blue)}
     <table class="tbl">
       <thead><tr><th>Landmark</th><th>HTML</th><th>Content</th></tr></thead>
       <tbody>
-        <tr><td>Banner</td><td><code>&lt;header class="site-header"&gt;</code></td><td>Lando, search, mini-cart, account</td></tr>
+        <tr><td>Banner</td><td><code>&lt;header class="site-header"&gt;</code></td><td>Logo, search, mini-cart, account</td></tr>
         <tr><td>Navigation</td><td><code>&lt;nav aria-label="Hovedkategorier"&gt;</code></td><td>Category row</td></tr>
         <tr><td>Main</td><td><code>&lt;main&gt;</code></td><td>Page content</td></tr>
         <tr><td>Search</td><td><code>&lt;form role="search"&gt;</code></td><td>Search field and predictive results</td></tr>
@@ -304,7 +304,7 @@ a{color:var(--mj-blue)}
     </table>
 
     <h3>Heading hierarchy</h3>
-    <p>Every page has one <code>&lt;h1&gt;</code> (the page title), and sub-sections follow h2 → h3 → h4 without skipping levels. We <strong>never</strong> use headings for typandraphic effect — for that purpose <code>.t-h2</code> utoity classes exist that match the h2 size visually without being semantic headings.</p>
+    <p>Every page has one <code>&lt;h1&gt;</code> (the page title), and sub-sections follow h2 → h3 → h4 without skipping levels. We <strong>never</strong> use headings for typographic effect — for that purpose <code>.t-h2</code> utility classes exist that match the h2 size visually without being semantic headings.</p>
 
     <div class="callout">
       <strong>Example — PDP:</strong><br>
@@ -362,10 +362,10 @@ a{color:var(--mj-blue)}
         <tr><td>Buttons (<code>.btn</code>)</td><td>Into focus order</td><td>Activates</td><td>—</td><td>—</td></tr>
         <tr><td>Links (<code>.link</code>)</td><td>Into focus order</td><td>Follows</td><td>—</td><td>—</td></tr>
         <tr><td>Input / textarea / select</td><td>Into field</td><td>Submit form (Enter only)</td><td>—</td><td>Arrow in select opens list</td></tr>
-        <tr><td>Checkbox / radio</td><td>Into group</td><td>Tandgle</td><td>—</td><td>Arrow moves between radios in a group</td></tr>
+        <tr><td>Checkbox / radio</td><td>Into group</td><td>Toggle</td><td>—</td><td>Arrow moves between radios in a group</td></tr>
         <tr><td>Tabs (<code>.tabs__tab</code>)</td><td>Into the tabs</td><td>Activates</td><td>—</td><td>Arrow left/right switches tab</td></tr>
-        <tr><td>Accordion (<code>&lt;details&gt;</code>)</td><td>On to summary</td><td>Tandgle open/closed</td><td>—</td><td>—</td></tr>
-        <tr><td>Modal (<code>&lt;dialand&gt;</code>)</td><td>Focus moves into the dialand on open</td><td>—</td><td>Close the modal</td><td>—</td></tr>
+        <tr><td>Accordion (<code>&lt;details&gt;</code>)</td><td>On to summary</td><td>Toggle open/closed</td><td>—</td><td>—</td></tr>
+        <tr><td>Modal (<code>&lt;dialog&gt;</code>)</td><td>Focus moves into the dialog on open</td><td>—</td><td>Close the modal</td><td>—</td></tr>
         <tr><td>Drawer</td><td>Focus moves in on open (JS trap)</td><td>—</td><td>Close drawer</td><td>—</td></tr>
         <tr><td>Predictive search</td><td>Into input</td><td>Choose highlighted suggestion</td><td>Close dropdown</td><td>Arrow up/down navigates results</td></tr>
         <tr><td>Number stepper</td><td>Into the quantity input</td><td>—</td><td>—</td><td>Arrow up/down increases/decreases</td></tr>
@@ -375,7 +375,7 @@ a{color:var(--mj-blue)}
     <h3>Focus trap for overlays</h3>
     <p>When an overlay (modal or drawer) is open, <kbd class="kbd">Tab</kbd> must stay inside the overlay — otherwise the user cannot see what is focused outside.</p>
     <ul>
-      <li><strong>Modal</strong> uses the native <code>&lt;dialand&gt;</code> element — the focus trap and <kbd class="kbd">Esc</kbd>close are provided for free by the browser.</li>
+      <li><strong>Modal</strong> uses the native <code>&lt;dialog&gt;</code> element — the focus trap and <kbd class="kbd">Esc</kbd>close are provided for free by the browser.</li>
       <li><strong>Drawer</strong> is built on <code>div</code> and requires JS for the focus trap. The implementation lives in <code>src/components/drawer/</code>; new JS must verify that <kbd class="kbd">Tab</kbd> cycles within the drawer and that <kbd class="kbd">Esc</kbd> closes it.</li>
     </ul>
 
@@ -416,7 +416,7 @@ a{color:var(--mj-blue)}
   <section class="section section--alt" id="target">
     <div class="section__num">08 / Operable</div>
     <h2 class="section__title">Touch targets (2.5.8 — new in 2.2)</h2>
-    <p class="section__lead">WCAG 2.2 AA requires that click/touch targets be at least 24×24 CSS pixels. We aim higher — 44 px default — in line with Apple's and Goandle's recommendations.</p>
+    <p class="section__lead">WCAG 2.2 AA requires that click/touch targets be at least 24×24 CSS pixels. We aim higher — 44 px default — in line with Apple's and Google's recommendations.</p>
 
     <table class="tbl">
       <thead><tr><th>Component</th><th>Height</th><th>WCAG 2.5.8 AA (24&nbsp;px)</th><th>WCAG 2.5.5 AAA (44&nbsp;px)</th></tr></thead>
@@ -480,10 +480,10 @@ a{color:var(--mj-blue)}
 
   <section class="section" id="autentisering">
     <div class="section__num">11 / Understandable</div>
-    <h2 class="section__title">Autentisering uten kandnitiv test (3.3.8 — ny i 2.2)</h2>
+    <h2 class="section__title">Autentisering uten kognitiv test (3.3.8 — ny i 2.2)</h2>
     <p class="section__lead">WCAG 2.2 forbids authentication that requires the user to remember, calculate, or transcribe something — unless an accessible alternative exists.</p>
 
-    <h3>Vår landin-praksis</h3>
+    <h3>Vår login-praksis</h3>
     <div class="kvp"><span class="kvp__key">Method</span><span class="kvp__val">Email + password. Optionally magic link / SSO if you want that later.</span></div>
     <div class="kvp"><span class="kvp__key"><code>autocomplete</code></span><span class="kvp__val"><code>email</code> and <code>current-password</code> — password managers fill in.</span></div>
     <div class="kvp"><span class="kvp__key">CAPTCHA</span><span class="kvp__val">Not in use. If we get bot problems, we evaluate hCaptcha with an accessible audio alternative.</span></div>
@@ -494,16 +494,16 @@ a{color:var(--mj-blue)}
   <section class="section section--alt" id="aria">
     <div class="section__num">12 / Robust</div>
     <h2 class="section__title">Name, role, value (4.1.2)</h2>
-    <p class="section__lead">For at en skjermleser skal forstå et UI-element trenger den tre ting: hva det heter, hva slags element det er, and hvilken tostand det er i.</p>
+    <p class="section__lead">For at en skjermleser skal forstå et UI-element trenger den tre ting: hva det heter, hva slags element det er, and hvilken tilstand det er i.</p>
 
     <h3>Consistent use in the design system</h3>
     <ul>
-      <li><strong>Native first.</strong> We use <code>&lt;button&gt;</code>, <code>&lt;a&gt;</code>, <code>&lt;input&gt;</code>, <code>&lt;select&gt;</code>, <code>&lt;dialand&gt;</code>, <code>&lt;details&gt;</code> — not «div med onclick». Native elementer har riktig rolle gratis.</li>
-      <li><strong><code>aria-label</code></strong> på interaktive elementer uten synlig tekst (ikon-knapper, lenkete landoer).</li>
+      <li><strong>Native first.</strong> We use <code>&lt;button&gt;</code>, <code>&lt;a&gt;</code>, <code>&lt;input&gt;</code>, <code>&lt;select&gt;</code>, <code>&lt;dialog&gt;</code>, <code>&lt;details&gt;</code> — not «div med onclick». Native elementer har riktig rolle gratis.</li>
+      <li><strong><code>aria-label</code></strong> på interaktive elementer uten synlig tekst (ikon-knapper, lenkete logoer).</li>
       <li><strong><code>aria-current="page"</code></strong> på aktiv nav-lenke and aktiv breadcrumb.</li>
-      <li><strong><code>aria-pressed</code></strong> på tandgle-knapper som view-switcher.</li>
+      <li><strong><code>aria-pressed</code></strong> på toggle-knapper som view-switcher.</li>
       <li><strong><code>aria-selected</code></strong> on the active tab.</li>
-      <li><strong><code>aria-expanded</code></strong> på elementer som åpner panel (eks. mobile-meny-tandgle).</li>
+      <li><strong><code>aria-expanded</code></strong> på elementer som åpner panel (eks. mobile-meny-toggle).</li>
       <li><strong><code>aria-live="polite"</code></strong> på toast/snackbar-regionen and handlekurv-counter — så endringer annonseres uten å avbryte.</li>
       <li><strong><code>aria-live="assertive"</code></strong> on critical error messages that block the flow.</li>
     </ul>
@@ -512,14 +512,14 @@ a{color:var(--mj-blue)}
     <table class="tbl">
       <thead><tr><th>Component</th><th>Role</th><th>Name</th><th>State</th></tr></thead>
       <tbody>
-        <tr><td>Site-header lando</td><td>Link</td><td>«Molde Jarnvare» (aria-label)</td><td>—</td></tr>
+        <tr><td>Site-header logo</td><td>Link</td><td>«Molde Jarnvare» (aria-label)</td><td>—</td></tr>
         <tr><td>Cart button</td><td>Button</td><td>"Cart (3)" (aria-label)</td><td>aria-live on the count</td></tr>
         <tr><td>Search field</td><td>form role="search" + input</td><td>"Search products" (label)</td><td>aria-expanded when the dropdown is open</td></tr>
         <tr><td>Tab</td><td>button</td><td>The tab title</td><td>aria-selected</td></tr>
         <tr><td>Filter chip (remove)</td><td>Button</td><td>"Remove M8" (aria-label)</td><td>—</td></tr>
         <tr><td>View switcher</td><td>Button</td><td>"Grid view" (aria-label)</td><td>aria-pressed</td></tr>
         <tr><td>Pagination button</td><td>Button</td><td>Page number or "Next/Previous"</td><td>aria-current="page" on active</td></tr>
-        <tr><td>Modal (dialand)</td><td>dialand (native)</td><td>aria-labelledby on h2</td><td>open attribute</td></tr>
+        <tr><td>Modal (dialog)</td><td>dialog (native)</td><td>aria-labelledby on h2</td><td>open attribute</td></tr>
       </tbody>
     </table>
   </section>
@@ -527,7 +527,7 @@ a{color:var(--mj-blue)}
   <section class="section" id="motion">
     <div class="section__num">13 / Robust</div>
     <h2 class="section__title">Bevegelse, parallax and blink</h2>
-    <p class="section__lead">Animasjoner skal være subtoe, formålsrettede and fullt valgfrie for brukere som er sensitive to bevegelse.</p>
+    <p class="section__lead">Animasjoner skal være subtile, formålsrettede and fullt valgfrie for brukere som er sensitive to bevegelse.</p>
 
     <h3>Reduced motion</h3>
     <p>We respect <code>prefers-reduced-motion: reduce</code> globally in <code>src/styles/base/reset.css</code>:</p>
@@ -557,7 +557,7 @@ a{color:var(--mj-blue)}
       <span class="crit-card__id">1.4.3</span>
       <div class="crit-card__text">
         <strong>Status pill <code>--warning</code>: contrast raised from 2.86:1 to 5.68:1</strong>
-        <code>--mj-warning</code> darkened from <code>#B8851F</code> to <code>#7A580E</code> i <code>src/styles/tokens/colors.css</code> (12. mai 2026). Forplanter seg automatisk to status-pill, alert, badge, stock-indicator and prandress-bar.
+        <code>--mj-warning</code> darkened from <code>#B8851F</code> to <code>#7A580E</code> i <code>src/styles/tokens/colors.css</code> (12. mai 2026). Forplanter seg automatisk to status-pill, alert, badge, stock-indicator and progress-bar.
       </div>
       <span class="pass">Resolved 12.05</span>
     </div>
@@ -567,11 +567,11 @@ a{color:var(--mj-blue)}
       <span class="crit-card__id">2.4.11</span>
       <div class="crit-card__text">
         <strong>The drawer component lacks a documented JS focus trap</strong>
-        Native <code>&lt;dialand&gt;</code> uses the browser's focus trap. <code>.drawer</code> er custom and krever eksplisitt fokuslås + <kbd class="kbd">Esc</kbd>handling when it opens.
+        Native <code>&lt;dialog&gt;</code> uses the browser's focus trap. <code>.drawer</code> er custom and krever eksplisitt fokuslås + <kbd class="kbd">Esc</kbd>handling when it opens.
       </div>
       <span class="partial">Major</span>
     </div>
-    <p style="font-size:13px;color:var(--mj-ink-2);margin-top:8px"><strong>Recommendation:</strong> Legg to en liten focus-trap-utoity i drawer-JS når den implementeres i Dynamicweb-laget. Pattern-referanse: <a href="https://www.w3.org/WAI/ARIA/apg/patterns/dialand-modal/">WAI ARIA APG — Dialand</a>.</p>
+    <p style="font-size:13px;color:var(--mj-ink-2);margin-top:8px"><strong>Recommendation:</strong> Legg til en liten focus-trap-utility i drawer-JS når den implementeres i Dynamicweb-laget. Pattern-referanse: <a href="https://www.w3.org/WAI/ARIA/apg/patterns/dialog-modal/">WAI ARIA APG — Dialog</a>.</p>
 
     <div class="crit-card" style="margin-top:24px">
       <span class="crit-card__id">4.1.3</span>
@@ -595,8 +595,8 @@ a{color:var(--mj-blue)}
 
   <section class="section" id="testing">
     <div class="section__num">15 / Quality</div>
-    <h2 class="section__title">Slik tester vi togjengelighet</h2>
-    <p class="section__lead">Automatisk testing fanger rundt 30&nbsp;% av reelle togjengelighetsproblemer. Resten krever manuell verifisering. Vi gjør begge deler i et fast oppsett.</p>
+    <h2 class="section__title">Slik tester vi tilgjengelighet</h2>
+    <p class="section__lead">Automatisk testing fanger rundt 30&nbsp;% av reelle tilgjengelighetsproblemer. Resten krever manuell verifisering. Vi gjør begge deler i et fast oppsett.</p>
 
     <div class="checks">
       <div class="check">
@@ -617,7 +617,7 @@ a{color:var(--mj-blue)}
       <div class="check">
         <div class="check__head">Manual — zoom</div>
         <h4 class="check__title">200% browser zoom</h4>
-        <p class="check__desc">Layout skal not bryte. Horisontal scroll er not OK. Klikkflater må fortsatt være togjengelige.</p>
+        <p class="check__desc">Layout skal not bryte. Horisontal scroll er not OK. Klikkflater må fortsatt være tilgjengelige.</p>
       </div>
       <div class="check">
         <div class="check__head">Manual — contrast</div>
@@ -635,14 +635,14 @@ a{color:var(--mj-blue)}
     <ul>
       <li><strong>Every pull request</strong> that introduces a new component or changes tokens: automatic axe run + reviewer's manual keyboard check.</li>
       <li><strong>Every release</strong>: full manual walkthrough of all 11 page templates.</li>
-      <li><strong>After major refactoring</strong>: full skjermleser-gjennomgang av kritiske flows (landin, kjøp, kasse, min konto).</li>
+      <li><strong>After major refactoring</strong>: full skjermleser-gjennomgang av kritiske flows (login, kjøp, kasse, min konto).</li>
     </ul>
   </section>
 
   <section class="section section--alt" id="oppsummering">
     <div class="section__num">16 / Summary</div>
     <h2 class="section__title">Status and videre arbeid</h2>
-    <p class="section__lead">Designsystemet er bygget med togjengelighet som forutsetning, and møter WCAG 2.2 AA på 31 av 32 anvendelige kriterier per i dag.</p>
+    <p class="section__lead">Designsystemet er bygget med tilgjengelighet som forutsetning, and møter WCAG 2.2 AA på 31 av 32 anvendelige kriterier per i dag.</p>
 
     <div class="callout callout--success">
       <strong>✓ Headline status:</strong> All AA findings closed as of May 12, 2026. Two remaining "major" findings (drawer focus trap + toast aria-live) are JS work handled in the Dynamicweb integration.
@@ -652,7 +652,7 @@ a{color:var(--mj-blue)}
     <ul>
       <li>Semantisk HTML5 med komplette landmarks on all 11 page templates</li>
       <li>Global <code>:focus-visible</code> focus ring from a single token</li>
-      <li>Native <code>&lt;dialand&gt;</code>, <code>&lt;details&gt;</code> and form-elementer der mulig</li>
+      <li>Native <code>&lt;dialog&gt;</code>, <code>&lt;details&gt;</code> and form-elementer der mulig</li>
       <li><code>prefers-reduced-motion</code> respected globally</li>
       <li><code>lang="nb"</code>, correct <code>aria-current</code>, <code>aria-pressed</code>, <code>aria-label</code>pattern</li>
       <li>Verifiserte kontraster på alle brand- and UI-tokens</li>
@@ -669,9 +669,9 @@ a{color:var(--mj-blue)}
 
     <h3>Spørsmål to dere</h3>
     <ol>
-      <li>Skal vi sikte på <strong>AAA-nivå</strong> på utvalgte kriterier (kontrast 7&nbsp;:&nbsp;1, mål 44&nbsp;px, ingen tidsavbrudd)? Det vil bety at <code>.btn--xs</code> and <code>.btn--sm</code> kun brukes i kontekster med tostrekkelig spacing.</li>
-      <li>Skal vi engasjere ekstern <strong>togjengelighetsrevisor</strong> før v1.0, eller stoler på egen audit + axe-CI?</li>
-      <li>Skal vi toby <strong>dark mode</strong> som togjengelighets-feature? Noen brukere med astigmatisme/migrene foretrekker det. Ikke prioritert i MVP, men kan reddes ved hjelp av tokens.</li>
+      <li>Skal vi sikte på <strong>AAA-nivå</strong> på utvalgte kriterier (kontrast 7&nbsp;:&nbsp;1, mål 44&nbsp;px, ingen tidsavbrudd)? Det vil bety at <code>.btn--xs</code> and <code>.btn--sm</code> kun brukes i kontekster med tilstrekkelig spacing.</li>
+      <li>Skal vi engasjere ekstern <strong>tilgjengelighetsrevisor</strong> før v1.0, eller stoler på egen audit + axe-CI?</li>
+      <li>Skal vi toby <strong>dark mode</strong> som tilgjengelighets-feature? Noen brukere med astigmatisme/migrene foretrekker det. Ikke prioritert i MVP, men kan reddes ved hjelp av tokens.</li>
     </ol>
   </section>
 
