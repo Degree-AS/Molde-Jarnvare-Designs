@@ -1,0 +1,105 @@
+/**
+ * Molde Jarnvare designsystem — global stylesheet
+ *
+ * Importer denne ÉN gang øverst i applikasjonens root layout.
+ * Rekkefølgen er signifikant: tokens → base → komponenter.
+ */
+
+/* 1. Tokens (CSS custom properties) */
+@import "./tokens/index.css";
+
+/* 2. Base (reset, html/body, typography utilities) */
+@import "./base/index.css";
+
+/* 3. Komponenter — eksplisitt liste, samme rekkefølge som §12-§14 i spec */
+
+/* Primitives (§12) */
+@import "../components/button/button.css";
+@import "../components/input/input.css";
+@import "../components/number-stepper/number-stepper.css";
+@import "../components/select/select.css";
+@import "../components/textarea/textarea.css";
+@import "../components/checkbox/checkbox.css";
+@import "../components/radio/radio.css";
+@import "../components/switch/switch.css";
+@import "../components/badge/badge.css";
+@import "../components/tag/tag.css";
+@import "../components/status-pill/status-pill.css";
+@import "../components/progress-bar/progress-bar.css";
+@import "../components/spinner/spinner.css";
+@import "../components/skeleton/skeleton.css";
+@import "../components/divider/divider.css";
+@import "../components/link/link.css";
+
+/* Composites (§13) */
+@import "../components/card/card.css";
+@import "../components/product-card/product-card.css";
+@import "../components/category-card/category-card.css";
+@import "../components/person-card/person-card.css";
+@import "../components/data-table/data-table.css";
+@import "../components/pagination/pagination.css";
+@import "../components/tabs/tabs.css";
+@import "../components/breadcrumb/breadcrumb.css";
+@import "../components/stepper/stepper.css";
+@import "../components/accordion/accordion.css";
+@import "../components/tooltip/tooltip.css";
+@import "../components/modal/modal.css";
+@import "../components/drawer/drawer.css";
+@import "../components/toast/toast.css";
+@import "../components/banner/banner.css";
+@import "../components/empty-state/empty-state.css";
+@import "../components/loading-state/loading-state.css";
+@import "../components/error-state/error-state.css";
+
+/* Hero (forsidefelt) */
+@import "../components/hero/hero.css";
+
+/* E-commerce (§14) */
+@import "../components/product-gallery/product-gallery.css";
+@import "../components/variant-selector/variant-selector.css";
+@import "../components/price-display/price-display.css";
+@import "../components/stock-indicator/stock-indicator.css";
+@import "../components/stock-notify/stock-notify.css";
+@import "../components/add-to-cart/add-to-cart.css";
+@import "../components/request-quote/request-quote.css";
+@import "../components/mini-cart/mini-cart.css";
+@import "../components/cart-line/cart-line.css";
+@import "../components/cart-summary/cart-summary.css";
+@import "../components/promo-code/promo-code.css";
+@import "../components/quick-order/quick-order.css";
+@import "../components/reorder/reorder.css";
+@import "../components/quote-view/quote-view.css";
+@import "../components/sales-impersonation/sales-impersonation.css";
+@import "../components/sortilog/sortilog.css";
+@import "../components/two-bin-dashboard/two-bin-dashboard.css";
+@import "../components/datasheet-archive/datasheet-archive.css";
+@import "../components/address-form/address-form.css";
+@import "../components/address-book/address-book.css";
+@import "../components/po-reference/po-reference.css";
+@import "../components/order-summary/order-summary.css";
+@import "../components/order-confirmation/order-confirmation.css";
+@import "../components/account-dashboard/account-dashboard.css";
+@import "../components/order-history/order-history.css";
+@import "../components/filter-sidebar/filter-sidebar.css";
+@import "../components/plp-layout/plp-layout.css";
+@import "../components/commerce-layout/commerce-layout.css";
+@import "../components/filter-chips/filter-chips.css";
+@import "../components/sort-dropdown/sort-dropdown.css";
+@import "../components/view-switcher/view-switcher.css";
+@import "../components/search-bar/search-bar.css";
+@import "../components/predictive-search/predictive-search.css";
+
+/* Site shell (§15.1) */
+@import "../components/site-header/site-header.css";
+@import "../components/megamenu/megamenu.css";
+@import "../components/site-footer/site-footer.css";
+
+/* Patterns (§16) */
+@import "../patterns/form-validation.css";
+@import "../patterns/print.css";
+
+/* Nye komponenter — v2-utvidelse */
+@import "../components/wishlist/wishlist.css";
+@import "../components/saved-carts/saved-carts.css";
+@import "../components/news-card/news-card.css";
+@import "../components/news-article/news-article.css";

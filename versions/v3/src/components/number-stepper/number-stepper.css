@@ -1,0 +1,62 @@
+/**
+ * Number stepper / quantity stepper (§12.3)
+ * For B2B: støtter multiplum (boks à 200 stk) og enhet ved siden.
+ */
+
+.qty-stepper {
+  display: inline-flex;
+  align-items: stretch;
+  border: var(--bw-1) solid var(--color-border-default);
+  border-radius: var(--r-md);
+  background: var(--color-bg-surface);
+  overflow: hidden;
+}
+
+.qty-stepper:focus-within {
+  border-color: var(--color-border-brand);
+  box-shadow: var(--focus-ring);
+}
+
+.qty-stepper__btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  font-size: var(--fs-h4);
+  font-weight: var(--fw-semibold);
+  color: var(--color-text-primary);
+  background: transparent;
+  border: 0;
+  cursor: pointer;
+}
+.qty-stepper__btn:hover { background: var(--mj-surface-1); }
+.qty-stepper__btn:disabled { color: var(--color-text-tertiary); cursor: not-allowed; }
+
+.qty-stepper__input {
+  width: 60px;
+  text-align: center;
+  font-family: var(--ff-mono);
+  font-size: var(--fs-body);
+  font-variant-numeric: tabular-nums;
+  color: var(--color-text-primary);
+  background: transparent;
+  border: 0;
+  border-inline: var(--bw-1) solid var(--color-border-default);
+  appearance: textfield;
+}
+.qty-stepper__input::-webkit-outer-spin-button,
+.qty-stepper__input::-webkit-inner-spin-button { -webkit-appearance: none; margin: 0; }
+.qty-stepper__input:focus-visible { outline: none; }
+
+.qty-stepper__unit {
+  display: inline-flex;
+  align-items: center;
+  padding-inline: var(--s-3);
+  font-size: var(--fs-body-sm);
+  color: var(--color-text-secondary);
+  background: var(--mj-surface-1);
+}
+
+.qty-stepper--compact .qty-stepper__btn { width: 32px; height: 32px; }
+.qty-stepper--compact .qty-stepper__input { width: 48px; }

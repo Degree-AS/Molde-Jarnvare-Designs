@@ -1,0 +1,31 @@
+/**
+ * Stock notification "Varsle meg" (§14.6)
+ */
+
+.stock-notify {
+  display: flex;
+  flex-direction: column;
+  gap: var(--s-3);
+  padding: var(--s-5);
+  background: var(--color-bg-brand-soft);
+  border: var(--bw-1) solid var(--mj-blue-30);
+  border-radius: var(--r-md);
+}
+
+.stock-notify__title {
+  font-size: var(--fs-body);
+  font-weight: var(--fw-semibold);
+  color: var(--mj-blue);
+  margin: 0;
+}
+
+.stock-notify__desc {
+  font-size: var(--fs-body-sm);
+  color: var(--color-text-primary);
+}
+
+.stock-notify__form {
+  display: flex;
+  gap: var(--s-2);
+}
+.stock-notify__form .input { flex: 1; }

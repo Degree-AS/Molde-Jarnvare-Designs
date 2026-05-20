@@ -1,0 +1,57 @@
+/**
+ * Quick order pad (§14.13) — hurtigbestilling med artikkelnummer.
+ */
+
+.quick-order {
+  display: flex;
+  flex-direction: column;
+  gap: var(--s-4);
+  padding: var(--s-6);
+  background: var(--color-bg-surface);
+  border: var(--bw-1) solid var(--color-border-soft);
+  border-radius: var(--r-md);
+}
+
+.quick-order__title {
+  font-size: var(--fs-h4);
+  font-weight: var(--fw-bold);
+  margin: 0;
+}
+
+.quick-order__desc {
+  font-size: var(--fs-body-sm);
+  color: var(--color-text-secondary);
+}
+
+.quick-order__row {
+  display: grid;
+  grid-template-columns: 1fr 120px auto;
+  gap: var(--s-2);
+  align-items: center;
+}
+
+.quick-order__row .input { font-family: var(--ff-mono); font-variant-numeric: tabular-nums; }
+
+.quick-order__remove {
+  background: transparent;
+  border: 0;
+  font-size: var(--fs-h4);
+  color: var(--color-text-secondary);
+  cursor: pointer;
+}
+
+.quick-order__add-row {
+  background: transparent;
+  border: var(--bw-1) dashed var(--color-border-default);
+  border-radius: var(--r-sm);
+  padding: var(--s-3);
+  font-size: var(--fs-body-sm);
+  color: var(--color-text-secondary);
+  cursor: pointer;
+}
+.quick-order__add-row:hover { border-color: var(--color-border-brand); color: var(--color-text-link); }
+
+.quick-order__paste {
+  font-size: var(--fs-caption);
+  color: var(--color-text-link);
+}

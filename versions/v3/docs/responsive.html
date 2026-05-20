@@ -1,0 +1,494 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Molde Jarnvare — Responsive preview</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Source+Sans+3:wght@400;500;600;700;900&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --mj-blue: #0D2B7E;
+      --mj-orange: #DB993D;
+      --mj-ink: #35373E;
+      --mj-ink-2: #5D5F65;
+      --mj-ink-3: #85878B;
+      --mj-line-soft: #E0E0E0;
+      --mj-line: #C9CBCF;
+      --mj-surface-0: #F9F9F9;
+      --mj-surface-1: #F1F1F2;
+      --mj-white: #FFFFFF;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; }
+    html, body { margin: 0; padding: 0; }
+    body {
+      font-family: "Source Sans 3", -apple-system, "Segoe UI", Roboto, sans-serif;
+      color: var(--mj-ink);
+      background: var(--mj-surface-0);
+      line-height: 1.6;
+    }
+
+    .wrap {
+      max-width: 1280px;
+      margin: 0 auto;
+      padding: 64px 32px 96px;
+    }
+
+    /* ─── Header ─────────────────────────────────────────────────── */
+    .eyebrow {
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--mj-blue);
+    }
+    h1 {
+      font-size: clamp(32px, 4vw, 48px);
+      font-weight: 900;
+      line-height: 1.05;
+      letter-spacing: -0.01em;
+      margin: 16px 0 24px;
+    }
+    .lead {
+      font-size: 18px;
+      color: var(--mj-ink-2);
+      max-width: 66ch;
+      margin: 0 0 32px;
+    }
+
+    /* ─── Breakpoint legend ──────────────────────────────────────── */
+    .legend {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 16px;
+      padding: 16px 24px;
+      background: var(--mj-white);
+      border: 1px solid var(--mj-line-soft);
+      border-radius: 8px;
+      margin-bottom: 56px;
+      font-size: 14px;
+    }
+    .legend__row {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .legend__dot {
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      flex-shrink: 0;
+    }
+    .legend__dot--mobile  { background: var(--mj-orange); }
+    .legend__dot--tablet  { background: #8A6BC4; }
+    .legend__dot--desktop { background: var(--mj-blue); }
+    .legend__label {
+      font-weight: 600;
+    }
+    .legend__meta {
+      color: var(--mj-ink-3);
+      font-family: "JetBrains Mono", ui-monospace, monospace;
+      font-size: 13px;
+    }
+
+    /* ─── Page section ───────────────────────────────────────────── */
+    .page-row {
+      margin-bottom: 72px;
+    }
+    .page-row__header {
+      display: flex;
+      align-items: baseline;
+      gap: 16px;
+      margin-bottom: 16px;
+      padding-bottom: 12px;
+      border-bottom: 1px solid var(--mj-line-soft);
+    }
+    .page-row__title {
+      font-size: 22px;
+      font-weight: 700;
+      margin: 0;
+    }
+    .page-row__meta {
+      font-size: 13px;
+      color: var(--mj-ink-3);
+      font-family: "JetBrains Mono", ui-monospace, monospace;
+    }
+    .page-row__desc {
+      font-size: 15px;
+      color: var(--mj-ink-2);
+      margin: 0 0 24px;
+      max-width: 70ch;
+    }
+
+    /* ─── Device row ─────────────────────────────────────────────── */
+    .devices {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 24px;
+      align-items: start;
+    }
+    .device {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+    .device__label {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 13px;
+      color: var(--mj-ink-2);
+    }
+    .device__label-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      flex-shrink: 0;
+    }
+    .device__label-name {
+      font-weight: 600;
+      color: var(--mj-ink);
+    }
+    .device__label-meta {
+      color: var(--mj-ink-3);
+      font-family: "JetBrains Mono", ui-monospace, monospace;
+      font-size: 12px;
+      margin-left: auto;
+    }
+
+    /*
+     * Each device frame renders the page at its TRUE viewport width
+     * (in the iframe), then visually shrinks via transform: scale so
+     * three tiles fit side by side. The label above states the true
+     * viewport width the iframe is rendered at.
+     *
+     * Fixed pixel widths keep the math simple. The frame container
+     * sizes itself, the iframe inside is at full source width and
+     * uses transform: scale to fit visually.
+     */
+    .device__frame {
+      position: relative;
+      background: var(--mj-white);
+      border: 1px solid var(--mj-line);
+      border-radius: 8px;
+      overflow: hidden;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.04);
+    }
+    .device__frame iframe {
+      display: block;
+      border: 0;
+      transform-origin: top left;
+    }
+
+    /* Mobile: 375 × 700 source viewport, displayed at 230 × 430 (scale 0.613) */
+    .device--mobile .device__label-dot { background: var(--mj-orange); }
+    .device--mobile .device__frame {
+      width: 230px;
+      height: 430px;
+    }
+    .device--mobile .device__frame iframe {
+      width: 375px;
+      height: 700px;
+      transform: scale(0.613);
+    }
+
+    /* Tablet: 768 × 700 source viewport, displayed at 340 × 310 (scale 0.443) */
+    .device--tablet .device__label-dot { background: #8A6BC4; }
+    .device--tablet .device__frame {
+      width: 340px;
+      height: 310px;
+    }
+    .device--tablet .device__frame iframe {
+      width: 768px;
+      height: 700px;
+      transform: scale(0.443);
+    }
+
+    /* Desktop: 1280 × 700 source viewport, displayed at 540 × 295 (scale 0.422) */
+    .device--desktop .device__label-dot { background: var(--mj-blue); }
+    .device--desktop .device__frame {
+      width: 540px;
+      height: 295px;
+    }
+    .device--desktop .device__frame iframe {
+      width: 1280px;
+      height: 700px;
+      transform: scale(0.422);
+    }
+
+    /*
+     * On narrow viewers (< 1200 px), tiles stack rather than fight for
+     * space. The auto-fit grid handles that — minmax(280px, 1fr) means
+     * each tile gets at least 280 px or wraps to the next row.
+     */
+
+    /* ─── Footer note ────────────────────────────────────────────── */
+    .footer-note {
+      margin-top: 48px;
+      padding-top: 24px;
+      border-top: 1px solid var(--mj-line-soft);
+      font-size: 14px;
+      color: var(--mj-ink-3);
+    }
+    .footer-note a {
+      color: var(--mj-blue);
+    }
+
+    /* ─── Action bar above first row ─────────────────────────────── */
+    .actions {
+      display: flex;
+      gap: 12px;
+      margin-bottom: 32px;
+      flex-wrap: wrap;
+    }
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 10px 18px;
+      font-size: 14px;
+      font-weight: 600;
+      color: var(--mj-blue);
+      background: var(--mj-white);
+      border: 1px solid var(--mj-line);
+      border-radius: 6px;
+      text-decoration: none;
+      transition: border-color .16s ease;
+    }
+    .btn:hover { border-color: var(--mj-blue); }
+    .btn--primary {
+      color: var(--mj-white);
+      background: var(--mj-blue);
+      border-color: var(--mj-blue);
+    }
+    .btn--primary:hover { background: #0a236a; }
+  </style>
+</head>
+<body>
+<div class="wrap">
+
+  <span class="eyebrow">Molde Jarnvare · Design system</span>
+  <h1>Responsive preview</h1>
+  <p class="lead">
+    Each page template rendered at three real viewport widths — mobile (375 px),
+    tablet (768 px), and desktop (1280 px) — so you can verify how the design
+    adapts before approval. Each frame loads the live page from
+    <code>src/pages/</code>, which means the preview always reflects the current
+    state of the design system.
+  </p>
+
+  <div class="legend">
+    <div class="legend__row">
+      <span class="legend__dot legend__dot--mobile"></span>
+      <span class="legend__label">Mobile</span>
+      <span class="legend__meta">375 × 700 px · iPhone-class</span>
+    </div>
+    <div class="legend__row">
+      <span class="legend__dot legend__dot--tablet"></span>
+      <span class="legend__label">Tablet</span>
+      <span class="legend__meta">768 × 700 px · iPad portrait</span>
+    </div>
+    <div class="legend__row">
+      <span class="legend__dot legend__dot--desktop"></span>
+      <span class="legend__label">Desktop</span>
+      <span class="legend__meta">1280 × 700 px · standard laptop</span>
+    </div>
+  </div>
+
+  <div class="actions">
+    <a class="btn btn--primary" href="designsystem.html">← Back to design system</a>
+    <a class="btn" href="../src/pages/index.html">Open all page templates ↗</a>
+  </div>
+
+  <!-- ───── Home (§15.2) ────────────────────────────────────────── -->
+  <section class="page-row">
+    <div class="page-row__header">
+      <h2 class="page-row__title">Home</h2>
+      <span class="page-row__meta">§15.2 · src/pages/home.html</span>
+    </div>
+    <p class="page-row__desc">
+      Hero with category pivot to product-managers; sticky header collapses to
+      hamburger drawer under 1024 px; product-manager cards stack 1 → 2 → 4.
+    </p>
+    <div class="devices">
+      <div class="device device--mobile">
+        <div class="device__label">
+          <span class="device__label-dot"></span>
+          <span class="device__label-name">Mobile</span>
+          <span class="device__label-meta">375 px</span>
+        </div>
+        <div class="device__frame">
+          <iframe src="../src/pages/home.html" loading="lazy" title="Home on mobile"></iframe>
+        </div>
+      </div>
+      <div class="device device--tablet">
+        <div class="device__label">
+          <span class="device__label-dot"></span>
+          <span class="device__label-name">Tablet</span>
+          <span class="device__label-meta">768 px</span>
+        </div>
+        <div class="device__frame">
+          <iframe src="../src/pages/home.html" loading="lazy" title="Home on tablet"></iframe>
+        </div>
+      </div>
+      <div class="device device--desktop">
+        <div class="device__label">
+          <span class="device__label-dot"></span>
+          <span class="device__label-name">Desktop</span>
+          <span class="device__label-meta">1280 px</span>
+        </div>
+        <div class="device__frame">
+          <iframe src="../src/pages/home.html" loading="lazy" title="Home on desktop"></iframe>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ───── Category / PLP (§15.3) ──────────────────────────────── -->
+  <section class="page-row">
+    <div class="page-row__header">
+      <h2 class="page-row__title">Category (PLP)</h2>
+      <span class="page-row__meta">§15.3 · src/pages/category.html</span>
+    </div>
+    <p class="page-row__desc">
+      Filter sidebar is an off-canvas drawer on mobile/tablet (reached via
+      "Filter"-button), inline 280 px column on desktop. Product grid 2 → 3 → 4
+      columns.
+    </p>
+    <div class="devices">
+      <div class="device device--mobile">
+        <div class="device__label"><span class="device__label-dot"></span><span class="device__label-name">Mobile</span><span class="device__label-meta">375 px</span></div>
+        <div class="device__frame"><iframe src="../src/pages/category.html" loading="lazy" title="Category on mobile"></iframe></div>
+      </div>
+      <div class="device device--tablet">
+        <div class="device__label"><span class="device__label-dot"></span><span class="device__label-name">Tablet</span><span class="device__label-meta">768 px</span></div>
+        <div class="device__frame"><iframe src="../src/pages/category.html" loading="lazy" title="Category on tablet"></iframe></div>
+      </div>
+      <div class="device device--desktop">
+        <div class="device__label"><span class="device__label-dot"></span><span class="device__label-name">Desktop</span><span class="device__label-meta">1280 px</span></div>
+        <div class="device__frame"><iframe src="../src/pages/category.html" loading="lazy" title="Category on desktop"></iframe></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ───── Product / PDP (§15.4) ───────────────────────────────── -->
+  <section class="page-row">
+    <div class="page-row__header">
+      <h2 class="page-row__title">Product (PDP)</h2>
+      <span class="page-row__meta">§15.4 · src/pages/product.html</span>
+    </div>
+    <p class="page-row__desc">
+      Gallery and buy-box stack vertically below 768 px; thumbnails scroll
+      horizontally below the main image on mobile, become a vertical column on
+      tablet and up.
+    </p>
+    <div class="devices">
+      <div class="device device--mobile">
+        <div class="device__label"><span class="device__label-dot"></span><span class="device__label-name">Mobile</span><span class="device__label-meta">375 px</span></div>
+        <div class="device__frame"><iframe src="../src/pages/product.html" loading="lazy" title="Product on mobile"></iframe></div>
+      </div>
+      <div class="device device--tablet">
+        <div class="device__label"><span class="device__label-dot"></span><span class="device__label-name">Tablet</span><span class="device__label-meta">768 px</span></div>
+        <div class="device__frame"><iframe src="../src/pages/product.html" loading="lazy" title="Product on tablet"></iframe></div>
+      </div>
+      <div class="device device--desktop">
+        <div class="device__label"><span class="device__label-dot"></span><span class="device__label-name">Desktop</span><span class="device__label-meta">1280 px</span></div>
+        <div class="device__frame"><iframe src="../src/pages/product.html" loading="lazy" title="Product on desktop"></iframe></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ───── Cart (§15.6) ────────────────────────────────────────── -->
+  <section class="page-row">
+    <div class="page-row__header">
+      <h2 class="page-row__title">Cart</h2>
+      <span class="page-row__meta">§15.6 · src/pages/cart.html</span>
+    </div>
+    <p class="page-row__desc">
+      Two-column (items + summary) on desktop, single column on tablet and
+      mobile. Summary naturally sits at the bottom of the stack — the user
+      reaches "Til kassen" by scrolling.
+    </p>
+    <div class="devices">
+      <div class="device device--mobile">
+        <div class="device__label"><span class="device__label-dot"></span><span class="device__label-name">Mobile</span><span class="device__label-meta">375 px</span></div>
+        <div class="device__frame"><iframe src="../src/pages/cart.html" loading="lazy" title="Cart on mobile"></iframe></div>
+      </div>
+      <div class="device device--tablet">
+        <div class="device__label"><span class="device__label-dot"></span><span class="device__label-name">Tablet</span><span class="device__label-meta">768 px</span></div>
+        <div class="device__frame"><iframe src="../src/pages/cart.html" loading="lazy" title="Cart on tablet"></iframe></div>
+      </div>
+      <div class="device device--desktop">
+        <div class="device__label"><span class="device__label-dot"></span><span class="device__label-name">Desktop</span><span class="device__label-meta">1280 px</span></div>
+        <div class="device__frame"><iframe src="../src/pages/cart.html" loading="lazy" title="Cart on desktop"></iframe></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ───── Checkout (§15.7) ────────────────────────────────────── -->
+  <section class="page-row">
+    <div class="page-row__header">
+      <h2 class="page-row__title">Checkout</h2>
+      <span class="page-row__meta">§15.7 · src/pages/checkout.html</span>
+    </div>
+    <p class="page-row__desc">
+      Form and summary side-by-side on desktop, stacked on mobile/tablet. The
+      checkout-flow header is intentionally minimal — no category nav, no
+      hamburger — to keep focus on completing the order.
+    </p>
+    <div class="devices">
+      <div class="device device--mobile">
+        <div class="device__label"><span class="device__label-dot"></span><span class="device__label-name">Mobile</span><span class="device__label-meta">375 px</span></div>
+        <div class="device__frame"><iframe src="../src/pages/checkout.html" loading="lazy" title="Checkout on mobile"></iframe></div>
+      </div>
+      <div class="device device--tablet">
+        <div class="device__label"><span class="device__label-dot"></span><span class="device__label-name">Tablet</span><span class="device__label-meta">768 px</span></div>
+        <div class="device__frame"><iframe src="../src/pages/checkout.html" loading="lazy" title="Checkout on tablet"></iframe></div>
+      </div>
+      <div class="device device--desktop">
+        <div class="device__label"><span class="device__label-dot"></span><span class="device__label-name">Desktop</span><span class="device__label-meta">1280 px</span></div>
+        <div class="device__frame"><iframe src="../src/pages/checkout.html" loading="lazy" title="Checkout on desktop"></iframe></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ───── Account — orders (§15.10) ───────────────────────────── -->
+  <section class="page-row">
+    <div class="page-row__header">
+      <h2 class="page-row__title">Account — Orders</h2>
+      <span class="page-row__meta">§15.10 · src/pages/account-orders.html</span>
+    </div>
+    <p class="page-row__desc">
+      Order table transforms to a card list on mobile (one row = one card, each
+      cell labelled with its column name). Tablet and desktop keep the table.
+    </p>
+    <div class="devices">
+      <div class="device device--mobile">
+        <div class="device__label"><span class="device__label-dot"></span><span class="device__label-name">Mobile</span><span class="device__label-meta">375 px</span></div>
+        <div class="device__frame"><iframe src="../src/pages/account-orders.html" loading="lazy" title="Account orders on mobile"></iframe></div>
+      </div>
+      <div class="device device--tablet">
+        <div class="device__label"><span class="device__label-dot"></span><span class="device__label-name">Tablet</span><span class="device__label-meta">768 px</span></div>
+        <div class="device__frame"><iframe src="../src/pages/account-orders.html" loading="lazy" title="Account orders on tablet"></iframe></div>
+      </div>
+      <div class="device device--desktop">
+        <div class="device__label"><span class="device__label-dot"></span><span class="device__label-name">Desktop</span><span class="device__label-meta">1280 px</span></div>
+        <div class="device__frame"><iframe src="../src/pages/account-orders.html" loading="lazy" title="Account orders on desktop"></iframe></div>
+      </div>
+    </div>
+  </section>
+
+  <p class="footer-note">
+    The preview is live — it loads the current files from
+    <code>src/pages/</code>. To freeze a specific responsive state for sign-off,
+    cut a new version with <code>scripts/cut-version.sh vN</code>;
+    <code>versions/vN/</code> then keeps an immutable copy that is safe to link
+    to in the approval log. See
+    <a href="https://github.com/Degree-AS/Molde-Jarnvare-Designs/blob/main/versions/README.md">versions/README.md</a>.
+  </p>
+
+</div>
+</body>
+</html>

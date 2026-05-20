@@ -1,0 +1,50 @@
+/**
+ * My account dashboard (§14.25)
+ */
+
+.account-dashboard {
+  display: grid;
+  grid-template-columns: 240px 1fr;
+  gap: var(--s-7);
+}
+
+@media (max-width: 1023px) {
+  .account-dashboard { grid-template-columns: 1fr; }
+}
+
+.account-dashboard__nav {
+  display: flex;
+  flex-direction: column;
+  gap: var(--s-1);
+}
+
+.account-dashboard__nav-link {
+  display: flex;
+  align-items: center;
+  gap: var(--s-3);
+  padding: var(--s-3) var(--s-4);
+  border-radius: var(--r-sm);
+  font-size: var(--fs-body-sm);
+  font-weight: var(--fw-medium);
+  color: var(--color-text-primary);
+  text-decoration: none;
+}
+.account-dashboard__nav-link:hover { background: var(--mj-surface-1); }
+.account-dashboard__nav-link.is-active,
+.account-dashboard__nav-link[aria-current="page"] {
+  background: var(--color-bg-brand-soft);
+  color: var(--color-action-primary);
+  font-weight: var(--fw-semibold);
+}
+
+.account-dashboard__main {
+  display: flex;
+  flex-direction: column;
+  gap: var(--s-6);
+}
+
+.account-dashboard__widgets {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: var(--s-4);
+}

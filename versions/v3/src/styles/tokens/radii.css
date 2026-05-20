@@ -1,0 +1,22 @@
+/**
+ * Radii
+ * -----------------------------------------------------------------------------
+ * Source: DESIGN_SYSTEM.md §7.2
+ *
+ * The brand book uses rounded corners on images and boxes.
+ *
+ * Usage:
+ *   - Images and large boxes: --r-lg or --r-xl
+ *   - Cards:                  --r-md
+ *   - Buttons and inputs:     --r-sm or --r-md
+ * -----------------------------------------------------------------------------
+ */
+
+:root {
+  --r-none: 0;
+  --r-sm:   4px;    /* Buttons, small boxes */
+  --r-md:   8px;    /* Cards, input fields */
+  --r-lg:   12px;   /* Larger boxes, modals */
+  --r-xl:   20px;   /* Hero images, large surfaces */
+  --r-full: 9999px; /* Pills, round buttons */
+}

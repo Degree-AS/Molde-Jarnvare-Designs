@@ -60,6 +60,7 @@
     .badge--pending { background: var(--mj-amber-bg); color: #8a5a12; }
     .badge--approved { background: var(--mj-green-bg); color: var(--mj-green); }
     .badge--superseded { background: #EEE; color: var(--mj-ink-3); }
+    .badge--draft { background: #E8EAF3; color: var(--mj-blue); }
     .version__note { font-size: 15px; color: var(--mj-ink-2); margin: 8px 0 16px; }
     .links { display: flex; flex-wrap: wrap; gap: 10px; }
     .links a {
@@ -94,12 +95,55 @@
 
   <h2>Versjoner</h2>
 
+  <!-- ── v3 ───────────────────────────────────────────────────────────── -->
+  <div class="version">
+    <div class="version__head">
+      <h3 class="version__no">v3</h3>
+      <span class="version__date">16. mai 2026</span>
+      <span class="badge badge--draft">Internt arbeidsutkast</span>
+    </div>
+    <p class="version__note">
+      Strukturelle endringer etter intern revisjon av v2. Flere endringer planlagt
+      før versjonen sendes til Molde Jarnvare for godkjenning.
+    </p>
+    <div class="links">
+      <a href="v3/docs/designsystem.html">Designretningslinjer</a>
+      <a href="v3/src/components/index.html">Komponentbibliotek</a>
+      <a href="v3/src/pages/index.html">Komponentblokker / sidemaler</a>
+      <a href="v3/docs/accessibility.html">Tilgjengelighet (WCAG 2.2 AA)</a>
+      <a href="v3/docs/responsive.html">Responsiv-preview</a>
+    </div>
+    <ul class="changes">
+      <li><strong>Header — kun "Produkter" med mega-meny:</strong> Erstattet
+        den flate raden med 8 kategori-lenker (inkl. Tilbud og Hurtigbestilling)
+        med ett bold-blått "Produkter ▾" som åpner full-bredde panel under
+        headeren. 15 hovedkategorier i 3–4 kolonner med 30+ underkategorier og
+        artikkel-tellere per kategori.</li>
+      <li><strong>Tilbud og Hurtigbestilling fjernet</strong> fra header — også
+        fra mobil-drawer. Drawer viser nå alle 15 hovedkategoriene flatt.</li>
+      <li><strong>Home §02 (Snakk med fagansvarlig):</strong> Lagt til "Se alle
+        ansatte →"-lenke til høyre for overskriften.</li>
+      <li><strong>Home §03 (tidligere Service og verksted):</strong> Erstattet
+        med Forsyningsløsninger — nytt bilde
+        (<code>marketing/forsyningslosninger-2-boks.jpg</code>), ny eyebrow
+        "Lagerdrift hos kunde", ny tittel og ingress, ny CTA "Les mer om
+        forsyningsløsninger".</li>
+      <li><strong>Home §04:</strong> Tittel endret fra "Populært akkurat nå" til
+        "Produktnyheter".</li>
+      <li><strong>Handleliste-detalj:</strong> Hver vare-rad har nå en primær
+        "Legg til"-knapp + sekundær "Fjern"-lenke. "Eksporter til Excel" fjernet.</li>
+      <li><strong>Internasjonalisering-cleanup:</strong> Fikset språkfragmenter
+        i designsystem.html (§08 "Form, shadow and motion", flere ingresser),
+        gjenopprettet logo-stier som ble mangled av tidligere find-replace.</li>
+    </ul>
+  </div>
+
   <!-- ── v2 ───────────────────────────────────────────────────────────── -->
   <div class="version">
     <div class="version__head">
       <h3 class="version__no">v2</h3>
       <span class="version__date">15. mai 2026</span>
-      <span class="badge badge--pending">Til godkjenning hos Molde Jarnvare</span>
+      <span class="badge badge--superseded">Erstattet av v3</span>
     </div>
     <p class="version__note">
       Responsivt designsystem — alle sidemaler tilpasset mobil, tablet og desktop.

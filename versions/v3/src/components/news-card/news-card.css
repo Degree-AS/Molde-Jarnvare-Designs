@@ -1,0 +1,64 @@
+/**
+ * News card / article card (§13.20)
+ *
+ * Used in the news portal overview and as "related articles" on article pages.
+ */
+
+.news-card {
+  display: flex;
+  flex-direction: column;
+  background: var(--color-bg-surface);
+  border: var(--bw-1) solid var(--color-border-soft);
+  border-radius: var(--r-md);
+  overflow: hidden;
+  text-decoration: none;
+  color: inherit;
+  transition: border-color var(--duration-fast) var(--ease-standard),
+              box-shadow var(--duration-fast) var(--ease-standard);
+}
+.news-card:hover { border-color: var(--color-border-brand); box-shadow: var(--shadow-2); }
+
+.news-card__media {
+  aspect-ratio: var(--ar-landscape-16-9);
+  background: var(--mj-surface-1);
+  overflow: hidden;
+}
+.news-card__media img { width: 100%; height: 100%; object-fit: cover; display: block; }
+
+.news-card__body {
+  display: flex;
+  flex-direction: column;
+  gap: var(--s-2);
+  padding: var(--s-4) var(--s-5);
+}
+
+.news-card__tag {
+  font-size: var(--fs-overline);
+  letter-spacing: var(--ls-wider);
+  text-transform: uppercase;
+  font-weight: var(--fw-semibold);
+  color: var(--mj-blue);
+}
+
+.news-card__title {
+  font-size: var(--fs-h4);
+  font-weight: var(--fw-bold);
+  line-height: var(--lh-snug);
+  margin: 0;
+}
+
+.news-card__excerpt {
+  font-size: var(--fs-body-sm);
+  color: var(--color-text-secondary);
+  line-height: var(--lh-relaxed);
+  margin: 0;
+}
+
+.news-card__meta {
+  display: flex;
+  gap: var(--s-3);
+  font-size: var(--fs-caption);
+  color: var(--color-text-tertiary);
+  margin-top: auto;
+  padding-top: var(--s-2);
+}

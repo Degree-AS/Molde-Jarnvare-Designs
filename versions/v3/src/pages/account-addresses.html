@@ -1,0 +1,373 @@
+<!doctype html>
+<html lang="nb">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Adresser — Molde Jarnvare</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Source+Sans+3:wght@400;500;600;700;900&family=JetBrains+Mono:wght@400&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../styles/index.css">
+</head>
+<body>
+
+<header class="site-header">
+  <div class="site-header__inner">
+    <a class="site-header__logo" href="/" aria-label="Molde Jarnvare"><img src="../assets/logos/molde-jarnvare-positive.png" alt="Molde Jarnvare" class="site-header__logo-img"></a>
+    <div class="site-header__search">
+      <form class="search-bar" role="search">
+        <svg class="search-bar__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.35-4.35"/></svg>
+        <input class="search-bar__input" type="search" placeholder="Søk i 30 000+ artikler, NOBB-nr, EAN…" />
+        <button class="search-bar__submit" type="submit">Søk</button>
+      </form>
+    </div>
+    <div class="site-header__actions">
+      <button class="site-header__action" aria-label="Min konto">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4 4-7 8-7s8 3 8 7"/></svg>
+      </button>
+      <button class="site-header__action" aria-label="Handlekurv (3)">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M6 6h15l-1.5 9H7.5z"/><circle cx="9" cy="20" r="1.5"/><circle cx="18" cy="20" r="1.5"/></svg>
+        <span class="badge badge--numeric site-header__action-badge">3</span>
+      </button>
+      <!-- Mobile-only hamburger trigger (hidden ≥ --bp-lg) -->
+      <button class="site-header__hamburger" type="button"
+              aria-label="Åpne hovedmeny"
+              aria-controls="site-nav-drawer"
+              aria-expanded="false">
+        <span class="site-header__hamburger-icon" aria-hidden="true"></span>
+      </button>
+    </div>
+  </div>
+
+  <div class="site-header__main">
+    <div class="site-header__main-inner">
+      <nav class="site-header__nav" aria-label="Hovedmeny">
+        <button class="site-header__nav-trigger" type="button" aria-controls="megamenu" aria-expanded="false">
+          Produkter
+          <svg class="site-header__nav-trigger-icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
+        </button>
+      </nav>
+    </div>
+  </div>
+
+  <!--
+    Mega-menu panel — opens below the header on desktop (≥ --bp-lg) when the
+    "Produkter"-trigger is clicked. For static preview, add
+    data-preview-megamenu="true" to <header class="site-header"> above.
+  -->
+  <div class="megamenu" id="megamenu" role="navigation" aria-label="Produktkategorier">
+    <div class="megamenu__inner">
+      <div class="megamenu__intro">
+        <h2 class="megamenu__intro-title">Alle produkter</h2>
+        <p class="megamenu__intro-meta"><strong>30 247</strong> artikler &middot; 15 hovedkategorier &middot; oppdatert i dag</p>
+      </div>
+      <div class="megamenu__columns">
+
+        <div class="megamenu__group">
+          <a class="megamenu__heading" href="#">Festemidler <span class="megamenu__count">8 200</span></a>
+          <ul class="megamenu__list">
+            <li><a href="#">Sekskantskruer</a></li>
+            <li><a href="#">Maskinskruer</a></li>
+            <li><a href="#">Treskruer</a></li>
+            <li><a href="#">Muttere og skiver</a></li>
+            <li><a href="#">Plugger og hylser</a></li>
+          </ul>
+        </div>
+
+        <div class="megamenu__group">
+          <a class="megamenu__heading" href="#">Verktøy <span class="megamenu__count">5 400</span></a>
+          <ul class="megamenu__list">
+            <li><a href="#">Håndverktøy</a></li>
+            <li><a href="#">Elektroverktøy</a></li>
+            <li><a href="#">Skrumaskiner og borr</a></li>
+            <li><a href="#">Nøkler og tang</a></li>
+          </ul>
+        </div>
+
+        <div class="megamenu__group">
+          <a class="megamenu__heading" href="#">Verneutstyr <span class="megamenu__count">3 100</span></a>
+          <ul class="megamenu__list">
+            <li><a href="#">Hansker</a></li>
+            <li><a href="#">Briller og hørselsvern</a></li>
+            <li><a href="#">Hjelmer</a></li>
+            <li><a href="#">Vernefottøy</a></li>
+            <li><a href="#">Åndedrettsvern</a></li>
+          </ul>
+        </div>
+
+        <div class="megamenu__group">
+          <a class="megamenu__heading" href="#">Hydraulikk <span class="megamenu__count">2 700</span></a>
+          <ul class="megamenu__list">
+            <li><a href="#">Slanger og koblinger</a></li>
+            <li><a href="#">Sylindere</a></li>
+            <li><a href="#">Ventiler og pumper</a></li>
+          </ul>
+        </div>
+
+        <div class="megamenu__group">
+          <a class="megamenu__heading" href="#">Sveis <span class="megamenu__count">1 850</span></a>
+          <ul class="megamenu__list">
+            <li><a href="#">Sveiseapparater</a></li>
+            <li><a href="#">Elektroder og tråd</a></li>
+            <li><a href="#">Beskyttelsesgass</a></li>
+          </ul>
+        </div>
+
+        <div class="megamenu__group">
+          <a class="megamenu__heading" href="#">Industri <span class="megamenu__count">2 400</span></a>
+          <ul class="megamenu__list">
+            <li><a href="#">Kulelagre</a></li>
+            <li><a href="#">Drev og tannhjul</a></li>
+            <li><a href="#">Akselkoblinger</a></li>
+          </ul>
+        </div>
+
+        <div class="megamenu__group">
+          <a class="megamenu__heading" href="#">Slipemidler <span class="megamenu__count">980</span></a>
+          <ul class="megamenu__list">
+            <li><a href="#">Slipeskiver</a></li>
+            <li><a href="#">Slipepapir</a></li>
+            <li><a href="#">Polering</a></li>
+          </ul>
+        </div>
+
+        <div class="megamenu__group">
+          <a class="megamenu__heading" href="#">Tetninger og pakninger <span class="megamenu__count">720</span></a>
+          <ul class="megamenu__list">
+            <li><a href="#">O-ringer</a></li>
+            <li><a href="#">Flatpakninger</a></li>
+            <li><a href="#">Tetningsmasse</a></li>
+          </ul>
+        </div>
+
+        <div class="megamenu__group">
+          <a class="megamenu__heading" href="#">Lim og kjemikalier <span class="megamenu__count">540</span></a>
+          <ul class="megamenu__list">
+            <li><a href="#">Industrilim</a></li>
+            <li><a href="#">Silikon og fugemasse</a></li>
+            <li><a href="#">Sprayer og rens</a></li>
+          </ul>
+        </div>
+
+        <div class="megamenu__group">
+          <a class="megamenu__heading" href="#">Måleinstrumenter <span class="megamenu__count">420</span></a>
+          <ul class="megamenu__list">
+            <li><a href="#">Skyvelære og mikrometer</a></li>
+            <li><a href="#">Multimeter</a></li>
+            <li><a href="#">Vekter og våger</a></li>
+          </ul>
+        </div>
+
+        <div class="megamenu__group">
+          <a class="megamenu__heading" href="#">Smøring og rens <span class="megamenu__count">630</span></a>
+          <ul class="megamenu__list">
+            <li><a href="#">Smøreolje og fett</a></li>
+            <li><a href="#">Avfetting og rens</a></li>
+            <li><a href="#">Rustbeskyttelse</a></li>
+          </ul>
+        </div>
+
+        <div class="megamenu__group">
+          <a class="megamenu__heading" href="#">Bil og verksted <span class="megamenu__count">1 100</span></a>
+          <ul class="megamenu__list">
+            <li><a href="#">Jekker og bukker</a></li>
+            <li><a href="#">Verktøyvogner</a></li>
+            <li><a href="#">Trykkluft og slanger</a></li>
+          </ul>
+        </div>
+
+        <div class="megamenu__group">
+          <a class="megamenu__heading" href="#">Lagring og logistikk <span class="megamenu__count">880</span></a>
+          <ul class="megamenu__list">
+            <li><a href="#">Plastbokser og kasser</a></li>
+            <li><a href="#">Hyller og reoler</a></li>
+            <li><a href="#">Pakketape og emballasje</a></li>
+          </ul>
+        </div>
+
+        <div class="megamenu__group">
+          <a class="megamenu__heading" href="#">Elektro <span class="megamenu__count">760</span></a>
+          <ul class="megamenu__list">
+            <li><a href="#">Kabel og ledning</a></li>
+            <li><a href="#">Plugger og kontakter</a></li>
+            <li><a href="#">Sikringer og automater</a></li>
+          </ul>
+        </div>
+
+        <div class="megamenu__group">
+          <a class="megamenu__heading" href="#">Skilt og merking <span class="megamenu__count">340</span></a>
+          <ul class="megamenu__list">
+            <li><a href="#">Etiketter og tape</a></li>
+            <li><a href="#">Sikkerhetsskilt</a></li>
+            <li><a href="#">Avsperring</a></li>
+          </ul>
+        </div>
+
+      </div>
+
+      <div class="megamenu__footer">
+        <a class="megamenu__footer-link" href="#">Se alle produkter →</a>
+        <span class="megamenu__intro-meta">Bestill direkte med <strong>NOBB-nr</strong> eller <strong>EAN</strong> via søket</span>
+      </div>
+    </div>
+  </div>
+
+  <!--
+    Mobile nav drawer (visible < --bp-lg). The JS layer toggles
+    [data-open="true"] on hamburger click / Esc / backdrop click. For static
+    preview, add data-preview-open="true" to <header class="site-header"> above.
+  -->
+  <div class="site-header__drawer" id="site-nav-drawer" role="dialog" aria-modal="true" aria-label="Hovedmeny">
+    <div class="site-header__drawer-header">
+      <span class="t-overline" style="color: var(--mj-blue);">Meny</span>
+      <button class="site-header__drawer-close" type="button" aria-label="Lukk meny">&times;</button>
+    </div>
+    <nav class="site-header__drawer-nav" aria-label="Produktkategorier (mobil)">
+      <a href="#">Festemidler</a>
+      <a href="#">Verktøy</a>
+      <a href="#">Verneutstyr</a>
+      <a href="#">Hydraulikk</a>
+      <a href="#">Sveis</a>
+      <a href="#">Industri</a>
+      <a href="#">Slipemidler</a>
+      <a href="#">Tetninger og pakninger</a>
+      <a href="#">Lim og kjemikalier</a>
+      <a href="#">Måleinstrumenter</a>
+      <a href="#">Smøring og rens</a>
+      <a href="#">Bil og verksted</a>
+      <a href="#">Lagring og logistikk</a>
+      <a href="#">Elektro</a>
+      <a href="#">Skilt og merking</a>
+    </nav>
+  </div>
+</header>
+<div class="site-header__drawer-backdrop" aria-hidden="true"></div>
+<div class="megamenu-backdrop" aria-hidden="true"></div>
+
+<main class="container container--wide" style="padding-block: var(--s-7);">
+
+  <h1 class="t-h1" style="margin-bottom: var(--s-7);">Min konto</h1>
+
+  <div class="account-dashboard">
+    <nav class="account-dashboard__nav">
+      <a class="account-dashboard__nav-link" href="account.html">Oversikt</a>
+      <a class="account-dashboard__nav-link" href="account-orders.html">Ordrer</a>
+      <a class="account-dashboard__nav-link" href="#">Tilbud</a>
+      <a class="account-dashboard__nav-link" href="#">Sortilog</a>
+      <a class="account-dashboard__nav-link" href="account-wishlists.html">Handlelister</a>
+      <a class="account-dashboard__nav-link" href="account-carts.html">Lagrede kurver</a>
+      <a class="account-dashboard__nav-link is-active" aria-current="page" href="account-addresses.html">Adresser</a>
+      <a class="account-dashboard__nav-link" href="account-users.html">Brukere</a>
+      <a class="account-dashboard__nav-link" href="account-details.html">Innstillinger</a>
+    </nav>
+
+    <div class="account-dashboard__main">
+      <header style="display: flex; justify-content: space-between; align-items: baseline; margin-bottom: var(--s-6);">
+        <div>
+          <h2 class="t-h2" style="margin: 0 0 var(--s-2);">Adresser</h2>
+          <p style="color: var(--color-text-secondary); margin: 0;">Faktura- og leveringsadresser bedriften bruker.</p>
+        </div>
+        <button class="btn btn--primary">+ Ny adresse</button>
+      </header>
+
+      <section class="address-book">
+        <div class="address-book__list">
+
+          <article class="address-book__item is-selected">
+            <header style="display: flex; justify-content: space-between; gap: var(--s-2);">
+              <strong>Hovedkontor</strong>
+              <span class="badge badge--brand">Faktura</span>
+            </header>
+            <div style="font-size: var(--fs-body-sm); line-height: var(--lh-relaxed); color: var(--color-text-secondary);">
+              Industriservice Vest AS<br>
+              Sj&oslash;gata 12<br>
+              6404 Molde<br>
+              Norge
+            </div>
+            <footer style="display: flex; gap: var(--s-3); margin-top: var(--s-2);">
+              <a class="link" href="#">Rediger</a>
+              <a class="link" href="#">Sett som standard</a>
+            </footer>
+          </article>
+
+          <article class="address-book__item">
+            <header style="display: flex; justify-content: space-between; gap: var(--s-2);">
+              <strong>Verksted Hjelset</strong>
+              <span class="badge">Leveringssted</span>
+            </header>
+            <div style="font-size: var(--fs-body-sm); line-height: var(--lh-relaxed); color: var(--color-text-secondary);">
+              Industriservice Vest AS<br>
+              Hjelsetvegen 47<br>
+              6450 Hjelset<br>
+              Norge
+            </div>
+            <footer style="display: flex; gap: var(--s-3); margin-top: var(--s-2);">
+              <a class="link" href="#">Rediger</a>
+              <a class="link" href="#">Slett</a>
+            </footer>
+          </article>
+
+          <article class="address-book__item">
+            <header style="display: flex; justify-content: space-between; gap: var(--s-2);">
+              <strong>Anleggsplass Tafjord</strong>
+              <span class="badge">Leveringssted</span>
+            </header>
+            <div style="font-size: var(--fs-body-sm); line-height: var(--lh-relaxed); color: var(--color-text-secondary);">
+              Att: Knut Helland<br>
+              Tafjordvegen 88<br>
+              6210 Valld&aring;l<br>
+              Norge
+            </div>
+            <footer style="display: flex; gap: var(--s-3); margin-top: var(--s-2);">
+              <a class="link" href="#">Rediger</a>
+              <a class="link" href="#">Slett</a>
+            </footer>
+          </article>
+
+        </div>
+      </section>
+
+      <section class="card" style="margin-top: var(--s-7);">
+        <h3 class="card__title">Legg til ny adresse</h3>
+        <div class="address-form form-grid" style="margin-top: var(--s-4);">
+          <div class="field">
+            <label class="field__label field__label--required" for="addr-label">Adresse-navn</label>
+            <input class="input" id="addr-label" placeholder="F.eks. Verksted Stranda">
+            <span class="field__hint">Vises i listen over adresser.</span>
+          </div>
+          <div class="field">
+            <label class="field__label" for="addr-recipient">Att.</label>
+            <input class="input" id="addr-recipient" placeholder="Kontaktperson (valgfritt)">
+          </div>
+          <div class="field" style="grid-column: 1 / -1;">
+            <label class="field__label field__label--required" for="addr-street">Gateadresse</label>
+            <input class="input" id="addr-street">
+          </div>
+          <div class="field">
+            <label class="field__label field__label--required" for="addr-zip">Postnummer</label>
+            <input class="input" id="addr-zip" inputmode="numeric" maxlength="4">
+          </div>
+          <div class="field">
+            <label class="field__label field__label--required" for="addr-city">Sted</label>
+            <input class="input" id="addr-city">
+          </div>
+          <div class="field" style="grid-column: 1 / -1;">
+            <fieldset style="border: 0; padding: 0; margin: 0;">
+              <legend class="field__label" style="margin-bottom: var(--s-2);">Bruksomr&aring;de</legend>
+              <div style="display: flex; gap: var(--s-5);">
+                <label class="checkbox"><input type="checkbox"><span class="checkbox__visual"></span><span>Fakturaadresse</span></label>
+                <label class="checkbox"><input type="checkbox" checked><span class="checkbox__visual"></span><span>Leveringsadresse</span></label>
+              </div>
+            </fieldset>
+          </div>
+        </div>
+        <div style="margin-top: var(--s-5);">
+          <button class="btn btn--primary">Lagre adresse</button>
+          <button class="btn btn--ghost" style="margin-left: var(--s-3);">Avbryt</button>
+        </div>
+      </section>
+    </div>
+  </div>
+
+</main>
+
+<footer class="sit

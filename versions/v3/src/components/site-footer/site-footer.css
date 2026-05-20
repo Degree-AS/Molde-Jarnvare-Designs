@@ -1,0 +1,131 @@
+/**
+ * Site footer / Site shell — footer (§15.1)
+ * Dark Reflex blue background with negative logo (per §9.1).
+ *
+ * Responsive (§17, mobile-first):
+ *   Default (mobile, < 640)         Single-column stack of footer groups.
+ *   Small mobile/tablet (≥ 640)     Two columns.
+ *   Desktop (≥ 1024 / --bp-lg)      Four columns — brand block (2fr) + three nav columns.
+ *
+ * Bottom row (copyright + social) always uses flex-wrap, never forces overflow.
+ */
+
+.site-footer {
+  background: var(--mj-blue);
+  color: var(--color-text-on-brand);
+  padding-block: var(--s-9) var(--s-6);
+  margin-top: var(--s-10);
+}
+
+@media (min-width: 1024px) /* --bp-lg */ {
+  .site-footer { padding-block: var(--s-11) var(--s-8); margin-top: var(--s-12); }
+}
+
+.site-footer__inner {
+  max-width: var(--container-wide);
+  margin-inline: auto;
+  padding-inline: var(--gutter);
+}
+
+/* ─────────────────────────────────────────────────────────────────────────
+ * Grid — mobile-first
+ * ────────────────────────────────────────────────────────────────────── */
+.site-footer__grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--s-6);
+  padding-bottom: var(--s-7);
+  border-bottom: var(--bw-1) solid rgba(255, 255, 255, 0.15);
+}
+
+@media (min-width: 640px) /* --bp-sm */ {
+  .site-footer__grid { grid-template-columns: 1fr 1fr; gap: var(--s-6); }
+}
+
+@media (min-width: 1024px) /* --bp-lg */ {
+  .site-footer__grid { grid-template-columns: 2fr repeat(3, 1fr); gap: var(--s-7); padding-bottom: var(--s-8); }
+}
+
+/* ─────────────────────────────────────────────────────────────────────────
+ * Brand block (logo + tagline)
+ * ────────────────────────────────────────────────────────────────────── */
+.site-footer__brand {
+  display: flex;
+  flex-direction: column;
+  gap: var(--s-4);
+}
+
+.site-footer__logo-img {
+  display: block;
+  height: 40px;
+  width: auto;
+  /* Logo clear-space (§9.3) */
+  margin-bottom: var(--s-2);
+}
+
+.site-footer__tagline {
+  color: var(--mj-red);
+  font-size: var(--fs-h4);
+  font-weight: var(--fw-bold);
+  font-style: italic;
+}
+
+/* ─────────────────────────────────────────────────────────────────────────
+ * Nav columns (3× under the brand block)
+ * ────────────────────────────────────────────────────────────────────── */
+.site-footer__col-title {
+  font-size: var(--fs-overline);
+  letter-spacing: var(--ls-wider);
+  text-transform: uppercase;
+  font-weight: var(--fw-semibold);
+  color: var(--mj-orange);
+  margin: 0 0 var(--s-3);
+}
+
+.site-footer__list {
+  display: flex;
+  flex-direction: column;
+  gap: var(--s-2);
+}
+
+.site-footer__list a {
+  font-size: var(--fs-body-sm);
+  color: var(--color-text-on-brand);
+  text-decoration: none;
+  opacity: 0.85;
+}
+.site-footer__list a:hover { opacity: 1; text-decoration: underline; }
+
+/* ─────────────────────────────────────────────────────────────────────────
+ * Bottom row — copyright + social links
+ * Mobile: stacks if needed (flex-wrap), preserves no-horizontal-scroll rule.
+ * ────────────────────────────────────────────────────────────────────── */
+.site-footer__bottom {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: var(--s-4);
+  padding-top: var(--s-5);
+  font-size: var(--fs-caption);
+  color: rgba(255, 255, 255, 0.7);
+}
+
+.site-footer__social {
+  display: flex;
+  gap: var(--s-3);
+}
+.site-footer__social a {
+  width: 36px;
+  height: 36px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: var(--r-full);
+  background: rgba(255, 255, 255, 0.1);
+  color: var(--color-text-on-brand);
+  text-decoration: none;
+  transition: background var(--duration-fast) var(--ease-standard);
+}
+.site-footer__social a:hover { background: rgba(255, 255, 255, 0.2); }
+.site-footer__social a:focus-visible { outline: none; box-shadow: var(--focus-ring); }

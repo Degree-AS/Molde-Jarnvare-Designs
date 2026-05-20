@@ -1,0 +1,28 @@
+/**
+ * PO number / referanse-felt (§14.22)
+ */
+
+.po-reference {
+  display: flex;
+  flex-direction: column;
+  gap: var(--s-3);
+  padding: var(--s-4);
+  background: var(--mj-surface-1);
+  border-radius: var(--r-md);
+}
+
+.po-reference__title {
+  font-size: var(--fs-body-sm);
+  font-weight: var(--fw-semibold);
+  margin: 0;
+}
+
+.po-reference__row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--s-3);
+}
+
+@media (max-width: 600px) {
+  .po-reference__row { grid-template-columns: 1fr; }
+}

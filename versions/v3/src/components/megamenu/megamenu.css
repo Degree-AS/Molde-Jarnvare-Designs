@@ -1,0 +1,233 @@
+/**
+ * Mega-menu (§15.1)
+ *
+ * Full-width product navigation panel that opens below the site-header on
+ * desktop. Replaces the previous flat list of category links — Molde Jarnvare
+ * has 15 main categories with 30+ sub-categories, which doesn't fit in a
+ * horizontal nav row.
+ *
+ * Trigger: <button class="site-header__nav-trigger" aria-controls="megamenu">
+ *          Produkter ▾
+ *          </button>
+ *
+ * On mobile (< --bp-lg) the mega-menu is hidden — categories are reached via
+ * the hamburger drawer instead, which already has a flat list of the 15 mains.
+ *
+ * For static preview, set [data-preview-megamenu="true"] on .site-header.
+ */
+
+.megamenu {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  right: 0;
+  background: var(--color-bg-surface);
+  border-top: var(--bw-1) solid var(--color-border-soft);
+  border-bottom: var(--bw-1) solid var(--color-border-default);
+  box-shadow: var(--shadow-3);
+  z-index: var(--z-overlay);
+  display: none;
+}
+
+.megamenu[data-open="true"],
+.site-header[data-preview-megamenu="true"] .megamenu {
+  display: block;
+}
+
+@media (max-width: 1023.98px) /* below --bp-lg */ {
+  .megamenu { display: none !important; }
+}
+
+.megamenu__inner {
+  max-width: var(--container-wide);
+  margin-inline: auto;
+  padding: var(--s-7) var(--gutter);
+}
+
+.megamenu__intro {
+  margin-bottom: var(--s-6);
+  padding-bottom: var(--s-5);
+  border-bottom: var(--bw-1) solid var(--color-border-soft);
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: var(--s-5);
+  flex-wrap: wrap;
+}
+.megamenu__intro-title {
+  font-family: var(--ff-sans);
+  font-size: var(--fs-h3);
+  font-weight: var(--fw-bold);
+  letter-spacing: -0.01em;
+  margin: 0;
+}
+.megamenu__intro-meta {
+  font-size: var(--fs-body-sm);
+  color: var(--color-text-secondary);
+}
+.megamenu__intro-meta strong {
+  color: var(--color-text-primary);
+  font-weight: var(--fw-semibold);
+}
+
+.megamenu__columns {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--s-6) var(--s-8);
+}
+
+@media (min-width: 1280px) /* --bp-xl */ {
+  .megamenu__columns {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+.megamenu__group {
+  display: flex;
+  flex-direction: column;
+  gap: var(--s-2);
+  min-width: 0;
+}
+
+.megamenu__heading {
+  font-family: var(--ff-sans);
+  font-size: var(--fs-body);
+  font-weight: var(--fw-bold);
+  color: var(--color-text-primary);
+  text-decoration: none;
+  letter-spacing: -0.01em;
+  margin: 0 0 var(--s-1);
+  padding-bottom: var(--s-2);
+  border-bottom: var(--bw-1) solid var(--color-border-soft);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--s-2);
+  transition: color var(--duration-fast) var(--ease-standard);
+}
+.megamenu__heading::after {
+  content: "→";
+  font-weight: var(--fw-regular);
+  color: var(--color-text-tertiary);
+  opacity: 0;
+  transform: translateX(-4px);
+  transition: opacity var(--duration-fast) var(--ease-standard),
+              transform var(--duration-fast) var(--ease-standard);
+}
+.megamenu__heading:hover {
+  color: var(--color-action-primary);
+}
+.megamenu__heading:hover::after {
+  opacity: 1;
+  transform: translateX(0);
+  color: var(--color-action-primary);
+}
+
+.megamenu__count {
+  font-family: var(--ff-mono);
+  font-size: var(--fs-caption);
+  color: var(--color-text-tertiary);
+  font-weight: var(--fw-regular);
+}
+
+.megamenu__list {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+.megamenu__list a {
+  font-size: var(--fs-body-sm);
+  color: var(--color-text-secondary);
+  text-decoration: none;
+  padding: var(--s-1) 0;
+  transition: color var(--duration-fast) var(--ease-standard);
+}
+.megamenu__list a:hover {
+  color: var(--color-action-primary);
+}
+
+.megamenu__footer {
+  margin-top: var(--s-7);
+  padding-top: var(--s-4);
+  border-top: var(--bw-1) solid var(--color-border-soft);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: var(--s-4);
+  flex-wrap: wrap;
+}
+.megamenu__footer-link {
+  font-size: var(--fs-body-sm);
+  font-weight: var(--fw-semibold);
+  color: var(--color-action-primary);
+  text-decoration: none;
+}
+.megamenu__footer-link:hover {
+  text-decoration: underline;
+}
+
+/* ─── Trigger — bold blue text-link with chevron, soft hover tint ─────── */
+.site-header__nav-trigger {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--s-2);
+  background: transparent;
+  color: var(--color-action-primary);
+  border: 0;
+  font-family: inherit;
+  font-size: var(--fs-body);
+  font-weight: var(--fw-bold);
+  letter-spacing: -0.005em;
+  cursor: pointer;
+  padding: 6px 10px;
+  border-radius: var(--r-sm);
+  transition: background var(--duration-fast) var(--ease-standard),
+              color var(--duration-fast) var(--ease-standard);
+  margin-inline-start: calc(-1 * var(--s-2)); /* visual alignment to nav baseline */
+}
+
+.site-header__nav-trigger:hover {
+  background: var(--color-bg-brand-soft);
+}
+.site-header__nav-trigger:focus-visible {
+  outline: none;
+  box-shadow: var(--focus-ring);
+}
+.site-header__nav-trigger[aria-expanded="true"] {
+  background: var(--color-bg-brand-soft);
+}
+
+.site-header__nav-trigger-icon {
+  transition: transform var(--duration-fast) var(--ease-standard);
+  stroke: currentColor;
+  fill: none;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  opacity: 0.7;
+}
+.site-header__nav-trigger[aria-expanded="true"] .site-header__nav-trigger-icon {
+  transform: rotate(180deg);
+}
+
+/* Backdrop dimmer when mega-menu is open */
+.megamenu-backdrop {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.25);
+  z-index: calc(var(--z-overlay) - 1);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity var(--duration-base) var(--ease-standard);
+}
+.megamenu[data-open="true"] ~ .megamenu-backdrop,
+.site-header[data-preview-megamenu="true"] ~ .megamenu-backdrop {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+@media (max-width: 1023.98px) {
+  .megamenu-backdrop { display: none; }
+}

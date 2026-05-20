@@ -1,0 +1,36 @@
+/**
+ * Link (§12.16)
+ */
+
+.link {
+  color: var(--color-text-link);
+  text-decoration: underline;
+  text-underline-offset: 2px;
+  transition: color var(--duration-fast) var(--ease-standard);
+}
+
+.link:hover { color: var(--color-text-link-hover); }
+.link:focus-visible {
+  outline: none;
+  box-shadow: var(--focus-ring);
+  border-radius: var(--r-sm);
+}
+
+.link--subtle {
+  color: var(--color-text-primary);
+  text-decoration: underline;
+  text-decoration-color: var(--color-border-default);
+}
+.link--subtle:hover {
+  color: var(--color-text-link);
+  text-decoration-color: currentColor;
+}
+
+.link--inverse { color: var(--color-text-on-brand); }
+.link--inverse:hover { color: var(--mj-blue-10); }
+
+.link--external::after {
+  content: " ↗";
+  font-size: 0.85em;
+  opacity: 0.7;
+}

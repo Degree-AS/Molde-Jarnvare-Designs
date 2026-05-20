@@ -1,0 +1,240 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Molde Jarnvare — Design exploration</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Source+Sans+3:wght@400;500;600;700;900&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #FAFAFA;
+      --ink: #1A1F2E;
+      --ink-2: #4D5466;
+      --ink-3: #85878B;
+      --line: #E0E0E0;
+      --paper: #FFFFFF;
+      --accent: #0D2B7E;
+    }
+    *, *::before, *::after { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: "Source Sans 3", -apple-system, sans-serif;
+      color: var(--ink);
+      background: var(--bg);
+      line-height: 1.6;
+    }
+    .wrap { max-width: 1280px; margin: 0 auto; padding: 72px 32px; }
+    .eyebrow {
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--accent);
+    }
+    h1 {
+      font-size: clamp(36px, 4.5vw, 56px);
+      font-weight: 900;
+      line-height: 1.05;
+      letter-spacing: -0.02em;
+      margin: 16px 0 24px;
+    }
+    .lead {
+      font-size: 18px;
+      color: var(--ink-2);
+      max-width: 70ch;
+      margin: 0 0 56px;
+    }
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(380px, 1fr));
+      gap: 32px;
+    }
+    .card {
+      background: var(--paper);
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      overflow: hidden;
+      text-decoration: none;
+      color: inherit;
+      transition: transform .2s, box-shadow .2s, border-color .2s;
+      display: flex;
+      flex-direction: column;
+    }
+    .card:hover {
+      transform: translateY(-3px);
+      border-color: var(--accent);
+      box-shadow: 0 12px 32px rgba(13,43,126,0.08);
+    }
+    .card__preview {
+      aspect-ratio: 16 / 10;
+      background: var(--bg);
+      border-bottom: 1px solid var(--line);
+      position: relative;
+      overflow: hidden;
+    }
+    .card__preview iframe {
+      width: 1400px;
+      height: 875px;
+      border: 0;
+      transform: scale(0.4);
+      transform-origin: top left;
+      pointer-events: none;
+    }
+    .card__body { padding: 28px 28px 32px; flex: 1; display: flex; flex-direction: column; }
+    .card__chip {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 12px;
+    }
+    .card__chip::before {
+      content: "";
+      width: 6px; height: 6px;
+      background: var(--accent);
+      border-radius: 50%;
+    }
+    .card--A .card__chip { color: #B7552C; }
+    .card--A .card__chip::before { background: #B7552C; }
+    .card--B .card__chip { color: #FF5B14; }
+    .card--B .card__chip::before { background: #FF5B14; }
+    .card--current .card__chip { color: #5D5F65; }
+    .card--current .card__chip::before { background: #5D5F65; }
+    .card__title {
+      font-size: 24px;
+      font-weight: 700;
+      margin: 0 0 8px;
+      letter-spacing: -0.01em;
+    }
+    .card__desc { font-size: 15px; color: var(--ink-2); margin: 0 0 20px; flex: 1; }
+    .card__attrs {
+      list-style: none;
+      padding: 0;
+      margin: 0 0 20px;
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+      font-size: 13px;
+      color: var(--ink-2);
+    }
+    .card__attrs li { display: flex; gap: 10px; align-items: baseline; }
+    .card__attrs li::before {
+      content: "·";
+      color: var(--accent);
+      font-weight: 700;
+    }
+    .card__open {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      align-self: flex-start;
+      padding: 10px 18px;
+      background: var(--ink);
+      color: white;
+      border-radius: 6px;
+      font-size: 14px;
+      font-weight: 600;
+      text-decoration: none;
+      transition: background .15s;
+    }
+    .card__open:hover { background: var(--accent); }
+    .footer-note {
+      margin-top: 56px;
+      padding-top: 24px;
+      border-top: 1px solid var(--line);
+      font-size: 14px;
+      color: var(--ink-3);
+    }
+  </style>
+</head>
+<body>
+<div class="wrap">
+
+  <span class="eyebrow">Molde Jarnvare · Design exploration</span>
+  <h1>Visual direction — alternatives to v2</h1>
+  <p class="lead">
+    Feedback on v2: "boring", "old-fashioned", "outdated". Two alternative directions
+    that aim for a fresher, more modern feel while still representing Molde Jarnvare's
+    industrial tradition. Each is a complete, self-contained home page mock-up — click
+    to open in full.
+  </p>
+
+  <div class="grid">
+
+    <a class="card card--A" href="home-editorial.html">
+      <div class="card__preview">
+        <iframe src="home-editorial.html" loading="lazy" tabindex="-1"></iframe>
+      </div>
+      <div class="card__body">
+        <span class="card__chip">Direction A</span>
+        <h2 class="card__title">Editorial Heritage</h2>
+        <p class="card__desc">Warm cream backdrop, a confident serif display face, a giant
+          "1930" as graphic anchor, and terracotta in place of pure orange. Feels like a
+          trusted craft partner — modern but rooted.</p>
+        <ul class="card__attrs">
+          <li>Fraunces serif (display) + Source Sans 3 (body)</li>
+          <li>Cream + deep navy + terracotta</li>
+          <li>Pill buttons, rounded corners, paper textures</li>
+          <li>Magazine-grid people cards, editorial product cards</li>
+        </ul>
+        <span class="card__open">Open mock-up →</span>
+      </div>
+    </a>
+
+    <a class="card card--B" href="home-industrial.html">
+      <div class="card__preview">
+        <iframe src="home-industrial.html" loading="lazy" tabindex="-1"></iframe>
+      </div>
+      <div class="card__body">
+        <span class="card__chip">Direction B</span>
+        <h2 class="card__title">Industrial Modern</h2>
+        <p class="card__desc">Dark-mode hero with high contrast, a tight geometric sans-serif,
+          live lager-data ("30 247 artikler på lager nå"), and a vivid safety-orange accent.
+          Feels like a confident modern industrial brand.</p>
+        <ul class="card__attrs">
+          <li>Space Grotesk (display) + Inter (body) + JetBrains Mono (data)</li>
+          <li>Graphite black + cool white + safety orange</li>
+          <li>Crisp 4-6 px corners, structural lines, mono detail</li>
+          <li>"Live" data panel, // section markers, accent flags on products</li>
+        </ul>
+        <span class="card__open">Open mock-up →</span>
+      </div>
+    </a>
+
+    <a class="card card--current" href="../../src/pages/home.html">
+      <div class="card__preview">
+        <iframe src="../../src/pages/home.html" loading="lazy" tabindex="-1"></iframe>
+      </div>
+      <div class="card__body">
+        <span class="card__chip">Current · v2</span>
+        <h2 class="card__title">Reference: existing v2</h2>
+        <p class="card__desc">The current approved-pending v2 design for comparison — what
+          we'd be moving away from. Conservative blue/orange palette, clean cards, neutral
+          grays. Solid but reportedly "outdated".</p>
+        <ul class="card__attrs">
+          <li>Source Sans 3 only</li>
+          <li>Reflex blue + standard orange + neutral grays</li>
+          <li>Even product grid, conservative button shapes</li>
+          <li>Card-heavy, even rhythm</li>
+        </ul>
+        <span class="card__open">Open live home page →</span>
+      </div>
+    </a>
+
+  </div>
+
+  <p class="footer-note">
+    These mock-ups are self-contained and use no shared CSS from <code>src/</code> — they
+    represent a fresh visual layer that would later be back-ported into the design system
+    and tokens once a direction is chosen. Both reuse the same content, copy and imagery
+    as the current home page so only the visual layer changes.
+  </p>
+
+</div>
+</body>
+</html>

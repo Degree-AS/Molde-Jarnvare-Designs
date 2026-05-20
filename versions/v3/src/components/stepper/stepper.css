@@ -1,0 +1,57 @@
+/**
+ * Stepper (§13.10) — checkout-flow indikator.
+ */
+
+.stepper {
+  display: flex;
+  align-items: center;
+  gap: var(--s-3);
+  font-family: var(--ff-sans);
+  font-size: var(--fs-body-sm);
+}
+
+.stepper__step {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--s-2);
+  color: var(--color-text-tertiary);
+}
+
+.stepper__num {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 28px;
+  height: 28px;
+  border-radius: var(--r-full);
+  background: var(--mj-surface-2);
+  color: var(--color-text-secondary);
+  font-size: var(--fs-caption);
+  font-weight: var(--fw-semibold);
+  font-variant-numeric: tabular-nums;
+}
+
+.stepper__step.is-active .stepper__num {
+  background: var(--color-action-primary);
+  color: var(--color-text-on-brand);
+}
+
+.stepper__step.is-active { color: var(--color-text-primary); font-weight: var(--fw-semibold); }
+
+.stepper__step.is-complete .stepper__num {
+  background: var(--mj-success);
+  color: var(--color-text-on-brand);
+}
+.stepper__step.is-complete .stepper__num::before {
+  content: "✓";
+  font-size: 14px;
+}
+.stepper__step.is-complete .stepper__num > * { display: none; }
+
+.stepper__connector {
+  flex: 1;
+  height: 2px;
+  background: var(--color-border-soft);
+  min-width: 24px;
+}
+.stepper__connector.is-complete { background: var(--mj-success); }

@@ -1,0 +1,50 @@
+/**
+ * Saved carts / stored shopping carts (§14.34)
+ *
+ * En customer kan ha one active kurv + flere lagrede kurver (excl.
+ * "Hjelset onsdag", "Tafjord uke 22"). Switch mellom dem flytter
+ * lagret kurv til aktiv. Lagrede kurver respekterer prishistorikk —
+ * pris kan ha endret seg siden lagring, vises som diff ved henting.
+ */
+
+.saved-carts {
+  display: flex;
+  flex-direction: column;
+  gap: var(--s-3);
+}
+
+.saved-cart {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: var(--s-4);
+  align-items: center;
+  padding: var(--s-4) var(--s-5);
+  background: var(--color-bg-surface);
+  border: var(--bw-1) solid var(--color-border-soft);
+  border-radius: var(--r-md);
+}
+.saved-cart.is-active {
+  border-color: var(--color-action-primary);
+  border-width: var(--bw-2);
+  background: var(--color-bg-brand-soft);
+}
+
+.saved-cart__name { font-size: var(--fs-body); font-weight: var(--fw-semibold); margin: 0; }
+.saved-cart__meta { font-size: var(--fs-caption); color: var(--color-text-secondary); margin: 2px 0 0; }
+.saved-cart__actions { display: flex; gap: var(--s-2); flex-wrap: wrap; }
+
+/* "Active cart" banner above cart.html */
+.cart-switcher {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--s-3);
+  padding: var(--s-3) var(--s-4);
+  background: var(--mj-surface-1);
+  border-radius: var(--r-md);
+  font-size: var(--fs-body-sm);
+}
+.cart-switcher__label { color: var(--color-text-secondary); }
+.cart-switcher__name { font-weight: var(--fw-semibold); }
+.cart-switcher__actions { display: flex; gap: var(--s-2); }
