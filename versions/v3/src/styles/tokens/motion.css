@@ -1,0 +1,28 @@
+/**
+ * Motion
+ * -----------------------------------------------------------------------------
+ * Source: DESIGN_SYSTEM.md §7.4, §7.5
+ *
+ * Usage:
+ *   - Hover/focus:           --duration-fast    + --ease-standard
+ *   - Modal/drawer open:     --duration-normal  + --ease-decelerate
+ *   - Modal/drawer close:    --duration-fast    + --ease-accelerate
+ *   - Skeleton loading pulse:--duration-slow
+ *
+ * Prefers-reduced-motion is handled globally — see base/reset, not here.
+ * -----------------------------------------------------------------------------
+ */
+
+:root {
+  /* Durations */
+  --duration-instant: 80ms;
+  --duration-fast:    160ms;
+  --duration-normal:  240ms;
+  --duration-slow:    400ms;
+
+  /* Easings */
+  --ease-standard:   cubic-bezier(0.2, 0.6, 0.2, 1);
+  --ease-decelerate: cubic-bezier(0.0, 0.0, 0.2, 1);
+  --ease-accelerate: cubic-bezier(0.4, 0.0, 1.0, 1.0);
+  --ease-sharp:      cubic-bezier(0.4, 0.0, 0.6, 1);
+}

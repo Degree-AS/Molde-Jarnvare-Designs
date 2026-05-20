@@ -1,0 +1,8 @@
+/**
+ * Base styles — entry point.
+ * Expects tokens to be imported first.
+ */
+
+@import "./reset.css";
+@import "./base.css";
+@import "./typography.css";

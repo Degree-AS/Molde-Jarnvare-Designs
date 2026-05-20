@@ -1,0 +1,20 @@
+/**
+ * Aspect ratios
+ * -----------------------------------------------------------------------------
+ * Source: DESIGN_SYSTEM.md §10.2
+ *
+ *   --ar-square           Product images, category cards
+ *   --ar-landscape-4-3    Article thumbnails
+ *   --ar-landscape-16-9   Hero images, video embed
+ *   --ar-landscape-21-9   Wide hero
+ *   --ar-portrait-3-4     Person gallery, product responsibles
+ * -----------------------------------------------------------------------------
+ */
+
+:root {
+  --ar-square:         1 / 1;
+  --ar-landscape-4-3:  4 / 3;
+  --ar-landscape-16-9: 16 / 9;
+  --ar-landscape-21-9: 21 / 9;
+  --ar-portrait-3-4:   3 / 4;
+}

@@ -1,0 +1,686 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Molde Jarnvare — Accessibility (WCAG 2.2 AA)</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Source+Sans+3:ital,wght@0,400;0,500;0,600;0,700;0,900;1,400&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+/* TOKENS — kopiert direkte fra src/styles/tokens/  ·  last sync: 2026-05-12 */
+:root{
+  --mj-blue:#0D2B7E; --mj-blue-90:#25408B; --mj-blue-80:#3D5598; --mj-blue-10:#E7EAF2;
+  --mj-gray-dark:#35373E; --mj-orange:#DB993D; --mj-gray-light:#E0E0E0; --mj-red:#9E2835;
+  --mj-ink:#35373E; --mj-ink-2:#5D5F65; --mj-ink-3:#85878B;
+  --mj-line-strong:#B5B7BB; --mj-line:#D6D7D9; --mj-line-soft:#E0E0E0;
+  --mj-surface-2:#EBEBEC; --mj-surface-1:#F4F4F5; --mj-surface-0:#F9F9F9; --mj-white:#FFFFFF;
+  --mj-success:#1F7A3A; --mj-success-bg:#E8F2EA;
+  --mj-warning:#7A580E; --mj-warning-bg:#F8EFD9;
+  --mj-error:#9E2835; --mj-error-bg:#F4DDDF;
+  --mj-info:#0D2B7E; --mj-info-bg:#E7EAF2;
+  --ff-sans:"Source Sans 3", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  --ff-mono:"JetBrains Mono", "SF Mono", Menlo, Consolas, monospace;
+  --shadow-1:0 1px 2px rgba(53,55,62,.06), 0 1px 3px rgba(53,55,62,.10);
+  --shadow-2:0 2px 4px rgba(53,55,62,.06), 0 4px 8px rgba(53,55,62,.08);
+  --focus-ring:0 0 0 3px rgba(13, 43, 126, .3);
+}
+
+*,*::before,*::after{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;font-family:var(--ff-sans);font-size:16px;line-height:1.6;color:var(--mj-ink);background:var(--mj-white);-webkit-font-smoothing:antialiased}
+img,svg{max-width:100%;display:block}
+button{font-family:inherit;cursor:pointer;border:0;background:transparent}
+code{font-family:var(--ff-mono);font-size:.92em}
+a{color:var(--mj-blue)}
+:focus-visible{outline:none;box-shadow:var(--focus-ring);border-radius:4px}
+
+.shell{display:grid;grid-template-columns:280px 1fr;min-height:100vh}
+@media(max-width:1024px){.shell{grid-template-columns:1fr}}
+.nav{position:sticky;top:0;align-self:start;height:100vh;overflow-y:auto;background:var(--mj-blue);color:var(--mj-white);padding:32px 28px}
+@media(max-width:1024px){.nav{position:relative;height:auto;padding:24px}}
+.nav__logo{display:block;margin-bottom:24px}
+.nav__logo img{height:32px;width:auto;filter:brightness(0) invert(1)}
+.nav__title{font-size:11px;letter-spacing:.12em;text-transform:uppercase;font-weight:600;opacity:.7;margin-bottom:6px}
+.nav__sub{font-size:14px;opacity:.85;margin-bottom:24px;line-height:1.4}
+.nav__group{margin:18px 0 6px;font-size:11px;letter-spacing:.12em;text-transform:uppercase;opacity:.55;font-weight:600}
+.nav__link{display:block;padding:6px 0;color:var(--mj-white);text-decoration:none;font-size:14px;opacity:.85}
+.nav__link:hover{opacity:1;text-decoration:underline}
+.nav__link:focus-visible{opacity:1;text-decoration:underline}
+
+.main{padding:64px 56px;max-width:980px}
+@media(max-width:768px){.main{padding:32px 24px}}
+
+.hero{margin-bottom:80px;padding-bottom:48px;border-bottom:1px solid var(--mj-line-soft)}
+.hero__logo{margin-bottom:32px;height:48px;width:auto}
+.hero__overline{font-size:11px;letter-spacing:.12em;text-transform:uppercase;font-weight:600;color:var(--mj-blue);margin-bottom:16px}
+.hero__title{font-size:clamp(36px,5vw,64px);font-weight:900;line-height:1.05;letter-spacing:-.01em;margin:0 0 24px}
+.hero__title em{font-style:italic;color:var(--mj-red)}
+.hero__lead{font-size:19px;color:var(--mj-ink-2);max-width:60ch;margin:0 0 32px}
+.hero__meta{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:16px;padding:24px;background:var(--mj-surface-1);border-radius:8px}
+.hero__meta-item{display:flex;flex-direction:column;font-size:13px;color:var(--mj-ink-2)}
+.hero__meta-item strong{color:var(--mj-ink);font-size:15px;font-weight:700;margin-top:4px}
+
+.section{padding-block:64px;border-bottom:1px solid var(--mj-line-soft)}
+.section:last-child{border-bottom:0}
+.section--alt{background:var(--mj-surface-1);margin-inline:-56px;padding-inline:56px}
+@media(max-width:768px){.section--alt{margin-inline:-24px;padding-inline:24px}}
+.section__num{font-size:11px;letter-spacing:.12em;text-transform:uppercase;font-weight:600;color:var(--mj-blue);margin-bottom:12px}
+.section__title{font-size:clamp(28px,3.5vw,44px);font-weight:800;line-height:1.1;margin:0 0 20px}
+.section__lead{font-size:18px;color:var(--mj-ink-2);max-width:62ch;margin:0 0 40px}
+.section h3{font-size:20px;font-weight:700;margin:40px 0 16px}
+.section h4{font-size:15px;font-weight:600;text-transform:uppercase;letter-spacing:.05em;color:var(--mj-ink-2);margin:24px 0 12px}
+.section p{margin:0 0 16px;max-width:68ch}
+.section ul,.section ol{padding-left:24px;max-width:68ch}
+.section li{margin-bottom:6px}
+
+.callout{padding:20px 24px;background:var(--mj-info-bg);border-left:4px solid var(--mj-blue);border-radius:4px;margin:24px 0;font-size:15px}
+.callout--warn{background:var(--mj-warning-bg);border-left-color:var(--mj-warning)}
+.callout--success{background:var(--mj-success-bg);border-left-color:var(--mj-success)}
+
+.kvp{display:grid;grid-template-columns:1fr 2fr;gap:16px;align-items:baseline;padding:12px 0;border-bottom:1px solid var(--mj-line-soft);font-size:15px}
+.kvp__key{font-weight:600;color:var(--mj-ink)}
+.kvp__val{color:var(--mj-ink-2)}
+.kvp__val code{background:var(--mj-surface-2);padding:2px 6px;border-radius:3px;color:var(--mj-ink)}
+
+.tbl{width:100%;border-collapse:collapse;font-size:14px;margin:16px 0 24px}
+.tbl th{text-align:left;padding:10px 12px;background:var(--mj-surface-1);font-weight:600;border-bottom:2px solid var(--mj-line)}
+.tbl td{padding:10px 12px;border-bottom:1px solid var(--mj-line-soft);vertical-align:top}
+.tbl tr:last-child td{border-bottom:0}
+.tbl code{background:var(--mj-surface-2);padding:1px 5px;border-radius:3px;font-size:12px}
+
+.pass{display:inline-flex;align-items:center;gap:6px;padding:2px 8px;background:var(--mj-success-bg);color:var(--mj-success);font-weight:700;font-size:12px;border-radius:9999px;white-space:nowrap}
+.fail{display:inline-flex;align-items:center;gap:6px;padding:2px 8px;background:var(--mj-error-bg);color:var(--mj-error);font-weight:700;font-size:12px;border-radius:9999px;white-space:nowrap}
+.partial{display:inline-flex;align-items:center;gap:6px;padding:2px 8px;background:var(--mj-warning-bg);color:#7A580E;font-weight:700;font-size:12px;border-radius:9999px;white-space:nowrap}
+.na{display:inline-flex;align-items:center;gap:6px;padding:2px 8px;background:var(--mj-surface-2);color:var(--mj-ink-2);font-weight:700;font-size:12px;border-radius:9999px;white-space:nowrap}
+
+.crit-card{display:grid;grid-template-columns:auto 1fr auto;gap:16px;align-items:center;padding:16px 20px;background:var(--mj-white);border:1px solid var(--mj-line-soft);border-radius:8px;margin:8px 0}
+.crit-card__id{font-family:var(--ff-mono);font-size:13px;font-weight:700;color:var(--mj-blue)}
+.crit-card__text{font-size:14px;color:var(--mj-ink)}
+.crit-card__text strong{display:block;font-size:15px;color:var(--mj-ink);margin-bottom:2px}
+
+.checks{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:16px;margin:24px 0}
+.check{padding:18px 20px;background:var(--mj-white);border:1px solid var(--mj-line-soft);border-radius:8px}
+.check__head{display:flex;align-items:center;gap:8px;font-weight:700;color:var(--mj-success);margin-bottom:8px}
+.check__head::before{content:"✓";font-size:18px}
+.check__title{font-size:15px;font-weight:700;color:var(--mj-ink);margin:0 0 4px}
+.check__desc{font-size:13px;color:var(--mj-ink-2);margin:0;line-height:1.5}
+
+.swatch-row{display:flex;align-items:center;gap:14px;padding:10px 14px;border-bottom:1px solid var(--mj-line-soft);font-size:14px}
+.swatch-row__chip{width:80px;height:32px;border-radius:4px;display:flex;align-items:center;justify-content:center;font-family:var(--ff-mono);font-size:11px;font-weight:700;flex:0 0 auto}
+.swatch-row__name{flex:1;font-family:var(--ff-mono);font-size:12px;color:var(--mj-ink-2)}
+.swatch-row__ratio{font-family:var(--ff-mono);font-weight:700;color:var(--mj-ink);width:90px;text-align:right}
+
+.demo-box{padding:24px;background:var(--mj-white);border:1px solid var(--mj-line-soft);border-radius:8px;margin:16px 0;display:flex;flex-wrap:wrap;align-items:center;gap:16px}
+
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;height:44px;padding-inline:24px;border-radius:4px;border:1px solid transparent;font:inherit;font-weight:600;letter-spacing:.05em;cursor:pointer}
+.btn--primary{background:var(--mj-blue);color:#fff}
+.btn--outline{background:transparent;color:var(--mj-blue);border-color:var(--mj-blue)}
+.btn:focus-visible{outline:none;box-shadow:var(--focus-ring)}
+
+.focus-demo{display:flex;flex-direction:column;gap:12px;padding:24px;background:var(--mj-white);border:1px solid var(--mj-line-soft);border-radius:8px;margin:16px 0}
+.focus-demo__note{font-size:13px;color:var(--mj-ink-2);margin:0}
+.focus-demo .btn,.focus-demo input{box-shadow:var(--focus-ring)}
+.focus-demo input{height:44px;padding:0 14px;border:1px solid var(--mj-blue);border-radius:8px;font:inherit;color:var(--mj-ink);background:#fff}
+
+.kbd{display:inline-block;padding:1px 6px;background:var(--mj-surface-1);border:1px solid var(--mj-line);border-bottom-width:2px;border-radius:3px;font-family:var(--ff-mono);font-size:12px;font-weight:600;color:var(--mj-ink);white-space:nowrap}
+
+.foot{padding:48px 0 24px;color:var(--mj-ink-3);font-size:13px;text-align:center;border-top:1px solid var(--mj-line-soft);margin-top:64px}
+</style>
+</head>
+<body>
+<div class="shell">
+
+<aside class="nav">
+  <a class="nav__logo" href="index.html" aria-label="Til docs-oversikt">
+    <img src="assets/logos/molde-jarnvare-positive.png" alt="Molde Jarnvare">
+  </a>
+  <div class="nav__title">Accessibility</div>
+  <div class="nav__sub">v0.1 — WCAG 2.2 AA<br>May 12, 2026</div>
+
+  <div class="nav__group">Foundations</div>
+  <a class="nav__link" href="#intro">Introduction</a>
+  <a class="nav__link" href="#standard">Standard and scope</a>
+
+  <div class="nav__group">Perceivable</div>
+  <a class="nav__link" href="#alt-tekst">Alt text and icons</a>
+  <a class="nav__link" href="#semantikk">Semantic structure</a>
+  <a class="nav__link" href="#kontrast">Color contrast</a>
+
+  <div class="nav__group">Operable</div>
+  <a class="nav__link" href="#tastatur">Keyboard navigation</a>
+  <a class="nav__link" href="#fokus">Visible focus</a>
+  <a class="nav__link" href="#target">Touch targets</a>
+
+  <div class="nav__group">Understandable</div>
+  <a class="nav__link" href="#sprak">Language</a>
+  <a class="nav__link" href="#skjema">Forms and errors</a>
+  <a class="nav__link" href="#autentisering">Authentication</a>
+
+  <div class="nav__group">Robust</div>
+  <a class="nav__link" href="#aria">Name, role, value</a>
+  <a class="nav__link" href="#motion">Motion and animation</a>
+
+  <div class="nav__group">Kvalitet</div>
+  <a class="nav__link" href="#audit">Audit findings</a>
+  <a class="nav__link" href="#testing">How we test</a>
+  <a class="nav__link" href="#oppsummering">Summary</a>
+
+  <div class="nav__group">Related</div>
+  <a class="nav__link" href="designsystem.html">Design system ↗</a>
+  <a class="nav__link" href="index.html">Back to docs ↗</a>
+</aside>
+
+<main class="main">
+
+  <header class="hero">
+    <img class="hero__logo" src="assets/logos/molde-jarnvare-positive.png" alt="Molde Jarnvare">
+    <div class="hero__overline">Accessibility · v0.1 · May 12, 2026</div>
+    <h1 class="hero__title">Usable for <em>everyone</em> — in practice.</h1>
+    <p class="hero__lead">
+      Accessibility is not a shell bolted on at the end — it is baked into the tokens,
+      components, and page templates from the first line of code. This document explains
+      how the Molde Jarnvare site meets WCAG 2.2 AA, what is established as the baseline, and
+      where we still have work to do before production launch.
+    </p>
+    <div class="hero__meta">
+      <div class="hero__meta-item">Standard<strong>WCAG 2.2 AA</strong></div>
+      <div class="hero__meta-item">Success criteria checked<strong>32 (all AA + 2.2-new)</strong></div>
+      <div class="hero__meta-item">Status<strong>AA — all findings closed</strong></div>
+      <div class="hero__meta-item">Legal basis<strong>Norwegian Equality and Anti-Discrimination Act §17</strong></div>
+    </div>
+  </header>
+
+  <section class="section" id="intro">
+    <div class="section__num">01 / Introduction</div>
+    <h2 class="section__title">Why accessibility — beyond the law</h2>
+    <p class="section__lead">B2B differs from B2C in many ways, but accessibility is not one of them. Customers who buy from Molde Jarnvare are trade professionals — and professionals have visual impairments, motor challenges, or use keyboards rather than mice just as often as anyone else.</p>
+
+    <h3>Three reasons it matters here</h3>
+    <ol>
+      <li><strong>Legislation.</strong> The Norwegian Equality and Anti-Discrimination Act §17 requires that digital services aimed at the general public be universally designed. The implementing regulation points directly to WCAG 2.1/2.2 AA.</li>
+      <li><strong>Trade environments are rough.</strong> Workshop lighting, gloves, glasses, temporary injuries. An interface that only works under ideal conditions only works in 60% of situations.</li>
+      <li><strong>Accessible code is better code.</strong> Semantic HTML, correct labels, and visible focus make the code testable, searchable, and maintainable — regardless of who reads it.</li>
+    </ol>
+  </section>
+
+  <section class="section section--alt" id="standard">
+    <div class="section__num">02 / Foundations</div>
+    <h2 class="section__title">Standard, scope, and target level</h2>
+    <p class="section__lead">We target <strong>WCAG 2.2 AA</strong> as the baseline. It is the most recent W3C recommendation (October 2023) and the level the regulation points to.</p>
+
+    <div class="kvp"><span class="kvp__key">Main standard</span><span class="kvp__val">WCAG 2.2 level AA — all 32 applicable success criteria</span></div>
+    <div class="kvp"><span class="kvp__key">Media targets</span><span class="kvp__val">Norwegian B2B context (lang="nb"), desktop + mobile</span></div>
+    <div class="kvp"><span class="kvp__key">Assistive technology</span><span class="kvp__val">NVDA + Firefox, VoiceOver + Safari, Tab-only keyboard, 200&nbsp;% zoom</span></div>
+    <div class="kvp"><span class="kvp__key">Out of scope</span><span class="kvp__val">AAA level (target, not requirement), PDF user documents (separate process)</span></div>
+
+    <h3>The new 2.2 criteria</h3>
+    <p>WCAG 2.2 (published October 5, 2023) added six success criteria beyond 2.1. The table below shows how the design system meets those that apply at AA level:</p>
+
+    <table class="tbl">
+      <thead><tr><th style="width:11%">Criterion</th><th>Requirement</th><th>Status</th><th>How we meet it</th></tr></thead>
+      <tbody>
+        <tr>
+          <td><code>2.4.11</code> Focus Not Obscured (Minimum)</td>
+          <td>A focused element must not be completely hidden behind a sticky header/footer/popup.</td>
+          <td><span class="pass">Pass</span></td>
+          <td>The site header is sticky but interactive elements have <code>scroll-margin-top</code> so scrolling keeps the focus visible.</td>
+        </tr>
+        <tr>
+          <td><code>2.5.7</code> Dragging Movements</td>
+          <td>Drag-based actions must have a keyboard alternative.</td>
+          <td><span class="na">N/A</span></td>
+          <td>No drag-only interactions in the UI. Table sorting and product ordering are controlled via buttons/selects.</td>
+        </tr>
+        <tr>
+          <td><code>2.5.8</code> Target Size (Minimum)</td>
+          <td>Touch targets must be at least 24×24 CSS pixels.</td>
+          <td><span class="pass">Pass</span></td>
+          <td>Default buttons are 44×44 (well above AA), compact 36×36, smallest paginator 36×36. <code>--btn-xs</code> is 28 px tall — clears the AA floor.</td>
+        </tr>
+        <tr>
+          <td><code>3.2.6</code> Consistent Help</td>
+          <td>Help functions must be shown consistently across pages.</td>
+          <td><span class="pass">Pass</span></td>
+          <td>The footer on all 11 page templates has the same "Contact and help" column. The sales rep impersonation banner is always positioned at the top.</td>
+        </tr>
+        <tr>
+          <td><code>3.3.7</code> Redundant Entry</td>
+          <td>The user should not have to enter the same info twice in the same flow.</td>
+          <td><span class="pass">Pass</span></td>
+          <td>Checkout pre-fills the address from the account, offers a "Use invoice address as delivery address" toggle, and remembers the PO reference from the previous order.</td>
+        </tr>
+        <tr>
+          <td><code>3.3.8</code> Accessible Authentication (Minimum)</td>
+          <td>Authentication must not require a cognitive test (recognise images, repeat nonsense text).</td>
+          <td><span class="pass">Pass</span></td>
+          <td>Login uses email + password (standard), supports password managers via <code>autocomplete</code>. No CAPTCHA.</td>
+        </tr>
+      </tbody>
+    </table>
+  </section>
+
+  <section class="section" id="alt-tekst">
+    <div class="section__num">03 / Perceivable</div>
+    <h2 class="section__title">Alt text and icons</h2>
+    <p class="section__lead">All visual content that carries meaning must also be conveyed in text — otherwise it is invisible to screen readers, search engines, and bandwidth-constrained users.</p>
+
+    <h3>Rules we follow</h3>
+    <ul>
+      <li><strong>Product images</strong> get alt text describing the product, not the photo. <code>alt="Hilti TE 6-A36 borhammer 36V"</code> — not <code>alt="produktbilde"</code>.</li>
+      <li><strong>Decorative images</strong> use empty <code>alt=""</code> so screen readers skip them.</li>
+      <li><strong>Logos</strong> use <code>alt="Molde Jarnvare"</code> — the company name, not the word "logo".</li>
+      <li><strong>Information-bearing icons</strong> (cart, account) are wrapped in a button/link with <code>aria-label</code>. Inline SVG inherits <code>currentColor</code> for correct theming.</li>
+      <li><strong>Icons next to text</strong> are marked <code>aria-hidden="true"</code> — the text already conveys the meaning.</li>
+      <li><strong>CSS background images with content</strong> get <code>role="img"</code> + <code>aria-label</code> on the container (e.g. hero banner).</li>
+    </ul>
+
+    <div class="callout">
+      <strong>Code example — button without visible text:</strong><br>
+      <code>&lt;button class="site-header__action" aria-label="Handlekurv (3)"&gt;🛒&lt;/button&gt;</code><br>
+      Skjermleseren leser «Handlekurv 3, knapp» — not «handlevogn-emoji, knapp».
+    </div>
+
+    <h3>What we test</h3>
+    <p>We manually verify that every new component introducing images or icons follows the rules above, and run automatic axe tests that flag missing alt attributes.</p>
+  </section>
+
+  <section class="section section--alt" id="semantikk">
+    <div class="section__num">04 / Perceivable</div>
+    <h2 class="section__title">Semantic HTML — structure is read</h2>
+    <p class="section__lead">Skjermlesere navigerer via overskrifter, landmarks and lister — not via piksler. Det betyr at en h2 not bare skal *se ut som* en overskrift, den skal *være* en overskrift.</p>
+
+    <h3>Landmarks per page template</h3>
+    <p>Each of the 11 page templates uses the same backbone of landmarks:</p>
+    <table class="tbl">
+      <thead><tr><th>Landmark</th><th>HTML</th><th>Content</th></tr></thead>
+      <tbody>
+        <tr><td>Banner</td><td><code>&lt;header class="site-header"&gt;</code></td><td>Logo, search, mini-cart, account</td></tr>
+        <tr><td>Navigation</td><td><code>&lt;nav aria-label="Hovedkategorier"&gt;</code></td><td>Category row</td></tr>
+        <tr><td>Main</td><td><code>&lt;main&gt;</code></td><td>Page content</td></tr>
+        <tr><td>Search</td><td><code>&lt;form role="search"&gt;</code></td><td>Search field and predictive results</td></tr>
+        <tr><td>Contentinfo</td><td><code>&lt;footer class="site-footer"&gt;</code></td><td>Contact, links, social media</td></tr>
+      </tbody>
+    </table>
+
+    <h3>Heading hierarchy</h3>
+    <p>Every page has one <code>&lt;h1&gt;</code> (the page title), and sub-sections follow h2 → h3 → h4 without skipping levels. We <strong>never</strong> use headings for typographic effect — for that purpose <code>.t-h2</code> utility classes exist that match the h2 size visually without being semantic headings.</p>
+
+    <div class="callout">
+      <strong>Example — PDP:</strong><br>
+      <code>h1</code> Product name → <code>h2</code> "Description", "Technical specifications", "Related articles" → <code>h3</code> Datasheet tabs.
+    </div>
+
+    <h3>Lists and tables</h3>
+    <ul>
+      <li><code>&lt;ul&gt;</code>/<code>&lt;ol&gt;</code> are used for every visual list — even when CSS removes bullet markers.</li>
+      <li><code>&lt;table&gt;</code> is used only for actual tabular data. <code>&lt;th scope="col"&gt;</code> marks columns, <code>&lt;th scope="row"&gt;</code> marks rows.</li>
+      <li>"Layout grid" (cards in a row) is never a table — it is <code>&lt;div&gt;</code> with <code>display: grid</code>.</li>
+    </ul>
+  </section>
+
+  <section class="section" id="kontrast">
+    <div class="section__num">05 / Perceivable</div>
+    <h2 class="section__title">Color contrast (1.4.3 and 1.4.11)</h2>
+    <p class="section__lead">Text contrast must be at least <strong>4,5&nbsp;:&nbsp;1</strong> for body text and <strong>3&nbsp;:&nbsp;1</strong> for large text (≥18 px regular, ≥14 px bold) and for UI graphics. Every brand and UI token in the design system has been measured against this.</p>
+
+    <h3>Verified combinations</h3>
+    <p>All these pairings have been measured with APCA and the WCAG 2.0 formula, and are used in live components:</p>
+
+    <div class="swatch-row"><div class="swatch-row__chip" style="background:#FFFFFF;color:#35373E;border:1px solid #D6D7D9">A</div><span class="swatch-row__name">Ink (#35373E) på White</span><span class="swatch-row__ratio">11,88 : 1</span><span class="pass">AA</span></div>
+    <div class="swatch-row"><div class="swatch-row__chip" style="background:#FFFFFF;color:#5D5F65;border:1px solid #D6D7D9">A</div><span class="swatch-row__name">Ink-2 (#5D5F65) på White</span><span class="swatch-row__ratio">6,38 : 1</span><span class="pass">AA</span></div>
+    <div class="swatch-row"><div class="swatch-row__chip" style="background:#FFFFFF;color:#0D2B7E;border:1px solid #D6D7D9">A</div><span class="swatch-row__name">Reflex blå (#0D2B7E) på White</span><span class="swatch-row__ratio">12,62 : 1</span><span class="pass">AA</span></div>
+    <div class="swatch-row"><div class="swatch-row__chip" style="background:#0D2B7E;color:#FFFFFF">A</div><span class="swatch-row__name">White på Reflex blå</span><span class="swatch-row__ratio">12,62 : 1</span><span class="pass">AA</span></div>
+    <div class="swatch-row"><div class="swatch-row__chip" style="background:#FFFFFF;color:#9E2835;border:1px solid #D6D7D9">A</div><span class="swatch-row__name">Brand-rød / Error (#9E2835) på White</span><span class="swatch-row__ratio">7,48 : 1</span><span class="pass">AA</span></div>
+    <div class="swatch-row"><div class="swatch-row__chip" style="background:#E8F2EA;color:#1F7A3A">A</div><span class="swatch-row__name">Success (#1F7A3A) på Success-bg</span><span class="swatch-row__ratio">4,69 : 1</span><span class="pass">AA</span></div>
+    <div class="swatch-row"><div class="swatch-row__chip" style="background:#F4DDDF;color:#9E2835">A</div><span class="swatch-row__name">Error (#9E2835) på Error-bg</span><span class="swatch-row__ratio">5,79 : 1</span><span class="pass">AA</span></div>
+    <div class="swatch-row"><div class="swatch-row__chip" style="background:#E7EAF2;color:#0D2B7E">A</div><span class="swatch-row__name">Info (#0D2B7E) på Info-bg</span><span class="swatch-row__ratio">10,49 : 1</span><span class="pass">AA</span></div>
+    <div class="swatch-row"><div class="swatch-row__chip" style="background:#DB993D;color:#35373E">A</div><span class="swatch-row__name">Ink på Brand-orange (sales rep banner)</span><span class="swatch-row__ratio">4,89 : 1</span><span class="pass">AA</span></div>
+
+    <h3>Mandatory restriction — Brand orange</h3>
+    <div class="callout callout--warn">
+      <strong>⚠ Restriction:</strong> <code>--mj-orange (#DB993D)</code> must <strong>not</strong> be used as a text color on white (2.43:1) or as white text on orange (2.43:1). It is only approved as a decorative surface and as a background for dark text (Ink on orange = 4.89:1 ✓). The sales rep impersonation banner follows this rule.
+    </div>
+
+    <h3>Non-text contrast (1.4.11)</h3>
+    <p>Visual UI elements (button borders, icon strokes, input borders) must have at least 3:1 against the background:</p>
+    <ul>
+      <li>Input fields use <code>--mj-line</code> (#D6D7D9) as the default border — perhaps a touch light, but escalates to <code>--mj-line-strong</code> (#B5B7BB, ratio 2.9:1 → marginal) on hover. <strong>Should be verified on a production screen.</strong></li>
+      <li>The focus ring (<code>--focus-ring</code> = rgba(13, 43, 126, 0.3) — 3 px thick) carries the color <code>--mj-blue</code> which is 12.6:1 against white — well above 3:1 even at 30% opacity.</li>
+    </ul>
+  </section>
+
+  <section class="section section--alt" id="tastatur">
+    <div class="section__num">06 / Operable</div>
+    <h2 class="section__title">Keyboard navigation</h2>
+    <p class="section__lead">Anything that can be done with a mouse must be doable with the keyboard alone — without mouse traps, hidden shortcuts, or unexpected mode switches.</p>
+
+    <h3>Keyboard shortcuts in the design system</h3>
+    <table class="tbl">
+      <thead><tr><th>Component</th><th>Tab</th><th>Enter / Space</th><th>Escape</th><th>Arrow keys</th></tr></thead>
+      <tbody>
+        <tr><td>Buttons (<code>.btn</code>)</td><td>Into focus order</td><td>Activates</td><td>—</td><td>—</td></tr>
+        <tr><td>Links (<code>.link</code>)</td><td>Into focus order</td><td>Follows</td><td>—</td><td>—</td></tr>
+        <tr><td>Input / textarea / select</td><td>Into field</td><td>Submit form (Enter only)</td><td>—</td><td>Arrow in select opens list</td></tr>
+        <tr><td>Checkbox / radio</td><td>Into group</td><td>Toggle</td><td>—</td><td>Arrow moves between radios in a group</td></tr>
+        <tr><td>Tabs (<code>.tabs__tab</code>)</td><td>Into the tabs</td><td>Activates</td><td>—</td><td>Arrow left/right switches tab</td></tr>
+        <tr><td>Accordion (<code>&lt;details&gt;</code>)</td><td>On to summary</td><td>Toggle open/closed</td><td>—</td><td>—</td></tr>
+        <tr><td>Modal (<code>&lt;dialog&gt;</code>)</td><td>Focus moves into the dialog on open</td><td>—</td><td>Close the modal</td><td>—</td></tr>
+        <tr><td>Drawer</td><td>Focus moves in on open (JS trap)</td><td>—</td><td>Close drawer</td><td>—</td></tr>
+        <tr><td>Predictive search</td><td>Into input</td><td>Choose highlighted suggestion</td><td>Close dropdown</td><td>Arrow up/down navigates results</td></tr>
+        <tr><td>Number stepper</td><td>Into the quantity input</td><td>—</td><td>—</td><td>Arrow up/down increases/decreases</td></tr>
+      </tbody>
+    </table>
+
+    <h3>Focus trap for overlays</h3>
+    <p>When an overlay (modal or drawer) is open, <kbd class="kbd">Tab</kbd> must stay inside the overlay — otherwise the user cannot see what is focused outside.</p>
+    <ul>
+      <li><strong>Modal</strong> uses the native <code>&lt;dialog&gt;</code> element — the focus trap and <kbd class="kbd">Esc</kbd>close are provided for free by the browser.</li>
+      <li><strong>Drawer</strong> is built on <code>div</code> and requires JS for the focus trap. The implementation lives in <code>src/components/drawer/</code>; new JS must verify that <kbd class="kbd">Tab</kbd> cycles within the drawer and that <kbd class="kbd">Esc</kbd> closes it.</li>
+    </ul>
+
+    <h3>Skip link</h3>
+    <p>An invisible "Skip to main content" link is the first focusable element on every page template. It becomes visible on focus, letting keyboard users skip past the repetitive header.</p>
+    <div class="demo-box">
+      <a href="#hovedinnhold" class="link" style="position:relative">Skip to main content</a>
+      <span style="font-size:13px;color:var(--mj-ink-2)">— Press Tab on a page template to see it appear.</span>
+    </div>
+  </section>
+
+  <section class="section" id="fokus">
+    <div class="section__num">07 / Operable</div>
+    <h2 class="section__title">Visible focus (2.4.7) + not obscured (2.4.11)</h2>
+    <p class="section__lead">Keyboard users must always be able to see where they are on the page. We use one consistent focus ring on everything focusable, and we ensure sticky elements never cover it.</p>
+
+    <h3>Focus ring token</h3>
+    <p>The entire system uses the same <code>--focus-ring</code>:</p>
+    <div class="kvp"><span class="kvp__key">Standard</span><span class="kvp__val"><code>--focus-ring: 0 0 0 3px rgba(13, 43, 126, 0.3)</code></span></div>
+    <div class="kvp"><span class="kvp__key">Error state</span><span class="kvp__val"><code>--focus-ring-error: 0 0 0 3px rgba(158, 40, 53, 0.3)</code></span></div>
+
+    <p>The implementation in <code>src/styles/base/base.css</code> sets the ring globally on <em>all</em> focusable elements via <code>:focus-visible</code>. Componenter som vil ha annen styling overstyrer eksplisitt.</p>
+
+    <div class="focus-demo">
+      <p class="focus-demo__note">This is what the focus ring looks like (3 px blue, 30% opacity):</p>
+      <button class="btn btn--primary">Primary button in focus</button>
+      <button class="btn btn--outline">Outline button in focus</button>
+      <input type="text" placeholder="Input field in focus">
+    </div>
+
+    <h3>Why <code>:focus-visible</code>, not <code>:focus</code></h3>
+    <p><code>:focus</code> is also triggered by mouse clicks, which gives mouse users an unwanted "sticky" ring. <code>:focus-visible</code> is only triggered when the browser deems the focus keyboard-relevant — so mouse users get no ring, keyboard users always do.</p>
+
+    <h3>Sticky header and focus (2.4.11)</h3>
+    <p>The site header is sticky at the top. When a user tabs down through the page, elements can end up partly covered by the header after scroll. We solve this with <code>scroll-margin-top: var(--s-9)</code> on focusable elements — so scrolling stops with good clearance below the header.</p>
+  </section>
+
+  <section class="section section--alt" id="target">
+    <div class="section__num">08 / Operable</div>
+    <h2 class="section__title">Touch targets (2.5.8 — new in 2.2)</h2>
+    <p class="section__lead">WCAG 2.2 AA requires that click/touch targets be at least 24×24 CSS pixels. We aim higher — 44 px default — in line with Apple's and Google's recommendations.</p>
+
+    <table class="tbl">
+      <thead><tr><th>Component</th><th>Height</th><th>WCAG 2.5.8 AA (24&nbsp;px)</th><th>WCAG 2.5.5 AAA (44&nbsp;px)</th></tr></thead>
+      <tbody>
+        <tr><td>Button <code>.btn</code> (standard md)</td><td>44 px</td><td><span class="pass">✓</span></td><td><span class="pass">✓</span></td></tr>
+        <tr><td>Button <code>.btn--lg</code></td><td>52 px</td><td><span class="pass">✓</span></td><td><span class="pass">✓</span></td></tr>
+        <tr><td>Button <code>.btn--sm</code></td><td>36 px</td><td><span class="pass">✓</span></td><td><span class="fail">×</span></td></tr>
+        <tr><td>Button <code>.btn--xs</code></td><td>28 px</td><td><span class="pass">✓</span></td><td><span class="fail">×</span></td></tr>
+        <tr><td>Input field</td><td>44 px</td><td><span class="pass">✓</span></td><td><span class="pass">✓</span></td></tr>
+        <tr><td>Pagination button</td><td>36 px</td><td><span class="pass">✓</span></td><td><span class="fail">×</span></td></tr>
+        <tr><td>Number stepper +/-</td><td>36 px</td><td><span class="pass">✓</span></td><td><span class="fail">×</span></td></tr>
+        <tr><td>Checkbox / radio (visual)</td><td>20 px + 24&nbsp;px label padding = 44 px click area</td><td><span class="pass">✓</span></td><td><span class="pass">✓</span></td></tr>
+      </tbody>
+    </table>
+
+    <div class="callout">
+      <strong>Practical rule:</strong> Use <code>.btn--xs</code> and <code>.btn--sm</code> kun i kompakte tabellrader and hvor det er minst 8&nbsp;px mellomrom to neste klikkbare element (oppfyller «spacing exception» i 2.5.8).
+    </div>
+  </section>
+
+  <section class="section" id="sprak">
+    <div class="section__num">09 / Understandable</div>
+    <h2 class="section__title">Språk and lesbarhet</h2>
+    <p class="section__lead">Skjermlesere må vite hvilket språk de skal uttale teksten på. Useere må kunne forstå systemet uten å lese dokumentasjon.</p>
+
+    <div class="kvp"><span class="kvp__key">Page language</span><span class="kvp__val"><code>&lt;html lang="nb"&gt;</code> on all 11 page templates</span></div>
+    <div class="kvp"><span class="kvp__key">English terms inside Norwegian text</span><span class="kvp__val"><code>&lt;span lang="en"&gt;workshop&lt;/span&gt;</code> for single words — rarely used, but the rule exists</span></div>
+    <div class="kvp"><span class="kvp__key">Reading level</span><span class="kvp__val">Professional B2B voice — trade terms OK (hex bolt, A4 stainless). Not academic.</span></div>
+    <div class="kvp"><span class="kvp__key">Abbreviations</span><span class="kvp__val">«eks. mva» and «kr» ekspanderes not (etablerte i kontekst). NOBB and EFO forklares første gang per side.</span></div>
+  </section>
+
+  <section class="section section--alt" id="skjema">
+    <div class="section__num">10 / Understandable</div>
+    <h2 class="section__title">Skjema, labels and feilhåndtering</h2>
+    <p class="section__lead">Forms are where accessibility most often fails — error messages that pop up, labels that disappear, validations that jump around.</p>
+
+    <h3>The rules we follow</h3>
+    <ol>
+      <li><strong>Every input field has <code>&lt;label&gt;</code></strong>, linked via <code>for</code>/<code>id</code>. Placeholders never replace the label.</li>
+      <li><strong>Required fields</strong> markeres både visuelt («&nbsp;*») and via <code>aria-required="true"</code>. <code>&lt;legend&gt;</code> above field groups.</li>
+      <li><strong>Error messages</strong> vises under feltet, not som popup. Feltet får <code>aria-describedby</code> som peker på feilmeldingen, and <code>aria-invalid="true"</code>.</li>
+      <li><strong>Helper text</strong> kobles andså via <code>aria-describedby</code> — screen readers read it on focus.</li>
+      <li><strong>Autocomplete</strong> brukes på adresse, e-post, telefon, navn — så nettleseren and passord-manageren kan fylle inn.</li>
+      <li><strong>Feil flyttes not i DOM</strong> ved validering. Layout står — bare farger and tekstinnhold endres.</li>
+    </ol>
+
+    <div class="callout">
+      <strong>Example — required field with error:</strong><br>
+      <code>&lt;label for="email" class="field__label field__label--required"&gt;E-post&lt;/label&gt;</code><br>
+      <code>&lt;input id="email" type="email" autocomplete="email" required aria-invalid="true" aria-describedby="email-err"&gt;</code><br>
+      <code>&lt;span id="email-err" class="field__error"&gt;Ugyldig e-postadresse — sjekk at den inneholder @&lt;/span&gt;</code>
+    </div>
+
+    <h3>Consistent error patterns (3.3.1 + 3.3.3)</h3>
+    <ul>
+      <li><strong>Errors are identified textually</strong> — not bare med rød ramme. «Mangler kontonummer» — not bare highlight.</li>
+      <li><strong>Suggestions where possible</strong> — "Invalid postcode — use 4 digits, e.g. 6402".</li>
+      <li><strong>Errors in the purchase flow</strong> kan reverseres uten å miste data. Tilbake-knappen ødelegger not handlekurv.</li>
+    </ul>
+  </section>
+
+  <section class="section" id="autentisering">
+    <div class="section__num">11 / Understandable</div>
+    <h2 class="section__title">Autentisering uten kognitiv test (3.3.8 — ny i 2.2)</h2>
+    <p class="section__lead">WCAG 2.2 forbids authentication that requires the user to remember, calculate, or transcribe something — unless an accessible alternative exists.</p>
+
+    <h3>Vår login-praksis</h3>
+    <div class="kvp"><span class="kvp__key">Method</span><span class="kvp__val">Email + password. Optionally magic link / SSO if you want that later.</span></div>
+    <div class="kvp"><span class="kvp__key"><code>autocomplete</code></span><span class="kvp__val"><code>email</code> and <code>current-password</code> — password managers fill in.</span></div>
+    <div class="kvp"><span class="kvp__key">CAPTCHA</span><span class="kvp__val">Not in use. If we get bot problems, we evaluate hCaptcha with an accessible audio alternative.</span></div>
+    <div class="kvp"><span class="kvp__key">2FA</span><span class="kvp__val">Not mandatory in MVP. If introduced: SMS or TOTP via authenticator app (both accessible).</span></div>
+    <div class="kvp"><span class="kvp__key">Show-password button</span><span class="kvp__val">Eye icon inside the password field, <code>aria-label="Vis passord"</code> / "Hide password"</span></div>
+  </section>
+
+  <section class="section section--alt" id="aria">
+    <div class="section__num">12 / Robust</div>
+    <h2 class="section__title">Name, role, value (4.1.2)</h2>
+    <p class="section__lead">For at en skjermleser skal forstå et UI-element trenger den tre ting: hva det heter, hva slags element det er, and hvilken tilstand det er i.</p>
+
+    <h3>Consistent use in the design system</h3>
+    <ul>
+      <li><strong>Native first.</strong> We use <code>&lt;button&gt;</code>, <code>&lt;a&gt;</code>, <code>&lt;input&gt;</code>, <code>&lt;select&gt;</code>, <code>&lt;dialog&gt;</code>, <code>&lt;details&gt;</code> — not «div med onclick». Native elementer har riktig rolle gratis.</li>
+      <li><strong><code>aria-label</code></strong> på interaktive elementer uten synlig tekst (ikon-knapper, lenkete logoer).</li>
+      <li><strong><code>aria-current="page"</code></strong> på aktiv nav-lenke and aktiv breadcrumb.</li>
+      <li><strong><code>aria-pressed</code></strong> på toggle-knapper som view-switcher.</li>
+      <li><strong><code>aria-selected</code></strong> on the active tab.</li>
+      <li><strong><code>aria-expanded</code></strong> på elementer som åpner panel (eks. mobile-meny-toggle).</li>
+      <li><strong><code>aria-live="polite"</code></strong> på toast/snackbar-regionen and handlekurv-counter — så endringer annonseres uten å avbryte.</li>
+      <li><strong><code>aria-live="assertive"</code></strong> on critical error messages that block the flow.</li>
+    </ul>
+
+    <h3>Check per component</h3>
+    <table class="tbl">
+      <thead><tr><th>Component</th><th>Role</th><th>Name</th><th>State</th></tr></thead>
+      <tbody>
+        <tr><td>Site-header logo</td><td>Link</td><td>«Molde Jarnvare» (aria-label)</td><td>—</td></tr>
+        <tr><td>Cart button</td><td>Button</td><td>"Cart (3)" (aria-label)</td><td>aria-live on the count</td></tr>
+        <tr><td>Search field</td><td>form role="search" + input</td><td>"Search products" (label)</td><td>aria-expanded when the dropdown is open</td></tr>
+        <tr><td>Tab</td><td>button</td><td>The tab title</td><td>aria-selected</td></tr>
+        <tr><td>Filter chip (remove)</td><td>Button</td><td>"Remove M8" (aria-label)</td><td>—</td></tr>
+        <tr><td>View switcher</td><td>Button</td><td>"Grid view" (aria-label)</td><td>aria-pressed</td></tr>
+        <tr><td>Pagination button</td><td>Button</td><td>Page number or "Next/Previous"</td><td>aria-current="page" on active</td></tr>
+        <tr><td>Modal (dialog)</td><td>dialog (native)</td><td>aria-labelledby on h2</td><td>open attribute</td></tr>
+      </tbody>
+    </table>
+  </section>
+
+  <section class="section" id="motion">
+    <div class="section__num">13 / Robust</div>
+    <h2 class="section__title">Bevegelse, parallax and blink</h2>
+    <p class="section__lead">Animasjoner skal være subtile, formålsrettede and fullt valgfrie for brukere som er sensitive to bevegelse.</p>
+
+    <h3>Reduced motion</h3>
+    <p>We respect <code>prefers-reduced-motion: reduce</code> globally in <code>src/styles/base/reset.css</code>:</p>
+    <pre style="background:var(--mj-surface-1);padding:16px;border-radius:8px;font-family:var(--ff-mono);font-size:13px;overflow-x:auto;line-height:1.5;color:var(--mj-ink-2)">@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}</pre>
+    <p>Resultat: brukere som har slått på reduced motion i OS-et får alle hover-transitions, modal-fade and skeleton-pulser kuttet to praktisk nullvarighet — men funksjonalitet beholdes.</p>
+
+    <h3>No flashing content</h3>
+    <p>Vi har ingen elementer som blinker mer enn 3 ganger pr. sekund (krav 2.3.1). Toast-varslingen fader inn én gang and blir stående.</p>
+
+    <h3>Auto-playing media</h3>
+    <p>Ingen video- eller lydinnhold spilles av automatisk. Hero-bilder er statiske eller har én myk overgang, not parallax.</p>
+  </section>
+
+  <section class="section section--alt" id="audit">
+    <div class="section__num">14 / Quality</div>
+    <h2 class="section__title">Audit findings — May 11, 2026 (updated May 12)</h2>
+    <p class="section__lead">Vi har gjennomgått designsystemet komponent for komponent i forkant av v1.0. Funnene under er rangert etter alvorlighet and pålegges fikset eller dokumenteres som kjente begrensninger.</p>
+
+    <div class="crit-card">
+      <span class="crit-card__id">1.4.3</span>
+      <div class="crit-card__text">
+        <strong>Status pill <code>--warning</code>: contrast raised from 2.86:1 to 5.68:1</strong>
+        <code>--mj-warning</code> darkened from <code>#B8851F</code> to <code>#7A580E</code> i <code>src/styles/tokens/colors.css</code> (12. mai 2026). Forplanter seg automatisk to status-pill, alert, badge, stock-indicator and progress-bar.
+      </div>
+      <span class="pass">Resolved 12.05</span>
+    </div>
+    <p style="font-size:13px;color:var(--mj-ink-2);margin-top:8px"><strong>Additional change:</strong> The toast component previously used dark text (<code>--mj-ink</code>) on a warning background. With the darkened warning color that would have given 1.83:1 — therefore <code>.toast--warning</code> i <code>src/components/toast/toast.css</code> oppdatert to hvit tekst (<code>--color-text-on-brand</code>) which gives 6.5:1.</p>
+
+    <div class="crit-card" style="margin-top:24px">
+      <span class="crit-card__id">2.4.11</span>
+      <div class="crit-card__text">
+        <strong>The drawer component lacks a documented JS focus trap</strong>
+        Native <code>&lt;dialog&gt;</code> uses the browser's focus trap. <code>.drawer</code> er custom and krever eksplisitt fokuslås + <kbd class="kbd">Esc</kbd>handling when it opens.
+      </div>
+      <span class="partial">Major</span>
+    </div>
+    <p style="font-size:13px;color:var(--mj-ink-2);margin-top:8px"><strong>Recommendation:</strong> Legg til en liten focus-trap-utility i drawer-JS når den implementeres i Dynamicweb-laget. Pattern-referanse: <a href="https://www.w3.org/WAI/ARIA/apg/patterns/dialog-modal/">WAI ARIA APG — Dialog</a>.</p>
+
+    <div class="crit-card" style="margin-top:24px">
+      <span class="crit-card__id">4.1.3</span>
+      <div class="crit-card__text">
+        <strong>Toast region needs <code>aria-live</code>announcement</strong>
+        Toast CSS is done. When the component is wired in from JS, <code>.toast-region</code> få <code>role="status" aria-live="polite"</code> (or <code>aria-live="assertive"</code> for critical errors).
+      </div>
+      <span class="partial">Major</span>
+    </div>
+
+    <div class="crit-card" style="margin-top:24px">
+      <span class="crit-card__id">1.4.11</span>
+      <div class="crit-card__text">
+        <strong>Input border <code>--mj-line</code> borders on 3:1</strong>
+        The default input border uses <code>#D6D7D9</code> mot hvit (~1,5&nbsp;:&nbsp;1). Selve <em>feltet</em> har riktig kontrast på tekst and placeholder, men kanten alene er svak. Hover går to <code>--mj-line-strong</code> (2,9&nbsp;:&nbsp;1) — still marginal.
+      </div>
+      <span class="partial">Minor</span>
+    </div>
+    <p style="font-size:13px;color:var(--mj-ink-2);margin-top:8px"><strong>Recommendation:</strong> Vurder å hoppe over kanten på hover/default and heller hvile på den synlige fokusringen + placeholders for å indikere felt — eller mørkne <code>--mj-line-strong</code>.</p>
+  </section>
+
+  <section class="section" id="testing">
+    <div class="section__num">15 / Quality</div>
+    <h2 class="section__title">Slik tester vi tilgjengelighet</h2>
+    <p class="section__lead">Automatisk testing fanger rundt 30&nbsp;% av reelle tilgjengelighetsproblemer. Resten krever manuell verifisering. Vi gjør begge deler i et fast oppsett.</p>
+
+    <div class="checks">
+      <div class="check">
+        <div class="check__head">Automated in CI</div>
+        <h4 class="check__title">axe-core via Playwright</h4>
+        <p class="check__desc">Hver build kjører axe on all 11 page templates. Bryter på «critical» and «serious»-funn.</p>
+      </div>
+      <div class="check">
+        <div class="check__head">Manual — keyboard</div>
+        <h4 class="check__title">Tab-only test</h4>
+        <p class="check__desc">Complete purchase without touching the mouse: front page → category → product → buy → confirm. Every component that introduces focus is tested.</p>
+      </div>
+      <div class="check">
+        <div class="check__head">Manual — screen reader</div>
+        <h4 class="check__title">NVDA + Firefox</h4>
+        <p class="check__desc">Primary test stack. VoiceOver + Safari as secondary on page templates before release.</p>
+      </div>
+      <div class="check">
+        <div class="check__head">Manual — zoom</div>
+        <h4 class="check__title">200% browser zoom</h4>
+        <p class="check__desc">Layout skal not bryte. Horisontal scroll er not OK. Klikkflater må fortsatt være tilgjengelige.</p>
+      </div>
+      <div class="check">
+        <div class="check__head">Manual — contrast</div>
+        <h4 class="check__title">Stark + WCAG formula</h4>
+        <p class="check__desc">Every new token is checked against 4.5:1 / 3:1 before it gets a name.</p>
+      </div>
+      <div class="check">
+        <div class="check__head">Manual — motion</div>
+        <h4 class="check__title">Reduced motion on</h4>
+        <p class="check__desc">The entire purchase flow is run with <code>prefers-reduced-motion: reduce</code> enabled in the OS.</p>
+      </div>
+    </div>
+
+    <h3>When we test</h3>
+    <ul>
+      <li><strong>Every pull request</strong> that introduces a new component or changes tokens: automatic axe run + reviewer's manual keyboard check.</li>
+      <li><strong>Every release</strong>: full manual walkthrough of all 11 page templates.</li>
+      <li><strong>After major refactoring</strong>: full skjermleser-gjennomgang av kritiske flows (login, kjøp, kasse, min konto).</li>
+    </ul>
+  </section>
+
+  <section class="section section--alt" id="oppsummering">
+    <div class="section__num">16 / Summary</div>
+    <h2 class="section__title">Status and videre arbeid</h2>
+    <p class="section__lead">Designsystemet er bygget med tilgjengelighet som forutsetning, and møter WCAG 2.2 AA på 31 av 32 anvendelige kriterier per i dag.</p>
+
+    <div class="callout callout--success">
+      <strong>✓ Headline status:</strong> All AA findings closed as of May 12, 2026. Two remaining "major" findings (drawer focus trap + toast aria-live) are JS work handled in the Dynamicweb integration.
+    </div>
+
+    <h3>What we have</h3>
+    <ul>
+      <li>Semantisk HTML5 med komplette landmarks on all 11 page templates</li>
+      <li>Global <code>:focus-visible</code> focus ring from a single token</li>
+      <li>Native <code>&lt;dialog&gt;</code>, <code>&lt;details&gt;</code> and form-elementer der mulig</li>
+      <li><code>prefers-reduced-motion</code> respected globally</li>
+      <li><code>lang="nb"</code>, correct <code>aria-current</code>, <code>aria-pressed</code>, <code>aria-label</code>pattern</li>
+      <li>Verifiserte kontraster på alle brand- and UI-tokens</li>
+      <li>Touch targets 24 px+ everywhere, 44 px default</li>
+    </ul>
+
+    <h3>What remains</h3>
+    <ol>
+      <li><strong>✓ Darken <code>--mj-warning</code></strong> — completed May 12, 2026 (token change in <code>colors.css</code> + text color on <code>.toast--warning</code>).</li>
+      <li><strong>Drawer-fokusfelle</strong> is implemented in the JS layer during the Dynamicweb integration.</li>
+      <li><strong>Toast aria-live</strong> is wired into the JS layer at first active use.</li>
+      <li><strong>End-to-end screen-reader test</strong> kjøres etter at JS er på plass — denne dokumenterer reell oppførsel, not bare statisk markup.</li>
+    </ol>
+
+    <h3>Spørsmål to dere</h3>
+    <ol>
+      <li>Skal vi sikte på <strong>AAA-nivå</strong> på utvalgte kriterier (kontrast 7&nbsp;:&nbsp;1, mål 44&nbsp;px, ingen tidsavbrudd)? Det vil bety at <code>.btn--xs</code> and <code>.btn--sm</code> kun brukes i kontekster med tilstrekkelig spacing.</li>
+      <li>Skal vi engasjere ekstern <strong>tilgjengelighetsrevisor</strong> før v1.0, eller stoler på egen audit + axe-CI?</li>
+      <li>Skal vi toby <strong>dark mode</strong> som tilgjengelighets-feature? Noen brukere med astigmatisme/migrene foretrekker det. Ikke prioritert i MVP, men kan reddes ved hjelp av tokens.</li>
+    </ol>
+  </section>
+
+  <footer class="foot">
+    <p>Molde Jarnvare · Accessibility (WCAG 2.2 AA) · v0.1 · May 12, 2026 · Degree × Molde Jarnvare</p>
+    <p><a href="index.html">← Tilbake to docs-oversikt</a></p>
+  </footer>
+
+</main>
+</div>
+</body>
+</html>

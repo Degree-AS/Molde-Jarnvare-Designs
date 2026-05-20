@@ -1,0 +1,134 @@
+/**
+ * Data table (§13.6)
+ */
+
+.data-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-family: var(--ff-sans);
+  font-size: var(--fs-body-sm);
+  color: var(--color-text-primary);
+}
+
+.data-table th,
+.data-table td {
+  padding: var(--s-3) var(--s-4);
+  text-align: left;
+  vertical-align: middle;
+  border-bottom: var(--bw-1) solid var(--color-border-soft);
+}
+
+.data-table thead th {
+  font-size: var(--fs-overline);
+  font-weight: var(--fw-semibold);
+  letter-spacing: var(--ls-wider);
+  text-transform: uppercase;
+  color: var(--color-text-secondary);
+  background: var(--mj-surface-1);
+  position: sticky;
+  top: 0;
+  z-index: var(--z-raised);
+}
+
+.data-table tbody tr:hover { background: var(--mj-surface-1); }
+.data-table tbody tr:nth-child(even) { background: rgba(0, 0, 0, 0.015); }
+.data-table tbody tr:nth-child(even):hover { background: var(--mj-surface-1); }
+
+.data-table td.is-numeric,
+.data-table th.is-numeric {
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+  font-family: var(--ff-mono);
+  font-size: var(--fs-mono-sm);
+}
+
+.data-table th[aria-sort] { cursor: pointer; user-select: none; }
+.data-table th[aria-sort]::after {
+  content: " ↕";
+  opacity: 0.4;
+  font-size: 0.85em;
+}
+.data-table th[aria-sort="ascending"]::after  { content: " ↑"; opacity: 1; }
+.data-table th[aria-sort="descending"]::after { content: " ↓"; opacity: 1; }
+
+.data-table--compact th,
+.data-table--compact td { padding: var(--s-2) var(--s-3); }
+
+.data-table--bordered { border: var(--bw-1) solid var(--color-border-default); }
+.data-table--bordered th,
+.data-table--bordered td { border-right: var(--bw-1) solid var(--color-border-soft); }
+.data-table--bordered th:last-child,
+.data-table--bordered td:last-child { border-right: 0; }
+
+.data-table__wrap {
+  overflow-x: auto;
+  border-radius: var(--r-md);
+  border: var(--bw-1) solid var(--color-border-soft);
+}
+
+/*
+ * Responsive cards-on-mobile mode (§17).
+ * Opt-in by adding .data-table__wrap--responsive to the wrap.
+ * Each <td> must have a data-label="..." attribute that names its column
+ * — that label is rendered on mobile in place of the hidden thead.
+ *
+ * Below 640 px the table transforms: thead hidden, each row becomes a card,
+ * each cell becomes a label/value row inside the card.
+ */
+@media (max-width: 639.98px) {
+  .data-table__wrap--responsive {
+    overflow-x: visible;
+    border: 0;
+    border-radius: 0;
+  }
+  .data-table__wrap--responsive .data-table thead { display: none; }
+  .data-table__wrap--responsive .data-table,
+  .data-table__wrap--responsive .data-table tbody,
+  .data-table__wrap--responsive .data-table tr,
+  .data-table__wrap--responsive .data-table td {
+    display: block;
+    width: 100%;
+  }
+  .data-table__wrap--responsive .data-table tr {
+    margin-bottom: var(--s-3);
+    border: var(--bw-1) solid var(--color-border-soft);
+    border-radius: var(--r-md);
+    padding: var(--s-3) var(--s-4);
+    background: var(--color-bg-surface);
+  }
+  .data-table__wrap--responsive .data-table tbody tr:hover,
+  .data-table__wrap--responsive .data-table tbody tr:nth-child(even) {
+    background: var(--color-bg-surface);
+  }
+  .data-table__wrap--responsive .data-table td {
+    border: 0;
+    padding: var(--s-2) 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: var(--s-3);
+    text-align: right;
+  }
+  .data-table__wrap--responsive .data-table td.is-numeric {
+    text-align: right;
+  }
+  /* Column label, shown only on mobile */
+  .data-table__wrap--responsive .data-table td::before {
+    content: attr(data-label);
+    font-family: var(--ff-sans);
+    font-size: var(--fs-overline);
+    font-weight: var(--fw-semibold);
+    letter-spacing: var(--ls-wider);
+    text-transform: uppercase;
+    color: var(--color-text-secondary);
+    flex-shrink: 0;
+    text-align: left;
+  }
+  /* Cells without a data-label render value full-width (e.g. action buttons) */
+  .data-table__wrap--responsive .data-table td:not([data-label])::before {
+    content: none;
+  }
+  .data-table__wrap--responsive .data-table td:not([data-label]) {
+    justify-content: flex-end;
+  }
+}

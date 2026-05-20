@@ -1,0 +1,23 @@
+/**
+ * Add-to-cart wrapper (§14.7) — qty stepper + primary button combined.
+ */
+
+.add-to-cart {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: stretch;
+  gap: var(--s-3);
+}
+
+.add-to-cart .qty-stepper { flex: 0 0 auto; }
+.add-to-cart .btn { flex: 1; min-width: 200px; }
+
+.add-to-cart__hint {
+  flex-basis: 100%;
+  font-size: var(--fs-caption);
+  color: var(--color-text-secondary);
+}
+
+@media (max-width: 480px) {
+  .add-to-cart .btn { width: 100%; }
+}

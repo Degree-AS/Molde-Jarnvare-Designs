@@ -1,0 +1,68 @@
+/**
+ * 2-boks dashboard (§14.18) — visuelt oversiktskort for 2-boks-system.
+ */
+
+.two-bin {
+  display: flex;
+  flex-direction: column;
+  gap: var(--s-4);
+  padding: var(--s-5);
+  background: var(--color-bg-surface);
+  border: var(--bw-1) solid var(--color-border-soft);
+  border-radius: var(--r-md);
+}
+
+.two-bin__header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.two-bin__title {
+  font-size: var(--fs-h4);
+  font-weight: var(--fw-bold);
+  margin: 0;
+}
+
+.two-bin__bins {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--s-3);
+}
+
+.two-bin__bin {
+  display: flex;
+  flex-direction: column;
+  gap: var(--s-2);
+  padding: var(--s-4);
+  background: var(--mj-surface-1);
+  border-radius: var(--r-sm);
+}
+
+.two-bin__bin-label {
+  font-size: var(--fs-overline);
+  letter-spacing: var(--ls-wider);
+  text-transform: uppercase;
+  color: var(--color-text-secondary);
+}
+
+.two-bin__bin-fill {
+  height: 6px;
+  background: var(--color-border-soft);
+  border-radius: var(--r-full);
+  overflow: hidden;
+}
+.two-bin__bin-fill > span {
+  display: block;
+  height: 100%;
+  background: var(--mj-success);
+}
+.two-bin__bin--low .two-bin__bin-fill > span { background: var(--mj-warning); }
+.two-bin__bin--empty .two-bin__bin-fill > span { background: var(--mj-error); width: 0; }
+
+.two-bin__bin-qty {
+  font-family: var(--ff-mono);
+  font-size: var(--fs-mono-md);
+  font-variant-numeric: tabular-nums;
+  font-weight: var(--fw-semibold);
+}

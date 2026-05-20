@@ -1,0 +1,65 @@
+/**
+ * Mini cart drawer (§14.9) — uses .drawer as the base.
+ */
+
+.mini-cart {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.mini-cart__header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: var(--s-5) var(--s-6);
+  border-bottom: var(--bw-1) solid var(--color-border-soft);
+}
+
+.mini-cart__title {
+  font-size: var(--fs-h4);
+  font-weight: var(--fw-bold);
+  margin: 0;
+}
+
+.mini-cart__count {
+  font-size: var(--fs-caption);
+  color: var(--color-text-secondary);
+}
+
+.mini-cart__body {
+  flex: 1;
+  overflow-y: auto;
+  padding: var(--s-3);
+}
+
+.mini-cart__empty {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: var(--s-4);
+  padding: var(--s-9);
+  text-align: center;
+}
+
+.mini-cart__footer {
+  padding: var(--s-5) var(--s-6);
+  border-top: var(--bw-1) solid var(--color-border-soft);
+  background: var(--mj-surface-1);
+  display: flex;
+  flex-direction: column;
+  gap: var(--s-3);
+}
+
+.mini-cart__total {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  font-size: var(--fs-body);
+}
+.mini-cart__total-value {
+  font-size: var(--fs-h4);
+  font-weight: var(--fw-bold);
+  font-variant-numeric: tabular-nums;
+}

@@ -1,0 +1,39 @@
+/**
+ * Breadcrumb (§13.9)
+ */
+
+.breadcrumb {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: var(--s-2);
+  font-family: var(--ff-sans);
+  font-size: var(--fs-caption);
+  color: var(--color-text-secondary);
+}
+
+.breadcrumb__item {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--s-2);
+}
+
+.breadcrumb__item:not(:last-child)::after {
+  content: "/";
+  color: var(--color-text-tertiary);
+  margin-inline-start: var(--s-2);
+}
+
+.breadcrumb__link {
+  color: var(--color-text-secondary);
+  text-decoration: none;
+}
+.breadcrumb__link:hover {
+  color: var(--color-text-link);
+  text-decoration: underline;
+}
+
+.breadcrumb__item[aria-current="page"] {
+  color: var(--color-text-primary);
+  font-weight: var(--fw-medium);
+}

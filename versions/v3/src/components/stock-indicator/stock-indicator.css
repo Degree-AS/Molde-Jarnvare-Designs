@@ -1,0 +1,35 @@
+/**
+ * Stock indicator (§14.5) — builds on .status-pill with MJ colors.
+ */
+
+.stock-indicator {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--s-2);
+  font-family: var(--ff-sans);
+  font-size: var(--fs-body-sm);
+  font-weight: var(--fw-semibold);
+}
+
+.stock-indicator::before {
+  content: "";
+  width: 10px;
+  height: 10px;
+  border-radius: var(--r-full);
+  background: currentColor;
+  flex: 0 0 auto;
+}
+
+.stock-indicator--in       { color: var(--mj-success); }
+.stock-indicator--low      { color: var(--mj-warning); }
+.stock-indicator--out      { color: var(--mj-error); }
+.stock-indicator--order    { color: var(--mj-ink-2); }
+.stock-indicator--discontinued { color: var(--mj-ink-3); }
+
+.stock-indicator__count {
+  font-family: var(--ff-mono);
+  font-size: var(--fs-mono-sm);
+  font-weight: var(--fw-regular);
+  color: var(--color-text-secondary);
+  font-variant-numeric: tabular-nums;
+}

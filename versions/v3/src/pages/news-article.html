@@ -1,0 +1,325 @@
+<!doctype html>
+<html lang="nb">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Slangepressing samme dag — slik fungerer det · Aktuelt — Molde Jarnvare</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Source+Sans+3:wght@400;500;600;700;900&family=JetBrains+Mono:wght@400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../styles/index.css">
+</head>
+<body>
+<header class="site-header">
+  <div class="site-header__inner">
+    <a class="site-header__logo" href="/" aria-label="Molde Jarnvare"><img src="../assets/logos/molde-jarnvare-positive.png" alt="Molde Jarnvare" class="site-header__logo-img"></a>
+    <div class="site-header__search">
+      <form class="search-bar" role="search">
+        <svg class="search-bar__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.35-4.35"/></svg>
+        <input class="search-bar__input" type="search" placeholder="Søk i 30 000+ artikler, NOBB-nr, EAN…" />
+        <button class="search-bar__submit" type="submit">Søk</button>
+      </form>
+    </div>
+    <div class="site-header__actions">
+      <button class="site-header__action" aria-label="Min konto">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4 4-7 8-7s8 3 8 7"/></svg>
+      </button>
+      <button class="site-header__action" aria-label="Handlekurv (3)">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M6 6h15l-1.5 9H7.5z"/><circle cx="9" cy="20" r="1.5"/><circle cx="18" cy="20" r="1.5"/></svg>
+        <span class="badge badge--numeric site-header__action-badge">3</span>
+      </button>
+      <!-- Mobile-only hamburger trigger (hidden ≥ --bp-lg) -->
+      <button class="site-header__hamburger" type="button"
+              aria-label="Åpne hovedmeny"
+              aria-controls="site-nav-drawer"
+              aria-expanded="false">
+        <span class="site-header__hamburger-icon" aria-hidden="true"></span>
+      </button>
+    </div>
+  </div>
+
+  <div class="site-header__main">
+    <div class="site-header__main-inner">
+      <nav class="site-header__nav" aria-label="Hovedmeny">
+        <button class="site-header__nav-trigger" type="button" aria-controls="megamenu" aria-expanded="false">
+          Produkter
+          <svg class="site-header__nav-trigger-icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
+        </button>
+      </nav>
+    </div>
+  </div>
+
+  <!--
+    Mega-menu panel — opens below the header on desktop (≥ --bp-lg) when the
+    "Produkter"-trigger is clicked. For static preview, add
+    data-preview-megamenu="true" to <header class="site-header"> above.
+  -->
+  <div class="megamenu" id="megamenu" role="navigation" aria-label="Produktkategorier">
+    <div class="megamenu__inner">
+      <div class="megamenu__intro">
+        <h2 class="megamenu__intro-title">Alle produkter</h2>
+        <p class="megamenu__intro-meta"><strong>30 247</strong> artikler &middot; 15 hovedkategorier &middot; oppdatert i dag</p>
+      </div>
+      <div class="megamenu__columns">
+
+        <div class="megamenu__group">
+          <a class="megamenu__heading" href="#">Festemidler <span class="megamenu__count">8 200</span></a>
+          <ul class="megamenu__list">
+            <li><a href="#">Sekskantskruer</a></li>
+            <li><a href="#">Maskinskruer</a></li>
+            <li><a href="#">Treskruer</a></li>
+            <li><a href="#">Muttere og skiver</a></li>
+            <li><a href="#">Plugger og hylser</a></li>
+          </ul>
+        </div>
+
+        <div class="megamenu__group">
+          <a class="megamenu__heading" href="#">Verktøy <span class="megamenu__count">5 400</span></a>
+          <ul class="megamenu__list">
+            <li><a href="#">Håndverktøy</a></li>
+            <li><a href="#">Elektroverktøy</a></li>
+            <li><a href="#">Skrumaskiner og borr</a></li>
+            <li><a href="#">Nøkler og tang</a></li>
+          </ul>
+        </div>
+
+        <div class="megamenu__group">
+          <a class="megamenu__heading" href="#">Verneutstyr <span class="megamenu__count">3 100</span></a>
+          <ul class="megamenu__list">
+            <li><a href="#">Hansker</a></li>
+            <li><a href="#">Briller og hørselsvern</a></li>
+            <li><a href="#">Hjelmer</a></li>
+            <li><a href="#">Vernefottøy</a></li>
+            <li><a href="#">Åndedrettsvern</a></li>
+          </ul>
+        </div>
+
+        <div class="megamenu__group">
+          <a class="megamenu__heading" href="#">Hydraulikk <span class="megamenu__count">2 700</span></a>
+          <ul class="megamenu__list">
+            <li><a href="#">Slanger og koblinger</a></li>
+            <li><a href="#">Sylindere</a></li>
+            <li><a href="#">Ventiler og pumper</a></li>
+          </ul>
+        </div>
+
+        <div class="megamenu__group">
+          <a class="megamenu__heading" href="#">Sveis <span class="megamenu__count">1 850</span></a>
+          <ul class="megamenu__list">
+            <li><a href="#">Sveiseapparater</a></li>
+            <li><a href="#">Elektroder og tråd</a></li>
+            <li><a href="#">Beskyttelsesgass</a></li>
+          </ul>
+        </div>
+
+        <div class="megamenu__group">
+          <a class="megamenu__heading" href="#">Industri <span class="megamenu__count">2 400</span></a>
+          <ul class="megamenu__list">
+            <li><a href="#">Kulelagre</a></li>
+            <li><a href="#">Drev og tannhjul</a></li>
+            <li><a href="#">Akselkoblinger</a></li>
+          </ul>
+        </div>
+
+        <div class="megamenu__group">
+          <a class="megamenu__heading" href="#">Slipemidler <span class="megamenu__count">980</span></a>
+          <ul class="megamenu__list">
+            <li><a href="#">Slipeskiver</a></li>
+            <li><a href="#">Slipepapir</a></li>
+            <li><a href="#">Polering</a></li>
+          </ul>
+        </div>
+
+        <div class="megamenu__group">
+          <a class="megamenu__heading" href="#">Tetninger og pakninger <span class="megamenu__count">720</span></a>
+          <ul class="megamenu__list">
+            <li><a href="#">O-ringer</a></li>
+            <li><a href="#">Flatpakninger</a></li>
+            <li><a href="#">Tetningsmasse</a></li>
+          </ul>
+        </div>
+
+        <div class="megamenu__group">
+          <a class="megamenu__heading" href="#">Lim og kjemikalier <span class="megamenu__count">540</span></a>
+          <ul class="megamenu__list">
+            <li><a href="#">Industrilim</a></li>
+            <li><a href="#">Silikon og fugemasse</a></li>
+            <li><a href="#">Sprayer og rens</a></li>
+          </ul>
+        </div>
+
+        <div class="megamenu__group">
+          <a class="megamenu__heading" href="#">Måleinstrumenter <span class="megamenu__count">420</span></a>
+          <ul class="megamenu__list">
+            <li><a href="#">Skyvelære og mikrometer</a></li>
+            <li><a href="#">Multimeter</a></li>
+            <li><a href="#">Vekter og våger</a></li>
+          </ul>
+        </div>
+
+        <div class="megamenu__group">
+          <a class="megamenu__heading" href="#">Smøring og rens <span class="megamenu__count">630</span></a>
+          <ul class="megamenu__list">
+            <li><a href="#">Smøreolje og fett</a></li>
+            <li><a href="#">Avfetting og rens</a></li>
+            <li><a href="#">Rustbeskyttelse</a></li>
+          </ul>
+        </div>
+
+        <div class="megamenu__group">
+          <a class="megamenu__heading" href="#">Bil og verksted <span class="megamenu__count">1 100</span></a>
+          <ul class="megamenu__list">
+            <li><a href="#">Jekker og bukker</a></li>
+            <li><a href="#">Verktøyvogner</a></li>
+            <li><a href="#">Trykkluft og slanger</a></li>
+          </ul>
+        </div>
+
+        <div class="megamenu__group">
+          <a class="megamenu__heading" href="#">Lagring og logistikk <span class="megamenu__count">880</span></a>
+          <ul class="megamenu__list">
+            <li><a href="#">Plastbokser og kasser</a></li>
+            <li><a href="#">Hyller og reoler</a></li>
+            <li><a href="#">Pakketape og emballasje</a></li>
+          </ul>
+        </div>
+
+        <div class="megamenu__group">
+          <a class="megamenu__heading" href="#">Elektro <span class="megamenu__count">760</span></a>
+          <ul class="megamenu__list">
+            <li><a href="#">Kabel og ledning</a></li>
+            <li><a href="#">Plugger og kontakter</a></li>
+            <li><a href="#">Sikringer og automater</a></li>
+          </ul>
+        </div>
+
+        <div class="megamenu__group">
+          <a class="megamenu__heading" href="#">Skilt og merking <span class="megamenu__count">340</span></a>
+          <ul class="megamenu__list">
+            <li><a href="#">Etiketter og tape</a></li>
+            <li><a href="#">Sikkerhetsskilt</a></li>
+            <li><a href="#">Avsperring</a></li>
+          </ul>
+        </div>
+
+      </div>
+
+      <div class="megamenu__footer">
+        <a class="megamenu__footer-link" href="#">Se alle produkter →</a>
+        <span class="megamenu__intro-meta">Bestill direkte med <strong>NOBB-nr</strong> eller <strong>EAN</strong> via søket</span>
+      </div>
+    </div>
+  </div>
+
+  <!--
+    Mobile nav drawer (visible < --bp-lg). The JS layer toggles
+    [data-open="true"] on hamburger click / Esc / backdrop click. For static
+    preview, add data-preview-open="true" to <header class="site-header"> above.
+  -->
+  <div class="site-header__drawer" id="site-nav-drawer" role="dialog" aria-modal="true" aria-label="Hovedmeny">
+    <div class="site-header__drawer-header">
+      <span class="t-overline" style="color: var(--mj-blue);">Meny</span>
+      <button class="site-header__drawer-close" type="button" aria-label="Lukk meny">&times;</button>
+    </div>
+    <nav class="site-header__drawer-nav" aria-label="Produktkategorier (mobil)">
+      <a href="#">Festemidler</a>
+      <a href="#">Verktøy</a>
+      <a href="#">Verneutstyr</a>
+      <a href="#">Hydraulikk</a>
+      <a href="#">Sveis</a>
+      <a href="#">Industri</a>
+      <a href="#">Slipemidler</a>
+      <a href="#">Tetninger og pakninger</a>
+      <a href="#">Lim og kjemikalier</a>
+      <a href="#">Måleinstrumenter</a>
+      <a href="#">Smøring og rens</a>
+      <a href="#">Bil og verksted</a>
+      <a href="#">Lagring og logistikk</a>
+      <a href="#">Elektro</a>
+      <a href="#">Skilt og merking</a>
+    </nav>
+  </div>
+</header>
+<div class="site-header__drawer-backdrop" aria-hidden="true"></div>
+<div class="megamenu-backdrop" aria-hidden="true"></div>
+<main class="container container--narrow" style="padding-block: var(--s-7);">
+
+  <nav class="breadcrumb" style="margin-bottom: var(--s-5);">
+    <span class="breadcrumb__item"><a class="breadcrumb__link" href="news.html">Aktuelt</a></span>
+    <span class="breadcrumb__item" aria-current="page">Slangepressing samme dag</span>
+  </nav>
+
+  <article class="news-article">
+
+    <header class="news-article__header">
+      <span class="news-article__tag">Verksted</span>
+      <h1 class="news-article__title">Slangepressing samme dag &mdash; slik fungerer det</h1>
+      <p class="news-article__lead">Hva b&oslash;r du ha klart f&oslash;r du sender slangen til presse hos oss? Vi g&aring;r gjennom de viktigste m&aring;lene, koblingstyper og leveringstider.</p>
+      <p class="news-article__meta">
+        <span>14. mai 2026</span>
+        <span>Lars Indres&oslash;vde &middot; Produktansvarlig hydraulikk</span>
+        <span>4 min lesetid</span>
+      </p>
+    </header>
+
+    <figure class="news-article__hero">
+      <img src="../assets/images/marketing/slangeverksted-presse.jpg" alt="Operat&oslash;r presser hydraulikkslange p&aring; Uniflex-maskin">
+    </figure>
+
+    <div class="news-article__body">
+      <p>I serviceverkstedet i Molde presser vi hydraulikkslanger samme dag for kunder i M&oslash;re og Romsdal. De fleste oppdrag er i mellomklassen &mdash; en eller flere slanger til en anleggsmaskin, en l&oslash;ftekran eller et industribruk &mdash; og kunden trenger varen i operativ stand neste morgen.</p>
+
+      <p>Det vi trenger fra deg er overraskende lite. Tre m&aring;l og en koblingstype er som regel nok til at vi kan starte. Resten ordner vi i verkstedet, og du f&aring;r prisestimat innen en time fra du legger inn foresp&oslash;rselen.</p>
+
+      <h2>De viktigste m&aring;lene</h2>
+
+      <p>F&oslash;rst og fremst: <strong>indre diameter</strong> p&aring; slangen, <strong>lengde fra senter til senter</strong> p&aring; koblingene, og <strong>trykk-klasse</strong>. Hvis du har slangen fysisk, er den enkleste m&aring;ten &aring; legge den flat og m&aring;le fra senter av den ene koblingen til senter av den andre.</p>
+
+      <blockquote>
+        Vi ser ofte at kunder sender oss bare slangelengden uten koblings-senter &mdash; da m&aring; vi ringe tilbake og spare en runde i pressen.
+      </blockquote>
+
+      <h2>Koblingstyper</h2>
+
+      <p>De fleste slangene v&aring;re leveres med en av f&oslash;lgende koblingstyper:</p>
+
+      <ul>
+        <li><strong>BSP (British Standard Pipe)</strong> &mdash; vanligst i Norge og resten av Europa</li>
+        <li><strong>JIC 37&deg;</strong> &mdash; brukt p&aring; amerikanske maskiner og en del eldre Sandvik-utstyr</li>
+        <li><strong>ORFS (O-Ring Face Seal)</strong> &mdash; for h&oslash;ye trykk og kritiske applikasjoner</li>
+      </ul>
+
+      <h2>N&aring;r du henter slangen</h2>
+
+      <p>Slanger som er ferdig pressede leveres med trykkprotokoll og leveransedokumentasjon. Hvis du har bestilt en serie identiske slanger, leveres de pakket sammen med &eacute;n felles dokumentasjon for serien.</p>
+
+      <p>Si fra hvis du vil ha slangen levert direkte til verkstedet eller anleggsplassen &mdash; vi leverer i hele M&oslash;re og Romsdal med vanlig fraktrute. For oppdrag som haster, kan vi avtale ekspresslevering med m&aring;l p&aring; 24 timer fra bestilling.</p>
+    </div>
+
+  </article>
+
+  <hr class="divider" style="margin-block: var(--s-9);">
+
+  <section>
+    <h2 class="t-h3" style="margin: 0 0 var(--s-5);">Relaterte artikler</h2>
+    <div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: var(--s-5);">
+      <a class="news-card" href="news-article.html">
+        <div class="news-card__media"><img src="../assets/images/products/hydraulikk-detalj-1.jpg" alt=""></div>
+        <div class="news-card__body">
+          <span class="news-card__tag">Hydraulikk</span>
+          <h3 class="news-card__title">Riktig kobling p&aring; f&oslash;rste fors&oslash;k</h3>
+          <p class="news-card__meta"><span>15.04.2026</span></p>
+        </div>
+      </a>
+      <a class="news-card" href="news-article.html">
+        <div class="news-card__media"><img src="../assets/images/marketing/serviceverksted.jpg" alt=""></div>
+        <div class="news-card__body">
+          <span class="news-card__tag">Verksted</span>
+          <h3 class="news-card__title">Trykktesting &mdash; n&aring;r og hvorfor</h3>
+          <p class="news-card__meta"><span>20.04.2026</span></p>
+        </div>
+      </a>
+    </div>
+  </section>
+
+</main>
+<footer class="site-footer"><div class="site-footer__inner"><div class="site-foo

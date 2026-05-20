@@ -1,0 +1,16 @@
+/**
+ * Borders
+ * -----------------------------------------------------------------------------
+ * Source: DESIGN_SYSTEM.md §7.1
+ *
+ * Border widths. For radii, see radii.css. For border colors, see colors.css
+ * (--color-border-*).
+ * -----------------------------------------------------------------------------
+ */
+
+:root {
+  --bw-1: 1px;
+  --bw-2: 1.5px;
+  --bw-3: 2px;
+  --bw-4: 3px;
+}

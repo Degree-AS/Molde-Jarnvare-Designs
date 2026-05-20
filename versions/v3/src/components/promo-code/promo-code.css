@@ -1,0 +1,36 @@
+/**
+ * Promo code input (§14.12)
+ */
+
+.promo-code {
+  display: flex;
+  flex-direction: column;
+  gap: var(--s-2);
+}
+
+.promo-code__form {
+  display: flex;
+  gap: var(--s-2);
+}
+
+.promo-code__form .input { flex: 1; font-family: var(--ff-mono); text-transform: uppercase; }
+
+.promo-code__applied {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: var(--s-2) var(--s-3);
+  background: var(--mj-success-bg);
+  color: var(--mj-success);
+  border-radius: var(--r-sm);
+  font-size: var(--fs-body-sm);
+}
+
+.promo-code__remove {
+  background: transparent;
+  border: 0;
+  color: inherit;
+  cursor: pointer;
+  font-size: var(--fs-h5);
+  line-height: 1;
+}
