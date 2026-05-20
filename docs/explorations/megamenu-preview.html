@@ -3,16 +3,101 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Ordre mottatt — Molde Jarnvare</title>
+  <title>Mega-meny preview — Molde Jarnvare</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Source+Sans+3:wght@400;500;600;700;900&family=JetBrains+Mono:wght@400&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="../styles/index.css">
+  <link rel="stylesheet" href="../../src/styles/index.css">
+  <style>
+    /* Preview chrome */
+    .preview-banner {
+      background: var(--mj-blue);
+      color: var(--color-text-on-brand);
+      padding: 10px 24px;
+      font-size: 13px;
+      letter-spacing: 0.02em;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 16px;
+      flex-wrap: wrap;
+    }
+    .preview-banner strong { font-weight: 700; }
+    .preview-banner a { color: var(--mj-orange); text-decoration: none; }
+    .preview-banner a:hover { text-decoration: underline; }
+    .preview-section-title {
+      font-family: var(--ff-sans);
+      font-size: 14px;
+      font-weight: var(--fw-semibold);
+      color: var(--color-text-secondary);
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      margin: 0;
+    }
+
+    /* HIDE the megamenu backdrop in this preview — no gray filter */
+    .megamenu-backdrop { display: none !important; }
+
+    /* Slim spacer below desktop megamenu — just enough air so the panel
+       isn't crammed against the mobile section */
+    .preview-spacer {
+      height: 180px;
+      background: var(--color-bg-surface-alt);
+    }
+
+    /* Phone frames */
+    .phones-row {
+      background: var(--color-bg-surface-alt);
+      padding: 24px 24px 40px;
+      display: flex;
+      justify-content: center;
+      align-items: flex-start;
+      gap: 48px;
+      flex-wrap: wrap;
+    }
+    .phone {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 10px;
+    }
+    .phone__label {
+      font-family: var(--ff-sans);
+      font-size: 13px;
+      font-weight: var(--fw-semibold);
+      color: var(--color-text-secondary);
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+    }
+    .phone__frame {
+      width: 395px;
+      height: 720px;
+      padding: 10px;
+      background: #1F2128;
+      border-radius: 28px;
+      box-shadow: 0 24px 48px rgba(0,0,0,0.18);
+      overflow: hidden;
+    }
+    .phone__frame iframe {
+      width: 375px;
+      height: 700px;
+      border: 0;
+      border-radius: 18px;
+      background: white;
+    }
+  </style>
 </head>
 <body>
 
-<header class="site-header">
+<div class="preview-banner">
+  <span><strong>Desktop-visning</strong> — mega-meny utbrettet under "Produkter ▾" på en standard skjerm.</span>
+  <a href="../../src/pages/home.html">← Tilbake til home (lukket meny)</a>
+</div>
+
+<!-- Forced-open state via data-preview-megamenu="true" -->
+<header class="site-header" data-preview-megamenu="true">
   <div class="site-header__inner">
-    <a class="site-header__logo" href="/" aria-label="Molde Jarnvare"><img src="../assets/logos/molde-jarnvare-positive.png" alt="Molde Jarnvare" class="site-header__logo-img"></a>
+    <a class="site-header__logo" href="/" aria-label="Molde Jarnvare"><img src="../../src/assets/logos/molde-jarnvare-positive.png" alt="Molde Jarnvare" class="site-header__logo-img"></a>
     <div class="site-header__search">
       <form class="search-bar" role="search">
         <svg class="search-bar__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.35-4.35"/></svg>
@@ -28,11 +113,7 @@
         <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M6 6h15l-1.5 9H7.5z"/><circle cx="9" cy="20" r="1.5"/><circle cx="18" cy="20" r="1.5"/></svg>
         <span class="badge badge--numeric site-header__action-badge">3</span>
       </button>
-      <!-- Mobile-only hamburger trigger (hidden ≥ --bp-lg) -->
-      <button class="site-header__hamburger" type="button"
-              aria-label="Åpne hovedmeny"
-              aria-controls="site-nav-drawer"
-              aria-expanded="false">
+      <button class="site-header__hamburger" type="button" aria-label="Åpne hovedmeny" aria-controls="site-nav-drawer" aria-expanded="false">
         <span class="site-header__hamburger-icon" aria-hidden="true"></span>
       </button>
     </div>
@@ -41,7 +122,7 @@
   <div class="site-header__main">
     <div class="site-header__main-inner">
       <nav class="site-header__nav" aria-label="Hovedmeny">
-        <button class="site-header__nav-trigger" type="button" aria-controls="megamenu" aria-expanded="false">
+        <button class="site-header__nav-trigger" type="button" aria-controls="megamenu" aria-expanded="true">
           Produkter
           <svg class="site-header__nav-trigger-icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
         </button>
@@ -49,11 +130,6 @@
     </div>
   </div>
 
-  <!--
-    Mega-menu panel — opens below the header on desktop (≥ --bp-lg) when the
-    "Produkter"-trigger is clicked. For static preview, add
-    data-preview-megamenu="true" to <header class="site-header"> above.
-  -->
   <div class="megamenu" id="megamenu" role="navigation" aria-label="Produktkategorier">
     <div class="megamenu__inner">
       <div class="megamenu__intro">
@@ -209,60 +285,32 @@
       </div>
     </div>
   </div>
-
-  <!--
-    Mobile nav drawer (visible < --bp-lg). The JS layer toggles
-    [data-open="true"] on hamburger click / Esc / backdrop click. For static
-    preview, add data-preview-open="true" to <header class="site-header"> above.
-  -->
-  <div class="site-header__drawer" id="site-nav-drawer" role="dialog" aria-modal="true" aria-label="Hovedmeny">
-    <div class="site-header__drawer-header">
-      <span class="t-overline" style="color: var(--mj-blue);">Meny</span>
-      <button class="site-header__drawer-close" type="button" aria-label="Lukk meny">&times;</button>
-    </div>
-    <nav class="site-header__drawer-nav" aria-label="Produktkategorier (mobil)">
-      <a href="#">Festemidler</a>
-      <a href="#">Verktøy</a>
-      <a href="#">Verneutstyr</a>
-      <a href="#">Hydraulikk</a>
-      <a href="#">Sveis</a>
-      <a href="#">Industri</a>
-      <a href="#">Slipemidler</a>
-      <a href="#">Tetninger og pakninger</a>
-      <a href="#">Lim og kjemikalier</a>
-      <a href="#">Måleinstrumenter</a>
-      <a href="#">Smøring og rens</a>
-      <a href="#">Bil og verksted</a>
-      <a href="#">Lagring og logistikk</a>
-      <a href="#">Elektro</a>
-      <a href="#">Skilt og merking</a>
-    </nav>
-  </div>
 </header>
 <div class="site-header__drawer-backdrop" aria-hidden="true"></div>
-<div class="megamenu-backdrop" aria-hidden="true"></div>
 
-<main class="container container--narrow">
-  <div class="order-confirmation">
-    <div class="order-confirmation__icon">✓</div>
-    <h1 class="order-confirmation__title">Ordre mottatt</h1>
-    <p class="order-confirmation__id">Ordre 234 519</p>
-    <p class="order-confirmation__desc">
-      Vi har mottatt bestillingen din og har sendt en kvittering til
-      <strong>martin@degree.no</strong>. Du kan følge ordrestatus i Min konto.
-    </p>
-    <div class="order-confirmation__actions">
-      <a class="btn btn--primary" href="account.html">Gå til Min konto</a>
-      <a class="btn btn--outline" href="home.html">Tilbake til forsiden</a>
+<!-- Tight spacer so mobile section appears right under the panel -->
+<div class="preview-spacer"></div>
+
+<!-- ─── Mobile-visning ──────────────────────────────────────────────── -->
+<div class="preview-banner">
+  <span><strong>Mobil-visning (375 px)</strong> — "Produkter"-knappen og mega-menyen er skjult. I stedet brukes hamburger ☰ som åpner en drawer med de 15 hovedkategoriene.</span>
+</div>
+
+<div class="phones-row">
+  <div class="phone">
+    <div class="phone__label">Lukket drawer</div>
+    <div class="phone__frame">
+      <iframe src="../../src/pages/home.html" loading="lazy" title="Mobile preview — closed drawer"></iframe>
     </div>
   </div>
 
-  <section class="card" style="margin-top: var(--s-8);">
-    <h2 class="card__title">Leveringsoversikt</h2>
-    <div class="data-table__wrap">
-      <table class="data-table">
-        <thead><tr><th>Artikkel</th><th>SKU</th><th class="is-numeric">Antall</th><th class="is-numeric">Pris</th></tr></thead>
-        <tbody>
-          <tr><td>Sekskantskrue M8 × 40 mm A4</td><td><code>4815-162-30</code></td><td class="is-numeric">200</td><td class="is-numeric">kr 560,–</td></tr>
-          <tr><td>3M arbeidshansker, str. 10</td><td><code>7700-099-00</code></td><td class="is-numeric">6</td><td class="is-numeric">kr 474,–</td></tr>
-          <tr><td>Hilti TE 6-A36 borhammer</td><td><code>2210-507-12</code></td><td class="is-numeric">1</td><td class="is-numeric
+  <div class="phone">
+    <div class="phone__label">Åpen drawer</div>
+    <div class="phone__frame">
+      <iframe src="mobile-drawer-open.html" loading="lazy" title="Mobile preview — drawer open"></iframe>
+    </div>
+  </div>
+</div>
+
+</body>
+</html>
