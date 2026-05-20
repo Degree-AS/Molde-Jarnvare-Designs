@@ -40,16 +40,174 @@
 
   <div class="site-header__main">
     <div class="site-header__main-inner">
-      <nav class="site-header__nav" aria-label="Hovedkategorier">
-        <a class="site-header__nav-link" href="#">Festemidler</a>
-        <a class="site-header__nav-link" href="#">Verktøy</a>
-        <a class="site-header__nav-link" href="#">Verneutstyr</a>
-        <a class="site-header__nav-link" href="#">Hydraulikk</a>
-        <a class="site-header__nav-link" href="#">Sveis</a>
-        <a class="site-header__nav-link" href="#">Industri</a>
-        <a class="site-header__nav-link" href="#">Hurtigbestilling</a>
-        <a class="site-header__nav-link site-header__nav-link--accent" href="#">Tilbud</a>
+      <nav class="site-header__nav" aria-label="Hovedmeny">
+        <button class="site-header__nav-trigger" type="button" aria-controls="megamenu" aria-expanded="false">
+          Produkter
+          <svg class="site-header__nav-trigger-icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
+        </button>
       </nav>
+    </div>
+  </div>
+
+  <!--
+    Mega-menu panel — opens below the header on desktop (≥ --bp-lg) when the
+    "Produkter"-trigger is clicked. For static preview, add
+    data-preview-megamenu="true" to <header class="site-header"> above.
+  -->
+  <div class="megamenu" id="megamenu" role="navigation" aria-label="Produktkategorier">
+    <div class="megamenu__inner">
+      <div class="megamenu__intro">
+        <h2 class="megamenu__intro-title">Alle produkter</h2>
+        <p class="megamenu__intro-meta"><strong>30 247</strong> artikler &middot; 15 hovedkategorier &middot; oppdatert i dag</p>
+      </div>
+      <div class="megamenu__columns">
+
+        <div class="megamenu__group">
+          <a class="megamenu__heading" href="#">Festemidler <span class="megamenu__count">8 200</span></a>
+          <ul class="megamenu__list">
+            <li><a href="#">Sekskantskruer</a></li>
+            <li><a href="#">Maskinskruer</a></li>
+            <li><a href="#">Treskruer</a></li>
+            <li><a href="#">Muttere og skiver</a></li>
+            <li><a href="#">Plugger og hylser</a></li>
+          </ul>
+        </div>
+
+        <div class="megamenu__group">
+          <a class="megamenu__heading" href="#">Verktøy <span class="megamenu__count">5 400</span></a>
+          <ul class="megamenu__list">
+            <li><a href="#">Håndverktøy</a></li>
+            <li><a href="#">Elektroverktøy</a></li>
+            <li><a href="#">Skrumaskiner og borr</a></li>
+            <li><a href="#">Nøkler og tang</a></li>
+          </ul>
+        </div>
+
+        <div class="megamenu__group">
+          <a class="megamenu__heading" href="#">Verneutstyr <span class="megamenu__count">3 100</span></a>
+          <ul class="megamenu__list">
+            <li><a href="#">Hansker</a></li>
+            <li><a href="#">Briller og hørselsvern</a></li>
+            <li><a href="#">Hjelmer</a></li>
+            <li><a href="#">Vernefottøy</a></li>
+            <li><a href="#">Åndedrettsvern</a></li>
+          </ul>
+        </div>
+
+        <div class="megamenu__group">
+          <a class="megamenu__heading" href="#">Hydraulikk <span class="megamenu__count">2 700</span></a>
+          <ul class="megamenu__list">
+            <li><a href="#">Slanger og koblinger</a></li>
+            <li><a href="#">Sylindere</a></li>
+            <li><a href="#">Ventiler og pumper</a></li>
+          </ul>
+        </div>
+
+        <div class="megamenu__group">
+          <a class="megamenu__heading" href="#">Sveis <span class="megamenu__count">1 850</span></a>
+          <ul class="megamenu__list">
+            <li><a href="#">Sveiseapparater</a></li>
+            <li><a href="#">Elektroder og tråd</a></li>
+            <li><a href="#">Beskyttelsesgass</a></li>
+          </ul>
+        </div>
+
+        <div class="megamenu__group">
+          <a class="megamenu__heading" href="#">Industri <span class="megamenu__count">2 400</span></a>
+          <ul class="megamenu__list">
+            <li><a href="#">Kulelagre</a></li>
+            <li><a href="#">Drev og tannhjul</a></li>
+            <li><a href="#">Akselkoblinger</a></li>
+          </ul>
+        </div>
+
+        <div class="megamenu__group">
+          <a class="megamenu__heading" href="#">Slipemidler <span class="megamenu__count">980</span></a>
+          <ul class="megamenu__list">
+            <li><a href="#">Slipeskiver</a></li>
+            <li><a href="#">Slipepapir</a></li>
+            <li><a href="#">Polering</a></li>
+          </ul>
+        </div>
+
+        <div class="megamenu__group">
+          <a class="megamenu__heading" href="#">Tetninger og pakninger <span class="megamenu__count">720</span></a>
+          <ul class="megamenu__list">
+            <li><a href="#">O-ringer</a></li>
+            <li><a href="#">Flatpakninger</a></li>
+            <li><a href="#">Tetningsmasse</a></li>
+          </ul>
+        </div>
+
+        <div class="megamenu__group">
+          <a class="megamenu__heading" href="#">Lim og kjemikalier <span class="megamenu__count">540</span></a>
+          <ul class="megamenu__list">
+            <li><a href="#">Industrilim</a></li>
+            <li><a href="#">Silikon og fugemasse</a></li>
+            <li><a href="#">Sprayer og rens</a></li>
+          </ul>
+        </div>
+
+        <div class="megamenu__group">
+          <a class="megamenu__heading" href="#">Måleinstrumenter <span class="megamenu__count">420</span></a>
+          <ul class="megamenu__list">
+            <li><a href="#">Skyvelære og mikrometer</a></li>
+            <li><a href="#">Multimeter</a></li>
+            <li><a href="#">Vekter og våger</a></li>
+          </ul>
+        </div>
+
+        <div class="megamenu__group">
+          <a class="megamenu__heading" href="#">Smøring og rens <span class="megamenu__count">630</span></a>
+          <ul class="megamenu__list">
+            <li><a href="#">Smøreolje og fett</a></li>
+            <li><a href="#">Avfetting og rens</a></li>
+            <li><a href="#">Rustbeskyttelse</a></li>
+          </ul>
+        </div>
+
+        <div class="megamenu__group">
+          <a class="megamenu__heading" href="#">Bil og verksted <span class="megamenu__count">1 100</span></a>
+          <ul class="megamenu__list">
+            <li><a href="#">Jekker og bukker</a></li>
+            <li><a href="#">Verktøyvogner</a></li>
+            <li><a href="#">Trykkluft og slanger</a></li>
+          </ul>
+        </div>
+
+        <div class="megamenu__group">
+          <a class="megamenu__heading" href="#">Lagring og logistikk <span class="megamenu__count">880</span></a>
+          <ul class="megamenu__list">
+            <li><a href="#">Plastbokser og kasser</a></li>
+            <li><a href="#">Hyller og reoler</a></li>
+            <li><a href="#">Pakketape og emballasje</a></li>
+          </ul>
+        </div>
+
+        <div class="megamenu__group">
+          <a class="megamenu__heading" href="#">Elektro <span class="megamenu__count">760</span></a>
+          <ul class="megamenu__list">
+            <li><a href="#">Kabel og ledning</a></li>
+            <li><a href="#">Plugger og kontakter</a></li>
+            <li><a href="#">Sikringer og automater</a></li>
+          </ul>
+        </div>
+
+        <div class="megamenu__group">
+          <a class="megamenu__heading" href="#">Skilt og merking <span class="megamenu__count">340</span></a>
+          <ul class="megamenu__list">
+            <li><a href="#">Etiketter og tape</a></li>
+            <li><a href="#">Sikkerhetsskilt</a></li>
+            <li><a href="#">Avsperring</a></li>
+          </ul>
+        </div>
+
+      </div>
+
+      <div class="megamenu__footer">
+        <a class="megamenu__footer-link" href="#">Se alle produkter →</a>
+        <span class="megamenu__intro-meta">Bestill direkte med <strong>NOBB-nr</strong> eller <strong>EAN</strong> via søket</span>
+      </div>
     </div>
   </div>
 
@@ -63,19 +221,27 @@
       <span class="t-overline" style="color: var(--mj-blue);">Meny</span>
       <button class="site-header__drawer-close" type="button" aria-label="Lukk meny">&times;</button>
     </div>
-    <nav class="site-header__drawer-nav" aria-label="Hovedkategorier (mobil)">
+    <nav class="site-header__drawer-nav" aria-label="Produktkategorier (mobil)">
       <a href="#">Festemidler</a>
       <a href="#">Verktøy</a>
       <a href="#">Verneutstyr</a>
       <a href="#">Hydraulikk</a>
       <a href="#">Sveis</a>
       <a href="#">Industri</a>
-      <a href="#">Hurtigbestilling</a>
-      <a href="#" style="color: var(--mj-orange);">Tilbud</a>
+      <a href="#">Slipemidler</a>
+      <a href="#">Tetninger og pakninger</a>
+      <a href="#">Lim og kjemikalier</a>
+      <a href="#">Måleinstrumenter</a>
+      <a href="#">Smøring og rens</a>
+      <a href="#">Bil og verksted</a>
+      <a href="#">Lagring og logistikk</a>
+      <a href="#">Elektro</a>
+      <a href="#">Skilt og merking</a>
     </nav>
   </div>
 </header>
 <div class="site-header__drawer-backdrop" aria-hidden="true"></div>
+<div class="megamenu-backdrop" aria-hidden="true"></div>
 
 <main class="container container--wide" style="padding-block: var(--s-6);">
 
