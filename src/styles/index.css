@@ -91,6 +91,7 @@
 
 /* Site shell (§15.1) */
 @import "../components/site-header/site-header.css";
+@import "../components/megamenu/megamenu.css";
 @import "../components/site-footer/site-footer.css";
 
 /* Patterns (§16) */
