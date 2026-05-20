@@ -169,36 +169,44 @@
   text-decoration: underline;
 }
 
-/* ─── Trigger styling — extends .site-header__nav-link aesthetics ────── */
+/* ─── Trigger — bold blue text-link with chevron, soft hover tint ─────── */
 .site-header__nav-trigger {
   display: inline-flex;
   align-items: center;
   gap: var(--s-2);
   background: transparent;
+  color: var(--color-action-primary);
   border: 0;
   font-family: inherit;
-  font-size: var(--fs-body-sm);
-  font-weight: var(--fw-semibold);
-  color: var(--color-text-primary);
+  font-size: var(--fs-body);
+  font-weight: var(--fw-bold);
+  letter-spacing: -0.005em;
   cursor: pointer;
-  padding: 2px 0;
-  border-bottom: var(--bw-3) solid transparent;
-  transition: color var(--duration-fast) var(--ease-standard),
-              border-color var(--duration-fast) var(--ease-standard);
+  padding: 6px 10px;
+  border-radius: var(--r-sm);
+  transition: background var(--duration-fast) var(--ease-standard),
+              color var(--duration-fast) var(--ease-standard);
+  margin-inline-start: calc(-1 * var(--s-2)); /* visual alignment to nav baseline */
 }
+
 .site-header__nav-trigger:hover {
-  color: var(--color-action-primary);
+  background: var(--color-bg-brand-soft);
+}
+.site-header__nav-trigger:focus-visible {
+  outline: none;
+  box-shadow: var(--focus-ring);
 }
 .site-header__nav-trigger[aria-expanded="true"] {
-  color: var(--color-action-primary);
-  border-bottom-color: var(--color-action-primary);
+  background: var(--color-bg-brand-soft);
 }
+
 .site-header__nav-trigger-icon {
   transition: transform var(--duration-fast) var(--ease-standard);
   stroke: currentColor;
   fill: none;
   stroke-linecap: round;
   stroke-linejoin: round;
+  opacity: 0.7;
 }
 .site-header__nav-trigger[aria-expanded="true"] .site-header__nav-trigger-icon {
   transform: rotate(180deg);
