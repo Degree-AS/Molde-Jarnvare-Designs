@@ -28,11 +28,7 @@
         <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M6 6h15l-1.5 9H7.5z"/><circle cx="9" cy="20" r="1.5"/><circle cx="18" cy="20" r="1.5"/></svg>
         <span class="badge badge--numeric site-header__action-badge">3</span>
       </button>
-      <!-- Mobile-only hamburger trigger (hidden ≥ --bp-lg) -->
-      <button class="site-header__hamburger" type="button"
-              aria-label="Åpne hovedmeny"
-              aria-controls="site-nav-drawer"
-              aria-expanded="false">
+      <button class="site-header__hamburger" type="button" aria-label="Åpne hovedmeny" aria-controls="site-nav-drawer" aria-expanded="false">
         <span class="site-header__hamburger-icon" aria-hidden="true"></span>
       </button>
     </div>
@@ -49,11 +45,6 @@
     </div>
   </div>
 
-  <!--
-    Mega-menu panel — opens below the header on desktop (≥ --bp-lg) when the
-    "Produkter"-trigger is clicked. For static preview, add
-    data-preview-megamenu="true" to <header class="site-header"> above.
-  -->
   <div class="megamenu" id="megamenu" role="navigation" aria-label="Produktkategorier">
     <div class="megamenu__inner">
       <div class="megamenu__intro">
@@ -210,11 +201,6 @@
     </div>
   </div>
 
-  <!--
-    Mobile nav drawer (visible < --bp-lg). The JS layer toggles
-    [data-open="true"] on hamburger click / Esc / backdrop click. For static
-    preview, add data-preview-open="true" to <header class="site-header"> above.
-  -->
   <div class="site-header__drawer" id="site-nav-drawer" role="dialog" aria-modal="true" aria-label="Hovedmeny">
     <div class="site-header__drawer-header">
       <span class="t-overline" style="color: var(--mj-blue);">Meny</span>
@@ -268,7 +254,7 @@
       <header style="display: flex; justify-content: space-between; align-items: baseline; gap: var(--s-4); margin-bottom: var(--s-6); flex-wrap: wrap;">
         <div>
           <h2 class="t-h2" style="margin: 0 0 var(--s-2);">Standard festemidler</h2>
-          <p style="color: var(--color-text-secondary); margin: 0;">24 varer &middot; Sist oppdatert 13.05.2026 av Bjarte Vik &middot; Delt med 3 brukere</p>
+          <p style="color: var(--color-text-secondary); margin: 0;">30 varer &middot; Sist oppdatert 13.05.2026 av Bjarte Vik &middot; Delt med 3 brukere</p>
         </div>
         <div style="display: flex; gap: var(--s-2); flex-wrap: wrap;">
           <button class="btn btn--outline btn--md">Del</button>
@@ -276,6 +262,16 @@
           <button class="btn btn--primary btn--md">Legg alle i kurv</button>
         </div>
       </header>
+
+      <!-- Add new item to wishlist via product search -->
+      <section class="card" style="padding: var(--s-4) var(--s-5); margin-bottom: var(--s-4); display: flex; align-items: center; gap: var(--s-5); flex-wrap: wrap;">
+        <label for="add-to-wishlist" style="font-weight: var(--fw-semibold); color: var(--color-text-secondary); white-space: nowrap;">Legg til vare:</label>
+        <div class="search-bar" style="flex: 1; min-width: 280px; max-width: 480px; margin: 0;">
+          <svg class="search-bar__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.35-4.35"/></svg>
+          <input id="add-to-wishlist" class="search-bar__input" type="search" placeholder="Søk etter artnr, NOBB-nr, EAN eller navn…" />
+        </div>
+        <button class="btn btn--primary btn--md" type="submit">Legg til</button>
+      </section>
 
       <section class="card">
         <table class="wishlist-items">
@@ -286,21 +282,33 @@
               <th>P&aring; lager</th>
               <th class="is-numeric">Pris/stk</th>
               <th class="is-numeric">Antall</th>
-              <th class="is-numeric">Sum</th>
               <th></th>
             </tr>
           </thead>
           <tbody>
+            <!--
+              Each row uses .qty-stepper (component §12.3 — compact variant)
+              for editable qty + a primary cart-icon button + Fjern link in
+              the actions cell. Showing 12 of 24 sample items.
+            -->
             <tr>
               <td><strong>Sekskantskrue M8 &times; 40 mm A4</strong></td>
               <td><code>4815-162-30</code></td>
               <td><span class="stock-indicator stock-indicator--in">P&aring; lager</span></td>
               <td class="is-numeric">kr 2,80</td>
-              <td class="is-numeric">2 000</td>
-              <td class="is-numeric">kr 5 600,&ndash;</td>
-              <td style="white-space: nowrap;">
-                <button class="btn btn--primary btn--sm">Legg til</button>
-                <a class="link" href="#" style="margin-left: var(--s-2); color: var(--color-text-tertiary);">Fjern</a>
+              <td class="is-numeric">
+                <div class="qty-stepper qty-stepper--compact">
+                  <button class="qty-stepper__btn" type="button" aria-label="Reduser antall">&minus;</button>
+                  <input class="qty-stepper__input" type="number" value="2000" min="1" step="1" aria-label="Antall Sekskantskrue M8 × 40 mm A4">
+                  <button class="qty-stepper__btn" type="button" aria-label="&Oslash;k antall">+</button>
+                </div>
+              </td>
+              <td style="white-space: nowrap; text-align: right;">
+                <button type="button" title="Legg i handlekurv" aria-label="Legg i handlekurv"
+                        style="display: inline-flex; align-items: center; justify-content: center; width: 36px; height: 36px; padding: 0; background: var(--color-action-primary); color: var(--color-text-on-brand); border: 0; border-radius: var(--r-sm); cursor: pointer; vertical-align: middle;">
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M6 6h15l-1.5 9H7.5z"/><circle cx="9" cy="20" r="1.5"/><circle cx="18" cy="20" r="1.5"/></svg>
+                </button>
+                <a class="link" href="#" style="margin-left: var(--s-2); color: var(--color-text-tertiary); vertical-align: middle;">Fjern</a>
               </td>
             </tr>
             <tr>
@@ -308,11 +316,19 @@
               <td><code>4815-200-50</code></td>
               <td><span class="stock-indicator stock-indicator--in">P&aring; lager</span></td>
               <td class="is-numeric">kr 4,50</td>
-              <td class="is-numeric">500</td>
-              <td class="is-numeric">kr 2 250,&ndash;</td>
-              <td style="white-space: nowrap;">
-                <button class="btn btn--primary btn--sm">Legg til</button>
-                <a class="link" href="#" style="margin-left: var(--s-2); color: var(--color-text-tertiary);">Fjern</a>
+              <td class="is-numeric">
+                <div class="qty-stepper qty-stepper--compact">
+                  <button class="qty-stepper__btn" type="button" aria-label="Reduser antall">&minus;</button>
+                  <input class="qty-stepper__input" type="number" value="500" min="1" step="1" aria-label="Antall Sekskantskrue M10 × 50 mm A4">
+                  <button class="qty-stepper__btn" type="button" aria-label="&Oslash;k antall">+</button>
+                </div>
+              </td>
+              <td style="white-space: nowrap; text-align: right;">
+                <button type="button" title="Legg i handlekurv" aria-label="Legg i handlekurv"
+                        style="display: inline-flex; align-items: center; justify-content: center; width: 36px; height: 36px; padding: 0; background: var(--color-action-primary); color: var(--color-text-on-brand); border: 0; border-radius: var(--r-sm); cursor: pointer; vertical-align: middle;">
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M6 6h15l-1.5 9H7.5z"/><circle cx="9" cy="20" r="1.5"/><circle cx="18" cy="20" r="1.5"/></svg>
+                </button>
+                <a class="link" href="#" style="margin-left: var(--s-2); color: var(--color-text-tertiary); vertical-align: middle;">Fjern</a>
               </td>
             </tr>
             <tr>
@@ -320,8 +336,247 @@
               <td><code>5012-008-00</code></td>
               <td><span class="stock-indicator stock-indicator--low">F&aring; igjen</span></td>
               <td class="is-numeric">kr 0,85</td>
-              <td class="is-numeric">2 000</td>
-              <td class="is-numeric">kr 1 700,&ndash;</td>
-              <td style="white-space: nowrap;">
-                <button class="btn btn--primary btn--sm">Legg til</button>
-                <a class="link" href="#" style="margin-left: var(--s-2); color: var(--color-text-tertiary);
+              <td class="is-numeric">
+                <div class="qty-stepper qty-stepper--compact">
+                  <button class="qty-stepper__btn" type="button" aria-label="Reduser antall">&minus;</button>
+                  <input class="qty-stepper__input" type="number" value="2000" min="1" step="1" aria-label="Antall Skive M8 A4">
+                  <button class="qty-stepper__btn" type="button" aria-label="&Oslash;k antall">+</button>
+                </div>
+              </td>
+              <td style="white-space: nowrap; text-align: right;">
+                <button type="button" title="Legg i handlekurv" aria-label="Legg i handlekurv"
+                        style="display: inline-flex; align-items: center; justify-content: center; width: 36px; height: 36px; padding: 0; background: var(--color-action-primary); color: var(--color-text-on-brand); border: 0; border-radius: var(--r-sm); cursor: pointer; vertical-align: middle;">
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M6 6h15l-1.5 9H7.5z"/><circle cx="9" cy="20" r="1.5"/><circle cx="18" cy="20" r="1.5"/></svg>
+                </button>
+                <a class="link" href="#" style="margin-left: var(--s-2); color: var(--color-text-tertiary); vertical-align: middle;">Fjern</a>
+              </td>
+            </tr>
+            <tr>
+              <td><strong>Maskinskrue M8 &times; 30 mm galv.</strong></td>
+              <td><code>4830-080-30</code></td>
+              <td><span class="stock-indicator stock-indicator--in">P&aring; lager</span></td>
+              <td class="is-numeric">kr 1,90</td>
+              <td class="is-numeric">
+                <div class="qty-stepper qty-stepper--compact">
+                  <button class="qty-stepper__btn" type="button" aria-label="Reduser antall">&minus;</button>
+                  <input class="qty-stepper__input" type="number" value="500" min="1" step="1" aria-label="Antall Maskinskrue M8 × 30 mm">
+                  <button class="qty-stepper__btn" type="button" aria-label="&Oslash;k antall">+</button>
+                </div>
+              </td>
+              <td style="white-space: nowrap; text-align: right;">
+                <button type="button" title="Legg i handlekurv" aria-label="Legg i handlekurv"
+                        style="display: inline-flex; align-items: center; justify-content: center; width: 36px; height: 36px; padding: 0; background: var(--color-action-primary); color: var(--color-text-on-brand); border: 0; border-radius: var(--r-sm); cursor: pointer; vertical-align: middle;">
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M6 6h15l-1.5 9H7.5z"/><circle cx="9" cy="20" r="1.5"/><circle cx="18" cy="20" r="1.5"/></svg>
+                </button>
+                <a class="link" href="#" style="margin-left: var(--s-2); color: var(--color-text-tertiary); vertical-align: middle;">Fjern</a>
+              </td>
+            </tr>
+            <tr>
+              <td><strong>Treskrue 4,5 &times; 50 mm forsinket</strong></td>
+              <td><code>4860-045-50</code></td>
+              <td><span class="stock-indicator stock-indicator--in">P&aring; lager</span></td>
+              <td class="is-numeric">kr 0,65</td>
+              <td class="is-numeric">
+                <div class="qty-stepper qty-stepper--compact">
+                  <button class="qty-stepper__btn" type="button" aria-label="Reduser antall">&minus;</button>
+                  <input class="qty-stepper__input" type="number" value="1000" min="1" step="1" aria-label="Antall Treskrue 4,5 × 50 mm">
+                  <button class="qty-stepper__btn" type="button" aria-label="&Oslash;k antall">+</button>
+                </div>
+              </td>
+              <td style="white-space: nowrap; text-align: right;">
+                <button type="button" title="Legg i handlekurv" aria-label="Legg i handlekurv"
+                        style="display: inline-flex; align-items: center; justify-content: center; width: 36px; height: 36px; padding: 0; background: var(--color-action-primary); color: var(--color-text-on-brand); border: 0; border-radius: var(--r-sm); cursor: pointer; vertical-align: middle;">
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M6 6h15l-1.5 9H7.5z"/><circle cx="9" cy="20" r="1.5"/><circle cx="18" cy="20" r="1.5"/></svg>
+                </button>
+                <a class="link" href="#" style="margin-left: var(--s-2); color: var(--color-text-tertiary); vertical-align: middle;">Fjern</a>
+              </td>
+            </tr>
+            <tr>
+              <td><strong>Mutter M10 sekskant A4</strong></td>
+              <td><code>5020-010-00</code></td>
+              <td><span class="stock-indicator stock-indicator--in">P&aring; lager</span></td>
+              <td class="is-numeric">kr 1,20</td>
+              <td class="is-numeric">
+                <div class="qty-stepper qty-stepper--compact">
+                  <button class="qty-stepper__btn" type="button" aria-label="Reduser antall">&minus;</button>
+                  <input class="qty-stepper__input" type="number" value="500" min="1" step="1" aria-label="Antall Mutter M10">
+                  <button class="qty-stepper__btn" type="button" aria-label="&Oslash;k antall">+</button>
+                </div>
+              </td>
+              <td style="white-space: nowrap; text-align: right;">
+                <button type="button" title="Legg i handlekurv" aria-label="Legg i handlekurv"
+                        style="display: inline-flex; align-items: center; justify-content: center; width: 36px; height: 36px; padding: 0; background: var(--color-action-primary); color: var(--color-text-on-brand); border: 0; border-radius: var(--r-sm); cursor: pointer; vertical-align: middle;">
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M6 6h15l-1.5 9H7.5z"/><circle cx="9" cy="20" r="1.5"/><circle cx="18" cy="20" r="1.5"/></svg>
+                </button>
+                <a class="link" href="#" style="margin-left: var(--s-2); color: var(--color-text-tertiary); vertical-align: middle;">Fjern</a>
+              </td>
+            </tr>
+            <tr>
+              <td><strong>Stoppmutter M8 nyloninnsats</strong></td>
+              <td><code>5025-080-NL</code></td>
+              <td><span class="stock-indicator stock-indicator--in">P&aring; lager</span></td>
+              <td class="is-numeric">kr 1,40</td>
+              <td class="is-numeric">
+                <div class="qty-stepper qty-stepper--compact">
+                  <button class="qty-stepper__btn" type="button" aria-label="Reduser antall">&minus;</button>
+                  <input class="qty-stepper__input" type="number" value="500" min="1" step="1" aria-label="Antall Stoppmutter M8">
+                  <button class="qty-stepper__btn" type="button" aria-label="&Oslash;k antall">+</button>
+                </div>
+              </td>
+              <td style="white-space: nowrap; text-align: right;">
+                <button type="button" title="Legg i handlekurv" aria-label="Legg i handlekurv"
+                        style="display: inline-flex; align-items: center; justify-content: center; width: 36px; height: 36px; padding: 0; background: var(--color-action-primary); color: var(--color-text-on-brand); border: 0; border-radius: var(--r-sm); cursor: pointer; vertical-align: middle;">
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M6 6h15l-1.5 9H7.5z"/><circle cx="9" cy="20" r="1.5"/><circle cx="18" cy="20" r="1.5"/></svg>
+                </button>
+                <a class="link" href="#" style="margin-left: var(--s-2); color: var(--color-text-tertiary); vertical-align: middle;">Fjern</a>
+              </td>
+            </tr>
+            <tr>
+              <td><strong>Skive M10 A4</strong></td>
+              <td><code>5012-010-00</code></td>
+              <td><span class="stock-indicator stock-indicator--in">P&aring; lager</span></td>
+              <td class="is-numeric">kr 1,10</td>
+              <td class="is-numeric">
+                <div class="qty-stepper qty-stepper--compact">
+                  <button class="qty-stepper__btn" type="button" aria-label="Reduser antall">&minus;</button>
+                  <input class="qty-stepper__input" type="number" value="500" min="1" step="1" aria-label="Antall Skive M10">
+                  <button class="qty-stepper__btn" type="button" aria-label="&Oslash;k antall">+</button>
+                </div>
+              </td>
+              <td style="white-space: nowrap; text-align: right;">
+                <button type="button" title="Legg i handlekurv" aria-label="Legg i handlekurv"
+                        style="display: inline-flex; align-items: center; justify-content: center; width: 36px; height: 36px; padding: 0; background: var(--color-action-primary); color: var(--color-text-on-brand); border: 0; border-radius: var(--r-sm); cursor: pointer; vertical-align: middle;">
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M6 6h15l-1.5 9H7.5z"/><circle cx="9" cy="20" r="1.5"/><circle cx="18" cy="20" r="1.5"/></svg>
+                </button>
+                <a class="link" href="#" style="margin-left: var(--s-2); color: var(--color-text-tertiary); vertical-align: middle;">Fjern</a>
+              </td>
+            </tr>
+            <tr>
+              <td><strong>Sekskantskrue M12 &times; 60 mm A4</strong></td>
+              <td><code>4815-242-60</code></td>
+              <td><span class="stock-indicator stock-indicator--in">P&aring; lager</span></td>
+              <td class="is-numeric">kr 8,20</td>
+              <td class="is-numeric">
+                <div class="qty-stepper qty-stepper--compact">
+                  <button class="qty-stepper__btn" type="button" aria-label="Reduser antall">&minus;</button>
+                  <input class="qty-stepper__input" type="number" value="200" min="1" step="1" aria-label="Antall Sekskantskrue M12 × 60 mm">
+                  <button class="qty-stepper__btn" type="button" aria-label="&Oslash;k antall">+</button>
+                </div>
+              </td>
+              <td style="white-space: nowrap; text-align: right;">
+                <button type="button" title="Legg i handlekurv" aria-label="Legg i handlekurv"
+                        style="display: inline-flex; align-items: center; justify-content: center; width: 36px; height: 36px; padding: 0; background: var(--color-action-primary); color: var(--color-text-on-brand); border: 0; border-radius: var(--r-sm); cursor: pointer; vertical-align: middle;">
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M6 6h15l-1.5 9H7.5z"/><circle cx="9" cy="20" r="1.5"/><circle cx="18" cy="20" r="1.5"/></svg>
+                </button>
+                <a class="link" href="#" style="margin-left: var(--s-2); color: var(--color-text-tertiary); vertical-align: middle;">Fjern</a>
+              </td>
+            </tr>
+            <tr>
+              <td><strong>Bolt M16 &times; 100 mm galv.</strong></td>
+              <td><code>4810-160-100</code></td>
+              <td><span class="stock-indicator stock-indicator--low">F&aring; igjen</span></td>
+              <td class="is-numeric">kr 14,50</td>
+              <td class="is-numeric">
+                <div class="qty-stepper qty-stepper--compact">
+                  <button class="qty-stepper__btn" type="button" aria-label="Reduser antall">&minus;</button>
+                  <input class="qty-stepper__input" type="number" value="50" min="1" step="1" aria-label="Antall Bolt M16 × 100 mm">
+                  <button class="qty-stepper__btn" type="button" aria-label="&Oslash;k antall">+</button>
+                </div>
+              </td>
+              <td style="white-space: nowrap; text-align: right;">
+                <button type="button" title="Legg i handlekurv" aria-label="Legg i handlekurv"
+                        style="display: inline-flex; align-items: center; justify-content: center; width: 36px; height: 36px; padding: 0; background: var(--color-action-primary); color: var(--color-text-on-brand); border: 0; border-radius: var(--r-sm); cursor: pointer; vertical-align: middle;">
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M6 6h15l-1.5 9H7.5z"/><circle cx="9" cy="20" r="1.5"/><circle cx="18" cy="20" r="1.5"/></svg>
+                </button>
+                <a class="link" href="#" style="margin-left: var(--s-2); color: var(--color-text-tertiary); vertical-align: middle;">Fjern</a>
+              </td>
+            </tr>
+            <tr>
+              <td><strong>Mutter M16 galv.</strong></td>
+              <td><code>5020-016-GV</code></td>
+              <td><span class="stock-indicator stock-indicator--in">P&aring; lager</span></td>
+              <td class="is-numeric">kr 3,40</td>
+              <td class="is-numeric">
+                <div class="qty-stepper qty-stepper--compact">
+                  <button class="qty-stepper__btn" type="button" aria-label="Reduser antall">&minus;</button>
+                  <input class="qty-stepper__input" type="number" value="50" min="1" step="1" aria-label="Antall Mutter M16">
+                  <button class="qty-stepper__btn" type="button" aria-label="&Oslash;k antall">+</button>
+                </div>
+              </td>
+              <td style="white-space: nowrap; text-align: right;">
+                <button type="button" title="Legg i handlekurv" aria-label="Legg i handlekurv"
+                        style="display: inline-flex; align-items: center; justify-content: center; width: 36px; height: 36px; padding: 0; background: var(--color-action-primary); color: var(--color-text-on-brand); border: 0; border-radius: var(--r-sm); cursor: pointer; vertical-align: middle;">
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M6 6h15l-1.5 9H7.5z"/><circle cx="9" cy="20" r="1.5"/><circle cx="18" cy="20" r="1.5"/></svg>
+                </button>
+                <a class="link" href="#" style="margin-left: var(--s-2); color: var(--color-text-tertiary); vertical-align: middle;">Fjern</a>
+              </td>
+            </tr>
+            <tr>
+              <td><strong>Plugg HM 8 &times; 40 mm</strong></td>
+              <td><code>4905-080-40</code></td>
+              <td><span class="stock-indicator stock-indicator--in">P&aring; lager</span></td>
+              <td class="is-numeric">kr 0,90</td>
+              <td class="is-numeric">
+                <div class="qty-stepper qty-stepper--compact">
+                  <button class="qty-stepper__btn" type="button" aria-label="Reduser antall">&minus;</button>
+                  <input class="qty-stepper__input" type="number" value="300" min="1" step="1" aria-label="Antall Plugg HM 8 × 40 mm">
+                  <button class="qty-stepper__btn" type="button" aria-label="&Oslash;k antall">+</button>
+                </div>
+              </td>
+              <td style="white-space: nowrap; text-align: right;">
+                <button type="button" title="Legg i handlekurv" aria-label="Legg i handlekurv"
+                        style="display: inline-flex; align-items: center; justify-content: center; width: 36px; height: 36px; padding: 0; background: var(--color-action-primary); color: var(--color-text-on-brand); border: 0; border-radius: var(--r-sm); cursor: pointer; vertical-align: middle;">
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M6 6h15l-1.5 9H7.5z"/><circle cx="9" cy="20" r="1.5"/><circle cx="18" cy="20" r="1.5"/></svg>
+                </button>
+                <a class="link" href="#" style="margin-left: var(--s-2); color: var(--color-text-tertiary); vertical-align: middle;">Fjern</a>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+        <p style="font-size: var(--fs-caption); color: var(--color-text-tertiary); margin: var(--s-3) 0 0;">Viser 25 av 30 varer &middot; <a class="link" href="#">Vis alle</a></p>
+      </section>
+
+      <div style="display: flex; gap: var(--s-3); margin-top: var(--s-5); flex-wrap: wrap;">
+        <button class="btn btn--ghost btn--sm">Slett listen</button>
+      </div>
+    </div>
+  </div>
+
+</main>
+
+<footer class="site-footer">
+  <div class="site-footer__inner">
+    <div class="site-footer__grid">
+      <div class="site-footer__brand">
+        <img src="../assets/logos/molde-jarnvare-negative.png" alt="Molde Jarnvare" class="site-footer__logo-img">
+        <p class="site-footer__tagline">På lag med industrien siden 1930</p>
+        <p style="font-size: var(--fs-body-sm); opacity: 0.85;">Industriveien 26<br>6422 Molde<br>71 25 42 00 · post@moldejarnvare.no</p>
+      </div>
+      <div>
+        <h3 class="site-footer__col-title">Sortiment</h3>
+        <nav class="site-footer__list">
+          <a href="#">Festemidler</a><a href="#">Verktøy</a><a href="#">Verneutstyr</a><a href="#">Hydraulikk</a><a href="#">Sveis</a>
+        </nav>
+      </div>
+      <div>
+        <h3 class="site-footer__col-title">Kundeservice</h3>
+        <nav class="site-footer__list">
+          <a href="#">Min konto</a><a href="#">Bestilling og levering</a><a href="#">Retur og reklamasjon</a><a href="#">Be om tilbud</a><a href="#">Kontakt oss</a>
+        </nav>
+      </div>
+      <div>
+        <h3 class="site-footer__col-title">Om oss</h3>
+        <nav class="site-footer__list">
+          <a href="#">Historien</a><a href="#">Bærekraft</a><a href="#">Karriere</a><a href="#">Vilkår</a><a href="#">Personvern</a>
+        </nav>
+      </div>
+    </div>
+    <div class="site-footer__bottom">
+      <span>&copy; 2026 Molde Jarnvare AS · Org.nr 912 345 678</span>
+      <div class="site-footer__social" aria-label="Sosiale medier"><a href="#" aria-label="Facebook">f</a><a href="#" aria-label="LinkedIn">in</a></div>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
