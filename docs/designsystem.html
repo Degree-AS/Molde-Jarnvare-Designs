@@ -273,7 +273,7 @@ a{color:var(--mj-blue)}
 
   <header class="hero">
     <img class="hero__logo" src="assets/logos/molde-jarnvare-positive.png" alt="Molde Jarnvare">
-    <div class="hero__overline">Design system · v0.2 · May 12, 2026</div>
+    <div class="hero__overline">Design system · v0.3 · May 29, 2026</div>
     <h1 class="hero__title">How we are <em>building your site</em>.</h1>
     <p class="hero__lead">
       This document describes the design system as it is actually built in code today —
@@ -287,6 +287,55 @@ a{color:var(--mj-blue)}
       <div class="hero__meta-item">Page templates<strong>11 ready</strong></div>
     </div>
   </header>
+
+  <section class="section" id="changelog-v3">
+    <div class="section__num">00 / What's new in v0.3</div>
+    <h2 class="section__title">Changes since v0.2 (May 12, 2026)</h2>
+    <p class="section__lead">A round of refinements after the customer review — both visual polish and new functional patterns.</p>
+
+    <h3>New component variants</h3>
+    <ul>
+      <li><strong><code>.hero--fullbleed</code></strong> — Full-width background image with text overlay. Used on the home page (Atlanterhavsvegen). Includes a dark gradient overlay (top 35%, mid 20%, bottom 55%) so eyebrow + title remain readable regardless of image content. Eyebrow uses <code>--fs-body-sm</code> with shadow; title keeps display weight with subtle text-shadow.</li>
+      <li><strong><code>.site-header__nav-link</code></strong> + <strong><code>.site-header__nav-link--right</code></strong> — Bold blue header link that mirrors the dropdown-trigger styling but skips the chevron. Used for direct-action links in the nav row (Kontakt oss). The <code>--right</code> modifier pushes the link to the far right via <code>margin-left: auto</code>.</li>
+      <li><strong><code>.qty-stepper--compact</code></strong> — 32 × 32 px buttons + 48 px input (down from 40 / 60). Used inside the variant matrix and wishlist detail where the stepper sits in a table cell.</li>
+    </ul>
+
+    <h3>New patterns</h3>
+    <ul>
+      <li><strong>Positioning statement block</strong> — Centred <code>.t-h3</code> on white background between the hero and the next content section. Acts as a bridge between the visual hero and the more functional sections below. Max-width 44ch.</li>
+      <li><strong>Forsyningsløsninger pitch</strong> — 2-column layout (text + image) with three icon-cards (88–104 px blue rounded squares, white glyphs, red "2" accent). Used to introduce <em>2BOX</em>, <em>Scan2order</em> and <em>Weight2order</em> on the front page.</li>
+      <li><strong>Kontaktskjema</strong> — Two-column form (Ditt navn / Din e-postadresse) with full-width Telefon and Gjelder textarea. Uses existing <code>.field</code> + <code>.input</code> + <code>.textarea</code> from the component library. Appears in three places: integrated with the produktekspert block on the home page, standalone block at the bottom of the PDP, and at the bottom of Kontakt oss.</li>
+      <li><strong>Variant matrix below product info</strong> — For SKU-rich product types (fasteners, screws), the chip selector is replaced by a full-width table where each row is its own variant with its own quantity stepper and "add to cart" icon button.</li>
+    </ul>
+
+    <h3>Header restructure</h3>
+    <ul>
+      <li>The flat list of 8 nav links has been replaced by three mega-menu triggers: <strong>Produkter</strong>, <strong>Forsyningsløsninger</strong> and <strong>Øvrige Tjenester</strong>.</li>
+      <li>A right-aligned <strong>Kontakt oss</strong> link (with a small phone icon) sits at the far end of the nav row.</li>
+    </ul>
+
+    <h3>Footer adjustments</h3>
+    <ul>
+      <li>Logo width 240 → 320 → 380 px (≈ 48 px tall); payoff changed from red italic to white regular at <code>--fs-body</code>.</li>
+      <li>Grid reduced from 4 to 3 columns — the Sortiment column is removed since categories are already in the mega-menu.</li>
+      <li>"Be om tilbud" and "Karriere" links removed.</li>
+      <li>Type-size lifts for readability: column titles 11 → 14 px, links 14 → 16 px, bottom row 13 → 14 px (with cleaner opacity).</li>
+    </ul>
+
+    <h3>Two PDP patterns</h3>
+    <ul>
+      <li><strong>Matrix variant</strong> (<code>product.html</code>) — for screws and other SKU-rich items. Description, art.nr and price stay in the right column; variant selection + cart actions live below the image as a full-width table.</li>
+      <li><strong>Chip variant</strong> (<code>product-minarc.html</code>) — for single-SKU items with a few options (Kemppi Minarc Evo 180 sveiseapparat). Chip selector + add-to-cart stay in the right column.</li>
+      <li>Both PDPs now show only avtalepris — no strike-through, no discount badge.</li>
+    </ul>
+
+    <h3>Pages</h3>
+    <ul>
+      <li>New: <code>product-minarc.html</code> (chip-variant PDP example).</li>
+      <li>New: <code>alt-home-header.html</code> (alternative header layout — search on row 2, tagline on row 1).</li>
+      <li>Merged: <code>contact.html</code> has been removed; its content lives in <code>team.html</code> (renamed visually to "Kontakt oss") with a sentralbord + adresse strip above the people, and the kontaktskjema-block at the bottom.</li>
+    </ul>
+  </section>
 
   <section class="section" id="intro">
     <div class="section__num">01 / Introduction</div>
@@ -995,7 +1044,7 @@ docs/                client-facing presentation (this file + index)</pre>
   </section>
 
   <footer class="foot">
-    <p>Molde Jarnvare designsystem · v0.2 · May 12, 2026 · Degree × Molde Jarnvare</p>
+    <p>Molde Jarnvare designsystem · v0.3 · May 29, 2026 · Degree × Molde Jarnvare</p>
     <p><a href="index.html">← Back to docs overview</a></p>
   </footer>
 
