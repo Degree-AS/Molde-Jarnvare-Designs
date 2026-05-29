@@ -6,8 +6,9 @@
  * primary CTAs and optional media (image / placeholder).
  *
  * Block:    .hero
- * Modifiers: .hero--dark   — Reflex-blue background with white text
- *           .hero--split  — two-column layout with media on desktop
+ * Modifiers: .hero--dark       — Reflex-blue background with white text
+ *           .hero--split      — two-column layout with media on desktop
+ *           .hero--fullbleed  — full-width background image with text overlay
  *
  * Built with tokens from src/styles/tokens. No hard-coded values.
  * -----------------------------------------------------------------------------
@@ -207,4 +208,90 @@
 
 .hero--dark .hero__cta:focus-visible {
   box-shadow: 0 0 0 3px rgba(255, 255, 255, 0.5);
+}
+
+/* Fullbleed-variant ------------------------------------------------------ */
+/*
+ * Full-width hero med bakgrunnsbilde og tekstoverlay. Bruker .hero__bg som
+ * absoluttplassert wrapper for <img>, med mørk gradient-overlay for lesbarhet.
+ * Inneholder typisk bare eyebrow + tittel — clean editorial look.
+ */
+
+.hero--fullbleed {
+  position: relative;
+  overflow: hidden;
+  padding-block: 0;
+  background: var(--mj-ink-9);
+  color: var(--color-text-on-brand);
+  isolation: isolate;
+}
+
+.hero--fullbleed .hero__bg {
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+}
+
+.hero--fullbleed .hero__bg img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  display: block;
+}
+
+/* Mørk gradient-overlay — gir lesbar tekst uavhengig av bildets motiv */
+.hero--fullbleed .hero__bg::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(
+      180deg,
+      rgba(0, 0, 0, 0.35) 0%,
+      rgba(0, 0, 0, 0.20) 40%,
+      rgba(0, 0, 0, 0.55) 100%
+    );
+}
+
+.hero--fullbleed .hero__inner {
+  max-width: var(--container-wide);
+  padding-inline: var(--gutter);
+  padding-block: var(--s-12);
+  min-height: 60vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+
+@media (min-width: 1024px) {
+  .hero--fullbleed .hero__inner {
+    padding-block: var(--s-13);
+    min-height: 64vh;
+  }
+}
+
+.hero--fullbleed .hero__content {
+  max-width: 64ch;
+  text-align: center;
+  color: var(--color-text-on-brand);
+}
+
+.hero--fullbleed .hero__eyebrow {
+  /* Større enn standard eyebrow (11px) — overlay over bilde krever bedre
+     lesbarhet enn ren bakgrunnsfarge. Bruker body-sm (14px) med samme
+     uppercase + tracking, så det fortsatt leses som eyebrow. */
+  font-size: var(--fs-body-sm);
+  color: var(--mj-white);
+  opacity: 0.95;
+  margin: 0 0 var(--s-4);
+  text-shadow: 0 1px 6px rgba(0, 0, 0, 0.5);
+}
+
+.hero--fullbleed .hero__title {
+  color: var(--color-text-on-brand);
+  max-width: none;
+  text-shadow: 0 2px 12px rgba(0, 0, 0, 0.45);
+  margin: 0;
 }

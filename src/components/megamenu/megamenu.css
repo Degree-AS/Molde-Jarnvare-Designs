@@ -34,6 +34,20 @@
   display: block;
 }
 
+/*
+ * Targeted preview — when [data-preview-megamenu="<id>"] is set on
+ * .site-header, only the matching panel opens. Used when there are
+ * multiple panels (Produkter, Forsyningsløsninger, Øvrige Tjenester).
+ *
+ * Example:  <header class="site-header" data-preview-megamenu="megamenu-supply">
+ *           shows only #megamenu-supply
+ */
+.site-header[data-preview-megamenu="megamenu"] #megamenu,
+.site-header[data-preview-megamenu="megamenu-supply"] #megamenu-supply,
+.site-header[data-preview-megamenu="megamenu-services"] #megamenu-services {
+  display: block;
+}
+
 @media (max-width: 1023.98px) /* below --bp-lg */ {
   .megamenu { display: none !important; }
 }
@@ -210,6 +224,50 @@
 }
 .site-header__nav-trigger[aria-expanded="true"] .site-header__nav-trigger-icon {
   transform: rotate(180deg);
+}
+
+/*
+ * Standalone nav link — looks like a trigger button (bold blue text, same
+ * font/size/padding) but no chevron, no expander behaviour. Used for items
+ * that go straight to a page (e.g. "Kontakt oss"). The .--right modifier
+ * pushes the link to the far right via margin-left: auto.
+ */
+.site-header__nav-link {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--s-2);
+  background: transparent;
+  color: var(--color-action-primary);
+  font-family: inherit;
+  font-size: var(--fs-body);
+  font-weight: var(--fw-bold);
+  letter-spacing: -0.005em;
+  text-decoration: none;
+  padding: 6px 10px;
+  border-radius: var(--r-sm);
+  transition: background var(--duration-fast) var(--ease-standard),
+              color var(--duration-fast) var(--ease-standard);
+}
+.site-header__nav-link-icon {
+  stroke: currentColor;
+  fill: none;
+  stroke-width: 2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  opacity: 0.7;
+}
+.site-header__nav-link:hover {
+  background: var(--color-bg-brand-soft);
+}
+.site-header__nav-link:focus-visible {
+  outline: none;
+  box-shadow: var(--focus-ring);
+}
+.site-header__nav-link[aria-current="page"] {
+  background: var(--color-bg-brand-soft);
+}
+.site-header__nav-link--right {
+  margin-left: auto;
 }
 
 /* Backdrop dimmer when mega-menu is open */

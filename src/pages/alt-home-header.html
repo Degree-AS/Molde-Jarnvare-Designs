@@ -3,26 +3,82 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Molde Jarnvare — På lag med industrien siden 1930</title>
+  <title>Alternativ header — Molde Jarnvare</title>
   <meta name="description" content="Mer enn 30 000 unike artikler på lager i Molde. Verktøy, festemidler, verneutstyr og industrirekvisita.">
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Source+Sans+3:wght@400;500;600;700;900&family=JetBrains+Mono:wght@400&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="../styles/index.css">
+
+  <style>
+    /* ───────────────────────────────────────────────────────────────────────
+     * Alternativ header-variant (kun for denne siden)
+     * Nivå 1: logo (venstre) | tagline (midt/flex) | actions (høyre)
+     * Nivå 2: search (venstre) | nav-items + Kontakt oss (høyre)
+     * ─────────────────────────────────────────────────────────────────── */
+
+    /* Nivå 1: bytt grid-areal "search" til "tagline" */
+    .site-header--alt .site-header__inner {
+      grid-template-areas:
+        "logo    actions"
+        "tagline tagline";
+      grid-template-columns: auto 1fr;
+      column-gap: var(--s-4);
+    }
+    @media (min-width: 1024px) {
+      .site-header--alt .site-header__inner {
+        grid-template-areas: "logo tagline actions";
+        grid-template-columns: auto 1fr auto;
+        gap: var(--s-6);
+      }
+    }
+    .site-header--alt .site-header__tagline-top {
+      /* Editorial undertittel: større, tynnere og dempet grå —
+         konkurrerer ikke med logoen, men leses fortsatt komfortabelt. */
+      grid-area: tagline;
+      margin: 0;
+      font-size: var(--fs-body);
+      font-weight: var(--fw-regular);
+      color: var(--color-text-secondary);
+      line-height: var(--lh-snug);
+    }
+    @media (min-width: 1024px) {
+      .site-header--alt .site-header__tagline-top {
+        font-size: var(--fs-body-lg);
+        font-weight: var(--fw-regular);
+      }
+    }
+
+    /* Nivå 2: search + nav side om side, nav pushes til høyre */
+    .site-header--alt .site-header__main-inner {
+      display: flex;
+      align-items: center;
+      gap: var(--s-5);
+      padding-block: var(--s-3);
+    }
+    .site-header--alt .site-header__search-bottom {
+      flex: 0 1 380px;
+      min-width: 0;
+    }
+    .site-header--alt .site-header__nav {
+      flex: 1;
+      justify-content: flex-end;
+      height: auto;
+      gap: var(--s-2);
+    }
+    /* Skjul nivå 2 på mobil — søk havner ellers gjemt; legg det heller i drawer/hamburger */
+    @media (max-width: 1023.98px) {
+      .site-header--alt .site-header__main { display: none; }
+    }
+  </style>
 </head>
 <body>
 
-<header class="site-header">
+<header class="site-header site-header--alt">
   <div class="site-header__inner">
     <a class="site-header__logo" href="/" aria-label="Molde Jarnvare"><img src="../assets/logos/molde-jarnvare-positive.png" alt="Molde Jarnvare" class="site-header__logo-img"></a>
-    <div class="site-header__search">
-      <form class="search-bar" role="search">
-        <svg class="search-bar__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.35-4.35"/></svg>
-        <input class="search-bar__input" type="search" placeholder="Søk i 30 000+ artikler, NOBB-nr, EAN…" />
-        <button class="search-bar__submit" type="submit">Søk</button>
-      </form>
-    </div>
+    <p class="site-header__tagline-top">Totalleverandør av festemidler, hydraulikk, verneutstyr, verktøy og forbruksmateriell</p>
     <div class="site-header__actions">
       <button class="site-header__action" aria-label="Min konto">
         <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4 4-7 8-7s8 3 8 7"/></svg>
@@ -43,6 +99,13 @@
 
   <div class="site-header__main">
     <div class="site-header__main-inner">
+      <div class="site-header__search-bottom">
+        <form class="search-bar" role="search">
+          <svg class="search-bar__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.35-4.35"/></svg>
+          <input class="search-bar__input" type="search" placeholder="Søk i 30 000+ artikler, NOBB-nr, EAN…" />
+          <button class="search-bar__submit" type="submit">Søk</button>
+        </form>
+      </div>
       <nav class="site-header__nav" aria-label="Hovedmeny">
         <button class="site-header__nav-trigger" type="button" aria-controls="megamenu" aria-expanded="false">
           Produkter
@@ -56,7 +119,7 @@
           Øvrige Tjenester
           <svg class="site-header__nav-trigger-icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
         </button>
-        <a class="site-header__nav-link site-header__nav-link--right" href="team.html"><svg class="site-header__nav-link-icon" width="16" height="16" viewBox="0 0 24 24" aria-hidden="true"><path d="M3.5 5.5c0-1.1.9-2 2-2h2.2c.5 0 .9.3 1 .8l1 4c.1.4 0 .8-.3 1.1L7.5 11a14 14 0 0 0 5.5 5.5l1.6-1.9c.3-.3.7-.4 1.1-.3l4 1c.5.1.8.5.8 1V18.5c0 1.1-.9 2-2 2A16.5 16.5 0 0 1 3.5 5.5z"/></svg>Kontakt oss</a>
+        <a class="site-header__nav-link" href="team.html"><svg class="site-header__nav-link-icon" width="16" height="16" viewBox="0 0 24 24" aria-hidden="true"><path d="M3.5 5.5c0-1.1.9-2 2-2h2.2c.5 0 .9.3 1 .8l1 4c.1.4 0 .8-.3 1.1L7.5 11a14 14 0 0 0 5.5 5.5l1.6-1.9c.3-.3.7-.4 1.1-.3l4 1c.5.1.8.5.8 1V18.5c0 1.1-.9 2-2 2A16.5 16.5 0 0 1 3.5 5.5z"/></svg>Kontakt oss</a>
       </nav>
     </div>
   </div>
@@ -269,12 +332,6 @@
     </div>
   </section>
 
-  <!-- Posisjoneringsblokk: totalleverandør — bro mellom hero og innholdsseksjoner -->
-  <section class="container container--narrow" style="padding-block: var(--s-10); text-align: center;">
-    <p class="t-h3" style="max-width: 44ch; margin: 0 auto; color: var(--color-text-primary);">
-      Vi er totalleverandør av festemidler, hydraulikk, verneutstyr, verktøy og forbruksmateriell.
-    </p>
-  </section>
 
   <!-- Forsyningsløsninger — pitch-blokk med ikon-kort, bilde og CTA -->
   <section class="container" style="padding-block: var(--s-8);">

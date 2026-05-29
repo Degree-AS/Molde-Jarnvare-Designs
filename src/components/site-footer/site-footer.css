@@ -43,7 +43,9 @@
 }
 
 @media (min-width: 1024px) /* --bp-lg */ {
-  .site-footer__grid { grid-template-columns: 2fr repeat(3, 1fr); gap: var(--s-7); padding-bottom: var(--s-8); }
+  /* Brand block (2fr) + to navkolonner (Kundeservice, Om oss) — Sortiment-
+     kolonnen er fjernet, kategorier ligger nå i mega-menyen i header. */
+  .site-footer__grid { grid-template-columns: 2fr repeat(2, 1fr); gap: var(--s-7); padding-bottom: var(--s-8); }
 }
 
 /* ─────────────────────────────────────────────────────────────────────────
@@ -57,24 +59,32 @@
 
 .site-footer__logo-img {
   display: block;
-  height: 40px;
-  width: auto;
-  /* Logo clear-space (§9.3) */
+  /* Logo har 7.96:1-forhold (3000x377). Bredden styrer størrelsen — gir
+     bedre kontroll i smale grid-kolonner enn fast høyde + width:auto.
+     380px ≈ 48px høyde, balansert mot payoff i body-størrelse. */
+  width: 100%;
+  max-width: 380px;
+  height: auto;
   margin-bottom: var(--s-2);
 }
 
 .site-footer__tagline {
-  color: var(--mj-red);
-  font-size: var(--fs-h4);
+  /* Hvit på Reflex blå — tydelig og uten konflikt med oransje kolonnetitler.
+     (Rødt på blått ga dårlig kontrast og dempet uttrykk.)
+     Ned fra h4 (~18-20px) til body (16px) — gir bedre balanse mot logoen. */
+  color: var(--color-text-on-brand);
+  font-size: var(--fs-body);
   font-weight: var(--fw-bold);
-  font-style: italic;
+  margin: 0;
 }
 
 /* ─────────────────────────────────────────────────────────────────────────
  * Nav columns (3× under the brand block)
  * ────────────────────────────────────────────────────────────────────── */
 .site-footer__col-title {
-  font-size: var(--fs-overline);
+  /* Løftet fra --fs-overline (11px) til --fs-body-sm (14px) for lesbarhet
+     på laptop. Uppercase + tracking holder eyebrow-karakteren. */
+  font-size: var(--fs-body-sm);
   letter-spacing: var(--ls-wider);
   text-transform: uppercase;
   font-weight: var(--fw-semibold);
@@ -89,12 +99,13 @@
 }
 
 .site-footer__list a {
-  font-size: var(--fs-body-sm);
+  /* Løftet fra --fs-body-sm (14px) til --fs-body (16px). Fjernet opacity 0.85
+     — heller bruke ren hvit (WCAG-trygt på Reflex blå). */
+  font-size: var(--fs-body);
   color: var(--color-text-on-brand);
   text-decoration: none;
-  opacity: 0.85;
 }
-.site-footer__list a:hover { opacity: 1; text-decoration: underline; }
+.site-footer__list a:hover { text-decoration: underline; }
 
 /* ─────────────────────────────────────────────────────────────────────────
  * Bottom row — copyright + social links
@@ -107,8 +118,10 @@
   flex-wrap: wrap;
   gap: var(--s-4);
   padding-top: var(--s-5);
-  font-size: var(--fs-caption);
-  color: rgba(255, 255, 255, 0.7);
+  /* Løftet fra --fs-caption (13px) til --fs-body-sm (14px), og opacity
+     0.7 → 0.85 for bedre kontrast. */
+  font-size: var(--fs-body-sm);
+  color: rgba(255, 255, 255, 0.85);
 }
 
 .site-footer__social {

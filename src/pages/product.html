@@ -45,6 +45,15 @@
           Produkter
           <svg class="site-header__nav-trigger-icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
         </button>
+        <button class="site-header__nav-trigger" type="button" aria-controls="megamenu-supply" aria-expanded="false">
+          Forsyningsløsninger
+          <svg class="site-header__nav-trigger-icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
+        </button>
+        <button class="site-header__nav-trigger" type="button" aria-controls="megamenu-services" aria-expanded="false">
+          Øvrige Tjenester
+          <svg class="site-header__nav-trigger-icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
+        </button>
+        <a class="site-header__nav-link site-header__nav-link--right" href="team.html"><svg class="site-header__nav-link-icon" width="16" height="16" viewBox="0 0 24 24" aria-hidden="true"><path d="M3.5 5.5c0-1.1.9-2 2-2h2.2c.5 0 .9.3 1 .8l1 4c.1.4 0 .8-.3 1.1L7.5 11a14 14 0 0 0 5.5 5.5l1.6-1.9c.3-.3.7-.4 1.1-.3l4 1c.5.1.8.5.8 1V18.5c0 1.1-.9 2-2 2A16.5 16.5 0 0 1 3.5 5.5z"/></svg>Kontakt oss</a>
       </nav>
     </div>
   </div>
@@ -276,76 +285,155 @@
 
     <!-- Product info -->
     <div style="display: flex; flex-direction: column; gap: var(--s-4);">
-      <div>
-        <span class="badge badge--brand">DIN 933</span>
-      </div>
       <h1 class="t-h2" style="margin: 0;">Sekskantskrue M8 × 40 mm A4 syrefast</h1>
       <div style="display: flex; gap: var(--s-4); align-items: center; font-size: var(--fs-body-sm); color: var(--color-text-secondary);">
         <span class="t-mono-md">Art.nr 4815-162-30</span>
         <span>NOBB <span class="t-mono-md">51234567</span></span>
       </div>
+
+      <!-- Kort produktbeskrivelse — ligger mellom artikkelnummer og lagerstatus -->
+      <div style="display: flex; flex-direction: column; gap: var(--s-3); font-size: var(--fs-body); line-height: var(--lh-relaxed); color: var(--color-text-secondary); max-width: 56ch;">
+        <p style="margin: 0;">Sekskantskrue etter DIN 933 i A4 syrefast stål (1.4401) — høy korrosjonsmotstand mot saltvann og klorider, egnet for marine, fiskeoppdrett og næringsmiddelindustri.</p>
+        <p style="margin: 0;">Standardgjenge M8 × 1,25, hodebredde SW13. Leveres i pakker à 200 stk og kombineres med matchende muttere og skiver i A4 fra sortimentet.</p>
+      </div>
+
       <span class="stock-indicator stock-indicator--in">På lager <span class="stock-indicator__count">4 200 stk · klart for henting i Molde</span></span>
 
       <div class="price-display" style="margin-top: var(--s-4);">
         <div class="price-display__value">kr 2,80<span class="price-display__suffix">/stk eks. mva</span></div>
-        <div class="price-display__meta">
-          <span class="price-display__strike">kr 3,20</span>
-          <span class="price-display__discount">−12 %</span>
-          <span>Avtalepris</span>
-        </div>
+        <div class="price-display__meta"><span>Avtalepris</span></div>
       </div>
 
-      <!-- Variant selector -->
-      <div class="variant-selector">
-        <div class="variant-selector__label">
-          <span>Lengde</span>
-          <span class="variant-selector__label-value">40 mm</span>
-        </div>
-        <div class="variant-selector__options">
-          <button class="variant-selector__option">20 mm</button>
-          <button class="variant-selector__option">30 mm</button>
-          <button class="variant-selector__option is-selected">40 mm</button>
-          <button class="variant-selector__option">50 mm</button>
-          <button class="variant-selector__option">60 mm</button>
-          <button class="variant-selector__option" disabled>80 mm</button>
-        </div>
-      </div>
-
-      <!-- Add to cart -->
-      <div class="add-to-cart">
-        <div class="qty-stepper">
-          <button class="qty-stepper__btn" aria-label="Reduser">−</button>
-          <input class="qty-stepper__input" type="number" value="200" min="0" step="200">
-          <button class="qty-stepper__btn" aria-label="Øk">+</button>
-          <span class="qty-stepper__unit">stk</span>
-        </div>
-        <button class="btn btn--primary btn--lg">Legg i handlekurv</button>
-        <span class="add-to-cart__hint">Bestilles innen kl. 14 for levering i morgen.</span>
-      </div>
-
-      <div style="display: flex; gap: var(--s-3);">
-        <button class="btn btn--outline btn--md">Be om tilbud</button>
-        <button class="btn btn--ghost btn--md">Last ned datablad</button>
-      </div>
-
-      <!-- Ask product responsible — inherited from Fasteners category -->
-      <div style="margin-top: var(--s-4); padding: var(--s-5); background: var(--color-bg-brand-soft); border-radius: var(--r-md);">
-        <p style="font-size: var(--fs-overline); letter-spacing: var(--ls-wider); text-transform: uppercase; font-weight: var(--fw-semibold); color: var(--mj-blue); margin: 0 0 var(--s-2);">Spør om produktet</p>
-        <div style="display: flex; align-items: center; gap: var(--s-3);">
-          <div style="width: 48px; height: 48px; flex: 0 0 auto; border-radius: var(--r-full); background: var(--mj-surface-2); overflow: hidden;"><img src="../assets/images/team/ansatt-portrett.jpg" alt="" style="width: 100%; height: 100%; object-fit: cover; display: block;"></div>
-          <div style="flex: 1; min-width: 0;">
-            <p style="font-size: var(--fs-body); font-weight: var(--fw-semibold); margin: 0;">Ola Nordmann</p>
-            <p style="font-size: var(--fs-caption); color: var(--color-text-secondary); margin: 0;">Produktansvarlig festemidler</p>
-          </div>
-        </div>
-        <div style="display: flex; flex-wrap: wrap; gap: var(--s-3); margin-top: var(--s-3); word-break: break-word;">
-          <a class="btn btn--outline btn--sm" href="tel:71254201" style="text-decoration: none;">71 25 42 01</a>
-          <a class="btn btn--ghost btn--sm" href="mailto:ola@moldejarnvare.no?subject=Sekskantskrue%20M8%20%C3%97%2040%20mm%20A4%20syrefast%20%E2%80%94%204815-162-30" style="text-decoration: none;">Send e-post</a>
-        </div>
+      <!-- CTA: lenke til kontaktskjema nederst på siden -->
+      <div style="margin-top: var(--s-4); padding: var(--s-5); background: var(--color-bg-brand-soft); border-radius: var(--r-md); display: flex; align-items: center; justify-content: space-between; gap: var(--s-4); flex-wrap: wrap;">
+        <p style="margin: 0; font-size: var(--fs-body); font-weight: var(--fw-semibold);">Vil du bli kontaktet av en produktekspert?</p>
+        <a class="btn btn--outline btn--md" href="#bli-kontaktet" style="text-decoration: none;">Gå til skjema →</a>
       </div>
 
     </div>
   </div>
+
+  <!-- Varianter i matrise — én rad = én SKU, eget antall + handlekurv per rad -->
+  <section style="margin-top: var(--s-10);">
+    <div class="variant-selector variant-selector--matrix" style="width: 100%;">
+      <div class="variant-selector__label">
+        <span>Velg variant og antall</span>
+        <span class="variant-selector__label-value">6 varianter</span>
+      </div>
+      <div class="variant-selector__matrix-wrap">
+        <table class="variant-selector__matrix">
+          <thead>
+            <tr>
+              <th scope="col">Variant</th>
+              <th scope="col">Art.nr</th>
+              <th scope="col">På lager</th>
+              <th scope="col" class="is-numeric">Pris/stk</th>
+              <th scope="col" class="is-numeric">Antall</th>
+              <th scope="col"><span class="sr-only">Legg til</span></th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <th scope="row">M8 × 20 mm · A4 syrefast</th>
+              <td><span class="variant-selector__matrix-sku">4815-160-30</span></td>
+              <td><span class="stock-indicator stock-indicator--in">På lager</span></td>
+              <td class="is-numeric variant-selector__matrix-price">kr 1,90</td>
+              <td class="is-numeric">
+                <div class="variant-selector__matrix-qty">
+                  <div class="qty-stepper qty-stepper--compact">
+                    <button class="qty-stepper__btn" aria-label="Reduser antall">−</button>
+                    <input class="qty-stepper__input" type="number" value="0" min="0" step="200">
+                    <button class="qty-stepper__btn" aria-label="Øk antall">+</button>
+                  </div>
+                </div>
+              </td>
+              <td><button class="variant-selector__matrix-add" aria-label="Legg M8 × 20 mm i kurv"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M2 4h2.5l3 12h11l2.5-8H7"/><circle cx="10" cy="20" r="1.6"/><circle cx="17" cy="20" r="1.6"/></svg></button></td>
+            </tr>
+            <tr>
+              <th scope="row">M8 × 30 mm · A4 syrefast</th>
+              <td><span class="variant-selector__matrix-sku">4815-161-30</span></td>
+              <td><span class="stock-indicator stock-indicator--in">På lager</span></td>
+              <td class="is-numeric variant-selector__matrix-price">kr 2,30</td>
+              <td class="is-numeric">
+                <div class="variant-selector__matrix-qty">
+                  <div class="qty-stepper qty-stepper--compact">
+                    <button class="qty-stepper__btn" aria-label="Reduser antall">−</button>
+                    <input class="qty-stepper__input" type="number" value="0" min="0" step="200">
+                    <button class="qty-stepper__btn" aria-label="Øk antall">+</button>
+                  </div>
+                </div>
+              </td>
+              <td><button class="variant-selector__matrix-add" aria-label="Legg M8 × 30 mm i kurv"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M2 4h2.5l3 12h11l2.5-8H7"/><circle cx="10" cy="20" r="1.6"/><circle cx="17" cy="20" r="1.6"/></svg></button></td>
+            </tr>
+            <tr>
+              <th scope="row">M8 × 40 mm · A4 syrefast</th>
+              <td><span class="variant-selector__matrix-sku">4815-162-30</span></td>
+              <td><span class="stock-indicator stock-indicator--in">På lager</span></td>
+              <td class="is-numeric variant-selector__matrix-price">kr 2,80</td>
+              <td class="is-numeric">
+                <div class="variant-selector__matrix-qty">
+                  <div class="qty-stepper qty-stepper--compact">
+                    <button class="qty-stepper__btn" aria-label="Reduser antall">−</button>
+                    <input class="qty-stepper__input" type="number" value="200" min="0" step="200">
+                    <button class="qty-stepper__btn" aria-label="Øk antall">+</button>
+                  </div>
+                </div>
+              </td>
+              <td><button class="variant-selector__matrix-add" aria-label="Legg M8 × 40 mm i kurv"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M2 4h2.5l3 12h11l2.5-8H7"/><circle cx="10" cy="20" r="1.6"/><circle cx="17" cy="20" r="1.6"/></svg></button></td>
+            </tr>
+            <tr>
+              <th scope="row">M8 × 50 mm · A4 syrefast</th>
+              <td><span class="variant-selector__matrix-sku">4815-163-30</span></td>
+              <td><span class="stock-indicator stock-indicator--in">På lager</span></td>
+              <td class="is-numeric variant-selector__matrix-price">kr 3,10</td>
+              <td class="is-numeric">
+                <div class="variant-selector__matrix-qty">
+                  <div class="qty-stepper qty-stepper--compact">
+                    <button class="qty-stepper__btn" aria-label="Reduser antall">−</button>
+                    <input class="qty-stepper__input" type="number" value="0" min="0" step="200">
+                    <button class="qty-stepper__btn" aria-label="Øk antall">+</button>
+                  </div>
+                </div>
+              </td>
+              <td><button class="variant-selector__matrix-add" aria-label="Legg M8 × 50 mm i kurv"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M2 4h2.5l3 12h11l2.5-8H7"/><circle cx="10" cy="20" r="1.6"/><circle cx="17" cy="20" r="1.6"/></svg></button></td>
+            </tr>
+            <tr>
+              <th scope="row">M8 × 60 mm · A4 syrefast</th>
+              <td><span class="variant-selector__matrix-sku">4815-164-30</span></td>
+              <td><span class="stock-indicator stock-indicator--low">Få igjen <span class="stock-indicator__count">85 stk</span></span></td>
+              <td class="is-numeric variant-selector__matrix-price">kr 3,60</td>
+              <td class="is-numeric">
+                <div class="variant-selector__matrix-qty">
+                  <div class="qty-stepper qty-stepper--compact">
+                    <button class="qty-stepper__btn" aria-label="Reduser antall">−</button>
+                    <input class="qty-stepper__input" type="number" value="0" min="0" step="100">
+                    <button class="qty-stepper__btn" aria-label="Øk antall">+</button>
+                  </div>
+                </div>
+              </td>
+              <td><button class="variant-selector__matrix-add" aria-label="Legg M8 × 60 mm i kurv"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M2 4h2.5l3 12h11l2.5-8H7"/><circle cx="10" cy="20" r="1.6"/><circle cx="17" cy="20" r="1.6"/></svg></button></td>
+            </tr>
+            <tr class="variant-selector__matrix-row--disabled">
+              <th scope="row">M8 × 80 mm · A4 syrefast</th>
+              <td><span class="variant-selector__matrix-sku">4815-165-30</span></td>
+              <td><span class="stock-indicator stock-indicator--out">Utsolgt</span></td>
+              <td class="is-numeric variant-selector__matrix-price">kr 4,80</td>
+              <td class="is-numeric">
+                <div class="variant-selector__matrix-qty">
+                  <div class="qty-stepper qty-stepper--compact">
+                    <button class="qty-stepper__btn" aria-label="Reduser antall" disabled>−</button>
+                    <input class="qty-stepper__input" type="number" value="0" min="0" disabled>
+                    <button class="qty-stepper__btn" aria-label="Øk antall" disabled>+</button>
+                  </div>
+                </div>
+              </td>
+              <td><button class="variant-selector__matrix-add" aria-label="Utsolgt" disabled><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M2 4h2.5l3 12h11l2.5-8H7"/><circle cx="10" cy="20" r="1.6"/><circle cx="17" cy="20" r="1.6"/></svg></button></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </section>
 
   <!-- Tabs: spec, datasheet, similar -->
   <section style="margin-top: var(--s-10);">
@@ -353,7 +441,6 @@
       <div class="tabs__list" role="tablist">
         <button class="tabs__tab" aria-selected="true">Spesifikasjoner</button>
         <button class="tabs__tab">Datablad og sertifikater</button>
-        <button class="tabs__tab">Liknende artikler</button>
       </div>
       <div class="tabs__panel is-active">
         <div class="data-table__wrap">
@@ -361,7 +448,98 @@
             <tbody>
               <tr><th>Standard</th><td>DIN 933</td></tr>
               <tr><th>Materiale</th><td>A4 syrefast (1.4401)</td></tr>
-              <tr><th>Gj
+              <tr><th>Gjenge</th><td>M8 × 1,25</td></tr>
+              <tr><th>Lengde</th><td>40 mm</td></tr>
+              <tr><th>Hode</th><td>Sekskant SW13</td></tr>
+              <tr><th>Drag-evne</th><td>800 N (eksempel)</td></tr>
+              <tr><th>NOBB</th><td>4815-162-30</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- Lignende produkter — karusell-blokk -->
+  <section class="container" style="margin-top: var(--s-10);">
+    <header style="display: flex; justify-content: space-between; align-items: baseline; margin-bottom: var(--s-6);">
+      <h2 class="t-h3" style="margin: 0;">Lignende produkter</h2>
+      <a class="link" href="#">Se alle festemidler →</a>
+    </header>
+    <div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: var(--s-4);">
+      <article class="product-card">
+        <div class="product-card__media"></div>
+        <span class="product-card__sku">4820-208-15</span>
+        <h3 class="product-card__title"><a href="#">Sekskantmutter M8 A4 syrefast</a></h3>
+        <span class="stock-indicator stock-indicator--in">På lager <span class="stock-indicator__count">5 600 stk</span></span>
+        <div class="product-card__price">kr 0,95<span class="product-card__price-suffix">eks. mva</span></div>
+        <div class="product-card__actions"><button class="btn btn--primary btn--sm btn--full">Legg i handlekurv</button></div>
+      </article>
+      <article class="product-card">
+        <div class="product-card__media"></div>
+        <span class="product-card__sku">4830-118-08</span>
+        <h3 class="product-card__title"><a href="#">Plan skive M8 A4 syrefast</a></h3>
+        <span class="stock-indicator stock-indicator--in">På lager <span class="stock-indicator__count">8 200 stk</span></span>
+        <div class="product-card__price">kr 0,45<span class="product-card__price-suffix">eks. mva</span></div>
+        <div class="product-card__actions"><button class="btn btn--primary btn--sm btn--full">Legg i handlekurv</button></div>
+      </article>
+      <article class="product-card">
+        <div class="product-card__media"></div>
+        <span class="product-card__sku">4815-180-50</span>
+        <h3 class="product-card__title"><a href="#">Sekskantskrue M10 × 50 mm A4 syrefast</a></h3>
+        <span class="stock-indicator stock-indicator--in">På lager <span class="stock-indicator__count">1 800 stk</span></span>
+        <div class="product-card__price">kr 4,20<span class="product-card__price-suffix">eks. mva</span></div>
+        <div class="product-card__actions"><button class="btn btn--primary btn--sm btn--full">Legg i handlekurv</button></div>
+      </article>
+      <article class="product-card">
+        <div class="product-card__media"></div>
+        <span class="product-card__sku">4860-540-12</span>
+        <h3 class="product-card__title"><a href="#">Treskrue 5 × 40 mm A2 syrefast</a></h3>
+        <span class="stock-indicator stock-indicator--low">Få igjen <span class="stock-indicator__count">240 stk</span></span>
+        <div class="product-card__price">kr 1,80<span class="product-card__price-suffix">eks. mva</span></div>
+        <div class="product-card__actions"><button class="btn btn--primary btn--sm btn--full">Legg i handlekurv</button></div>
+      </article>
+    </div>
+  </section>
+
+  <!-- Bli kontaktet av en produktekspert — standalone kontaktskjema -->
+  <section class="container" id="bli-kontaktet" style="padding-block: var(--s-10);">
+    <div style="max-width: 720px; margin-inline: auto; padding: var(--s-8); background: var(--color-bg-surface-alt); border-radius: var(--r-lg); border: var(--bw-1) solid var(--color-border-soft);">
+      <header style="text-align: center; margin-bottom: var(--s-6);">
+        <h2 class="t-h2" style="margin: 0 0 var(--s-3);">Bli kontaktet av en produktekspert</h2>
+        <p style="font-size: var(--fs-body-lg); color: var(--color-text-secondary); margin: 0;">Fyll inn skjemaet, så ringer eller skriver vi tilbake innen kort tid.</p>
+      </header>
+      <form action="#" method="post" novalidate style="display: grid; grid-template-columns: 1fr 1fr; gap: var(--s-4);" class="pdp-kontakt-form">
+        <div class="field">
+          <label class="field__label field__label--required" for="pdp-kontakt-navn">Ditt navn</label>
+          <input class="input" id="pdp-kontakt-navn" name="navn" type="text" autocomplete="name" required>
+        </div>
+        <div class="field">
+          <label class="field__label field__label--required" for="pdp-kontakt-epost">Din e-postadresse</label>
+          <input class="input" id="pdp-kontakt-epost" name="epost" type="email" autocomplete="email" required>
+        </div>
+        <div class="field" style="grid-column: 1 / -1;">
+          <label class="field__label field__label--required" for="pdp-kontakt-tlf">Ditt telefonnummer</label>
+          <input class="input" id="pdp-kontakt-tlf" name="telefon" type="tel" autocomplete="tel" required>
+        </div>
+        <div class="field" style="grid-column: 1 / -1;">
+          <label class="field__label" for="pdp-kontakt-gjelder">Gjelder</label>
+          <p class="field__hint">Oppgi f.eks. type produkt eller varegruppe</p>
+          <textarea class="textarea" id="pdp-kontakt-gjelder" name="gjelder" rows="3"></textarea>
+        </div>
+        <div style="grid-column: 1 / -1; display: flex; justify-content: center; margin-top: var(--s-2);">
+          <button class="btn btn--primary btn--md" type="submit">Send forespørsel</button>
+        </div>
+      </form>
+    </div>
+
+    <style>
+      @media (max-width: 600px) {
+        .pdp-kontakt-form { grid-template-columns: 1fr !important; }
+      }
+    </style>
+  </section>
 
 </main>
 <footer class="site-footer">
@@ -373,21 +551,15 @@
         <p style="font-size: var(--fs-body-sm); opacity: 0.85;">Industriveien 26<br>6422 Molde<br>71 25 42 00 · post@moldejarnvare.no</p>
       </div>
       <div>
-        <h3 class="site-footer__col-title">Sortiment</h3>
-        <nav class="site-footer__list">
-          <a href="#">Festemidler</a><a href="#">Verktøy</a><a href="#">Verneutstyr</a><a href="#">Hydraulikk</a><a href="#">Sveis</a>
-        </nav>
-      </div>
-      <div>
         <h3 class="site-footer__col-title">Kundeservice</h3>
         <nav class="site-footer__list">
-          <a href="#">Min konto</a><a href="#">Bestilling og levering</a><a href="#">Retur og reklamasjon</a><a href="#">Be om tilbud</a><a href="#">Kontakt oss</a>
+          <a href="#">Min konto</a><a href="#">Bestilling og levering</a><a href="#">Retur og reklamasjon</a><a href="#">Kontakt oss</a>
         </nav>
       </div>
       <div>
         <h3 class="site-footer__col-title">Om oss</h3>
         <nav class="site-footer__list">
-          <a href="#">Historien</a><a href="#">Bærekraft</a><a href="#">Karriere</a><a href="#">Vilkår</a><a href="#">Personvern</a>
+          <a href="#">Historien</a><a href="#">Bærekraft</a><a href="#">Vilkår</a><a href="#">Personvern</a>
         </nav>
       </div>
     </div>
