@@ -271,6 +271,66 @@
   </div>
 
   <!-- Block 1: 2-bin system -->
+  <section id="tilbud" style="margin-top: var(--s-9);">
+    <header style="display: flex; justify-content: space-between; align-items: baseline; gap: var(--s-4); margin-bottom: var(--s-3); flex-wrap: wrap;">
+      <div>
+        <p class="t-overline" style="color: var(--mj-blue); margin: 0;">Konsept · ikke i scope n&aring;</p>
+        <h2 class="t-h2" style="margin: var(--s-2) 0 0;">Tilbud</h2>
+      </div>
+      <span class="badge badge--warning">Konsept &mdash; kildesystem ERP</span>
+    </header>
+    <p style="color: var(--color-text-secondary); max-width: 70ch; margin: 0 0 var(--s-5);">
+      <strong>Tilbud</strong> hentes fra ERP-systemet, som er kildesystemet for n&aring;.
+      Hver kunde ser sine &aring;pne tilbud med <strong>frist</strong>, og kan
+      &aring;pne ett tilbud for &aring; se varelinjer, mengder og priser. P&aring;
+      sikt skal kunden kunne konvertere et tilbud direkte til ordre via portalen
+      &mdash; men det krever toveis-integrasjon mot ERP og er parkert til en
+      senere fase.
+    </p>
+
+    <!-- Eksempel: tilbudsliste -->
+    <div class="data-table__wrap data-table__wrap--responsive" style="margin-bottom: var(--s-7);">
+      <table class="data-table">
+        <thead>
+          <tr>
+            <th>Tilbudsnr</th>
+            <th>Tittel</th>
+            <th>Utstedt</th>
+            <th>Frist</th>
+            <th class="is-numeric">Sum</th>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td data-label="Tilbudsnr"><code>T-7841</code></td>
+            <td data-label="Tittel">Sortilog A4-festemidler &mdash; &aring;rsavtale 2026</td>
+            <td data-label="Utstedt">12.05.2026</td>
+            <td data-label="Frist"><strong>12.06.2026</strong></td>
+            <td class="is-numeric" data-label="Sum">kr 184&nbsp;500,&ndash;</td>
+            <td><a class="link" href="#">Se varelinjer &rarr;</a></td>
+          </tr>
+          <tr>
+            <td data-label="Tilbudsnr"><code>T-7806</code></td>
+            <td data-label="Tittel">Verneutstyr-pakke Hjelset-anlegget</td>
+            <td data-label="Utstedt">28.04.2026</td>
+            <td data-label="Frist"><strong>28.05.2026</strong> &middot; <span style="color: var(--mj-error); font-weight: var(--fw-semibold);">5 dager igjen</span></td>
+            <td class="is-numeric" data-label="Sum">kr 42&nbsp;180,&ndash;</td>
+            <td><a class="link" href="#">Se varelinjer &rarr;</a></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <p style="font-size: var(--fs-body-sm); color: var(--color-text-secondary); margin: 0; padding: var(--s-4); background: var(--color-bg-surface-alt); border-radius: var(--r-md);">
+      <strong>Krever:</strong> Lese-API mot ERP for tilbudsliste + tilbudsdetaljer.
+      Frist-feltet vises r&oslash;dt n&aring;r &lt; 7 dager igjen, og tilbudet
+      f&aring;r en &laquo;utl&oslash;pt&raquo;-status etter frist.
+      <strong>Avhenger av:</strong> Avklaring av om kunde skal kunne konvertere
+      tilbud til ordre via portal eller ringe selger.
+    </p>
+  </section>
+
   <section style="margin-top: var(--s-9);">
     <header style="display: flex; justify-content: space-between; align-items: baseline; gap: var(--s-4); margin-bottom: var(--s-3); flex-wrap: wrap;">
       <div>

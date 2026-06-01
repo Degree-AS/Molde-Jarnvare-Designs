@@ -259,7 +259,6 @@
     <nav class="account-dashboard__nav">
       <a class="account-dashboard__nav-link" aria-current="page" href="account.html">Oversikt</a>
       <a class="account-dashboard__nav-link" href="account-orders.html">Ordrer</a>
-      <a class="account-dashboard__nav-link" href="#">Tilbud</a>
       <a class="account-dashboard__nav-link" href="#">Sortilog</a>
       <a class="account-dashboard__nav-link" href="account-wishlists.html">Handlelister</a>
       <a class="account-dashboard__nav-link" href="account-carts.html">Lagrede kurver</a>
@@ -273,17 +272,19 @@
         <div class="card">
           <h3 class="card__title">Aktive ordrer</h3>
           <div class="t-h1" style="font-variant-numeric: tabular-nums;">3</div>
-          <a class="link" href="#">Se alle</a>
+          <a class="link" href="account-orders.html">Se alle &rarr;</a>
         </div>
         <div class="card">
-          <h3 class="card__title">Åpne tilbud</h3>
+          <h3 class="card__title">Hyppig bestilt</h3>
+          <div class="t-h1" style="font-variant-numeric: tabular-nums;">47</div>
+          <span style="color: var(--color-text-secondary); font-size: var(--fs-caption); display: block; margin-bottom: var(--s-2);">artikler du har bestilt &ge; 3 ganger</span>
+          <a class="link" href="#">Bestill p&aring; nytt &rarr;</a>
+        </div>
+        <div class="card">
+          <h3 class="card__title">Lagrede kurver</h3>
           <div class="t-h1" style="font-variant-numeric: tabular-nums;">2</div>
-          <a class="link" href="#">Vis tilbud</a>
-        </div>
-        <div class="card">
-          <h3 class="card__title">Forbruk hittil</h3>
-          <div class="t-h1" style="font-variant-numeric: tabular-nums;">kr 184 200,–</div>
-          <span style="color: var(--color-text-secondary); font-size: var(--fs-caption);">2026 · eks. mva</span>
+          <span style="color: var(--color-text-secondary); font-size: var(--fs-caption); display: block; margin-bottom: var(--s-2);">venter p&aring; ferdigstillelse</span>
+          <a class="link" href="account-carts.html">Fortsett bestilling &rarr;</a>
         </div>
       </section>
 
@@ -296,16 +297,15 @@
           <table class="data-table">
             <thead><tr><th>Ordre</th><th>Dato</th><th>Status</th><th class="is-numeric">Sum</th><th></th></tr></thead>
             <tbody>
-              <tr><td data-label="Ordre"><code>234 519</code></td><td data-label="Dato">05.05.2026</td><td data-label="Status"><span class="status-pill status-pill--success">Sendt</span></td><td class="is-numeric" data-label="Sum">kr 12 530,–</td><td><a class="link" href="#">Detaljer</a></td></tr>
-              <tr><td data-label="Ordre"><code>234 488</code></td><td data-label="Dato">02.05.2026</td><td data-label="Status"><span class="status-pill status-pill--info">Behandles</span></td><td class="is-numeric" data-label="Sum">kr 4 220,–</td><td><a class="link" href="#">Detaljer</a></td></tr>
-              <tr><td data-label="Ordre"><code>234 401</code></td><td data-label="Dato">28.04.2026</td><td data-label="Status"><span class="status-pill status-pill--success">Levert</span></td>
-  <!-- FUSE-truncation auto-repair: closing div > div > section > div > table > tbody > tr -->
-  </tr>
-  </tbody>
-  </table>
-  </div>
-  </section>
-  </div>
+              <tr><td data-label="Ordre"><code>234 519</code></td><td data-label="Dato">05.05.2026</td><td data-label="Status"><span class="status-pill status-pill--info">Behandles</span></td><td class="is-numeric" data-label="Sum">kr 12 530,–</td><td><a class="link" href="account-order-detail.html">Detaljer</a></td></tr>
+              <tr><td data-label="Ordre"><code>234 488</code></td><td data-label="Dato">02.05.2026</td><td data-label="Status"><span class="status-pill status-pill--info">Bekreftet</span></td><td class="is-numeric" data-label="Sum">kr 4 220,–</td><td><a class="link" href="account-order-detail.html">Detaljer</a></td></tr>
+              <tr><td data-label="Ordre"><code>234 401</code></td><td data-label="Dato">28.04.2026</td><td data-label="Status"><span class="status-pill status-pill--success">Sendt</span></td><td class="is-numeric" data-label="Sum">kr 8 740,–</td><td><a class="link" href="account-order-detail.html">Detaljer</a></td></tr>
+              <tr><td data-label="Ordre"><code>234 312</code></td><td data-label="Dato">20.04.2026</td><td data-label="Status"><span class="status-pill status-pill--success">Fakturert</span></td><td class="is-numeric" data-label="Sum">kr 22 180,–</td><td><a class="link" href="account-order-detail.html">Detaljer</a></td></tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+    </div>
   </div>
 </main>
 <footer class="site-footer">
