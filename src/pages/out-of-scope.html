@@ -254,7 +254,7 @@
 <main class="container container--wide" style="padding-block: var(--s-7);">
 
   <header style="margin-bottom: var(--s-7); max-width: 70ch;">
-    <span class="t-overline" style="color: var(--mj-warning);">Parkering · ikke kontraktbestemt</span>
+    <span class="t-overline" style="color: var(--mj-blue);">Parkert backlog</span>
     <h1 class="t-h1" style="margin: var(--s-2) 0;">Andre — ikke del av denne fasen</h1>
     <p class="t-body-lg" style="color: var(--color-text-secondary); margin: 0;">
       Blokker som finnes i designsystemet, men som ligger utenfor kontrakt-omfanget for v1.
@@ -282,10 +282,10 @@
     <p style="color: var(--color-text-secondary); max-width: 70ch; margin: 0 0 var(--s-5);">
       <strong>Tilbud</strong> hentes fra ERP-systemet, som er kildesystemet for n&aring;.
       Hver kunde ser sine &aring;pne tilbud med <strong>frist</strong>, og kan
-      &aring;pne ett tilbud for &aring; se varelinjer, mengder og priser. P&aring;
-      sikt skal kunden kunne konvertere et tilbud direkte til ordre via portalen
-      &mdash; men det krever toveis-integrasjon mot ERP og er parkert til en
-      senere fase.
+      &aring;pne ett tilbud for &aring; se varelinjer, mengder og priser.
+      Vi foresl&aring;r at det automatisk sendes mail til brukeren med
+      p&aring;minnelse om &aring;pent tilbud og eget varsel rett i forkant av
+      utl&oslash;pt tilbudsfrist.
     </p>
 
     <!-- Eksempel: tilbudsliste -->
@@ -304,7 +304,7 @@
         <tbody>
           <tr>
             <td data-label="Tilbudsnr"><code>T-7841</code></td>
-            <td data-label="Tittel">Sortilog A4-festemidler &mdash; &aring;rsavtale 2026</td>
+            <td data-label="Tittel">Kemppi sveisemaskin med utstyr</td>
             <td data-label="Utstedt">12.05.2026</td>
             <td data-label="Frist"><strong>12.06.2026</strong></td>
             <td class="is-numeric" data-label="Sum">kr 184&nbsp;500,&ndash;</td>
@@ -334,31 +334,62 @@
   <section style="margin-top: var(--s-9);">
     <header style="display: flex; justify-content: space-between; align-items: baseline; gap: var(--s-4); margin-bottom: var(--s-3); flex-wrap: wrap;">
       <div>
-        <p class="t-overline" style="color: var(--mj-blue); margin: 0;">Blokk · tidligere p&aring; Min konto</p>
-        <h2 class="t-h2" style="margin: var(--s-2) 0 0;">2-boks-system</h2>
+        <p class="t-overline" style="color: var(--mj-blue); margin: 0;">Blokk · p&aring; Min konto</p>
+        <h2 class="t-h2" style="margin: var(--s-2) 0 0;">Forsyningsl&oslash;sninger</h2>
       </div>
-      <span class="badge badge--warning">Ikke kontraktbestemt</span>
     </header>
-    <p style="color: var(--color-text-secondary); max-width: 60ch; margin: 0 0 var(--s-4);">
-      Visualiserer fyllingsgrad for kundens 2-boks-system med f&oslash;lings-varsler ved lav beholdning.
-      Krever integrasjon med MJs lagerf&oslash;lings-system per kunde.
+    <p style="color: var(--color-text-secondary); max-width: 70ch; margin: 0 0 var(--s-5);">
+      Liste over kundens aktive forsyningsl&oslash;sninger (2-boks, Scan2order,
+      Weight2order, Ekornlager m.fl.). Hver linje viser navn, type og en
+      &laquo;Administrer&raquo;-snarvei. Krever integrasjon med MJs
+      lagerf&oslash;lings-system per kunde.
     </p>
 
-    <section class="two-bin">
-      <header class="two-bin__header"><h3 class="two-bin__title">2-boks-system</h3><a class="link" href="#">Administrer</a></header>
-      <div class="two-bin__bins">
-        <div class="two-bin__bin">
-          <span class="two-bin__bin-label">M8 × 40 mm A4 · Boks A</span>
-          <span class="two-bin__bin-qty">182 / 200 stk</span>
-          <span class="two-bin__bin-fill"><span style="width: 91%;"></span></span>
-        </div>
-        <div class="two-bin__bin two-bin__bin--low">
-          <span class="two-bin__bin-label">M8 × 40 mm A4 · Boks B</span>
-          <span class="two-bin__bin-qty">42 / 200 stk</span>
-          <span class="two-bin__bin-fill"><span style="width: 21%;"></span></span>
-        </div>
-      </div>
-    </section>
+    <div class="data-table__wrap data-table__wrap--responsive" style="margin-bottom: var(--s-5);">
+      <table class="data-table">
+        <thead>
+          <tr>
+            <th>Forsyningsl&oslash;sning</th>
+            <th>Type</th>
+            <th>Plassering</th>
+            <th>Status</th>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td data-label="Forsyningsl&oslash;sning"><strong>2-boks avdeling 1</strong></td>
+            <td data-label="Type">2-boks</td>
+            <td data-label="Plassering">Produksjonshall, sone A</td>
+            <td data-label="Status"><span class="status-pill status-pill--success">Aktiv</span></td>
+            <td><a class="link" href="#">Administrer &rarr;</a></td>
+          </tr>
+          <tr>
+            <td data-label="Forsyningsl&oslash;sning"><strong>2-boks avdeling 2</strong></td>
+            <td data-label="Type">2-boks</td>
+            <td data-label="Plassering">Produksjonshall, sone B</td>
+            <td data-label="Status"><span class="status-pill status-pill--success">Aktiv</span></td>
+            <td><a class="link" href="#">Administrer &rarr;</a></td>
+          </tr>
+          <tr>
+            <td data-label="Forsyningsl&oslash;sning"><strong>Ekornlager verksted</strong></td>
+            <td data-label="Type">Ekornlager</td>
+            <td data-label="Plassering">Mekanisk verksted</td>
+            <td data-label="Status"><span class="status-pill status-pill--success">Aktiv</span></td>
+            <td><a class="link" href="#">Administrer &rarr;</a></td>
+          </tr>
+          <tr>
+            <td data-label="Forsyningsl&oslash;sning"><strong>Scan2order linje 4</strong></td>
+            <td data-label="Type">Scan2order</td>
+            <td data-label="Plassering">Monteringslinje 4</td>
+            <td data-label="Status"><span class="status-pill status-pill--info">Pilot</span></td>
+            <td><a class="link" href="#">Administrer &rarr;</a></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <a class="btn btn--primary btn--md" href="#">Administrere forsyningsl&oslash;sning</a>
   </section>
 
   <hr class="divider" style="margin-block: var(--s-10);">
@@ -370,7 +401,6 @@
         <p class="t-overline" style="color: var(--mj-blue); margin: 0;">Blokk · tidligere p&aring; Forsiden</p>
         <h2 class="t-h2" style="margin: var(--s-2) 0 0;">Hurtigbestilling</h2>
       </div>
-      <span class="badge badge--warning">Ikke kontraktbestemt</span>
     </header>
     <p style="color: var(--color-text-secondary); max-width: 60ch; margin: 0 0 var(--s-4);">
       Bulk-bestilling via artikkelnummer-liste eller copy-paste fra Excel. Krever validering mot PIM
@@ -409,7 +439,6 @@
         <p class="t-overline" style="color: var(--mj-blue); margin: 0;">Sidemal-forslag &middot; alternativ PDP</p>
         <h2 class="t-h2" style="margin: var(--s-2) 0 0;">PDP &mdash; tjenestevariant</h2>
       </div>
-      <span class="badge badge--warning">Ikke kontraktbestemt</span>
     </header>
     <p style="color: var(--color-text-secondary); max-width: 60ch; margin: 0 0 var(--s-5);">
       For tjenester (slangepressing, kalibrering, trykktest) trenger vi en PDP-variant uten
