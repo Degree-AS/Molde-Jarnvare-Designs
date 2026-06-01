@@ -308,7 +308,7 @@
             <td data-label="Utstedt">12.05.2026</td>
             <td data-label="Frist"><strong>12.06.2026</strong></td>
             <td class="is-numeric" data-label="Sum">kr 184&nbsp;500,&ndash;</td>
-            <td><a class="link" href="#">Se varelinjer &rarr;</a></td>
+            <td><div style="display: flex; align-items: center; justify-content: flex-end; gap: var(--s-3); white-space: nowrap;"><a class="link" href="#">Se varelinjer &rarr;</a><button class="btn btn--primary btn--sm" type="button">Aksepter tilbud</button></div></td>
           </tr>
           <tr>
             <td data-label="Tilbudsnr"><code>T-7806</code></td>
@@ -316,7 +316,7 @@
             <td data-label="Utstedt">28.04.2026</td>
             <td data-label="Frist"><strong>28.05.2026</strong> &middot; <span style="color: var(--mj-error); font-weight: var(--fw-semibold);">5 dager igjen</span></td>
             <td class="is-numeric" data-label="Sum">kr 42&nbsp;180,&ndash;</td>
-            <td><a class="link" href="#">Se varelinjer &rarr;</a></td>
+            <td><div style="display: flex; align-items: center; justify-content: flex-end; gap: var(--s-3); white-space: nowrap;"><a class="link" href="#">Se varelinjer &rarr;</a><button class="btn btn--primary btn--sm" type="button">Aksepter tilbud</button></div></td>
           </tr>
         </tbody>
       </table>
@@ -394,6 +394,73 @@
 
   <hr class="divider" style="margin-block: var(--s-10);">
 
+  <section id="serviceavtaler">
+    <header style="display: flex; justify-content: space-between; align-items: baseline; gap: var(--s-4); margin-bottom: var(--s-3); flex-wrap: wrap;">
+      <div>
+        <p class="t-overline" style="color: var(--mj-blue); margin: 0;">Konsept · p&aring; Min konto</p>
+        <h2 class="t-h2" style="margin: var(--s-2) 0 0;">Serviceavtaler</h2>
+      </div>
+    </header>
+    <p style="color: var(--color-text-secondary); max-width: 70ch; margin: 0 0 var(--s-5);">
+      Liste over serviceavtaler kunden administrerer &mdash; periodisk kontroll
+      av fallsikring og l&oslash;fteutstyr, kalibrering av momentn&oslash;kler,
+      service p&aring; maskiner. Hver avtale har egen administrasjonsside med
+      historikk, neste kontrolldato og dokumentasjon. Kontroll- og
+      sertifikatdata hentes fra ONIX og MJs servicesystem.
+    </p>
+
+    <div class="data-table__wrap data-table__wrap--responsive" style="margin-bottom: var(--s-5);">
+      <table class="data-table">
+        <thead>
+          <tr>
+            <th>Avtale</th>
+            <th>Type</th>
+            <th>Neste kontroll</th>
+            <th>Status</th>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td data-label="Avtale"><strong>&Aring;rlig kontroll fallsikring avdeling 1</strong> <span style="color: var(--color-text-secondary); font-size: var(--fs-body-sm);">(ONIX)</span></td>
+            <td data-label="Type">Sikkerhetskontroll</td>
+            <td data-label="Neste kontroll">14.09.2026</td>
+            <td data-label="Status"><span class="status-pill status-pill--success">Aktiv</span></td>
+            <td><a class="link" href="#">Administrer avtale &rarr;</a></td>
+          </tr>
+          <tr>
+            <td data-label="Avtale"><strong>Kontroll l&oslash;fteutstyr avdeling 2</strong> <span style="color: var(--color-text-secondary); font-size: var(--fs-body-sm);">(ONIX)</span></td>
+            <td data-label="Type">Sikkerhetskontroll</td>
+            <td data-label="Neste kontroll">22.07.2026 &middot; <span style="color: var(--mj-warning); font-weight: var(--fw-semibold);">snart forfalt</span></td>
+            <td data-label="Status"><span class="status-pill status-pill--success">Aktiv</span></td>
+            <td><a class="link" href="#">Administrer avtale &rarr;</a></td>
+          </tr>
+          <tr>
+            <td data-label="Avtale"><strong>Kalibrering momentn&oslash;kler verksted Aukra</strong></td>
+            <td data-label="Type">Kalibrering</td>
+            <td data-label="Neste kontroll">03.11.2026</td>
+            <td data-label="Status"><span class="status-pill status-pill--success">Aktiv</span></td>
+            <td><a class="link" href="#">Administrer avtale &rarr;</a></td>
+          </tr>
+          <tr>
+            <td data-label="Avtale"><strong>Serviceavtale K&auml;rcher HDS 18/18-4 Classic</strong></td>
+            <td data-label="Type">Maskinservice</td>
+            <td data-label="Neste kontroll">28.06.2026 &middot; <span style="color: var(--mj-error); font-weight: var(--fw-semibold);">4 uker</span></td>
+            <td data-label="Status"><span class="status-pill status-pill--success">Aktiv</span></td>
+            <td><a class="link" href="#">Administrer avtale &rarr;</a></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div style="display: flex; gap: var(--s-3); flex-wrap: wrap;">
+      <a class="btn btn--primary btn--md" href="#">Administrere serviceavtaler</a>
+      <a class="btn btn--outline btn--md" href="#">+ Opprett ny serviceavtale</a>
+    </div>
+  </section>
+
+  <hr class="divider" style="margin-block: var(--s-10);">
+
   <!-- Block 2: Quick order -->
   <section>
     <header style="display: flex; justify-content: space-between; align-items: baseline; gap: var(--s-4); margin-bottom: var(--s-3); flex-wrap: wrap;">
@@ -412,6 +479,30 @@
         <div class="quick-order">
           <h3 class="quick-order__title">Hurtigbestilling</h3>
           <p class="quick-order__desc">Har du artikkelnumrene? Skriv eller lim inn liste, s&aring; er du ferdig p&aring; under et minutt.</p>
+
+          <!-- Fil-opplasting: alternativ til manuell inntasting -->
+          <div style="display: flex; flex-wrap: wrap; gap: var(--s-3); align-items: center; padding: var(--s-4); margin-bottom: var(--s-5); background: var(--color-bg-surface); border: var(--bw-1) dashed var(--color-border-default); border-radius: var(--r-md);">
+            <a class="btn btn--outline btn--md" href="#" style="text-decoration: none; display: inline-flex; align-items: center; gap: var(--s-2);">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <path d="M12 3v12"/><path d="M7 10l5 5 5-5"/><path d="M5 21h14"/>
+              </svg>
+              Last ned bestillingsmal
+            </a>
+            <label class="btn btn--outline btn--md" style="display: inline-flex; align-items: center; gap: var(--s-2); cursor: pointer; margin: 0;">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <path d="M12 21V9"/><path d="M7 14l5-5 5 5"/><path d="M5 3h14"/>
+              </svg>
+              Last opp CSV/XLSX
+              <input type="file" accept=".csv,.xlsx,.xls" style="position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0,0,0,0); border: 0;">
+            </label>
+            <span style="font-size: var(--fs-body-sm); color: var(--color-text-secondary);">Maks 500 rader · kolonner: <code class="t-mono-sm">artikkelnr;antall</code></span>
+          </div>
+
+          <p style="text-align: center; font-size: var(--fs-body-sm); color: var(--color-text-tertiary); margin: 0 0 var(--s-4); position: relative;">
+            <span style="background: var(--mj-surface-1); padding: 0 var(--s-3); position: relative; z-index: 1;">eller skriv inn manuelt</span>
+            <span style="position: absolute; left: 0; right: 0; top: 50%; height: 1px; background: var(--color-border-soft); z-index: 0;"></span>
+          </p>
+
           <div class="quick-order__row">
             <input class="input" placeholder="Artikkelnummer eller NOBB-nr">
             <input class="input" type="number" placeholder="Antall">
