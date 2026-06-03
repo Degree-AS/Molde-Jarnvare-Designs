@@ -511,6 +511,10 @@
         <p style="font-size: var(--fs-body-lg); color: var(--color-text-secondary); margin: 0;">Fyll inn skjemaet, så ringer eller skriver vi tilbake innen kort tid.</p>
       </header>
       <form action="#" method="post" novalidate style="display: grid; grid-template-columns: 1fr 1fr; gap: var(--s-4);" class="pdp-kontakt-form">
+        <div class="field" style="grid-column: 1 / -1;">
+          <label class="field__label field__label--required" for="pdp-kontakt-firmanavn">Firmanavn</label>
+          <input class="input" id="pdp-kontakt-firmanavn" name="firmanavn" type="text" autocomplete="organization" required>
+        </div>
         <div class="field">
           <label class="field__label field__label--required" for="pdp-kontakt-navn">Ditt navn</label>
           <input class="input" id="pdp-kontakt-navn" name="navn" type="text" autocomplete="name" required>

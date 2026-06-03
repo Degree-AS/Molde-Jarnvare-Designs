@@ -320,16 +320,17 @@
         <div class="order-summary__section-header">
           <h2 class="order-summary__section-title">Betaling</h2>
         </div>
-        <fieldset class="radio-group">
-          <label class="radio">
-            <input type="radio" name="pay" checked><span class="radio__visual"></span>
-            <span class="radio__label"><strong>Faktura</strong><span class="radio__desc">14 dager netto</span></span>
-          </label>
-          <label class="radio">
-            <input type="radio" name="pay"><span class="radio__visual"></span>
-            <span class="radio__label"><strong>Kort</strong><span class="radio__desc">Visa, Mastercard</span></span>
-          </label>
-        </fieldset>
+        <!-- Alle kunder er B2B med avtale og faktureres — ingen valg presenteres -->
+        <div style="padding: var(--s-4); background: var(--color-bg-surface-alt); border-radius: var(--r-md); display: flex; align-items: flex-start; gap: var(--s-3);">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="color: var(--mj-blue); flex: 0 0 auto; margin-top: 2px;">
+            <rect x="3" y="5" width="18" height="14" rx="2"/>
+            <path d="M3 10h18"/>
+          </svg>
+          <div>
+            <p style="margin: 0; font-weight: var(--fw-semibold);">Faktura &mdash; 14 dager netto</p>
+            <p style="margin: var(--s-1) 0 0; font-size: var(--fs-body-sm); color: var(--color-text-secondary);">I henhold til avtale med Industriservice Vest AS.</p>
+          </div>
+        </div>
       </section>
 
       <button class="btn btn--primary btn--lg">Gå til bekreftelse</button>

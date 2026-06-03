@@ -383,6 +383,10 @@
 
         <!-- Kontaktskjema -->
         <form action="#" method="post" novalidate style="display: grid; grid-template-columns: 1fr 1fr; gap: var(--s-4);" class="kontakt-form">
+          <div class="field" style="grid-column: 1 / -1;">
+            <label class="field__label field__label--required" for="kontakt-firmanavn">Firmanavn</label>
+            <input class="input" id="kontakt-firmanavn" name="firmanavn" type="text" autocomplete="organization" required>
+          </div>
           <div class="field">
             <label class="field__label field__label--required" for="kontakt-navn">Ditt navn</label>
             <input class="input" id="kontakt-navn" name="navn" type="text" autocomplete="name" required>

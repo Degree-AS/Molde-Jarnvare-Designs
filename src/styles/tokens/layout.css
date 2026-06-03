@@ -22,7 +22,7 @@
   /* ---------------------------------------------------------------------------
    * 6.3 Container widths
    * ------------------------------------------------------------------------ */
-  --container-narrow:  720px;  /* Long article, legal text */
+  --container-narrow:  750px;  /* Long article, legal text — best practice for readability (~75-85 ch) */
   --container-default: 1280px; /* Standard page content */
   --container-wide:    1440px; /* Front page hero, wide product rows */
   --container-full:    100%;   /* Full width (header, footer, hero bg) */

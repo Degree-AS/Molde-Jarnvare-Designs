@@ -280,6 +280,7 @@
                 <th>Rolle</th>
                 <th class="is-numeric">Bel&oslash;psgrense / ordre</th>
                 <th class="is-numeric">Brukt denne m&aring;neden</th>
+                <th>Tjenester</th>
                 <th>Sist innlogget</th>
                 <th></th>
               </tr>
@@ -290,6 +291,7 @@
                 <td data-label="Rolle"><span class="badge badge--brand">Admin</span></td>
                 <td class="is-numeric" style="color: var(--color-text-secondary);" data-label="Beløpsgrense / ordre">Ingen grense</td>
                 <td class="is-numeric" data-label="Brukt denne måneden">kr 42 510,&ndash;</td>
+                <td data-label="Tjenester"><span class="badge badge--brand">Scan2Order</span></td>
                 <td data-label="Sist innlogget">I dag</td>
                 <td>—</td>
               </tr>
@@ -298,6 +300,7 @@
                 <td data-label="Rolle"><span class="badge">Bestiller</span></td>
                 <td class="is-numeric" data-label="Beløpsgrense / ordre">kr 25 000,&ndash; / ordre</td>
                 <td class="is-numeric" data-label="Brukt denne måneden">kr 18 200,&ndash;</td>
+                <td data-label="Tjenester"><span class="badge badge--brand">Scan2Order</span></td>
                 <td data-label="Sist innlogget">I g&aring;r</td>
                 <td><a class="link" href="#">Rediger</a></td>
               </tr>
@@ -306,6 +309,7 @@
                 <td data-label="Rolle"><span class="badge">Bestiller</span></td>
                 <td class="is-numeric" data-label="Beløpsgrense / ordre">kr 10 000,&ndash; / ordre</td>
                 <td class="is-numeric" data-label="Brukt denne måneden">kr 9 850,&ndash;</td>
+                <td data-label="Tjenester" style="color: var(--color-text-tertiary);">&mdash;</td>
                 <td data-label="Sist innlogget">3 dager siden</td>
                 <td><a class="link" href="#">Rediger</a></td>
               </tr>
@@ -314,11 +318,12 @@
                 <td data-label="Rolle"><span class="badge">Kun innsyn</span></td>
                 <td class="is-numeric" style="color: var(--color-text-tertiary);" data-label="Beløpsgrense / ordre">N/A</td>
                 <td class="is-numeric" style="color: var(--color-text-tertiary);" data-label="Brukt denne måneden">—</td>
+                <td data-label="Tjenester" style="color: var(--color-text-tertiary);">&mdash;</td>
                 <td data-label="Sist innlogget">2 uker siden</td>
                 <td><a class="link" href="#">Rediger</a></td>
               </tr>
               <tr>
-                <td colspan="6" style="background: var(--mj-surface-1); color: var(--color-text-secondary); font-style: italic;" data-label="Navn">
+                <td colspan="7" style="background: var(--mj-surface-1); color: var(--color-text-secondary); font-style: italic;" data-label="Navn">
                   Invitert: <strong style="font-style: normal;">Lars Indresund</strong> &lt;lars@industriservice-vest.no&gt; &middot; Venter p&aring; aksept &middot; <a class="link" href="#">Send p&aring;nytt</a>
                 </td>
               </tr>
@@ -360,6 +365,16 @@
             </label>
           </div>
 
+          <div class="field" style="grid-column: 1 / -1; border-top: var(--bw-1) solid var(--color-border-soft); padding-top: var(--s-5); margin-top: var(--s-2);">
+            <span class="field__label" style="display: block; margin-bottom: var(--s-3);">Tjenester</span>
+            <label class="checkbox">
+              <input type="checkbox" checked>
+              <span class="checkbox__visual"></span>
+              <span><strong>Scan2Order</strong> &mdash; tilgang til skanning av varekoder fra produksjon for direkte bestilling</span>
+            </label>
+            <p class="field__hint" style="margin-top: var(--s-2);">Kun brukere med denne tilgangen kan logge inn p&aring; mobil-appen for Scan2Order.</p>
+          </div>
+
         </div>
 
         <div style="margin-top: var(--s-6);">
@@ -374,8 +389,14 @@
           <dt><span class="badge badge--brand">Admin</span></dt>
           <dd style="margin: 0;">Kan bestille uten grense, godkjenne andres ordrer, og administrere brukere/adresser/innstillinger.</dd>
           <dt><span class="badge">Bestiller</span></dt>
-          <dd style="margin: 0;">Kan bestille inntil sin bel&oslash;psgrense. Ove
+          <dd style="margin: 0;">Kan bestille inntil sin bel&oslash;psgrense. Over grensen krever Admin-godkjenning.</dd>
+          <dt><span class="badge">Kun innsyn</span></dt>
+          <dd style="margin: 0;">Kan se ordrer og fakturaer, men ikke bestille selv.</dd>
+        </dl>
+      </section>
 
+    </div>
+  </div>
 </main>
 <footer class="site-footer">
   <div class="site-footer__inner">

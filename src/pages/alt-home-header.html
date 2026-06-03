@@ -34,19 +34,24 @@
       }
     }
     .site-header--alt .site-header__tagline-top {
-      /* Editorial undertittel: større, tynnere og dempet grå —
-         konkurrerer ikke med logoen, men leses fortsatt komfortabelt. */
+      /* Editorial undertittel: midtstilt, baseline justert mot E-en i logoen.
+         align-self: end + padding-bottom drar teksten ned slik at den
+         linjerer optisk med logoens fot. */
       grid-area: tagline;
       margin: 0;
-      font-size: var(--fs-body);
+      font-size: var(--fs-body-lg);
       font-weight: var(--fw-regular);
       color: var(--color-text-secondary);
       line-height: var(--lh-snug);
+      text-align: center;
+      align-self: end;
+      padding-bottom: 4px;
     }
     @media (min-width: 1024px) {
       .site-header--alt .site-header__tagline-top {
-        font-size: var(--fs-body-lg);
+        font-size: var(--fs-h5);
         font-weight: var(--fw-regular);
+        padding-bottom: 6px;
       }
     }
 
