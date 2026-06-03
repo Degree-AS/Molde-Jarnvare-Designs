@@ -224,6 +224,73 @@
 }
 
 /* ─────────────────────────────────────────────────────────────────────────
+ * Alt header variant — produksjonsstandard på de fleste sider
+ *
+ * Forskjell fra default-headeren:
+ *   Nivå 1 (top):   logo  | tagline (totalleverandør-uttalelse) | actions
+ *                   Søkefeltet er flyttet ned til nivå 2 på desktop,
+ *                   og erstattet av et lupe-ikon i actions på mobil.
+ *   Nivå 2 (main):  søkefelt (venstre) | nav-items + Kontakt oss (høyre)
+ *
+ * Default-headeren beholdes som klassisk variant (uten tagline, søk på
+ * topp) — brukes der vi vil ha en enklere ramme rundt innholdet, f.eks.
+ * på login-siden. Sider som skal ha den nye headeren har klassen
+ * .site-header--alt på <header>.
+ * ────────────────────────────────────────────────────────────────────── */
+
+.site-header--alt .site-header__inner {
+  grid-template-areas:
+    "logo    actions"
+    "tagline tagline";
+  grid-template-columns: 1fr auto;
+  column-gap: var(--s-4);
+}
+@media (min-width: 1024px) /* --bp-lg */ {
+  .site-header--alt .site-header__inner {
+    grid-template-areas: "logo tagline actions";
+    grid-template-columns: auto 1fr auto;
+    gap: var(--s-6);
+  }
+}
+
+.site-header__tagline-top {
+  grid-area: tagline;
+  margin: 0;
+  font-size: var(--fs-body-lg);
+  font-weight: var(--fw-regular);
+  color: var(--color-text-secondary);
+  line-height: var(--lh-snug);
+  text-align: center;
+  align-self: center;
+}
+@media (min-width: 1024px) /* --bp-lg */ {
+  .site-header__tagline-top {
+    font-size: var(--fs-h4);
+  }
+}
+
+.site-header--alt .site-header__main-inner {
+  display: flex;
+  align-items: center;
+  gap: var(--s-5);
+  padding-block: var(--s-3);
+}
+.site-header__search-bottom {
+  flex: 0 1 380px;
+  min-width: 0;
+}
+.site-header--alt .site-header__nav {
+  flex: 1;
+  justify-content: flex-end;
+  height: auto;
+  gap: var(--s-2);
+}
+
+@media (min-width: 1024px) /* --bp-lg */ {
+  .site-header__action--search { display: none; }
+}
+
+/* ─────────────────────────────────────────────────────────────────────────
  * Mobile nav drawer (rendered out-of-flow, slides in from the right)
  * Toggled by JS on the hamburger via [data-open]. For static preview, set
  * [data-preview-open="true"] on .site-header.
