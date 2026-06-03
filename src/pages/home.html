@@ -23,7 +23,9 @@
       grid-template-areas:
         "logo    actions"
         "tagline tagline";
-      grid-template-columns: auto 1fr;
+      /* 1fr auto på mobil — logo strekker seg, actions sitter helt
+         til høyre (matcher default site-header-mønster). */
+      grid-template-columns: 1fr auto;
       column-gap: var(--s-4);
     }
     @media (min-width: 1024px) {
