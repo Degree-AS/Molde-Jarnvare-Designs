@@ -61,15 +61,19 @@
 
 .site-header__logo-img {
   display: block;
-  height: 28px;
-  width: auto;
+  /* Logo har 7.96:1-forhold (3000x377). Bredde-basert sizing pluss
+     height:auto bevarer forholdet selv naar reset.css setter
+     max-width:100% (som ellers ville stuke bildet vertikalt). */
+  width: 100%;
+  max-width: 200px;
+  height: auto;
   /* Logo clear-space — half the height of letters in logo (§9.3) */
   margin-block: var(--s-2);
   margin-inline-end: var(--s-2);
 }
 
 @media (min-width: 1024px) /* --bp-lg */ {
-  .site-header__logo-img { height: 36px; }
+  .site-header__logo-img { max-width: 280px; }
 }
 
 /* Text fallback if logo image fails to load */
@@ -288,6 +292,13 @@
 
 @media (min-width: 1024px) /* --bp-lg */ {
   .site-header__action--search { display: none; }
+}
+
+/* Tighter gap mellom action-ikoner på mobil/tablet — desktop beholder
+   var(--s-2) som default. På mobil/tab har vi flere ikoner i actions
+   (søk + konto + kurv + hamburger) og 8 px gap føles luftig. */
+@media (max-width: 1023.98px) /* under --bp-lg */ {
+  .site-header__actions { gap: 0; }
 }
 
 /* ─────────────────────────────────────────────────────────────────────────
