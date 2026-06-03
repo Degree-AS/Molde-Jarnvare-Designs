@@ -273,7 +273,7 @@ a{color:var(--mj-blue)}
 
   <header class="hero">
     <img class="hero__logo" src="assets/logos/molde-jarnvare-positive.png" alt="Molde Jarnvare">
-    <div class="hero__overline">Design system · v0.3 · May 29, 2026</div>
+    <div class="hero__overline">Design system · v0.4 · June 4, 2026</div>
     <h1 class="hero__title">How we are <em>building your site</em>.</h1>
     <p class="hero__lead">
       This document describes the design system as it is actually built in code today —
@@ -289,18 +289,35 @@ a{color:var(--mj-blue)}
   </header>
 
   <section class="section" id="changelog-v3">
-    <div class="section__num">00 / What's new in v0.3</div>
+    <div class="section__num">00 / What's new</div>
     <h2 class="section__title">Changes since v0.2 (May 12, 2026)</h2>
-    <p class="section__lead">A round of refinements after the customer review — both visual polish and new functional patterns.</p>
+    <p class="section__lead">Two rounds of refinements after customer reviews — visual polish, new functional patterns, and a header rollout to the whole site.</p>
 
-    <h3>New component variants</h3>
+    <h3 style="margin-top: var(--s-7);">v0.4 — June 4, 2026 (after customer presentation)</h3>
+    <ul>
+      <li><strong>Site-wide header rollout</strong> — The new header variant (logo + tagline + actions on row 1, search + nav on row 2) was promoted from a one-off home-page exploration to the production header on <strong>24 pages</strong>. Implemented as <code>.site-header--alt</code> modifier in <code>src/components/site-header/site-header.css</code>. The classic header (no tagline, search on top) is kept and now used on <code>login.html</code> only — a deliberate choice to give authentication a simpler, more focused frame.</li>
+      <li><strong>Mobile search</strong> — The full search field is hidden on mobile/tablet (where row 2 is collapsed). A magnifying-glass icon button (<code>.site-header__action--search</code>) is placed first in the actions row, opening a search overlay in the JS layer. Visible only below <code>--bp-lg</code>; hidden on desktop where the full search field is visible on row 2.</li>
+      <li><strong>Kontaktskjema requires Firmanavn</strong> — All four contact-form instances (home, PDP matrix, PDP chip, Kontakt oss) now have a required <em>Firmanavn</em> field at the top, with <code>autocomplete="organization"</code>. Reflects the customer's decision that company name must be captured for any product-expert inquiry.</li>
+      <li><strong>Editorial content width: 720 → 750 px</strong> — Bumped <code>--container-narrow</code> token and <code>.news-article__body</code> max-width. Affects <code>static.html</code> (Vår historie), <code>news-article.html</code> and other long-form text pages. Within best-practice 50–85 ch readability range.</li>
+      <li><strong>Checkout: no card payment</strong> — All customers are B2B with invoicing agreements, so the card-radio is removed entirely. Payment section now shows a static "Faktura — 14 dager netto / I henhold til avtale" info strip with a card-icon.</li>
+      <li><strong>User admin: Scan2Order access</strong> — New "Tjenester" column in the user table shows a <em>Scan2Order</em> badge per user with access. The edit form has a new checkbox section gating mobile-app login on the per-user level.</li>
+      <li><strong>Account dashboard: kjøpsmotiverende widgets</strong> — "Forbruk hittil" (could discourage spending) is replaced by "Hyppig bestilt" (<code>47 artikler · Bestill på nytt</code> + <code>Legg til forsyningsløsning</code>) and "Lagrede kurver" (<code>2 · Fortsett bestilling</code>) — both actionable purchase-motivating cards.</li>
+      <li><strong>ERP order statuses</strong> — Status pills updated to match the actual ERP source: <em>Behandles → Bekreftet → Sendt → Fakturert</em>. Replaces the previous "Levert/Kansellert" placeholders throughout.</li>
+      <li><strong>Tilbud removed from contract scope</strong> — Parked as a concept on <code>out-of-scope.html#tilbud</code> with an example list showing example titles, expiry dates (red &lt; 7 days), and an "Aksepter tilbud" button per row. The contract scope no longer includes the Tilbud tab in the account dashboard.</li>
+      <li><strong>Out-of-scope cleanup</strong> — Removed all "Ikke kontraktbestemt" badges. 2-boks-system block replaced with a Forsyningsløsninger overview (table of customer's active solutions: 2-boks ×2, Ekornlager, Scan2order pilot) + "Administrere forsyningsløsning" button. New Serviceavtaler concept block with ONIX-sourced agreements + "Opprett ny serviceavtale" button. Hurtigbestilling now offers "Last opp CSV/XLSX" + "Last ned bestillingsmal" alongside manual entry.</li>
+      <li><strong>Contact consolidation</strong> — <code>contact.html</code> removed. Its content lives on <code>team.html</code> (Kontakt oss) with a sentralbord + e-post + adresse strip above the people list, and the kontaktskjema-block at the bottom.</li>
+    </ul>
+
+    <h3 style="margin-top: var(--s-7);">v0.3 — May 29, 2026 (customer review)</h3>
+
+    <h4>New component variants</h4>
     <ul>
       <li><strong><code>.hero--fullbleed</code></strong> — Full-width background image with text overlay. Used on the home page (Atlanterhavsvegen). Includes a dark gradient overlay (top 35%, mid 20%, bottom 55%) so eyebrow + title remain readable regardless of image content. Eyebrow uses <code>--fs-body-sm</code> with shadow; title keeps display weight with subtle text-shadow.</li>
       <li><strong><code>.site-header__nav-link</code></strong> + <strong><code>.site-header__nav-link--right</code></strong> — Bold blue header link that mirrors the dropdown-trigger styling but skips the chevron. Used for direct-action links in the nav row (Kontakt oss). The <code>--right</code> modifier pushes the link to the far right via <code>margin-left: auto</code>.</li>
       <li><strong><code>.qty-stepper--compact</code></strong> — 32 × 32 px buttons + 48 px input (down from 40 / 60). Used inside the variant matrix and wishlist detail where the stepper sits in a table cell.</li>
     </ul>
 
-    <h3>New patterns</h3>
+    <h4>New patterns</h4>
     <ul>
       <li><strong>Positioning statement block</strong> — Centred <code>.t-h3</code> on white background between the hero and the next content section. Acts as a bridge between the visual hero and the more functional sections below. Max-width 44ch.</li>
       <li><strong>Forsyningsløsninger pitch</strong> — 2-column layout (text + image) with three icon-cards (88–104 px blue rounded squares, white glyphs, red "2" accent). Used to introduce <em>2BOX</em>, <em>Scan2order</em> and <em>Weight2order</em> on the front page.</li>
@@ -308,13 +325,13 @@ a{color:var(--mj-blue)}
       <li><strong>Variant matrix below product info</strong> — For SKU-rich product types (fasteners, screws), the chip selector is replaced by a full-width table where each row is its own variant with its own quantity stepper and "add to cart" icon button.</li>
     </ul>
 
-    <h3>Header restructure</h3>
+    <h4>Header restructure</h4>
     <ul>
       <li>The flat list of 8 nav links has been replaced by three mega-menu triggers: <strong>Produkter</strong>, <strong>Forsyningsløsninger</strong> and <strong>Øvrige Tjenester</strong>.</li>
       <li>A right-aligned <strong>Kontakt oss</strong> link (with a small phone icon) sits at the far end of the nav row.</li>
     </ul>
 
-    <h3>Footer adjustments</h3>
+    <h4>Footer adjustments</h4>
     <ul>
       <li>Logo width 240 → 320 → 380 px (≈ 48 px tall); payoff changed from red italic to white regular at <code>--fs-body</code>.</li>
       <li>Grid reduced from 4 to 3 columns — the Sortiment column is removed since categories are already in the mega-menu.</li>
@@ -322,14 +339,14 @@ a{color:var(--mj-blue)}
       <li>Type-size lifts for readability: column titles 11 → 14 px, links 14 → 16 px, bottom row 13 → 14 px (with cleaner opacity).</li>
     </ul>
 
-    <h3>Two PDP patterns</h3>
+    <h4>Two PDP patterns</h4>
     <ul>
       <li><strong>Matrix variant</strong> (<code>product.html</code>) — for screws and other SKU-rich items. Description, art.nr and price stay in the right column; variant selection + cart actions live below the image as a full-width table.</li>
       <li><strong>Chip variant</strong> (<code>product-minarc.html</code>) — for single-SKU items with a few options (Kemppi Minarc Evo 180 sveiseapparat). Chip selector + add-to-cart stay in the right column.</li>
       <li>Both PDPs now show only avtalepris — no strike-through, no discount badge.</li>
     </ul>
 
-    <h3>Pages</h3>
+    <h4>Pages</h4>
     <ul>
       <li>New: <code>product-minarc.html</code> (chip-variant PDP example).</li>
       <li>New: <code>alt-home-header.html</code> (alternative header layout — search on row 2, tagline on row 1).</li>
@@ -1044,7 +1061,7 @@ docs/                client-facing presentation (this file + index)</pre>
   </section>
 
   <footer class="foot">
-    <p>Molde Jarnvare designsystem · v0.3 · May 29, 2026 · Degree × Molde Jarnvare</p>
+    <p>Molde Jarnvare designsystem · v0.4 · June 4, 2026 · Degree × Molde Jarnvare</p>
     <p><a href="index.html">← Back to docs overview</a></p>
   </footer>
 
