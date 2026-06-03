@@ -73,9 +73,13 @@
       height: auto;
       gap: var(--s-2);
     }
-    /* Skjul nivå 2 på mobil — søk havner ellers gjemt; legg det heller i drawer/hamburger */
+    /* Skjul nivå 2 (søk + nav) på mobil — søk er erstattet av lupe-ikon i actions */
     @media (max-width: 1023.98px) {
       .site-header--alt .site-header__main { display: none; }
+    }
+    /* Lupe-ikon: kun synlig under desktop — der nivå-2 søkefeltet er borte */
+    @media (min-width: 1024px) {
+      .site-header--alt .site-header__action--search { display: none; }
     }
   </style>
 </head>
@@ -86,6 +90,10 @@
     <a class="site-header__logo" href="/" aria-label="Molde Jarnvare"><img src="../assets/logos/molde-jarnvare-positive.png" alt="Molde Jarnvare" class="site-header__logo-img"></a>
     <p class="site-header__tagline-top">Totalleverandør av festemidler, hydraulikk, verneutstyr, verktøy og forbruksmateriell</p>
     <div class="site-header__actions">
+      <!-- Søk-ikon: vises på mobil/tablet siden nivå-2 søkefelt er skjult der -->
+      <button class="site-header__action site-header__action--search" aria-label="Søk">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.35-4.35"/></svg>
+      </button>
       <button class="site-header__action" aria-label="Min konto">
         <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4 4-7 8-7s8 3 8 7"/></svg>
       </button>
