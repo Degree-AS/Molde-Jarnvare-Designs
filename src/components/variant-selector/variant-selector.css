@@ -189,6 +189,36 @@
   box-shadow: inset var(--bw-2) 0 0 var(--color-border-brand);
 }
 
+/* Stablet matrise (--stacked) — for tabeller med få kolonner (anonym: Variant, Art.nr,
+   Lagerstatus). På mobil ligger art.nr under variantnavnet og lagerstatus til høyre,
+   så variantnavnet ikke brekker over tre linjer. Desktop er uendret. */
+@media (max-width: 640px) {
+  .variant-selector__matrix--stacked thead { display: none; }
+  .variant-selector__matrix--stacked tbody tr {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 11rem);
+    column-gap: var(--s-3);
+    align-items: center;
+    padding: var(--s-3);
+    border-bottom: var(--bw-1) solid var(--color-border-soft);
+  }
+  .variant-selector__matrix--stacked tbody tr:last-child { border-bottom: 0; }
+  .variant-selector__matrix--stacked tbody th,
+  .variant-selector__matrix--stacked tbody td {
+    padding: 0;
+    border-bottom: 0;
+    background: none;
+    box-shadow: none;
+  }
+  .variant-selector__matrix--stacked tbody th { grid-column: 1; grid-row: 1; }
+  .variant-selector__matrix--stacked tbody td:nth-of-type(1) { grid-column: 1; grid-row: 2; margin-top: var(--s-1); }
+  .variant-selector__matrix--stacked tbody td:nth-of-type(2) { grid-column: 2; grid-row: 1 / span 2; }
+  .variant-selector__matrix--stacked .variant-selector__matrix-row--current {
+    background: var(--color-bg-brand-soft);
+    box-shadow: inset var(--bw-2) 0 0 var(--color-border-brand);
+  }
+}
+
 /* Mobile: let the table scroll horizontally instead of breaking */
 @media (max-width: 640px) {
   .variant-selector__matrix-wrap {
