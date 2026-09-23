@@ -1,20 +1,27 @@
 /**
  * Stock indicator (§14.5) — builds on .status-pill with MJ colors.
+ *
+ * Anonyme besøkende (ADO 19545) får kun to statuser, styrt av itemCategoryCode i BC:
+ *   LAGERVARE    → --in    «Normalt på lager» (grønn)
+ *   TRANSITVARE  → --order «Bestillingsvare – kontakt oss for estimert leveringstid» (oransje)
+ * Aldri antall (__count) for anonyme. Ukjent kode → ingen indikator.
  */
 
 .stock-indicator {
   display: inline-flex;
-  align-items: center;
+  align-items: flex-start;
   gap: var(--s-2);
   font-family: var(--ff-sans);
   font-size: var(--fs-body-sm);
   font-weight: var(--fw-semibold);
 }
 
+/* Prikken står på første linje også når lang tekst brekker (Bestillingsvare på kort) */
 .stock-indicator::before {
   content: "";
   width: 10px;
   height: 10px;
+  margin-top: calc((1lh - 10px) / 2);
   border-radius: var(--r-full);
   background: currentColor;
   flex: 0 0 auto;
@@ -23,7 +30,7 @@
 .stock-indicator--in       { color: var(--mj-success); }
 .stock-indicator--low      { color: var(--mj-warning); }
 .stock-indicator--out      { color: var(--mj-error); }
-.stock-indicator--order    { color: var(--mj-ink-2); }
+.stock-indicator--order    { color: var(--mj-warning); } /* oransje iht. 19545 (var ink-2) */
 .stock-indicator--discontinued { color: var(--mj-ink-3); }
 
 .stock-indicator__count {

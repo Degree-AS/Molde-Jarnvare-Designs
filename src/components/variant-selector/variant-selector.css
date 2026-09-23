@@ -179,6 +179,16 @@
 }
 .variant-selector__matrix-row--disabled .variant-selector__matrix-qty { opacity: 0.5; pointer-events: none; }
 
+/* Gjeldende rad — artikkelen besøkende åpnet direkte (ADO 19542, krit. 3).
+   Settes sammen med aria-current="true" på <tr>. */
+.variant-selector__matrix-row--current th,
+.variant-selector__matrix-row--current td {
+  background: var(--color-bg-brand-soft);
+}
+.variant-selector__matrix-row--current th {
+  box-shadow: inset var(--bw-2) 0 0 var(--color-border-brand);
+}
+
 /* Mobile: let the table scroll horizontally instead of breaking */
 @media (max-width: 640px) {
   .variant-selector__matrix-wrap {

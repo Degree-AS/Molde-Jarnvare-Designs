@@ -1,0 +1,53 @@
+/**
+ * Price gate (§14) — erstatter prisen for anonyme besøkende.
+ * Står der prisen ellers ville stått: produktkort, PDP.
+ * Samme ordlyd på PLP og PDP (ADO 19544, krit. 7).
+ *
+ *   Standard            «Logg inn for å se priser» — lenke til login
+ *   --quote             «Kontakt oss for tilbud» — produkt flagget uten pris i BC
+ *   --lg                PDP-størrelse (default = kortstørrelse)
+ */
+
+.price-gate {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--s-2);
+  margin: 0;
+  font-family: var(--ff-sans);
+  font-size: var(--fs-body-sm);
+  font-weight: var(--fw-semibold);
+  color: var(--color-text-secondary);
+}
+
+.price-gate__icon {
+  width: var(--icon-sm);
+  height: var(--icon-sm);
+  flex: 0 0 auto;
+  stroke: currentColor;
+  fill: none;
+  stroke-width: 1.8;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.price-gate__link {
+  color: var(--color-text-link);
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+.price-gate__link:hover { color: var(--color-text-link-hover); }
+.price-gate__link:focus-visible { outline: none; box-shadow: var(--focus-ring); border-radius: var(--r-sm); }
+
+/* Produkt uten pris i BC — tilbud i stedet for innlogging */
+.price-gate--quote .price-gate__link { color: var(--color-text-primary); }
+.price-gate--quote .price-gate__link:hover { color: var(--color-text-link-hover); }
+
+/* PDP-størrelse */
+.price-gate--lg {
+  font-size: var(--fs-body-lg);
+  gap: var(--s-3);
+}
+.price-gate--lg .price-gate__icon {
+  width: var(--icon-md);
+  height: var(--icon-md);
+}
