@@ -104,3 +104,18 @@
 @import "../components/saved-carts/saved-carts.css";
 @import "../components/news-card/news-card.css";
 @import "../components/news-article/news-article.css";
+
+/* Innholdsblokker — innholds- og tjenestesider (2BOX, Slangeverksted, Sortilog …) */
+@import "../components/content-section/content-section.css";
+@import "../components/content-layout/content-layout.css";
+@import "../components/section-header/section-header.css";
+@import "../components/prose/prose.css";
+@import "../components/benefit-list/benefit-list.css";
+@import "../components/contact-cta/contact-cta.css";
+@import "../components/steps/steps.css";
+@import "../components/media-text/media-text.css";
+@import "../components/stat-row/stat-row.css";
+@import "../components/testimonial/testimonial.css";
+@import "../components/logo-strip/logo-strip.css";
+@import "../components/feature-grid/feature-grid.css";
+@import "../components/related-links/related-links.css";

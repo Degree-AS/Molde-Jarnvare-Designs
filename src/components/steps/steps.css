@@ -1,0 +1,85 @@
+/**
+ * Steps — nummerert forklaring av en prosess («Slik fungerer 2BOX»,
+ * «En SmartOrder-bestilling krever kun 3 enkle trinn»).
+ * Nummeret settes av CSS-teller, så redaktøren skriver bare punktene.
+ *
+ * Block:     .steps          (<ol>)
+ * Elements:  __item          ett steg
+ *            __title         kort stegtittel
+ *            __text          forklaring
+ * Modifiers: --vertical      alltid under hverandre (default: rad på desktop)
+ */
+
+.steps {
+  counter-reset: step;
+  display: grid;
+  gap: var(--s-6);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+@media (min-width: 768px) {
+  .steps:not(.steps--vertical) {
+    grid-template-columns: repeat(auto-fit, minmax(12rem, 1fr));
+  }
+}
+
+.steps__item {
+  counter-increment: step;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: var(--s-2);
+}
+
+/* Nummer i sirkel */
+.steps__item::before {
+  content: counter(step);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: var(--s-10);
+  height: var(--s-10);
+  margin-bottom: var(--s-2);
+  border-radius: var(--r-full);
+  background: var(--color-action-primary);
+  color: var(--color-text-on-brand);
+  font-size: var(--fs-h4);
+  font-weight: var(--fw-bold);
+  font-variant-numeric: tabular-nums;
+}
+
+/* Strek mellom stegene på desktop (rad-layout) */
+@media (min-width: 768px) {
+  .steps:not(.steps--vertical) .steps__item:not(:last-child)::after {
+    content: "";
+    position: absolute;
+    top: calc(var(--s-10) / 2);
+    left: calc(var(--s-10) + var(--s-3));
+    right: calc(-1 * var(--s-6) + var(--s-3));
+    border-top: var(--bw-2) dashed var(--color-border-default);
+  }
+}
+
+.steps__title {
+  margin: 0;
+  font-size: var(--fs-h4);
+  font-weight: var(--fw-semibold);
+  line-height: var(--lh-snug);
+}
+
+.steps__text {
+  margin: 0;
+  color: var(--color-text-secondary);
+  line-height: var(--lh-relaxed);
+}
+
+/* Vertikal: nummer til venstre, tekst til høyre */
+.steps--vertical .steps__item {
+  display: grid;
+  grid-template-columns: var(--s-10) minmax(0, 1fr);
+  column-gap: var(--s-4);
+}
+.steps--vertical .steps__item::before { grid-row: 1 / span 2; margin-bottom: 0; }
+.steps--vertical .steps__title { align-self: end; }

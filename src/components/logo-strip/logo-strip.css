@@ -1,0 +1,55 @@
+/**
+ * Logo strip — rad med kunde-, partner- eller sertifikatlogoer
+ * («Brukes av blant andre», DNV, Parker Store).
+ *
+ * Block:     .logo-strip
+ * Elements:  __title    liten overskrift
+ *            __list     logoene (<ul>)
+ *            __item     én logo — <img>, eller navnet som tekst til logo finnes
+ */
+
+.logo-strip {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--s-5);
+  text-align: center;
+}
+
+.logo-strip__title {
+  margin: 0;
+  font-size: var(--fs-overline);
+  font-weight: var(--fw-semibold);
+  letter-spacing: var(--ls-wider);
+  text-transform: uppercase;
+  color: var(--color-text-secondary);
+}
+
+.logo-strip__list {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: var(--s-5) var(--s-9);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+/* Tekst-fallback: navnet settes i en rolig «ordmerke»-stil */
+.logo-strip__item {
+  font-size: var(--fs-h4);
+  font-weight: var(--fw-bold);
+  letter-spacing: var(--ls-tight);
+  color: var(--color-text-tertiary);
+}
+
+.logo-strip__item img {
+  height: var(--s-9);
+  width: auto;
+  object-fit: contain;
+  filter: grayscale(1);
+  opacity: 0.7;
+  transition: filter var(--duration-fast) var(--ease-standard), opacity var(--duration-fast) var(--ease-standard);
+}
+.logo-strip__item img:hover { filter: none; opacity: 1; }

@@ -1,0 +1,79 @@
+/**
+ * Feature grid — kort med bilde, tittel og tekst for tjenester eller løsninger
+ * («Andre tjenester fra vårt slangeverksted», «Andre forsyningsløsninger»).
+ * Hele kortet er klikkbart når __title inneholder en lenke.
+ *
+ * Block:     .feature-grid      (<ul>)
+ * Elements:  __item             ett kort
+ *            __media            bilde (tomt = plassholder; utelat helt for tekstkort)
+ *            __body             tekst
+ *            __title            tittel, gjerne med <a>
+ *            __text             kort beskrivelse
+ *            __more             «Les mer →» (visuell, lenken ligger i tittelen)
+ */
+
+.feature-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(16rem, 1fr));
+  gap: var(--s-5);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.feature-grid__item {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  background: var(--color-bg-surface);
+  border: var(--bw-1) solid var(--color-border-soft);
+  border-radius: var(--r-md);
+  overflow: hidden;
+  transition: box-shadow var(--duration-fast) var(--ease-standard),
+              border-color var(--duration-fast) var(--ease-standard);
+}
+.feature-grid__item:has(a):hover {
+  box-shadow: var(--shadow-2);
+  border-color: var(--color-border-brand);
+}
+
+.feature-grid__media {
+  aspect-ratio: var(--ar-landscape-16-9);
+  background: var(--mj-surface-1);
+}
+.feature-grid__media img { width: 100%; height: 100%; object-fit: cover; }
+
+.feature-grid__body {
+  display: flex;
+  flex-direction: column;
+  gap: var(--s-2);
+  flex: 1;
+  padding: var(--s-5);
+}
+
+.feature-grid__title {
+  margin: 0;
+  font-size: var(--fs-h4);
+  font-weight: var(--fw-semibold);
+  line-height: var(--lh-snug);
+}
+
+/* Utvidet klikkflate: lenken i tittelen dekker hele kortet */
+.feature-grid__title a { color: inherit; }
+.feature-grid__title a::after { content: ""; position: absolute; inset: 0; }
+.feature-grid__title a:focus-visible { outline: none; }
+.feature-grid__item:has(a:focus-visible) { box-shadow: var(--focus-ring); }
+
+.feature-grid__text {
+  margin: 0;
+  color: var(--color-text-secondary);
+  line-height: var(--lh-relaxed);
+}
+
+.feature-grid__more {
+  margin-top: auto;
+  padding-top: var(--s-2);
+  font-size: var(--fs-body-sm);
+  font-weight: var(--fw-semibold);
+  color: var(--color-text-link);
+}

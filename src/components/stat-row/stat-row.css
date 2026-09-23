@@ -1,0 +1,43 @@
+/**
+ * Stat row — nøkkeltall («Siden 1992», «30+ kunder», «2 ukers forbruk»).
+ *
+ * Block:     .stat-row        (<dl>)
+ * Elements:  __item           ett tall + etikett
+ *            __value          tallet (<dd>, vises først)
+ *            __label          forklaring (<dt>)
+ * Modifiers: --on-brand       hvit tekst på blå flate
+ */
+
+.stat-row {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(10rem, 1fr));
+  gap: var(--s-6);
+  margin: 0;
+}
+
+.stat-row__item {
+  display: flex;
+  flex-direction: column-reverse; /* <dt> først i koden for skjermleser, tallet øverst visuelt */
+  gap: var(--s-1);
+  padding-left: var(--s-4);
+  border-left: var(--bw-4) solid var(--color-border-brand);
+}
+
+.stat-row__value {
+  margin: 0;
+  font-size: var(--fs-h1);
+  font-weight: var(--fw-black);
+  line-height: var(--lh-tight);
+  color: var(--color-text-primary);
+  font-variant-numeric: tabular-nums;
+}
+
+.stat-row__label {
+  font-size: var(--fs-body-sm);
+  color: var(--color-text-secondary);
+  line-height: var(--lh-normal);
+}
+
+.stat-row--on-brand .stat-row__item  { border-left-color: var(--mj-orange); }
+.stat-row--on-brand .stat-row__value { color: var(--color-text-on-brand); }
+.stat-row--on-brand .stat-row__label { color: var(--color-text-on-brand); opacity: 0.85; }

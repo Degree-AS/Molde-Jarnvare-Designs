@@ -1,0 +1,37 @@
+/**
+ * Media + text — bilde og tekst side ved side (under hverandre på mobil).
+ * Erstatter inline-oppsettet «Forsyningsløsninger» på forsiden.
+ *
+ * Block:     .media-text
+ * Elements:  __media     bilde (tomt = nøytral plassholder, holder formatet)
+ *            __content   tekst — typisk section-header, prose eller benefit-list
+ * Modifiers: --reverse   bildet til høyre på desktop
+ *            --contain   bildet vises helt (produkt/diagram), ikke beskåret
+ */
+
+.media-text {
+  display: grid;
+  gap: var(--s-7);
+  align-items: center;
+}
+
+@media (min-width: 1024px) {
+  .media-text { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: var(--s-10); }
+  .media-text--reverse .media-text__media { order: 2; }
+}
+
+.media-text__media {
+  aspect-ratio: var(--ar-landscape-4-3);
+  border-radius: var(--r-lg);
+  overflow: hidden;
+  background: var(--mj-surface-1);
+}
+.media-text__media img { width: 100%; height: 100%; object-fit: cover; }
+.media-text--contain .media-text__media img { object-fit: contain; }
+
+.media-text__content {
+  display: flex;
+  flex-direction: column;
+  gap: var(--s-5);
+  min-width: 0;
+}

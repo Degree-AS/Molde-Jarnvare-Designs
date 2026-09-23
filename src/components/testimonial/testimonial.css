@@ -1,0 +1,79 @@
+/**
+ * Testimonial — kundesitat med bedrift, navn og rolle (Brunvoll, Straumsheim,
+ * Aukra Maritime). Bilde er valgfritt; uten bilde blir sitatet et rent kort.
+ *
+ * Block:     .testimonial     (<figure>)
+ * Elements:  __media          bilde fra kundens anlegg (valgfritt)
+ *            __body           sitat + avsender
+ *            __company        bedriftsnavn (overline)
+ *            __quote          sitatet (<blockquote>)
+ *            __author         avsender (<figcaption>)
+ *            __name           navn
+ *            __role           stilling
+ * Modifiers: --reverse        bildet til høyre på desktop
+ */
+
+.testimonial {
+  display: grid;
+  margin: 0;
+  background: var(--color-bg-surface);
+  border: var(--bw-1) solid var(--color-border-soft);
+  border-radius: var(--r-lg);
+  overflow: hidden;
+}
+
+@media (min-width: 768px) {
+  .testimonial:has(.testimonial__media) { grid-template-columns: minmax(0, 2fr) minmax(0, 3fr); }
+  .testimonial--reverse .testimonial__media { order: 2; }
+}
+
+.testimonial__media {
+  min-height: 14rem;
+  background: var(--mj-surface-1);
+}
+.testimonial__media img { width: 100%; height: 100%; object-fit: cover; }
+
+.testimonial__body {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: var(--s-4);
+  padding: var(--s-7);
+}
+
+.testimonial__company {
+  margin: 0;
+  font-size: var(--fs-overline);
+  font-weight: var(--fw-semibold);
+  letter-spacing: var(--ls-wider);
+  text-transform: uppercase;
+  color: var(--color-text-link);
+}
+
+.testimonial__quote {
+  margin: 0;
+  font-size: var(--fs-h4);
+  font-weight: var(--fw-medium);
+  line-height: var(--lh-snug);
+  color: var(--color-text-primary);
+}
+
+/* Stort anførselstegn i merkefarge — egen linje over sitatet, overlapper aldri teksten */
+.testimonial__quote::before {
+  content: "«";
+  display: block;
+  margin-bottom: var(--s-1);
+  font-size: var(--fs-h1);
+  font-weight: var(--fw-black);
+  line-height: 1;
+  color: var(--mj-orange);
+}
+
+.testimonial__author {
+  display: flex;
+  flex-direction: column;
+  font-size: var(--fs-body-sm);
+}
+
+.testimonial__name { font-weight: var(--fw-semibold); }
+.testimonial__role { color: var(--color-text-secondary); }

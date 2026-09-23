@@ -1,0 +1,37 @@
+/**
+ * Content layout — brødtekst med sidekolonne (kontaktperson, «Andre løsninger»).
+ * Slik tjenestesidene på m-j.no er bygd: tekst til venstre, kontakt til høyre.
+ * På mobil legger sidekolonnen seg under teksten.
+ *
+ * Block:     .content-layout
+ * Elements:  __main   hovedinnhold (typisk .prose)
+ *            __aside  sidekolonne, klistrer seg til toppen på desktop
+ */
+
+.content-layout {
+  display: grid;
+  gap: var(--s-8);
+}
+
+@media (min-width: 1024px) {
+  .content-layout {
+    grid-template-columns: minmax(0, 1fr) minmax(0, 22rem);
+    gap: var(--s-10);
+    align-items: start;
+  }
+}
+
+.content-layout__main { min-width: 0; }
+
+.content-layout__aside {
+  display: flex;
+  flex-direction: column;
+  gap: var(--s-5);
+}
+
+@media (min-width: 1024px) {
+  .content-layout__aside {
+    position: sticky;
+    top: var(--s-6);
+  }
+}

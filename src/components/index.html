@@ -15,12 +15,12 @@
       display: flex; flex-direction: column; gap: var(--s-9);
     }
     .gallery > section { display: flex; flex-direction: column; gap: var(--s-4); }
-    .gallery h2 {
+    .gallery > section > h2 {
       font-family: var(--ff-sans); font-size: var(--fs-h2); font-weight: var(--fw-bold);
       margin: 0 0 var(--s-3); padding-bottom: var(--s-3);
       border-bottom: var(--bw-2) solid var(--color-border-default);
     }
-    .gallery h3 { font-size: var(--fs-h4); font-weight: var(--fw-semibold); margin: var(--s-4) 0 var(--s-2); }
+    .gallery > section > h3 { font-size: var(--fs-h4); font-weight: var(--fw-semibold); margin: var(--s-4) 0 var(--s-2); }
     .gallery .demo {
       display: flex; flex-wrap: wrap; gap: var(--s-3); align-items: center;
       padding: var(--s-5);
@@ -28,7 +28,7 @@
       border: var(--bw-1) solid var(--color-border-soft);
       border-radius: var(--r-md);
     }
-    .gallery .demo--col { flex-direction: column; align-items: stretch; gap: var(--s-3); }
+    .gallery .demo--col { flex-direction: column; flex-wrap: nowrap; align-items: stretch; gap: var(--s-3); }
     .gallery .label { font-size: var(--fs-overline); letter-spacing: var(--ls-wider); text-transform: uppercase; color: var(--color-text-tertiary); margin-bottom: var(--s-2); }
   </style>
 </head>
@@ -474,6 +474,161 @@
       <span>👤</span>
       <span>Du handler nå som <span class="sales-impersonation__customer">Aker Solutions Molde</span></span>
       <button class="sales-impersonation__exit">Avslutt</button>
+    </div>
+  </section>
+
+  <!-- INNHOLDSBLOKKER -->
+  <section>
+    <h2>Innholdsblokker — innholds- og tjenestesider</h2>
+    <p style="color: var(--color-text-secondary); margin: 0;">Byggeklosser for sider som 2BOX, Sortilog og Slangeverksted. Se dem satt sammen i <a class="link" href="../pages/content-2box.html">eksempelsiden for 2BOX</a>.</p>
+
+    <h3>Section header</h3>
+    <div class="demo demo--col">
+      <header class="section-header">
+        <div class="section-header__text">
+          <p class="section-header__eyebrow">Slik fungerer det</p>
+          <h2 class="section-header__title">To bokser, samme innhold</h2>
+          <p class="section-header__lead">To bokser med identisk innhold står slik at du enkelt ser når det er tid for å fylle på.</p>
+        </div>
+        <a class="section-header__action" href="#">Alle forsyningsløsninger →</a>
+      </header>
+    </div>
+
+    <h3>Prose (brødtekst fra CMS)</h3>
+    <div class="demo demo--col">
+      <div class="prose">
+        <p class="prose__lead">Slangeverkstedet ligger vegg i vegg med Parker Store.</p>
+        <h2>Andre tjenester fra vårt slangeverksted</h2>
+        <p>Vi har et stort lager av slanger og ERMETO-koblinger, og kan <a href="#">trykkteste</a> slangesett med sertifikat.</p>
+        <ul><li>Montering av slangesett</li><li>Trykktesting</li><li>Damprengjøring</li></ul>
+      </div>
+    </div>
+
+    <h3>Benefit list</h3>
+    <div class="demo demo--col">
+      <ul class="benefit-list benefit-list--two-col">
+        <li class="benefit-list__item">Ingen administrativ tid på å bestille varer av lav verdi</li>
+        <li class="benefit-list__item">Unngår mange bufferlagre</li>
+        <li class="benefit-list__item">Lav risiko for manko av kritiske artikler</li>
+        <li class="benefit-list__item"><span><span class="benefit-list__title">Ingen varetelling.</span> Lagerverdien kalkuleres i systemet.</span></li>
+      </ul>
+      <ul class="benefit-list benefit-list--boxed">
+        <li class="benefit-list__item">Riktig vare uansett hvem som bestiller</li>
+        <li class="benefit-list__item">Enklere bestilling</li>
+      </ul>
+    </div>
+
+    <h3>Contact CTA — --aside og --band</h3>
+    <div class="demo" style="align-items: flex-start;">
+      <div class="contact-cta contact-cta--aside" style="width: 22rem;">
+        <div class="contact-cta__media"><img src="../assets/images/team/ansatt-portrett.jpg" alt=""></div>
+        <div class="contact-cta__body">
+          <p class="contact-cta__eyebrow">Kontaktperson</p>
+          <p class="contact-cta__name">Per Egil Rød</p>
+          <p class="contact-cta__role">Forsyningsløsninger</p>
+          <div class="contact-cta__links"><a class="contact-cta__link" href="tel:90976686">909 76 686</a><a class="contact-cta__link" href="mailto:pero@m-j.no">pero@m-j.no</a></div>
+        </div>
+      </div>
+      <div class="contact-cta contact-cta--band" style="flex: 1; min-width: 20rem;">
+        <div class="contact-cta__media"></div>
+        <div class="contact-cta__body">
+          <p class="contact-cta__eyebrow">Forsyningsløsninger</p>
+          <h2 class="contact-cta__title">Vil du vite mer?</h2>
+          <p class="contact-cta__text">Uten portrett vises en nøytral plassholder.</p>
+          <p class="contact-cta__name">Per Egil Rød</p>
+          <div class="contact-cta__links"><a class="contact-cta__link" href="#">909 76 686</a><a class="contact-cta__link" href="#">pero@m-j.no</a></div>
+        </div>
+      </div>
+    </div>
+
+    <h3>Steps — standard og --vertical</h3>
+    <div class="demo demo--col">
+      <ol class="steps">
+        <li class="steps__item"><h3 class="steps__title">Skann QR-koden</h3><p class="steps__text">Skann merket på lagerplassen.</p></li>
+        <li class="steps__item"><h3 class="steps__title">Velg antall</h3><p class="steps__text">Juster antall i appen.</p></li>
+        <li class="steps__item"><h3 class="steps__title">Send bestilling</h3><p class="steps__text">Vi leverer som avtalt.</p></li>
+      </ol>
+      <ol class="steps steps--vertical">
+        <li class="steps__item"><h3 class="steps__title">Kartlegging</h3><p class="steps__text">Vi går gjennom forbruket sammen med dere.</p></li>
+        <li class="steps__item"><h3 class="steps__title">Oppstart</h3><p class="steps__text">Boksene merkes og settes i hyllene.</p></li>
+      </ol>
+    </div>
+
+    <h3>Media + text — standard og --reverse</h3>
+    <div class="demo demo--col">
+      <div class="media-text">
+        <div class="media-text__media"><img src="../assets/images/marketing/slangeverksted-oversikt.jpg" alt="Slangeverkstedet"></div>
+        <div class="media-text__content"><div class="prose"><h2>Slangeverksted</h2><p>Stort lager av slanger og koblinger, og sertifisert trykktesting.</p></div></div>
+      </div>
+      <div class="media-text media-text--reverse">
+        <div class="media-text__media"></div>
+        <div class="media-text__content"><div class="prose"><h2>Uten bilde</h2><p>Tomt bilde holder formatet med en nøytral flate.</p></div></div>
+      </div>
+    </div>
+
+    <h3>Stat row</h3>
+    <div class="demo demo--col">
+      <dl class="stat-row">
+        <div class="stat-row__item"><dt class="stat-row__label">Første kunde tok 2BOX i bruk</dt><dd class="stat-row__value">1992</dd></div>
+        <div class="stat-row__item"><dt class="stat-row__label">Fornøyde 2BOX-brukere</dt><dd class="stat-row__value">30+</dd></div>
+        <div class="stat-row__item"><dt class="stat-row__label">Boksene dimensjoneres for</dt><dd class="stat-row__value">2 uker</dd></div>
+      </dl>
+    </div>
+
+    <h3>Testimonial — med og uten bilde</h3>
+    <div class="demo demo--col">
+      <figure class="testimonial">
+        <div class="testimonial__media"><img src="../assets/images/marketing/slangeverksted-presse.jpg" alt=""></div>
+        <div class="testimonial__body">
+          <p class="testimonial__company">Brunvoll AS</p>
+          <blockquote class="testimonial__quote">Med en avansert produksjon er vi avhengig av et forutsigbart og effektivt lagersystem, slik at våre medarbeidere alltid har det de trenger lett tilgjengelig når de trenger det.</blockquote>
+          <figcaption class="testimonial__author"><span class="testimonial__name">Tor Rune Orrem</span><span class="testimonial__role">Lagerformann</span></figcaption>
+        </div>
+      </figure>
+      <figure class="testimonial">
+        <div class="testimonial__body">
+          <p class="testimonial__company">Straumsheim Glass og fasade AS</p>
+          <blockquote class="testimonial__quote">2BOX forsyningsløsning sikrer at vi aldri går tom for kritiske komponenter til produksjonen, og vi slipper å planlegge innkjøpene.</blockquote>
+          <figcaption class="testimonial__author"><span class="testimonial__name">Ole Straumsheim</span><span class="testimonial__role">Daglig leder</span></figcaption>
+        </div>
+      </figure>
+    </div>
+
+    <h3>Logo strip</h3>
+    <div class="demo demo--col">
+      <div class="logo-strip">
+        <p class="logo-strip__title">Sertifisert og autorisert</p>
+        <ul class="logo-strip__list"><li class="logo-strip__item">DNV</li><li class="logo-strip__item">Parker Store</li><li class="logo-strip__item">Enerpac</li></ul>
+      </div>
+    </div>
+
+    <h3>Feature grid</h3>
+    <div class="demo demo--col">
+      <ul class="feature-grid">
+        <li class="feature-grid__item">
+          <div class="feature-grid__media"><img src="../assets/images/marketing/slangeverksted-presse.jpg" alt=""></div>
+          <div class="feature-grid__body"><h3 class="feature-grid__title"><a href="#">Montering</a></h3><p class="feature-grid__text">Vi monterer slangesett etter mål.</p><span class="feature-grid__more" aria-hidden="true">Les mer →</span></div>
+        </li>
+        <li class="feature-grid__item">
+          <div class="feature-grid__media"><img src="../assets/images/marketing/serviceverksted.jpg" alt=""></div>
+          <div class="feature-grid__body"><h3 class="feature-grid__title">Trykktesting</h3><p class="feature-grid__text">Uten lenke er kortet ikke klikkbart.</p></div>
+        </li>
+        <li class="feature-grid__item">
+          <div class="feature-grid__body"><h3 class="feature-grid__title"><a href="#">Damprengjøring</a></h3><p class="feature-grid__text">Tekstkort uten bilde.</p><span class="feature-grid__more" aria-hidden="true">Les mer →</span></div>
+        </li>
+      </ul>
+    </div>
+
+    <h3>Related links</h3>
+    <div class="demo">
+      <nav class="related-links" aria-label="Andre løsninger" style="width: 22rem;">
+        <h2 class="related-links__title">Andre løsninger</h2>
+        <ul class="related-links__list">
+          <li><a class="related-links__link" href="#" aria-current="page">2BOX</a></li>
+          <li><a class="related-links__link" href="#">QR SmartOrder</a></li>
+          <li><a class="related-links__link" href="#">Sortilog</a></li>
+        </ul>
+      </nav>
     </div>
   </section>
 

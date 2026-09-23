@@ -1,0 +1,55 @@
+/**
+ * Related links — «Andre løsninger»: lenker til søskensider i samme seksjon
+ * (2BOX ↔ QR SmartOrder ↔ Sortilog). Passer i sidekolonnen.
+ *
+ * Block:     .related-links     (<nav>)
+ * Elements:  __title            overskrift
+ *            __list             lenkene (<ul>)
+ *            __link             én lenke; aria-current="page" for siden man står på
+ */
+
+.related-links {
+  display: flex;
+  flex-direction: column;
+  gap: var(--s-3);
+  padding: var(--s-5);
+  background: var(--color-bg-surface-alt);
+  border-radius: var(--r-md);
+}
+
+.related-links__title {
+  margin: 0;
+  font-size: var(--fs-overline);
+  font-weight: var(--fw-semibold);
+  letter-spacing: var(--ls-wider);
+  text-transform: uppercase;
+  color: var(--color-text-secondary);
+}
+
+.related-links__list {
+  display: flex;
+  flex-direction: column;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.related-links__link {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: var(--s-3);
+  padding-block: var(--s-3);
+  border-top: var(--bw-1) solid var(--color-border-soft);
+  font-weight: var(--fw-semibold);
+  color: var(--color-text-link);
+}
+.related-links__list > li:first-child .related-links__link { border-top: 0; }
+.related-links__link::after { content: "→"; }
+.related-links__link:hover { color: var(--color-text-link-hover); }
+
+.related-links__link[aria-current="page"] {
+  color: var(--color-text-primary);
+  pointer-events: none;
+}
+.related-links__link[aria-current="page"]::after { content: none; }

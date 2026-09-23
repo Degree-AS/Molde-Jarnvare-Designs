@@ -1,0 +1,122 @@
+/**
+ * Contact CTA — kontaktperson for en tjeneste/løsning, med bilde, rolle,
+ * telefon og e-post. Finnes på hver tjenesteside på m-j.no i dag.
+ *
+ * Block:     .contact-cta
+ * Elements:  __media     portrett (tomt = nøytral plassholder)
+ *            __body      tekstkolonne
+ *            __eyebrow   «Kontaktperson» / «Forsyningsløsninger»
+ *            __title     valgfri overskrift («Vil du vite mer om 2BOX?»)
+ *            __text      valgfri kort tekst
+ *            __name      navn
+ *            __role      stilling
+ *            __links     telefon + e-post
+ *            __link      én lenke
+ * Modifiers: --aside     kompakt kort for sidekolonne (.content-layout__aside)
+ *            --band      bred blokk med overskrift, til slutt på siden
+ */
+
+.contact-cta {
+  display: flex;
+  align-items: center;
+  gap: var(--s-5);
+  padding: var(--s-5);
+  background: var(--color-bg-surface);
+  border: var(--bw-1) solid var(--color-border-soft);
+  border-radius: var(--r-md);
+}
+
+.contact-cta__media {
+  flex: 0 0 auto;
+  width: 96px;
+  height: 96px;
+  border-radius: var(--r-full);
+  overflow: hidden;
+  background: var(--mj-surface-1);
+}
+.contact-cta__media img { width: 100%; height: 100%; object-fit: cover; }
+
+.contact-cta__body {
+  display: flex;
+  flex-direction: column;
+  gap: var(--s-1);
+  min-width: 0;
+}
+
+.contact-cta__eyebrow {
+  margin: 0;
+  font-size: var(--fs-overline);
+  font-weight: var(--fw-semibold);
+  letter-spacing: var(--ls-wider);
+  text-transform: uppercase;
+  color: var(--color-text-link);
+}
+
+.contact-cta__title {
+  margin: 0;
+  font-size: var(--fs-h3);
+  font-weight: var(--fw-bold);
+  line-height: var(--lh-snug);
+}
+
+.contact-cta__text {
+  margin: 0 0 var(--s-2);
+  color: var(--color-text-secondary);
+}
+
+.contact-cta__name {
+  margin: 0;
+  font-size: var(--fs-body);
+  font-weight: var(--fw-semibold);
+}
+
+.contact-cta__role {
+  margin: 0;
+  font-size: var(--fs-body-sm);
+  color: var(--color-text-secondary);
+}
+
+.contact-cta__links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--s-1) var(--s-4);
+  margin-top: var(--s-2);
+  overflow-wrap: anywhere;
+}
+
+.contact-cta__link {
+  font-size: var(--fs-body-sm);
+  font-weight: var(--fw-semibold);
+  color: var(--color-text-link);
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+.contact-cta__link:hover { color: var(--color-text-link-hover); }
+
+/* --aside: stablet kort i sidekolonne */
+.contact-cta--aside {
+  flex-direction: column;
+  align-items: flex-start;
+  gap: var(--s-4);
+}
+.contact-cta--aside .contact-cta__media { width: 72px; height: 72px; }
+.contact-cta--aside .contact-cta__links { flex-direction: column; }
+
+/* --band: bred avslutningsblokk */
+.contact-cta--band {
+  gap: var(--s-6);
+  padding: var(--s-7);
+  background: var(--color-bg-brand-soft);
+  border-color: transparent;
+  border-radius: var(--r-lg);
+}
+.contact-cta--band .contact-cta__media { width: 128px; height: 128px; }
+
+@media (max-width: 640px) {
+  .contact-cta--band {
+    flex-direction: column;
+    align-items: flex-start;
+    padding: var(--s-5);
+  }
+  .contact-cta--band .contact-cta__media { width: 96px; height: 96px; }
+}

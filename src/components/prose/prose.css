@@ -1,0 +1,82 @@
+/**
+ * Prose — brødtekst fra CMS (rik tekst). Styler rene HTML-elementer inni blokken,
+ * så redaktørens innhold (h2, h3, p, lister, lenker, bilder, sitat) ser riktig ut
+ * uten klasser på hvert element.
+ *
+ * Block:     .prose
+ * Elements:  __lead   innledende avsnitt i større tekst
+ * Modifiers: --wide   uten maks lesebredde (når blokken står i smal kolonne)
+ */
+
+.prose {
+  max-width: 70ch;
+  font-size: var(--fs-body);
+  line-height: var(--lh-relaxed);
+  color: var(--color-text-primary);
+}
+
+.prose--wide { max-width: none; }
+
+.prose > * + * { margin-top: var(--s-4); }
+
+.prose__lead {
+  font-size: var(--fs-body-lg);
+  color: var(--color-text-secondary);
+}
+
+.prose h2 {
+  margin-top: var(--s-8);
+  font-size: var(--fs-h3);
+  font-weight: var(--fw-bold);
+  line-height: var(--lh-snug);
+}
+.prose h3 {
+  margin-top: var(--s-6);
+  font-size: var(--fs-h4);
+  font-weight: var(--fw-semibold);
+  line-height: var(--lh-snug);
+}
+.prose > :first-child { margin-top: 0; }
+.prose h2 + *, .prose h3 + * { margin-top: var(--s-3); }
+
+.prose a {
+  color: var(--color-text-link);
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+.prose a:hover { color: var(--color-text-link-hover); }
+
+.prose ul, .prose ol { padding-inline-start: var(--s-6); }
+.prose ul { list-style: disc; }
+.prose ol { list-style: decimal; }
+.prose li + li { margin-top: var(--s-2); }
+.prose li::marker { color: var(--color-text-link); }
+
+.prose strong { font-weight: var(--fw-semibold); }
+
+.prose blockquote {
+  padding: var(--s-3) var(--s-5);
+  border-left: var(--bw-4) solid var(--color-border-brand);
+  font-size: var(--fs-body-lg);
+  font-style: italic;
+}
+
+/* Bilde med bildetekst — tomt <figure>-bilde viser nøytral plassholder */
+.prose figure { margin-block: var(--s-6); }
+.prose figure img {
+  width: 100%;
+  border-radius: var(--r-md);
+  background: var(--mj-surface-1);
+}
+.prose figcaption {
+  margin-top: var(--s-2);
+  font-size: var(--fs-caption);
+  color: var(--color-text-secondary);
+}
+
+/* Plassholder når bildet ikke finnes ennå (bildedekning fra CMS er lav) */
+.prose__placeholder {
+  aspect-ratio: var(--ar-landscape-16-9);
+  border-radius: var(--r-md);
+  background: linear-gradient(135deg, var(--mj-blue-10) 0%, var(--mj-blue-20) 100%);
+}

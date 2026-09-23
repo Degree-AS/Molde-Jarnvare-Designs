@@ -1,0 +1,522 @@
+<!doctype html>
+<html lang="nb">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>2BOX — Forsyningsløsninger — Molde Jarnvare</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Source+Sans+3:wght@400;500;600;700;900&family=JetBrains+Mono:wght@400&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../styles/index.css">
+</head>
+<body>
+
+<header class="site-header site-header--alt">
+  <div class="site-header__inner">
+    <a class="site-header__logo" href="/" aria-label="Molde Jarnvare"><img src="../assets/logos/molde-jarnvare-positive.png" alt="Molde Jarnvare" class="site-header__logo-img"></a>
+    <p class="site-header__tagline-top">Totalleverandør av festemidler, hydraulikk, verneutstyr, verktøy og forbruksmateriell</p>
+<div class="site-header__actions">
+      <!-- Søk-ikon: vises på mobil/tablet siden nivå-2 søkefelt er skjult der -->
+      <button class="site-header__action site-header__action--search" aria-label="Søk">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.35-4.35"/></svg>
+      </button>
+      <!-- Anonym besøkende (ADO 19544): konto-ikonet lenker til innlogging, handlekurven vises ikke -->
+      <a class="site-header__action" href="login.html" aria-label="Logg inn">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4 4-7 8-7s8 3 8 7"/></svg>
+      </a>
+      <!-- Mobile-only hamburger trigger (hidden ≥ --bp-lg) -->
+      <button class="site-header__hamburger" type="button"
+              aria-label="Åpne hovedmeny"
+              aria-controls="site-nav-drawer"
+              aria-expanded="false">
+        <span class="site-header__hamburger-icon" aria-hidden="true"></span>
+      </button>
+    </div>
+  </div>
+
+  <div class="site-header__main">
+    <div class="site-header__main-inner">
+      <div class="site-header__search-bottom">
+        <form class="search-bar" role="search">
+          <svg class="search-bar__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.35-4.35"/></svg>
+          <input class="search-bar__input" type="search" placeholder="Søk i 30 000+ artikler, NOBB-nr, EAN…" />
+          <button class="search-bar__submit" type="submit">Søk</button>
+        </form>
+      </div>
+      <nav class="site-header__nav" aria-label="Hovedmeny">
+        <button class="site-header__nav-trigger" type="button" aria-controls="megamenu" aria-expanded="false">
+          Produkter
+          <svg class="site-header__nav-trigger-icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
+        </button>
+        <button class="site-header__nav-trigger" type="button" aria-controls="megamenu-supply" aria-expanded="false">
+          Forsyningsløsninger
+          <svg class="site-header__nav-trigger-icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
+        </button>
+        <button class="site-header__nav-trigger" type="button" aria-controls="megamenu-services" aria-expanded="false">
+          Øvrige Tjenester
+          <svg class="site-header__nav-trigger-icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
+        </button>
+        <a class="site-header__nav-link site-header__nav-link--right" href="team.html"><svg class="site-header__nav-link-icon" width="16" height="16" viewBox="0 0 24 24" aria-hidden="true"><path d="M3.5 5.5c0-1.1.9-2 2-2h2.2c.5 0 .9.3 1 .8l1 4c.1.4 0 .8-.3 1.1L7.5 11a14 14 0 0 0 5.5 5.5l1.6-1.9c.3-.3.7-.4 1.1-.3l4 1c.5.1.8.5.8 1V18.5c0 1.1-.9 2-2 2A16.5 16.5 0 0 1 3.5 5.5z"/></svg>Kontakt oss</a>
+      </nav>
+    </div>
+  </div>
+
+  <!--
+    Mega-menu panel — opens below the header on desktop (≥ --bp-lg) when the
+    "Produkter"-trigger is clicked. For static preview, add
+    data-preview-megamenu="true" to <header class="site-header"> above.
+  -->
+  <div class="megamenu" id="megamenu" role="navigation" aria-label="Produktkategorier">
+    <div class="megamenu__inner">
+      <div class="megamenu__intro">
+        <h2 class="megamenu__intro-title">Alle produkter</h2>
+      </div>
+      <div class="megamenu__columns">
+
+        <div class="megamenu__group">
+          <a class="megamenu__heading" href="#">Festemidler</a>
+          <ul class="megamenu__list">
+            <li><a href="#">Sekskantskruer</a></li>
+            <li><a href="#">Maskinskruer</a></li>
+            <li><a href="#">Treskruer</a></li>
+            <li><a href="#">Muttere og skiver</a></li>
+            <li><a href="#">Plugger og hylser</a></li>
+          </ul>
+        </div>
+
+        <div class="megamenu__group">
+          <a class="megamenu__heading" href="#">Verktøy</a>
+          <ul class="megamenu__list">
+            <li><a href="#">Håndverktøy</a></li>
+            <li><a href="#">Elektroverktøy</a></li>
+            <li><a href="#">Skrumaskiner og borr</a></li>
+            <li><a href="#">Nøkler og tang</a></li>
+          </ul>
+        </div>
+
+        <div class="megamenu__group">
+          <a class="megamenu__heading" href="#">Verneutstyr</a>
+          <ul class="megamenu__list">
+            <li><a href="#">Hansker</a></li>
+            <li><a href="#">Briller og hørselsvern</a></li>
+            <li><a href="#">Hjelmer</a></li>
+            <li><a href="#">Vernefottøy</a></li>
+            <li><a href="#">Åndedrettsvern</a></li>
+          </ul>
+        </div>
+
+        <div class="megamenu__group">
+          <a class="megamenu__heading" href="#">Hydraulikk</a>
+          <ul class="megamenu__list">
+            <li><a href="#">Slanger og koblinger</a></li>
+            <li><a href="#">Sylindere</a></li>
+            <li><a href="#">Ventiler og pumper</a></li>
+          </ul>
+        </div>
+
+        <div class="megamenu__group">
+          <a class="megamenu__heading" href="#">Sveis</a>
+          <ul class="megamenu__list">
+            <li><a href="#">Sveiseapparater</a></li>
+            <li><a href="#">Elektroder og tråd</a></li>
+            <li><a href="#">Beskyttelsesgass</a></li>
+          </ul>
+        </div>
+
+        <div class="megamenu__group">
+          <a class="megamenu__heading" href="#">Industri</a>
+          <ul class="megamenu__list">
+            <li><a href="#">Kulelagre</a></li>
+            <li><a href="#">Drev og tannhjul</a></li>
+            <li><a href="#">Akselkoblinger</a></li>
+          </ul>
+        </div>
+
+        <div class="megamenu__group">
+          <a class="megamenu__heading" href="#">Slipemidler</a>
+          <ul class="megamenu__list">
+            <li><a href="#">Slipeskiver</a></li>
+            <li><a href="#">Slipepapir</a></li>
+            <li><a href="#">Polering</a></li>
+          </ul>
+        </div>
+
+        <div class="megamenu__group">
+          <a class="megamenu__heading" href="#">Tetninger og pakninger</a>
+          <ul class="megamenu__list">
+            <li><a href="#">O-ringer</a></li>
+            <li><a href="#">Flatpakninger</a></li>
+            <li><a href="#">Tetningsmasse</a></li>
+          </ul>
+        </div>
+
+        <div class="megamenu__group">
+          <a class="megamenu__heading" href="#">Lim og kjemikalier</a>
+          <ul class="megamenu__list">
+            <li><a href="#">Industrilim</a></li>
+            <li><a href="#">Silikon og fugemasse</a></li>
+            <li><a href="#">Sprayer og rens</a></li>
+          </ul>
+        </div>
+
+        <div class="megamenu__group">
+          <a class="megamenu__heading" href="#">Måleinstrumenter</a>
+          <ul class="megamenu__list">
+            <li><a href="#">Skyvelære og mikrometer</a></li>
+            <li><a href="#">Multimeter</a></li>
+            <li><a href="#">Vekter og våger</a></li>
+          </ul>
+        </div>
+
+        <div class="megamenu__group">
+          <a class="megamenu__heading" href="#">Smøring og rens</a>
+          <ul class="megamenu__list">
+            <li><a href="#">Smøreolje og fett</a></li>
+            <li><a href="#">Avfetting og rens</a></li>
+            <li><a href="#">Rustbeskyttelse</a></li>
+          </ul>
+        </div>
+
+        <div class="megamenu__group">
+          <a class="megamenu__heading" href="#">Bil og verksted</a>
+          <ul class="megamenu__list">
+            <li><a href="#">Jekker og bukker</a></li>
+            <li><a href="#">Verktøyvogner</a></li>
+            <li><a href="#">Trykkluft og slanger</a></li>
+          </ul>
+        </div>
+
+        <div class="megamenu__group">
+          <a class="megamenu__heading" href="#">Lagring og logistikk</a>
+          <ul class="megamenu__list">
+            <li><a href="#">Plastbokser og kasser</a></li>
+            <li><a href="#">Hyller og reoler</a></li>
+            <li><a href="#">Pakketape og emballasje</a></li>
+          </ul>
+        </div>
+
+        <div class="megamenu__group">
+          <a class="megamenu__heading" href="#">Elektro</a>
+          <ul class="megamenu__list">
+            <li><a href="#">Kabel og ledning</a></li>
+            <li><a href="#">Plugger og kontakter</a></li>
+            <li><a href="#">Sikringer og automater</a></li>
+          </ul>
+        </div>
+
+        <div class="megamenu__group">
+          <a class="megamenu__heading" href="#">Skilt og merking</a>
+          <ul class="megamenu__list">
+            <li><a href="#">Etiketter og tape</a></li>
+            <li><a href="#">Sikkerhetsskilt</a></li>
+            <li><a href="#">Avsperring</a></li>
+          </ul>
+        </div>
+
+      </div>
+
+      <div class="megamenu__footer">
+        <a class="megamenu__footer-link" href="#">Se alle produkter →</a>
+        <span class="megamenu__intro-meta">Bestill direkte med <strong>NOBB-nr</strong> eller <strong>EAN</strong> via søket</span>
+      </div>
+    </div>
+  </div>
+
+  <!--
+    Mobile nav drawer (visible < --bp-lg). The JS layer toggles
+    [data-open="true"] on hamburger click / Esc / backdrop click. For static
+    preview, add data-preview-open="true" to <header class="site-header"> above.
+  -->
+  <div class="site-header__drawer" id="site-nav-drawer" role="dialog" aria-modal="true" aria-label="Hovedmeny">
+    <div class="site-header__drawer-header">
+      <span class="t-overline" style="color: var(--mj-blue);">Meny</span>
+      <button class="site-header__drawer-close" type="button" aria-label="Lukk meny">&times;</button>
+    </div>
+    <nav class="site-header__drawer-nav" aria-label="Produktkategorier (mobil)">
+      <a href="#">Festemidler</a>
+      <a href="#">Verktøy</a>
+      <a href="#">Verneutstyr</a>
+      <a href="#">Hydraulikk</a>
+      <a href="#">Sveis</a>
+      <a href="#">Industri</a>
+      <a href="#">Slipemidler</a>
+      <a href="#">Tetninger og pakninger</a>
+      <a href="#">Lim og kjemikalier</a>
+      <a href="#">Måleinstrumenter</a>
+      <a href="#">Smøring og rens</a>
+      <a href="#">Bil og verksted</a>
+      <a href="#">Lagring og logistikk</a>
+      <a href="#">Elektro</a>
+      <a href="#">Skilt og merking</a>
+    </nav>
+  </div>
+</header>
+<div class="site-header__drawer-backdrop" aria-hidden="true"></div>
+<div class="megamenu-backdrop" aria-hidden="true"></div>
+
+<main>
+
+  <!-- Hero — tjenesteside: foreldreside som eyebrow, tittel, ingress, bilde -->
+  <section class="hero hero--compact hero--split">
+    <div class="hero__inner">
+      <div class="hero__content">
+        <p class="hero__eyebrow"><a href="#">Forsyningsløsninger</a></p>
+        <h1 class="hero__title">2BOX</h1>
+        <p class="hero__lead">2BOX regulerer selv behovet for etterfylling av det avtalte varesortimentet. Du kontrollerer og betaler én samlefaktura i måneden — ingen rekvisisjoner, og så godt som ingen emballasjehåndtering.</p>
+        <div class="hero__actions">
+          <a class="hero__cta" href="#kontakt">Ta kontakt</a>
+          <a class="hero__cta hero__cta--secondary" href="#slik-fungerer-det">Slik fungerer det</a>
+        </div>
+      </div>
+      <div class="hero__media">
+        <img src="../assets/images/marketing/lager-plukk-fra-bins.jpg" alt="Plukk fra 2BOX-bokser i hylle">
+      </div>
+    </div>
+  </section>
+
+  <!-- Nøkkeltall -->
+  <section class="content-section content-section--tight content-section--alt">
+    <div class="content-section__inner">
+      <dl class="stat-row">
+        <div class="stat-row__item"><dt class="stat-row__label">Første kunde tok 2BOX i bruk</dt><dd class="stat-row__value">1992</dd></div>
+        <div class="stat-row__item"><dt class="stat-row__label">Fornøyde 2BOX-brukere i dag</dt><dd class="stat-row__value">30+</dd></div>
+        <div class="stat-row__item"><dt class="stat-row__label">Boksene dimensjoneres for</dt><dd class="stat-row__value">2 uker</dd></div>
+        <div class="stat-row__item"><dt class="stat-row__label">Samlefaktura i måneden</dt><dd class="stat-row__value">1</dd></div>
+      </dl>
+    </div>
+  </section>
+
+  <!-- Brødtekst + sidekolonne (kontaktperson, andre løsninger) -->
+  <section class="content-section">
+    <div class="content-section__inner">
+      <div class="content-layout">
+        <div class="content-layout__main prose">
+          <h2>Laget for varer med lav verdi og jevnt omløp</h2>
+          <p>Vår 2BOX forsyningsløsning er spesielt godt egnet for varer med lav verdi og med jevnt omløp. Moxy Trucks (senere Doosan, nå HD Hyundai) tok i bruk 2BOX allerede i 1992. Senere samme tiår valgte også andre lokale hjørnesteinsbedrifter som Glamox, Brunvoll og Bussbygg å innføre denne forsyningsløsningen.</p>
+          <p>I dag har vi et 30-talls fornøyde 2BOX-brukere, og flere kommer til. En viktig årsak er at 2BOX bidrar til svært høy leveringspresisjon, slik at man slipper å bruke tid og ressurser på å etterlyse varer som ikke er levert til avtalt tid.</p>
+          <p>Eksempelet under viser utdrag av en leveringsrapport fra en av våre kunder i en normal leveringssituasjon, og som har innført 2BOX i alle sine avdelinger.</p>
+          <!-- Rapportbildet kommer fra CMS; tomt bilde viser plassholder i riktig format -->
+          <figure>
+            <div class="prose__placeholder" role="img" aria-label="Leveringspresisjon forsyningsløsning 2BOX"></div>
+            <figcaption>Leveringspresisjon hos en kunde som har innført 2BOX i alle avdelinger.</figcaption>
+          </figure>
+        </div>
+
+        <aside class="content-layout__aside" aria-label="Kontakt og andre løsninger">
+          <div class="contact-cta contact-cta--aside">
+            <div class="contact-cta__media"><img src="../assets/images/team/ansatt-portrett.jpg" alt=""></div>
+            <div class="contact-cta__body">
+              <p class="contact-cta__eyebrow">Kontaktperson</p>
+              <p class="contact-cta__name">Per Egil Rød</p>
+              <p class="contact-cta__role">Forsyningsløsninger</p>
+              <div class="contact-cta__links">
+                <a class="contact-cta__link" href="tel:90976686">909 76 686</a>
+                <a class="contact-cta__link" href="mailto:pero@m-j.no">pero@m-j.no</a>
+              </div>
+            </div>
+          </div>
+
+          <nav class="related-links" aria-label="Andre løsninger">
+            <h2 class="related-links__title">Andre løsninger</h2>
+            <ul class="related-links__list">
+              <li><a class="related-links__link" href="#" aria-current="page">2BOX</a></li>
+              <li><a class="related-links__link" href="#">QR SmartOrder</a></li>
+              <li><a class="related-links__link" href="#">Sortilog</a></li>
+            </ul>
+          </nav>
+        </aside>
+      </div>
+    </div>
+  </section>
+
+  <!-- Slik fungerer det — steg -->
+  <section class="content-section content-section--alt" id="slik-fungerer-det">
+    <div class="content-section__inner">
+      <header class="section-header">
+        <div class="section-header__text">
+          <p class="section-header__eyebrow">Slik fungerer det</p>
+          <h2 class="section-header__title">To bokser, samme innhold</h2>
+          <p class="section-header__lead">To bokser med identisk innhold og antall står slik at du enkelt ser når det er tid for å fylle på.</p>
+        </div>
+      </header>
+      <ol class="steps">
+        <li class="steps__item">
+          <h3 class="steps__title">Plukk fra fremste boks</h3>
+          <p class="steps__text">Du plukker alltid fra den fremste boksen. Den bakre står klar med samme innhold.</p>
+        </li>
+        <li class="steps__item">
+          <h3 class="steps__title">Sett tom boks på returpunkt</h3>
+          <p class="steps__text">Når fremste boks er tom, tas den ut av hyllen og settes på avtalt returpunkt for henting.</p>
+        </li>
+        <li class="steps__item">
+          <h3 class="steps__title">Vi fyller opp</h3>
+          <p class="steps__text">Molde Jarnvareforretning fyller boksen basert på strekkoden, og leverer den tilbake påfølgende uke.</p>
+        </li>
+        <li class="steps__item">
+          <h3 class="steps__title">Rulleringen fortsetter</h3>
+          <p class="steps__text">Den andre boksen har i mellomtiden tatt plassen foran. Boksene dimensjoneres normalt for 2 ukers forbruk.</p>
+        </li>
+      </ol>
+      <div class="prose">
+        <p>For artikler som er for store til å lagres i bokser, utsteder vi Kanban-kort som erstatter den fysiske boksen. Vi kan også merke lagerlokasjoner og bokser med <a href="#">QR-kode</a> hvis det i perioder er behov for å bestille mer enn det avtalte volumet.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Gevinster — bilde + fordelsliste -->
+  <section class="content-section">
+    <div class="content-section__inner">
+      <div class="media-text">
+        <div class="media-text__media">
+          <img src="../assets/images/marketing/lager-pakking-2-boks.jpg" alt="2BOX-bokser pakkes på lageret hos Molde Jarnvare">
+        </div>
+        <div class="media-text__content">
+          <header class="section-header">
+            <div class="section-header__text">
+              <p class="section-header__eyebrow">Gevinster</p>
+              <h2 class="section-header__title">Flere gevinster ved 2BOX</h2>
+            </div>
+          </header>
+          <ul class="benefit-list">
+            <li class="benefit-list__item">Ingen administrativ tid på å bestille varer av lav verdi — frigjør tid til å fokusere på mer kostbare varer</li>
+            <li class="benefit-list__item">Unngår mange bufferlagre og at man mister oversikten</li>
+            <li class="benefit-list__item">Lav risiko for manko av kritiske artikler — bestillingsfrekvensen justeres automatisk etter forbruk</li>
+            <li class="benefit-list__item">Ikke ukontrollert høyt lagerhold ved redusert produksjon</li>
+            <li class="benefit-list__item">Reduserte transaksjonskostnader ved lagerhåndtering, utpakking og kontroll av mengde</li>
+            <li class="benefit-list__item">Ingen fysisk varetelling — lagerverdien av 2BOX-artikler kalkuleres i systemet</li>
+            <li class="benefit-list__item">Strekkodemerket følgeseddel for registrering i eget ERP-system (kundens art.nr og antall levert)</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Kunder — logorad + sitater -->
+  <section class="content-section content-section--alt">
+    <div class="content-section__inner">
+      <!-- Kundenavn som tekst til logoene er klarert for bruk -->
+      <div class="logo-strip">
+        <p class="logo-strip__title">Brukes av blant andre</p>
+        <ul class="logo-strip__list">
+          <li class="logo-strip__item">HD Hyundai</li>
+          <li class="logo-strip__item">Glamox</li>
+          <li class="logo-strip__item">Brunvoll</li>
+          <li class="logo-strip__item">Bussbygg</li>
+          <li class="logo-strip__item">Straumsheim</li>
+        </ul>
+      </div>
+
+      <header class="section-header">
+        <div class="section-header__text">
+          <p class="section-header__eyebrow">Erfaringer</p>
+          <h2 class="section-header__title">Hva kundene sier</h2>
+        </div>
+      </header>
+
+      <!-- Sitater uten bilde til vi har foto fra kundene. Med bilde: legg til .testimonial__media først i <figure>. -->
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 22rem), 1fr)); gap: var(--s-5);">
+      <figure class="testimonial">
+        <div class="testimonial__body">
+          <p class="testimonial__company">Brunvoll AS</p>
+          <blockquote class="testimonial__quote">Med en avansert produksjon er vi avhengig av et forutsigbart og effektivt lagersystem, slik at våre medarbeidere alltid har det de trenger lett tilgjengelig når de trenger det.</blockquote>
+          <figcaption class="testimonial__author">
+            <span class="testimonial__name">Tor Rune Orrem</span>
+            <span class="testimonial__role">Lagerformann</span>
+          </figcaption>
+        </div>
+      </figure>
+
+      <figure class="testimonial">
+        <div class="testimonial__body">
+          <p class="testimonial__company">Straumsheim Glass og fasade AS</p>
+          <blockquote class="testimonial__quote">2BOX forsyningsløsning sikrer at vi aldri går tom for kritiske komponenter til produksjonen, og vi slipper å planlegge innkjøpene.</blockquote>
+          <figcaption class="testimonial__author">
+            <span class="testimonial__name">Ole Straumsheim</span>
+            <span class="testimonial__role">Daglig leder</span>
+          </figcaption>
+        </div>
+      </figure>
+      </div>
+    </div>
+  </section>
+
+  <!-- Andre forsyningsløsninger — kort-rutenett -->
+  <section class="content-section">
+    <div class="content-section__inner">
+      <header class="section-header">
+        <div class="section-header__text">
+          <p class="section-header__eyebrow">Forsyningsløsninger</p>
+          <h2 class="section-header__title">Andre måter å forenkle innkjøpet</h2>
+        </div>
+        <a class="section-header__action" href="#">Alle forsyningsløsninger →</a>
+      </header>
+      <ul class="feature-grid">
+        <li class="feature-grid__item">
+          <div class="feature-grid__media"><img src="../assets/images/marketing/ordrekontor.jpg" alt=""></div>
+          <div class="feature-grid__body">
+            <h3 class="feature-grid__title"><a href="#">QR SmartOrder</a></h3>
+            <p class="feature-grid__text">Registrer bestillinger med mobilen ved å skanne QR-merkede lagerplasser. For produksjon uten egen innkjøpsavdeling.</p>
+            <span class="feature-grid__more" aria-hidden="true">Les mer →</span>
+          </div>
+        </li>
+        <li class="feature-grid__item">
+          <div class="feature-grid__media"><img src="../assets/images/products/sortiment-detalj-1.jpg" alt=""></div>
+          <div class="feature-grid__body">
+            <h3 class="feature-grid__title"><a href="#">Sortilog</a></h3>
+            <p class="feature-grid__text">Bestillingsverktøy for faste varegrupper med bilder og artikkelnummer. Riktig vare, uansett hvem som bestiller.</p>
+            <span class="feature-grid__more" aria-hidden="true">Les mer →</span>
+          </div>
+        </li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- Avslutning — kontaktperson som bred blokk -->
+  <section class="content-section content-section--tight" id="kontakt">
+    <div class="content-section__inner">
+      <div class="contact-cta contact-cta--band">
+        <div class="contact-cta__media"><img src="../assets/images/team/ansatt-portrett.jpg" alt=""></div>
+        <div class="contact-cta__body">
+          <p class="contact-cta__eyebrow">Forsyningsløsninger</p>
+          <h2 class="contact-cta__title">Vil du vite mer om 2BOX?</h2>
+          <p class="contact-cta__text">Vi kommer gjerne på besøk og ser på hvilke varer som egner seg for 2BOX hos dere.</p>
+          <p class="contact-cta__name">Per Egil Rød</p>
+          <div class="contact-cta__links">
+            <a class="contact-cta__link" href="tel:90976686">909 76 686</a>
+            <a class="contact-cta__link" href="mailto:pero@m-j.no">pero@m-j.no</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</main>
+<footer class="site-footer">
+  <div class="site-footer__inner">
+    <div class="site-footer__grid">
+      <div class="site-footer__brand">
+        <img src="../assets/logos/molde-jarnvare-negative.png" alt="Molde Jarnvare" class="site-footer__logo-img">
+        <p class="site-footer__tagline">På lag med industrien siden 1930</p>
+        <p style="font-size: var(--fs-body-sm); opacity: 0.85;">Industriveien 26<br>6422 Molde<br>71 25 42 00 · post@moldejarnvare.no</p>
+      </div>
+      <div>
+        <h3 class="site-footer__col-title">Kundeservice</h3>
+        <nav class="site-footer__list">
+          <a href="login.html">Logg inn</a><a href="#">Bestilling og levering</a><a href="#">Retur og reklamasjon</a><a href="#">Kontakt oss</a>
+        </nav>
+      </div>
+      <div>
+        <h3 class="site-footer__col-title">Om oss</h3>
+        <nav class="site-footer__list">
+          <a href="#">Historien</a><a href="#">Bærekraft</a><a href="#">Vilkår</a><a href="#">Personvern</a>
+        </nav>
+      </div>
+    </div>
+    <div class="site-footer__bottom">
+      <span>&copy; 2026 Molde Jarnvare AS · Org.nr 912 345 678</span>
+      <div class="site-footer__social" aria-label="Sosiale medier"><a href="#" aria-label="Facebook">f</a><a href="#" aria-label="LinkedIn">in</a></div>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>

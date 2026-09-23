@@ -9,6 +9,7 @@
  * Modifiers: .hero--dark       — Reflex-blue background with white text
  *           .hero--split      — two-column layout with media on desktop
  *           .hero--fullbleed  — full-width background image with text overlay
+ *           .hero--compact    — mindre variant for innholds- og tjenestesider
  *
  * Built with tokens from src/styles/tokens. No hard-coded values.
  * -----------------------------------------------------------------------------
@@ -294,4 +295,33 @@
   max-width: none;
   text-shadow: 0 2px 12px rgba(0, 0, 0, 0.45);
   margin: 0;
+}
+
+/* Compact-variant ------------------------------------------------------- */
+/*
+ * Toppen av innholds- og tjenestesider (2BOX, Slangeverksted …). Mindre luft
+ * og h1-størrelse i stedet for display, slik at innholdet starter høyere opp.
+ * Kombineres med --split for bilde ved siden av. Eyebrow = foreldreside.
+ */
+
+.hero--compact {
+  padding-block: var(--s-9);
+}
+
+@media (min-width: 1024px) {
+  .hero--compact {
+    padding-block: var(--s-10);
+  }
+}
+
+.hero--compact .hero__title {
+  font-size: var(--fs-h1);
+  font-weight: var(--fw-bold);
+  max-width: 24ch;
+}
+
+.hero--compact .hero__eyebrow a {
+  color: inherit;
+  text-decoration: underline;
+  text-underline-offset: 2px;
 }

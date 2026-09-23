@@ -1,0 +1,40 @@
+/**
+ * Content section — rammen rundt hver seksjon på en innholdsside.
+ * Gir lik vertikal luft og bakgrunn, så sidene slipper inline padding.
+ *
+ * Block:     .content-section
+ * Elements:  __inner   container med standard bredde + gutter
+ * Modifiers: --alt     lys grå bakgrunn (veksle mellom seksjoner)
+ *            --brand   lys blå bakgrunn (fremhevet seksjon, f.eks. CTA)
+ *            --tight   halv vertikal luft (seksjoner som hører sammen)
+ *            --narrow  __inner i lesebredde (ren tekstseksjon)
+ */
+
+.content-section {
+  padding-block: var(--s-10);
+  background: var(--color-bg-page);
+}
+
+@media (min-width: 1024px) {
+  .content-section { padding-block: var(--s-12); }
+}
+
+.content-section__inner {
+  width: 100%;
+  max-width: var(--container-default);
+  margin-inline: auto;
+  padding-inline: var(--gutter);
+  display: flex;
+  flex-direction: column;
+  gap: var(--s-8);
+}
+
+.content-section--alt   { background: var(--color-bg-surface-alt); }
+.content-section--brand { background: var(--color-bg-brand-soft); }
+
+.content-section--tight { padding-block: var(--s-7); }
+@media (min-width: 1024px) {
+  .content-section--tight { padding-block: var(--s-8); }
+}
+
+.content-section--narrow .content-section__inner { max-width: var(--container-narrow); }

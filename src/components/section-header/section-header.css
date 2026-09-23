@@ -1,0 +1,66 @@
+/**
+ * Section header — overline + tittel + ingress (+ valgfri lenke) over en seksjon.
+ * Erstatter det gjentatte inline-mønsteret på forsiden og out-of-scope.
+ *
+ * Block:     .section-header
+ * Elements:  __text     wrapper for eyebrow/tittel/ingress
+ *            __eyebrow  liten CAPS-overskrift
+ *            __title    seksjonstittel (h2)
+ *            __lead     kort ingress
+ *            __action   lenke til høyre («Se alle …»)
+ * Modifiers: --center   midtstilt (uten __action)
+ */
+
+.section-header {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: var(--s-3) var(--s-6);
+}
+
+.section-header__text {
+  display: flex;
+  flex-direction: column;
+  gap: var(--s-2);
+  max-width: 64ch;
+}
+
+.section-header__eyebrow {
+  margin: 0;
+  font-size: var(--fs-overline);
+  font-weight: var(--fw-semibold);
+  letter-spacing: var(--ls-wider);
+  text-transform: uppercase;
+  color: var(--color-text-link);
+}
+
+.section-header__title {
+  margin: 0;
+  font-size: var(--fs-h2);
+  font-weight: var(--fw-bold);
+  line-height: var(--lh-tight);
+  color: var(--color-text-primary);
+}
+
+.section-header__lead {
+  margin: var(--s-1) 0 0;
+  font-size: var(--fs-body-lg);
+  line-height: var(--lh-relaxed);
+  color: var(--color-text-secondary);
+}
+
+.section-header__action {
+  font-weight: var(--fw-semibold);
+  color: var(--color-text-link);
+  text-decoration: underline;
+  text-underline-offset: 2px;
+  white-space: nowrap;
+}
+.section-header__action:hover { color: var(--color-text-link-hover); }
+
+.section-header--center {
+  justify-content: center;
+  text-align: center;
+}
+.section-header--center .section-header__text { align-items: center; margin-inline: auto; }
