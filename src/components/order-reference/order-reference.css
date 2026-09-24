@@ -1,0 +1,39 @@
+/**
+ * Ordrereferanse — visning av PO-nummer, kundens referanse og ordrekommentar
+ * (lesevisning av det kunden fylte ut i po-reference i kassen, jf. §14.22)
+ * Block: .order-reference   Elements: __item __label __value
+ * Modifier: .order-reference__item--full (går over hele bredden, f.eks. kommentar)
+ */
+
+.order-reference {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: var(--s-4);
+  margin: 0;
+}
+
+.order-reference__item { min-width: 0; }
+
+.order-reference__item--full { grid-column: 1 / -1; }
+
+.order-reference__label {
+  margin: 0 0 var(--s-1);
+  font-size: var(--fs-overline);
+  font-weight: var(--fw-semibold);
+  text-transform: uppercase;
+  letter-spacing: var(--ls-wider);
+  color: var(--color-text-secondary);
+}
+
+.order-reference__value {
+  margin: 0;
+  line-height: var(--lh-relaxed);
+  color: var(--color-text-primary);
+  overflow-wrap: anywhere;
+}
+
+/* Kommentar: behold linjeskiftene kunden skrev */
+.order-reference__item--full .order-reference__value { white-space: pre-line; }
+
+/* Tomt felt — vis «Ingen» dempet i stedet for å skjule raden */
+.order-reference__value--empty { color: var(--color-text-tertiary); }
