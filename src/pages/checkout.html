@@ -307,7 +307,7 @@
 
       <section class="order-summary__section">
         <div class="order-summary__section-header">
-          <h2 class="order-summary__section-title">Referanse</h2>
+          <h2 class="order-summary__section-title">Referanse og kommentar</h2>
         </div>
         <div class="po-reference__row">
           <div class="field">
@@ -317,6 +317,11 @@
           <div class="field">
             <label class="field__label" for="ref">Din referanse</label>
             <input class="input" id="ref" placeholder="Prosjekt eller person">
+          </div>
+          <div class="field po-reference__full">
+            <label class="field__label" for="order-comment">Kommentar til ordren</label>
+            <p class="field__hint" id="order-comment-hint">Frivillig. F.eks. leveringsinstruks, kontaktperson på bygg eller ønsker til plukk.</p>
+            <textarea class="textarea" id="order-comment" name="order-comment" rows="3" maxlength="500" aria-describedby="order-comment-hint"></textarea>
           </div>
         </div>
       </section>

@@ -23,6 +23,9 @@
   gap: var(--s-3);
 }
 
+/* Felt som går over hele raden, f.eks. ordrekommentar */
+.po-reference__full { grid-column: 1 / -1; }
+
 @media (max-width: 600px) {
   .po-reference__row { grid-template-columns: 1fr; }
 }
