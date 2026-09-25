@@ -1,0 +1,76 @@
+/**
+ * Kategorivelger (PLP) (§14.27)
+ *
+ * Rene lenker til underkategorier (nivå 3) øverst i filterkolonnen.
+ * Ikke et filter — hvert valg er en egen side. Ligger inne i en
+ * .filter-sidebar__group, som gir tittelen «Kategori».
+ *
+ * Tilstander:
+ *   Nivå 2-side   Liste over underkategoriene, ingen aktiv.
+ *   Nivå 3-side   Søsken-kategoriene med aktiv markert (aria-current="page")
+ *                 + .category-nav__back øverst for å gå opp ett nivå.
+ */
+
+.category-nav {
+  display: flex;
+  flex-direction: column;
+  gap: var(--s-2);
+}
+
+/* Lenke opp til forelder — kun på nivå 3 */
+.category-nav__back {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--s-1);
+  font-size: var(--fs-body-sm);
+  font-weight: var(--fw-semibold);
+  color: var(--color-text-link);
+  text-decoration: none;
+}
+.category-nav__back:hover { color: var(--color-text-link-hover); text-decoration: underline; }
+.category-nav__back:focus-visible { outline: none; box-shadow: var(--focus-ring); border-radius: var(--r-sm); }
+
+.category-nav__list {
+  display: flex;
+  flex-direction: column;
+  gap: var(--s-1);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.category-nav__link {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--s-3);
+  min-height: 44px; /* klikkflate på touch */
+  padding: var(--s-2) var(--s-3);
+  font-size: var(--fs-body-sm);
+  color: var(--color-text-primary);
+  text-decoration: none;
+  border-left: var(--bw-4) solid transparent;
+  border-radius: var(--r-sm);
+  transition: background var(--duration-fast) var(--ease-standard);
+}
+.category-nav__link:hover { background: var(--color-bg-surface-alt); }
+.category-nav__link:focus-visible { outline: none; box-shadow: var(--focus-ring); }
+
+@media (min-width: 1024px) /* --bp-lg */ {
+  .category-nav__link { min-height: 0; }
+}
+
+/* Aktiv kategori (nivå 3-siden brukeren står på) */
+.category-nav__link--active {
+  font-weight: var(--fw-semibold);
+  background: var(--color-bg-brand-soft);
+  border-left-color: var(--color-border-brand);
+}
+.category-nav__link--active:hover { background: var(--color-bg-brand-soft); }
+
+.category-nav__count {
+  font-size: var(--fs-caption);
+  font-weight: var(--fw-regular);
+  color: var(--color-text-tertiary);
+  font-variant-numeric: tabular-nums;
+}

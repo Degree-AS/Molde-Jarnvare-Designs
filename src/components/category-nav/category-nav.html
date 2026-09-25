@@ -1,0 +1,89 @@
+<!doctype html>
+<html lang="nb">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Kategorivelger — Molde Jarnvare designsystem</title>
+
+  <!-- Webfont (Source Sans 3 — webfont-erstatning for Aptos, jf. §5.1) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Source+Sans+3:wght@400;500;600;700;900&family=JetBrains+Mono:wght@400&display=swap"
+    rel="stylesheet">
+
+  <!-- Tokens og komponent (filter-sidebar gir gruppetittelen) -->
+  <link rel="stylesheet" href="../../styles/tokens/index.css">
+  <link rel="stylesheet" href="../filter-sidebar/filter-sidebar.css">
+  <link rel="stylesheet" href="./category-nav.css">
+
+  <style>
+    /* Minimal preview-reset. Blir flyttet til src/styles/base/reset.css når den eksisterer. */
+    *, *::before, *::after { box-sizing: border-box; }
+    html { -webkit-text-size-adjust: 100%; }
+    body {
+      margin: 0;
+      font-family: var(--ff-sans);
+      color: var(--color-text-primary);
+      background: var(--color-bg-page);
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+    h3 { margin: 0; }
+
+    /* Etikett over hver variant — kun for denne previewen */
+    .preview-label {
+      max-width: var(--container-wide);
+      margin: 0 auto;
+      padding: var(--s-9) var(--gutter) var(--s-2);
+      font-family: var(--ff-sans);
+      font-size: var(--fs-overline);
+      font-weight: var(--fw-semibold);
+      letter-spacing: var(--ls-wider);
+      text-transform: uppercase;
+      color: var(--color-text-tertiary);
+    }
+    .preview-label:first-child { padding-top: var(--s-7); }
+    .preview-frame { max-width: 280px; margin: 0 auto; }
+    .preview-frame .filter-sidebar { position: static; }
+  </style>
+</head>
+<body>
+  <p class="preview-label">Nivå 2 — underkategorier</p>
+  <div class="preview-frame">
+    <div class="filter-sidebar">
+      <div class="filter-sidebar__group">
+        <h3 class="filter-sidebar__group-title">Kategori</h3>
+        <nav class="category-nav" aria-label="Underkategorier">
+          <ul class="category-nav__list">
+            <li class="category-nav__item"><a class="category-nav__link" href="#">Helgjenget <span class="category-nav__count">3 120</span></a></li>
+            <li class="category-nav__item"><a class="category-nav__link" href="#">Delgjenget <span class="category-nav__count">2 410</span></a></li>
+            <li class="category-nav__item"><a class="category-nav__link" href="#">Flensskruer <span class="category-nav__count">1 180</span></a></li>
+            <li class="category-nav__item"><a class="category-nav__link" href="#">Maskinskruer <span class="category-nav__count">960</span></a></li>
+            <li class="category-nav__item"><a class="category-nav__link" href="#">Settskruer <span class="category-nav__count">570</span></a></li>
+          </ul>
+        </nav>
+      </div>
+    </div>
+  </div>
+
+  <p class="preview-label">Nivå 3 — søsken med aktiv + lenke opp</p>
+  <div class="preview-frame">
+    <div class="filter-sidebar">
+      <div class="filter-sidebar__group">
+        <h3 class="filter-sidebar__group-title">Kategori</h3>
+        <nav class="category-nav" aria-label="Underkategorier">
+          <a class="category-nav__back" href="#"><span aria-hidden="true">‹</span> Alle sekskantskruer</a>
+          <ul class="category-nav__list">
+            <li class="category-nav__item"><a class="category-nav__link category-nav__link--active" href="#" aria-current="page">Helgjenget <span class="category-nav__count">3 120</span></a></li>
+            <li class="category-nav__item"><a class="category-nav__link" href="#">Delgjenget <span class="category-nav__count">2 410</span></a></li>
+            <li class="category-nav__item"><a class="category-nav__link" href="#">Flensskruer <span class="category-nav__count">1 180</span></a></li>
+            <li class="category-nav__item"><a class="category-nav__link" href="#">Maskinskruer <span class="category-nav__count">960</span></a></li>
+            <li class="category-nav__item"><a class="category-nav__link" href="#">Settskruer <span class="category-nav__count">570</span></a></li>
+          </ul>
+        </nav>
+      </div>
+    </div>
+  </div>
+</body>
+</html>

@@ -82,6 +82,7 @@
 @import "../components/order-confirmation/order-confirmation.css";
 @import "../components/account-dashboard/account-dashboard.css";
 @import "../components/order-history/order-history.css";
+@import "../components/category-nav/category-nav.css";
 @import "../components/filter-sidebar/filter-sidebar.css";
 @import "../components/plp-layout/plp-layout.css";
 @import "../components/commerce-layout/commerce-layout.css";
