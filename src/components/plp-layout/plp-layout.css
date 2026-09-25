@@ -125,6 +125,10 @@
     background: var(--color-bg-surface);
     position: sticky;
     top: var(--s-5);
+    /* Lang kategoriliste + mange filtre kan bli høyere enn skjermen —
+       da scroller kortet selv, så nederste filtre alltid kan nås. */
+    max-height: calc(100vh - var(--s-5) * 2);
+    overflow-y: auto;
   }
 }
 

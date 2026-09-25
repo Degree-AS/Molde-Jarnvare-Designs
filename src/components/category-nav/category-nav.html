@@ -49,41 +49,80 @@
   </style>
 </head>
 <body>
-  <p class="preview-label">Nivå 2 — underkategorier</p>
+  <p class="preview-label">Nivå 2 — 18 underkategorier, 10 vises før «Vis alle»</p>
   <div class="preview-frame">
     <div class="filter-sidebar">
       <div class="filter-sidebar__group">
         <h3 class="filter-sidebar__group-title">Kategori</h3>
-        <nav class="category-nav" aria-label="Underkategorier">
-          <ul class="category-nav__list">
-            <li class="category-nav__item"><a class="category-nav__link" href="#">Helgjenget <span class="category-nav__count">3 120</span></a></li>
-            <li class="category-nav__item"><a class="category-nav__link" href="#">Delgjenget <span class="category-nav__count">2 410</span></a></li>
-            <li class="category-nav__item"><a class="category-nav__link" href="#">Flensskruer <span class="category-nav__count">1 180</span></a></li>
-            <li class="category-nav__item"><a class="category-nav__link" href="#">Maskinskruer <span class="category-nav__count">960</span></a></li>
-            <li class="category-nav__item"><a class="category-nav__link" href="#">Settskruer <span class="category-nav__count">570</span></a></li>
+        <nav class="category-nav" aria-label="Underkategorier" data-expanded="false">
+          <ul class="category-nav__list" id="cat-nav-l2">
+            <li class="category-nav__item"><a class="category-nav__link" href="#">Borskruer <span class="category-nav__count">640</span></a></li>
+            <li class="category-nav__item"><a class="category-nav__link" href="#">Båndede skruer <span class="category-nav__count">410</span></a></li>
+            <li class="category-nav__item"><a class="category-nav__link" href="#">Franske treskruer <span class="category-nav__count">380</span></a></li>
+            <li class="category-nav__item"><a class="category-nav__link" href="#">Innvendige sekskantskruer <span class="category-nav__count">2 150</span></a></li>
+            <li class="category-nav__item"><a class="category-nav__link" href="#">Låseskruer <span class="category-nav__count">190</span></a></li>
+            <li class="category-nav__item"><a class="category-nav__link" href="#">Maskinskruer <span class="category-nav__count">1 420</span></a></li>
+            <li class="category-nav__item"><a class="category-nav__link" href="#">Passbolter <span class="category-nav__count">260</span></a></li>
+            <li class="category-nav__item"><a class="category-nav__link" href="#">Pinneskruer <span class="category-nav__count">310</span></a></li>
+            <li class="category-nav__item"><a class="category-nav__link" href="#">Plateskruer <span class="category-nav__count">870</span></a></li>
+            <li class="category-nav__item"><a class="category-nav__link" href="#">Sekskantskruer <span class="category-nav__count">3 120</span></a></li>
+            <li class="category-nav__item category-nav__item--extra"><a class="category-nav__link" href="#">Sekskantskruer med flens <span class="category-nav__count">1 180</span></a></li>
+            <li class="category-nav__item category-nav__item--extra"><a class="category-nav__link" href="#">Settskruer <span class="category-nav__count">570</span></a></li>
+            <li class="category-nav__item category-nav__item--extra"><a class="category-nav__link" href="#">Skruplugger <span class="category-nav__count">240</span></a></li>
+            <li class="category-nav__item category-nav__item--extra"><a class="category-nav__link" href="#">Studbolter <span class="category-nav__count">330</span></a></li>
+            <li class="category-nav__item category-nav__item--extra"><a class="category-nav__link" href="#">Sveisebolter <span class="category-nav__count">150</span></a></li>
+            <li class="category-nav__item category-nav__item--extra"><a class="category-nav__link" href="#">Treskruer <span class="category-nav__count">1 960</span></a></li>
+            <li class="category-nav__item category-nav__item--extra"><a class="category-nav__link" href="#">Øyebolter <span class="category-nav__count">220</span></a></li>
+            <li class="category-nav__item category-nav__item--extra"><a class="category-nav__link" href="#">Andre skruer <span class="category-nav__count">480</span></a></li>
           </ul>
+          <button class="category-nav__toggle" type="button" aria-controls="cat-nav-l2" aria-expanded="false"><span class="category-nav__toggle-more">Vis alle 18</span><span class="category-nav__toggle-less">Vis færre</span></button>
         </nav>
       </div>
     </div>
   </div>
 
-  <p class="preview-label">Nivå 3 — søsken med aktiv + lenke opp</p>
+  <p class="preview-label">Nivå 3 — aktiv kategori ligger blant de skjulte, så listen er utvidet fra start</p>
   <div class="preview-frame">
     <div class="filter-sidebar">
       <div class="filter-sidebar__group">
         <h3 class="filter-sidebar__group-title">Kategori</h3>
-        <nav class="category-nav" aria-label="Underkategorier">
-          <a class="category-nav__back" href="#"><span aria-hidden="true">‹</span> Alle sekskantskruer</a>
-          <ul class="category-nav__list">
-            <li class="category-nav__item"><a class="category-nav__link category-nav__link--active" href="#" aria-current="page">Helgjenget <span class="category-nav__count">3 120</span></a></li>
-            <li class="category-nav__item"><a class="category-nav__link" href="#">Delgjenget <span class="category-nav__count">2 410</span></a></li>
-            <li class="category-nav__item"><a class="category-nav__link" href="#">Flensskruer <span class="category-nav__count">1 180</span></a></li>
-            <li class="category-nav__item"><a class="category-nav__link" href="#">Maskinskruer <span class="category-nav__count">960</span></a></li>
-            <li class="category-nav__item"><a class="category-nav__link" href="#">Settskruer <span class="category-nav__count">570</span></a></li>
+        <nav class="category-nav" aria-label="Underkategorier" data-expanded="true">
+          <a class="category-nav__back" href="#"><span aria-hidden="true">‹</span> Alle skruer og bolter</a>
+          <ul class="category-nav__list" id="cat-nav-l3">
+            <li class="category-nav__item"><a class="category-nav__link" href="#">Borskruer <span class="category-nav__count">640</span></a></li>
+            <li class="category-nav__item"><a class="category-nav__link" href="#">Båndede skruer <span class="category-nav__count">410</span></a></li>
+            <li class="category-nav__item"><a class="category-nav__link" href="#">Franske treskruer <span class="category-nav__count">380</span></a></li>
+            <li class="category-nav__item"><a class="category-nav__link" href="#">Innvendige sekskantskruer <span class="category-nav__count">2 150</span></a></li>
+            <li class="category-nav__item"><a class="category-nav__link" href="#">Låseskruer <span class="category-nav__count">190</span></a></li>
+            <li class="category-nav__item"><a class="category-nav__link" href="#">Maskinskruer <span class="category-nav__count">1 420</span></a></li>
+            <li class="category-nav__item"><a class="category-nav__link" href="#">Passbolter <span class="category-nav__count">260</span></a></li>
+            <li class="category-nav__item"><a class="category-nav__link" href="#">Pinneskruer <span class="category-nav__count">310</span></a></li>
+            <li class="category-nav__item"><a class="category-nav__link" href="#">Plateskruer <span class="category-nav__count">870</span></a></li>
+            <li class="category-nav__item"><a class="category-nav__link" href="#">Sekskantskruer <span class="category-nav__count">3 120</span></a></li>
+            <li class="category-nav__item category-nav__item--extra"><a class="category-nav__link" href="#">Sekskantskruer med flens <span class="category-nav__count">1 180</span></a></li>
+            <li class="category-nav__item category-nav__item--extra"><a class="category-nav__link" href="#">Settskruer <span class="category-nav__count">570</span></a></li>
+            <li class="category-nav__item category-nav__item--extra"><a class="category-nav__link" href="#">Skruplugger <span class="category-nav__count">240</span></a></li>
+            <li class="category-nav__item category-nav__item--extra"><a class="category-nav__link" href="#">Studbolter <span class="category-nav__count">330</span></a></li>
+            <li class="category-nav__item category-nav__item--extra"><a class="category-nav__link" href="#">Sveisebolter <span class="category-nav__count">150</span></a></li>
+            <li class="category-nav__item category-nav__item--extra"><a class="category-nav__link category-nav__link--active" href="#" aria-current="page">Treskruer <span class="category-nav__count">1 960</span></a></li>
+            <li class="category-nav__item category-nav__item--extra"><a class="category-nav__link" href="#">Øyebolter <span class="category-nav__count">220</span></a></li>
+            <li class="category-nav__item category-nav__item--extra"><a class="category-nav__link" href="#">Andre skruer <span class="category-nav__count">480</span></a></li>
           </ul>
+          <button class="category-nav__toggle" type="button" aria-controls="cat-nav-l3" aria-expanded="true"><span class="category-nav__toggle-more">Vis alle 18</span><span class="category-nav__toggle-less">Vis færre</span></button>
         </nav>
       </div>
     </div>
   </div>
+<script>
+  /* Kategorivelger: «Vis alle» / «Vis færre» */
+  document.querySelectorAll('.category-nav__toggle').forEach(function (btn) {
+    btn.addEventListener('click', function () {
+      var nav = btn.closest('.category-nav');
+      var open = nav.getAttribute('data-expanded') !== 'true';
+      nav.setAttribute('data-expanded', open);
+      btn.setAttribute('aria-expanded', open);
+    });
+  });
+</script>
 </body>
 </html>

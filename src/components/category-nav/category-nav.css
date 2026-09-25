@@ -9,6 +9,15 @@
  *   Nivå 2-side   Liste over underkategoriene, ingen aktiv.
  *   Nivå 3-side   Søsken-kategoriene med aktiv markert (aria-current="page")
  *                 + .category-nav__back øverst for å gå opp ett nivå.
+ *
+ * Lange lister («Vis alle»):
+ *   Sortering: alfabetisk, «Andre …» alltid sist.
+ *   ≤ 12 kategorier  Vis alle, ingen knapp.
+ *   > 12 kategorier  Vis de 10 første. Resten får .category-nav__item--extra
+ *                    og skjules til brukeren trykker .category-nav__toggle.
+ *   JS veksler [data-expanded] på .category-nav og aria-expanded på knappen.
+ *   Ligger den aktive kategorien blant de skjulte, rendres listen med
+ *   data-expanded="true" fra server — den aktive skal aldri være skjult.
  */
 
 .category-nav {
@@ -45,7 +54,9 @@
   justify-content: space-between;
   gap: var(--s-3);
   min-height: 44px; /* klikkflate på touch */
-  padding: var(--s-2) var(--s-3);
+  padding: var(--s-2);
+  /* Teksten flukter med gruppetittelen; hover-flaten stikker ut i kortets padding */
+  margin-inline: calc((var(--s-2) + var(--bw-4)) * -1) calc(var(--s-2) * -1);
   font-size: var(--fs-body-sm);
   color: var(--color-text-primary);
   text-decoration: none;
@@ -57,7 +68,7 @@
 .category-nav__link:focus-visible { outline: none; box-shadow: var(--focus-ring); }
 
 @media (min-width: 1024px) /* --bp-lg */ {
-  .category-nav__link { min-height: 0; }
+  .category-nav__link { min-height: 0; padding-block: var(--s-1); }
 }
 
 /* Aktiv kategori (nivå 3-siden brukeren står på) */
@@ -74,3 +85,50 @@
   color: var(--color-text-tertiary);
   font-variant-numeric: tabular-nums;
 }
+
+/* ─────────────────────────────────────────────────────────────────────────
+ * «Vis alle» — skjuler overskytende kategorier til listen er utvidet
+ * ────────────────────────────────────────────────────────────────────── */
+.category-nav:not([data-expanded="true"]) .category-nav__item--extra { display: none; }
+
+.category-nav__toggle {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--s-1);
+  align-self: flex-start;
+  min-height: 44px; /* klikkflate på touch */
+  padding: 0; /* flukter med gruppetittelen og lenketeksten */
+  font-family: var(--ff-sans);
+  font-size: var(--fs-body-sm);
+  font-weight: var(--fw-semibold);
+  color: var(--color-text-link);
+  background: transparent;
+  border: 0;
+  border-radius: var(--r-sm);
+  cursor: pointer;
+}
+.category-nav__toggle:hover { color: var(--color-text-link-hover); text-decoration: underline; }
+.category-nav__toggle:focus-visible { outline: none; box-shadow: var(--focus-ring); }
+
+@media (min-width: 1024px) /* --bp-lg */ {
+  .category-nav__toggle { min-height: 0; padding-block: var(--s-1); }
+}
+
+/* Chevron som snur når listen er utvidet */
+.category-nav__toggle::after {
+  content: "";
+  width: var(--s-2);
+  height: var(--s-2);
+  border-right: var(--bw-3) solid currentColor;
+  border-bottom: var(--bw-3) solid currentColor;
+  transform: translateY(calc(var(--bw-3) * -1)) rotate(45deg);
+  transition: transform var(--duration-fast) var(--ease-standard);
+}
+.category-nav[data-expanded="true"] .category-nav__toggle::after {
+  transform: translateY(var(--bw-3)) rotate(-135deg);
+}
+
+/* Knappetekst byttes med CSS, så statisk HTML viser riktig tekst */
+.category-nav__toggle-less { display: none; }
+.category-nav[data-expanded="true"] .category-nav__toggle-more { display: none; }
+.category-nav[data-expanded="true"] .category-nav__toggle-less { display: inline; }
