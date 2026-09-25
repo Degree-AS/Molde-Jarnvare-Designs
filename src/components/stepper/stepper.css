@@ -1,5 +1,9 @@
 /**
  * Stepper (§13.10) — checkout-flow indikator.
+ *
+ * Mobil (< 640): kun aktivt steg viser navn; øvrige steg viser tall/hake.
+ * Navnene ligger fortsatt i DOM-en for skjermlesere (sr-only-teknikk), så
+ * lange ord som «Bestillingsbekreftelse» aldri gir horisontal scroll.
  */
 
 .stepper {
@@ -55,3 +59,15 @@
   min-width: 24px;
 }
 .stepper__connector.is-complete { background: var(--mj-success); }
+
+@media (max-width: 639.98px) /* under --bp-sm */ {
+  .stepper__step:not(.is-active) .stepper__label {
+    position: absolute;
+    width: 1px; height: 1px;
+    padding: 0; margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border: 0;
+  }
+}
