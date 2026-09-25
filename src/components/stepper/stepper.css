@@ -3,7 +3,7 @@
  *
  * Mobil (< 640): kun aktivt steg viser navn; øvrige steg viser tall/hake.
  * Navnene ligger fortsatt i DOM-en for skjermlesere (sr-only-teknikk), så
- * lange ord som «Bestillingsbekreftelse» aldri gir horisontal scroll.
+ * tre stegnavn aldri gir horisontal scroll på smale skjermer.
  */
 
 .stepper {
