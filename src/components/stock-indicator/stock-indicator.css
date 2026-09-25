@@ -1,16 +1,43 @@
 /**
  * Stock indicator (§14.5) — builds on .status-pill with MJ colors.
  *
- * Anonyme besøkende (ADO 19545) får kun to statuser, styrt av itemCategoryCode i BC:
- *   LAGERVARE    → --in    «Normalt på lager» (grønn)
- *   TRANSITVARE  → --order «Bestillingsvare – kontakt oss for estimert leveringstid» (oransje)
- * Aldri antall (__count) for anonyme. Ukjent kode → ingen indikator.
+ * Logikk iht. Molde Jarnvare («Lagerstatuser i nettbutikk», Håkon W. Ølander
+ * 11.06.2026). Styres av itemCategoryCode i BC: LAGERVARE / TRANSITVARE.
+ * På nett heter TRANSITVARE alltid «Bestillingsvare».
+ *
+ * ANONYM (forenklet, ADO 19545) — aldri antall:
+ *   LAGERVARE    --in     «Normalt på lager»  (uansett faktisk saldo)
+ *   TRANSITVARE  --order  «Bestillingsvare – kontakt oss for estimert leveringstid»
+ *
+ * INNLOGGET (utfyllende):
+ *   LAGERVARE på lager  --in   Saldo < 100      «{n} på lager»
+ *                              Saldo 100–1000   «100+ på lager»
+ *                              Saldo > 1000     «1000+ på lager»
+ *                              + note (PDP):    «Normal leveringstid 1–2 dager ved standard bestilling»
+ *   LAGERVARE tom       --incoming
+ *                              Innkommende bestilling m/ lovet dato:
+ *                                               «Forventet {n} til lager {dd.mm.åååå}»
+ *                              Ingen bestilling / ingen lovet dato:
+ *                                               «Ubekreftet – kontakt oss for estimert leveringstid»
+ *   TRANSITVARE         --order  «Bestillingsvare – estimert leveringstid …» fra
+ *                              «Beregning av leveringstid» på leverandørkortet:
+ *                                1D–2D   → 3–5 dager
+ *                                3D–7D   → 1–2 uker
+ *                                8D–20D  → 3–4 uker
+ *                                > 20D   → «Bestillingsvare – ubekreftet – kontakt oss for estimert leveringstid»
+ *                              + note (PDP): «Faktisk leveringstid oppgis i ordrebekreftelse»
+ *
+ * Ingen leverandørlager. Ukjent kode → ingen indikator.
+ * API-status (16.06.2026): innkommende bestillinger og leveringstid finnes
+ * ennå ikke i produkt-API-et — skissene viser målbildet.
  */
 
+/* Grid: prikk i kolonne 1, tekst + ev. note i kolonne 2 */
 .stock-indicator {
-  display: inline-flex;
-  align-items: flex-start;
-  gap: var(--s-2);
+  display: inline-grid;
+  grid-template-columns: auto 1fr;
+  align-items: start;
+  column-gap: var(--s-2);
   font-family: var(--ff-sans);
   font-size: var(--fs-body-sm);
   font-weight: var(--fw-semibold);
@@ -24,19 +51,15 @@
   margin-top: calc((1lh - 10px) / 2);
   border-radius: var(--r-full);
   background: currentColor;
-  flex: 0 0 auto;
 }
 
 .stock-indicator--in       { color: var(--mj-success); }
-.stock-indicator--low      { color: var(--mj-warning); }
-.stock-indicator--out      { color: var(--mj-error); }
-.stock-indicator--order    { color: var(--mj-warning); } /* oransje iht. 19545 (var ink-2) */
-.stock-indicator--discontinued { color: var(--mj-ink-3); }
+.stock-indicator--incoming { color: var(--mj-warning); } /* lagervare tom — forventet / ubekreftet */
+.stock-indicator--order    { color: var(--mj-warning); } /* bestillingsvare — oransje iht. 19545 */
 
-.stock-indicator__count {
-  font-family: var(--ff-mono);
-  font-size: var(--fs-mono-sm);
+/* Forklarende linje under statusen — kun der det er plass (PDP-kjøpsboks) */
+.stock-indicator__note {
+  grid-column: 2;
   font-weight: var(--fw-regular);
   color: var(--color-text-secondary);
-  font-variant-numeric: tabular-nums;
 }

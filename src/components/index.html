@@ -558,7 +558,7 @@
         <div class="product-card__media"></div>
         <span class="product-card__sku">4815-162-30</span>
         <h3 class="product-card__title"><a href="#">Sekskantskrue M8 × 40 mm A4</a></h3>
-        <span class="stock-indicator stock-indicator--in">På lager</span>
+        <span class="stock-indicator stock-indicator--in">1000+ på lager</span>
         <div class="product-card__price">kr 2,80<span class="product-card__price-suffix">eks. mva</span></div>
         <div class="product-card__actions"><button class="btn btn--primary btn--sm btn--full">Legg i kurv</button></div>
       </article>
@@ -652,10 +652,23 @@
 
     <h3>Stock indicator / Price display</h3>
     <div class="demo demo--col">
-      <span class="stock-indicator stock-indicator--in">På lager <span class="stock-indicator__count">4 200 stk · klart for henting</span></span>
-      <span class="stock-indicator stock-indicator--low">Få igjen <span class="stock-indicator__count">6 stk</span></span>
-      <span class="stock-indicator stock-indicator--out">Utsolgt · Skaffes</span>
-      <span class="stock-indicator stock-indicator--order">Bestillingsvare · 2–3 uker</span>
+      <p class="label" style="margin: 0;">Innlogget · lagervare på lager (&lt; 100 viser faktisk saldo)</p>
+      <span class="stock-indicator stock-indicator--in">1000+ på lager</span>
+      <span class="stock-indicator stock-indicator--in">100+ på lager</span>
+      <span class="stock-indicator stock-indicator--in">42 på lager</span>
+      <span class="stock-indicator stock-indicator--in">1000+ på lager<span class="stock-indicator__note">Normal leveringstid 1–2 dager ved standard bestilling</span></span>
+      <p class="label" style="margin: var(--s-3) 0 0;">Innlogget · lagervare tom</p>
+      <span class="stock-indicator stock-indicator--incoming">Forventet 500 til lager 06.10.2026</span>
+      <span class="stock-indicator stock-indicator--incoming">Ubekreftet – kontakt oss for estimert leveringstid</span>
+      <p class="label" style="margin: var(--s-3) 0 0;">Innlogget · bestillingsvare (fra «Beregning av leveringstid» i BC)</p>
+      <span class="stock-indicator stock-indicator--order">Bestillingsvare – estimert leveringstid 3–5 dager</span>
+      <span class="stock-indicator stock-indicator--order">Bestillingsvare – estimert leveringstid 1–2 uker</span>
+      <span class="stock-indicator stock-indicator--order">Bestillingsvare – estimert leveringstid 3–4 uker</span>
+      <span class="stock-indicator stock-indicator--order">Bestillingsvare – ubekreftet – kontakt oss for estimert leveringstid</span>
+      <span class="stock-indicator stock-indicator--order">Bestillingsvare – estimert leveringstid 1–2 uker<span class="stock-indicator__note">Faktisk leveringstid oppgis i ordrebekreftelse</span></span>
+      
+      
+      
       <div class="price-display">
         <div class="price-display__value">kr 2 490,–<span class="price-display__suffix">eks. mva</span></div>
         <div class="price-display__meta">
@@ -702,7 +715,7 @@
               <tr>
                 <th scope="col">Variant</th>
                 <th scope="col">Art.nr</th>
-                <th scope="col">På lager</th>
+                <th scope="col">Lagerstatus</th>
                 <th scope="col" class="is-numeric">Pris/stk</th>
                 <th scope="col" class="is-numeric">Antall</th>
                 <th scope="col"><span class="sr-only">Legg til</span></th>
@@ -712,7 +725,7 @@
               <tr>
                 <th scope="row">M8 × 20 mm  ·  A4 syrefast</th>
                 <td><span class="variant-selector__matrix-sku">4815-160-30</span></td>
-                <td><span class="stock-indicator stock-indicator--in">På lager</span></td>
+                <td><span class="stock-indicator stock-indicator--in">1000+ på lager</span></td>
                 <td class="is-numeric variant-selector__matrix-price">kr 1,90</td>
                 <td class="is-numeric">
                   <div class="variant-selector__matrix-qty">
@@ -730,7 +743,7 @@
               <tr>
                 <th scope="row">M8 × 30 mm  ·  A4 syrefast</th>
                 <td><span class="variant-selector__matrix-sku">4815-161-30</span></td>
-                <td><span class="stock-indicator stock-indicator--in">På lager</span></td>
+                <td><span class="stock-indicator stock-indicator--in">1000+ på lager</span></td>
                 <td class="is-numeric variant-selector__matrix-price">kr 2,30</td>
                 <td class="is-numeric">
                   <div class="variant-selector__matrix-qty">
@@ -748,7 +761,7 @@
               <tr>
                 <th scope="row">M8 × 40 mm  ·  A4 syrefast</th>
                 <td><span class="variant-selector__matrix-sku">4815-162-30</span></td>
-                <td><span class="stock-indicator stock-indicator--in">På lager <span class="stock-indicator__count">4 200 stk</span></span></td>
+                <td><span class="stock-indicator stock-indicator--in">1000+ på lager</span></td>
                 <td class="is-numeric variant-selector__matrix-price">kr 2,80</td>
                 <td class="is-numeric">
                   <div class="variant-selector__matrix-qty">
@@ -766,7 +779,7 @@
               <tr>
                 <th scope="row">M8 × 50 mm  ·  A4 syrefast</th>
                 <td><span class="variant-selector__matrix-sku">4815-163-30</span></td>
-                <td><span class="stock-indicator stock-indicator--low">Få igjen <span class="stock-indicator__count">12 stk</span></span></td>
+                <td><span class="stock-indicator stock-indicator--in">12 på lager</span></td>
                 <td class="is-numeric variant-selector__matrix-price">kr 3,20</td>
                 <td class="is-numeric">
                   <div class="variant-selector__matrix-qty">
@@ -784,7 +797,7 @@
               <tr class="variant-selector__matrix-row--disabled">
                 <th scope="row">M8 × 80 mm  ·  A4 syrefast</th>
                 <td><span class="variant-selector__matrix-sku">4815-164-30</span></td>
-                <td><span class="stock-indicator stock-indicator--out">Utsolgt</span></td>
+                <td><span class="stock-indicator stock-indicator--incoming">Forventet 500 til lager 06.10.2026</span></td>
                 <td class="is-numeric variant-selector__matrix-price">kr 4,50</td>
                 <td class="is-numeric">
                   <div class="variant-selector__matrix-qty">
@@ -796,7 +809,7 @@
                   </div>
                 </td>
                 <td>
-                  <button class="variant-selector__matrix-add" disabled aria-label="M8 × 80 mm A4 syrefast er utsolgt"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M2 4h2.5l3 12h11l2.5-8H7"/><circle cx="10" cy="20" r="1.6"/><circle cx="17" cy="20" r="1.6"/></svg></button>
+                  <button class="variant-selector__matrix-add" disabled aria-label="M8 × 80 mm A4 syrefast er ikke på lager"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M2 4h2.5l3 12h11l2.5-8H7"/><circle cx="10" cy="20" r="1.6"/><circle cx="17" cy="20" r="1.6"/></svg></button>
                 </td>
               </tr>
             </tbody>
