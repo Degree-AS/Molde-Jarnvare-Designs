@@ -418,8 +418,8 @@
 
   <div class="callout">
     <strong>Status:</strong> Komponentene under er allerede bygget og lever i komponentbiblioteket.
-    De er hentet ut fra Min konto-sidemalen (2-boks-system) og Forsiden (Hurtigbestilling) der de tidligere
-    sto, slik at v1-leveransen reflekterer det som faktisk er avtalt. Aktivering i v2/v3 er en kort konfigurasjons-
+    De er hentet ut fra Min konto-sidemalen (2-boks-system, nøkkeltall, lagrede kurver), Forsiden (Hurtigbestilling)
+    og Handlekurven (flere kurver) der de tidligere sto, slik at v1-leveransen reflekterer det som faktisk er avtalt. Aktivering i v2/v3 er en kort konfigurasjons-
     og databindings-oppgave — selve designet st&aring;r klart.
   </div>
 
@@ -743,6 +743,71 @@
       <li>Skal kunden kunne legge tjenesten direkte i kurv (med m&aring;l-skjema), eller g&aring;r alt via tilbuds-flow?</li>
       <li>Trenger vi egen &laquo;Send inn m&aring;l&raquo;-skjema med filopplasting (for slangetegning, fotos)?</li>
     </ul>
+  </section>
+
+  <hr class="divider" style="margin-block: var(--s-10);">
+
+  <!-- Block 4: Flere handlekurver -->
+  <section id="flere-kurver">
+    <header style="display: flex; justify-content: space-between; align-items: baseline; gap: var(--s-4); margin-bottom: var(--s-3); flex-wrap: wrap;">
+      <div>
+        <p class="t-overline" style="color: var(--mj-blue); margin: 0;">Blokk &middot; tidligere i Handlekurv</p>
+        <h2 class="t-h2" style="margin: var(--s-2) 0 0;">Flere handlekurver</h2>
+      </div>
+      <a class="link" href="account-carts.html">Se sidemalen for lagrede kurver &rarr;</a>
+    </header>
+    <p style="color: var(--color-text-secondary); max-width: 60ch; margin: 0 0 var(--s-4);">
+      Kunden kan ha én aktiv kurv og flere lagrede, og bytte mellom dem. Ikke med i denne fasen &mdash;
+      handlekurven har én kurv. Kurvvelgeren sto øverst i handlekurven, og sidemalen for lagrede kurver
+      lå som egen fane i Min konto.
+    </p>
+    <div class="cart-switcher" style="margin-bottom: var(--s-5);">
+      <div>
+        <span class="cart-switcher__label">Aktiv kurv:</span>
+        <span class="cart-switcher__name">&Aring;pen kurv</span>
+        <span style="color: var(--color-text-tertiary); margin-left: var(--s-2);">(7 varer)</span>
+      </div>
+      <div class="cart-switcher__actions">
+        <button class="btn btn--ghost btn--sm">Lagre som ny kurv...</button>
+        <a class="btn btn--outline btn--sm" href="account-carts.html">Bytt kurv (3 lagrede)</a>
+      </div>
+    </div>
+  </section>
+
+  <hr class="divider" style="margin-block: var(--s-10);">
+
+  <!-- Block 5: Nøkkeltall på Min konto -->
+  <section id="konto-nokkeltall">
+    <header style="display: flex; justify-content: space-between; align-items: baseline; gap: var(--s-4); margin-bottom: var(--s-3); flex-wrap: wrap;">
+      <div>
+        <p class="t-overline" style="color: var(--mj-blue); margin: 0;">Blokk &middot; tidligere på Min konto &rarr; Oversikt</p>
+        <h2 class="t-h2" style="margin: var(--s-2) 0 0;">Nøkkeltall på Min konto</h2>
+      </div>
+    </header>
+    <p style="color: var(--color-text-secondary); max-width: 60ch; margin: 0 0 var(--s-4);">
+      Tre kort øverst på oversikten: aktive ordrer, hyppig bestilte artikler og lagrede kurver.
+      Parkert sammen med flere handlekurver.
+    </p>
+    <div class="account-dashboard__widgets">
+      <div class="card">
+        <h3 class="card__title">Aktive ordrer</h3>
+        <div class="t-h1" style="font-variant-numeric: tabular-nums;">3</div>
+        <a class="link" href="account-orders.html">Se alle &rarr;</a>
+      </div>
+      <div class="card">
+        <h3 class="card__title">Hyppig bestilt</h3>
+        <div class="t-h1" style="font-variant-numeric: tabular-nums;">47</div>
+        <span style="color: var(--color-text-secondary); font-size: var(--fs-caption); display: block; margin-bottom: var(--s-2);">artikler du har bestilt &ge; 3 ganger</span>
+        <a class="link" href="#" style="display: block;">Bestill p&aring; nytt &rarr;</a>
+        <a class="link" href="#" style="display: block; margin-top: var(--s-1);">Legg til forsyningsl&oslash;sning &rarr;</a>
+      </div>
+      <div class="card">
+        <h3 class="card__title">Lagrede kurver</h3>
+        <div class="t-h1" style="font-variant-numeric: tabular-nums;">2</div>
+        <span style="color: var(--color-text-secondary); font-size: var(--fs-caption); display: block; margin-bottom: var(--s-2);">venter p&aring; ferdigstillelse</span>
+        <a class="link" href="account-carts.html">Fortsett bestilling &rarr;</a>
+      </div>
+    </div>
   </section>
 
   <footer style="margin-top: var(--s-10); padding-top: var(--s-6); border-top: 1px solid var(--mj-line-soft); color: var(--color-text-tertiary); font-size: var(--fs-caption);">
