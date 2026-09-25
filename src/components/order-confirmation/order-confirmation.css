@@ -30,13 +30,6 @@
   margin: 0;
 }
 
-.order-confirmation__id {
-  font-family: var(--ff-mono);
-  font-size: var(--fs-h4);
-  color: var(--color-text-secondary);
-  font-variant-numeric: tabular-nums;
-}
-
 .order-confirmation__desc {
   font-size: var(--fs-body);
   color: var(--color-text-secondary);
