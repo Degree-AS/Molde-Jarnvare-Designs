@@ -10,8 +10,12 @@
  *          Produkter ▾
  *          </button>
  *
- * On mobile (< --bp-lg) the mega-menu is hidden — categories are reached via
- * the hamburger drawer instead, which already has a flat list of the 15 mains.
+ * Tre paneler, ett per trigger: #megamenu (Produkter), #megamenu-supply
+ * (Forsyningsløsninger) og #megamenu-services (Øvrige Tjenester).
+ * src/scripts/site-header.js åpner/lukker dem via [data-open].
+ *
+ * On mobile (< --bp-lg) the mega-menu is hidden — the same content is reached
+ * via the drawer's sub-panels instead (see site-header.css).
  *
  * For static preview, set [data-preview-megamenu="true"] on .site-header.
  */
@@ -27,6 +31,9 @@
   box-shadow: var(--shadow-3);
   z-index: var(--z-overlay);
   display: none;
+  /* Headeren er sticky, så panelet scroller selv når det er høyere enn skjermen */
+  max-height: 75vh;
+  overflow-y: auto;
 }
 
 .megamenu[data-open="true"],
@@ -245,6 +252,7 @@
   text-decoration: none;
   padding: 6px 10px;
   border-radius: var(--r-sm);
+  white-space: nowrap;
   transition: background var(--duration-fast) var(--ease-standard),
               color var(--duration-fast) var(--ease-standard);
 }
@@ -278,10 +286,10 @@
   z-index: calc(var(--z-overlay) - 1);
   opacity: 0;
   pointer-events: none;
-  transition: opacity var(--duration-base) var(--ease-standard);
+  transition: opacity var(--duration-normal) var(--ease-standard);
 }
-.megamenu[data-open="true"] ~ .megamenu-backdrop,
-.site-header[data-preview-megamenu="true"] ~ .megamenu-backdrop {
+.megamenu-backdrop[data-open="true"],
+.site-header[data-preview-megamenu="true"] .megamenu-backdrop {
   opacity: 1;
   pointer-events: auto;
 }

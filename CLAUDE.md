@@ -80,6 +80,12 @@ A standalone preview `*.html` loads (1) Source Sans 3 from Google Fonts, (2) `..
 
 Promote inline ad-hoc styling to a new component on the **second** use, not the first.
 
+### Site header — one layout everywhere
+
+Every sketch uses the **same** header, mirrored from frontend-dev (`https://molde-jarnvare-frontend-dev.vercel.app/`). Only the actions differ: logged-in = Min konto + Handlekurv, anonymous (and `login.html`) = Logg inn. Never hand-edit the header in individual pages: change `scripts/site-header.py` (menu items, icons, texts) and run `python scripts/site-header.py` from the repo root — it rewrites the header in all `src/pages/*.html`, `src/components/index.html` and `docs/explorations/*.html`. Styles live in `src/components/site-header/site-header.css` + `megamenu.css`.
+
+The only shared JS is `src/scripts/site-header.js` (drawer, mobile search, megamenu toggles), loaded with `defer` in every page's `<head>`. Small inline scripts for a single component (e.g. category-nav «Vis alle») are fine.
+
 ### Pages and partials
 
 `src/pages/*.html` compose components into full pages. `src/pages/_partials.html` is a **non-runnable** reference of copy-paste blocks (header, footer, etc.) — do not link to it from a page; copy from it. When a backend templating engine is introduced later, `_partials.html` becomes the master layout.

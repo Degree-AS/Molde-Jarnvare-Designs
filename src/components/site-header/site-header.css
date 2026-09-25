@@ -1,18 +1,25 @@
 /**
  * Site header / Site shell — header (§15.1)
- * Sticky top navigation with logo, search, category menu and user actions.
+ *
+ * Ett oppsett på alle sider, speilet fra frontend-dev
+ * (molde-jarnvare-frontend-dev.vercel.app). Kun ikonene i actions varierer:
+ * innlogget = Min konto + Handlekurv, anonym = Logg inn.
  *
  * Responsive (§17, mobile-first):
- *   Default (mobile, < 768)  Logo + actions (cart, hamburger) on row 1.
- *                            Search bar spans full width on row 2.
- *                            Category nav is hidden — reached via hamburger drawer.
- *   Tablet (768–1023)        Same as mobile. Hamburger still visible.
- *   Desktop (≥ 1024 / --bp-lg) Logo, search, actions inline on one row.
- *                              Category nav visible as second row. No hamburger.
+ *   Mobil/tablet (< 1024)
+ *     Rad 1:  [☰ 🔍]  ·  logo (midtstilt)  ·  [konto kurv]
+ *     Rad 2:  tagline, midtstilt
+ *     🔍 åpner .site-header__search-panel (søkefelt i full bredde under headeren)
+ *     ☰ åpner .site-header__drawer fra venstre, med undermenyer per hovedpunkt
+ *   Desktop (≥ 1024 / --bp-lg)
+ *     Rad 1:  logo  ·  tagline  ·  [konto kurv]
+ *     Rad 2:  søkefelt (venstre)  ·  Produkter ▾  Forsyningsløsninger ▾
+ *             Øvrige Tjenester ▾  Kontakt (høyre)
+ *     Nav-triggere åpner .megamenu-panelene (se megamenu.css)
  *
- * The hamburger button + drawer markup is optional in HTML — pages without it
- * simply have no mobile nav (graceful degradation). Add markup per §15.1 to
- * enable the mobile drawer pattern.
+ * Oppførsel: src/scripts/site-header.js veksler [data-open] / [hidden] og
+ * aria-expanded. Statiske previews: [data-preview-open="true"] på
+ * .site-header viser skuffen åpen.
  */
 
 .site-header {
@@ -24,17 +31,15 @@
 }
 
 /* ─────────────────────────────────────────────────────────────────────────
- * Top row — logo + search + actions
- * Mobile: two-row grid (logo/actions on row 1, search on row 2)
- * Desktop: single-row grid (logo, search, actions inline)
+ * Rad 1 — logo, tagline, actions (+ ☰/🔍 på mobil)
  * ────────────────────────────────────────────────────────────────────── */
 .site-header__inner {
   display: grid;
   grid-template-areas:
-    "logo    actions"
-    "search  search";
-  grid-template-columns: 1fr auto;
-  gap: var(--s-3);
+    "start   logo    actions"
+    "tagline tagline tagline";
+  grid-template-columns: 1fr auto 1fr;
+  column-gap: var(--s-2);
   align-items: center;
   padding: var(--s-3) var(--gutter);
   max-width: var(--container-wide);
@@ -43,10 +48,21 @@
 
 @media (min-width: 1024px) /* --bp-lg */ {
   .site-header__inner {
-    grid-template-areas: "logo search actions";
+    grid-template-areas: "logo tagline actions";
     grid-template-columns: auto 1fr auto;
-    gap: var(--s-5);
+    column-gap: var(--s-6);
   }
+}
+
+/* ☰ + 🔍 — kun mobil/tablet */
+.site-header__start {
+  grid-area: start;
+  justify-self: start;
+  display: flex;
+  align-items: center;
+}
+@media (min-width: 1024px) /* --bp-lg */ {
+  .site-header__start { display: none; }
 }
 
 /* ─────────────────────────────────────────────────────────────────────────
@@ -54,9 +70,14 @@
  * ────────────────────────────────────────────────────────────────────── */
 .site-header__logo {
   grid-area: logo;
+  justify-self: center;
   display: inline-flex;
   align-items: center;
+  min-width: 0;
   text-decoration: none;
+}
+@media (min-width: 1024px) /* --bp-lg */ {
+  .site-header__logo { justify-self: start; }
 }
 
 .site-header__logo-img {
@@ -67,11 +88,7 @@
   width: 100%;
   max-width: 200px;
   height: auto;
-  /* Logo clear-space — half the height of letters in logo (§9.3) */
-  margin-block: var(--s-2);
-  margin-inline-end: var(--s-2);
 }
-
 @media (min-width: 1024px) /* --bp-lg */ {
   .site-header__logo-img { max-width: 280px; }
 }
@@ -86,18 +103,36 @@
 }
 
 /* ─────────────────────────────────────────────────────────────────────────
- * Search slot
+ * Tagline — totalleverandør-uttalelsen
  * ────────────────────────────────────────────────────────────────────── */
-.site-header__search { grid-area: search; }
+.site-header__tagline {
+  grid-area: tagline;
+  margin: 0;
+  padding-top: var(--s-2);
+  font-size: var(--fs-body-lg);
+  font-weight: var(--fw-regular);
+  line-height: var(--lh-snug);
+  color: var(--color-text-secondary);
+  text-align: center;
+}
+@media (min-width: 1024px) /* --bp-lg */ {
+  .site-header__tagline {
+    padding-top: 0;
+    font-size: var(--fs-h4);
+  }
+}
 
 /* ─────────────────────────────────────────────────────────────────────────
- * Action area — cart icon, account, hamburger (mobile only)
+ * Ikonknapper — ☰, 🔍, konto, kurv
  * ────────────────────────────────────────────────────────────────────── */
 .site-header__actions {
   grid-area: actions;
+  justify-self: end;
   display: flex;
   align-items: center;
-  gap: var(--s-2);
+}
+@media (min-width: 1024px) /* --bp-lg */ {
+  .site-header__actions { gap: var(--s-2); }
 }
 
 .site-header__action {
@@ -107,243 +142,169 @@
   justify-content: center;
   width: 44px;
   height: 44px;
+  padding: 0;
   background: transparent;
   border: 0;
   border-radius: var(--r-sm);
   cursor: pointer;
   color: var(--color-text-primary);
-  font-size: 20px;
+  text-decoration: none;
   transition: background var(--duration-fast) var(--ease-standard);
 }
 .site-header__action:hover { background: var(--color-bg-surface-alt); }
 .site-header__action:focus-visible { outline: none; box-shadow: var(--focus-ring); }
 
+.site-header__action-icon {
+  width: 22px;
+  height: 22px;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.6;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
 .site-header__action-badge {
   position: absolute;
-  top: 4px;
-  right: 4px;
+  top: var(--s-1);
+  right: var(--s-1);
   transform: translate(50%, -50%);
 }
 
 /* ─────────────────────────────────────────────────────────────────────────
- * Hamburger button — visible only under --bp-lg
+ * Mobilsøk — panel under rad 1, åpnes av 🔍. Skjult med [hidden].
  * ────────────────────────────────────────────────────────────────────── */
-.site-header__hamburger {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  width: 44px;
-  height: 44px;
-  background: transparent;
-  border: 0;
-  border-radius: var(--r-sm);
-  cursor: pointer;
-  color: var(--color-text-primary);
-  transition: background var(--duration-fast) var(--ease-standard);
+.site-header__search-panel {
+  border-top: var(--bw-1) solid var(--color-border-soft);
+  background: var(--color-bg-page);
 }
-.site-header__hamburger:hover { background: var(--color-bg-surface-alt); }
-.site-header__hamburger:focus-visible { outline: none; box-shadow: var(--focus-ring); }
-
+.site-header__search-panel[hidden] { display: none; }
 @media (min-width: 1024px) /* --bp-lg */ {
-  .site-header__hamburger { display: none; }
+  .site-header__search-panel { display: none; }
 }
 
-/* Three-line "burger" icon, drawn from pseudo-elements */
-.site-header__hamburger-icon {
-  position: relative;
-  display: block;
-  width: 20px;
-  height: 2px;
-  background: currentColor;
-  border-radius: 1px;
+.site-header__search-panel-inner {
+  max-width: var(--container-wide);
+  margin-inline: auto;
+  padding: var(--s-3) var(--gutter);
 }
-.site-header__hamburger-icon::before,
-.site-header__hamburger-icon::after {
-  content: "";
-  position: absolute;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: currentColor;
-  border-radius: 1px;
-}
-.site-header__hamburger-icon::before { top: -6px; }
-.site-header__hamburger-icon::after  { top:  6px; }
+.site-header__search-panel .search-bar { max-width: none; }
 
 /* ─────────────────────────────────────────────────────────────────────────
- * Category nav (second row) — visible only on desktop
- * On mobile/tablet, categories are reached via the hamburger drawer.
+ * Rad 2 — søkefelt + hovedmeny (kun desktop)
  * ────────────────────────────────────────────────────────────────────── */
 .site-header__main {
   display: none;
   border-top: var(--bw-1) solid var(--color-border-soft);
-  background: var(--mj-surface-0);
+  background: var(--color-bg-page);
 }
-
 @media (min-width: 1024px) /* --bp-lg */ {
   .site-header__main { display: block; }
 }
 
 .site-header__main-inner {
+  display: flex;
+  align-items: center;
+  gap: var(--s-5);
   max-width: var(--container-wide);
   margin-inline: auto;
-  padding-inline: var(--gutter);
+  padding: var(--s-3) var(--gutter);
 }
 
-.site-header__nav {
-  display: flex;
-  align-items: stretch;
-  gap: var(--s-5);
-  height: 44px;
-  overflow-x: auto;
-  scrollbar-width: none;
-}
-.site-header__nav::-webkit-scrollbar { display: none; }
-
-.site-header__nav-link {
-  display: inline-flex;
-  align-items: center;
-  font-size: var(--fs-body-sm);
-  font-weight: var(--fw-semibold);
-  color: var(--color-text-primary);
-  text-decoration: none;
-  white-space: nowrap;
-  border-bottom: var(--bw-3) solid transparent;
-  padding-block: 2px;
-  transition:
-    color var(--duration-fast) var(--ease-standard),
-    border-color var(--duration-fast) var(--ease-standard);
-}
-.site-header__nav-link:hover { color: var(--color-action-primary); }
-.site-header__nav-link[aria-current="page"] {
-  color: var(--color-action-primary);
-  border-bottom-color: var(--color-action-primary);
-}
-
-/* "Tilbud" link — orange accent to distinguish campaign from category */
-.site-header__nav-link--accent { color: var(--mj-orange); }
-.site-header__nav-link--accent:hover {
-  color: var(--mj-orange);
-  filter: brightness(0.9);
-}
-
-/* ─────────────────────────────────────────────────────────────────────────
- * Alt header variant — produksjonsstandard på de fleste sider
- *
- * Forskjell fra default-headeren:
- *   Nivå 1 (top):   logo  | tagline (totalleverandør-uttalelse) | actions
- *                   Søkefeltet er flyttet ned til nivå 2 på desktop,
- *                   og erstattet av et lupe-ikon i actions på mobil.
- *   Nivå 2 (main):  søkefelt (venstre) | nav-items + Kontakt oss (høyre)
- *
- * Default-headeren beholdes som klassisk variant (uten tagline, søk på
- * topp) — brukes der vi vil ha en enklere ramme rundt innholdet, f.eks.
- * på login-siden. Sider som skal ha den nye headeren har klassen
- * .site-header--alt på <header>.
- * ────────────────────────────────────────────────────────────────────── */
-
-.site-header--alt .site-header__inner {
-  grid-template-areas:
-    "logo    actions"
-    "tagline tagline";
-  grid-template-columns: 1fr auto;
-  column-gap: var(--s-4);
-}
-@media (min-width: 1024px) /* --bp-lg */ {
-  .site-header--alt .site-header__inner {
-    grid-template-areas: "logo tagline actions";
-    grid-template-columns: auto 1fr auto;
-    gap: var(--s-6);
-  }
-}
-
-.site-header__tagline-top {
-  grid-area: tagline;
-  margin: 0;
-  font-size: var(--fs-body-lg);
-  font-weight: var(--fw-regular);
-  color: var(--color-text-secondary);
-  line-height: var(--lh-snug);
-  text-align: center;
-  align-self: center;
-}
-@media (min-width: 1024px) /* --bp-lg */ {
-  .site-header__tagline-top {
-    font-size: var(--fs-h4);
-  }
-}
-
-.site-header--alt .site-header__main-inner {
-  display: flex;
-  align-items: center;
-  gap: var(--s-5);
-  padding-block: var(--s-3);
-}
-.site-header__search-bottom {
+.site-header__search {
   flex: 0 1 380px;
   min-width: 0;
 }
-.site-header--alt .site-header__nav {
+
+/* Nav-triggere og Kontakt-lenken styles i megamenu.css */
+.site-header__nav {
+  display: flex;
   flex: 1;
+  align-items: center;
   justify-content: flex-end;
-  height: auto;
   gap: var(--s-2);
 }
 
-@media (min-width: 1024px) /* --bp-lg */ {
-  .site-header__action--search { display: none; }
-}
-
-/* Tighter gap mellom action-ikoner på mobil/tablet — desktop beholder
-   var(--s-2) som default. På mobil/tab har vi flere ikoner i actions
-   (søk + konto + kurv + hamburger) og 8 px gap føles luftig. */
-@media (max-width: 1023.98px) /* under --bp-lg */ {
-  .site-header__actions { gap: 0; }
-}
-
 /* ─────────────────────────────────────────────────────────────────────────
- * Mobile nav drawer (rendered out-of-flow, slides in from the right)
- * Toggled by JS on the hamburger via [data-open]. For static preview, set
- * [data-preview-open="true"] on .site-header.
+ * Mobilmeny (skuff fra venstre)
+ * Panel 1 = hovedpunktene. Hvert hovedpunkt med › åpner sitt eget panel
+ * (Produkter, Forsyningsløsninger, Øvrige Tjenester) med «‹ Tilbake».
  * ────────────────────────────────────────────────────────────────────── */
 .site-header__drawer {
   position: fixed;
   top: 0;
-  right: 0;
+  left: 0;
   bottom: 0;
   width: min(320px, 85vw);
   background: var(--color-bg-surface);
   z-index: var(--z-modal);
-  transform: translateX(100%);
-  transition: transform var(--duration-base) var(--ease-standard);
+  transform: translateX(-100%);
+  visibility: hidden;
+  transition:
+    transform var(--duration-normal) var(--ease-standard),
+    visibility 0s linear var(--duration-normal);
   box-shadow: var(--shadow-4);
   overflow-y: auto;
 }
 .site-header__drawer[data-open="true"],
 .site-header[data-preview-open="true"] .site-header__drawer {
   transform: translateX(0);
+  visibility: visible;
+  transition: transform var(--duration-normal) var(--ease-standard);
 }
-
 @media (min-width: 1024px) /* --bp-lg */ {
   .site-header__drawer { display: none; }
 }
+
+.site-header__drawer-panel[hidden] { display: none; }
 
 .site-header__drawer-header {
   display: flex;
   align-items: center;
   justify-content: space-between;
+  gap: var(--s-2);
   padding: var(--s-3) var(--s-5);
   border-bottom: var(--bw-1) solid var(--color-border-soft);
 }
 
-.site-header__drawer-close {
-  width: 44px;
-  height: 44px;
+.site-header__drawer-title {
+  font-size: var(--fs-body);
+  font-weight: var(--fw-semibold);
+  color: var(--color-text-primary);
+}
+
+/* «‹ Produkter» — tilbake til hovedpanelet */
+.site-header__drawer-back {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--s-2);
+  min-height: 44px;
+  margin-inline-start: calc(var(--s-2) * -1);
+  padding: 0 var(--s-2);
+  font-family: inherit;
+  font-size: var(--fs-body);
+  font-weight: var(--fw-semibold);
+  color: var(--color-text-primary);
   background: transparent;
   border: 0;
   border-radius: var(--r-sm);
   cursor: pointer;
-  font-size: 24px;
+}
+.site-header__drawer-back:hover { background: var(--color-bg-surface-alt); }
+.site-header__drawer-back:focus-visible { outline: none; box-shadow: var(--focus-ring); }
+
+.site-header__drawer-close {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  margin-inline-end: calc(var(--s-2) * -1);
+  padding: 0;
+  background: transparent;
+  border: 0;
+  border-radius: var(--r-sm);
+  cursor: pointer;
   color: var(--color-text-primary);
 }
 .site-header__drawer-close:hover { background: var(--color-bg-surface-alt); }
@@ -354,20 +315,86 @@
   flex-direction: column;
   padding: var(--s-3) 0;
 }
-.site-header__drawer-nav a {
+
+/* Hovedpunkt i skuffen — knapp (med ›) eller lenke */
+.site-header__drawer-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--s-2);
+  width: 100%;
+  padding: var(--s-4) var(--s-5);
+  font-family: inherit;
+  font-size: var(--fs-body);
+  font-weight: var(--fw-semibold);
+  text-align: start;
+  color: var(--color-text-primary);
+  text-decoration: none;
+  background: transparent;
+  border: 0;
+  border-bottom: var(--bw-1) solid var(--color-border-soft);
+  cursor: pointer;
+}
+.site-header__drawer-item:hover { background: var(--color-bg-surface-alt); }
+.site-header__drawer-item:focus-visible { outline: none; box-shadow: inset var(--focus-ring); }
+
+/* Kontakt — blå med telefonikon */
+.site-header__drawer-item--contact {
+  justify-content: flex-start;
+  color: var(--color-action-primary);
+}
+
+.site-header__drawer-icon {
+  flex: none;
+  width: 18px;
+  height: 18px;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.8;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+.site-header__drawer-item .site-header__drawer-icon--chevron { color: var(--color-text-secondary); }
+
+/* Undermeny-panel: «Se alle …» + grupper */
+.site-header__drawer-all {
   display: block;
   padding: var(--s-4) var(--s-5);
+  font-weight: var(--fw-semibold);
+  color: var(--color-action-primary);
+  text-decoration: none;
+  border-bottom: var(--bw-1) solid var(--color-border-soft);
+}
+.site-header__drawer-all:hover { background: var(--color-bg-surface-alt); }
+
+.site-header__drawer-group {
+  padding: var(--s-4) 0 var(--s-3);
+  border-bottom: var(--bw-1) solid var(--color-border-soft);
+}
+
+.site-header__drawer-group-title {
+  display: block;
+  padding: 0 var(--s-5) var(--s-2);
   font-size: var(--fs-body);
   font-weight: var(--fw-semibold);
   color: var(--color-text-primary);
   text-decoration: none;
-  border-bottom: var(--bw-1) solid var(--color-border-soft);
 }
-.site-header__drawer-nav a:hover {
-  color: var(--color-action-primary);
-  background: var(--color-bg-surface-alt);
+
+.site-header__drawer-list {
+  margin: 0;
+  padding: 0;
+  list-style: none;
 }
-.site-header__drawer-nav a[aria-current="page"] {
+
+.site-header__drawer-link {
+  display: block;
+  padding: var(--s-2) var(--s-5);
+  font-size: var(--fs-body-sm);
+  color: var(--color-text-secondary);
+  text-decoration: none;
+}
+.site-header__drawer-link:hover {
   color: var(--color-action-primary);
   background: var(--color-bg-surface-alt);
 }
@@ -380,14 +407,13 @@
   z-index: calc(var(--z-modal) - 1);
   opacity: 0;
   pointer-events: none;
-  transition: opacity var(--duration-base) var(--ease-standard);
+  transition: opacity var(--duration-normal) var(--ease-standard);
 }
 .site-header__drawer-backdrop[data-open="true"],
-.site-header[data-preview-open="true"] ~ .site-header__drawer-backdrop {
+.site-header[data-preview-open="true"] .site-header__drawer-backdrop {
   opacity: 1;
   pointer-events: auto;
 }
-
 @media (min-width: 1024px) /* --bp-lg */ {
   .site-header__drawer-backdrop { display: none; }
 }

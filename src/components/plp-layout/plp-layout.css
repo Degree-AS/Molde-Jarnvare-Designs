@@ -43,7 +43,7 @@
   background: var(--color-bg-surface);
   z-index: var(--z-modal);
   transform: translateX(-100%);
-  transition: transform var(--duration-base) var(--ease-standard);
+  transition: transform var(--duration-normal) var(--ease-standard);
   overflow-y: auto;
   box-shadow: var(--shadow-4);
 }
@@ -220,7 +220,7 @@
   z-index: calc(var(--z-modal) - 1);
   opacity: 0;
   pointer-events: none;
-  transition: opacity var(--duration-base) var(--ease-standard);
+  transition: opacity var(--duration-normal) var(--ease-standard);
 }
 .plp-layout__backdrop[data-open="true"],
 .plp-layout[data-preview-open="true"] ~ .plp-layout__backdrop {
