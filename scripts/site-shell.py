@@ -1,13 +1,13 @@
 # -*- coding: utf-8 -*-
-"""Felles site-header for alle skisser — én kilde, byttes inn i alle sider.
+"""Felles site-header og site-footer for alle skisser — én kilde, byttes inn i alle sider.
 
-Kjør fra repo-roten etter endringer i headeren (menypunkter, ikoner, tekster):
-    python scripts/site-header.py
+Kjør fra repo-roten etter endringer i header eller footer (menypunkter, lenker, ikoner, tekster):
+    python scripts/site-shell.py
 
 Oppdaterer src/pages/*.html (unntatt index.html og _partials.html),
 src/components/index.html og docs/explorations/*.html. Anonyme sider
 (ANON under) får «Logg inn» i stedet for konto + handlekurv.
-_partials.html oppdateres ikke automatisk — lim inn build('', '../assets/', False).
+_partials.html oppdateres ikke automatisk — lim inn build(...) / build_footer(...).
 Rør aldri versions/ — de er frosne.
 """
 import io, re, glob
@@ -175,6 +175,57 @@ def build(p, a, anon, attrs=''):
     w('</header>')
     return '\n'.join(L)
 
+# ── Footer ───────────────────────────────────────────────────────────────
+SOCIAL = [  # (navn, url, svg-innhold)
+  ('Facebook',  'https://facebook.com/moldejarnvare',
+   '<path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/>'),
+  ('Instagram', 'https://instagram.com/moldejarnvare',
+   '<rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="0.6"/>'),
+  ('LinkedIn',  'https://linkedin.com/company/moldejarnvare',
+   '<rect x="3" y="3" width="18" height="18" rx="2"/><path d="M8 10v7M8 7v.01M12 17v-4a2 2 0 0 1 4 0v4M12 10v7"/>'),
+]
+FOOTER_COLS = [  # (tittel, [(tekst, side | None)])
+  ('Kundeservice', [('Mine sider', 'account.html'), ('Frakt og levering', None), ('Kontakt oss', 'team.html'),
+                    ('FAQ', None), ('Åpningstider', None)]),
+  ('Om oss', [('Om Molde Jarnvare', 'static.html'), ('Personvern', None), ('Vilkår', None), ('Aktuelt', 'news.html')]),
+]
+
+def build_footer(p, a, anon):
+    def href(x): return f'{p}{x}' if x else '#'
+    L = []
+    w = L.append
+    w('<footer class="site-footer">')
+    w('  <div class="site-footer__inner">')
+    w('    <div class="site-footer__grid">')
+    w('      <div class="site-footer__brand">')
+    w(f'        <img src="{a}logos/molde-jarnvare-negative.png" alt="Molde Jarnvare" class="site-footer__logo-img">')
+    w('        <p class="site-footer__tagline">På lag med industrien siden 1930</p>')
+    w('        <p class="site-footer__contact">Industriveien 26<br>6422 Molde<br><a href="tel:71254200">71 25 42 00</a> · <a href="mailto:post@moldejarnvare.no">post@moldejarnvare.no</a></p>')
+    w('      </div>')
+    for title, links in FOOTER_COLS:
+        w('      <div>')
+        w(f'        <h2 class="site-footer__col-title">{title}</h2>')
+        w(f'        <nav class="site-footer__list" aria-label="{title}">')
+        for text, page in links:
+            if anon and page == 'account.html':
+                text, page = 'Logg inn', 'login.html'  # Anonym besøkende (ADO 19544)
+            w(f'          <a href="{href(page)}">{text}</a>')
+        w('        </nav>')
+        w('      </div>')
+    w('    </div>')
+    w('    <div class="site-footer__bottom">')
+    w('      <span>&copy; 2026 Molde Jarnvare AS</span>')
+    w('      <div class="site-footer__social" aria-label="Sosiale medier">')
+    for name, url, icon in SOCIAL:
+        w(f'        <a href="{url}" aria-label="{name}"><svg class="site-footer__social-icon" viewBox="0 0 24 24" aria-hidden="true">{icon}</svg></a>')
+    w('      </div>')
+    w('    </div>')
+    w('  </div>')
+    w('</footer>')
+    return '\n'.join(L)
+
+FOOTER_RX = re.compile(r'<footer class="site-footer".*?</footer>', re.S)
+
 HEADER_RX = re.compile(r'<header class="site-header[^"]*"([^>]*)>.*?</header>'
                        r'(\s*<div class="site-header__drawer-backdrop"[^>]*></div>)?'
                        r'(\s*<div class="megamenu-backdrop"[^>]*></div>)?', re.S)
@@ -191,6 +242,9 @@ def apply(path, p, a, anon):
     m = HEADER_RX.search(s)
     assert m, path
     s = s[:m.start()] + build(p, a, anon, keep_attrs(m.group(1))) + s[m.end():]
+    fm = FOOTER_RX.search(s)
+    if fm:  # docs/explorations har ingen footer
+        s = s[:fm.start()] + build_footer(p, a, anon) + s[fm.end():]
     if 'scripts/site-header.js' not in s:
         s, n = CSS_RX.subn(lambda mm: mm.group(1) + f'\n  <script src="{mm.group(2)}scripts/site-header.js" defer></script>', s, count=1)
         assert n == 1, path
