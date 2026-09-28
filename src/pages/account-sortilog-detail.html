@@ -1,0 +1,1119 @@
+<!doctype html>
+<html lang="nb">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Vedlikehold — Sortilog — Molde Jarnvare</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Source+Sans+3:wght@400;500;600;700;900&family=JetBrains+Mono:wght@400&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../styles/index.css">
+  <script src="../scripts/site-header.js" defer></script>
+</head>
+<body>
+
+<header class="site-header">
+  <div class="site-header__inner">
+    <!-- Meny + søk — kun mobil/tablet (skjult fra --bp-lg) -->
+    <div class="site-header__start">
+      <button class="site-header__action" type="button" aria-label="Åpne meny" aria-controls="site-nav-drawer" aria-expanded="false"><svg class="site-header__action-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 6h16M4 12h16M4 18h16"/></svg></button>
+      <button class="site-header__action site-header__action--search" type="button" aria-label="Åpne søk" aria-controls="site-header-search-mobile" aria-expanded="false"><svg class="site-header__action-icon" viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.35-4.35"/></svg></button>
+    </div>
+    <a class="site-header__logo" href="home.html" aria-label="Molde Jarnvare – til forsiden"><img src="../assets/logos/molde-jarnvare-positive.png" alt="Molde Jarnvare" class="site-header__logo-img"></a>
+    <p class="site-header__tagline">Totalleverandør av festemidler, hydraulikk, verneutstyr, verktøy og forbruksmateriell</p>
+    <div class="site-header__actions">
+      <a class="site-header__action" href="account.html" aria-label="Min konto"><svg class="site-header__action-icon" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4 4-7 8-7s8 3 8 7"/></svg></a>
+      <a class="site-header__action" href="cart.html" aria-label="Handlekurv (3)"><svg class="site-header__action-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6h15l-1.5 9H7.5z"/><path d="M6 6 5 3H2"/><circle cx="9" cy="20" r="1.5"/><circle cx="18" cy="20" r="1.5"/></svg><span class="badge badge--numeric site-header__action-badge">3</span></a>
+    </div>
+  </div>
+
+  <!-- Mobilsøk — åpnes av søkeikonet (skjult fra --bp-lg) -->
+  <div class="site-header__search-panel" id="site-header-search-mobile" hidden>
+    <div class="site-header__search-panel-inner">
+      <form class="search-bar" role="search" action="search.html">
+        <svg class="search-bar__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.35-4.35"/></svg>
+        <input class="search-bar__input" type="search" name="q" placeholder="Søk i 30 000+ artikler, NOBB-nr, EAN…" aria-label="Søk">
+        <button class="search-bar__submit" type="submit">Søk</button>
+      </form>
+    </div>
+  </div>
+
+  <!-- Rad 2 — søk + hovedmeny (kun desktop) -->
+  <div class="site-header__main">
+    <div class="site-header__main-inner">
+      <div class="site-header__search">
+        <form class="search-bar" role="search" action="search.html">
+          <svg class="search-bar__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.35-4.35"/></svg>
+          <input class="search-bar__input" type="search" name="q" placeholder="Søk i 30 000+ artikler, NOBB-nr, EAN…" aria-label="Søk">
+          <button class="search-bar__submit" type="submit">Søk</button>
+        </form>
+      </div>
+      <nav class="site-header__nav" aria-label="Hovedmeny">
+        <button class="site-header__nav-trigger" type="button" aria-controls="megamenu" aria-expanded="false">Produkter<svg class="site-header__nav-trigger-icon" width="14" height="14" viewBox="0 0 24 24" stroke-width="2" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></button>
+        <button class="site-header__nav-trigger" type="button" aria-controls="megamenu-supply" aria-expanded="false">Forsyningsløsninger<svg class="site-header__nav-trigger-icon" width="14" height="14" viewBox="0 0 24 24" stroke-width="2" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></button>
+        <button class="site-header__nav-trigger" type="button" aria-controls="megamenu-services" aria-expanded="false">Øvrige Tjenester<svg class="site-header__nav-trigger-icon" width="14" height="14" viewBox="0 0 24 24" stroke-width="2" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></button>
+        <a class="site-header__nav-link" href="team.html"><svg class="site-header__nav-link-icon" width="16" height="16" viewBox="0 0 24 24" aria-hidden="true"><path d="M3.5 5.5c0-1.1.9-2 2-2h2.2c.5 0 .9.3 1 .8l1 4c.1.4 0 .8-.3 1.1L7.5 11a14 14 0 0 0 5.5 5.5l1.6-1.9c.3-.3.7-.4 1.1-.3l4 1c.5.1.8.5.8 1V18.5c0 1.1-.9 2-2 2A16.5 16.5 0 0 1 3.5 5.5z"/></svg>Kontakt</a>
+      </nav>
+    </div>
+  </div>
+
+  <!-- Megamenyer — én per trigger, åpnes under headeren på desktop.
+       Backdrop ligger inni headeren så den havner under panelene (samme stacking context). -->
+  <div class="megamenu-backdrop" aria-hidden="true"></div>
+  <div class="megamenu" id="megamenu" role="navigation" aria-label="Produkter">
+    <div class="megamenu__inner">
+      <div class="megamenu__intro"><h2 class="megamenu__intro-title">Alle produkter</h2></div>
+      <div class="megamenu__columns">
+        <div class="megamenu__group">
+          <a class="megamenu__heading" href="#">Festemidler</a>
+          <ul class="megamenu__list">
+            <li><a href="#">Annet festemateriell</a></li>
+            <li><a href="#">Blindnagler og blindmuttere</a></li>
+            <li><a href="#">Gjengestenger</a></li>
+            <li><a href="#">Låseringer</a></li>
+            <li><a href="#">Muttere</a></li>
+            <li><a href="#">Pinner og hylser</a></li>
+            <li><a href="#">Skiver</a></li>
+            <li><a href="category.html">Skruer og bolter</a></li>
+            <li><a href="#">Spiker</a></li>
+          </ul>
+        </div>
+        <div class="megamenu__group">
+          <a class="megamenu__heading" href="#">Verktøy</a>
+          <ul class="megamenu__list">
+            <li><a href="#">Håndverktøy</a></li>
+            <li><a href="#">Elektroverktøy</a></li>
+            <li><a href="#">Skrumaskiner og borr</a></li>
+            <li><a href="#">Nøkler og tang</a></li>
+          </ul>
+        </div>
+        <div class="megamenu__group">
+          <a class="megamenu__heading" href="#">Verneutstyr</a>
+          <ul class="megamenu__list">
+            <li><a href="#">Hansker</a></li>
+            <li><a href="#">Briller og hørselsvern</a></li>
+            <li><a href="#">Hjelmer</a></li>
+            <li><a href="#">Vernefottøy</a></li>
+            <li><a href="#">Åndedrettsvern</a></li>
+          </ul>
+        </div>
+        <div class="megamenu__group">
+          <a class="megamenu__heading" href="#">Hydraulikk</a>
+          <ul class="megamenu__list">
+            <li><a href="#">Slanger og koblinger</a></li>
+            <li><a href="#">Sylindere</a></li>
+            <li><a href="#">Ventiler og pumper</a></li>
+          </ul>
+        </div>
+        <div class="megamenu__group">
+          <a class="megamenu__heading" href="#">Sveis</a>
+          <ul class="megamenu__list">
+            <li><a href="#">Sveiseapparater</a></li>
+            <li><a href="#">Elektroder og tråd</a></li>
+            <li><a href="#">Beskyttelsesgass</a></li>
+          </ul>
+        </div>
+        <div class="megamenu__group">
+          <a class="megamenu__heading" href="#">Industri</a>
+          <ul class="megamenu__list">
+            <li><a href="#">Kulelagre</a></li>
+            <li><a href="#">Drev og tannhjul</a></li>
+            <li><a href="#">Akselkoblinger</a></li>
+          </ul>
+        </div>
+        <div class="megamenu__group">
+          <a class="megamenu__heading" href="#">Slipemidler</a>
+          <ul class="megamenu__list">
+            <li><a href="#">Slipeskiver</a></li>
+            <li><a href="#">Slipepapir</a></li>
+            <li><a href="#">Polering</a></li>
+          </ul>
+        </div>
+        <div class="megamenu__group">
+          <a class="megamenu__heading" href="#">Tetninger og pakninger</a>
+          <ul class="megamenu__list">
+            <li><a href="#">O-ringer</a></li>
+            <li><a href="#">Flatpakninger</a></li>
+            <li><a href="#">Tetningsmasse</a></li>
+          </ul>
+        </div>
+        <div class="megamenu__group">
+          <a class="megamenu__heading" href="#">Lim og kjemikalier</a>
+          <ul class="megamenu__list">
+            <li><a href="#">Industrilim</a></li>
+            <li><a href="#">Silikon og fugemasse</a></li>
+            <li><a href="#">Sprayer og rens</a></li>
+          </ul>
+        </div>
+        <div class="megamenu__group">
+          <a class="megamenu__heading" href="#">Måleinstrumenter</a>
+          <ul class="megamenu__list">
+            <li><a href="#">Skyvelære og mikrometer</a></li>
+            <li><a href="#">Multimeter</a></li>
+            <li><a href="#">Vekter og våger</a></li>
+          </ul>
+        </div>
+        <div class="megamenu__group">
+          <a class="megamenu__heading" href="#">Smøring og rens</a>
+          <ul class="megamenu__list">
+            <li><a href="#">Smøreolje og fett</a></li>
+            <li><a href="#">Avfetting og rens</a></li>
+            <li><a href="#">Rustbeskyttelse</a></li>
+          </ul>
+        </div>
+        <div class="megamenu__group">
+          <a class="megamenu__heading" href="#">Bil og verksted</a>
+          <ul class="megamenu__list">
+            <li><a href="#">Jekker og bukker</a></li>
+            <li><a href="#">Verktøyvogner</a></li>
+            <li><a href="#">Trykkluft og slanger</a></li>
+          </ul>
+        </div>
+        <div class="megamenu__group">
+          <a class="megamenu__heading" href="#">Lagring og logistikk</a>
+          <ul class="megamenu__list">
+            <li><a href="#">Plastbokser og kasser</a></li>
+            <li><a href="#">Hyller og reoler</a></li>
+            <li><a href="#">Pakketape og emballasje</a></li>
+          </ul>
+        </div>
+        <div class="megamenu__group">
+          <a class="megamenu__heading" href="#">Elektro</a>
+          <ul class="megamenu__list">
+            <li><a href="#">Kabel og ledning</a></li>
+            <li><a href="#">Plugger og kontakter</a></li>
+            <li><a href="#">Sikringer og automater</a></li>
+          </ul>
+        </div>
+        <div class="megamenu__group">
+          <a class="megamenu__heading" href="#">Skilt og merking</a>
+          <ul class="megamenu__list">
+            <li><a href="#">Etiketter og tape</a></li>
+            <li><a href="#">Sikkerhetsskilt</a></li>
+            <li><a href="#">Avsperring</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="megamenu__footer">
+        <a class="megamenu__footer-link" href="#">Se alle produkter →</a>
+        <span class="megamenu__intro-meta">Bestill direkte med <strong>NOBB-nr</strong> eller <strong>EAN</strong> via søket</span>
+      </div>
+    </div>
+  </div>
+  <div class="megamenu" id="megamenu-supply" role="navigation" aria-label="Forsyningsløsninger">
+    <div class="megamenu__inner">
+      <div class="megamenu__intro"><h2 class="megamenu__intro-title">Alle forsyningsløsninger</h2></div>
+      <div class="megamenu__columns">
+        <div class="megamenu__group"><a class="megamenu__heading" href="content-2box.html">2BOX</a></div>
+        <div class="megamenu__group"><a class="megamenu__heading" href="#">Scan2order</a></div>
+        <div class="megamenu__group"><a class="megamenu__heading" href="#">Weight2Order</a></div>
+        <div class="megamenu__group"><a class="megamenu__heading" href="#">Verktøysporing</a></div>
+      </div>
+      <div class="megamenu__footer">
+        <a class="megamenu__footer-link" href="#">Se alle forsyningsløsninger →</a>
+      </div>
+    </div>
+  </div>
+  <div class="megamenu" id="megamenu-services" role="navigation" aria-label="Øvrige Tjenester">
+    <div class="megamenu__inner">
+      <div class="megamenu__intro"><h2 class="megamenu__intro-title">Alle øvrige tjenester</h2></div>
+      <div class="megamenu__columns">
+        <div class="megamenu__group"><a class="megamenu__heading" href="#">Slange-verksted</a></div>
+        <div class="megamenu__group"><a class="megamenu__heading" href="#">Analyse og kalibrering</a></div>
+        <div class="megamenu__group"><a class="megamenu__heading" href="#">Profiltøy</a></div>
+        <div class="megamenu__group"><a class="megamenu__heading" href="#">Kurs og opplæring</a></div>
+        <div class="megamenu__group"><a class="megamenu__heading" href="#">Enerpac</a></div>
+        <div class="megamenu__group"><a class="megamenu__heading" href="#">Parker Store</a></div>
+        <div class="megamenu__group"><a class="megamenu__heading" href="#">ONIX</a></div>
+        <div class="megamenu__group"><a class="megamenu__heading" href="#">Serviceverksted</a></div>
+      </div>
+      <div class="megamenu__footer">
+        <a class="megamenu__footer-link" href="#">Se alle øvrige tjenester →</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Mobilmeny — skuff fra venstre (skjult fra --bp-lg). Ett panel per undermeny. -->
+  <div class="site-header__drawer-backdrop" aria-hidden="true"></div>
+  <div class="site-header__drawer" id="site-nav-drawer" role="dialog" aria-modal="true" aria-label="Meny">
+    <div class="site-header__drawer-panel" id="drawer-main">
+      <div class="site-header__drawer-header"><span class="site-header__drawer-title">Meny</span><button class="site-header__drawer-close" type="button" aria-label="Lukk meny" data-drawer-close><svg class="site-header__action-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12M18 6 6 18"/></svg></button></div>
+      <nav class="site-header__drawer-nav" aria-label="Hovedmeny (mobil)">
+        <button class="site-header__drawer-item" type="button" data-drawer-panel="drawer-products">Produkter<svg class="site-header__drawer-icon site-header__drawer-icon--chevron" viewBox="0 0 24 24" aria-hidden="true"><path d="m9 6 6 6-6 6"/></svg></button>
+        <button class="site-header__drawer-item" type="button" data-drawer-panel="drawer-supply">Forsyningsløsninger<svg class="site-header__drawer-icon site-header__drawer-icon--chevron" viewBox="0 0 24 24" aria-hidden="true"><path d="m9 6 6 6-6 6"/></svg></button>
+        <button class="site-header__drawer-item" type="button" data-drawer-panel="drawer-services">Øvrige Tjenester<svg class="site-header__drawer-icon site-header__drawer-icon--chevron" viewBox="0 0 24 24" aria-hidden="true"><path d="m9 6 6 6-6 6"/></svg></button>
+        <a class="site-header__drawer-item site-header__drawer-item--contact" href="team.html"><svg class="site-header__drawer-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M3.5 5.5c0-1.1.9-2 2-2h2.2c.5 0 .9.3 1 .8l1 4c.1.4 0 .8-.3 1.1L7.5 11a14 14 0 0 0 5.5 5.5l1.6-1.9c.3-.3.7-.4 1.1-.3l4 1c.5.1.8.5.8 1V18.5c0 1.1-.9 2-2 2A16.5 16.5 0 0 1 3.5 5.5z"/></svg>Kontakt</a>
+      </nav>
+    </div>
+    <div class="site-header__drawer-panel" id="drawer-products" hidden>
+      <div class="site-header__drawer-header"><button class="site-header__drawer-back" type="button" data-drawer-panel="drawer-main"><svg class="site-header__drawer-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="m15 6-6 6 6 6"/></svg>Produkter</button><button class="site-header__drawer-close" type="button" aria-label="Lukk meny" data-drawer-close><svg class="site-header__action-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12M18 6 6 18"/></svg></button></div>
+      <a class="site-header__drawer-all" href="#">Se alle produkter</a>
+      <div class="site-header__drawer-group">
+        <a class="site-header__drawer-group-title" href="#">Festemidler</a>
+        <ul class="site-header__drawer-list">
+          <li><a class="site-header__drawer-link" href="#">Annet festemateriell</a></li>
+          <li><a class="site-header__drawer-link" href="#">Blindnagler og blindmuttere</a></li>
+          <li><a class="site-header__drawer-link" href="#">Gjengestenger</a></li>
+          <li><a class="site-header__drawer-link" href="#">Låseringer</a></li>
+          <li><a class="site-header__drawer-link" href="#">Muttere</a></li>
+          <li><a class="site-header__drawer-link" href="#">Pinner og hylser</a></li>
+          <li><a class="site-header__drawer-link" href="#">Skiver</a></li>
+          <li><a class="site-header__drawer-link" href="category.html">Skruer og bolter</a></li>
+          <li><a class="site-header__drawer-link" href="#">Spiker</a></li>
+        </ul>
+      </div>
+      <div class="site-header__drawer-group">
+        <a class="site-header__drawer-group-title" href="#">Verktøy</a>
+        <ul class="site-header__drawer-list">
+          <li><a class="site-header__drawer-link" href="#">Håndverktøy</a></li>
+          <li><a class="site-header__drawer-link" href="#">Elektroverktøy</a></li>
+          <li><a class="site-header__drawer-link" href="#">Skrumaskiner og borr</a></li>
+          <li><a class="site-header__drawer-link" href="#">Nøkler og tang</a></li>
+        </ul>
+      </div>
+      <div class="site-header__drawer-group">
+        <a class="site-header__drawer-group-title" href="#">Verneutstyr</a>
+        <ul class="site-header__drawer-list">
+          <li><a class="site-header__drawer-link" href="#">Hansker</a></li>
+          <li><a class="site-header__drawer-link" href="#">Briller og hørselsvern</a></li>
+          <li><a class="site-header__drawer-link" href="#">Hjelmer</a></li>
+          <li><a class="site-header__drawer-link" href="#">Vernefottøy</a></li>
+          <li><a class="site-header__drawer-link" href="#">Åndedrettsvern</a></li>
+        </ul>
+      </div>
+      <div class="site-header__drawer-group">
+        <a class="site-header__drawer-group-title" href="#">Hydraulikk</a>
+        <ul class="site-header__drawer-list">
+          <li><a class="site-header__drawer-link" href="#">Slanger og koblinger</a></li>
+          <li><a class="site-header__drawer-link" href="#">Sylindere</a></li>
+          <li><a class="site-header__drawer-link" href="#">Ventiler og pumper</a></li>
+        </ul>
+      </div>
+      <div class="site-header__drawer-group">
+        <a class="site-header__drawer-group-title" href="#">Sveis</a>
+        <ul class="site-header__drawer-list">
+          <li><a class="site-header__drawer-link" href="#">Sveiseapparater</a></li>
+          <li><a class="site-header__drawer-link" href="#">Elektroder og tråd</a></li>
+          <li><a class="site-header__drawer-link" href="#">Beskyttelsesgass</a></li>
+        </ul>
+      </div>
+      <div class="site-header__drawer-group">
+        <a class="site-header__drawer-group-title" href="#">Industri</a>
+        <ul class="site-header__drawer-list">
+          <li><a class="site-header__drawer-link" href="#">Kulelagre</a></li>
+          <li><a class="site-header__drawer-link" href="#">Drev og tannhjul</a></li>
+          <li><a class="site-header__drawer-link" href="#">Akselkoblinger</a></li>
+        </ul>
+      </div>
+      <div class="site-header__drawer-group">
+        <a class="site-header__drawer-group-title" href="#">Slipemidler</a>
+        <ul class="site-header__drawer-list">
+          <li><a class="site-header__drawer-link" href="#">Slipeskiver</a></li>
+          <li><a class="site-header__drawer-link" href="#">Slipepapir</a></li>
+          <li><a class="site-header__drawer-link" href="#">Polering</a></li>
+        </ul>
+      </div>
+      <div class="site-header__drawer-group">
+        <a class="site-header__drawer-group-title" href="#">Tetninger og pakninger</a>
+        <ul class="site-header__drawer-list">
+          <li><a class="site-header__drawer-link" href="#">O-ringer</a></li>
+          <li><a class="site-header__drawer-link" href="#">Flatpakninger</a></li>
+          <li><a class="site-header__drawer-link" href="#">Tetningsmasse</a></li>
+        </ul>
+      </div>
+      <div class="site-header__drawer-group">
+        <a class="site-header__drawer-group-title" href="#">Lim og kjemikalier</a>
+        <ul class="site-header__drawer-list">
+          <li><a class="site-header__drawer-link" href="#">Industrilim</a></li>
+          <li><a class="site-header__drawer-link" href="#">Silikon og fugemasse</a></li>
+          <li><a class="site-header__drawer-link" href="#">Sprayer og rens</a></li>
+        </ul>
+      </div>
+      <div class="site-header__drawer-group">
+        <a class="site-header__drawer-group-title" href="#">Måleinstrumenter</a>
+        <ul class="site-header__drawer-list">
+          <li><a class="site-header__drawer-link" href="#">Skyvelære og mikrometer</a></li>
+          <li><a class="site-header__drawer-link" href="#">Multimeter</a></li>
+          <li><a class="site-header__drawer-link" href="#">Vekter og våger</a></li>
+        </ul>
+      </div>
+      <div class="site-header__drawer-group">
+        <a class="site-header__drawer-group-title" href="#">Smøring og rens</a>
+        <ul class="site-header__drawer-list">
+          <li><a class="site-header__drawer-link" href="#">Smøreolje og fett</a></li>
+          <li><a class="site-header__drawer-link" href="#">Avfetting og rens</a></li>
+          <li><a class="site-header__drawer-link" href="#">Rustbeskyttelse</a></li>
+        </ul>
+      </div>
+      <div class="site-header__drawer-group">
+        <a class="site-header__drawer-group-title" href="#">Bil og verksted</a>
+        <ul class="site-header__drawer-list">
+          <li><a class="site-header__drawer-link" href="#">Jekker og bukker</a></li>
+          <li><a class="site-header__drawer-link" href="#">Verktøyvogner</a></li>
+          <li><a class="site-header__drawer-link" href="#">Trykkluft og slanger</a></li>
+        </ul>
+      </div>
+      <div class="site-header__drawer-group">
+        <a class="site-header__drawer-group-title" href="#">Lagring og logistikk</a>
+        <ul class="site-header__drawer-list">
+          <li><a class="site-header__drawer-link" href="#">Plastbokser og kasser</a></li>
+          <li><a class="site-header__drawer-link" href="#">Hyller og reoler</a></li>
+          <li><a class="site-header__drawer-link" href="#">Pakketape og emballasje</a></li>
+        </ul>
+      </div>
+      <div class="site-header__drawer-group">
+        <a class="site-header__drawer-group-title" href="#">Elektro</a>
+        <ul class="site-header__drawer-list">
+          <li><a class="site-header__drawer-link" href="#">Kabel og ledning</a></li>
+          <li><a class="site-header__drawer-link" href="#">Plugger og kontakter</a></li>
+          <li><a class="site-header__drawer-link" href="#">Sikringer og automater</a></li>
+        </ul>
+      </div>
+      <div class="site-header__drawer-group">
+        <a class="site-header__drawer-group-title" href="#">Skilt og merking</a>
+        <ul class="site-header__drawer-list">
+          <li><a class="site-header__drawer-link" href="#">Etiketter og tape</a></li>
+          <li><a class="site-header__drawer-link" href="#">Sikkerhetsskilt</a></li>
+          <li><a class="site-header__drawer-link" href="#">Avsperring</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="site-header__drawer-panel" id="drawer-supply" hidden>
+      <div class="site-header__drawer-header"><button class="site-header__drawer-back" type="button" data-drawer-panel="drawer-main"><svg class="site-header__drawer-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="m15 6-6 6 6 6"/></svg>Forsyningsløsninger</button><button class="site-header__drawer-close" type="button" aria-label="Lukk meny" data-drawer-close><svg class="site-header__action-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12M18 6 6 18"/></svg></button></div>
+      <a class="site-header__drawer-all" href="#">Se alle forsyningsløsninger</a>
+      <nav class="site-header__drawer-nav" aria-label="Forsyningsløsninger">
+        <a class="site-header__drawer-item" href="content-2box.html">2BOX</a>
+        <a class="site-header__drawer-item" href="#">Scan2order</a>
+        <a class="site-header__drawer-item" href="#">Weight2Order</a>
+        <a class="site-header__drawer-item" href="#">Verktøysporing</a>
+      </nav>
+    </div>
+    <div class="site-header__drawer-panel" id="drawer-services" hidden>
+      <div class="site-header__drawer-header"><button class="site-header__drawer-back" type="button" data-drawer-panel="drawer-main"><svg class="site-header__drawer-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="m15 6-6 6 6 6"/></svg>Øvrige Tjenester</button><button class="site-header__drawer-close" type="button" aria-label="Lukk meny" data-drawer-close><svg class="site-header__action-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12M18 6 6 18"/></svg></button></div>
+      <a class="site-header__drawer-all" href="#">Se alle øvrige tjenester</a>
+      <nav class="site-header__drawer-nav" aria-label="Øvrige Tjenester">
+        <a class="site-header__drawer-item" href="#">Slange-verksted</a>
+        <a class="site-header__drawer-item" href="#">Analyse og kalibrering</a>
+        <a class="site-header__drawer-item" href="#">Profiltøy</a>
+        <a class="site-header__drawer-item" href="#">Kurs og opplæring</a>
+        <a class="site-header__drawer-item" href="#">Enerpac</a>
+        <a class="site-header__drawer-item" href="#">Parker Store</a>
+        <a class="site-header__drawer-item" href="#">ONIX</a>
+        <a class="site-header__drawer-item" href="#">Serviceverksted</a>
+      </nav>
+    </div>
+  </div>
+</header>
+
+<main class="container container--wide" style="padding-block: var(--s-7);">
+
+  <h1 class="t-h1" style="margin-bottom: var(--s-7);">Min konto</h1>
+
+  <div class="account-dashboard">
+    <nav class="account-dashboard__nav">
+      <a class="account-dashboard__nav-link" href="account.html">Oversikt</a>
+      <a class="account-dashboard__nav-link" href="account-orders.html">Ordrer</a>
+      <a class="account-dashboard__nav-link is-active" aria-current="page" href="account-sortilogs.html">Sortilog</a>
+      <a class="account-dashboard__nav-link" href="account-wishlists.html">Handlelister</a>
+      <a class="account-dashboard__nav-link" href="account-addresses.html">Adresser</a>
+      <a class="account-dashboard__nav-link" href="account-users.html">Brukere</a>
+      <a class="account-dashboard__nav-link" href="account-details.html">Innstillinger</a>
+    </nav>
+
+    <div class="account-dashboard__main">
+      <nav class="breadcrumb" style="margin-bottom: var(--s-4);">
+        <span class="breadcrumb__item"><a class="breadcrumb__link" href="account-sortilogs.html">Sortilog</a></span>
+        <span class="breadcrumb__item" aria-current="page">Vedlikehold</span>
+      </nav>
+
+      <header style="margin-bottom: var(--s-6);">
+        <h2 class="t-h2" style="margin: 0 0 var(--s-2);">Vedlikehold</h2>
+        <p style="color: var(--color-text-secondary); margin: 0;">Brunvoll AS &middot; 311936 &middot; 495 varer &middot; Vedlikeholdes av Molde Jarnvare</p>
+      </header>
+
+      <!--
+        Flat liste, én rad per varenummer, i rekkefølgen fra BC.
+        Kun bestilling: ingen Fjern / Legg til / Del / Dupliser.
+        Antall starter tomt — kunden velger selv («Antall» fra BC brukes ikke).
+        Beskrivelse er BC-teksten; bilde fra PIM når det finnes, ellers plassholder.
+        Skissen viser 42 ekte linjer fra testuttrekket (Brunvoll, 28.09.2026),
+        spredt over hele sortilogen. Pris og lagerstatus er eksempelverdier.
+      -->
+      <section class="card" style="padding: 0;">
+        <div class="sortilog__toolbar">
+          <div class="search-bar sortilog__search">
+            <svg class="search-bar__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.35-4.35"/></svg>
+            <input class="search-bar__input" type="search" placeholder="Søk i sortilogen – artnr eller beskrivelse" aria-label="Søk i sortilogen">
+          </div>
+          <div class="sort-dropdown">
+            <span class="sort-dropdown__label">Sorter:</span>
+            <select class="select"><option>Som i sortilogen</option><option>Beskrivelse A–Å</option><option>Artikkelnummer</option></select>
+          </div>
+          <label class="switch"><input type="checkbox"><span class="switch__track"></span><span>Vis kun varer med antall</span></label>
+        </div>
+
+        <table class="sortilog__table">
+          <thead>
+            <tr>
+              <th><span class="sr-only">Bilde</span></th>
+              <th>Art.nr</th>
+              <th>Beskrivelse</th>
+              <th>Lagerstatus</th>
+              <th class="is-numeric">Pris/stk</th>
+              <th class="is-numeric">Antall</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><span class="sortilog__thumb" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="3" y="4" width="18" height="16" rx="2"/><circle cx="9" cy="10" r="2"/><path d="m21 17-5-5-9 8"/></svg></span></td>
+              <td><span class="sortilog__sku">451104</span></td>
+              <td><span class="sortilog__name">MASCOT BUKSE STRETCH 18079511 ACCELERATE MARINE 82C44</span></td>
+              <td><span class="stock-indicator stock-indicator--in">100+ på lager</span></td>
+              <td class="is-numeric">kr 849,00</td>
+              <td class="is-numeric">
+                <div class="qty-stepper qty-stepper--compact">
+                  <button class="qty-stepper__btn" type="button" aria-label="Reduser antall">&minus;</button>
+                  <input class="qty-stepper__input" type="number" placeholder="0" min="0" step="1" aria-label="Antall MASCOT BUKSE STRETCH 18079511 ACCELERATE MARINE 82C44">
+                  <button class="qty-stepper__btn" type="button" aria-label="Øk antall">+</button>
+                </div>
+              </td>
+            </tr>
+            <tr class="sortilog__row--selected">
+              <td><span class="sortilog__thumb" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="3" y="4" width="18" height="16" rx="2"/><circle cx="9" cy="10" r="2"/><path d="m21 17-5-5-9 8"/></svg></span></td>
+              <td><span class="sortilog__sku">451120</span></td>
+              <td><span class="sortilog__name">MASCOT BUKSE STRETCH 18079511 ACCELERATE MARINE 82C68</span></td>
+              <td><span class="stock-indicator stock-indicator--in">17 på lager</span></td>
+              <td class="is-numeric">kr 886,00</td>
+              <td class="is-numeric">
+                <div class="qty-stepper qty-stepper--compact">
+                  <button class="qty-stepper__btn" type="button" aria-label="Reduser antall">&minus;</button>
+                  <input class="qty-stepper__input" type="number" value="2" min="0" step="1" aria-label="Antall MASCOT BUKSE STRETCH 18079511 ACCELERATE MARINE 82C68">
+                  <button class="qty-stepper__btn" type="button" aria-label="Øk antall">+</button>
+                </div>
+              </td>
+            </tr>
+            <tr>
+              <td><span class="sortilog__thumb" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="3" y="4" width="18" height="16" rx="2"/><circle cx="9" cy="10" r="2"/><path d="m21 17-5-5-9 8"/></svg></span></td>
+              <td><span class="sortilog__sku">451137</span></td>
+              <td><span class="sortilog__name">MASCOT BUKSE STRETCH 18079511 ACCELERATE MARINE 90C62</span></td>
+              <td><span class="stock-indicator stock-indicator--in">16 på lager</span></td>
+              <td class="is-numeric">kr 923,00</td>
+              <td class="is-numeric">
+                <div class="qty-stepper qty-stepper--compact">
+                  <button class="qty-stepper__btn" type="button" aria-label="Reduser antall">&minus;</button>
+                  <input class="qty-stepper__input" type="number" placeholder="0" min="0" step="1" aria-label="Antall MASCOT BUKSE STRETCH 18079511 ACCELERATE MARINE 90C62">
+                  <button class="qty-stepper__btn" type="button" aria-label="Øk antall">+</button>
+                </div>
+              </td>
+            </tr>
+            <tr>
+              <td><span class="sortilog__thumb" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="3" y="4" width="18" height="16" rx="2"/><circle cx="9" cy="10" r="2"/><path d="m21 17-5-5-9 8"/></svg></span></td>
+              <td><span class="sortilog__sku">451155</span></td>
+              <td><span class="sortilog__name">MASCOT BUKSE W STRETCH 18078511 ACCELERATE BLÅ 82C44</span></td>
+              <td><span class="stock-indicator stock-indicator--in">100+ på lager</span></td>
+              <td class="is-numeric">kr 960,00</td>
+              <td class="is-numeric">
+                <div class="qty-stepper qty-stepper--compact">
+                  <button class="qty-stepper__btn" type="button" aria-label="Reduser antall">&minus;</button>
+                  <input class="qty-stepper__input" type="number" placeholder="0" min="0" step="1" aria-label="Antall MASCOT BUKSE W STRETCH 18078511 ACCELERATE BLÅ 82C44">
+                  <button class="qty-stepper__btn" type="button" aria-label="Øk antall">+</button>
+                </div>
+              </td>
+            </tr>
+            <tr>
+              <td><span class="sortilog__thumb" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="3" y="4" width="18" height="16" rx="2"/><circle cx="9" cy="10" r="2"/><path d="m21 17-5-5-9 8"/></svg></span></td>
+              <td><span class="sortilog__sku">451175</span></td>
+              <td><span class="sortilog__name">MASCOT BUKSE W STRETCH 18078511 ACCELERATE BLÅ 76C44</span></td>
+              <td><span class="stock-indicator stock-indicator--in">30 på lager</span></td>
+              <td class="is-numeric">kr 997,00</td>
+              <td class="is-numeric">
+                <div class="qty-stepper qty-stepper--compact">
+                  <button class="qty-stepper__btn" type="button" aria-label="Reduser antall">&minus;</button>
+                  <input class="qty-stepper__input" type="number" placeholder="0" min="0" step="1" aria-label="Antall MASCOT BUKSE W STRETCH 18078511 ACCELERATE BLÅ 76C44">
+                  <button class="qty-stepper__btn" type="button" aria-label="Øk antall">+</button>
+                </div>
+              </td>
+            </tr>
+            <tr class="sortilog__row--selected">
+              <td><span class="sortilog__thumb" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="3" y="4" width="18" height="16" rx="2"/><circle cx="9" cy="10" r="2"/><path d="m21 17-5-5-9 8"/></svg></span></td>
+              <td><span class="sortilog__sku">314045</span></td>
+              <td><span class="sortilog__name">MASCOT SKALLJAKKE 18301231 ACCELERATE BLÅ/MAR 2XL</span></td>
+              <td><span class="stock-indicator stock-indicator--incoming">Forventet 20 til lager 14.10.2026</span></td>
+              <td class="is-numeric">kr 995,00</td>
+              <td class="is-numeric">
+                <div class="qty-stepper qty-stepper--compact">
+                  <button class="qty-stepper__btn" type="button" aria-label="Reduser antall">&minus;</button>
+                  <input class="qty-stepper__input" type="number" value="3" min="0" step="1" aria-label="Antall MASCOT SKALLJAKKE 18301231 ACCELERATE BLÅ/MAR 2XL">
+                  <button class="qty-stepper__btn" type="button" aria-label="Øk antall">+</button>
+                </div>
+              </td>
+            </tr>
+            <tr>
+              <td><span class="sortilog__thumb" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="3" y="4" width="18" height="16" rx="2"/><circle cx="9" cy="10" r="2"/><path d="m21 17-5-5-9 8"/></svg></span></td>
+              <td><span class="sortilog__sku">314093</span></td>
+              <td><span class="sortilog__name">MASCOT FLEECEJAKKE 18303137 ACCELERATE BLÅ/MAR L</span></td>
+              <td><span class="stock-indicator stock-indicator--order">Bestillingsvare – estimert leveringstid 1–2 uker</span></td>
+              <td class="is-numeric">kr 1 032,00</td>
+              <td class="is-numeric">
+                <div class="qty-stepper qty-stepper--compact">
+                  <button class="qty-stepper__btn" type="button" aria-label="Reduser antall">&minus;</button>
+                  <input class="qty-stepper__input" type="number" placeholder="0" min="0" step="1" aria-label="Antall MASCOT FLEECEJAKKE 18303137 ACCELERATE BLÅ/MAR L">
+                  <button class="qty-stepper__btn" type="button" aria-label="Øk antall">+</button>
+                </div>
+              </td>
+            </tr>
+            <tr>
+              <td><span class="sortilog__thumb" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="3" y="4" width="18" height="16" rx="2"/><circle cx="9" cy="10" r="2"/><path d="m21 17-5-5-9 8"/></svg></span></td>
+              <td><span class="sortilog__sku">314105</span></td>
+              <td><span class="sortilog__name">MASCOT FLEECEJAKKE W 18153316 ACCELERATE BLÅ/MAR 4XL</span></td>
+              <td><span class="stock-indicator stock-indicator--in">100+ på lager</span></td>
+              <td class="is-numeric">kr 1 069,00</td>
+              <td class="is-numeric">
+                <div class="qty-stepper qty-stepper--compact">
+                  <button class="qty-stepper__btn" type="button" aria-label="Reduser antall">&minus;</button>
+                  <input class="qty-stepper__input" type="number" placeholder="0" min="0" step="1" aria-label="Antall MASCOT FLEECEJAKKE W 18153316 ACCELERATE BLÅ/MAR 4XL">
+                  <button class="qty-stepper__btn" type="button" aria-label="Øk antall">+</button>
+                </div>
+              </td>
+            </tr>
+            <tr>
+              <td><span class="sortilog__thumb" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="3" y="4" width="18" height="16" rx="2"/><circle cx="9" cy="10" r="2"/><path d="m21 17-5-5-9 8"/></svg></span></td>
+              <td><span class="sortilog__sku">207918301</span></td>
+              <td><span class="sortilog__name">CLIQUE GENSER BASIC HALV GLIDELÅS 021033 BLÅ L</span></td>
+              <td><span class="stock-indicator stock-indicator--in">48 på lager</span></td>
+              <td class="is-numeric">kr 665,00</td>
+              <td class="is-numeric">
+                <div class="qty-stepper qty-stepper--compact">
+                  <button class="qty-stepper__btn" type="button" aria-label="Reduser antall">&minus;</button>
+                  <input class="qty-stepper__input" type="number" placeholder="0" min="0" step="1" aria-label="Antall CLIQUE GENSER BASIC HALV GLIDELÅS 021033 BLÅ L">
+                  <button class="qty-stepper__btn" type="button" aria-label="Øk antall">+</button>
+                </div>
+              </td>
+            </tr>
+            <tr class="sortilog__row--selected">
+              <td><span class="sortilog__thumb" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="3" y="4" width="18" height="16" rx="2"/><circle cx="9" cy="10" r="2"/><path d="m21 17-5-5-9 8"/></svg></span></td>
+              <td><span class="sortilog__sku">447914</span></td>
+              <td><span class="sortilog__name">MASCOT PIQUE 50569961 BOTTROP BLÅ/MAR M</span></td>
+              <td><span class="stock-indicator stock-indicator--in">65 på lager</span></td>
+              <td class="is-numeric">kr 382,00</td>
+              <td class="is-numeric">
+                <div class="qty-stepper qty-stepper--compact">
+                  <button class="qty-stepper__btn" type="button" aria-label="Reduser antall">&minus;</button>
+                  <input class="qty-stepper__input" type="number" value="2" min="0" step="1" aria-label="Antall MASCOT PIQUE 50569961 BOTTROP BLÅ/MAR M">
+                  <button class="qty-stepper__btn" type="button" aria-label="Øk antall">+</button>
+                </div>
+              </td>
+            </tr>
+            <tr>
+              <td><span class="sortilog__thumb" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="3" y="4" width="18" height="16" rx="2"/><circle cx="9" cy="10" r="2"/><path d="m21 17-5-5-9 8"/></svg></span></td>
+              <td><span class="sortilog__sku">447907</span></td>
+              <td><span class="sortilog__name">MASCOT T-SKJORTE 50567959 POTSDAM BLÅ/MAR 3XL</span></td>
+              <td><span class="stock-indicator stock-indicator--in">100+ på lager</span></td>
+              <td class="is-numeric">kr 239,00</td>
+              <td class="is-numeric">
+                <div class="qty-stepper qty-stepper--compact">
+                  <button class="qty-stepper__btn" type="button" aria-label="Reduser antall">&minus;</button>
+                  <input class="qty-stepper__input" type="number" placeholder="0" min="0" step="1" aria-label="Antall MASCOT T-SKJORTE 50567959 POTSDAM BLÅ/MAR 3XL">
+                  <button class="qty-stepper__btn" type="button" aria-label="Øk antall">+</button>
+                </div>
+              </td>
+            </tr>
+            <tr>
+              <td><span class="sortilog__thumb" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="3" y="4" width="18" height="16" rx="2"/><circle cx="9" cy="10" r="2"/><path d="m21 17-5-5-9 8"/></svg></span></td>
+              <td><span class="sortilog__sku">270170</span></td>
+              <td><span class="sortilog__name">SANDBLÅSEDRESS NYLON M/HETTE 48</span></td>
+              <td><span class="stock-indicator stock-indicator--in">79 på lager</span></td>
+              <td class="is-numeric">kr 1 037,00</td>
+              <td class="is-numeric">
+                <div class="qty-stepper qty-stepper--compact">
+                  <button class="qty-stepper__btn" type="button" aria-label="Reduser antall">&minus;</button>
+                  <input class="qty-stepper__input" type="number" placeholder="0" min="0" step="1" aria-label="Antall SANDBLÅSEDRESS NYLON M/HETTE 48">
+                  <button class="qty-stepper__btn" type="button" aria-label="Øk antall">+</button>
+                </div>
+              </td>
+            </tr>
+            <tr>
+              <td><span class="sortilog__thumb" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="3" y="4" width="18" height="16" rx="2"/><circle cx="9" cy="10" r="2"/><path d="m21 17-5-5-9 8"/></svg></span></td>
+              <td><span class="sortilog__sku">447934</span></td>
+              <td><span class="sortilog__name">LYNGSØE REGNOVERALL LR1455 PVC MØRK GRØNN XL</span></td>
+              <td><span class="stock-indicator stock-indicator--incoming">Forventet 20 til lager 14.10.2026</span></td>
+              <td class="is-numeric">kr 1 074,00</td>
+              <td class="is-numeric">
+                <div class="qty-stepper qty-stepper--compact">
+                  <button class="qty-stepper__btn" type="button" aria-label="Reduser antall">&minus;</button>
+                  <input class="qty-stepper__input" type="number" placeholder="0" min="0" step="1" aria-label="Antall LYNGSØE REGNOVERALL LR1455 PVC MØRK GRØNN XL">
+                  <button class="qty-stepper__btn" type="button" aria-label="Øk antall">+</button>
+                </div>
+              </td>
+            </tr>
+            <tr>
+              <td><span class="sortilog__thumb" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="3" y="4" width="18" height="16" rx="2"/><circle cx="9" cy="10" r="2"/><path d="m21 17-5-5-9 8"/></svg></span></td>
+              <td><span class="sortilog__sku">459620</span></td>
+              <td><span class="sortilog__name">MASCOT BUKSE STRETCH 17179311 ADVANCED SVART 82C56</span></td>
+              <td><span class="stock-indicator stock-indicator--order">Bestillingsvare – estimert leveringstid 1–2 uker</span></td>
+              <td class="is-numeric">kr 970,00</td>
+              <td class="is-numeric">
+                <div class="qty-stepper qty-stepper--compact">
+                  <button class="qty-stepper__btn" type="button" aria-label="Reduser antall">&minus;</button>
+                  <input class="qty-stepper__input" type="number" placeholder="0" min="0" step="1" aria-label="Antall MASCOT BUKSE STRETCH 17179311 ADVANCED SVART 82C56">
+                  <button class="qty-stepper__btn" type="button" aria-label="Øk antall">+</button>
+                </div>
+              </td>
+            </tr>
+            <tr>
+              <td><span class="sortilog__thumb" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="3" y="4" width="18" height="16" rx="2"/><circle cx="9" cy="10" r="2"/><path d="m21 17-5-5-9 8"/></svg></span></td>
+              <td><span class="sortilog__sku">450793</span></td>
+              <td><span class="sortilog__name">KJELEDRESS INDUSTRI BRUNVOLL POLY/BOM 65/35 90CM XL</span></td>
+              <td><span class="stock-indicator stock-indicator--in">100+ på lager</span></td>
+              <td class="is-numeric">kr 1 148,00</td>
+              <td class="is-numeric">
+                <div class="qty-stepper qty-stepper--compact">
+                  <button class="qty-stepper__btn" type="button" aria-label="Reduser antall">&minus;</button>
+                  <input class="qty-stepper__input" type="number" placeholder="0" min="0" step="1" aria-label="Antall KJELEDRESS INDUSTRI BRUNVOLL POLY/BOM 65/35 90CM XL">
+                  <button class="qty-stepper__btn" type="button" aria-label="Øk antall">+</button>
+                </div>
+              </td>
+            </tr>
+            <tr>
+              <td><span class="sortilog__thumb" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="3" y="4" width="18" height="16" rx="2"/><circle cx="9" cy="10" r="2"/><path d="m21 17-5-5-9 8"/></svg></span></td>
+              <td><span class="sortilog__sku">327239</span></td>
+              <td><span class="sortilog__name">STRAKOFA KJELEDRESS ODDA 100% BOMULL MARINE 62</span></td>
+              <td><span class="stock-indicator stock-indicator--in">19 på lager</span></td>
+              <td class="is-numeric">kr 1 005,00</td>
+              <td class="is-numeric">
+                <div class="qty-stepper qty-stepper--compact">
+                  <button class="qty-stepper__btn" type="button" aria-label="Reduser antall">&minus;</button>
+                  <input class="qty-stepper__input" type="number" placeholder="0" min="0" step="1" aria-label="Antall STRAKOFA KJELEDRESS ODDA 100% BOMULL MARINE 62">
+                  <button class="qty-stepper__btn" type="button" aria-label="Øk antall">+</button>
+                </div>
+              </td>
+            </tr>
+            <tr>
+              <td><span class="sortilog__thumb" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="3" y="4" width="18" height="16" rx="2"/><circle cx="9" cy="10" r="2"/><path d="m21 17-5-5-9 8"/></svg></span></td>
+              <td><span class="sortilog__sku">347783</span></td>
+              <td><span class="sortilog__name">FRISTADS SERVICEBUKSE 120954 ESD MARINE 54</span></td>
+              <td><span class="stock-indicator stock-indicator--in">24 på lager</span></td>
+              <td class="is-numeric">kr 901,00</td>
+              <td class="is-numeric">
+                <div class="qty-stepper qty-stepper--compact">
+                  <button class="qty-stepper__btn" type="button" aria-label="Reduser antall">&minus;</button>
+                  <input class="qty-stepper__input" type="number" placeholder="0" min="0" step="1" aria-label="Antall FRISTADS SERVICEBUKSE 120954 ESD MARINE 54">
+                  <button class="qty-stepper__btn" type="button" aria-label="Øk antall">+</button>
+                </div>
+              </td>
+            </tr>
+            <tr>
+              <td><span class="sortilog__thumb" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="3" y="4" width="18" height="16" rx="2"/><circle cx="9" cy="10" r="2"/><path d="m21 17-5-5-9 8"/></svg></span></td>
+              <td><span class="sortilog__sku">450760</span></td>
+              <td><span class="sortilog__name">FRISTADS T-SKJORTE 120959 ESD MARINE 4XL</span></td>
+              <td><span class="stock-indicator stock-indicator--in">100+ på lager</span></td>
+              <td class="is-numeric">kr 318,00</td>
+              <td class="is-numeric">
+                <div class="qty-stepper qty-stepper--compact">
+                  <button class="qty-stepper__btn" type="button" aria-label="Reduser antall">&minus;</button>
+                  <input class="qty-stepper__input" type="number" placeholder="0" min="0" step="1" aria-label="Antall FRISTADS T-SKJORTE 120959 ESD MARINE 4XL">
+                  <button class="qty-stepper__btn" type="button" aria-label="Øk antall">+</button>
+                </div>
+              </td>
+            </tr>
+            <tr>
+              <td><span class="sortilog__thumb" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="3" y="4" width="18" height="16" rx="2"/><circle cx="9" cy="10" r="2"/><path d="m21 17-5-5-9 8"/></svg></span></td>
+              <td><span class="sortilog__sku">446315</span></td>
+              <td><span class="sortilog__name">WENAAS KJELEDRESS 80910 OFFSHORE MARINE C48</span></td>
+              <td><span class="stock-indicator stock-indicator--in">38 på lager</span></td>
+              <td class="is-numeric">kr 1 116,00</td>
+              <td class="is-numeric">
+                <div class="qty-stepper qty-stepper--compact">
+                  <button class="qty-stepper__btn" type="button" aria-label="Reduser antall">&minus;</button>
+                  <input class="qty-stepper__input" type="number" placeholder="0" min="0" step="1" aria-label="Antall WENAAS KJELEDRESS 80910 OFFSHORE MARINE C48">
+                  <button class="qty-stepper__btn" type="button" aria-label="Øk antall">+</button>
+                </div>
+              </td>
+            </tr>
+            <tr>
+              <td><span class="sortilog__thumb" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="3" y="4" width="18" height="16" rx="2"/><circle cx="9" cy="10" r="2"/><path d="m21 17-5-5-9 8"/></svg></span></td>
+              <td><span class="sortilog__sku">347892</span></td>
+              <td><span class="sortilog__name">WENAAS KJELEDRESS 80913 OFFSHORE TYNN BLÅ S</span></td>
+              <td><span class="stock-indicator stock-indicator--incoming">Forventet 20 til lager 14.10.2026</span></td>
+              <td class="is-numeric">kr 1 153,00</td>
+              <td class="is-numeric">
+                <div class="qty-stepper qty-stepper--compact">
+                  <button class="qty-stepper__btn" type="button" aria-label="Reduser antall">&minus;</button>
+                  <input class="qty-stepper__input" type="number" placeholder="0" min="0" step="1" aria-label="Antall WENAAS KJELEDRESS 80913 OFFSHORE TYNN BLÅ S">
+                  <button class="qty-stepper__btn" type="button" aria-label="Øk antall">+</button>
+                </div>
+              </td>
+            </tr>
+            <tr>
+              <td><span class="sortilog__thumb" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="3" y="4" width="18" height="16" rx="2"/><circle cx="9" cy="10" r="2"/><path d="m21 17-5-5-9 8"/></svg></span></td>
+              <td><span class="sortilog__sku">314076</span></td>
+              <td><span class="sortilog__name">MASCOT GENSER 21584337 MULTI MAR/GUL 2XL</span></td>
+              <td><span class="stock-indicator stock-indicator--order">Bestillingsvare – estimert leveringstid 1–2 uker</span></td>
+              <td class="is-numeric">kr 569,00</td>
+              <td class="is-numeric">
+                <div class="qty-stepper qty-stepper--compact">
+                  <button class="qty-stepper__btn" type="button" aria-label="Reduser antall">&minus;</button>
+                  <input class="qty-stepper__input" type="number" placeholder="0" min="0" step="1" aria-label="Antall MASCOT GENSER 21584337 MULTI MAR/GUL 2XL">
+                  <button class="qty-stepper__btn" type="button" aria-label="Øk antall">+</button>
+                </div>
+              </td>
+            </tr>
+            <tr>
+              <td><span class="sortilog__thumb" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="3" y="4" width="18" height="16" rx="2"/><circle cx="9" cy="10" r="2"/><path d="m21 17-5-5-9 8"/></svg></span></td>
+              <td><span class="sortilog__sku">451085</span></td>
+              <td><span class="sortilog__name">MASCOT BUKSE 21579281 ACCELERATE MULTI MAR/GUL 82C64</span></td>
+              <td><span class="stock-indicator stock-indicator--in">100+ på lager</span></td>
+              <td class="is-numeric">kr 906,00</td>
+              <td class="is-numeric">
+                <div class="qty-stepper qty-stepper--compact">
+                  <button class="qty-stepper__btn" type="button" aria-label="Reduser antall">&minus;</button>
+                  <input class="qty-stepper__input" type="number" placeholder="0" min="0" step="1" aria-label="Antall MASCOT BUKSE 21579281 ACCELERATE MULTI MAR/GUL 82C64">
+                  <button class="qty-stepper__btn" type="button" aria-label="Øk antall">+</button>
+                </div>
+              </td>
+            </tr>
+            <tr>
+              <td><span class="sortilog__thumb" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="3" y="4" width="18" height="16" rx="2"/><circle cx="9" cy="10" r="2"/><path d="m21 17-5-5-9 8"/></svg></span></td>
+              <td><span class="sortilog__sku">451060</span></td>
+              <td><span class="sortilog__name">MASCOT BUKSE 21579281 ACCELERATE MULTI MAR/GUL 76C46</span></td>
+              <td><span class="stock-indicator stock-indicator--in">50 på lager</span></td>
+              <td class="is-numeric">kr 943,00</td>
+              <td class="is-numeric">
+                <div class="qty-stepper qty-stepper--compact">
+                  <button class="qty-stepper__btn" type="button" aria-label="Reduser antall">&minus;</button>
+                  <input class="qty-stepper__input" type="number" placeholder="0" min="0" step="1" aria-label="Antall MASCOT BUKSE 21579281 ACCELERATE MULTI MAR/GUL 76C46">
+                  <button class="qty-stepper__btn" type="button" aria-label="Øk antall">+</button>
+                </div>
+              </td>
+            </tr>
+            <tr>
+              <td><span class="sortilog__thumb" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="3" y="4" width="18" height="16" rx="2"/><circle cx="9" cy="10" r="2"/><path d="m21 17-5-5-9 8"/></svg></span></td>
+              <td><span class="sortilog__sku">027973915</span></td>
+              <td><span class="sortilog__name">ARBESKO VERNESKO UMEÅ 935 BOA S1PS 38</span></td>
+              <td><span class="stock-indicator stock-indicator--in">73 på lager</span></td>
+              <td class="is-numeric">kr 1 421,00</td>
+              <td class="is-numeric">
+                <div class="qty-stepper qty-stepper--compact">
+                  <button class="qty-stepper__btn" type="button" aria-label="Reduser antall">&minus;</button>
+                  <input class="qty-stepper__input" type="number" placeholder="0" min="0" step="1" aria-label="Antall ARBESKO VERNESKO UMEÅ 935 BOA S1PS 38">
+                  <button class="qty-stepper__btn" type="button" aria-label="Øk antall">+</button>
+                </div>
+              </td>
+            </tr>
+            <tr>
+              <td><span class="sortilog__thumb" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="3" y="4" width="18" height="16" rx="2"/><circle cx="9" cy="10" r="2"/><path d="m21 17-5-5-9 8"/></svg></span></td>
+              <td><span class="sortilog__sku">027973597</span></td>
+              <td><span class="sortilog__name">ARBESKO VERNESKO UMEÅ 939 S1PS 37</span></td>
+              <td><span class="stock-indicator stock-indicator--in">100+ på lager</span></td>
+              <td class="is-numeric">kr 1 458,00</td>
+              <td class="is-numeric">
+                <div class="qty-stepper qty-stepper--compact">
+                  <button class="qty-stepper__btn" type="button" aria-label="Reduser antall">&minus;</button>
+                  <input class="qty-stepper__input" type="number" placeholder="0" min="0" step="1" aria-label="Antall ARBESKO VERNESKO UMEÅ 939 S1PS 37">
+                  <button class="qty-stepper__btn" type="button" aria-label="Øk antall">+</button>
+                </div>
+              </td>
+            </tr>
+            <tr>
+              <td><span class="sortilog__thumb" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="3" y="4" width="18" height="16" rx="2"/><circle cx="9" cy="10" r="2"/><path d="m21 17-5-5-9 8"/></svg></span></td>
+              <td><span class="sortilog__sku">027973899</span></td>
+              <td><span class="sortilog__name">ARBESKO VERNESKO UMEÅ 945 BOA S3 36</span></td>
+              <td><span class="stock-indicator stock-indicator--in">87 på lager</span></td>
+              <td class="is-numeric">kr 1 315,00</td>
+              <td class="is-numeric">
+                <div class="qty-stepper qty-stepper--compact">
+                  <button class="qty-stepper__btn" type="button" aria-label="Reduser antall">&minus;</button>
+                  <input class="qty-stepper__input" type="number" placeholder="0" min="0" step="1" aria-label="Antall ARBESKO VERNESKO UMEÅ 945 BOA S3 36">
+                  <button class="qty-stepper__btn" type="button" aria-label="Øk antall">+</button>
+                </div>
+              </td>
+            </tr>
+            <tr>
+              <td><span class="sortilog__thumb" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="3" y="4" width="18" height="16" rx="2"/><circle cx="9" cy="10" r="2"/><path d="m21 17-5-5-9 8"/></svg></span></td>
+              <td><span class="sortilog__sku">027973911</span></td>
+              <td><span class="sortilog__name">ARBESKO VERNESKO UMEÅ 945 BOA S3 48</span></td>
+              <td><span class="stock-indicator stock-indicator--incoming">Forventet 20 til lager 14.10.2026</span></td>
+              <td class="is-numeric">kr 1 352,00</td>
+              <td class="is-numeric">
+                <div class="qty-stepper qty-stepper--compact">
+                  <button class="qty-stepper__btn" type="button" aria-label="Reduser antall">&minus;</button>
+                  <input class="qty-stepper__input" type="number" placeholder="0" min="0" step="1" aria-label="Antall ARBESKO VERNESKO UMEÅ 945 BOA S3 48">
+                  <button class="qty-stepper__btn" type="button" aria-label="Øk antall">+</button>
+                </div>
+              </td>
+            </tr>
+            <tr>
+              <td><span class="sortilog__thumb" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="3" y="4" width="18" height="16" rx="2"/><circle cx="9" cy="10" r="2"/><path d="m21 17-5-5-9 8"/></svg></span></td>
+              <td><span class="sortilog__sku">027973620</span></td>
+              <td><span class="sortilog__name">ARBESKO VERNESTØVEL UMEÅ 949 BOA S7S 46</span></td>
+              <td><span class="stock-indicator stock-indicator--order">Bestillingsvare – estimert leveringstid 1–2 uker</span></td>
+              <td class="is-numeric">kr 1 389,00</td>
+              <td class="is-numeric">
+                <div class="qty-stepper qty-stepper--compact">
+                  <button class="qty-stepper__btn" type="button" aria-label="Reduser antall">&minus;</button>
+                  <input class="qty-stepper__input" type="number" placeholder="0" min="0" step="1" aria-label="Antall ARBESKO VERNESTØVEL UMEÅ 949 BOA S7S 46">
+                  <button class="qty-stepper__btn" type="button" aria-label="Øk antall">+</button>
+                </div>
+              </td>
+            </tr>
+            <tr>
+              <td><span class="sortilog__thumb" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="3" y="4" width="18" height="16" rx="2"/><circle cx="9" cy="10" r="2"/><path d="m21 17-5-5-9 8"/></svg></span></td>
+              <td><span class="sortilog__sku">448034</span></td>
+              <td><span class="sortilog__name">ARBESKO SVEISESTØVEL OXELÖSUND 650 S3 44</span></td>
+              <td><span class="stock-indicator stock-indicator--in">100+ på lager</span></td>
+              <td class="is-numeric">kr 1 426,00</td>
+              <td class="is-numeric">
+                <div class="qty-stepper qty-stepper--compact">
+                  <button class="qty-stepper__btn" type="button" aria-label="Reduser antall">&minus;</button>
+                  <input class="qty-stepper__input" type="number" placeholder="0" min="0" step="1" aria-label="Antall ARBESKO SVEISESTØVEL OXELÖSUND 650 S3 44">
+                  <button class="qty-stepper__btn" type="button" aria-label="Øk antall">+</button>
+                </div>
+              </td>
+            </tr>
+            <tr>
+              <td><span class="sortilog__thumb" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="3" y="4" width="18" height="16" rx="2"/><circle cx="9" cy="10" r="2"/><path d="m21 17-5-5-9 8"/></svg></span></td>
+              <td><span class="sortilog__sku">027973559</span></td>
+              <td><span class="sortilog__name">ARBESKO SVEISESTØVEL OXELÖSUND 550 S3 42</span></td>
+              <td><span class="stock-indicator stock-indicator--in">21 på lager</span></td>
+              <td class="is-numeric">kr 1 463,00</td>
+              <td class="is-numeric">
+                <div class="qty-stepper qty-stepper--compact">
+                  <button class="qty-stepper__btn" type="button" aria-label="Reduser antall">&minus;</button>
+                  <input class="qty-stepper__input" type="number" placeholder="0" min="0" step="1" aria-label="Antall ARBESKO SVEISESTØVEL OXELÖSUND 550 S3 42">
+                  <button class="qty-stepper__btn" type="button" aria-label="Øk antall">+</button>
+                </div>
+              </td>
+            </tr>
+            <tr>
+              <td><span class="sortilog__thumb" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="3" y="4" width="18" height="16" rx="2"/><circle cx="9" cy="10" r="2"/><path d="m21 17-5-5-9 8"/></svg></span></td>
+              <td><span class="sortilog__sku">752105</span></td>
+              <td><span class="sortilog__name">ARBESKO VERNESKO A SERIES A314 BOA S1PS 40</span></td>
+              <td><span class="stock-indicator stock-indicator--in">32 på lager</span></td>
+              <td class="is-numeric">kr 1 320,00</td>
+              <td class="is-numeric">
+                <div class="qty-stepper qty-stepper--compact">
+                  <button class="qty-stepper__btn" type="button" aria-label="Reduser antall">&minus;</button>
+                  <input class="qty-stepper__input" type="number" placeholder="0" min="0" step="1" aria-label="Antall ARBESKO VERNESKO A SERIES A314 BOA S1PS 40">
+                  <button class="qty-stepper__btn" type="button" aria-label="Øk antall">+</button>
+                </div>
+              </td>
+            </tr>
+            <tr>
+              <td><span class="sortilog__thumb" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="3" y="4" width="18" height="16" rx="2"/><circle cx="9" cy="10" r="2"/><path d="m21 17-5-5-9 8"/></svg></span></td>
+              <td><span class="sortilog__sku">752143</span></td>
+              <td><span class="sortilog__name">ARBESKO VERNESKO A SERIES A333 BOA S3S 38</span></td>
+              <td><span class="stock-indicator stock-indicator--in">100+ på lager</span></td>
+              <td class="is-numeric">kr 1 357,00</td>
+              <td class="is-numeric">
+                <div class="qty-stepper qty-stepper--compact">
+                  <button class="qty-stepper__btn" type="button" aria-label="Reduser antall">&minus;</button>
+                  <input class="qty-stepper__input" type="number" placeholder="0" min="0" step="1" aria-label="Antall ARBESKO VERNESKO A SERIES A333 BOA S3S 38">
+                  <button class="qty-stepper__btn" type="button" aria-label="Øk antall">+</button>
+                </div>
+              </td>
+            </tr>
+            <tr>
+              <td><span class="sortilog__thumb" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="3" y="4" width="18" height="16" rx="2"/><circle cx="9" cy="10" r="2"/><path d="m21 17-5-5-9 8"/></svg></span></td>
+              <td><span class="sortilog__sku">752161</span></td>
+              <td><span class="sortilog__name">ARBESKO VERNESKOLETT A SERIES A377 BOA S7S 36</span></td>
+              <td><span class="stock-indicator stock-indicator--in">46 på lager</span></td>
+              <td class="is-numeric">kr 1 394,00</td>
+              <td class="is-numeric">
+                <div class="qty-stepper qty-stepper--compact">
+                  <button class="qty-stepper__btn" type="button" aria-label="Reduser antall">&minus;</button>
+                  <input class="qty-stepper__input" type="number" placeholder="0" min="0" step="1" aria-label="Antall ARBESKO VERNESKOLETT A SERIES A377 BOA S7S 36">
+                  <button class="qty-stepper__btn" type="button" aria-label="Øk antall">+</button>
+                </div>
+              </td>
+            </tr>
+            <tr>
+              <td><span class="sortilog__thumb" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="3" y="4" width="18" height="16" rx="2"/><circle cx="9" cy="10" r="2"/><path d="m21 17-5-5-9 8"/></svg></span></td>
+              <td><span class="sortilog__sku">752173</span></td>
+              <td><span class="sortilog__name">ARBESKO VERNESKOLETT A SERIES A377 BOA S7S 48</span></td>
+              <td><span class="stock-indicator stock-indicator--incoming">Forventet 20 til lager 14.10.2026</span></td>
+              <td class="is-numeric">kr 1 431,00</td>
+              <td class="is-numeric">
+                <div class="qty-stepper qty-stepper--compact">
+                  <button class="qty-stepper__btn" type="button" aria-label="Reduser antall">&minus;</button>
+                  <input class="qty-stepper__input" type="number" placeholder="0" min="0" step="1" aria-label="Antall ARBESKO VERNESKOLETT A SERIES A377 BOA S7S 48">
+                  <button class="qty-stepper__btn" type="button" aria-label="Øk antall">+</button>
+                </div>
+              </td>
+            </tr>
+            <tr>
+              <td><span class="sortilog__thumb" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="3" y="4" width="18" height="16" rx="2"/><circle cx="9" cy="10" r="2"/><path d="m21 17-5-5-9 8"/></svg></span></td>
+              <td><span class="sortilog__sku">752031</span></td>
+              <td><span class="sortilog__name">ARBESKO VERNESKO TECH 2102 BOA S1PS 46</span></td>
+              <td><span class="stock-indicator stock-indicator--order">Bestillingsvare – estimert leveringstid 1–2 uker</span></td>
+              <td class="is-numeric">kr 1 468,00</td>
+              <td class="is-numeric">
+                <div class="qty-stepper qty-stepper--compact">
+                  <button class="qty-stepper__btn" type="button" aria-label="Reduser antall">&minus;</button>
+                  <input class="qty-stepper__input" type="number" placeholder="0" min="0" step="1" aria-label="Antall ARBESKO VERNESKO TECH 2102 BOA S1PS 46">
+                  <button class="qty-stepper__btn" type="button" aria-label="Øk antall">+</button>
+                </div>
+              </td>
+            </tr>
+            <tr>
+              <td><span class="sortilog__thumb" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="3" y="4" width="18" height="16" rx="2"/><circle cx="9" cy="10" r="2"/><path d="m21 17-5-5-9 8"/></svg></span></td>
+              <td><span class="sortilog__sku">752089</span></td>
+              <td><span class="sortilog__name">ARBESKO VERNESKO TECH 2701 BOA S7S 44</span></td>
+              <td><span class="stock-indicator stock-indicator--in">100+ på lager</span></td>
+              <td class="is-numeric">kr 1 325,00</td>
+              <td class="is-numeric">
+                <div class="qty-stepper qty-stepper--compact">
+                  <button class="qty-stepper__btn" type="button" aria-label="Reduser antall">&minus;</button>
+                  <input class="qty-stepper__input" type="number" placeholder="0" min="0" step="1" aria-label="Antall ARBESKO VERNESKO TECH 2701 BOA S7S 44">
+                  <button class="qty-stepper__btn" type="button" aria-label="Øk antall">+</button>
+                </div>
+              </td>
+            </tr>
+            <tr>
+              <td><span class="sortilog__thumb" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="3" y="4" width="18" height="16" rx="2"/><circle cx="9" cy="10" r="2"/><path d="m21 17-5-5-9 8"/></svg></span></td>
+              <td><span class="sortilog__sku">690008</span></td>
+              <td><span class="sortilog__name">UVEX VERNESKO LAV X CITE 8640 S3L 41</span></td>
+              <td><span class="stock-indicator stock-indicator--in">52 på lager</span></td>
+              <td class="is-numeric">kr 1 362,00</td>
+              <td class="is-numeric">
+                <div class="qty-stepper qty-stepper--compact">
+                  <button class="qty-stepper__btn" type="button" aria-label="Reduser antall">&minus;</button>
+                  <input class="qty-stepper__input" type="number" placeholder="0" min="0" step="1" aria-label="Antall UVEX VERNESKO LAV X CITE 8640 S3L 41">
+                  <button class="qty-stepper__btn" type="button" aria-label="Øk antall">+</button>
+                </div>
+              </td>
+            </tr>
+            <tr>
+              <td><span class="sortilog__thumb" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="3" y="4" width="18" height="16" rx="2"/><circle cx="9" cy="10" r="2"/><path d="m21 17-5-5-9 8"/></svg></span></td>
+              <td><span class="sortilog__sku">690028</span></td>
+              <td><span class="sortilog__name">UVEX VERNESKO LAV BUSINESS 8449 S3L 47</span></td>
+              <td><span class="stock-indicator stock-indicator--in">81 på lager</span></td>
+              <td class="is-numeric">kr 1 399,00</td>
+              <td class="is-numeric">
+                <div class="qty-stepper qty-stepper--compact">
+                  <button class="qty-stepper__btn" type="button" aria-label="Reduser antall">&minus;</button>
+                  <input class="qty-stepper__input" type="number" placeholder="0" min="0" step="1" aria-label="Antall UVEX VERNESKO LAV BUSINESS 8449 S3L 47">
+                  <button class="qty-stepper__btn" type="button" aria-label="Øk antall">+</button>
+                </div>
+              </td>
+            </tr>
+            <tr>
+              <td><span class="sortilog__thumb" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="3" y="4" width="18" height="16" rx="2"/><circle cx="9" cy="10" r="2"/><path d="m21 17-5-5-9 8"/></svg></span></td>
+              <td><span class="sortilog__sku">505000081</span></td>
+              <td><span class="sortilog__name">DUNLOP VERNESTØVEL PUROFORT S5 42</span></td>
+              <td><span class="stock-indicator stock-indicator--in">100+ på lager</span></td>
+              <td class="is-numeric">kr 1 436,00</td>
+              <td class="is-numeric">
+                <div class="qty-stepper qty-stepper--compact">
+                  <button class="qty-stepper__btn" type="button" aria-label="Reduser antall">&minus;</button>
+                  <input class="qty-stepper__input" type="number" placeholder="0" min="0" step="1" aria-label="Antall DUNLOP VERNESTØVEL PUROFORT S5 42">
+                  <button class="qty-stepper__btn" type="button" aria-label="Øk antall">+</button>
+                </div>
+              </td>
+            </tr>
+            <tr>
+              <td><span class="sortilog__thumb" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="3" y="4" width="18" height="16" rx="2"/><circle cx="9" cy="10" r="2"/><path d="m21 17-5-5-9 8"/></svg></span></td>
+              <td><span class="sortilog__sku">027965359</span></td>
+              <td><span class="sortilog__name">ARBESKO SÅLE 10284 COMFORTHO LAV 45-46</span></td>
+              <td><span class="stock-indicator stock-indicator--in">5 på lager</span></td>
+              <td class="is-numeric">kr 192,00</td>
+              <td class="is-numeric">
+                <div class="qty-stepper qty-stepper--compact">
+                  <button class="qty-stepper__btn" type="button" aria-label="Reduser antall">&minus;</button>
+                  <input class="qty-stepper__input" type="number" placeholder="0" min="0" step="1" aria-label="Antall ARBESKO SÅLE 10284 COMFORTHO LAV 45-46">
+                  <button class="qty-stepper__btn" type="button" aria-label="Øk antall">+</button>
+                </div>
+              </td>
+            </tr>
+            <tr>
+              <td><span class="sortilog__thumb" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="3" y="4" width="18" height="16" rx="2"/><circle cx="9" cy="10" r="2"/><path d="m21 17-5-5-9 8"/></svg></span></td>
+              <td><span class="sortilog__sku">027969559</span></td>
+              <td><span class="sortilog__name">ARBESKO SÅLE 10286 COMFORTHO HØY 41-42</span></td>
+              <td><span class="stock-indicator stock-indicator--incoming">Forventet 20 til lager 14.10.2026</span></td>
+              <td class="is-numeric">kr 229,00</td>
+              <td class="is-numeric">
+                <div class="qty-stepper qty-stepper--compact">
+                  <button class="qty-stepper__btn" type="button" aria-label="Reduser antall">&minus;</button>
+                  <input class="qty-stepper__input" type="number" placeholder="0" min="0" step="1" aria-label="Antall ARBESKO SÅLE 10286 COMFORTHO HØY 41-42">
+                  <button class="qty-stepper__btn" type="button" aria-label="Øk antall">+</button>
+                </div>
+              </td>
+            </tr>
+            <tr>
+              <td><span class="sortilog__thumb" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="3" y="4" width="18" height="16" rx="2"/><circle cx="9" cy="10" r="2"/><path d="m21 17-5-5-9 8"/></svg></span></td>
+              <td><span class="sortilog__sku">763783</span></td>
+              <td><span class="sortilog__name">MEGACOMFORT INNLEGGSSÅLE ERGO MINNESKUM 43-44</span></td>
+              <td><span class="stock-indicator stock-indicator--order">Bestillingsvare – estimert leveringstid 1–2 uker</span></td>
+              <td class="is-numeric">kr 266,00</td>
+              <td class="is-numeric">
+                <div class="qty-stepper qty-stepper--compact">
+                  <button class="qty-stepper__btn" type="button" aria-label="Reduser antall">&minus;</button>
+                  <input class="qty-stepper__input" type="number" placeholder="0" min="0" step="1" aria-label="Antall MEGACOMFORT INNLEGGSSÅLE ERGO MINNESKUM 43-44">
+                  <button class="qty-stepper__btn" type="button" aria-label="Øk antall">+</button>
+                </div>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+
+        <div class="sortilog__footer">
+          <span>Viser 1–50 av 495 varer</span>
+          <nav class="pagination" aria-label="Sider">
+            <button class="pagination__btn" disabled>← Forrige</button>
+            <button class="pagination__btn" aria-current="page">1</button>
+            <button class="pagination__btn">2</button>
+            <button class="pagination__btn">3</button>
+            <span class="pagination__ellipsis">…</span>
+            <button class="pagination__btn">10</button>
+            <button class="pagination__btn">Neste →</button>
+          </nav>
+        </div>
+      </section>
+
+      <div class="sortilog__actionbar">
+        <p class="sortilog__actionbar-summary"><strong>3 varer valgt</strong> &middot; 7 stk &middot; Sum kr 5 521,00 eks. mva</p>
+        <button class="btn btn--primary btn--md" type="button">Legg i handlekurv</button>
+      </div>
+    </div>
+  </div>
+
+</main>
+<footer class="site-footer">
+  <div class="site-footer__inner">
+    <div class="site-footer__grid">
+      <div class="site-footer__brand">
+        <img src="../assets/logos/molde-jarnvare-negative.png" alt="Molde Jarnvare" class="site-footer__logo-img">
+        <p class="site-footer__tagline">På lag med industrien siden 1930</p>
+        <p class="site-footer__contact">Industriveien 26<br>6422 Molde<br><a href="tel:71254200">71 25 42 00</a> · <a href="mailto:post@moldejarnvare.no">post@moldejarnvare.no</a></p>
+      </div>
+      <div>
+        <h2 class="site-footer__col-title">Kundeservice</h2>
+        <nav class="site-footer__list" aria-label="Kundeservice">
+          <a href="account.html">Mine sider</a>
+          <a href="#">Frakt og levering</a>
+          <a href="team.html">Kontakt oss</a>
+          <a href="#">FAQ</a>
+          <a href="#">Åpningstider</a>
+        </nav>
+      </div>
+      <div>
+        <h2 class="site-footer__col-title">Om oss</h2>
+        <nav class="site-footer__list" aria-label="Om oss">
+          <a href="static.html">Om Molde Jarnvare</a>
+          <a href="#">Personvern</a>
+          <a href="#">Vilkår</a>
+          <a href="news.html">Aktuelt</a>
+        </nav>
+      </div>
+    </div>
+    <div class="site-footer__bottom">
+      <span>&copy; 2026 Molde Jarnvare AS</span>
+      <div class="site-footer__social" aria-label="Sosiale medier">
+        <a href="https://facebook.com/moldejarnvare" aria-label="Facebook"><svg class="site-footer__social-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg></a>
+        <a href="https://instagram.com/moldejarnvare" aria-label="Instagram"><svg class="site-footer__social-icon" viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="0.6"/></svg></a>
+        <a href="https://linkedin.com/company/moldejarnvare" aria-label="LinkedIn"><svg class="site-footer__social-icon" viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M8 10v7M8 7v.01M12 17v-4a2 2 0 0 1 4 0v4M12 10v7"/></svg></a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>

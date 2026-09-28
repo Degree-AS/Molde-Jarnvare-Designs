@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Min konto — Molde Jarnvare</title>
+  <title>Sortilog — Molde Jarnvare</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link href="https://fonts.googleapis.com/css2?family=Source+Sans+3:wght@400;500;600;700;900&family=JetBrains+Mono:wght@400&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="../styles/index.css">
@@ -410,9 +410,9 @@
 
   <div class="account-dashboard">
     <nav class="account-dashboard__nav">
-      <a class="account-dashboard__nav-link" aria-current="page" href="account.html">Oversikt</a>
+      <a class="account-dashboard__nav-link" href="account.html">Oversikt</a>
       <a class="account-dashboard__nav-link" href="account-orders.html">Ordrer</a>
-      <a class="account-dashboard__nav-link" href="account-sortilogs.html">Sortilog</a>
+      <a class="account-dashboard__nav-link is-active" aria-current="page" href="account-sortilogs.html">Sortilog</a>
       <a class="account-dashboard__nav-link" href="account-wishlists.html">Handlelister</a>
       <a class="account-dashboard__nav-link" href="account-addresses.html">Adresser</a>
       <a class="account-dashboard__nav-link" href="account-users.html">Brukere</a>
@@ -420,27 +420,42 @@
     </nav>
 
     <div class="account-dashboard__main">
-      <section class="card">
-        <header style="display: flex; justify-content: space-between; align-items: baseline;">
-          <h2 class="card__title">Siste ordrer</h2>
-          <a class="link" href="#">Se alle</a>
-        </header>
-        <div class="data-table__wrap data-table__wrap--responsive">
-          <table class="data-table">
-            <thead><tr><th>Ordre</th><th>Dato</th><th>Status</th><th class="is-numeric">Sum</th><th></th></tr></thead>
-            <tbody>
-              <!-- Ordre uten BC-ordrenummer ennå: vis «–» og status Behandles, uten Detaljer-lenke. Får den BC-ordrenummer, blir status Bekreftet og lenken vises. -->
-              <tr><td data-label="Ordre"><span aria-label="Ordrenummer ikke tildelt enn&aring;">&ndash;</span></td><td data-label="Dato">06.05.2026</td><td data-label="Status"><span class="status-pill status-pill--info">Behandles</span></td><td class="is-numeric" data-label="Sum">kr 3 460,–</td><td></td></tr>
-              <tr><td data-label="Ordre"><code>234 519</code></td><td data-label="Dato">05.05.2026</td><td data-label="Status"><span class="status-pill status-pill--success">Sendt</span></td><td class="is-numeric" data-label="Sum">kr 12 530,–</td><td><a class="link" href="account-order-detail.html">Detaljer</a></td></tr>
-              <tr><td data-label="Ordre"><code>234 488</code></td><td data-label="Dato">02.05.2026</td><td data-label="Status"><span class="status-pill status-pill--info">Bekreftet</span></td><td class="is-numeric" data-label="Sum">kr 4 220,–</td><td><a class="link" href="account-order-detail.html">Detaljer</a></td></tr>
-              <tr><td data-label="Ordre"><code>234 401</code></td><td data-label="Dato">28.04.2026</td><td data-label="Status"><span class="status-pill status-pill--success">Fakturert</span></td><td class="is-numeric" data-label="Sum">kr 18 100,–</td><td><a class="link" href="account-order-detail.html">Detaljer</a></td></tr>
-              <tr><td data-label="Ordre"><code>234 320</code></td><td data-label="Dato">15.04.2026</td><td data-label="Status"><span class="status-pill status-pill--success">Fakturert</span></td><td class="is-numeric" data-label="Sum">kr 32 850,–</td><td><a class="link" href="account-order-detail.html">Detaljer</a></td></tr>
-            </tbody>
-          </table>
-        </div>
-      </section>
+      <!--
+        Sortilog = avtalt sortiment som MJ vedlikeholder i BC (vareavtaletype «sortilog»).
+        En kunde kan ha flere sortiloger. Har kunden bare én, går menylenken
+        «Sortilog» rett til detaljsiden (account-sortilog-detail.html).
+        Navn per sortilog må komme fra et sortilog-hode i BC — finnes ikke i
+        testuttrekket (kun linjer). «Vedlikehold» er hentet fra Brunvolls
+        gamle bestillingsliste.
+      -->
+      <header style="margin-bottom: var(--s-6);">
+        <h2 class="t-h2" style="margin: 0 0 var(--s-2);">Sortilog</h2>
+        <p style="color: var(--color-text-secondary); margin: 0; max-width: 60ch;">Avtalt sortiment som Molde Jarnvare vedlikeholder for dere. Velg en sortilog, fyll inn antall og legg varene i handlekurven. Ta kontakt med selgeren din for endringer i sortimentet.</p>
+      </header>
+
+      <div class="sortilog__list">
+
+        <a class="sortilog__card" href="account-sortilog-detail.html">
+          <p class="sortilog__card-meta">Brunvoll AS &middot; 311936</p>
+          <h3 class="sortilog__card-name">Vedlikehold</h3>
+          <span class="sortilog__card-count">495 varer</span>
+        </a>
+
+        <!-- Eksempel på sortilog nr. 2 — viser at en kunde kan ha flere -->
+        <a class="sortilog__card" href="account-sortilog-detail.html">
+          <p class="sortilog__card-meta">Brunvoll AS &middot; 311936</p>
+          <h3 class="sortilog__card-name">Verksted</h3>
+          <span class="sortilog__card-count">112 varer</span>
+        </a>
+
+      </div>
+
+      <div class="callout" style="margin-top: var(--s-7);">
+        <strong>Mangler en vare?</strong> Sortimentet vedlikeholdes av Molde Jarnvare. Kontakt selgeren din eller ordrekontoret p&aring; <a class="link" href="tel:71254200">71 25 42 00</a>, s&aring; legger vi den inn. Alle varer kan ogs&aring; bestilles fra nettbutikken som vanlig.
+      </div>
     </div>
   </div>
+
 </main>
 <footer class="site-footer">
   <div class="site-footer__inner">

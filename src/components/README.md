@@ -48,7 +48,7 @@ in code; documentation explains the concept in English.
 
 | Term | English explanation |
 |---|---|
-| `sortilog` | Customer-specific assortment with pre-negotiated pricing; shown in account dashboard for B2B customers |
+| `sortilog` | Customer-specific assortment maintained by MJ in BC (item agreement type «sortilog»); the customer orders from it but cannot edit it; a customer can have several |
 | `two-bin-dashboard` | Kanban-style replenishment system where MJ refills the customer's bins on a schedule |
 | `sales-impersonation` | "Shop as customer" mode that lets MJ sales reps place orders on behalf of a customer |
 | `quick-order` | Bulk SKU paste order pad — for experienced buyers who already know article numbers |
