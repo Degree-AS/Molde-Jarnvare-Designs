@@ -414,7 +414,7 @@
 
   <header style="margin-bottom: var(--s-6);">
     <h1 class="t-h1">Skruer og bolter</h1>
-    <p style="color: var(--color-text-secondary); margin-top: var(--s-2);">14 880 artikler · sortert etter relevans</p>
+    <p style="color: var(--color-text-secondary); margin-top: var(--s-2);">1 240 produkter · sortert etter relevans</p>
   </header>
 
   <div class="plp-layout">
@@ -518,32 +518,33 @@
              3    bestillingsvare (BC-koden vises aldri) → Bestillingsvare + «Logg inn for å se priser»
              4    ukjent kode, pris skjult i BC → ingen indikator + «Kontakt oss for tilbud» -->
       <div class="plp-layout__grid">
+        <!-- Én kort per produkt, aldri per variant (beslutning 07.10.2026, ADO 19055).
+             Masterprodukt: antall varianter + «Fra» laveste variantpris når prisene er ulike, ellers bare prisen.
+             Enkeltprodukt: art.nr, lagerstatus og egen pris. -->
         <article class="product-card">
           <div class="product-card__media"></div>
-          <span class="product-card__sku">4815-162-30</span>
-          <h3 class="product-card__title"><a href="product-anonym.html">Sekskantskrue M8 × 40 mm A4 syrefast</a></h3>
-          <span class="stock-indicator stock-indicator--in">Normalt på lager</span>
+          <span class="product-card__variants">6 varianter</span>
+          <h3 class="product-card__title"><a href="product-anonym.html">Sekskantskrue DIN 933 A4 syrefast</a></h3>
           <p class="price-gate"><a class="price-gate__link" href="login.html">Logg inn for å se priser</a></p>
         </article>
         <article class="product-card">
           <div class="product-card__media"></div>
-          <span class="product-card__sku">4815-162-50</span>
-          <h3 class="product-card__title"><a href="product-anonym.html">Sekskantskrue M8 × 50 mm A4 syrefast</a></h3>
-          <span class="stock-indicator stock-indicator--in">Normalt på lager</span>
+          <span class="product-card__variants">5 varianter</span>
+          <h3 class="product-card__title"><a href="product-anonym.html">Mutter DIN 934 A4 syrefast</a></h3>
           <p class="price-gate"><a class="price-gate__link" href="login.html">Logg inn for å se priser</a></p>
         </article>
         <article class="product-card">
           <div class="product-card__media"></div>
-          <span class="product-card__sku">4815-162-80</span>
-          <h3 class="product-card__title"><a href="product-anonym.html">Sekskantskrue M8 × 80 mm A4 syrefast</a></h3>
-          <span class="stock-indicator stock-indicator--order">Bestillingsvare – kontakt oss for estimert leveringstid</span>
-          <p class="price-gate"><a class="price-gate__link" href="login.html">Logg inn for å se priser</a></p>
-        </article>
-        <article class="product-card">
-          <div class="product-card__media"></div>
-          <span class="product-card__sku">4815-110-30</span>
-          <h3 class="product-card__title"><a href="product-anonym.html">Sekskantskrue M6 × 30 mm A4 syrefast</a></h3>
+          <span class="product-card__variants">4 varianter</span>
+          <h3 class="product-card__title"><a href="product-anonym.html">Skive DIN 125 A4 syrefast</a></h3>
           <p class="price-gate price-gate--quote"><a class="price-gate__link" href="team.html">Kontakt oss for tilbud</a></p>
+        </article>
+        <article class="product-card">
+          <div class="product-card__media"></div>
+          <span class="product-card__sku">4870-162-00</span>
+          <h3 class="product-card__title"><a href="product-anonym.html">Gjengestang M8 × 1000 mm A4 syrefast</a></h3>
+          <span class="stock-indicator stock-indicator--in">Normalt på lager</span>
+          <p class="price-gate"><a class="price-gate__link" href="login.html">Logg inn for å se priser</a></p>
         </article>
       </div>
 

@@ -73,6 +73,19 @@
   color: var(--color-text-secondary);
   margin-inline-start: var(--s-1);
 }
+/* «Fra» foran laveste variantpris — kun masterprodukt der variantprisene er ulike (ADO 19055) */
+.product-card__price-from {
+  font-size: var(--fs-body-sm);
+  font-weight: var(--fw-regular);
+  color: var(--color-text-secondary);
+  margin-inline-end: var(--s-1);
+}
+
+/* Antall varianter — står i stedet for art.nr på masterprodukt */
+.product-card__variants {
+  font-size: var(--fs-caption);
+  color: var(--color-text-tertiary);
+}
 
 .product-card__stock {
   font-size: var(--fs-caption);

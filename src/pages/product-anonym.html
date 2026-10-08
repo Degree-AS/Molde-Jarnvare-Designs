@@ -450,8 +450,8 @@
         <p style="margin: 0;">Standardgjenge M8 × 1,25, hodebredde SW13. Leveres i pakker à 200 stk og kombineres med matchende muttere og skiver i A4 fra sortimentet.</p>
       </div>
 
-      <!-- Anonym: status fra itemCategoryCode (LAGERVARE), aldri antall eller hentested (ADO 19545) -->
-      <span class="stock-indicator stock-indicator--in">Normalt på lager</span>
+      <!-- Ingen lagerstatus her: den står per variant i tabellen (ADO 19542 / 19545, 08.10.2026) -->
+      <a href="#varianter" style="font-size: var(--fs-body-sm); font-weight: var(--fw-semibold); color: var(--color-text-link);">6 varianter — se lagerstatus per variant i tabellen ↓</a>
 
       <!-- Anonym: der prisen ellers står (ADO 19544, krit. 2) -->
       <p class="price-gate price-gate--lg" style="margin-top: var(--s-4);"><a class="price-gate__link" href="login.html">Logg inn for å se priser</a></p>
@@ -468,7 +468,7 @@
   <!-- Varianter i matrise — anonym tilstand (ADO 19542 + 19544).
        Én rad = én artikkel. Kolonnene Pris/stk, Antall og Legg til er fjernet, ikke tomme.
        Raden for artikkelen som ble åpnet direkte markeres med --current + aria-current. -->
-  <section style="margin-top: var(--s-10);">
+  <section id="varianter" style="margin-top: var(--s-10);">
     <div class="variant-selector variant-selector--matrix" style="width: 100%;">
       <div class="variant-selector__label">
         <span>Varianter</span>

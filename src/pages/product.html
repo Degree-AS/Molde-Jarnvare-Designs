@@ -450,12 +450,8 @@
         <p style="margin: 0;">Standardgjenge M8 × 1,25, hodebredde SW13. Leveres i pakker à 200 stk og kombineres med matchende muttere og skiver i A4 fra sortimentet.</p>
       </div>
 
-      <span class="stock-indicator stock-indicator--in">1000+ på lager<span class="stock-indicator__note">Normal leveringstid 1–2 dager ved standard bestilling</span></span>
-
-      <div class="price-display" style="margin-top: var(--s-4);">
-        <div class="price-display__value">kr 2,80<span class="price-display__suffix">/stk eks. mva</span></div>
-        <div class="price-display__meta"><span>Avtalepris</span></div>
-      </div>
+      <!-- Ingen pris eller lagerstatus her: matrisen velger ingen variant, så hver rad viser sin egen (ADO 19542, 08.10.2026) -->
+      <a href="#varianter" style="font-size: var(--fs-body-sm); font-weight: var(--fw-semibold); color: var(--color-text-link);">6 varianter — se pris og lagerstatus per variant i tabellen ↓</a>
 
       <!-- CTA: lenke til kontaktskjema nederst på siden -->
       <div style="margin-top: var(--s-4); padding: var(--s-5); background: var(--color-bg-brand-soft); border-radius: var(--r-md); display: flex; align-items: center; justify-content: space-between; gap: var(--s-4); flex-wrap: wrap;">
@@ -467,7 +463,7 @@
   </div>
 
   <!-- Varianter i matrise — én rad = én SKU, eget antall + handlekurv per rad -->
-  <section style="margin-top: var(--s-10);">
+  <section id="varianter" style="margin-top: var(--s-10);">
     <div class="variant-selector variant-selector--matrix" style="width: 100%;">
       <div class="variant-selector__label">
         <span>Velg variant og antall</span>
