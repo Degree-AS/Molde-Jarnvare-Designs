@@ -45,12 +45,16 @@ PRODUCTS = [
   ("Skilt og merking", ["Etiketter og tape","Sikkerhetsskilt","Avsperring"]),
 ]
 SUPPLY = [("2BOX","content-2box.html"),("Scan2order",None),("Weight2Order",None),("Verktøysporing",None)]
-SERVICES = ["Slange-verksted","Analyse og kalibrering","Profiltøy","Kurs og opplæring","Enerpac","Parker Store","ONIX","Serviceverksted"]
+SEEALL = {"megamenu-supply": "content-forsyningslosninger.html"}
+SERVICES = [("Slange-verksted",None),("Analyse og kalibrering",None),("Profiltøy",None),("Kurs og opplæring",None),("Enerpac",None),("Parker Store",None),("ONIX",None),("Serviceverksted",None)]
+LOGISTICS = [("Forsyningsløsninger","content-forsyningslosninger.html"),("Transport og avgangstider","content-transport.html")]
 MENUS = [  # (trigger-tekst, megameny-id, skuff-panel-id, "Alle …"-tittel, "Se alle …")
   ("Produkter", "megamenu", "drawer-products", "Alle produkter", "Se alle produkter"),
   ("Forsyningsløsninger", "megamenu-supply", "drawer-supply", "Alle forsyningsløsninger", "Se alle forsyningsløsninger"),
   ("Øvrige Tjenester", "megamenu-services", "drawer-services", "Alle øvrige tjenester", "Se alle øvrige tjenester"),
+  ("Logistikk", "megamenu-logistics", "drawer-logistics", "Logistikk", ""),
 ]
+ENTRIES = {"megamenu-supply": SUPPLY, "megamenu-services": SERVICES, "megamenu-logistics": LOGISTICS}
 
 SEARCH_ICON = '<svg class="search-bar__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.35-4.35"/></svg>'
 
@@ -128,14 +132,15 @@ def build(p, a, anon, attrs=''):
             for name, h in SUPPLY:
                 w(f'        <div class="megamenu__group"><a class="megamenu__heading" href="{href(h)}">{name}</a></div>')
         else:
-            for name in SERVICES:
-                w(f'        <div class="megamenu__group"><a class="megamenu__heading" href="#">{name}</a></div>')
+            for name, h in ENTRIES[mid]:
+                w(f'        <div class="megamenu__group"><a class="megamenu__heading" href="{href(h)}">{name}</a></div>')
         w('      </div>')
-        w('      <div class="megamenu__footer">')
-        w(f'        <a class="megamenu__footer-link" href="#">{seeall} →</a>')
-        if mid == 'megamenu':
-            w('        <span class="megamenu__intro-meta">Bestill direkte med <strong>NOBB-nr</strong> eller <strong>EAN</strong> via søket</span>')
-        w('      </div>')
+        if seeall:
+            w('      <div class="megamenu__footer">')
+            w(f'        <a class="megamenu__footer-link" href="{SEEALL.get(mid, "#")}">{seeall} →</a>')
+            if mid == 'megamenu':
+                w('        <span class="megamenu__intro-meta">Bestill direkte med <strong>NOBB-nr</strong> eller <strong>EAN</strong> via søket</span>')
+            w('      </div>')
         w('    </div>')
         w('  </div>')
     w('')
@@ -154,7 +159,8 @@ def build(p, a, anon, attrs=''):
     for text, mid, pid, _, seeall in MENUS:
         w(f'    <div class="site-header__drawer-panel" id="{pid}" hidden>')
         w(f'      <div class="site-header__drawer-header"><button class="site-header__drawer-back" type="button" data-drawer-panel="drawer-main">{svg("prev", "site-header__drawer-icon")}{text}</button>{close}</div>')
-        w(f'      <a class="site-header__drawer-all" href="#">{seeall}</a>')
+        if seeall:
+            w(f'      <a class="site-header__drawer-all" href="{SEEALL.get(mid, "#")}">{seeall}</a>')
         if mid == 'megamenu':
             for head, items in PRODUCTS:
                 w('      <div class="site-header__drawer-group">')
@@ -165,7 +171,7 @@ def build(p, a, anon, attrs=''):
                 w('        </ul>')
                 w('      </div>')
         else:
-            entries = SUPPLY if mid == 'megamenu-supply' else [(n, None) for n in SERVICES]
+            entries = ENTRIES[mid]
             w(f'      <nav class="site-header__drawer-nav" aria-label="{text}">')
             for name, h in entries:
                 w(f'        <a class="site-header__drawer-item" href="{href(h)}">{name}</a>')
@@ -185,7 +191,7 @@ SOCIAL = [  # (navn, url, svg-innhold)
    '<rect x="3" y="3" width="18" height="18" rx="2"/><path d="M8 10v7M8 7v.01M12 17v-4a2 2 0 0 1 4 0v4M12 10v7"/>'),
 ]
 FOOTER_COLS = [  # (tittel, [(tekst, side | None)])
-  ('Kundeservice', [('Mine sider', 'account.html'), ('Frakt og levering', None), ('Kontakt oss', 'team.html'),
+  ('Kundeservice', [('Mine sider', 'account.html'), ('Frakt og levering', 'content-transport.html'), ('Kontakt oss', 'team.html'),
                     ('FAQ', None), ('Åpningstider', None)]),
   ('Om oss', [('Om Molde Jarnvare', 'static.html'), ('Personvern', None), ('Vilkår', None), ('Aktuelt', 'news.html')]),
 ]
@@ -253,7 +259,7 @@ def apply(path, p, a, anon):
     io.open(path, 'w', encoding='utf-8', newline='').write(s)
 
 if __name__ == '__main__':
-    ANON = {'category-anonym.html', 'content-2box.html', 'product-anonym.html', 'product-minarc-anonym.html', 'login.html'}
+    ANON = {'category-anonym.html', 'content-2box.html', 'content-forsyningslosninger.html', 'content-transport.html', 'product-anonym.html', 'product-minarc-anonym.html', 'login.html'}
     n = 0
     for f in sorted(glob.glob('src/pages/*.html')):
         name = f.replace('\\', '/').split('/')[-1]

@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Ordre 234 519 — Molde Jarnvare</title>
+  <title>Forsyningsløsninger — Molde Jarnvare</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link href="https://fonts.googleapis.com/css2?family=Source+Sans+3:wght@400;500;600;700;900&family=JetBrains+Mono:wght@400&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="../styles/index.css">
@@ -21,8 +21,8 @@
     <a class="site-header__logo" href="home.html" aria-label="Molde Jarnvare – til forsiden"><img src="../assets/logos/molde-jarnvare-positive.png" alt="Molde Jarnvare" class="site-header__logo-img"></a>
     <p class="site-header__tagline">Totalleverandør av festemidler, hydraulikk, verneutstyr, verktøy og forbruksmateriell</p>
     <div class="site-header__actions">
-      <a class="site-header__action" href="account.html" aria-label="Min konto"><svg class="site-header__action-icon" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4 4-7 8-7s8 3 8 7"/></svg></a>
-      <a class="site-header__action" href="cart.html" aria-label="Handlekurv (3)"><svg class="site-header__action-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6h15l-1.5 9H7.5z"/><path d="M6 6 5 3H2"/><circle cx="9" cy="20" r="1.5"/><circle cx="18" cy="20" r="1.5"/></svg><span class="badge badge--numeric site-header__action-badge">3</span></a>
+      <!-- Anonym besøkende (ADO 19544): Logg inn i stedet for konto + handlekurv -->
+      <a class="site-header__action" href="login.html" aria-label="Logg inn"><svg class="site-header__action-icon" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4 4-7 8-7s8 3 8 7"/></svg></a>
     </div>
   </div>
 
@@ -422,132 +422,158 @@
   </div>
 </header>
 
-<main class="container container--wide" style="padding-block: var(--s-7);">
+<main>
 
-  <h1 class="t-h1" style="margin-bottom: var(--s-7);">Min konto</h1>
+  <!-- Hero — fullbreddebilde (headerbildet fra CMS) med sidens navn -->
+  <section class="hero hero--fullbleed">
+    <div class="hero__bg">
+      <img src="../assets/images/marketing/forsyningslosninger-2-boks.jpg" alt="2BOX-bokser på hylle hos Molde Jarnvare">
+    </div>
+    <div class="hero__inner">
+      <div class="hero__content">
+        <p class="hero__eyebrow">Molde Jarnvare</p>
+        <h1 class="hero__title">Forsyningsløsninger</h1>
+      </div>
+    </div>
+  </section>
 
-  <div class="account-dashboard">
-    <nav class="account-dashboard__nav">
-      <a class="account-dashboard__nav-link" href="account.html">Oversikt</a>
-      <a class="account-dashboard__nav-link is-active" aria-current="page" href="account-orders.html">Ordrer</a>
-      <a class="account-dashboard__nav-link" href="account-sortilogs.html">Sortilog</a>
-      <a class="account-dashboard__nav-link" href="account-wishlists.html">Handlelister</a>
-      <a class="account-dashboard__nav-link" href="account-addresses.html">Adresser</a>
-      <a class="account-dashboard__nav-link" href="account-users.html">Brukere</a>
-      <a class="account-dashboard__nav-link" href="account-details.html">Innstillinger</a>
-    </nav>
-
-    <div class="account-dashboard__main">
-      <nav class="breadcrumb" style="margin-bottom: var(--s-4);">
-        <span class="breadcrumb__item"><a class="breadcrumb__link" href="account-orders.html">Ordrer</a></span>
-        <span class="breadcrumb__item" aria-current="page">Ordre 234 519</span>
-      </nav>
-
-      <header style="display: flex; flex-wrap: wrap; justify-content: space-between; align-items: baseline; gap: var(--s-4); margin-bottom: var(--s-6);">
-        <div>
-          <h2 class="t-h2" style="margin: 0 0 var(--s-2);">Ordre 234 519</h2>
-          <p style="color: var(--color-text-secondary); margin: 0;">Bestilt 05.05.2026 · PO-04812-1188 · <span class="status-pill status-pill--success" style="vertical-align: baseline;">Sendt</span></p>
+  <!-- Innledning + sidekolonne (kontaktpersoner, løsninger) -->
+  <section class="content-section">
+    <div class="content-section__inner">
+      <div class="content-layout">
+        <div class="content-layout__main prose">
+          <p class="prose__lead">Molde Jarnvare tilbyr flere forsyningsløsninger som gjør det enklere å holde kontroll på lageret. Målet er at riktige varer skal være på riktig sted til riktig tid.</p>
+          <p>Mange bedrifter bruker mer tid på å bestille, telle og etterfylle enkle forbruksvarer enn varene egentlig er verdt. Forsyningsløsningene våre flytter jobben fra deg til oss, slik at de som jobber i produksjonen får tid til det de er ansatt for.</p>
+          <p>Hver løsning passer for ulike typer varer og ulike måter å arbeide på. Noen bedrifter nøyer seg med én, mens andre kombinerer to eller tre for ulike deler av virksomheten. Vi hjelper deg å finne riktig sammensetning, og du binder deg ikke til mer enn du trenger.</p>
+          <p>Et godt utgangspunkt er å se på hvilke varer dere bruker mest av, hvor ofte de går tomme og hvem som i dag bestiller dem. Svaret på det peker som regel rett mot riktig løsning.</p>
         </div>
-        <div style="display: flex; gap: var(--s-3);">
-          <button class="btn btn--outline btn--md">Last ned PDF</button>
-          <button class="btn btn--primary btn--md">Bestill p&aring; nytt</button>
+
+        <aside class="content-layout__aside" aria-label="Kontakt og løsninger">
+          <div class="contact-cta contact-cta--aside">
+            <div class="contact-cta__media"><img src="../assets/images/team/ansatt-portrett.jpg" alt=""></div>
+            <div class="contact-cta__body">
+              <p class="contact-cta__eyebrow">Produktsjef</p>
+              <p class="contact-cta__name">Per Egil Rød</p>
+              <p class="contact-cta__role">Forsyningsløsninger</p>
+              <div class="contact-cta__links">
+                <a class="contact-cta__link" href="tel:90976686">909 76 686</a>
+                <a class="contact-cta__link" href="mailto:pero@m-j.no">pero@m-j.no</a>
+              </div>
+            </div>
+          </div>
+
+          <div class="contact-cta contact-cta--aside">
+            <div class="contact-cta__media"><img src="../assets/images/team/ansatt-portrett.jpg" alt=""></div>
+            <div class="contact-cta__body">
+              <p class="contact-cta__eyebrow">Logistikk</p>
+              <p class="contact-cta__name">Lars Inge Bugge</p>
+              <div class="contact-cta__links">
+                <a class="contact-cta__link" href="tel:98211067">982 11 067</a>
+                <a class="contact-cta__link" href="mailto:labu@m-j.no">labu@m-j.no</a>
+              </div>
+            </div>
+          </div>
+
+          <nav class="related-links" aria-label="Forsyningsløsninger">
+            <h2 class="related-links__title">Våre løsninger</h2>
+            <ul class="related-links__list">
+              <li><a class="related-links__link" href="content-2box.html">2BOX</a></li>
+              <li><a class="related-links__link" href="#">QR SmartOrder</a></li>
+              <li><a class="related-links__link" href="#">Sortilog</a></li>
+            </ul>
+          </nav>
+        </aside>
+      </div>
+    </div>
+  </section>
+
+  <!-- Løsningene — kort-rutenett -->
+  <section class="content-section content-section--alt">
+    <div class="content-section__inner">
+      <header class="section-header">
+        <div class="section-header__text">
+          <p class="section-header__eyebrow">Våre løsninger</p>
+          <h2 class="section-header__title">Tre måter å forenkle innkjøpet</h2>
         </div>
       </header>
-
-      <section class="account-dashboard__widgets">
-        <div class="card">
-          <h3 class="card__title" style="font-size: var(--fs-overline); text-transform: uppercase; letter-spacing: var(--ls-wider); color: var(--color-text-secondary);">Levering</h3>
-          <p style="margin: var(--s-2) 0 0; line-height: var(--lh-relaxed);"><strong>Verksted Hjelset</strong><br>Hjelsetvegen 47<br>6450 Hjelset</p>
-          <a class="link" href="#" style="font-size: var(--fs-body-sm);">Spor sending →</a>
-        </div>
-        <div class="card">
-          <h3 class="card__title" style="font-size: var(--fs-overline); text-transform: uppercase; letter-spacing: var(--ls-wider); color: var(--color-text-secondary);">Faktura</h3>
-          <p style="margin: var(--s-2) 0 0; line-height: var(--lh-relaxed);"><strong>Hovedkontor</strong><br>Sj&oslash;gata 12<br>6404 Molde</p>
-          <a class="link" href="#" style="font-size: var(--fs-body-sm);">Last ned faktura →</a>
-        </div>
-        <div class="card">
-          <h3 class="card__title" style="font-size: var(--fs-overline); text-transform: uppercase; letter-spacing: var(--ls-wider); color: var(--color-text-secondary);">Bestilt av</h3>
-          <p style="margin: var(--s-2) 0 0; line-height: var(--lh-relaxed);"><strong>Bjarte Vik</strong><br>Innkj&oslash;psansvarlig<br>bjarte@industriservice-vest.no</p>
-        </div>
-      </section>
-
-      <section class="card" style="margin-top: var(--s-6);">
-        <h3 class="card__title">Referanse og kommentar</h3>
-        <dl class="order-reference">
-          <div class="order-reference__item"><dt class="order-reference__label">PO-nummer</dt><dd class="order-reference__value">PO-04812-1188</dd></div>
-          <div class="order-reference__item"><dt class="order-reference__label">Din referanse</dt><dd class="order-reference__value">Prosjekt Hjelset verksted</dd></div>
-          <div class="order-reference__item order-reference__item--full"><dt class="order-reference__label">Kommentar til ordren</dt><dd class="order-reference__value">Leveres ved port 3, bak verkstedhallen.
-Ring Bjarte på 912 34 567 ved ankomst.</dd></div>
-        </dl>
-      </section>
-
-      <section class="card" style="margin-top: var(--s-6);">
-        <h3 class="card__title">Varelinjer</h3>
-        <div class="data-table__wrap data-table__wrap--responsive">
-          <table class="data-table">
-            <thead>
-              <tr>
-                <th>Art.nr</th>
-                <th>Produkt</th>
-                <th class="is-numeric">Antall</th>
-                <th class="is-numeric">Pris/stk</th>
-                <th class="is-numeric">Sum</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td data-label="Art.nr"><code>4815-162-30</code></td>
-                <td data-label="Produkt">Sekskantskrue M8 × 40 mm A4 syrefast</td>
-                <td class="is-numeric" data-label="Antall">2 000</td>
-                <td class="is-numeric" data-label="Pris/stk">kr 2,80</td>
-                <td class="is-numeric" data-label="Sum">kr 5 600,–</td>
-              </tr>
-              <tr>
-                <td data-label="Art.nr"><code>5012-008-00</code></td>
-                <td data-label="Produkt">Skive M8 A4 syrefast</td>
-                <td class="is-numeric" data-label="Antall">2 000</td>
-                <td class="is-numeric" data-label="Pris/stk">kr 0,85</td>
-                <td class="is-numeric" data-label="Sum">kr 1 700,–</td>
-              </tr>
-              <tr>
-                <td data-label="Art.nr"><code>2210-507-12</code></td>
-                <td data-label="Produkt">Hilti TE 6-A36 borhammer 36V</td>
-                <td class="is-numeric" data-label="Antall">1</td>
-                <td class="is-numeric" data-label="Pris/stk">kr 4 990,–</td>
-                <td class="is-numeric" data-label="Sum">kr 4 990,–</td>
-              </tr>
-              <tr>
-                <td colspan="4" style="text-align: right; font-weight: var(--fw-semibold);" data-label="Art.nr">Frakt</td>
-                <td class="is-numeric" data-label="Produkt">kr 240,–</td>
-              </tr>
-              <tr>
-                <td colspan="4" style="text-align: right; font-weight: var(--fw-semibold);" data-label="Art.nr">Sum eks. mva</td>
-                <td class="is-numeric" style="font-weight: var(--fw-semibold);" data-label="Produkt">kr 12 530,–</td>
-              </tr>
-              <tr>
-                <td colspan="4" style="text-align: right; color: var(--color-text-secondary);" data-label="Art.nr">Mva (25 %)</td>
-                <td class="is-numeric" style="color: var(--color-text-secondary);" data-label="Produkt">kr 3 132,50</td>
-              </tr>
-              <tr style="background: var(--mj-surface-1);">
-                <td colspan="4" style="text-align: right; font-weight: var(--fw-bold); font-size: var(--fs-body-lg);">Totalt</td>
-                <td class="is-numeric" style="font-weight: var(--fw-bold); font-size: var(--fs-body-lg);">kr 15 662,50</td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
-      </section>
-
-      <!-- CMS-blokk: generell kontaktinfo, redigeres fra Admin i DW. Ingen logikk (ikke knyttet til ordre eller selger). -->
-      <section class="card" style="margin-top: var(--s-6); background: var(--color-bg-brand-soft);">
-        <h3 class="card__title">Sp&oslash;rsm&aring;l om ordren?</h3>
-        <p style="margin: var(--s-2) 0 var(--s-4); color: var(--color-text-secondary);">Ring sentralbordet eller send oss en e-post, s&aring; hjelper vi deg.</p>
-        <div style="display: flex; flex-wrap: wrap; gap: var(--s-3);">
-          <a class="btn btn--outline btn--sm" href="tel:71254200">71 25 42 00</a>
-          <a class="btn btn--ghost btn--sm" href="mailto:post@moldejarnvare.no">post@moldejarnvare.no</a>
-        </div>
-      </section>
+      <ul class="feature-grid">
+        <li class="feature-grid__item">
+          <div class="feature-grid__media"><img src="../assets/images/marketing/lager-plukk-fra-bins.jpg" alt=""></div>
+          <div class="feature-grid__body">
+            <h3 class="feature-grid__title"><a href="content-2box.html">2BOX</a></h3>
+            <p class="feature-grid__text">For festemidler og andre varer av lav verdi med jevnt forbruk. Etterfyllingen justeres automatisk etter forbruket, og risikoen for manko er lav. Ingen oppstartskostnader.</p>
+            <span class="feature-grid__more" aria-hidden="true">Les mer →</span>
+          </div>
+        </li>
+        <li class="feature-grid__item">
+          <div class="feature-grid__media"><img src="../assets/images/marketing/ordrekontor.jpg" alt=""></div>
+          <div class="feature-grid__body">
+            <h3 class="feature-grid__title"><a href="#">QR SmartOrder</a></h3>
+            <p class="feature-grid__text">Bestill med mobilen. Du trenger bare en smarttelefon med appen installert, og det koster ingenting å installere, bruke appen eller få QR-etikettene.</p>
+            <span class="feature-grid__more" aria-hidden="true">Les mer →</span>
+          </div>
+        </li>
+        <li class="feature-grid__item">
+          <div class="feature-grid__media"><img src="../assets/images/products/sortiment-detalj-1.jpg" alt=""></div>
+          <div class="feature-grid__body">
+            <h3 class="feature-grid__title"><a href="#">Sortilog</a></h3>
+            <p class="feature-grid__text">Et fast, ferdig satt sortiment, ofte brukt til arbeidsklær, verneutstyr og verktøy. Du får samme vare hver gang, uansett hvem som bestiller.</p>
+            <span class="feature-grid__more" aria-hidden="true">Les mer →</span>
+          </div>
+        </li>
+      </ul>
     </div>
-  </div>
+  </section>
+
+  <!-- Hvilken løsning passer? — steg -->
+  <section class="content-section">
+    <div class="content-section__inner">
+      <header class="section-header">
+        <div class="section-header__text">
+          <p class="section-header__eyebrow">Veien videre</p>
+          <h2 class="section-header__title">Hvilken forsyningsløsning passer din virksomhet?</h2>
+          <p class="section-header__lead">Vi kan kombinere flere løsninger, og hjelper deg hele veien fra behov til ferdig hylle.</p>
+        </div>
+      </header>
+      <ol class="steps">
+        <li class="steps__item">
+          <h3 class="steps__title">Behovsvurdering</h3>
+          <p class="steps__text">Vi går gjennom hvilke varer dere bruker, hvordan de bestilles i dag og hvor det oppstår hull.</p>
+        </li>
+        <li class="steps__item">
+          <h3 class="steps__title">Anbefaling</h3>
+          <p class="steps__text">Du får et forslag til hvilken løsning, eller kombinasjon av løsninger, som passer best.</p>
+        </li>
+        <li class="steps__item">
+          <h3 class="steps__title">Innføring</h3>
+          <p class="steps__text">Vi setter opp løsningen sammen med dere, med varesortiment, merking og rutiner.</p>
+        </li>
+        <li class="steps__item">
+          <h3 class="steps__title">Lagerinnredning</h3>
+          <p class="steps__text">Trenger dere hyller, bokser eller annen innredning, hjelper vi også med å få lageret ryddig og oversiktlig.</p>
+        </li>
+      </ol>
+    </div>
+  </section>
+
+  <!-- Avslutning — kontaktperson som bred blokk -->
+  <section class="content-section content-section--tight" id="kontakt">
+    <div class="content-section__inner">
+      <div class="contact-cta contact-cta--band">
+        <div class="contact-cta__media"><img src="../assets/images/team/ansatt-portrett.jpg" alt=""></div>
+        <div class="contact-cta__body">
+          <p class="contact-cta__eyebrow">Forsyningsløsninger</p>
+          <h2 class="contact-cta__title">Usikker på hvor dere bør starte?</h2>
+          <p class="contact-cta__text">Ta kontakt, så går vi gjennom behovene deres og foreslår en løsning som passer.</p>
+          <p class="contact-cta__name">Per Egil Rød</p>
+          <div class="contact-cta__links">
+            <a class="contact-cta__link" href="tel:90976686">909 76 686</a>
+            <a class="contact-cta__link" href="mailto:pero@m-j.no">pero@m-j.no</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
 
 </main>
 <footer class="site-footer">
@@ -561,7 +587,7 @@ Ring Bjarte på 912 34 567 ved ankomst.</dd></div>
       <div>
         <h2 class="site-footer__col-title">Kundeservice</h2>
         <nav class="site-footer__list" aria-label="Kundeservice">
-          <a href="account.html">Mine sider</a>
+          <a href="login.html">Logg inn</a>
           <a href="content-transport.html">Frakt og levering</a>
           <a href="team.html">Kontakt oss</a>
           <a href="#">FAQ</a>
