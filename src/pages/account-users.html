@@ -433,12 +433,15 @@
       <a class="account-dashboard__nav-link" href="account-details.html">Innstillinger</a>
     </nav>
     <div class="account-dashboard__main">
+      <!-- Fase 1 (Håkon 13.10.2026): Molde Jarnvare aktiverer brukere og setter rolle i Dynamicweb.
+           Kunden ser hvilke brukere som er aktivert, og ber om tilgang eller endring. Kun Admin ser denne siden.
+           Invitasjoner og redigering av roller er fase 2. -->
       <header style="display: flex; justify-content: space-between; align-items: baseline; margin-bottom: var(--s-6); gap: var(--s-4); flex-wrap: wrap;">
         <div>
           <h2 class="t-h2" style="margin: 0 0 var(--s-2);">Brukere</h2>
-          <p style="color: var(--color-text-secondary); margin: 0; max-width: 60ch;">Kollegaer som handler p&aring; firmakontoen. Kun Admin kan invitere nye brukere og endre roller.</p>
+          <p style="color: var(--color-text-secondary); margin: 0; max-width: 60ch;">Kollegaer som har tilgang til nettbutikken p&aring; firmakontoen. Molde Jarnvare aktiverer brukere og setter roller.</p>
         </div>
-        <button class="btn btn--primary">+ Inviter ny bruker</button>
+        <a class="btn btn--primary" href="#be-om-tilgang">+ Be om tilgang for en kollega</a>
       </header>
 
       <section class="card">
@@ -450,7 +453,6 @@
                 <th>Rolle</th>
                 <th>Tjenester</th>
                 <th>Sist innlogget</th>
-                <th></th>
               </tr>
             </thead>
             <tbody>
@@ -459,68 +461,89 @@
                 <td data-label="Rolle"><span class="badge badge--brand">Admin</span></td>
                 <td data-label="Tjenester"><span class="badge badge--brand">Scan2Order</span></td>
                 <td data-label="Sist innlogget">I dag</td>
-                <td>—</td>
               </tr>
               <tr>
                 <td data-label="Navn"><strong>Marit Hammer&oslash;y</strong><br><span style="font-size: var(--fs-caption); color: var(--color-text-secondary);">marit@industriservice-vest.no</span></td>
                 <td data-label="Rolle"><span class="badge">Bestiller</span></td>
                 <td data-label="Tjenester"><span class="badge badge--brand">Scan2Order</span></td>
                 <td data-label="Sist innlogget">I g&aring;r</td>
-                <td><a class="link" href="#">Rediger</a></td>
               </tr>
               <tr>
                 <td data-label="Navn"><strong>Knut Helland</strong><br><span style="font-size: var(--fs-caption); color: var(--color-text-secondary);">knut@industriservice-vest.no</span></td>
                 <td data-label="Rolle"><span class="badge">Bestiller</span></td>
                 <td data-label="Tjenester" style="color: var(--color-text-tertiary);">&mdash;</td>
                 <td data-label="Sist innlogget">3 dager siden</td>
-                <td><a class="link" href="#">Rediger</a></td>
               </tr>
               <tr>
                 <td data-label="Navn"><strong>Anette Vatne</strong><br><span style="font-size: var(--fs-caption); color: var(--color-text-secondary);">anette@industriservice-vest.no</span></td>
-                <td data-label="Rolle"><span class="badge">Kun innsyn</span></td>
+                <td data-label="Rolle"><span class="badge">Visning</span></td>
                 <td data-label="Tjenester" style="color: var(--color-text-tertiary);">&mdash;</td>
                 <td data-label="Sist innlogget">2 uker siden</td>
-                <td><a class="link" href="#">Rediger</a></td>
-              </tr>
-              <tr>
-                <td colspan="5" style="background: var(--mj-surface-1); color: var(--color-text-secondary); font-style: italic;" data-label="Navn">
-                  Invitert: <strong style="font-style: normal;">Lars Indresund</strong> &lt;lars@industriservice-vest.no&gt; &middot; Venter p&aring; aksept &middot; <a class="link" href="#">Send p&aring;nytt</a>
-                </td>
               </tr>
             </tbody>
           </table>
         </div>
       </section>
 
-      <section class="card" style="margin-top: var(--s-6);">
-        <h3 class="card__title">Rediger bruker: Marit Hammer&oslash;y</h3>
-        <p style="color: var(--color-text-secondary); font-size: var(--fs-body-sm); margin: 0 0 var(--s-5);">Skjema-eksempel for inline-redigering. I produksjon &aring;pnes dette som modal eller ekspandert rad.</p>
+      <!-- «Kontakt oss for endring»: endringer gjøres av Molde Jarnvare, ikke av kunden. -->
+      <section class="card" style="margin-top: var(--s-6); display: flex; flex-direction: row; text-align: left; justify-content: space-between; align-items: center; gap: var(--s-5); flex-wrap: wrap; background: var(--mj-info-bg); border-color: var(--mj-blue-20);">
+        <div style="max-width: 60ch;">
+          <h3 class="card__title" style="margin-bottom: var(--s-2);">Trenger du &aring; endre noe?</h3>
+          <p style="margin: 0; color: var(--color-text-secondary);">Vil du endre rolle, gi tilgang til Scan2Order eller fjerne en bruker? Ta kontakt, s&aring; ordner vi det.</p>
+        </div>
+        <a class="btn btn--secondary" href="team.html">Kontakt oss for endring</a>
+      </section>
+
+      <!-- «Be om tilgang» (AB#20111): samme skjema som på innloggingssiden, med firmaet ferdig utfylt.
+           Sendes som e-post til Molde Jarnvare. I produksjon åpnes dette som modal eller egen side. -->
+      <section class="card" id="be-om-tilgang" style="margin-top: var(--s-6);">
+        <h3 class="card__title">Be om tilgang for en kollega</h3>
+        <p style="color: var(--color-text-secondary); font-size: var(--fs-body-sm); margin: 0 0 var(--s-5); max-width: 60ch;">Kollegaen m&aring; v&aelig;re registrert som kontaktperson hos oss. Vi aktiverer brukeren, setter rolle og gir beskjed n&aring;r tilgangen er klar.</p>
 
         <div class="form-grid">
-
           <div class="field">
-            <label class="field__label">Rolle</label>
+            <label class="field__label" for="req-company">Firma</label>
+            <input class="input" id="req-company" value="Industriservice Vest AS (MJ-04812)" readonly>
+          </div>
+          <div class="field">
+            <label class="field__label field__label--required" for="req-name">Navn</label>
+            <input class="input" id="req-name" autocomplete="off">
+          </div>
+          <div class="field">
+            <label class="field__label field__label--required" for="req-email">E-post</label>
+            <input class="input" id="req-email" type="email" autocomplete="off">
+          </div>
+          <div class="field">
+            <label class="field__label" for="req-phone">Telefon</label>
+            <input class="input" id="req-phone" type="tel" autocomplete="off">
+          </div>
+
+          <div class="field" style="grid-column: 1 / -1;">
+            <span class="field__label" style="display: block; margin-bottom: var(--s-3);">&Oslash;nsket rolle</span>
             <div class="radio-group">
-              <label class="radio"><input type="radio" name="role"><span class="radio__visual"></span><span>Admin &mdash; kan administrere brukere og kontoinnstillinger</span></label>
-              <label class="radio"><input type="radio" name="role" checked><span class="radio__visual"></span><span>Bestiller &mdash; kan handle for firmakontoen</span></label>
-              <label class="radio"><input type="radio" name="role"><span class="radio__visual"></span><span>Kun innsyn &mdash; kan se ordrer og fakturaer, ikke bestille</span></label>
+              <label class="radio"><input type="radio" name="req-role"><span class="radio__visual"></span><span>Admin &mdash; full tilgang, ogs&aring; til fakturaer og firmaets brukere</span></label>
+              <label class="radio"><input type="radio" name="req-role" checked><span class="radio__visual"></span><span>Bestiller &mdash; kan bestille og se tidligere ordrer</span></label>
+              <label class="radio"><input type="radio" name="req-role"><span class="radio__visual"></span><span>Visning &mdash; ser priser, kan ikke bestille</span></label>
             </div>
           </div>
 
-          <div class="field" style="grid-column: 1 / -1; border-top: var(--bw-1) solid var(--color-border-soft); padding-top: var(--s-5); margin-top: var(--s-2);">
-            <span class="field__label" style="display: block; margin-bottom: var(--s-3);">Tjenester</span>
+          <div class="field" style="grid-column: 1 / -1;">
             <label class="checkbox">
-              <input type="checkbox" checked>
+              <input type="checkbox">
               <span class="checkbox__visual"></span>
-              <span><strong>Scan2Order</strong> &mdash; tilgang til skanning av varekoder fra produksjon for direkte bestilling</span>
+              <span>Trenger ogs&aring; tilgang til <strong>Scan2Order</strong>-appen</span>
             </label>
-            <p class="field__hint" style="margin-top: var(--s-2);">Kun brukere med denne tilgangen kan logge inn p&aring; mobil-appen for Scan2Order.</p>
           </div>
 
+          <div class="field" style="grid-column: 1 / -1;">
+            <label class="field__label" for="req-message">Melding</label>
+            <p class="field__hint" id="req-message-hint">Frivillig.</p>
+            <textarea class="textarea" id="req-message" rows="3" maxlength="500" aria-describedby="req-message-hint"></textarea>
+          </div>
         </div>
 
         <div style="margin-top: var(--s-6);">
-          <button class="btn btn--primary">Lagre endringer</button>
+          <button class="btn btn--primary">Send foresp&oslash;rsel</button>
           <button class="btn btn--ghost" style="margin-left: var(--s-3);">Avbryt</button>
         </div>
       </section>
@@ -529,11 +552,13 @@
         <h3 class="card__title">Rollene betyr</h3>
         <dl style="display: grid; grid-template-columns: 140px 1fr; gap: var(--s-3) var(--s-5); margin: var(--s-4) 0 0;">
           <dt><span class="badge badge--brand">Admin</span></dt>
-          <dd style="margin: 0;">Kan godkjenne andres ordrer og administrere brukere/adresser/innstillinger.</dd>
+          <dd style="margin: 0;">Full tilgang: kan bestille, se tidligere ordrer og fakturaer, og se firmaets brukere. Et firma kan ha flere Admin.</dd>
           <dt><span class="badge">Bestiller</span></dt>
-          <dd style="margin: 0;">Kan handle for firmakontoen.</dd>
-          <dt><span class="badge">Kun innsyn</span></dt>
-          <dd style="margin: 0;">Kan se ordrer og fakturaer, men ikke bestille selv.</dd>
+          <dd style="margin: 0;">Kan bestille for firmakontoen og se tidligere ordrer.</dd>
+          <dt><span class="badge">Visning</span></dt>
+          <dd style="margin: 0;">Ser priser, men kan ikke bestille.</dd>
+          <dt><span class="badge badge--brand">Scan2Order</span></dt>
+          <dd style="margin: 0;">Tilgang til mobil-appen for skanning og bestilling fra lager og produksjon. Kommer i tillegg til rollen.</dd>
         </dl>
       </section>
 
