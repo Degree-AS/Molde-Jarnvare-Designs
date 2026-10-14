@@ -1,0 +1,32 @@
+/**
+ * Reveal — område som glir åpen og lukket når brukeren velger noe, f.eks.
+ * «+ Annen adresse for denne ordren» i kassen og «Forespør tilgang» på innlogging.
+ * Høyden animeres med grid-template-rows (0fr → 1fr), så innholdet kan ha vilkårlig høyde.
+ *
+ * Block:     .reveal        ytre beholder; lukket som standard
+ * Elements:  __inner        innholdet (må være eneste barn)
+ * Modifiers: .is-open       åpen
+ *
+ * Tilgjengelighet: utløseren har aria-expanded + aria-controls, og __inner får
+ * attributtet inert når området er lukket, så skjulte felt ikke kan fokuseres.
+ * Redusert bevegelse håndteres globalt i base/reset.
+ */
+
+.reveal {
+  display: grid;
+  grid-template-rows: 0fr;
+  opacity: 0;
+  transition:
+    grid-template-rows var(--duration-normal) var(--ease-decelerate),
+    opacity var(--duration-normal) var(--ease-decelerate);
+}
+
+.reveal.is-open {
+  grid-template-rows: 1fr;
+  opacity: 1;
+}
+
+.reveal__inner {
+  min-height: 0;
+  overflow: hidden;
+}

@@ -42,6 +42,7 @@
 @import "../components/breadcrumb/breadcrumb.css";
 @import "../components/stepper/stepper.css";
 @import "../components/accordion/accordion.css";
+@import "../components/reveal/reveal.css";
 @import "../components/tooltip/tooltip.css";
 @import "../components/modal/modal.css";
 @import "../components/drawer/drawer.css";

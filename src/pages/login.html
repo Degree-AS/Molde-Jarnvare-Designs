@@ -422,7 +422,7 @@
   </div>
 </header>
 
-<main class="container container--narrow" style="padding-block: var(--s-10); display: grid; place-items: center;">
+<main class="container container--narrow" style="padding-block: var(--s-7); display: grid; justify-items: center;">
   <form class="card" style="width: min(100%, 420px); padding: var(--s-7);">
     <h1 class="t-h2" style="margin: 0 0 var(--s-2);">Logg inn</h1>
     <p style="color: var(--color-text-secondary); margin-bottom: var(--s-6);">
@@ -446,9 +446,9 @@
 
     <button class="btn btn--primary btn--full">Logg inn</button>
 
-    <hr class="divider divider--label" style="margin-block: var(--s-5);">
-    <p style="text-align: center; margin: 0 0 var(--s-2);">
-      Er firmaet kunde, men du mangler bruker? <a class="link" href="#forespor-tilgang">Foresp&oslash;r tilgang →</a>
+    <hr class="divider" style="margin-block: var(--s-1);">
+    <p style="text-align: center; margin: 0;">
+      Er firmaet kunde, men du mangler bruker? <a class="link" href="#forespor-tilgang" role="button" aria-expanded="false" aria-controls="forespor-tilgang" data-request-toggle>Foresp&oslash;r tilgang →</a>
     </p>
     <p style="text-align: center; margin: 0;">
       Ikke kunde ennå? <a class="link" href="#">Søk om kundekonto →</a>
@@ -458,40 +458,66 @@
   <!-- «Forespør tilgang» (AB#20111): sendes som e-post til Molde Jarnvare, som aktiverer
        kontaktpersonen som webbruker i Dynamicweb og setter rolle. I produksjon åpnes dette
        som modal eller egen side fra lenken over. -->
-  <form class="card" id="forespor-tilgang" style="width: min(100%, 420px); padding: var(--s-7); margin-top: var(--s-7);">
-    <h2 class="t-h3" style="margin: 0 0 var(--s-2);">Foresp&oslash;r tilgang</h2>
-    <p style="color: var(--color-text-secondary); margin-bottom: var(--s-6);">
-      For deg som jobber i et firma som allerede er kunde hos oss. Vi aktiverer brukeren og gir beskjed n&aring;r tilgangen er klar.
-    </p>
+  <div class="reveal" id="forespor-tilgang" style="width: min(100%, 420px); margin-top: var(--s-4);">
+    <div class="reveal__inner" inert>
+      <form class="card" style="padding: var(--s-7);">
+        <h2 class="t-h3" style="margin: 0 0 var(--s-2);">Foresp&oslash;r tilgang</h2>
+        <p style="color: var(--color-text-secondary); margin-bottom: var(--s-6);">
+          For deg som jobber i et firma som allerede er kunde hos oss. Vi aktiverer brukeren og gir beskjed n&aring;r tilgangen er klar.
+        </p>
 
-    <div class="field" style="margin-bottom: var(--s-4);">
-      <label class="field__label field__label--required" for="req-name">Navn</label>
-      <input class="input" id="req-name" autocomplete="name" required>
-    </div>
-    <div class="field" style="margin-bottom: var(--s-4);">
-      <label class="field__label field__label--required" for="req-company">Firma</label>
-      <input class="input" id="req-company" autocomplete="organization" required>
-    </div>
-    <div class="field" style="margin-bottom: var(--s-4);">
-      <label class="field__label" for="req-customer-no">Kundenummer</label>
-      <input class="input" id="req-customer-no" aria-describedby="req-customer-no-hint">
-      <span class="field__hint" id="req-customer-no-hint">Frivillig, men gj&oslash;r det raskere for oss.</span>
-    </div>
-    <div class="field" style="margin-bottom: var(--s-4);">
-      <label class="field__label field__label--required" for="req-email">E-post</label>
-      <input class="input" id="req-email" type="email" autocomplete="email" required>
-    </div>
-    <div class="field" style="margin-bottom: var(--s-4);">
-      <label class="field__label field__label--required" for="req-phone">Telefon</label>
-      <input class="input" id="req-phone" type="tel" autocomplete="tel" required>
-    </div>
-    <div class="field" style="margin-bottom: var(--s-5);">
-      <label class="field__label" for="req-message">Melding</label>
-      <textarea class="textarea" id="req-message" rows="3" maxlength="500" placeholder="F.eks. hvilken rolle du trenger, eller om du skal bruke Scan2Order"></textarea>
-    </div>
+        <div class="field" style="margin-bottom: var(--s-4);">
+          <label class="field__label field__label--required" for="req-name">Navn</label>
+          <input class="input" id="req-name" autocomplete="name" required>
+        </div>
+        <div class="field" style="margin-bottom: var(--s-4);">
+          <label class="field__label field__label--required" for="req-company">Firma</label>
+          <input class="input" id="req-company" autocomplete="organization" required>
+        </div>
+        <div class="field" style="margin-bottom: var(--s-4);">
+          <label class="field__label" for="req-customer-no">Kundenummer</label>
+          <input class="input" id="req-customer-no" aria-describedby="req-customer-no-hint">
+          <span class="field__hint" id="req-customer-no-hint">Frivillig, men gj&oslash;r det raskere for oss.</span>
+        </div>
+        <div class="field" style="margin-bottom: var(--s-4);">
+          <label class="field__label field__label--required" for="req-email">E-post</label>
+          <input class="input" id="req-email" type="email" autocomplete="email" required>
+        </div>
+        <div class="field" style="margin-bottom: var(--s-4);">
+          <label class="field__label field__label--required" for="req-phone">Telefon</label>
+          <input class="input" id="req-phone" type="tel" autocomplete="tel" required>
+        </div>
+        <div class="field" style="margin-bottom: var(--s-5);">
+          <label class="field__label" for="req-message">Melding</label>
+          <textarea class="textarea" id="req-message" rows="3" maxlength="500" placeholder="F.eks. hvilken rolle du trenger, eller om du skal bruke Scan2Order"></textarea>
+        </div>
 
-    <button class="btn btn--primary btn--full">Send foresp&oslash;rsel</button>
-  </form>
+        <button class="btn btn--primary btn--full">Send foresp&oslash;rsel</button>
+      </form>
+    </div>
+  </div>
+  <script>
+    // «Forespør tilgang»: åpne og lukk skjemaet under innloggingen.
+    (function () {
+      var toggle = document.querySelector('[data-request-toggle]');
+      var reveal = document.getElementById('forespor-tilgang');
+      function setOpen(open) {
+        reveal.classList.toggle('is-open', open);
+        reveal.firstElementChild.inert = !open;
+        toggle.setAttribute('aria-expanded', String(open));
+        if (open) setTimeout(function () {
+          // Ruller bare dette vinduet (også når siden vises i en iframe).
+          window.scrollTo({ top: reveal.getBoundingClientRect().top + window.scrollY - 16, behavior: 'smooth' });
+          document.getElementById('req-name').focus({ preventScroll: true });
+        }, 250);
+      }
+      toggle.addEventListener('click', function (e) {
+        e.preventDefault();
+        setOpen(!reveal.classList.contains('is-open'));
+      });
+      if (location.hash === '#forespor-tilgang') setOpen(true);
+    })();
+  </script>
 </main>
 <footer class="site-footer">
   <div class="site-footer__inner">

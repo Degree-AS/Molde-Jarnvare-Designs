@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="nb">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Reveal — Molde Jarnvare</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Source+Sans+3:wght@400;500;600;700;900&family=JetBrains+Mono:wght@400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../styles/tokens/index.css">
+<link rel="stylesheet" href="../button/button.css">
+<link rel="stylesheet" href="reveal.css">
+<style>
+  body { margin: 0; padding: var(--s-7); font-family: var(--ff-sans); color: var(--color-text-primary); background: var(--color-bg-page, #F7F7F5); }
+  .preview-label { font-size: var(--fs-overline); text-transform: uppercase; letter-spacing: var(--ls-wider); color: var(--color-text-tertiary); margin: var(--s-7) 0 var(--s-3); }
+  .preview-box { padding: var(--s-5); background: var(--color-bg-surface); border: var(--bw-1) solid var(--color-border-soft); border-radius: var(--r-md); margin-top: var(--s-3); }
+</style>
+</head>
+<body>
+  <p class="preview-label">Lukket → åpen ved klikk</p>
+  <button class="btn btn--outline btn--md" type="button" aria-expanded="false" aria-controls="demo-reveal" data-reveal-toggle>Vis mer</button>
+  <div class="reveal" id="demo-reveal">
+    <div class="reveal__inner" inert>
+      <div class="preview-box">Innhold som glir frem. Høyden kan være hva som helst.</div>
+    </div>
+  </div>
+
+  <p class="preview-label">Åpen</p>
+  <div class="reveal is-open">
+    <div class="reveal__inner">
+      <div class="preview-box">Åpen tilstand.</div>
+    </div>
+  </div>
+
+  <script>
+    document.querySelectorAll('[data-reveal-toggle]').forEach(function (btn) {
+      var el = document.getElementById(btn.getAttribute('aria-controls'));
+      btn.addEventListener('click', function () {
+        var open = !el.classList.contains('is-open');
+        el.classList.toggle('is-open', open);
+        el.firstElementChild.inert = !open;
+        btn.setAttribute('aria-expanded', String(open));
+      });
+    });
+  </script>
+</body>
+</html>
