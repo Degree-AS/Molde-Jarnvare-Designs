@@ -447,9 +447,50 @@
     <button class="btn btn--primary btn--full">Logg inn</button>
 
     <hr class="divider divider--label" style="margin-block: var(--s-5);">
-    <p style="text-align: center;">
+    <p style="text-align: center; margin: 0 0 var(--s-2);">
+      Er firmaet kunde, men du mangler bruker? <a class="link" href="#forespor-tilgang">Foresp&oslash;r tilgang →</a>
+    </p>
+    <p style="text-align: center; margin: 0;">
       Ikke kunde ennå? <a class="link" href="#">Søk om kundekonto →</a>
     </p>
+  </form>
+
+  <!-- «Forespør tilgang» (AB#20111): sendes som e-post til Molde Jarnvare, som aktiverer
+       kontaktpersonen som webbruker i Dynamicweb og setter rolle. I produksjon åpnes dette
+       som modal eller egen side fra lenken over. -->
+  <form class="card" id="forespor-tilgang" style="width: min(100%, 420px); padding: var(--s-7); margin-top: var(--s-7);">
+    <h2 class="t-h3" style="margin: 0 0 var(--s-2);">Foresp&oslash;r tilgang</h2>
+    <p style="color: var(--color-text-secondary); margin-bottom: var(--s-6);">
+      For deg som jobber i et firma som allerede er kunde hos oss. Vi aktiverer brukeren og gir beskjed n&aring;r tilgangen er klar.
+    </p>
+
+    <div class="field" style="margin-bottom: var(--s-4);">
+      <label class="field__label field__label--required" for="req-name">Navn</label>
+      <input class="input" id="req-name" autocomplete="name" required>
+    </div>
+    <div class="field" style="margin-bottom: var(--s-4);">
+      <label class="field__label field__label--required" for="req-company">Firma</label>
+      <input class="input" id="req-company" autocomplete="organization" required>
+    </div>
+    <div class="field" style="margin-bottom: var(--s-4);">
+      <label class="field__label" for="req-customer-no">Kundenummer</label>
+      <input class="input" id="req-customer-no" aria-describedby="req-customer-no-hint">
+      <span class="field__hint" id="req-customer-no-hint">Frivillig, men gj&oslash;r det raskere for oss.</span>
+    </div>
+    <div class="field" style="margin-bottom: var(--s-4);">
+      <label class="field__label field__label--required" for="req-email">E-post</label>
+      <input class="input" id="req-email" type="email" autocomplete="email" required>
+    </div>
+    <div class="field" style="margin-bottom: var(--s-4);">
+      <label class="field__label field__label--required" for="req-phone">Telefon</label>
+      <input class="input" id="req-phone" type="tel" autocomplete="tel" required>
+    </div>
+    <div class="field" style="margin-bottom: var(--s-5);">
+      <label class="field__label" for="req-message">Melding</label>
+      <textarea class="textarea" id="req-message" rows="3" maxlength="500" placeholder="F.eks. hvilken rolle du trenger, eller om du skal bruke Scan2Order"></textarea>
+    </div>
+
+    <button class="btn btn--primary btn--full">Send foresp&oslash;rsel</button>
   </form>
 </main>
 <footer class="site-footer">

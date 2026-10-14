@@ -441,10 +441,12 @@
       <header style="display: flex; justify-content: space-between; align-items: baseline; margin-bottom: var(--s-6);">
         <div>
           <h2 class="t-h2" style="margin: 0 0 var(--s-2);">Adresser</h2>
-          <p style="color: var(--color-text-secondary); margin: 0;">Faktura- og leveringsadresser bedriften bruker.</p>
+          <p style="color: var(--color-text-secondary); margin: 0; max-width: 60ch;">Faktura- og leveringsadresser for firmakontoen. Adressene vedlikeholdes av Molde Jarnvare.</p>
         </div>
-        <button class="btn btn--primary">+ Ny adresse</button>
       </header>
+
+      <!-- Fase 1 (Håkon 13.10.2026): kun visning. Adressene på kundekortet i BC brukes også i
+           vareavtalene for QR/Scan2Order og 2-boks, så kunden kan ikke legge til, endre eller slette dem. -->
 
       <section class="address-book">
         <div class="address-book__list">
@@ -460,10 +462,7 @@
               6404 Molde<br>
               Norge
             </div>
-            <footer style="display: flex; gap: var(--s-3); margin-top: var(--s-2);">
-              <a class="link" href="#">Rediger</a>
-              <a class="link" href="#">Sett som standard</a>
-            </footer>
+            <footer style="margin-top: var(--s-2);"><span class="badge badge--info">Standard leveringsadresse</span></footer>
           </article>
 
           <article class="address-book__item">
@@ -477,10 +476,6 @@
               6450 Hjelset<br>
               Norge
             </div>
-            <footer style="display: flex; gap: var(--s-3); margin-top: var(--s-2);">
-              <a class="link" href="#">Rediger</a>
-              <a class="link" href="#">Slett</a>
-            </footer>
           </article>
 
           <article class="address-book__item">
@@ -494,53 +489,17 @@
               6210 Valld&aring;l<br>
               Norge
             </div>
-            <footer style="display: flex; gap: var(--s-3); margin-top: var(--s-2);">
-              <a class="link" href="#">Rediger</a>
-              <a class="link" href="#">Slett</a>
-            </footer>
           </article>
 
         </div>
       </section>
 
-      <section class="card" style="margin-top: var(--s-7);">
-        <h3 class="card__title">Legg til ny adresse</h3>
-        <div class="address-form form-grid" style="margin-top: var(--s-4);">
-          <div class="field">
-            <label class="field__label field__label--required" for="addr-label">Adresse-navn</label>
-            <input class="input" id="addr-label" placeholder="F.eks. Verksted Stranda">
-            <span class="field__hint">Vises i listen over adresser.</span>
-          </div>
-          <div class="field">
-            <label class="field__label" for="addr-recipient">Att.</label>
-            <input class="input" id="addr-recipient" placeholder="Kontaktperson (valgfritt)">
-          </div>
-          <div class="field" style="grid-column: 1 / -1;">
-            <label class="field__label field__label--required" for="addr-street">Gateadresse</label>
-            <input class="input" id="addr-street">
-          </div>
-          <div class="field">
-            <label class="field__label field__label--required" for="addr-zip">Postnummer</label>
-            <input class="input" id="addr-zip" inputmode="numeric" maxlength="4">
-          </div>
-          <div class="field">
-            <label class="field__label field__label--required" for="addr-city">Sted</label>
-            <input class="input" id="addr-city">
-          </div>
-          <div class="field" style="grid-column: 1 / -1;">
-            <fieldset style="border: 0; padding: 0; margin: 0;">
-              <legend class="field__label" style="margin-bottom: var(--s-2);">Bruksomr&aring;de</legend>
-              <div style="display: flex; gap: var(--s-5);">
-                <label class="checkbox"><input type="checkbox"><span class="checkbox__visual"></span><span>Fakturaadresse</span></label>
-                <label class="checkbox"><input type="checkbox" checked><span class="checkbox__visual"></span><span>Leveringsadresse</span></label>
-              </div>
-            </fieldset>
-          </div>
+      <section class="card" style="margin-top: var(--s-7); display: flex; flex-direction: row; text-align: left; justify-content: space-between; align-items: center; gap: var(--s-5); flex-wrap: wrap; background: var(--mj-info-bg); border-color: var(--mj-blue-20);">
+        <div style="max-width: 60ch;">
+          <h3 class="card__title" style="margin-bottom: var(--s-2);">Trenger du &aring; endre en adresse?</h3>
+          <p style="margin: 0; color: var(--color-text-secondary);">Ta kontakt, s&aring; oppdaterer vi adressen hos oss. Skal en ordre til et annet sted, kan du legge inn en midlertidig leveringsadresse i kassen.</p>
         </div>
-        <div style="margin-top: var(--s-5);">
-          <button class="btn btn--primary">Lagre adresse</button>
-          <button class="btn btn--ghost" style="margin-left: var(--s-3);">Avbryt</button>
-        </div>
+        <a class="btn btn--secondary" href="team.html">Kontakt oss for endring</a>
       </section>
     </div>
   </div>
