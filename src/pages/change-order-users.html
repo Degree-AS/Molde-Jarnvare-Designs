@@ -454,7 +454,7 @@
         <tbody>
           <tr>
             <td data-label="Endring"><a class="link" href="#roller"><strong>1. Roller og tilgangsniv&aring;er</strong></a></td>
-            <td data-label="Kort fortalt">Admin, Bestiller og Visning med ulik tilgang. Scan2Order-tilgang per bruker. Molde Jarnvare aktiverer brukere i Dynamicweb.</td>
+            <td data-label="Kort fortalt">Admin, Bestiller og Visning med ulik tilgang. Molde Jarnvare aktiverer brukere og setter rolle i Dynamicweb.</td>
             <td class="is-numeric" data-label="Estimat"><strong>10 t</strong></td>
             <td data-label="Status"><span class="status-pill status-pill--info">Klar til godkjenning</span></td>
           </tr>
@@ -497,7 +497,7 @@
     </header>
     <p style="color: var(--color-text-secondary); max-width: 72ch; margin: 0 0 var(--s-6);">
       Hver bruker f&aring;r en av tre roller, og nettbutikken gir tilgang etter rollen. Molde Jarnvare styrer brukerne:
-      dere aktiverer kontaktpersoner som webbrukere, setter rolle og gir tilgang til Scan2Order, i Dynamicweb.
+      dere aktiverer kontaktpersoner som webbrukere og setter rolle i Dynamicweb.
       Kunden ser hvem som har tilgang, men endrer ikke selv.
     </p>
 
@@ -543,6 +543,11 @@
       </table>
     </div>
 
+    <p style="font-size: var(--fs-body-sm); margin: 0 0 var(--s-6); padding: var(--s-4); background: var(--mj-success-bg); color: var(--color-text-primary); border-radius: var(--r-md); max-width: 72ch;">
+      <strong>Allerede p&aring; plass:</strong> Scan2Order-tilgang per bruker. Molde Jarnvare gir tilgang ved &aring; legge brukeren i brukergruppen for Scan2Order i Dynamicweb-admin.
+      Dette er ikke en del av endringsordren.
+    </p>
+
     <div class="form-grid" style="margin-bottom: var(--s-6); align-items: start;">
       <div class="card" style="box-shadow: none;">
         <h3 class="card__title">Dette er med</h3>
@@ -550,8 +555,7 @@
           <li>Tre roller, Admin, Bestiller og Visning, med tilgangen i tabellen over. Tilgangen kontrolleres p&aring; serveren, ikke bare ved at knapper skjules.</li>
           <li>Et firma kan ha flere Admin.</li>
           <li>Molde Jarnvare aktiverer og deaktiverer brukere og setter rolle i Dynamicweb-admin, i det vanlige brukerbildet.</li>
-          <li>Tilgang til Scan2Order-appen settes per bruker. Kunder med Scan2Order f&aring;r kundeavtalenummer lagt inn i Dynamicweb.</li>
-          <li>Kontaktpersoner fra Business Central kommer inn som deaktiverte brukere. Synkroniseringen overskriver aldri rolle, Scan2Order-tilgang eller aktiv/deaktivert.</li>
+          <li>Kontaktpersoner fra Business Central kommer inn som deaktiverte brukere. Synkroniseringen overskriver aldri rolle eller aktiv/deaktivert.</li>
           <li>Brukere slettes aldri, bare deaktiveres, slik at ordrehistorikken blir liggende.</li>
           <li>Brukere-siden i Min konto viser Admin hvilke brukere firmaet har, med rolle og Scan2Order, og lenkene &laquo;Kontakt oss for endring&raquo; og &laquo;Be om tilgang&raquo;.</li>
           <li>En kort veiledning for Molde Jarnvare om hvor brukere aktiveres og roller settes.</li>
@@ -567,7 +571,7 @@
         <h3 class="card__title" style="margin-top: var(--s-5);">Molde Jarnvare s&oslash;rger for</h3>
         <ul style="list-style: disc; margin: 0; padding-left: var(--s-5); line-height: var(--lh-relaxed);">
           <li>At kontaktpersonene ligger p&aring; kundekortet i Business Central.</li>
-          <li>&Aring; aktivere brukere, sette rolle og Scan2Order-tilgang i Dynamicweb.</li>
+          <li>&Aring; aktivere brukere og sette rolle i Dynamicweb.</li>
           <li>&Aring; legge inn kundeavtalenummer for kunder som bruker Scan2Order.</li>
         </ul>
       </div>
