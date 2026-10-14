@@ -442,7 +442,7 @@
         </div>
         <div class="address-book">
           <div class="address-book__list">
-            <button type="button" class="address-book__item is-selected">
+            <button type="button" class="address-book__item">
               <strong class="address-book__name">Verkstedet · Molde</strong>
               <span class="address-book__address">Industriveien 12<br>6422 Molde</span>
             </button>
@@ -450,7 +450,43 @@
               <strong class="address-book__name">Lager Kristiansund</strong>
               <span class="address-book__address">Storgata 1<br>6500 Kristiansund</span>
             </button>
-            <button type="button" class="address-book__item address-book__add">+ Ny adresse</button>
+            <button type="button" class="address-book__item address-book__add is-selected" aria-pressed="true">+ Annen adresse for denne ordren</button>
+          </div>
+        </div>
+
+        <!-- Midlertidig adresse (AB#20110, Håkon 13.10.2026): brukes bare på denne ordren, sendes som
+             shipTo* til BC og lagres ikke som fast adresse. Faste adresser vedlikeholdes av Molde Jarnvare.
+             Vises når «+ Annen adresse for denne ordren» er valgt. Avventer svar fra Knowit om API-et. -->
+        <div class="card" style="margin-top: var(--s-4); box-shadow: none;">
+          <div>
+            <h3 class="card__title" style="margin-bottom: var(--s-1);">Midlertidig leveringsadresse</h3>
+            <p class="field__hint" style="margin: 0;">Brukes bare p&aring; denne ordren og lagres ikke som fast adresse. Faste adresser endrer du ved &aring; <a class="link" href="team.html">kontakte oss</a>.</p>
+          </div>
+          <div class="address-form">
+            <div class="field field--full">
+              <label class="field__label field__label--required" for="tmp-name">Mottaker</label>
+              <input class="input" id="tmp-name" placeholder="Firma eller prosjekt">
+            </div>
+            <div class="field field--street">
+              <label class="field__label field__label--required" for="tmp-street">Adresse</label>
+              <input class="input" id="tmp-street">
+            </div>
+            <div class="field field--full">
+              <label class="field__label" for="tmp-street2">Adresselinje 2</label>
+              <input class="input" id="tmp-street2" placeholder="Valgfritt">
+            </div>
+            <div class="field">
+              <label class="field__label field__label--required" for="tmp-zip">Postnummer</label>
+              <input class="input" id="tmp-zip" inputmode="numeric" maxlength="4">
+            </div>
+            <div class="field">
+              <label class="field__label field__label--required" for="tmp-city">Sted</label>
+              <input class="input" id="tmp-city">
+            </div>
+            <div class="field field--full">
+              <label class="field__label" for="tmp-att">Att.</label>
+              <input class="input" id="tmp-att" placeholder="Kontaktperson p&aring; leveringsstedet (valgfritt)">
+            </div>
           </div>
         </div>
       </section>
