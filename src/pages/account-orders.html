@@ -454,7 +454,9 @@
             <option>Alle</option>
             <option>Behandles</option>
             <option>Bekreftet</option>
+            <option>Delvis sendt</option>
             <option>Sendt</option>
+            <option>Delvis fakturert</option>
             <option>Fakturert</option>
             <option>Kansellert</option>
           </select>
@@ -503,12 +505,15 @@
                 <td class="is-numeric" data-label="Sum">kr 3 460,–</td>
                 <td></td>
               </tr>
+              <!-- Status fra BC (beslutning 15.10.2026, AB#19601): levering avgjør til alt er sendt.
+                   Noe sendt, ikke alt → Delvis sendt. Alt sendt, ingenting fakturert → Sendt.
+                   Alt sendt, noe fakturert → Delvis fakturert. Alt fakturert → Fakturert. -->
               <tr>
                 <td data-label="Ordre"><code>234 519</code></td>
                 <td data-label="Dato">05.05.2026</td>
                 <td data-label="PO-ref">PO-04812-1188</td>
                 <td data-label="Levering">Hjelsetvegen 47</td>
-                <td data-label="Status"><span class="status-pill status-pill--success">Sendt</span></td>
+                <td data-label="Status"><span class="status-pill status-pill--warning">Delvis sendt</span></td>
                 <td class="is-numeric" data-label="Sum">kr 12 530,–</td>
                 <td><a class="link" href="account-order-detail.html">Detaljer</a></td>
               </tr>
@@ -519,6 +524,15 @@
                 <td data-label="Levering">Sj&oslash;gata 12</td>
                 <td data-label="Status"><span class="status-pill status-pill--info">Bekreftet</span></td>
                 <td class="is-numeric" data-label="Sum">kr 4 220,–</td>
+                <td><a class="link" href="account-order-detail.html">Detaljer</a></td>
+              </tr>
+              <tr>
+                <td data-label="Ordre"><code>234 455</code></td>
+                <td data-label="Dato">30.04.2026</td>
+                <td data-label="PO-ref">PO-04812-1186</td>
+                <td data-label="Levering">Tafjordvegen 88</td>
+                <td data-label="Status"><span class="status-pill status-pill--success">Delvis fakturert</span></td>
+                <td class="is-numeric" data-label="Sum">kr 9 340,–</td>
                 <td><a class="link" href="account-order-detail.html">Detaljer</a></td>
               </tr>
               <tr>
@@ -538,6 +552,17 @@
                 <td data-label="Status"><span class="status-pill status-pill--success">Fakturert</span></td>
                 <td class="is-numeric" data-label="Sum">kr 32 850,–</td>
                 <td><a class="link" href="account-order-detail.html">Detaljer</a></td>
+              </tr>
+              <!-- Faktura uten ordre (direktefaktura i BC, beslutning 15.10.2026): vises som et kjøp med status Fakturert.
+                   Fakturanummeret står i Ordre-kolonnen, og lenken går rett til fakturaen (PDF) i stedet for en ordredetalj. -->
+              <tr>
+                <td data-label="Ordre"><code>1 045 233</code><span class="data-table__meta">Faktura</span></td>
+                <td data-label="Dato">08.04.2026</td>
+                <td data-label="PO-ref">—</td>
+                <td data-label="Levering">Sj&oslash;gata 12</td>
+                <td data-label="Status"><span class="status-pill status-pill--success">Fakturert</span></td>
+                <td class="is-numeric" data-label="Sum">kr 1 250,–</td>
+                <td><a class="link" href="#">Faktura (PDF)</a></td>
               </tr>
               <tr>
                 <td data-label="Ordre"><code>234 198</code></td>

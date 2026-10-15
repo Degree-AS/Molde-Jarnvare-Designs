@@ -446,7 +446,7 @@
       <header style="display: flex; flex-wrap: wrap; justify-content: space-between; align-items: baseline; gap: var(--s-4); margin-bottom: var(--s-6);">
         <div>
           <h2 class="t-h2" style="margin: 0 0 var(--s-2);">Ordre 234 519</h2>
-          <p style="color: var(--color-text-secondary); margin: 0;">Bestilt 05.05.2026 · PO-04812-1188 · <span class="status-pill status-pill--success" style="vertical-align: baseline;">Sendt</span></p>
+          <p style="color: var(--color-text-secondary); margin: 0;">Bestilt 05.05.2026 · PO-04812-1188 · <span class="status-pill status-pill--warning" style="vertical-align: baseline;">Delvis sendt</span></p>
         </div>
         <div style="display: flex; gap: var(--s-3);">
           <button class="btn btn--outline btn--md">Last ned PDF</button>
@@ -454,16 +454,17 @@
         </div>
       </header>
 
+      <!-- Felt uten data skjules (beslutning 15.10.2026): ordrer fra Scan2Order og telefon har ikke «Bestilt av»,
+           «Din referanse» eller kommentar i BC, og da vises ikke kortet/feltet. Sporing vises ikke før BC har
+           transportør og kollinummer (Q14); fakturaene ligger i egen seksjon under. -->
       <section class="account-dashboard__widgets">
         <div class="card">
           <h3 class="card__title" style="font-size: var(--fs-overline); text-transform: uppercase; letter-spacing: var(--ls-wider); color: var(--color-text-secondary);">Levering</h3>
           <p style="margin: var(--s-2) 0 0; line-height: var(--lh-relaxed);"><strong>Verksted Hjelset</strong><br>Hjelsetvegen 47<br>6450 Hjelset</p>
-          <a class="link" href="#" style="font-size: var(--fs-body-sm);">Spor sending →</a>
         </div>
         <div class="card">
-          <h3 class="card__title" style="font-size: var(--fs-overline); text-transform: uppercase; letter-spacing: var(--ls-wider); color: var(--color-text-secondary);">Faktura</h3>
+          <h3 class="card__title" style="font-size: var(--fs-overline); text-transform: uppercase; letter-spacing: var(--ls-wider); color: var(--color-text-secondary);">Fakturaadresse</h3>
           <p style="margin: var(--s-2) 0 0; line-height: var(--lh-relaxed);"><strong>Hovedkontor</strong><br>Sj&oslash;gata 12<br>6404 Molde</p>
-          <a class="link" href="#" style="font-size: var(--fs-body-sm);">Last ned faktura →</a>
         </div>
         <div class="card">
           <h3 class="card__title" style="font-size: var(--fs-overline); text-transform: uppercase; letter-spacing: var(--ls-wider); color: var(--color-text-secondary);">Bestilt av</h3>
@@ -483,13 +484,17 @@ Ring Bjarte på 912 34 567 ved ankomst.</dd></div>
 
       <section class="card" style="margin-top: var(--s-6);">
         <h3 class="card__title">Varelinjer</h3>
+        <!-- Bestilt, sendt og fakturert antall per linje kommer fra BC-ordrelinjene (beslutning 15.10.2026, AB#19601).
+             Viser hva som mangler ved delleveranse; summene gjelder hele ordren. -->
         <div class="data-table__wrap data-table__wrap--responsive">
           <table class="data-table">
             <thead>
               <tr>
                 <th>Art.nr</th>
                 <th>Produkt</th>
-                <th class="is-numeric">Antall</th>
+                <th class="is-numeric">Bestilt</th>
+                <th class="is-numeric">Sendt</th>
+                <th class="is-numeric">Fakturert</th>
                 <th class="is-numeric">Pris/stk</th>
                 <th class="is-numeric">Sum</th>
               </tr>
@@ -498,33 +503,115 @@ Ring Bjarte på 912 34 567 ved ankomst.</dd></div>
               <tr>
                 <td data-label="Art.nr"><code>4815-162-30</code></td>
                 <td data-label="Produkt">Sekskantskrue M8 × 40 mm A4 syrefast</td>
-                <td class="is-numeric" data-label="Antall">2 000</td>
+                <td class="is-numeric" data-label="Bestilt">2 000</td>
+                <td class="is-numeric" data-label="Sendt">2 000</td>
+                <td class="is-numeric" data-label="Fakturert">2 000</td>
                 <td class="is-numeric" data-label="Pris/stk">kr 2,80</td>
                 <td class="is-numeric" data-label="Sum">kr 5 600,–</td>
               </tr>
               <tr>
                 <td data-label="Art.nr"><code>5012-008-00</code></td>
                 <td data-label="Produkt">Skive M8 A4 syrefast</td>
-                <td class="is-numeric" data-label="Antall">2 000</td>
+                <td class="is-numeric" data-label="Bestilt">2 000</td>
+                <td class="is-numeric" data-label="Sendt">1 200</td>
+                <td class="is-numeric" data-label="Fakturert">1 200</td>
                 <td class="is-numeric" data-label="Pris/stk">kr 0,85</td>
                 <td class="is-numeric" data-label="Sum">kr 1 700,–</td>
               </tr>
               <tr>
                 <td data-label="Art.nr"><code>2210-507-12</code></td>
                 <td data-label="Produkt">Hilti TE 6-A36 borhammer 36V</td>
-                <td class="is-numeric" data-label="Antall">1</td>
+                <td class="is-numeric" data-label="Bestilt">1</td>
+                <td class="is-numeric" data-label="Sendt">1</td>
+                <td class="is-numeric" data-label="Fakturert">0</td>
                 <td class="is-numeric" data-label="Pris/stk">kr 4 990,–</td>
                 <td class="is-numeric" data-label="Sum">kr 4 990,–</td>
               </tr>
             </tbody>
             <!-- Summehierarki (statusmøte 15.10.2026): Sum eks. mva er hovedtallet; mva og totalt inkl. mva mindre under. -->
             <tfoot>
-              <tr><td colspan="4">Varer</td><td class="is-numeric">kr 12 290,–</td></tr>
-              <tr><td colspan="4">Frakt<span class="data-table__meta">Standard levering</span></td><td class="is-numeric">kr 240,–</td></tr>
-              <tr class="data-table__total"><td colspan="4">Sum eks. mva</td><td class="is-numeric">kr 12 530,–</td></tr>
-              <tr class="data-table__total-sub"><td colspan="4">Mva (25 %)</td><td class="is-numeric">kr 3 132,50</td></tr>
-              <tr class="data-table__total-sub"><td colspan="4">Totalt inkl. mva</td><td class="is-numeric">kr 15 662,50</td></tr>
+              <tr><td colspan="6">Varer</td><td class="is-numeric">kr 12 290,–</td></tr>
+              <tr><td colspan="6">Frakt<span class="data-table__meta">Standard levering</span></td><td class="is-numeric">kr 240,–</td></tr>
+              <tr class="data-table__total"><td colspan="6">Sum eks. mva</td><td class="is-numeric">kr 12 530,–</td></tr>
+              <tr class="data-table__total-sub"><td colspan="6">Mva (25 %)</td><td class="is-numeric">kr 3 132,50</td></tr>
+              <tr class="data-table__total-sub"><td colspan="6">Totalt inkl. mva</td><td class="is-numeric">kr 15 662,50</td></tr>
             </tfoot>
+          </table>
+        </div>
+      </section>
+
+      <!-- Sendinger: én per bokført leveranse i BC (salesShipments + linjer), nyeste først. Vises når minst én er sendt. -->
+      <section class="card" style="margin-top: var(--s-6);">
+        <h3 class="card__title">Sendinger</h3>
+        <h4 class="t-h5" style="margin: var(--s-4) 0 var(--s-2);">Sendt 12.05.2026</h4>
+        <div class="data-table__wrap data-table__wrap--responsive">
+          <table class="data-table data-table--compact">
+            <thead>
+              <tr>
+                <th>Art.nr</th>
+                <th>Produkt</th>
+                <th class="is-numeric">Antall</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td data-label="Art.nr"><code>2210-507-12</code></td>
+                <td data-label="Produkt">Hilti TE 6-A36 borhammer 36V</td>
+                <td class="is-numeric" data-label="Antall">1</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <h4 class="t-h5" style="margin: var(--s-5) 0 var(--s-2);">Sendt 06.05.2026</h4>
+        <div class="data-table__wrap data-table__wrap--responsive">
+          <table class="data-table data-table--compact">
+            <thead>
+              <tr>
+                <th>Art.nr</th>
+                <th>Produkt</th>
+                <th class="is-numeric">Antall</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td data-label="Art.nr"><code>4815-162-30</code></td>
+                <td data-label="Produkt">Sekskantskrue M8 × 40 mm A4 syrefast</td>
+                <td class="is-numeric" data-label="Antall">2 000</td>
+              </tr>
+              <tr>
+                <td data-label="Art.nr"><code>5012-008-00</code></td>
+                <td data-label="Produkt">Skive M8 A4 syrefast</td>
+                <td class="is-numeric" data-label="Antall">1 200</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <!-- Fakturaer: alle BC-fakturaer med denne ordrens ordrenummer (salesInvoices.orderNumber). En ordre kan ha flere.
+           PDF hentes fra BC når kunden klikker. Seksjonen vises ikke før første faktura finnes. -->
+      <section class="card" style="margin-top: var(--s-6);">
+        <h3 class="card__title">Fakturaer</h3>
+        <div class="data-table__wrap data-table__wrap--responsive">
+          <table class="data-table data-table--compact">
+            <thead>
+              <tr>
+                <th>Faktura</th>
+                <th>Fakturadato</th>
+                <th>Forfall</th>
+                <th class="is-numeric">Sum eks. mva</th>
+                <th></th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td data-label="Faktura"><code>1 045 610</code></td>
+                <td data-label="Fakturadato">07.05.2026</td>
+                <td data-label="Forfall">21.05.2026</td>
+                <td class="is-numeric" data-label="Sum eks. mva">kr 6 860,–</td>
+                <td><a class="link" href="#">Last ned PDF</a></td>
+              </tr>
+            </tbody>
           </table>
         </div>
       </section>
