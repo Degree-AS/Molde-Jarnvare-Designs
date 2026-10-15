@@ -564,6 +564,8 @@
             <path d="M3 10h18"/>
           </svg>
           <div>
+            <!-- «Faktura – » + visningsnavnet til kundens betalingsbetingelse i BC (én per kunde), så «I henhold til avtale med <kundenavn>».
+                 Ingen betalingsløsning — alle faktureres (statusmøte 15.10.2026). -->
             <p style="margin: 0; font-weight: var(--fw-semibold);">Faktura &mdash; 14 dager netto</p>
             <p style="margin: var(--s-1) 0 0; font-size: var(--fs-body-sm); color: var(--color-text-secondary);">I henhold til avtale med Industriservice Vest AS.</p>
           </div>
@@ -575,10 +577,12 @@
 
     <aside class="cart-summary commerce-layout__summary">
       <h2 class="cart-summary__title">Din ordre</h2>
-      <div class="cart-summary__row"><span>3 varer</span><span>kr 10 024,–</span></div>
-      <div class="cart-summary__row"><span>Frakt</span><span>kr 99,–</span></div>
-      <div class="cart-summary__row"><span>Mva</span><span>kr 2 530,75</span></div>
-      <div class="cart-summary__row cart-summary__row--total"><span>Totalt</span><span>kr 12 653,75</span></div>
+      <!-- Frakt følger valgt leveringsmåte (satt opp i Dynamicweb). Sum eks. mva er hovedtallet (statusmøte 15.10.2026). -->
+      <div class="cart-summary__row"><span>Varer <span class="cart-summary__label-meta">3 varer</span></span><span>kr 10 024,–</span></div>
+      <div class="cart-summary__row"><span>Frakt <span class="cart-summary__label-meta">Standard levering</span></span><span>kr 99,–</span></div>
+      <div class="cart-summary__row cart-summary__row--total"><span>Sum eks. mva</span><span>kr 10 123,–</span></div>
+      <div class="cart-summary__row cart-summary__row--secondary"><span>Mva (25 %)</span><span>kr 2 530,75</span></div>
+      <div class="cart-summary__row cart-summary__row--secondary"><span>Totalt inkl. mva</span><span>kr 12 653,75</span></div>
     </aside>
   </div>
 </main>

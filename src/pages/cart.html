@@ -428,10 +428,13 @@
   <div class="commerce-layout commerce-layout--cart">
 
     <div>
+      <!-- Varelinjen lenker til masterproduktets adresse med varianten som parameter (statusmøte 15.10.2026):
+           /<masterprodukt>?variant=<art.nr> — produktsiden velger varianten og ruller til den i matrisen.
+           Uten parameter (fra PLP) åpnes produktsiden øverst, uten valgt variant. Én kanonisk adresse per produkt. -->
       <article class="cart-line">
         <div class="cart-line__media"></div>
         <div class="cart-line__main">
-          <h3 class="cart-line__title">Sekskantskrue M8 × 40 mm A4 syrefast</h3>
+          <h3 class="cart-line__title"><a href="product.html?variant=4815-162-30">Sekskantskrue M8 × 40 mm A4 syrefast</a></h3>
           <span class="cart-line__sku">Art.nr 4815-162-30</span>
           <div class="cart-line__qty">
             <div class="qty-stepper qty-stepper--compact">
@@ -452,7 +455,7 @@
       <article class="cart-line">
         <div class="cart-line__media"></div>
         <div class="cart-line__main">
-          <h3 class="cart-line__title">3M arbeidshansker, str. 10</h3>
+          <h3 class="cart-line__title"><a href="product.html?variant=7700-099-00">3M arbeidshansker, str. 10</a></h3>
           <span class="cart-line__sku">Art.nr 7700-099-00</span>
           <div class="cart-line__qty">
             <div class="qty-stepper qty-stepper--compact">
@@ -473,7 +476,7 @@
       <article class="cart-line">
         <div class="cart-line__media"></div>
         <div class="cart-line__main">
-          <h3 class="cart-line__title">Hilti TE 6-A36 borhammer 36V</h3>
+          <h3 class="cart-line__title"><a href="product.html?variant=2210-507-12">Hilti TE 6-A36 borhammer 36V</a></h3>
           <span class="cart-line__sku">Art.nr 2210-507-12</span>
           <div class="cart-line__qty">
             <div class="qty-stepper qty-stepper--compact">
@@ -494,10 +497,12 @@
     <aside class="commerce-layout__summary" style="display: flex; flex-direction: column; gap: var(--s-4);">
       <div class="cart-summary">
         <h2 class="cart-summary__title">Oversikt</h2>
-        <div class="cart-summary__row"><span>Subtotal <span class="cart-summary__label-meta">3 varer</span></span><span>kr 10 024,–</span></div>
-        <div class="cart-summary__row"><span>Frakt</span><span>kr 0,–</span></div>
-        <div class="cart-summary__row"><span>Mva (25 %)</span><span>kr 2 506,–</span></div>
-        <div class="cart-summary__row cart-summary__row--total"><span>Totalt</span><span>kr 12 530,–</span></div>
+        <!-- Frakt vises ikke her: leveringsmåte velges først i kassen (statusmøte 15.10.2026).
+             Sum eks. mva er hovedtallet; mva og inkl. mva står mindre under. -->
+        <div class="cart-summary__row cart-summary__row--total"><span>Sum eks. mva <span class="cart-summary__label-meta">3 varer</span></span><span>kr 10 024,–</span></div>
+        <div class="cart-summary__row cart-summary__row--secondary"><span>Mva (25 %)</span><span>kr 2 506,–</span></div>
+        <div class="cart-summary__row cart-summary__row--secondary"><span>Totalt inkl. mva</span><span>kr 12 530,–</span></div>
+        <p class="cart-summary__note">Frakt kommer i tillegg og beregnes i kassen når du velger leveringsmåte.</p>
         <div class="cart-summary__actions">
           <a class="btn btn--primary btn--lg btn--full" href="checkout.html">Til kassen</a>
         </div>

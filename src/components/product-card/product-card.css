@@ -60,6 +60,20 @@
 .product-card__title a { color: inherit; }
 .product-card__title a:hover { color: var(--color-text-link); }
 
+/* Hele kortet er klikkbart (statusmøte 15.10.2026): tittel-lenken strekkes over kortet,
+   så bilde, pris og tomrom åpner produktsiden. Én lenke per kort — ikke pakk kortet i <a>.
+   Knappene i __actions ligger over lenken og treffes fortsatt. */
+.product-card__title a::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  border-radius: inherit;
+}
+.product-card:hover .product-card__title a { color: var(--color-text-link); }
+.product-card:has(.product-card__title a:focus-visible) { box-shadow: var(--focus-ring); }
+.product-card__title a:focus-visible { outline: none; }
+
 .product-card__price {
   font-family: var(--ff-sans);
   font-size: var(--fs-h4);
@@ -96,6 +110,8 @@
   display: flex;
   gap: var(--s-2);
   margin-top: auto;
+  position: relative;
+  z-index: 2; /* over den strukne tittel-lenken */
 }
 
 /* List view modifier (§13.3) */

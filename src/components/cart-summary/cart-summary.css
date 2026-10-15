@@ -34,6 +34,22 @@
   margin-top: var(--s-2);
 }
 
+/* Summehierarki (statusmøte 15.10.2026): kundene er B2B og tenker eks. mva.
+   «Sum eks. mva» er --total (størst). Mva og «Totalt inkl. mva» står under, mindre og dempet.
+   Samme rekkefølge i handlekurv, kasse, ordrebekreftelse og ordredetalj. */
+.cart-summary__row--secondary {
+  font-size: var(--fs-caption);
+  color: var(--color-text-secondary);
+}
+.cart-summary__row--total + .cart-summary__row--secondary { margin-top: calc(-1 * var(--s-1)); }
+
+/* Kort forklaring under summene, f.eks. at frakt beregnes i kassen */
+.cart-summary__note {
+  margin: 0;
+  font-size: var(--fs-caption);
+  color: var(--color-text-secondary);
+}
+
 .cart-summary__label-meta {
   display: block;
   font-size: var(--fs-caption);

@@ -28,6 +28,8 @@
   color: var(--color-text-primary);
   margin: 0;
 }
+.cart-line__title a { color: inherit; }
+.cart-line__title a:hover { color: var(--color-text-link); }
 .cart-line__sku {
   font-family: var(--ff-mono);
   font-size: var(--fs-mono-sm);
