@@ -274,7 +274,6 @@
 }
 
 .hero--fullbleed .hero__content {
-  max-width: 64ch;
   text-align: center;
   color: var(--color-text-on-brand);
 }
@@ -292,9 +291,10 @@
 
 .hero--fullbleed .hero__title {
   color: var(--color-text-on-brand);
-  max-width: none;
+  max-width: 18ch;
+  margin: 0 auto;
+  text-wrap: balance;
   text-shadow: 0 2px 12px rgba(0, 0, 0, 0.45);
-  margin: 0;
 }
 
 /* Compact-variant ------------------------------------------------------- */
