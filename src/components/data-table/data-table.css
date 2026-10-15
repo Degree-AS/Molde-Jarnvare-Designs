@@ -42,6 +42,51 @@
   font-size: var(--fs-mono-sm);
 }
 
+/*
+ * Summer under ordrelinjer (<tfoot>) — ordrebekreftelse og ordredetalj.
+ * Etiketten spenner over kolonnene foran beløpet og høyrestilles, så beløpene
+ * står rett under pris-/sumkolonnen. Hierarki (statusmøte 15.10.2026):
+ * Varer og Frakt normalt, __total («Sum eks. mva») størst, __total-sub (mva, inkl. mva) små og dempet.
+ */
+.data-table tfoot td {
+  padding-block: var(--s-2);
+  text-align: right;
+  vertical-align: baseline; /* etikett (sans) og beløp (mono) på samme grunnlinje */
+  border-bottom: 0;
+  color: var(--color-text-secondary);
+}
+.data-table tfoot tr:first-child td {
+  padding-top: var(--s-4);
+  border-top: var(--bw-1) solid var(--color-border-default);
+}
+.data-table tfoot td.is-numeric { color: var(--color-text-primary); }
+
+.data-table tfoot .data-table__total td {
+  padding-block: var(--s-3);
+  background: var(--mj-surface-1);
+  border-top: var(--bw-1) solid var(--color-border-soft);
+  font-size: var(--fs-body-lg);
+  font-weight: var(--fw-bold);
+  color: var(--color-text-primary);
+}
+.data-table tfoot .data-table__total td.is-numeric { font-size: var(--fs-body-lg); }
+
+.data-table tfoot .data-table__total-sub td,
+.data-table tfoot .data-table__total-sub td.is-numeric {
+  padding-block: var(--s-1);
+  font-size: var(--fs-caption);
+  color: var(--color-text-secondary);
+}
+.data-table tfoot .data-table__total + .data-table__total-sub td { padding-top: var(--s-3); }
+.data-table tfoot tr:last-child td { padding-bottom: var(--s-4); }
+
+/* Liten forklaring etter etiketten, f.eks. leveringsmåte på fraktlinjen */
+.data-table__meta {
+  margin-inline-start: var(--s-1);
+  font-size: var(--fs-caption);
+  color: var(--color-text-tertiary);
+}
+
 .data-table th[aria-sort] { cursor: pointer; user-select: none; }
 .data-table th[aria-sort]::after {
   content: " ↕";
@@ -131,4 +176,30 @@
   .data-table__wrap--responsive .data-table td:not([data-label]) {
     justify-content: flex-end;
   }
+  /* Summene blir rader med etikett til venstre og beløp til høyre, uten kortramme */
+  .data-table__wrap--responsive .data-table tfoot { display: block; }
+  .data-table__wrap--responsive .data-table tfoot tr {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    gap: var(--s-3);
+    margin: 0;
+    padding: 0;
+    border: 0;
+    border-radius: 0;
+    background: none;
+  }
+  .data-table__wrap--responsive .data-table tfoot td {
+    display: block;
+    width: auto;
+    padding-inline: var(--s-4);
+  }
+  .data-table__wrap--responsive .data-table tfoot td::before { content: none; }
+  .data-table__wrap--responsive .data-table tfoot tr:first-child,
+  .data-table__wrap--responsive .data-table tfoot .data-table__total {
+    border-top: var(--bw-1) solid var(--color-border-default);
+  }
+  .data-table__wrap--responsive .data-table tfoot tr:first-child td,
+  .data-table__wrap--responsive .data-table tfoot .data-table__total td { border-top: 0; }
+  .data-table__wrap--responsive .data-table tfoot .data-table__total { background: var(--mj-surface-1); }
 }

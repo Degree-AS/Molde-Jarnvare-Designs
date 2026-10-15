@@ -516,24 +516,15 @@ Ring Bjarte på 912 34 567 ved ankomst.</dd></div>
                 <td class="is-numeric" data-label="Pris/stk">kr 4 990,–</td>
                 <td class="is-numeric" data-label="Sum">kr 4 990,–</td>
               </tr>
-              <tr>
-                <td colspan="4" style="text-align: right; font-weight: var(--fw-semibold);" data-label="Art.nr">Frakt</td>
-                <td class="is-numeric" data-label="Produkt">kr 240,–</td>
-              </tr>
-              <!-- Summehierarki (statusmøte 15.10.2026): Sum eks. mva er hovedtallet; mva og totalt inkl. mva mindre under. -->
-              <tr style="background: var(--mj-surface-1);">
-                <td colspan="4" style="text-align: right; font-weight: var(--fw-bold); font-size: var(--fs-body-lg);" data-label="Art.nr">Sum eks. mva</td>
-                <td class="is-numeric" style="font-weight: var(--fw-bold); font-size: var(--fs-body-lg);" data-label="Produkt">kr 12 530,–</td>
-              </tr>
-              <tr>
-                <td colspan="4" style="text-align: right; font-size: var(--fs-caption); color: var(--color-text-secondary);" data-label="Art.nr">Mva (25 %)</td>
-                <td class="is-numeric" style="font-size: var(--fs-caption); color: var(--color-text-secondary);" data-label="Produkt">kr 3 132,50</td>
-              </tr>
-              <tr>
-                <td colspan="4" style="text-align: right; font-size: var(--fs-caption); color: var(--color-text-secondary);" data-label="Art.nr">Totalt inkl. mva</td>
-                <td class="is-numeric" style="font-size: var(--fs-caption); color: var(--color-text-secondary);" data-label="Produkt">kr 15 662,50</td>
-              </tr>
             </tbody>
+            <!-- Summehierarki (statusmøte 15.10.2026): Sum eks. mva er hovedtallet; mva og totalt inkl. mva mindre under. -->
+            <tfoot>
+              <tr><td colspan="4">Varer</td><td class="is-numeric">kr 12 290,–</td></tr>
+              <tr><td colspan="4">Frakt<span class="data-table__meta">Standard levering</span></td><td class="is-numeric">kr 240,–</td></tr>
+              <tr class="data-table__total"><td colspan="4">Sum eks. mva</td><td class="is-numeric">kr 12 530,–</td></tr>
+              <tr class="data-table__total-sub"><td colspan="4">Mva (25 %)</td><td class="is-numeric">kr 3 132,50</td></tr>
+              <tr class="data-table__total-sub"><td colspan="4">Totalt inkl. mva</td><td class="is-numeric">kr 15 662,50</td></tr>
+            </tfoot>
           </table>
         </div>
       </section>
