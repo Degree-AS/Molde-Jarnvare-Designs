@@ -7,6 +7,17 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link href="https://fonts.googleapis.com/css2?family=Source+Sans+3:wght@400;500;600;700;900&family=JetBrains+Mono:wght@400&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="../styles/index.css">
+  <style>
+    /* Fase-markering for Vaclav (20.10.2026): grønn = klar for implementering i denne fasen. */
+    .card--interactive.phase--ready,
+    .card--interactive.phase--ready:hover { border: var(--bw-4) solid var(--mj-success); background: var(--mj-success-bg); }
+    .card--interactive.phase--partial,
+    .card--interactive.phase--partial:hover { border: var(--bw-4) solid var(--mj-warning); background: var(--mj-warning-bg); }
+    .phase--ready .status-pill--success,
+    .phase--partial .status-pill--warning { background: var(--color-bg-surface); }
+    .phase-pill { align-self: flex-start; margin-top: auto; }
+    .phase-note { font-size: var(--fs-caption); color: var(--color-text-secondary); margin-top: calc(var(--s-2) * -1); }
+  </style>
 </head>
 <body>
 
@@ -21,19 +32,32 @@
     </p>
   </header>
 
+  <aside class="card card--flat" style="margin-bottom: var(--s-7); gap: var(--s-3);">
+    <strong>Implementation status &mdash; this phase vs next phase</strong>
+    <div style="display: flex; flex-wrap: wrap; gap: var(--s-3);">
+      <span class="status-pill status-pill--success">Ready for implementation</span>
+      <span class="status-pill status-pill--warning">Partly ready</span>
+      <span class="status-pill status-pill--neutral">Next phase</span>
+    </div>
+    <p style="margin: 0; color: var(--color-text-secondary); font-size: var(--fs-body-sm);">
+      Green border = in scope for this phase and ready to build. Not ready yet: Sortilog, Other blocks, Saved carts
+      and the temporary delivery address (change order point 3).
+    </p>
+  </aside>
+
   <section style="margin-bottom: var(--s-7);">
     <h2 class="t-h3" style="margin-bottom: var(--s-4);">Main pages (contract)</h2>
     <div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: var(--s-3);">
-      <a class="card card--interactive" href="home.html"><strong class="card__title">Home</strong><span style="color: var(--color-text-secondary);">§15.2</span></a>
-      <a class="card card--interactive" href="category.html"><strong class="card__title">Category (PLP)</strong><span style="color: var(--color-text-secondary);">§15.3</span></a>
-      <a class="card card--interactive" href="product.html"><strong class="card__title">Product (PDP) — matrix</strong><span style="color: var(--color-text-secondary);">§15.4 · skrue m/varianter</span></a>
-      <a class="card card--interactive" href="product-minarc.html"><strong class="card__title">Product (PDP) — chips</strong><span style="color: var(--color-text-secondary);">§15.4 · sveiseapparat</span></a>
-      <a class="card card--interactive" href="search.html"><strong class="card__title">Search results</strong><span style="color: var(--color-text-secondary);">§15.5</span></a>
-      <a class="card card--interactive" href="cart.html"><strong class="card__title">Cart</strong><span style="color: var(--color-text-secondary);">§15.6 &middot; with switch</span></a>
-      <a class="card card--interactive" href="checkout.html"><strong class="card__title">Checkout</strong><span style="color: var(--color-text-secondary);">§15.7</span></a>
-      <a class="card card--interactive" href="order-confirmation.html"><strong class="card__title">Order confirmation</strong><span style="color: var(--color-text-secondary);">§15.8</span></a>
-      <a class="card card--interactive" href="login.html"><strong class="card__title">Login</strong><span style="color: var(--color-text-secondary);">§15.10</span></a>
-      <a class="card card--interactive" href="404.html"><strong class="card__title">404</strong><span style="color: var(--color-text-secondary);">§15.12</span></a>
+      <a class="card card--interactive phase--ready" href="home.html"><strong class="card__title">Home</strong><span style="color: var(--color-text-secondary);">§15.2</span><span class="status-pill status-pill--success phase-pill">Ready for implementation</span></a>
+      <a class="card card--interactive phase--ready" href="category.html"><strong class="card__title">Category (PLP)</strong><span style="color: var(--color-text-secondary);">§15.3</span><span class="status-pill status-pill--success phase-pill">Ready for implementation</span></a>
+      <a class="card card--interactive phase--ready" href="product.html"><strong class="card__title">Product (PDP) — matrix</strong><span style="color: var(--color-text-secondary);">§15.4 · skrue m/varianter</span><span class="status-pill status-pill--success phase-pill">Ready for implementation</span></a>
+      <a class="card card--interactive phase--ready" href="product-minarc.html"><strong class="card__title">Product (PDP) — chips</strong><span style="color: var(--color-text-secondary);">§15.4 · sveiseapparat</span><span class="status-pill status-pill--success phase-pill">Ready for implementation</span></a>
+      <a class="card card--interactive phase--ready" href="search.html"><strong class="card__title">Search results</strong><span style="color: var(--color-text-secondary);">§15.5</span><span class="status-pill status-pill--success phase-pill">Ready for implementation</span></a>
+      <a class="card card--interactive phase--ready" href="cart.html"><strong class="card__title">Cart</strong><span style="color: var(--color-text-secondary);">§15.6 &middot; with switch</span><span class="status-pill status-pill--success phase-pill">Ready for implementation</span></a>
+      <a class="card card--interactive phase--ready" href="checkout.html"><strong class="card__title">Checkout</strong><span style="color: var(--color-text-secondary);">§15.7</span><span class="status-pill status-pill--success phase-pill">Ready for implementation</span><span class="phase-note">Except the temporary delivery address &mdash; next phase.</span></a>
+      <a class="card card--interactive phase--ready" href="order-confirmation.html"><strong class="card__title">Order confirmation</strong><span style="color: var(--color-text-secondary);">§15.8</span><span class="status-pill status-pill--success phase-pill">Ready for implementation</span></a>
+      <a class="card card--interactive phase--ready" href="login.html"><strong class="card__title">Login</strong><span style="color: var(--color-text-secondary);">§15.10</span><span class="status-pill status-pill--success phase-pill">Ready for implementation</span></a>
+      <a class="card card--interactive phase--ready" href="404.html"><strong class="card__title">404</strong><span style="color: var(--color-text-secondary);">§15.12</span><span class="status-pill status-pill--success phase-pill">Ready for implementation</span></a>
     </div>
   </section>
 
@@ -45,9 +69,9 @@
       Where these differ from the logged-in pages above, these win (ADO 19544, 19545).
     </p>
     <div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: var(--s-3);">
-      <a class="card card--interactive" href="category-anonym.html"><strong class="card__title">Category (PLP) &mdash; anonymous</strong><span style="color: var(--color-text-secondary);">§15.3 · no price / stock filter</span></a>
-      <a class="card card--interactive" href="product-anonym.html"><strong class="card__title">Product (PDP) &mdash; matrix, anonymous</strong><span style="color: var(--color-text-secondary);">§15.4 · 3-column matrix</span></a>
-      <a class="card card--interactive" href="product-minarc-anonym.html"><strong class="card__title">Product (PDP) &mdash; chips, anonymous</strong><span style="color: var(--color-text-secondary);">§15.4 · contact CTA</span></a>
+      <a class="card card--interactive phase--ready" href="category-anonym.html"><strong class="card__title">Category (PLP) &mdash; anonymous</strong><span style="color: var(--color-text-secondary);">§15.3 · no price / stock filter</span><span class="status-pill status-pill--success phase-pill">Ready for implementation</span></a>
+      <a class="card card--interactive phase--ready" href="product-anonym.html"><strong class="card__title">Product (PDP) &mdash; matrix, anonymous</strong><span style="color: var(--color-text-secondary);">§15.4 · 3-column matrix</span><span class="status-pill status-pill--success phase-pill">Ready for implementation</span></a>
+      <a class="card card--interactive phase--ready" href="product-minarc-anonym.html"><strong class="card__title">Product (PDP) &mdash; chips, anonymous</strong><span style="color: var(--color-text-secondary);">§15.4 · contact CTA</span><span class="status-pill status-pill--success phase-pill">Ready for implementation</span></a>
     </div>
   </section>
 
@@ -55,13 +79,13 @@
     <h2 class="t-h3" style="margin-bottom: var(--s-2);">Content &amp; about</h2>
     <p style="color: var(--color-text-secondary); font-size: var(--fs-body-sm); margin: 0 0 var(--s-4);">Static pages and editorial content.</p>
     <div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: var(--s-3);">
-      <a class="card card--interactive" href="static.html"><strong class="card__title">About us</strong><span style="color: var(--color-text-secondary);">history + values</span></a>
-      <a class="card card--interactive" href="team.html"><strong class="card__title">Kontakt oss</strong><span style="color: var(--color-text-secondary);">product managers + sales</span></a>
-      <a class="card card--interactive" href="news.html"><strong class="card__title">News</strong><span style="color: var(--color-text-secondary);">news portal overview</span></a>
-      <a class="card card--interactive" href="news-article.html"><strong class="card__title">Article</strong><span style="color: var(--color-text-secondary);">single article</span></a>
-      <a class="card card--interactive" href="content-2box.html"><strong class="card__title">Service page &mdash; 2BOX</strong><span style="color: var(--color-text-secondary);">example built from the content blocks</span></a>
-        <a class="card card--interactive" href="content-forsyningslosninger.html"><strong class="card__title">Supply solutions overview</strong><span style="color: var(--color-text-secondary);">overview of 2BOX, QR SmartOrder, Sortilog + steps</span></a>
-        <a class="card card--interactive" href="content-transport.html"><strong class="card__title">Transport and departure times</strong><span style="color: var(--color-text-secondary);">departure table + order deadlines</span></a>
+      <a class="card card--interactive phase--ready" href="static.html"><strong class="card__title">About us</strong><span style="color: var(--color-text-secondary);">history + values</span><span class="status-pill status-pill--success phase-pill">Ready for implementation</span></a>
+      <a class="card card--interactive phase--ready" href="team.html"><strong class="card__title">Kontakt oss</strong><span style="color: var(--color-text-secondary);">product managers + sales</span><span class="status-pill status-pill--success phase-pill">Ready for implementation</span></a>
+      <a class="card card--interactive phase--ready" href="news.html"><strong class="card__title">News</strong><span style="color: var(--color-text-secondary);">news portal overview</span><span class="status-pill status-pill--success phase-pill">Ready for implementation</span></a>
+      <a class="card card--interactive phase--ready" href="news-article.html"><strong class="card__title">Article</strong><span style="color: var(--color-text-secondary);">single article</span><span class="status-pill status-pill--success phase-pill">Ready for implementation</span></a>
+      <a class="card card--interactive phase--ready" href="content-2box.html"><strong class="card__title">Service page &mdash; 2BOX</strong><span style="color: var(--color-text-secondary);">example built from the content blocks</span><span class="status-pill status-pill--success phase-pill">Ready for implementation</span></a>
+        <a class="card card--interactive phase--ready" href="content-forsyningslosninger.html"><strong class="card__title">Supply solutions overview</strong><span style="color: var(--color-text-secondary);">overview of 2BOX, QR SmartOrder, Sortilog + steps</span><span class="status-pill status-pill--success phase-pill">Ready for implementation</span></a>
+        <a class="card card--interactive phase--ready" href="content-transport.html"><strong class="card__title">Transport and departure times</strong><span style="color: var(--color-text-secondary);">departure table + order deadlines</span><span class="status-pill status-pill--success phase-pill">Ready for implementation</span></a>
     </div>
   </section>
 
@@ -71,28 +95,28 @@
       Each tab has its own page template. Covers the e-commerce contract points + wishlists / user limits.
     </p>
     <div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: var(--s-3);">
-      <a class="card card--interactive" href="account.html"><strong class="card__title">Overview</strong><span style="color: var(--color-text-secondary);">dashboard</span></a>
-      <a class="card card--interactive" href="account-orders.html"><strong class="card__title">Orders</strong><span style="color: var(--color-text-secondary);">history + filter</span></a>
-      <a class="card card--interactive" href="account-order-detail.html"><strong class="card__title">Order detail</strong><span style="color: var(--color-text-secondary);">single order</span></a>
-      <a class="card card--interactive" href="account-sortilogs.html"><strong class="card__title">Sortilog</strong><span style="color: var(--color-text-secondary);">agreed assortments</span></a>
-      <a class="card card--interactive" href="account-sortilog-detail.html"><strong class="card__title">Sortilog detail</strong><span style="color: var(--color-text-secondary);">flat order list</span></a>
-      <a class="card card--interactive" href="account-wishlists.html"><strong class="card__title">Wishlists</strong><span style="color: var(--color-text-secondary);">multiple wishlists</span></a>
-      <a class="card card--interactive" href="account-wishlist-detail.html"><strong class="card__title">Wishlist detail</strong><span style="color: var(--color-text-secondary);">single list</span></a>
-      <a class="card card--interactive" href="account-addresses.html"><strong class="card__title">Addresses</strong><span style="color: var(--color-text-secondary);">billing + shipping</span></a>
-      <a class="card card--interactive" href="account-users.html"><strong class="card__title">Users</strong><span style="color: var(--color-text-secondary);">activated users and request access</span></a>
-      <a class="card card--interactive" href="account-details.html"><strong class="card__title">Settings</strong><span style="color: var(--color-text-secondary);">customer details</span></a>
+      <a class="card card--interactive phase--ready" href="account.html"><strong class="card__title">Overview</strong><span style="color: var(--color-text-secondary);">dashboard</span><span class="status-pill status-pill--success phase-pill">Ready for implementation</span></a>
+      <a class="card card--interactive phase--ready" href="account-orders.html"><strong class="card__title">Orders</strong><span style="color: var(--color-text-secondary);">history + filter</span><span class="status-pill status-pill--success phase-pill">Ready for implementation</span></a>
+      <a class="card card--interactive phase--ready" href="account-order-detail.html"><strong class="card__title">Order detail</strong><span style="color: var(--color-text-secondary);">single order</span><span class="status-pill status-pill--success phase-pill">Ready for implementation</span></a>
+      <a class="card card--interactive" href="account-sortilogs.html"><strong class="card__title">Sortilog</strong><span style="color: var(--color-text-secondary);">agreed assortments</span><span class="status-pill status-pill--neutral phase-pill">Next phase</span></a>
+      <a class="card card--interactive" href="account-sortilog-detail.html"><strong class="card__title">Sortilog detail</strong><span style="color: var(--color-text-secondary);">flat order list</span><span class="status-pill status-pill--neutral phase-pill">Next phase</span></a>
+      <a class="card card--interactive phase--ready" href="account-wishlists.html"><strong class="card__title">Wishlists</strong><span style="color: var(--color-text-secondary);">multiple wishlists</span><span class="status-pill status-pill--success phase-pill">Ready for implementation</span></a>
+      <a class="card card--interactive phase--ready" href="account-wishlist-detail.html"><strong class="card__title">Wishlist detail</strong><span style="color: var(--color-text-secondary);">single list</span><span class="status-pill status-pill--success phase-pill">Ready for implementation</span></a>
+      <a class="card card--interactive phase--ready" href="account-addresses.html"><strong class="card__title">Addresses</strong><span style="color: var(--color-text-secondary);">billing + shipping</span><span class="status-pill status-pill--success phase-pill">Ready for implementation</span></a>
+      <a class="card card--interactive phase--ready" href="account-users.html"><strong class="card__title">Users</strong><span style="color: var(--color-text-secondary);">activated users and request access</span><span class="status-pill status-pill--success phase-pill">Ready for implementation</span></a>
+      <a class="card card--interactive phase--ready" href="account-details.html"><strong class="card__title">Settings</strong><span style="color: var(--color-text-secondary);">customer details</span><span class="status-pill status-pill--success phase-pill">Ready for implementation</span></a>
     </div>
   </section>
 
   <section style="margin-bottom: var(--s-7);">
-    <h2 class="t-h3" style="margin-bottom: var(--s-2);">Other &mdash; not part of this phase</h2>
+    <h2 class="t-h3" style="margin-bottom: var(--s-2);">Other &mdash; change order and backlog</h2>
     <p style="color: var(--color-text-secondary); font-size: var(--fs-body-sm); margin: 0 0 var(--s-4);">
-      Blocks and page-template proposals outside the v1 contract. Parked as a visible backlog.
+      The approved change order (points 1 and 2) plus blocks and page-template proposals outside the v1 contract, parked as a visible backlog.
     </p>
     <div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: var(--s-3);">
-      <a class="card card--interactive" href="change-order-users.html"><strong class="card__title">Change order: users and access</strong><span style="color: var(--color-text-secondary);">roller og tilgang · forespør tilgang · midlertidig leveringsadresse</span></a>
-      <a class="card card--interactive" href="out-of-scope.html" style="border-style: dashed;"><strong class="card__title">Other blocks</strong><span style="color: var(--color-text-secondary);">tilbud · forsyningsl&oslash;sninger · serviceavtaler · hurtigbestilling · PDP service · flere kurver</span></a>
-      <a class="card card--interactive" href="account-carts.html" style="border-style: dashed;"><strong class="card__title">Saved carts</strong><span style="color: var(--color-text-secondary);">multiple carts &mdash; parked</span></a>
+      <a class="card card--interactive phase--partial" href="change-order-users.html"><strong class="card__title">Change order: users and access</strong><span style="color: var(--color-text-secondary);">roller og tilgang · forespør tilgang · midlertidig leveringsadresse</span><span class="status-pill status-pill--warning phase-pill">Partly ready</span><span class="phase-note">Ready: 1. roles and access, 2. request access. Next phase: 3. temporary delivery address (waiting for Knowit).</span></a>
+      <a class="card card--interactive" href="out-of-scope.html" style="border-style: dashed;"><strong class="card__title">Other blocks</strong><span style="color: var(--color-text-secondary);">tilbud · forsyningsl&oslash;sninger · serviceavtaler · hurtigbestilling · PDP service · flere kurver</span><span class="status-pill status-pill--neutral phase-pill">Next phase</span></a>
+      <a class="card card--interactive" href="account-carts.html" style="border-style: dashed;"><strong class="card__title">Saved carts</strong><span style="color: var(--color-text-secondary);">multiple carts &mdash; parked</span><span class="status-pill status-pill--neutral phase-pill">Next phase</span></a>
     </div>
   </section>
 
@@ -102,8 +126,8 @@
       Snarveier til komponenter som krever en interaktiv tilstand (åpen meny, drawer, modal) for å vise seg.
     </p>
     <div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: var(--s-3);">
-      <a class="card card--interactive" href="../../docs/explorations/megamenu-preview.html"><strong class="card__title">Mega-meny åpen</strong><span style="color: var(--color-text-secondary);">desktop + mobil drawer</span></a>
-      <a class="card card--interactive" href="../../docs/explorations/mobile-drawer-open.html"><strong class="card__title">Mobil-drawer åpen</strong><span style="color: var(--color-text-secondary);">375 px viewport</span></a>
+      <a class="card card--interactive phase--ready" href="../../docs/explorations/megamenu-preview.html"><strong class="card__title">Mega-meny åpen</strong><span style="color: var(--color-text-secondary);">desktop + mobil drawer</span><span class="status-pill status-pill--success phase-pill">Ready for implementation</span></a>
+      <a class="card card--interactive phase--ready" href="../../docs/explorations/mobile-drawer-open.html"><strong class="card__title">Mobil-drawer åpen</strong><span style="color: var(--color-text-secondary);">375 px viewport</span><span class="status-pill status-pill--success phase-pill">Ready for implementation</span></a>
     </div>
   </section>
 
