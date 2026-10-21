@@ -211,6 +211,18 @@
 }
 
 /* ─────────────────────────────────────────────────────────────────────────
+ * Kategoritekst — Description-feltet på kategorien i Channels (PIM), under
+ * produktlisten og pagineringen. Streken går over hele kolonnen; teksten
+ * ligger i en .prose inni, med lesebredde.
+ * Tom Description = blokken rendres ikke.
+ * ────────────────────────────────────────────────────────────────────── */
+.plp-layout__description {
+  margin-top: var(--s-10);
+  padding-top: var(--s-8);
+  border-top: var(--bw-1) solid var(--color-border-soft);
+}
+
+/* ─────────────────────────────────────────────────────────────────────────
  * Backdrop — visible only when drawer is open on mobile/tablet
  * ────────────────────────────────────────────────────────────────────── */
 .plp-layout__backdrop {
