@@ -225,6 +225,16 @@
   gap: var(--s-2);
 }
 
+/* Stor skjerm: søkefeltet fyller linjen fram til menyen (maks 800px) */
+@media (min-width: 1280px) /* --bp-xl */ {
+  .site-header__search {
+    flex-grow: 1;
+    max-width: 800px;
+  }
+  .site-header__search .search-bar { max-width: none; }
+  .site-header__nav { flex: none; }
+}
+
 /* ─────────────────────────────────────────────────────────────────────────
  * Mobilmeny (skuff fra venstre)
  * Panel 1 = hovedpunktene. Hvert hovedpunkt med › åpner sitt eget panel
