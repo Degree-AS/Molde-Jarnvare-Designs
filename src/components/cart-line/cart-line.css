@@ -62,3 +62,14 @@
   margin-top: var(--s-2);
 }
 .cart-line__remove:hover { color: var(--mj-error); }
+
+/* Kundens varenummer + merkelapper (I sortilog) på linjen — 03.11.2026 */
+.cart-line__meta { display: flex; flex-wrap: wrap; align-items: center; gap: var(--s-1) var(--s-3); }
+.cart-line__customer-sku {
+  font-family: var(--ff-mono);
+  font-size: var(--fs-mono-sm);
+  color: var(--color-text-secondary);
+  font-variant-numeric: tabular-nums;
+}
+/* Profilering under linjen spenner over hele bredden (se profiling.css) */
+.cart-line__extra { grid-column: 2 / -1; }

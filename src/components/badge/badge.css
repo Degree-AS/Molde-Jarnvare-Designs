@@ -1,6 +1,6 @@
 /**
  * Badge (§12.9) — liten markør for status, antall, kategori.
- * Variants: default, brand, success, warning, error, info, numeric
+ * Variants: default, brand, success, warning, error, info, numeric, sortilog
  */
 
 .badge {
@@ -25,6 +25,9 @@
 .badge--warning  { background: var(--mj-warning); color: var(--color-text-on-brand); }
 .badge--error    { background: var(--mj-error);   color: var(--color-text-on-brand); }
 .badge--info     { background: var(--mj-info);    color: var(--color-text-on-brand); }
+/* «I sortilog» — gul merkelapp på PLP, PDP, kurv (Håkon 03.11.2026). Brand orange + ink,
+   samme par som sales-impersonation; kontrast ca. 5:1. Kun for innlogget kunde med sortilog. */
+.badge--sortilog { background: var(--mj-orange); color: var(--mj-ink); }
 
 .badge--numeric {
   min-width: 20px;

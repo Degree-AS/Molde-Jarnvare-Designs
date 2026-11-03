@@ -228,3 +228,6 @@
     padding-inline: var(--s-4);
   }
 }
+
+/* Merkelapp i variantcellen (f.eks. «I sortilog», 03.11.2026) */
+.variant-selector__matrix tbody th .badge { margin-inline-start: var(--s-2); vertical-align: middle; }

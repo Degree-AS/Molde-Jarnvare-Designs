@@ -1,0 +1,212 @@
+/**
+ * Profilering — logo og navnelapp på klær (§14.18, utkast 03.11.2026)
+ *
+ * Bakgrunn: møte «Sortilog | Form og funksjon» (Håkon, Marius, Simen 03.11.2026).
+ *   - Kunder med profilavtale har ferdige profiler (én per plaggtype: T-skjorte,
+ *     genser, jakke, bukse …) med godkjent bilde, antall logoer, plassering og
+ *     om plagget skal ha navnelapp. Profilene legges inn av MJ (selger) i
+ *     nettløsningen — de finnes ikke i BC eller PIM i dag.
+ *   - Profilering velges per varelinje i handlekurven: ja/nei, hvilken profil,
+ *     hvor mange av plaggene som skal profileres (miks med og uten logo er lov),
+ *     og navn per plagg når profilen har navnelapp.
+ *   - Ordren går til BC som vanlig, med påføringslinjer (479350 logo, 479355
+ *     navnelapp) i riktig antall, merknadslinjer med navn rett etter varelinjen,
+ *     og Ordreinstruksjoner = LOGO på hodet. Detaljene avklares med Knowit.
+ *   - Kunde uten avtale: ingen profilvalg, bare en henvisning til selger.
+ *
+ * Block:     .profiling
+ * Elements:  __summary  __summary-text  __toggle
+ *            __panel  __panel-title  __options  __option  __option-media
+ *            __option-body  __option-title  __option-meta
+ *            __row  __names  __name  __name-index
+ *            __addons  __addon  __addon-sku  __addon-price
+ *            __notice
+ *            __card  __card-media  __card-body  __card-title  __card-meta
+ *            __placements  __placement  __rule
+ * Modifiers: __option--selected, __card--inactive
+ */
+
+.profiling {
+  display: flex;
+  flex-direction: column;
+  gap: var(--s-3);
+  margin-top: var(--s-3);
+  font-size: var(--fs-body-sm);
+}
+
+/* Lukket tilstand — én linje med valgt profil eller «Legg til profilering» */
+.profiling__summary {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--s-2) var(--s-3);
+  padding: var(--s-2) var(--s-3);
+  background: var(--color-bg-surface-alt);
+  border-radius: var(--r-sm);
+}
+.profiling__summary-text { margin: 0; color: var(--color-text-secondary); }
+.profiling__summary-text strong { color: var(--color-text-primary); font-weight: var(--fw-semibold); }
+.profiling__toggle {
+  margin-left: auto;
+  background: transparent;
+  border: 0;
+  padding: 0;
+  font: inherit;
+  font-weight: var(--fw-semibold);
+  color: var(--color-text-link);
+  cursor: pointer;
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+.profiling__toggle:focus-visible { outline: none; box-shadow: var(--focus-ring); border-radius: var(--r-sm); }
+
+/* Åpen tilstand — velg profil, antall og navn */
+.profiling__panel {
+  display: flex;
+  flex-direction: column;
+  gap: var(--s-4);
+  padding: var(--s-4);
+  background: var(--color-bg-brand-soft);
+  border: var(--bw-1) solid var(--color-border-brand);
+  border-radius: var(--r-md);
+}
+.profiling__panel-title { margin: 0; font-size: var(--fs-body); font-weight: var(--fw-semibold); }
+
+.profiling__options {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: var(--s-3);
+  margin: 0;
+  padding: 0;
+  border: 0;
+}
+.profiling__option {
+  position: relative;
+  display: grid;
+  grid-template-columns: 56px 1fr;
+  gap: var(--s-3);
+  align-items: start;
+  padding: var(--s-3);
+  background: var(--color-bg-surface);
+  border: var(--bw-1) solid var(--color-border-default);
+  border-radius: var(--r-md);
+  cursor: pointer;
+}
+.profiling__option input { position: absolute; opacity: 0; pointer-events: none; }
+.profiling__option:has(input:focus-visible) { box-shadow: var(--focus-ring); }
+.profiling__option--selected,
+.profiling__option:has(input:checked) {
+  border-color: var(--color-action-primary);
+  box-shadow: inset 0 0 0 1px var(--color-action-primary);
+}
+.profiling__option-media {
+  width: 56px;
+  height: 56px;
+  background: var(--mj-surface-1);
+  border-radius: var(--r-sm);
+  overflow: hidden;
+}
+.profiling__option-media img { width: 100%; height: 100%; object-fit: cover; }
+.profiling__option-body { display: flex; flex-direction: column; gap: var(--s-1); min-width: 0; }
+.profiling__option-title { font-weight: var(--fw-semibold); color: var(--color-text-primary); }
+.profiling__option-meta { font-size: var(--fs-caption); color: var(--color-text-secondary); }
+
+.profiling__row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-end;
+  gap: var(--s-4);
+}
+
+/* Navn på navnelapp — én rad per plagg som skal profileres */
+.profiling__names {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: var(--s-2) var(--s-3);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+.profiling__name { display: flex; align-items: center; gap: var(--s-2); }
+.profiling__name-index {
+  flex: 0 0 auto;
+  min-width: 2.5ch;
+  font-family: var(--ff-mono);
+  font-size: var(--fs-mono-sm);
+  color: var(--color-text-tertiary);
+  text-align: right;
+}
+
+/* Påføringslinjene som legges på ordren — vises så kunden ser prisen */
+.profiling__addons {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  border-top: var(--bw-1) dashed var(--color-border-default);
+}
+.profiling__addon {
+  display: grid;
+  grid-template-columns: 1fr auto auto;
+  gap: var(--s-3);
+  padding: var(--s-2) 0;
+  border-bottom: var(--bw-1) dashed var(--color-border-soft);
+  font-variant-numeric: tabular-nums;
+}
+.profiling__addon-sku { font-family: var(--ff-mono); font-size: var(--fs-mono-sm); color: var(--color-text-tertiary); margin-inline-end: var(--s-2); }
+.profiling__addon-price { text-align: right; font-weight: var(--fw-semibold); }
+
+/* Kunde uten profilavtale — henvisning til selger i stedet for valg */
+.profiling__notice {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--s-3);
+  padding: var(--s-3) var(--s-4);
+  background: var(--mj-warning-bg);
+  color: var(--color-text-primary);
+  border-radius: var(--r-md);
+}
+.profiling__notice p { margin: 0; }
+
+/* Profilkort på Min konto › Profilering */
+.profiling__card {
+  display: grid;
+  grid-template-columns: 160px 1fr;
+  gap: var(--s-5);
+  padding: var(--s-5);
+  background: var(--color-bg-surface);
+  border: var(--bw-1) solid var(--color-border-soft);
+  border-radius: var(--r-md);
+}
+.profiling__card--inactive { opacity: 0.6; }
+.profiling__card-media {
+  aspect-ratio: var(--ar-square);
+  background: var(--mj-surface-1);
+  border-radius: var(--r-sm);
+  overflow: hidden;
+}
+.profiling__card-media img { width: 100%; height: 100%; object-fit: cover; }
+.profiling__card-body { display: flex; flex-direction: column; gap: var(--s-3); min-width: 0; }
+.profiling__card-title { margin: 0; font-size: var(--fs-h4); font-weight: var(--fw-semibold); }
+.profiling__card-meta { margin: 0; font-size: var(--fs-caption); color: var(--color-text-secondary); }
+.profiling__placements { margin: 0; padding: 0; list-style: none; display: flex; flex-direction: column; gap: var(--s-1); }
+.profiling__placement { display: flex; gap: var(--s-2); }
+.profiling__placement::before { content: "•"; color: var(--mj-orange); font-weight: var(--fw-bold); }
+
+/* Regel for hvilke varer profilen kan brukes på (satt av MJ per kunde) */
+.profiling__rule {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--s-2) var(--s-4);
+  padding: var(--s-4) var(--s-5);
+  background: var(--color-bg-surface-alt);
+  border-radius: var(--r-md);
+}
+.profiling__rule p { margin: 0; }
+
+@media (max-width: 767px) {
+  .profiling__card { grid-template-columns: 1fr; }
+  .profiling__card-media { max-width: 200px; }
+  .profiling__addon { grid-template-columns: 1fr auto; }
+  .profiling__addon > :nth-child(2) { display: none; }
+}

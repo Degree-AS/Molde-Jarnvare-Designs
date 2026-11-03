@@ -1,0 +1,645 @@
+<!doctype html>
+<html lang="nb">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Kassen med profilering — Molde Jarnvare</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Source+Sans+3:wght@400;500;600;700;900&family=JetBrains+Mono:wght@400&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../styles/index.css">
+  <script src="../scripts/site-header.js" defer></script>
+</head>
+<body>
+
+<header class="site-header">
+  <div class="site-header__inner">
+    <!-- Meny + søk — kun mobil/tablet (skjult fra --bp-lg) -->
+    <div class="site-header__start">
+      <button class="site-header__action" type="button" aria-label="Åpne meny" aria-controls="site-nav-drawer" aria-expanded="false"><svg class="site-header__action-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 6h16M4 12h16M4 18h16"/></svg></button>
+      <button class="site-header__action site-header__action--search" type="button" aria-label="Åpne søk" aria-controls="site-header-search-mobile" aria-expanded="false"><svg class="site-header__action-icon" viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.35-4.35"/></svg></button>
+    </div>
+    <a class="site-header__logo" href="index.html" aria-label="Molde Jarnvare – til oversikten over sider"><img src="../assets/logos/molde-jarnvare-positive.png" alt="Molde Jarnvare" class="site-header__logo-img"></a>
+    <p class="site-header__tagline">Totalleverandør av festemidler, hydraulikk, verneutstyr, verktøy og forbruksmateriell</p>
+    <div class="site-header__actions">
+      <a class="site-header__action" href="account.html" aria-label="Min konto"><svg class="site-header__action-icon" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4 4-7 8-7s8 3 8 7"/></svg></a>
+      <a class="site-header__action" href="cart.html" aria-label="Handlekurv (3)"><svg class="site-header__action-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6h15l-1.5 9H7.5z"/><path d="M6 6 5 3H2"/><circle cx="9" cy="20" r="1.5"/><circle cx="18" cy="20" r="1.5"/></svg><span class="badge badge--numeric site-header__action-badge">3</span></a>
+    </div>
+  </div>
+
+  <!-- Mobilsøk — åpnes av søkeikonet (skjult fra --bp-lg) -->
+  <div class="site-header__search-panel" id="site-header-search-mobile" hidden>
+    <div class="site-header__search-panel-inner">
+      <form class="search-bar" role="search" action="search.html">
+        <svg class="search-bar__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.35-4.35"/></svg>
+        <input class="search-bar__input" type="search" name="q" placeholder="Søk i 30 000+ artikler, NOBB-nr, EAN…" aria-label="Søk">
+        <button class="search-bar__submit" type="submit">Søk</button>
+      </form>
+    </div>
+  </div>
+
+  <!-- Rad 2 — søk + hovedmeny (kun desktop) -->
+  <div class="site-header__main">
+    <div class="site-header__main-inner">
+      <div class="site-header__search">
+        <form class="search-bar" role="search" action="search.html">
+          <svg class="search-bar__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.35-4.35"/></svg>
+          <input class="search-bar__input" type="search" name="q" placeholder="Søk i 30 000+ artikler, NOBB-nr, EAN…" aria-label="Søk">
+          <button class="search-bar__submit" type="submit">Søk</button>
+        </form>
+      </div>
+      <nav class="site-header__nav" aria-label="Hovedmeny">
+        <button class="site-header__nav-trigger" type="button" aria-controls="megamenu" aria-expanded="false">Produkter<svg class="site-header__nav-trigger-icon" width="14" height="14" viewBox="0 0 24 24" stroke-width="2" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></button>
+        <button class="site-header__nav-trigger" type="button" aria-controls="megamenu-supply" aria-expanded="false">Forsyningsløsninger<svg class="site-header__nav-trigger-icon" width="14" height="14" viewBox="0 0 24 24" stroke-width="2" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></button>
+        <button class="site-header__nav-trigger" type="button" aria-controls="megamenu-services" aria-expanded="false">Øvrige Tjenester<svg class="site-header__nav-trigger-icon" width="14" height="14" viewBox="0 0 24 24" stroke-width="2" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></button>
+        <button class="site-header__nav-trigger" type="button" aria-controls="megamenu-logistics" aria-expanded="false">Logistikk<svg class="site-header__nav-trigger-icon" width="14" height="14" viewBox="0 0 24 24" stroke-width="2" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></button>
+        <a class="site-header__nav-link" href="team.html"><svg class="site-header__nav-link-icon" width="16" height="16" viewBox="0 0 24 24" aria-hidden="true"><path d="M3.5 5.5c0-1.1.9-2 2-2h2.2c.5 0 .9.3 1 .8l1 4c.1.4 0 .8-.3 1.1L7.5 11a14 14 0 0 0 5.5 5.5l1.6-1.9c.3-.3.7-.4 1.1-.3l4 1c.5.1.8.5.8 1V18.5c0 1.1-.9 2-2 2A16.5 16.5 0 0 1 3.5 5.5z"/></svg>Kontakt</a>
+      </nav>
+    </div>
+  </div>
+
+  <!-- Megamenyer — én per trigger, åpnes under headeren på desktop.
+       Backdrop ligger inni headeren så den havner under panelene (samme stacking context). -->
+  <div class="megamenu-backdrop" aria-hidden="true"></div>
+  <div class="megamenu" id="megamenu" role="navigation" aria-label="Produkter">
+    <div class="megamenu__inner">
+      <div class="megamenu__intro"><h2 class="megamenu__intro-title">Alle produkter</h2></div>
+      <div class="megamenu__columns">
+        <div class="megamenu__group">
+          <a class="megamenu__heading" href="#">Festemidler</a>
+          <ul class="megamenu__list">
+            <li><a href="#">Annet festemateriell</a></li>
+            <li><a href="#">Blindnagler og blindmuttere</a></li>
+            <li><a href="#">Gjengestenger</a></li>
+            <li><a href="#">Låseringer</a></li>
+            <li><a href="#">Muttere</a></li>
+            <li><a href="#">Pinner og hylser</a></li>
+            <li><a href="#">Skiver</a></li>
+            <li><a href="category.html">Skruer og bolter</a></li>
+            <li><a href="#">Spiker</a></li>
+          </ul>
+        </div>
+        <div class="megamenu__group">
+          <a class="megamenu__heading" href="#">Verktøy</a>
+          <ul class="megamenu__list">
+            <li><a href="#">Håndverktøy</a></li>
+            <li><a href="#">Elektroverktøy</a></li>
+            <li><a href="#">Skrumaskiner og borr</a></li>
+            <li><a href="#">Nøkler og tang</a></li>
+          </ul>
+        </div>
+        <div class="megamenu__group">
+          <a class="megamenu__heading" href="#">Verneutstyr</a>
+          <ul class="megamenu__list">
+            <li><a href="#">Hansker</a></li>
+            <li><a href="#">Briller og hørselsvern</a></li>
+            <li><a href="#">Hjelmer</a></li>
+            <li><a href="#">Vernefottøy</a></li>
+            <li><a href="#">Åndedrettsvern</a></li>
+          </ul>
+        </div>
+        <div class="megamenu__group">
+          <a class="megamenu__heading" href="#">Hydraulikk</a>
+          <ul class="megamenu__list">
+            <li><a href="#">Slanger og koblinger</a></li>
+            <li><a href="#">Sylindere</a></li>
+            <li><a href="#">Ventiler og pumper</a></li>
+          </ul>
+        </div>
+        <div class="megamenu__group">
+          <a class="megamenu__heading" href="#">Sveis</a>
+          <ul class="megamenu__list">
+            <li><a href="#">Sveiseapparater</a></li>
+            <li><a href="#">Elektroder og tråd</a></li>
+            <li><a href="#">Beskyttelsesgass</a></li>
+          </ul>
+        </div>
+        <div class="megamenu__group">
+          <a class="megamenu__heading" href="#">Industri</a>
+          <ul class="megamenu__list">
+            <li><a href="#">Kulelagre</a></li>
+            <li><a href="#">Drev og tannhjul</a></li>
+            <li><a href="#">Akselkoblinger</a></li>
+          </ul>
+        </div>
+        <div class="megamenu__group">
+          <a class="megamenu__heading" href="#">Slipemidler</a>
+          <ul class="megamenu__list">
+            <li><a href="#">Slipeskiver</a></li>
+            <li><a href="#">Slipepapir</a></li>
+            <li><a href="#">Polering</a></li>
+          </ul>
+        </div>
+        <div class="megamenu__group">
+          <a class="megamenu__heading" href="#">Tetninger og pakninger</a>
+          <ul class="megamenu__list">
+            <li><a href="#">O-ringer</a></li>
+            <li><a href="#">Flatpakninger</a></li>
+            <li><a href="#">Tetningsmasse</a></li>
+          </ul>
+        </div>
+        <div class="megamenu__group">
+          <a class="megamenu__heading" href="#">Lim og kjemikalier</a>
+          <ul class="megamenu__list">
+            <li><a href="#">Industrilim</a></li>
+            <li><a href="#">Silikon og fugemasse</a></li>
+            <li><a href="#">Sprayer og rens</a></li>
+          </ul>
+        </div>
+        <div class="megamenu__group">
+          <a class="megamenu__heading" href="#">Måleinstrumenter</a>
+          <ul class="megamenu__list">
+            <li><a href="#">Skyvelære og mikrometer</a></li>
+            <li><a href="#">Multimeter</a></li>
+            <li><a href="#">Vekter og våger</a></li>
+          </ul>
+        </div>
+        <div class="megamenu__group">
+          <a class="megamenu__heading" href="#">Smøring og rens</a>
+          <ul class="megamenu__list">
+            <li><a href="#">Smøreolje og fett</a></li>
+            <li><a href="#">Avfetting og rens</a></li>
+            <li><a href="#">Rustbeskyttelse</a></li>
+          </ul>
+        </div>
+        <div class="megamenu__group">
+          <a class="megamenu__heading" href="#">Bil og verksted</a>
+          <ul class="megamenu__list">
+            <li><a href="#">Jekker og bukker</a></li>
+            <li><a href="#">Verktøyvogner</a></li>
+            <li><a href="#">Trykkluft og slanger</a></li>
+          </ul>
+        </div>
+        <div class="megamenu__group">
+          <a class="megamenu__heading" href="#">Lagring og logistikk</a>
+          <ul class="megamenu__list">
+            <li><a href="#">Plastbokser og kasser</a></li>
+            <li><a href="#">Hyller og reoler</a></li>
+            <li><a href="#">Pakketape og emballasje</a></li>
+          </ul>
+        </div>
+        <div class="megamenu__group">
+          <a class="megamenu__heading" href="#">Elektro</a>
+          <ul class="megamenu__list">
+            <li><a href="#">Kabel og ledning</a></li>
+            <li><a href="#">Plugger og kontakter</a></li>
+            <li><a href="#">Sikringer og automater</a></li>
+          </ul>
+        </div>
+        <div class="megamenu__group">
+          <a class="megamenu__heading" href="#">Skilt og merking</a>
+          <ul class="megamenu__list">
+            <li><a href="#">Etiketter og tape</a></li>
+            <li><a href="#">Sikkerhetsskilt</a></li>
+            <li><a href="#">Avsperring</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="megamenu__footer">
+        <a class="megamenu__footer-link" href="#">Se alle produkter →</a>
+        <span class="megamenu__intro-meta">Bestill direkte med <strong>NOBB-nr</strong> eller <strong>EAN</strong> via søket</span>
+      </div>
+    </div>
+  </div>
+  <div class="megamenu" id="megamenu-supply" role="navigation" aria-label="Forsyningsløsninger">
+    <div class="megamenu__inner">
+      <div class="megamenu__intro"><h2 class="megamenu__intro-title">Alle forsyningsløsninger</h2></div>
+      <div class="megamenu__columns">
+        <div class="megamenu__group"><a class="megamenu__heading" href="content-2box.html">2BOX</a></div>
+        <div class="megamenu__group"><a class="megamenu__heading" href="#">Scan2order</a></div>
+        <div class="megamenu__group"><a class="megamenu__heading" href="#">Weight2Order</a></div>
+        <div class="megamenu__group"><a class="megamenu__heading" href="#">Verktøysporing</a></div>
+      </div>
+      <div class="megamenu__footer">
+        <a class="megamenu__footer-link" href="content-forsyningslosninger.html">Se alle forsyningsløsninger →</a>
+      </div>
+    </div>
+  </div>
+  <div class="megamenu" id="megamenu-services" role="navigation" aria-label="Øvrige Tjenester">
+    <div class="megamenu__inner">
+      <div class="megamenu__intro"><h2 class="megamenu__intro-title">Alle øvrige tjenester</h2></div>
+      <div class="megamenu__columns">
+        <div class="megamenu__group"><a class="megamenu__heading" href="#">Slange-verksted</a></div>
+        <div class="megamenu__group"><a class="megamenu__heading" href="#">Analyse og kalibrering</a></div>
+        <div class="megamenu__group"><a class="megamenu__heading" href="#">Profiltøy</a></div>
+        <div class="megamenu__group"><a class="megamenu__heading" href="#">Kurs og opplæring</a></div>
+        <div class="megamenu__group"><a class="megamenu__heading" href="#">Enerpac</a></div>
+        <div class="megamenu__group"><a class="megamenu__heading" href="#">Parker Store</a></div>
+        <div class="megamenu__group"><a class="megamenu__heading" href="#">ONIX</a></div>
+        <div class="megamenu__group"><a class="megamenu__heading" href="#">Serviceverksted</a></div>
+      </div>
+      <div class="megamenu__footer">
+        <a class="megamenu__footer-link" href="#">Se alle øvrige tjenester →</a>
+      </div>
+    </div>
+  </div>
+  <div class="megamenu" id="megamenu-logistics" role="navigation" aria-label="Logistikk">
+    <div class="megamenu__inner">
+      <div class="megamenu__intro"><h2 class="megamenu__intro-title">Logistikk</h2></div>
+      <div class="megamenu__columns">
+        <div class="megamenu__group"><a class="megamenu__heading" href="content-forsyningslosninger.html">Forsyningsløsninger</a></div>
+        <div class="megamenu__group"><a class="megamenu__heading" href="content-transport.html">Transport og avgangstider</a></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Mobilmeny — skuff fra venstre (skjult fra --bp-lg). Ett panel per undermeny. -->
+  <div class="site-header__drawer-backdrop" aria-hidden="true"></div>
+  <div class="site-header__drawer" id="site-nav-drawer" role="dialog" aria-modal="true" aria-label="Meny">
+    <div class="site-header__drawer-panel" id="drawer-main">
+      <div class="site-header__drawer-header"><span class="site-header__drawer-title">Meny</span><button class="site-header__drawer-close" type="button" aria-label="Lukk meny" data-drawer-close><svg class="site-header__action-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12M18 6 6 18"/></svg></button></div>
+      <nav class="site-header__drawer-nav" aria-label="Hovedmeny (mobil)">
+        <button class="site-header__drawer-item" type="button" data-drawer-panel="drawer-products">Produkter<svg class="site-header__drawer-icon site-header__drawer-icon--chevron" viewBox="0 0 24 24" aria-hidden="true"><path d="m9 6 6 6-6 6"/></svg></button>
+        <button class="site-header__drawer-item" type="button" data-drawer-panel="drawer-supply">Forsyningsløsninger<svg class="site-header__drawer-icon site-header__drawer-icon--chevron" viewBox="0 0 24 24" aria-hidden="true"><path d="m9 6 6 6-6 6"/></svg></button>
+        <button class="site-header__drawer-item" type="button" data-drawer-panel="drawer-services">Øvrige Tjenester<svg class="site-header__drawer-icon site-header__drawer-icon--chevron" viewBox="0 0 24 24" aria-hidden="true"><path d="m9 6 6 6-6 6"/></svg></button>
+        <button class="site-header__drawer-item" type="button" data-drawer-panel="drawer-logistics">Logistikk<svg class="site-header__drawer-icon site-header__drawer-icon--chevron" viewBox="0 0 24 24" aria-hidden="true"><path d="m9 6 6 6-6 6"/></svg></button>
+        <a class="site-header__drawer-item site-header__drawer-item--contact" href="team.html"><svg class="site-header__drawer-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M3.5 5.5c0-1.1.9-2 2-2h2.2c.5 0 .9.3 1 .8l1 4c.1.4 0 .8-.3 1.1L7.5 11a14 14 0 0 0 5.5 5.5l1.6-1.9c.3-.3.7-.4 1.1-.3l4 1c.5.1.8.5.8 1V18.5c0 1.1-.9 2-2 2A16.5 16.5 0 0 1 3.5 5.5z"/></svg>Kontakt</a>
+      </nav>
+    </div>
+    <div class="site-header__drawer-panel" id="drawer-products" hidden>
+      <div class="site-header__drawer-header"><button class="site-header__drawer-back" type="button" data-drawer-panel="drawer-main"><svg class="site-header__drawer-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="m15 6-6 6 6 6"/></svg>Produkter</button><button class="site-header__drawer-close" type="button" aria-label="Lukk meny" data-drawer-close><svg class="site-header__action-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12M18 6 6 18"/></svg></button></div>
+      <a class="site-header__drawer-all" href="#">Se alle produkter</a>
+      <div class="site-header__drawer-group">
+        <a class="site-header__drawer-group-title" href="#">Festemidler</a>
+        <ul class="site-header__drawer-list">
+          <li><a class="site-header__drawer-link" href="#">Annet festemateriell</a></li>
+          <li><a class="site-header__drawer-link" href="#">Blindnagler og blindmuttere</a></li>
+          <li><a class="site-header__drawer-link" href="#">Gjengestenger</a></li>
+          <li><a class="site-header__drawer-link" href="#">Låseringer</a></li>
+          <li><a class="site-header__drawer-link" href="#">Muttere</a></li>
+          <li><a class="site-header__drawer-link" href="#">Pinner og hylser</a></li>
+          <li><a class="site-header__drawer-link" href="#">Skiver</a></li>
+          <li><a class="site-header__drawer-link" href="category.html">Skruer og bolter</a></li>
+          <li><a class="site-header__drawer-link" href="#">Spiker</a></li>
+        </ul>
+      </div>
+      <div class="site-header__drawer-group">
+        <a class="site-header__drawer-group-title" href="#">Verktøy</a>
+        <ul class="site-header__drawer-list">
+          <li><a class="site-header__drawer-link" href="#">Håndverktøy</a></li>
+          <li><a class="site-header__drawer-link" href="#">Elektroverktøy</a></li>
+          <li><a class="site-header__drawer-link" href="#">Skrumaskiner og borr</a></li>
+          <li><a class="site-header__drawer-link" href="#">Nøkler og tang</a></li>
+        </ul>
+      </div>
+      <div class="site-header__drawer-group">
+        <a class="site-header__drawer-group-title" href="#">Verneutstyr</a>
+        <ul class="site-header__drawer-list">
+          <li><a class="site-header__drawer-link" href="#">Hansker</a></li>
+          <li><a class="site-header__drawer-link" href="#">Briller og hørselsvern</a></li>
+          <li><a class="site-header__drawer-link" href="#">Hjelmer</a></li>
+          <li><a class="site-header__drawer-link" href="#">Vernefottøy</a></li>
+          <li><a class="site-header__drawer-link" href="#">Åndedrettsvern</a></li>
+        </ul>
+      </div>
+      <div class="site-header__drawer-group">
+        <a class="site-header__drawer-group-title" href="#">Hydraulikk</a>
+        <ul class="site-header__drawer-list">
+          <li><a class="site-header__drawer-link" href="#">Slanger og koblinger</a></li>
+          <li><a class="site-header__drawer-link" href="#">Sylindere</a></li>
+          <li><a class="site-header__drawer-link" href="#">Ventiler og pumper</a></li>
+        </ul>
+      </div>
+      <div class="site-header__drawer-group">
+        <a class="site-header__drawer-group-title" href="#">Sveis</a>
+        <ul class="site-header__drawer-list">
+          <li><a class="site-header__drawer-link" href="#">Sveiseapparater</a></li>
+          <li><a class="site-header__drawer-link" href="#">Elektroder og tråd</a></li>
+          <li><a class="site-header__drawer-link" href="#">Beskyttelsesgass</a></li>
+        </ul>
+      </div>
+      <div class="site-header__drawer-group">
+        <a class="site-header__drawer-group-title" href="#">Industri</a>
+        <ul class="site-header__drawer-list">
+          <li><a class="site-header__drawer-link" href="#">Kulelagre</a></li>
+          <li><a class="site-header__drawer-link" href="#">Drev og tannhjul</a></li>
+          <li><a class="site-header__drawer-link" href="#">Akselkoblinger</a></li>
+        </ul>
+      </div>
+      <div class="site-header__drawer-group">
+        <a class="site-header__drawer-group-title" href="#">Slipemidler</a>
+        <ul class="site-header__drawer-list">
+          <li><a class="site-header__drawer-link" href="#">Slipeskiver</a></li>
+          <li><a class="site-header__drawer-link" href="#">Slipepapir</a></li>
+          <li><a class="site-header__drawer-link" href="#">Polering</a></li>
+        </ul>
+      </div>
+      <div class="site-header__drawer-group">
+        <a class="site-header__drawer-group-title" href="#">Tetninger og pakninger</a>
+        <ul class="site-header__drawer-list">
+          <li><a class="site-header__drawer-link" href="#">O-ringer</a></li>
+          <li><a class="site-header__drawer-link" href="#">Flatpakninger</a></li>
+          <li><a class="site-header__drawer-link" href="#">Tetningsmasse</a></li>
+        </ul>
+      </div>
+      <div class="site-header__drawer-group">
+        <a class="site-header__drawer-group-title" href="#">Lim og kjemikalier</a>
+        <ul class="site-header__drawer-list">
+          <li><a class="site-header__drawer-link" href="#">Industrilim</a></li>
+          <li><a class="site-header__drawer-link" href="#">Silikon og fugemasse</a></li>
+          <li><a class="site-header__drawer-link" href="#">Sprayer og rens</a></li>
+        </ul>
+      </div>
+      <div class="site-header__drawer-group">
+        <a class="site-header__drawer-group-title" href="#">Måleinstrumenter</a>
+        <ul class="site-header__drawer-list">
+          <li><a class="site-header__drawer-link" href="#">Skyvelære og mikrometer</a></li>
+          <li><a class="site-header__drawer-link" href="#">Multimeter</a></li>
+          <li><a class="site-header__drawer-link" href="#">Vekter og våger</a></li>
+        </ul>
+      </div>
+      <div class="site-header__drawer-group">
+        <a class="site-header__drawer-group-title" href="#">Smøring og rens</a>
+        <ul class="site-header__drawer-list">
+          <li><a class="site-header__drawer-link" href="#">Smøreolje og fett</a></li>
+          <li><a class="site-header__drawer-link" href="#">Avfetting og rens</a></li>
+          <li><a class="site-header__drawer-link" href="#">Rustbeskyttelse</a></li>
+        </ul>
+      </div>
+      <div class="site-header__drawer-group">
+        <a class="site-header__drawer-group-title" href="#">Bil og verksted</a>
+        <ul class="site-header__drawer-list">
+          <li><a class="site-header__drawer-link" href="#">Jekker og bukker</a></li>
+          <li><a class="site-header__drawer-link" href="#">Verktøyvogner</a></li>
+          <li><a class="site-header__drawer-link" href="#">Trykkluft og slanger</a></li>
+        </ul>
+      </div>
+      <div class="site-header__drawer-group">
+        <a class="site-header__drawer-group-title" href="#">Lagring og logistikk</a>
+        <ul class="site-header__drawer-list">
+          <li><a class="site-header__drawer-link" href="#">Plastbokser og kasser</a></li>
+          <li><a class="site-header__drawer-link" href="#">Hyller og reoler</a></li>
+          <li><a class="site-header__drawer-link" href="#">Pakketape og emballasje</a></li>
+        </ul>
+      </div>
+      <div class="site-header__drawer-group">
+        <a class="site-header__drawer-group-title" href="#">Elektro</a>
+        <ul class="site-header__drawer-list">
+          <li><a class="site-header__drawer-link" href="#">Kabel og ledning</a></li>
+          <li><a class="site-header__drawer-link" href="#">Plugger og kontakter</a></li>
+          <li><a class="site-header__drawer-link" href="#">Sikringer og automater</a></li>
+        </ul>
+      </div>
+      <div class="site-header__drawer-group">
+        <a class="site-header__drawer-group-title" href="#">Skilt og merking</a>
+        <ul class="site-header__drawer-list">
+          <li><a class="site-header__drawer-link" href="#">Etiketter og tape</a></li>
+          <li><a class="site-header__drawer-link" href="#">Sikkerhetsskilt</a></li>
+          <li><a class="site-header__drawer-link" href="#">Avsperring</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="site-header__drawer-panel" id="drawer-supply" hidden>
+      <div class="site-header__drawer-header"><button class="site-header__drawer-back" type="button" data-drawer-panel="drawer-main"><svg class="site-header__drawer-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="m15 6-6 6 6 6"/></svg>Forsyningsløsninger</button><button class="site-header__drawer-close" type="button" aria-label="Lukk meny" data-drawer-close><svg class="site-header__action-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12M18 6 6 18"/></svg></button></div>
+      <a class="site-header__drawer-all" href="content-forsyningslosninger.html">Se alle forsyningsløsninger</a>
+      <nav class="site-header__drawer-nav" aria-label="Forsyningsløsninger">
+        <a class="site-header__drawer-item" href="content-2box.html">2BOX</a>
+        <a class="site-header__drawer-item" href="#">Scan2order</a>
+        <a class="site-header__drawer-item" href="#">Weight2Order</a>
+        <a class="site-header__drawer-item" href="#">Verktøysporing</a>
+      </nav>
+    </div>
+    <div class="site-header__drawer-panel" id="drawer-services" hidden>
+      <div class="site-header__drawer-header"><button class="site-header__drawer-back" type="button" data-drawer-panel="drawer-main"><svg class="site-header__drawer-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="m15 6-6 6 6 6"/></svg>Øvrige Tjenester</button><button class="site-header__drawer-close" type="button" aria-label="Lukk meny" data-drawer-close><svg class="site-header__action-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12M18 6 6 18"/></svg></button></div>
+      <a class="site-header__drawer-all" href="#">Se alle øvrige tjenester</a>
+      <nav class="site-header__drawer-nav" aria-label="Øvrige Tjenester">
+        <a class="site-header__drawer-item" href="#">Slange-verksted</a>
+        <a class="site-header__drawer-item" href="#">Analyse og kalibrering</a>
+        <a class="site-header__drawer-item" href="#">Profiltøy</a>
+        <a class="site-header__drawer-item" href="#">Kurs og opplæring</a>
+        <a class="site-header__drawer-item" href="#">Enerpac</a>
+        <a class="site-header__drawer-item" href="#">Parker Store</a>
+        <a class="site-header__drawer-item" href="#">ONIX</a>
+        <a class="site-header__drawer-item" href="#">Serviceverksted</a>
+      </nav>
+    </div>
+    <div class="site-header__drawer-panel" id="drawer-logistics" hidden>
+      <div class="site-header__drawer-header"><button class="site-header__drawer-back" type="button" data-drawer-panel="drawer-main"><svg class="site-header__drawer-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="m15 6-6 6 6 6"/></svg>Logistikk</button><button class="site-header__drawer-close" type="button" aria-label="Lukk meny" data-drawer-close><svg class="site-header__action-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12M18 6 6 18"/></svg></button></div>
+      <nav class="site-header__drawer-nav" aria-label="Logistikk">
+        <a class="site-header__drawer-item" href="content-forsyningslosninger.html">Forsyningsløsninger</a>
+        <a class="site-header__drawer-item" href="content-transport.html">Transport og avgangstider</a>
+      </nav>
+    </div>
+  </div>
+</header>
+
+<main class="container" style="padding-block: var(--s-7);">
+<!-- KASSEN MED PROFILERING (03.11.2026) &mdash; som checkout.html, pluss seksjonen &laquo;Profilering&raquo; og p&aring;f&oslash;ring i summen.
+Manglende navn stopper ikke bestillingen, men vises i r&oslash;dt; trykkeriet f&oslash;lger opp. Avklares med H&aring;kon. -->
+
+  <nav class="stepper" style="margin-bottom: var(--s-7);">
+    <div class="stepper__step is-complete"><span class="stepper__num"></span><span class="stepper__label">Handlekurv</span></div>
+    <div class="stepper__connector is-complete"></div>
+    <div class="stepper__step is-active"><span class="stepper__num">2</span><span class="stepper__label">Levering og betaling</span></div>
+    <div class="stepper__connector"></div>
+    <div class="stepper__step"><span class="stepper__num">3</span><span class="stepper__label">Bekreftelse</span></div>
+  </nav>
+
+  <div class="commerce-layout commerce-layout--checkout">
+
+    <form class="order-summary">
+
+      <section class="order-summary__section">
+        <div class="order-summary__section-header">
+          <h2 class="order-summary__section-title">Leveringsadresse</h2>
+        </div>
+        <div class="address-book">
+          <div class="address-book__list">
+            <button type="button" class="address-book__item is-selected" aria-pressed="true" data-address>
+              <strong class="address-book__name">Verkstedet · Molde</strong>
+              <span class="address-book__address">Industriveien 12<br>6422 Molde</span>
+            </button>
+            <button type="button" class="address-book__item" aria-pressed="false" data-address>
+              <strong class="address-book__name">Lager Kristiansund</strong>
+              <span class="address-book__address">Storgata 1<br>6500 Kristiansund</span>
+            </button>
+            <button type="button" class="address-book__item address-book__add" aria-pressed="false" aria-expanded="false" aria-controls="tmp-address" data-address data-address-other>+ Annen adresse for denne ordren</button>
+          </div>
+        </div>
+
+        <!-- Midlertidig adresse (AB#20110, Håkon 13.10.2026): brukes bare på denne ordren, sendes som
+             shipTo* til BC og lagres ikke som fast adresse. Faste adresser vedlikeholdes av Molde Jarnvare.
+             Vises når «+ Annen adresse for denne ordren» er valgt. Avventer svar fra Knowit om API-et. -->
+        <div class="reveal" id="tmp-address">
+          <div class="reveal__inner" inert>
+            <div class="card" style="margin-top: var(--s-4); box-shadow: none;">
+              <div>
+                <h3 class="card__title" style="margin-bottom: var(--s-1);">Midlertidig leveringsadresse</h3>
+                <p class="field__hint" style="margin: 0;">Brukes bare p&aring; denne ordren og lagres ikke som fast adresse. Faste adresser endrer du ved &aring; <a class="link" href="team.html">kontakte oss</a>.</p>
+              </div>
+              <div class="address-form">
+                <div class="field field--full">
+                  <label class="field__label field__label--required" for="tmp-name">Mottaker</label>
+                  <input class="input" id="tmp-name" placeholder="Firma eller prosjekt">
+                </div>
+                <div class="field field--street">
+                  <label class="field__label field__label--required" for="tmp-street">Adresse</label>
+                  <input class="input" id="tmp-street">
+                </div>
+                <div class="field field--full">
+                  <label class="field__label" for="tmp-street2">Adresselinje 2</label>
+                  <input class="input" id="tmp-street2" placeholder="Valgfritt">
+                </div>
+                <div class="field">
+                  <label class="field__label field__label--required" for="tmp-zip">Postnummer</label>
+                  <input class="input" id="tmp-zip" inputmode="numeric" maxlength="4">
+                </div>
+                <div class="field">
+                  <label class="field__label field__label--required" for="tmp-city">Sted</label>
+                  <input class="input" id="tmp-city">
+                </div>
+                <div class="field field--full">
+                  <label class="field__label" for="tmp-att">Att.</label>
+                  <input class="input" id="tmp-att" placeholder="Kontaktperson p&aring; leveringsstedet (valgfritt)">
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <script>
+          // Leveringsadresse: velg en av adressene, eller åpne skjemaet for midlertidig adresse.
+          (function () {
+            var items = document.querySelectorAll('[data-address]');
+            var other = document.querySelector('[data-address-other]');
+            var reveal = document.getElementById('tmp-address');
+            items.forEach(function (item) {
+              item.addEventListener('click', function () {
+                items.forEach(function (i) {
+                  i.classList.toggle('is-selected', i === item);
+                  i.setAttribute('aria-pressed', String(i === item));
+                });
+                var open = item === other;
+                reveal.classList.toggle('is-open', open);
+                reveal.firstElementChild.inert = !open;
+                other.setAttribute('aria-expanded', String(open));
+                if (open) setTimeout(function () { document.getElementById('tmp-name').focus({ preventScroll: true }); }, 250);
+              });
+            });
+          })();
+        </script>
+      </section>
+
+      <section class="order-summary__section">
+        <div class="order-summary__section-header">
+          <h2 class="order-summary__section-title">Levering</h2>
+        </div>
+        <fieldset class="radio-group">
+          <label class="radio">
+            <input type="radio" name="delivery" checked><span class="radio__visual"></span>
+            <span class="radio__label"><strong>Standard levering</strong><span class="radio__desc">1–2 virkedager · kr 99,–</span></span>
+          </label>
+          <label class="radio">
+            <input type="radio" name="delivery"><span class="radio__visual"></span>
+            <span class="radio__label"><strong>Hent på Molde</strong><span class="radio__desc">Klar i dag · Industriveien 26</span></span>
+          </label>
+        </fieldset>
+      </section>
+
+      <section class="order-summary__section">
+        <div class="order-summary__section-header">
+          <h2 class="order-summary__section-title">Referanse og kommentar</h2>
+        </div>
+        <div class="po-reference__row">
+          <div class="field">
+            <label class="field__label" for="po">PO-nummer</label>
+            <input class="input" id="po" placeholder="Frivillig">
+          </div>
+          <div class="field">
+            <label class="field__label" for="ref">Din referanse</label>
+            <input class="input" id="ref" placeholder="Prosjekt eller person">
+          </div>
+          <div class="field po-reference__full">
+            <label class="field__label" for="order-comment">Kommentar til ordren</label>
+            <p class="field__hint" id="order-comment-hint">Frivillig. F.eks. leveringsinstruks, kontaktperson på bygg eller ønsker til plukk.</p>
+            <textarea class="textarea" id="order-comment" name="order-comment" rows="3" maxlength="500" aria-describedby="order-comment-hint"></textarea>
+          </div>
+        </div>
+      </section>
+
+      <section class="order-summary__section">
+<div class="order-summary__section-header">
+<h2 class="order-summary__section-title">Profilering</h2>
+<a class="link" href="cart-profilering.html" style="font-size: var(--fs-body-sm);">Endre i handlekurven</a>
+</div>
+<!-- Kun visning: profilering velges i handlekurven (cart-profilering.html). Vises bare n&aring;r minst &eacute;n linje er profilert.
+Ordren sendes med Ordreinstruksjoner = LOGO, p&aring;f&oslash;ringslinjer og merknadslinjer med navn (se kommentaren i cart-profilering.html). -->
+<ul style="list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: var(--s-3);">
+<li class="profiling__summary"><p class="profiling__summary-text"><strong>MASCOT Skalljakke 2XL</strong> &middot; Jakke &ndash; standard p&aring; 3 av 3 &middot; navn: Kjetil Kvendseth, Martin Ellingseter, <span style="color: var(--mj-error);">mangler 1 navn</span></p></li>
+<li class="profiling__summary"><p class="profiling__summary-text"><strong>MASCOT Bukse 82C68</strong> &middot; Bukse &ndash; standard p&aring; 2 av 4</p></li>
+</ul>
+<p class="field__hint" style="margin: var(--s-3) 0 0;">Trykkeriet kontrollerer ordren f&oslash;r den ferdigstilles. Profilerte varer kan f&aring; noe lengre leveringstid.</p>
+</section>
+<section class="order-summary__section">
+        <div class="order-summary__section-header">
+          <h2 class="order-summary__section-title">Betaling</h2>
+        </div>
+        <!-- Alle kunder er B2B med avtale og faktureres — ingen valg presenteres -->
+        <div style="padding: var(--s-4); background: var(--color-bg-surface-alt); border-radius: var(--r-md); display: flex; align-items: flex-start; gap: var(--s-3);">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="color: var(--mj-blue); flex: 0 0 auto; margin-top: 2px;">
+            <rect x="3" y="5" width="18" height="14" rx="2"/>
+            <path d="M3 10h18"/>
+          </svg>
+          <div>
+            <!-- «Faktura – » + visningsnavnet til kundens betalingsbetingelse i BC (én per kunde), så «I henhold til avtale med <kundenavn>».
+                 Ingen betalingsløsning — alle faktureres (statusmøte 15.10.2026). -->
+            <p style="margin: 0; font-weight: var(--fw-semibold);">Faktura &mdash; 14 dager netto</p>
+            <p style="margin: var(--s-1) 0 0; font-size: var(--fs-body-sm); color: var(--color-text-secondary);">I henhold til avtale med Brunvoll AS.</p>
+          </div>
+        </div>
+      </section>
+
+      <button class="btn btn--primary btn--lg">Send inn bestilling</button>
+    </form>
+
+    <aside class="cart-summary commerce-layout__summary">
+      <h2 class="cart-summary__title">Din ordre</h2>
+      <!-- Frakt følger valgt leveringsmåte (satt opp i Dynamicweb). Sum eks. mva er hovedtallet (statusmøte 15.10.2026). -->
+      <div class="cart-summary__row"><span>Varer <span class="cart-summary__label-meta">4 varer</span></span><span>kr 14 284,&ndash;</span></div>
+<div class="cart-summary__row"><span>Profilering <span class="cart-summary__label-meta">p&aring;f&oslash;ring</span></span><span>kr 308,&ndash;</span></div>
+<div class="cart-summary__row"><span>Frakt <span class="cart-summary__label-meta">Standard levering</span></span><span>kr 99,&ndash;</span></div>
+<div class="cart-summary__row cart-summary__row--total"><span>Sum eks. mva</span><span>kr 14 691,&ndash;</span></div>
+<div class="cart-summary__row cart-summary__row--secondary"><span>Mva (25 %)</span><span>kr 3 672,75</span></div>
+<div class="cart-summary__row cart-summary__row--secondary"><span>Totalt inkl. mva</span><span>kr 18 363,75</span></div>
+    </aside>
+  </div>
+</main>
+<footer class="site-footer">
+  <div class="site-footer__inner">
+    <div class="site-footer__grid">
+      <div class="site-footer__brand">
+        <img src="../assets/logos/molde-jarnvare-negative.png" alt="Molde Jarnvare" class="site-footer__logo-img">
+        <p class="site-footer__tagline">På lag med industrien siden 1930</p>
+        <p class="site-footer__contact">Industriveien 26<br>6422 Molde<br><a href="tel:71254200">71 25 42 00</a> · <a href="mailto:post@moldejarnvare.no">post@moldejarnvare.no</a></p>
+      </div>
+      <div>
+        <h2 class="site-footer__col-title">Kundeservice</h2>
+        <nav class="site-footer__list" aria-label="Kundeservice">
+          <a href="account.html">Mine sider</a>
+          <a href="content-transport.html">Frakt og levering</a>
+          <a href="team.html">Kontakt oss</a>
+          <a href="#">FAQ</a>
+          <a href="#">Åpningstider</a>
+        </nav>
+      </div>
+      <div>
+        <h2 class="site-footer__col-title">Om oss</h2>
+        <nav class="site-footer__list" aria-label="Om oss">
+          <a href="static.html">Om Molde Jarnvare</a>
+          <a href="#">Personvern</a>
+          <a href="#">Vilkår</a>
+          <a href="news.html">Aktuelt</a>
+        </nav>
+      </div>
+    </div>
+    <div class="site-footer__bottom">
+      <span>&copy; 2026 Molde Jarnvare AS</span>
+      <div class="site-footer__social" aria-label="Sosiale medier">
+        <a href="https://facebook.com/moldejarnvare" aria-label="Facebook"><svg class="site-footer__social-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg></a>
+        <a href="https://instagram.com/moldejarnvare" aria-label="Instagram"><svg class="site-footer__social-icon" viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="0.6"/></svg></a>
+        <a href="https://linkedin.com/company/moldejarnvare" aria-label="LinkedIn"><svg class="site-footer__social-icon" viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M8 10v7M8 7v.01M12 17v-4a2 2 0 0 1 4 0v4M12 10v7"/></svg></a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>

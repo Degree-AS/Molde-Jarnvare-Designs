@@ -1,0 +1,122 @@
+<!doctype html>
+<html lang="nb">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Profilering — Molde Jarnvare designsystem</title>
+
+  <!-- Webfont (Source Sans 3 — webfont-erstatning for Aptos, jf. §5.1) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Source+Sans+3:wght@400;500;600;700;900&family=JetBrains+Mono:wght@400&display=swap"
+    rel="stylesheet">
+
+  <!-- Tokens, komponentene profilering bygger på, og komponenten selv -->
+  <link rel="stylesheet" href="../../styles/tokens/index.css">
+  <link rel="stylesheet" href="../input/input.css">
+  <link rel="stylesheet" href="../button/button.css">
+  <link rel="stylesheet" href="../link/link.css">
+  <link rel="stylesheet" href="./profiling.css">
+
+  <style>
+    /* Minimal preview-reset. Blir flyttet til src/styles/base/reset.css når den eksisterer. */
+    *, *::before, *::after { box-sizing: border-box; }
+    html { -webkit-text-size-adjust: 100%; }
+    body {
+      margin: 0;
+      font-family: var(--ff-sans);
+      color: var(--color-text-primary);
+      background: var(--color-bg-page);
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+    h3 { margin: 0; }
+
+    /* Etikett over hver variant — kun for denne previewen */
+    .preview-label {
+      max-width: var(--container-wide);
+      margin: 0 auto;
+      padding: var(--s-9) var(--gutter) var(--s-2);
+      font-family: var(--ff-sans);
+      font-size: var(--fs-overline);
+      font-weight: var(--fw-semibold);
+      letter-spacing: var(--ls-wider);
+      text-transform: uppercase;
+      color: var(--color-text-tertiary);
+    }
+    .preview-label:first-child { padding-top: var(--s-7); }
+    .preview-frame { max-width: var(--container-wide); margin: 0 auto; padding-inline: var(--gutter); }
+    .card { padding: 0; }
+    .sr-only { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+  </style>
+</head>
+<body>
+
+  <p class="preview-label">Lukket — valgt profil på deler av antallet</p>
+  <div class="preview-frame" style="max-width: 760px;">
+    <div class="profiling">
+      <div class="profiling__summary">
+        <p class="profiling__summary-text"><strong>Bukse &ndash; standard</strong> p&aring; 2 av 4 &middot; logo l&aring;r venstre &middot; p&aring;f&oslash;ring kr 56,&ndash;</p>
+        <button class="profiling__toggle" type="button">Endre</button>
+      </div>
+    </div>
+  </div>
+
+  <p class="preview-label">Lukket — ikke valgt (aktivt valg)</p>
+  <div class="preview-frame" style="max-width: 760px;">
+    <div class="profiling">
+      <div class="profiling__summary">
+        <p class="profiling__summary-text">Uten profilering</p>
+        <button class="profiling__toggle" type="button">Legg til profilering</button>
+      </div>
+    </div>
+  </div>
+
+  <p class="preview-label">Åpen — velg profil, antall og navn</p>
+  <div class="preview-frame" style="max-width: 760px;">
+    <div class="profiling">
+      <div class="profiling__panel">
+        <h4 class="profiling__panel-title">Profilering</h4>
+        <fieldset class="profiling__options">
+          <legend class="sr-only">Velg profil</legend>
+          <label class="profiling__option"><input type="radio" name="p"><span class="profiling__option-media"></span><span class="profiling__option-body"><span class="profiling__option-title">Uten profilering</span><span class="profiling__option-meta">Leveres uten logo og navn</span></span></label>
+          <label class="profiling__option"><input type="radio" name="p" checked><span class="profiling__option-media"></span><span class="profiling__option-body"><span class="profiling__option-title">Jakke &ndash; standard</span><span class="profiling__option-meta">Logo bryst &middot; navnelapp &middot; logo rygg</span></span></label>
+        </fieldset>
+        <div class="field">
+          <span class="field__label">Navn p&aring; navnelapp</span>
+          <ol class="profiling__names">
+            <li class="profiling__name"><span class="profiling__name-index">1</span><input class="input" value="Kjetil Kvendseth" aria-label="Navn 1"></li>
+            <li class="profiling__name"><span class="profiling__name-index">2</span><input class="input" placeholder="Navn" aria-label="Navn 2"></li>
+          </ol>
+        </div>
+        <ul class="profiling__addons">
+          <li class="profiling__addon"><span><span class="profiling__addon-sku">479350</span>P&aring;f&oslash;ring av logo</span><span>4 stk &times; kr 28,&ndash;</span><span class="profiling__addon-price">kr 112,&ndash;</span></li>
+          <li class="profiling__addon"><span><span class="profiling__addon-sku">479355</span>P&aring;f&oslash;ring av navnelapp</span><span>2 stk &times; kr 28,&ndash;</span><span class="profiling__addon-price">kr 56,&ndash;</span></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <p class="preview-label">Kunde uten profilavtale</p>
+  <div class="preview-frame" style="max-width: 760px;">
+    <div class="profiling__notice"><p><strong>Vil du ha logo p&aring; kl&aelig;rne?</strong> Kontakt selgeren din for &aring; avtale profilering f&oslash;r ordren ferdigstilles.</p></div>
+  </div>
+
+  <p class="preview-label">Profilkort — Min konto › Profilering</p>
+  <div class="preview-frame" style="max-width: 760px;">
+    <article class="profiling__card">
+      <div class="profiling__card-media"></div>
+      <div class="profiling__card-body">
+        <div><h3 class="profiling__card-title">Jakke &ndash; standard</h3><p class="profiling__card-meta">Skalljakker og fleecejakker &middot; 2 logoer + navnelapp per plagg</p></div>
+        <ul class="profiling__placements">
+          <li class="profiling__placement">Logo bryst venstre &middot; 8 cm</li>
+          <li class="profiling__placement">Navnelapp under logo</li>
+          <li class="profiling__placement">Logo rygg &middot; 25 cm</li>
+        </ul>
+      </div>
+    </article>
+  </div>
+
+</body>
+</html>

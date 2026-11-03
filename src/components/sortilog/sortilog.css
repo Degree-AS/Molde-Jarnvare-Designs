@@ -5,28 +5,26 @@
  * (itemAgreementLines — samme tabell som 2Box/QR, egen agreementType).
  * Endepunkt mot nettbutikken er ikke bygget ennå (BC Integration B16).
  *
- * Regler (avklart 28.09.2026):
- *   - Vedlikeholdes av Molde Jarnvare i BC. Kunden kan KUN bestille —
- *     ingen «Fjern», «Legg til», «Del» eller «Dupliser».
- *   - En kunde kan ha flere sortiloger; hver sortilog tilhører én kunde.
- *   - Flat liste, én rad per varenummer. Vi grupperer ikke selv — BC har
- *     ingen gruppeinfo på linjene.
- *   - Kunden velger antall selv. «Antall» fra BC (alltid 1) brukes ikke.
- *   - Bevisst enkelt: kun artnr, beskrivelse og antall. Ingen bilde, pris,
- *     lagerstatus, søk eller sortering (Simen 28.09).
- *   - Nettordre sender artikkelnummer, ikke vareavtalenummer (Håkon 10.09) —
- *     VA-nummeret vises derfor ikke.
- *   - BC-feltene Boks farve / Boks type / Kunde lokasjon / Kunde hylle /
- *     Etikettfarve er 2Box-felt og vises ikke.
+ * Regler (revidert 03.11.2026, møte «Sortilog | Form og funksjon» med Håkon):
+ *   - Sortilogen er en kobling kunde ↔ varenummer (variant). Vedlikeholdes av
+ *     Molde Jarnvare i BC. Kunden redigerer ikke.
+ *   - Bestilling skjer i den vanlige nettbutikken: filteret «Kun varer i min
+ *     sortilog» på PLP/søk + gul «I sortilog»-merkelapp (badge--sortilog).
+ *     Sortilog-siden under Min konto er KUN en oversikt — ingen antall,
+ *     ingen «Legg i kurv» (Simen 03.11). Erstatter bestillingslisten fra 28.09.
+ *   - Oversikten har bilde, MJ art.nr, kundens varenummer, produktnavn og
+ *     kategori, med søk og kategorifilter. Gruppert på kategori (PIM).
+ *   - Ingen pris — siden brukes også av ansatte i butikken med skjermen
+ *     vendt mot kunden (Håkon 03.11).
+ *   - Nettordre sender artikkelnummer, ikke vareavtalenummer (Håkon 10.09 og 03.11).
+ *   - En kunde kan ha flere sortiloger (f.eks. per leveringsadresse/avdeling).
  *
  * Block:     .sortilog
- * Elements:  __header  __title  __count  __list  (oversikt)
+ * Elements:  __header  __title  __count  __list  (oversikt over sortiloger)
  *            __card  __card-name  __card-meta  __card-count
- *            __table  __sku  __name
- *            __footer  __actionbar  __actionbar-summary
- * Modifier:  __row--selected  (rad med antall fylt inn)
+ *            __toolbar  __search  __table  __group  __thumb  __sku  __customer-sku
+ *            __name  __category  __link  __footer
  */
-
 .sortilog {
   display: flex;
   flex-direction: column;
@@ -104,7 +102,6 @@
   vertical-align: middle;
 }
 .sortilog__table .is-numeric { text-align: right; white-space: nowrap; }
-.sortilog__row--selected td { background: var(--color-bg-brand-soft); }
 
 .sortilog__sku { font-family: var(--ff-mono); font-size: var(--fs-mono-sm); white-space: nowrap; }
 .sortilog__name { font-weight: var(--fw-medium); }
@@ -122,46 +119,69 @@
   color: var(--color-text-tertiary);
 }
 
-/* Klebrig handlingslinje — «fyll inn antall på flere linjer, send samlet» */
-.sortilog__actionbar {
-  position: sticky;
-  bottom: 0;
-  z-index: 1;
+/* Verktøylinje over tabellen — søk + kategori + snarvei til nettbutikken */
+.sortilog__toolbar {
   display: flex;
   flex-wrap: wrap;
-  justify-content: space-between;
-  align-items: center;
+  align-items: flex-end;
   gap: var(--s-3);
-  margin-top: var(--s-4);
-  padding: var(--s-3) var(--s-5);
-  background: var(--color-bg-surface);
-  border: var(--bw-1) solid var(--color-border-default);
-  border-radius: var(--r-md);
-  box-shadow: var(--shadow-3);
+  padding: var(--s-4) var(--s-5);
+  border-bottom: var(--bw-1) solid var(--color-border-soft);
 }
-.sortilog__actionbar-summary { margin: 0; font-variant-numeric: tabular-nums; }
-.sortilog__actionbar-summary strong { font-weight: var(--fw-bold); }
+.sortilog__search { flex: 1 1 280px; }
+.sortilog__toolbar .field { min-width: 200px; }
 
-/* Mobil: artnr over beskrivelse, antall til høyre */
+/* Grupperad — kategori fra PIM, med antall varer i gruppen */
+.sortilog__group th {
+  background: var(--color-bg-surface);
+  padding-top: var(--s-5);
+  font-size: var(--fs-body-sm);
+  letter-spacing: 0;
+  text-transform: none;
+  color: var(--color-text-primary);
+  border-bottom: var(--bw-1) solid var(--color-border-default);
+}
+.sortilog__group-count { margin-left: var(--s-2); font-weight: var(--fw-regular); color: var(--color-text-tertiary); }
+
+.sortilog__thumb {
+  display: block;
+  width: 40px;
+  height: 40px;
+  background: var(--mj-surface-1);
+  border-radius: var(--r-sm);
+  overflow: hidden;
+}
+.sortilog__thumb img { width: 100%; height: 100%; object-fit: contain; }
+.sortilog__customer-sku { font-family: var(--ff-mono); font-size: var(--fs-mono-sm); white-space: nowrap; color: var(--color-text-secondary); }
+.sortilog__category { font-size: var(--fs-caption); color: var(--color-text-secondary); }
+.sortilog__link { font-size: var(--fs-body-sm); font-weight: var(--fw-semibold); color: var(--color-text-link); white-space: nowrap; }
+
+/* Mobil: bilde til venstre, art.nr + kundens varenr. over navnet, lenke under */
 @media (max-width: 767px) {
   .sortilog__table thead { display: none; }
   .sortilog__table,
   .sortilog__table tbody { display: block; }
   .sortilog__table tr {
     display: grid;
-    grid-template-columns: 1fr auto;
+    grid-template-columns: 40px auto 1fr;
     grid-template-areas:
-      "sku  qty"
-      "name qty";
+      "thumb sku  csku"
+      "thumb name name"
+      "thumb link link";
     align-items: center;
     gap: 0 var(--s-3);
     padding: var(--s-2) var(--s-4);
     border-bottom: var(--bw-1) solid var(--color-border-soft);
   }
-  .sortilog__table td { display: block; width: auto; padding: 0; border: 0; background: none; }
-  .sortilog__table td:nth-child(1) { grid-area: sku; }
-  .sortilog__table td:nth-child(2) { grid-area: name; }
-  .sortilog__table td:nth-child(3) { grid-area: qty; }
-  .sortilog__row--selected { background: var(--color-bg-brand-soft); }
+  .sortilog__table tr.sortilog__group { display: block; padding: var(--s-4) var(--s-4) var(--s-2); }
+  .sortilog__table td,
+  .sortilog__table th { display: block; width: auto; padding: 0; border: 0; background: none; }
+  .sortilog__table td:nth-child(1) { grid-area: thumb; }
+  .sortilog__table td:nth-child(2) { grid-area: sku; }
+  .sortilog__table td:nth-child(3) { grid-area: csku; }
+  .sortilog__table td:nth-child(4) { grid-area: name; }
+  .sortilog__table td:nth-child(5) { display: none; } /* kategori står i grupperaden */
+  .sortilog__table td:nth-child(6) { grid-area: link; }
+  .sortilog__toolbar,
   .sortilog__footer { padding-inline: var(--s-4); }
 }

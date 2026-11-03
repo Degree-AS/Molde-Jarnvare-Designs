@@ -123,3 +123,13 @@
 .product-card--list .product-card__media { width: 96px; height: 96px; flex: 0 0 auto; }
 .product-card--list .product-card__main { flex: 1; min-width: 0; }
 .product-card--list .product-card__actions { flex: 0 0 auto; margin-top: 0; }
+
+/* Kundens varenummer — vises under art.nr når kunden har et eget nummer på varen i BC
+   (Håkon 03.11.2026). Gjelder alle produkter, ikke bare sortilog. */
+.product-card__customer-sku {
+  font-family: var(--ff-mono);
+  font-size: var(--fs-mono-sm);
+  color: var(--color-text-secondary);
+  font-variant-numeric: tabular-nums;
+}
+.product-card__customer-sku-label { font-family: var(--ff-sans); font-size: var(--fs-caption); margin-inline-end: var(--s-1); }
