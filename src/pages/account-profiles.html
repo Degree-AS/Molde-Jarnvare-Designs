@@ -449,7 +449,7 @@
         - Regelen &laquo;Profilering kun p&aring; sortilog-varer&raquo; settes per kunde av MJ (H&aring;kon 03.11). Standard: alle
           varer med materialtype stoff kan profileres.
         - Kunde uten profiler ser en tom tilstand med kontakt til selger (se nederst).
-        - Ansatte ser samme side med kundevelger (som account-sortilog-ansatt.html).
+        - MJ setter opp og endrer profilene i System &rsaquo; Profilering (system-profiles.html), ikke her.
       -->
       <header style="margin-bottom: var(--s-6);">
         <h2 class="t-h2" style="margin: 0 0 var(--s-2);">Profilering</h2>
@@ -518,6 +518,15 @@
 
       <div class="card card--flat" style="margin-top: var(--s-7);">
         <strong>Vil dere endre en profil eller legge til en ny?</strong> Ta kontakt med selgeren deres, s&aring; legger vi den inn. Nye logoer m&aring; godkjennes f&oslash;r de kan trykkes.
+      </div>
+
+      <!-- Variant: SysAdmin er logget inn som en kunde (&laquo;Logg inn som&raquo;). Siden er lik kundens (kun lese).
+           Redigering skjer i System &rsaquo; Profilering; knappen avslutter impersoneringen og &aring;pner kunden der,
+           samme m&oslash;nster som &laquo;Tilbake til meg og &aring;pne denne siden&raquo; (AB#20391). -->
+      <p class="preview-label" style="margin-top: var(--s-10); font-size: var(--fs-overline); text-transform: uppercase; letter-spacing: var(--ls-wider); color: var(--color-text-tertiary);">Variant: SysAdmin logget inn som kunden</p>
+      <div class="profiling__rule">
+        <p>Du ser siden slik <strong>Kjetil Kvendseth (Brunvoll AS)</strong> ser den. Profilene endres i System.</p>
+        <a class="btn btn--outline btn--sm" href="system-profile-edit.html" style="text-decoration: none;">Tilbake til meg og endre profilene</a>
       </div>
 
       <!-- Tom tilstand: kunde uten profilavtale -->

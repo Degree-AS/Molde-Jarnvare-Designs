@@ -23,6 +23,8 @@
  *            __notice
  *            __card  __card-media  __card-body  __card-title  __card-meta
  *            __placements  __placement  __rule
+ *            __editor  __editor-head  __fields  __chips  __placement-rows
+ *            __placement-row  __remove  __calc  __log   (System › Profilering)
  * Modifiers: __option--selected, __card--inactive
  */
 
@@ -204,7 +206,69 @@
 }
 .profiling__rule p { margin: 0; }
 
+/* System › Profilering — redigering (kun MJ, SysAdmin). Plasseringene styrer påføringslinjene:
+   hver rad av typen Logo = 1 × 479350 per plagg, Navnelapp = 1 × 479355 per navn. */
+.profiling__editor {
+  display: flex;
+  flex-direction: column;
+  gap: var(--s-5);
+  padding: var(--s-5);
+  background: var(--color-bg-surface);
+  border: var(--bw-1) solid var(--color-border-brand);
+  border-radius: var(--r-md);
+}
+.profiling__editor-head { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: var(--s-3); }
+.profiling__fields {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  gap: var(--s-4);
+}
+.profiling__chips { display: flex; flex-wrap: wrap; gap: var(--s-2); }
+
+.profiling__placement-rows { display: flex; flex-direction: column; gap: var(--s-2); margin: 0; padding: 0; list-style: none; }
+.profiling__placement-row {
+  display: grid;
+  grid-template-columns: 140px 1fr 1fr 96px 1fr auto;
+  gap: var(--s-2);
+  align-items: end;
+  padding: var(--s-3);
+  background: var(--color-bg-surface-alt);
+  border-radius: var(--r-sm);
+}
+.profiling__placement-row .field__label { font-size: var(--fs-caption); }
+.profiling__remove {
+  height: 44px;
+  padding-inline: var(--s-3);
+  background: transparent;
+  border: 0;
+  font: inherit;
+  font-size: var(--fs-caption);
+  color: var(--color-text-secondary);
+  text-decoration: underline;
+  text-underline-offset: 2px;
+  cursor: pointer;
+}
+.profiling__remove:hover { color: var(--mj-error); }
+.profiling__calc {
+  margin: 0;
+  padding: var(--s-3) var(--s-4);
+  background: var(--color-bg-brand-soft);
+  border-radius: var(--r-sm);
+  font-size: var(--fs-body-sm);
+}
+
+/* Endringslogg — hvem endret hva, når */
+.profiling__log { margin: 0; padding: 0; list-style: none; font-size: var(--fs-body-sm); }
+.profiling__log li { display: grid; grid-template-columns: 140px 1fr; gap: var(--s-3); padding: var(--s-2) 0; border-bottom: var(--bw-1) solid var(--color-border-soft); }
+.profiling__log time { font-family: var(--ff-mono); font-size: var(--fs-mono-sm); color: var(--color-text-tertiary); }
+
+@media (max-width: 1023px) {
+  .profiling__placement-row { grid-template-columns: 1fr 1fr; }
+  .profiling__placement-row .profiling__remove { justify-self: start; }
+}
+
 @media (max-width: 767px) {
+  .profiling__log li { grid-template-columns: 1fr; gap: 0; }
   .profiling__card { grid-template-columns: 1fr; }
   .profiling__card-media { max-width: 200px; }
   .profiling__addon { grid-template-columns: 1fr auto; }

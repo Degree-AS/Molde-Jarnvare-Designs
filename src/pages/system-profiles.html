@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Sortilog (ansatt) — Molde Jarnvare</title>
+  <title>Profilering — System — Molde Jarnvare</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link href="https://fonts.googleapis.com/css2?family=Source+Sans+3:wght@400;500;600;700;900&family=JetBrains+Mono:wght@400&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="../styles/index.css">
@@ -425,172 +425,110 @@
 <main class="container container--wide" style="padding-block: var(--s-7);">
 
   <!--
-    ANSATTVISNING (H&aring;kon og Marius 03.11.2026)
-    - Innlogget som MJ-ansatt (SysAdmin / ansattgruppe i DW) = ser ALLE kunders sortiloger og profiler.
-      Innlogget som kunde = ser kun egne (account-sortilog-detail.html).
-    - Brukes i butikken og p&aring; trykkeriet: velg kunde &rarr; se hva kunden har i sortilogen og hvordan
-      kl&aelig;rne skal profileres. Skjermen kan v&aelig;re vendt mot kunden, s&aring; INGEN priser vises her.
-    - Dette er ikke &laquo;Logg inn som&raquo; (impersonering). Impersonering er for kundeservice/handlekurv og
-      viser kundens priser. Her blar den ansatte uten &aring; bli kunden.
-    - &laquo;Vis i nettbutikken uten priser&raquo; &aring;pner PLP-en med kundens sortilogfilter og bilder, men med
-      prisene skjult. Forslag &mdash; m&aring; avklares om DW kan vise kundens sortiment uten kundens priser.
-    - Kundevelgeren s&oslash;ker p&aring; kundenavn og kundenummer. Har kunden flere sortiloger, velges sortilog i neste felt.
+    SYSTEM-OMR&Aring;DET (finnes i frontend: /system, Vaclav 18.10.2026). Kun for medlemmer av &laquo;SysAdmin&raquo;,
+    n&aring;s fra &laquo;System&raquo; i brukermenyen i headeren, bygget som Min konto. Alle andre f&aring;r 404.
+    Mens en SysAdmin er logget inn som en annen bruker (&laquo;Logg inn som&raquo;), viser System-sidene
+    &laquo;Tilbake til meg og &aring;pne denne siden&raquo; (AB#20391) &mdash; profilene redigeres derfor ALDRI under impersonering.
+    Cache, BC Sync, Alerts og Users er dagens menypunkter; Sortilog og Profilering er nye (utkast 03.11.2026).
+    SYSTEM &rsaquo; PROFILERING &mdash; oversikt over alle kunder. Hvem som f&aring;r se menypunktet, er et &aring;pent sp&oslash;rsm&aring;l:
+    selgere og trykkeriet er ikke n&oslash;dvendigvis SysAdmin, og SysAdmin gir ogs&aring; Cache/BC Sync/Users.
+    Forslag: egen gruppe &laquo;Profilering&raquo; (rediger) + &laquo;Trykkeri&raquo; (kun lese).
   -->
-  <div class="banner banner--brand" style="margin-bottom: var(--s-6); border-radius: var(--r-md);">
-    <div class="banner__content">Du er logget inn som Molde Jarnvare-ansatt. Du ser sortilog og profilering for kunden du velger &mdash; priser vises ikke.</div>
-  </div>
-
-  <h1 class="t-h1" style="margin-bottom: var(--s-7);">Min konto</h1>
+  <h1 class="t-h1" style="margin-bottom: var(--s-7);">System</h1>
 
   <div class="account-dashboard">
-    <nav class="account-dashboard__nav">
-      <a class="account-dashboard__nav-link" href="account.html">Oversikt</a>
-      <a class="account-dashboard__nav-link" href="account-orders.html">Ordrer</a>
-      <a class="account-dashboard__nav-link is-active" aria-current="page" href="account-sortilogs.html">Sortilog</a>
-      <a class="account-dashboard__nav-link" href="account-profiles.html">Profilering</a>
-      <a class="account-dashboard__nav-link" href="account-wishlists.html">Handlelister</a>
-      <a class="account-dashboard__nav-link" href="account-addresses.html">Adresser</a>
-      <a class="account-dashboard__nav-link" href="account-users.html">Brukere</a>
-      <a class="account-dashboard__nav-link" href="account-details.html">Innstillinger</a>
+    <nav class="account-dashboard__nav" aria-label="System-meny">
+      <a class="account-dashboard__nav-link" href="#">Cache</a>
+      <a class="account-dashboard__nav-link" href="#">BC Sync</a>
+      <a class="account-dashboard__nav-link" href="#">Alerts</a>
+      <a class="account-dashboard__nav-link" href="#">Users</a>
+      <a class="account-dashboard__nav-link" href="system-sortilog.html">Sortilog</a>
+      <a class="account-dashboard__nav-link is-active" aria-current="page" href="system-profiles.html">Profilering</a>
     </nav>
 
     <div class="account-dashboard__main">
-      <section class="card" style="margin-bottom: var(--s-6);">
-        <div style="display: flex; flex-wrap: wrap; gap: var(--s-4); align-items: flex-end;">
-          <div class="field" style="flex: 1 1 280px;">
-            <label class="field__label" for="emp-customer">Kunde</label>
-            <input class="input" id="emp-customer" type="search" value="Brunvoll AS &middot; 311936" placeholder="S&oslash;k p&aring; kundenavn eller kundenummer">
-          </div>
-          <div class="field" style="flex: 0 1 240px;">
-            <label class="field__label" for="emp-sortilog">Sortilog</label>
-            <select class="select" id="emp-sortilog">
-              <option>Vedlikehold (495 varer)</option>
-              <option>Verksted (112 varer)</option>
-            </select>
-          </div>
-          <a class="btn btn--outline btn--md" href="category-sortilog.html" style="text-decoration: none;">Vis i nettbutikken uten priser</a>
+      <header style="margin-bottom: var(--s-6); display: flex; flex-wrap: wrap; justify-content: space-between; align-items: flex-end; gap: var(--s-4);">
+        <div>
+          <h2 class="t-h2" style="margin: 0 0 var(--s-2);">Profilering</h2>
+          <p style="color: var(--color-text-secondary); margin: 0; max-width: 64ch;">Avtalt logo og navn p&aring; kl&aelig;r per kunde. Det som legges inn her, ser kunden under Min konto &rsaquo; Profilering og i handlekurven, og trykkeriet ser det p&aring; ordren.</p>
         </div>
-        <p class="field__hint" style="margin: var(--s-3) 0 0;">Profilavtale: <a class="link" href="account-profiles.html">4 profiler</a> &middot; Selger: Leif Erling Aasan &middot; Profilering kun p&aring; sortilog-varer: <strong>Nei</strong></p>
-      </section>
-
-      <header style="margin-bottom: var(--s-4);">
-        <h2 class="t-h2" style="margin: 0 0 var(--s-2);">Vedlikehold</h2>
-        <p style="color: var(--color-text-secondary); margin: 0;">Brunvoll AS &middot; 311936 &middot; 495 varer</p>
+        <button class="btn btn--primary btn--md" type="button">Ny profilavtale</button>
       </header>
 
-      <section class="card" style="padding: 0;">
-          <div class="sortilog__toolbar">
-            <div class="field sortilog__search">
-              <label class="field__label" for="sl-search">S&oslash;k i sortilogen</label>
-              <input class="input" id="sl-search" type="search" placeholder="Art.nr, deres varenr. eller produktnavn">
-            </div>
-            <div class="field">
-              <label class="field__label" for="sl-cat">Kategori</label>
-              <select class="select" id="sl-cat">
-                <option>Alle kategorier (495)</option>
-                <option>Arbeidsbukser (112)</option>
-                <option>Jakker (64)</option>
-                <option>Gensere og T-skjorter (138)</option>
-                <option>Kjeledresser og overaller (41)</option>
-                <option>Vernesko og st&oslash;vler (96)</option>
-                <option>S&aring;ler og tilbeh&oslash;r (44)</option>
-              </select>
-            </div>
+      <section class="card" style="margin-bottom: var(--s-5);">
+        <div style="display: flex; flex-wrap: wrap; gap: var(--s-4); align-items: flex-end;">
+          <div class="field" style="flex: 1 1 280px;">
+            <label class="field__label" for="pf-q">S&oslash;k</label>
+            <input class="input" id="pf-q" type="search" placeholder="Kundenavn eller kundenummer">
           </div>
-          <table class="sortilog__table">
-            <thead>
-              <tr>
-                <th><span class="sr-only">Bilde</span></th>
-                <th>Art.nr</th>
-                <th>Deres varenr.</th>
-                <th>Produkt</th>
-                <th>Profilering</th>
-                <th><span class="sr-only">Lenke</span></th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr class="sortilog__group"><th colspan="6">Arbeidsbukser<span class="sortilog__group-count">3 varer</span></th></tr>
-              <tr>
-                <td><span class="sortilog__thumb"></span></td>
-                <td><span class="sortilog__sku">451104</span></td>
-                <td><span class="sortilog__customer-sku">BV-20114</span></td>
-                <td><span class="sortilog__name">MASCOT BUKSE STRETCH 18079511 ACCELERATE MARINE 82C44</span></td>
-                <td><span class="chip">Kan profileres</span></td>
-                <td><a class="sortilog__link" href="product-sortilog.html?variant=451104">Se produkt &rarr;</a></td>
-              </tr>
-              <tr>
-                <td><span class="sortilog__thumb"></span></td>
-                <td><span class="sortilog__sku">451120</span></td>
-                <td><span class="sortilog__customer-sku">BV-20115</span></td>
-                <td><span class="sortilog__name">MASCOT BUKSE STRETCH 18079511 ACCELERATE MARINE 82C68</span></td>
-                <td><span class="chip">Kan profileres</span></td>
-                <td><a class="sortilog__link" href="product-sortilog.html?variant=451120">Se produkt &rarr;</a></td>
-              </tr>
-              <tr>
-                <td><span class="sortilog__thumb"></span></td>
-                <td><span class="sortilog__sku">451137</span></td>
-                <td><span class="sortilog__customer-sku">BV-20116</span></td>
-                <td><span class="sortilog__name">MASCOT BUKSE STRETCH 18079511 ACCELERATE MARINE 90C62</span></td>
-                <td><span class="chip">Kan profileres</span></td>
-                <td><a class="sortilog__link" href="product-sortilog.html?variant=451137">Se produkt &rarr;</a></td>
-              </tr>
-              <tr class="sortilog__group"><th colspan="6">Jakker<span class="sortilog__group-count">3 varer</span></th></tr>
-              <tr>
-                <td><span class="sortilog__thumb"></span></td>
-                <td><span class="sortilog__sku">314045</span></td>
-                <td><span class="sortilog__customer-sku">BV-30410</span></td>
-                <td><span class="sortilog__name">MASCOT SKALLJAKKE 18301231 ACCELERATE BLÅ/MAR 2XL</span></td>
-                <td><span class="chip">Kan profileres</span></td>
-                <td><a class="sortilog__link" href="product-sortilog.html?variant=314045">Se produkt &rarr;</a></td>
-              </tr>
-              <tr>
-                <td><span class="sortilog__thumb"></span></td>
-                <td><span class="sortilog__sku">314093</span></td>
-                <td><span class="sortilog__customer-sku">BV-30422</span></td>
-                <td><span class="sortilog__name">MASCOT FLEECEJAKKE 18303137 ACCELERATE BLÅ/MAR L</span></td>
-                <td><span class="chip">Kan profileres</span></td>
-                <td><a class="sortilog__link" href="product-sortilog.html?variant=314093">Se produkt &rarr;</a></td>
-              </tr>
-              <tr>
-                <td><span class="sortilog__thumb"></span></td>
-                <td><span class="sortilog__sku">314105</span></td>
-                <td><span class="sortilog__customer-sku">BV-30423</span></td>
-                <td><span class="sortilog__name">MASCOT FLEECEJAKKE W 18153316 ACCELERATE BLÅ/MAR 4XL</span></td>
-                <td><span class="chip">Kan profileres</span></td>
-                <td><a class="sortilog__link" href="product-sortilog.html?variant=314105">Se produkt &rarr;</a></td>
-              </tr>
-              <tr class="sortilog__group"><th colspan="6">Gensere og T-skjorter<span class="sortilog__group-count">3 varer</span></th></tr>
-              <tr>
-                <td><span class="sortilog__thumb"></span></td>
-                <td><span class="sortilog__sku">207918301</span></td>
-                <td><span class="sortilog__customer-sku" aria-label="Ikke registrert">&mdash;</span></td>
-                <td><span class="sortilog__name">CLIQUE GENSER BASIC HALV GLIDELÅS 021033 BLÅ L</span></td>
-                <td><span class="chip">Kan profileres</span></td>
-                <td><a class="sortilog__link" href="product-sortilog.html?variant=207918301">Se produkt &rarr;</a></td>
-              </tr>
-              <tr>
-                <td><span class="sortilog__thumb"></span></td>
-                <td><span class="sortilog__sku">447914</span></td>
-                <td><span class="sortilog__customer-sku">BV-40110</span></td>
-                <td><span class="sortilog__name">MASCOT PIQUE 50569961 BOTTROP BLÅ/MAR M</span></td>
-                <td><span class="chip">Kan profileres</span></td>
-                <td><a class="sortilog__link" href="product-sortilog.html?variant=447914">Se produkt &rarr;</a></td>
-              </tr>
-              <tr>
-                <td><span class="sortilog__thumb"></span></td>
-                <td><span class="sortilog__sku">447907</span></td>
-                <td><span class="sortilog__customer-sku">BV-40102</span></td>
-                <td><span class="sortilog__name">MASCOT T-SKJORTE 50567959 POTSDAM BLÅ/MAR 3XL</span></td>
-                <td><span class="chip">Kan profileres</span></td>
-                <td><a class="sortilog__link" href="product-sortilog.html?variant=447907">Se produkt &rarr;</a></td>
-              </tr>
-            </tbody>
-          </table>
-          <div class="sortilog__footer">
-            <span>Viser 9 av 495 varer &middot; gruppert p&aring; kategori</span>
-            <button class="btn btn--outline btn--sm" type="button">Vis flere</button>
+          <div class="field" style="flex: 0 1 220px;">
+            <label class="field__label" for="pf-rep">Selger</label>
+            <select class="select" id="pf-rep"><option>Alle selgere</option><option>Leif Erling Aasan</option><option>Hilmar Askeland</option></select>
           </div>
+          <label class="checkbox" style="margin-bottom: var(--s-3);"><input type="checkbox" checked><span class="checkbox__visual"></span><span class="checkbox__label">Kun kunder med avtale</span></label>
+        </div>
       </section>
+
+      <div class="data-table__wrap data-table__wrap--responsive">
+        <table class="data-table">
+          <thead>
+            <tr><th>Kunde</th><th>Kundenr</th><th>Status</th><th>Profiler</th><th>Gjelder</th><th>Selger</th><th>Sist endret</th><th><span class="sr-only">&Aring;pne</span></th></tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td data-label="Kunde"><strong>Brunvoll AS</strong></td>
+              <td data-label="Kundenr"><span class="t-mono-md">311936</span></td>
+              <td data-label="Status"><span class="status-pill status-pill--success">Avtale</span></td>
+              <td data-label="Profiler">4 aktive</td>
+              <td data-label="Gjelder">Alle profilerbare</td>
+              <td data-label="Selger">Leif Erling Aasan</td>
+              <td data-label="Sist endret">14.10.2026</td>
+              <td data-label=""><a class="link" href="system-profile-edit.html">&Aring;pne</a></td>
+            </tr>
+            <tr>
+              <td data-label="Kunde"><strong>Skarsg&aring;rd Industri AS</strong></td>
+              <td data-label="Kundenr"><span class="t-mono-md">310452</span></td>
+              <td data-label="Status"><span class="status-pill status-pill--success">Avtale</span></td>
+              <td data-label="Profiler">3 aktive</td>
+              <td data-label="Gjelder">Kun sortilog</td>
+              <td data-label="Selger">Hilmar Askeland</td>
+              <td data-label="Sist endret">02.10.2026</td>
+              <td data-label=""><a class="link" href="system-profile-edit.html">&Aring;pne</a></td>
+            </tr>
+            <tr>
+              <td data-label="Kunde"><strong>Elmo Elektro AS</strong></td>
+              <td data-label="Kundenr"><span class="t-mono-md">312087</span></td>
+              <td data-label="Status"><span class="status-pill status-pill--success">Avtale</span></td>
+              <td data-label="Profiler">2 aktive</td>
+              <td data-label="Gjelder">Kun sortilog</td>
+              <td data-label="Selger">Leif Erling Aasan</td>
+              <td data-label="Sist endret">21.09.2026</td>
+              <td data-label=""><a class="link" href="system-profile-edit.html">&Aring;pne</a></td>
+            </tr>
+            <tr>
+              <td data-label="Kunde"><strong>Ekornes ASA</strong></td>
+              <td data-label="Kundenr"><span class="t-mono-md">300118</span></td>
+              <td data-label="Status"><span class="status-pill status-pill--success">Avtale</span></td>
+              <td data-label="Profiler">5 aktive &middot; 1 inaktiv</td>
+              <td data-label="Gjelder">Alle profilerbare</td>
+              <td data-label="Selger">Hilmar Askeland</td>
+              <td data-label="Sist endret">30.08.2026</td>
+              <td data-label=""><a class="link" href="system-profile-edit.html">&Aring;pne</a></td>
+            </tr>
+            <tr>
+              <td data-label="Kunde"><strong>Vestnes R&oslash;r og Varme AS</strong></td>
+              <td data-label="Kundenr"><span class="t-mono-md">313301</span></td>
+              <td data-label="Status"><span class="status-pill status-pill--neutral">Ingen avtale</span></td>
+              <td data-label="Profiler">&mdash;</td>
+              <td data-label="Gjelder">Ingen avtale</td>
+              <td data-label="Selger">Leif Erling Aasan</td>
+              <td data-label="Sist endret">&mdash;</td>
+              <td data-label=""><a class="link" href="system-profile-edit.html">Opprett avtale</a></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <p class="field__hint" style="margin-top: var(--s-3);">&laquo;Ny profilavtale&raquo; og &laquo;Opprett avtale&raquo; s&oslash;ker opp kunden (samme s&oslash;k som &laquo;Bytt kunde&raquo;) og &aring;pner en tom avtale.</p>
     </div>
   </div>
 
