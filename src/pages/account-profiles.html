@@ -441,7 +441,9 @@
     <div class="account-dashboard__main">
       <!--
         PROFILERING (m&oslash;te 03.11.2026). Viser det som er AVTALT mellom selger og kunde om logo/navn p&aring; kl&aelig;r.
-        - &Eacute;n profil per plaggtype (T-skjorte, genser, jakke, bukse &hellip;). En kunde har f&aring; profiler.
+        - &Eacute;n eller flere profiler per plaggtype (T-skjorte, genser, jakke, bukse &hellip;). Flere n&aring;r avdelinger vil ha ulik
+          merking, f.eks. Brunvoll produksjon og ettermarked p&aring; gensere (H&aring;kon 04.11). Avdelingen vises som merkelapp.
+          Kunden velger profil per linje i handlekurven. Sortert p&aring; plaggtype, deretter avdeling.
         - Hver profil: navn, godkjent bilde av ferdig plagg, plasseringer (logo bryst, logo rygg, navnelapp &hellip;),
           antall logoer per plagg og om plagget har navnelapp. Antallet styrer p&aring;f&oslash;ringslinjene p&aring; ordren.
         - Legges inn og vedlikeholdes av MJ (selger, f.eks. Leif Erling) i Dynamicweb &mdash; finnes ikke i BC/PIM i dag.
@@ -453,7 +455,7 @@
       -->
       <header style="margin-bottom: var(--s-6);">
         <h2 class="t-h2" style="margin: 0 0 var(--s-2);">Profilering</h2>
-        <p style="color: var(--color-text-secondary); margin: 0; max-width: 64ch;">Slik har dere avtalt at kl&aelig;rne skal merkes med logo og navn. Velg profilering per vare i handlekurven, s&aring; trykker vi etter avtalen.</p>
+        <p style="color: var(--color-text-secondary); margin: 0; max-width: 64ch;">Slik har dere avtalt at kl&aelig;rne skal merkes med logo og navn. Har dere flere profiler for samme plagg, for eksempel per avdeling, velger dere hvilken per vare i handlekurven.</p>
       </header>
 
       <div class="profiling__rule" style="margin-bottom: var(--s-6);">
@@ -489,15 +491,30 @@
           </div>
         </article>
         <article class="profiling__card">
-          <div class="profiling__card-media" role="img" aria-label="Godkjent bilde: Genser og T-skjorte"></div>
+          <div class="profiling__card-media" role="img" aria-label="Godkjent bilde: Genser &ndash; produksjon"></div>
           <div class="profiling__card-body">
             <div>
-              <h3 class="profiling__card-title">Genser og T-skjorte</h3>
+              <span class="badge">Produksjon</span>
+              <h3 class="profiling__card-title">Genser &ndash; produksjon</h3>
               <p class="profiling__card-meta">Gensere, pique og T-skjorter &middot; 1 logo + navnelapp per plagg</p>
             </div>
             <ul class="profiling__placements">
               <li class="profiling__placement">Logo bryst venstre &middot; 8 cm</li>
               <li class="profiling__placement">Navnelapp under logo &middot; navn per plagg</li>
+            </ul>
+          </div>
+        </article>
+        <article class="profiling__card">
+          <div class="profiling__card-media" role="img" aria-label="Godkjent bilde: Genser &ndash; ettermarked"></div>
+          <div class="profiling__card-body">
+            <div>
+              <span class="badge">Ettermarked</span>
+              <h3 class="profiling__card-title">Genser &ndash; ettermarked</h3>
+              <p class="profiling__card-meta">Gensere, pique og T-skjorter &middot; 2 logoer per plagg</p>
+            </div>
+            <ul class="profiling__placements">
+              <li class="profiling__placement">Logo bryst venstre &middot; 8 cm</li>
+              <li class="profiling__placement">Tekst &laquo;Brunvoll Service&raquo; rygg &middot; 25 cm</li>
             </ul>
           </div>
         </article>

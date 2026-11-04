@@ -2,9 +2,9 @@
  * Profilering — logo og navnelapp på klær (§14.18, utkast 03.11.2026)
  *
  * Bakgrunn: møte «Sortilog | Form og funksjon» (Håkon, Marius, Simen 03.11.2026).
- *   - Kunder med profilavtale har ferdige profiler (én per plaggtype: T-skjorte,
- *     genser, jakke, bukse …) med godkjent bilde, antall logoer, plassering og
- *     om plagget skal ha navnelapp. Profilene legges inn av MJ (selger) i
+ *   - Kunder med profilavtale har ferdige profiler (én eller flere per plaggtype:
+ *     T-skjorte, genser, jakke, bukse …, f.eks. per avdeling — Håkon 04.11) med
+ *     godkjent bilde, antall logoer, plassering og om plagget skal ha navnelapp. Profilene legges inn av MJ (selger) i
  *     nettløsningen — de finnes ikke i BC eller PIM i dag.
  *   - Profilering velges per varelinje i handlekurven: ja/nei, hvilken profil,
  *     hvor mange av plaggene som skal profileres (miks med og uten logo er lov),
@@ -274,3 +274,7 @@
   .profiling__addon { grid-template-columns: 1fr auto; }
   .profiling__addon > :nth-child(2) { display: none; }
 }
+
+/* Avdeling som merkelapp på profilvalget (Håkon 04.11.2026) */
+.profiling__option-body .badge { align-self: flex-start; }
+.profiling__summary > .badge { flex: 0 0 auto; }

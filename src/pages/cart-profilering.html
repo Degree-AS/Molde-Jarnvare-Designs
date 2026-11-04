@@ -429,6 +429,8 @@
     HANDLEKURV MED PROFILERING (m&oslash;te 03.11.2026) &mdash; bygger p&aring; cart.html.
     Kunden (Brunvoll AS) har profilavtale. Regler:
     - Profilering velges PER VARELINJE (&eacute;n linje = &eacute;n variant/st&oslash;rrelse). Ja/nei er et aktivt valg; standard er nei.
+    - En kunde kan ha FLERE profiler for samme plaggtype, f.eks. per avdeling (Produksjon / Ettermarked, H&aring;kon 04.11).
+      Kunden velger hvilken per linje. Avdelingen vises som merkelapp og f&oslash;lger med i merknaden til BC.
     - Valget vises bare p&aring; varer som kan profileres (materialtype stoff) og som kunden har en profil for.
       Er kundens regel &laquo;kun sortilog&raquo;, vises valget bare p&aring; sortilog-varer.
     - Kunden kan profilere en del av antallet (miks med og uten logo): &laquo;2 av 4&raquo;.
@@ -556,20 +558,22 @@
         </div>
       </article>
 
-      <!-- 3. Kan profileres, ikke valgt: aktivt valg -->
+      <!-- 3. Flere profiler for samme plaggtype (H&aring;kon 04.11.2026): Brunvoll produksjon vil ha &eacute;n merking p&aring; gensere,
+           ettermarked en annen. MJ legger inn begge, med avdeling. Kunden velger i kurven; standard er fortsatt &laquo;Uten profilering&raquo;.
+           Panelet viser alle aktive profiler som gjelder kategorien til varen, med avdelingen som merkelapp. -->
       <article class="cart-line">
         <div class="cart-line__media"></div>
         <div class="cart-line__main">
-          <h3 class="cart-line__title"><a href="product-sortilog.html?variant=447907">MASCOT T-skjorte 50567959 Potsdam bl&aring;/marine 3XL</a></h3>
+          <h3 class="cart-line__title"><a href="product-sortilog.html?variant=314076">MASCOT Genser 21584337 Multisafe marine/gul 2XL</a></h3>
           <div class="cart-line__meta">
-            <span class="cart-line__sku">Art.nr 447907</span>
-            <span class="cart-line__customer-sku">Deres varenr. BV-40102</span>
+            <span class="cart-line__sku">Art.nr 314076</span>
+            <span class="cart-line__customer-sku">Deres varenr. BV-40150</span>
             <span class="badge badge--sortilog">I sortilog</span>
           </div>
           <div class="cart-line__qty">
               <div class="qty-stepper qty-stepper--compact">
                 <button class="qty-stepper__btn">&minus;</button>
-                <input class="qty-stepper__input" type="number" value="20">
+                <input class="qty-stepper__input" type="number" value="4">
                 <button class="qty-stepper__btn">+</button>
                 <span class="qty-stepper__unit">stk</span>
               </div>
@@ -577,14 +581,29 @@
         </div>
         <div>
           <div class="cart-line__price">kr 2 980,&ndash;</div>
-          <div class="cart-line__unit-price">kr 149,&ndash; / stk</div>
+          <div class="cart-line__unit-price">kr 745,&ndash; / stk</div>
           <button class="cart-line__remove">Fjern</button>
         </div>
         <div class="cart-line__extra">
           <div class="profiling">
-            <div class="profiling__summary">
-              <p class="profiling__summary-text">Uten profilering</p>
-              <button class="profiling__toggle" type="button" aria-expanded="false">Legg til profilering</button>
+            <div class="profiling__panel">
+              <h4 class="profiling__panel-title">Profilering</h4>
+              <fieldset class="profiling__options">
+                <legend class="sr-only">Velg profil</legend>
+                <label class="profiling__option">
+                  <input type="radio" name="prof-314076" checked><span class="profiling__option-media"></span>
+                  <span class="profiling__option-body"><span class="profiling__option-title">Uten profilering</span><span class="profiling__option-meta">Leveres uten logo og navn</span></span>
+                </label>
+                <label class="profiling__option">
+                  <input type="radio" name="prof-314076"><span class="profiling__option-media" role="img" aria-label="Godkjent bilde"></span>
+                  <span class="profiling__option-body"><span class="badge">Produksjon</span><span class="profiling__option-title">Genser &ndash; produksjon</span><span class="profiling__option-meta">Logo bryst &middot; navnelapp</span></span>
+                </label>
+                <label class="profiling__option">
+                  <input type="radio" name="prof-314076"><span class="profiling__option-media" role="img" aria-label="Godkjent bilde"></span>
+                  <span class="profiling__option-body"><span class="badge">Ettermarked</span><span class="profiling__option-title">Genser &ndash; ettermarked</span><span class="profiling__option-meta">Logo bryst &middot; &laquo;Brunvoll Service&raquo; rygg</span></span>
+                </label>
+              </fieldset>
+              <p class="field__hint" style="margin: 0;">Skal noen av genserne ha den andre merkingen? Legg genseren i kurven p&aring; nytt, s&aring; f&aring;r den sin egen linje.</p>
             </div>
           </div>
         </div>

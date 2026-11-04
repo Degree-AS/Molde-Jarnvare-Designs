@@ -434,7 +434,9 @@
     - Avtale: av/p&aring;, regel &laquo;alle profilerbare&raquo; / &laquo;kun sortilog&raquo;, selger, intern merknad (trykkeriet).
     - Logoer: kundens originalfiler for trykk og logo-kutter. Private filer: lagres utenfor den offentlige /Files-mappen
       og hentes via backend med tilgangssjekk (frontend videresender /Files offentlig, AB#20086).
-    - Profiler: navn, kategorier fra PIM, godkjente bilder (hovedbilde vises kunden), plasseringer.
+    - Profiler: navn, valgfri avdeling, kategorier fra PIM, godkjente bilder (hovedbilde vises kunden), plasseringer.
+      Flere profiler kan gjelde samme kategori (H&aring;kon 04.11: Brunvoll produksjon vs. ettermarked p&aring; gensere).
+      Avdelinger skilles IKKE i BC (krever dupliserte sortiloger per kundenr./leveringsadresse) &mdash; bare her.
       Antall p&aring;f&oslash;ringer regnes ut fra plasseringene: Logo-rader = 479350 per plagg, Navnelapp = 479355 per navn.
     - Deaktiver i stedet for slett, s&aring; gamle ordrer fortsatt viser hvilken profil som ble brukt.
     - Endringslogg: hvem endret hva, n&aring;r.
@@ -461,7 +463,7 @@
       <header style="margin-bottom: var(--s-6); display: flex; flex-wrap: wrap; justify-content: space-between; align-items: flex-end; gap: var(--s-4);">
         <div>
           <h2 class="t-h2" style="margin: 0 0 var(--s-2);">Brunvoll AS</h2>
-          <p style="color: var(--color-text-secondary); margin: 0;">311936 &middot; 4 aktive profiler &middot; sist endret 14.10.2026 av Leif Erling Aasan</p>
+          <p style="color: var(--color-text-secondary); margin: 0;">311936 &middot; 5 aktive profiler &middot; sist endret 14.10.2026 av Leif Erling Aasan</p>
         </div>
         <div style="display: flex; gap: var(--s-3); flex-wrap: wrap;">
           <a class="btn btn--outline btn--md" href="account-profiles.html" style="text-decoration: none;">Se det kunden ser</a>
@@ -538,6 +540,7 @@
           <h3 class="t-h3" style="margin: 0;">Profiler</h3>
           <button class="btn btn--outline btn--sm" type="button">+ Ny profil</button>
         </div>
+        <p class="field__hint" style="margin: 0;">Flere profiler kan gjelde samme plagg, for eksempel &eacute;n per avdeling. Kunden velger i handlekurven. &laquo;Kopier&raquo; lager en ny profil med samme bilder og plasseringer.</p>
 
         <!-- &Aring;pen profil: redigering -->
         <article class="profiling__editor">
@@ -551,6 +554,12 @@
               <label class="field__label field__label--required" for="pr-name">Navn</label>
               <input class="input" id="pr-name" value="Jakke &ndash; standard">
               <p class="field__hint" style="margin: var(--s-1) 0 0;">Kunden ser navnet i handlekurven.</p>
+            </div>
+            <div class="field">
+              <label class="field__label" for="pr-dept">Avdeling</label>
+              <input class="input" id="pr-dept" list="pr-dept-list" placeholder="Valgfritt, f.eks. Produksjon">
+              <datalist id="pr-dept-list"><option value="Produksjon"><option value="Ettermarked"></datalist>
+              <p class="field__hint" style="margin: var(--s-1) 0 0;">Skiller profiler for samme plagg. Vises som merkelapp for kunden.</p>
             </div>
             <div class="field" style="grid-column: span 2;">
               <span class="field__label">Gjelder for</span>
@@ -643,7 +652,8 @@
 
         <!-- Lukkede profiler -->
         <div class="profiling__summary"><p class="profiling__summary-text"><strong>Bukse &ndash; standard</strong> &middot; Arbeidsbukser, servicebukser &middot; 1 logo</p><button class="profiling__toggle" type="button">Rediger</button></div>
-        <div class="profiling__summary"><p class="profiling__summary-text"><strong>Genser og T-skjorte</strong> &middot; Gensere, pique, T-skjorter &middot; 1 logo + navnelapp</p><button class="profiling__toggle" type="button">Rediger</button></div>
+        <div class="profiling__summary"><span class="badge">Produksjon</span><p class="profiling__summary-text"><strong>Genser &ndash; produksjon</strong> &middot; Gensere, pique, T-skjorter &middot; 1 logo + navnelapp</p><button class="profiling__toggle" type="button">Kopier</button><button class="profiling__toggle" type="button" style="margin-left: 0;">Rediger</button></div>
+        <div class="profiling__summary"><span class="badge">Ettermarked</span><p class="profiling__summary-text"><strong>Genser &ndash; ettermarked</strong> &middot; Gensere, pique, T-skjorter &middot; 2 logoer</p><button class="profiling__toggle" type="button">Kopier</button><button class="profiling__toggle" type="button" style="margin-left: 0;">Rediger</button></div>
         <div class="profiling__summary"><p class="profiling__summary-text"><strong>Kjeledress</strong> &middot; Kjeledresser &middot; 2 logoer</p><button class="profiling__toggle" type="button">Rediger</button></div>
       </section>
 
