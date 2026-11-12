@@ -22,6 +22,8 @@
  *   - BC bestemmer HVILKE varer som er i kundens sortilog: vareavtaler type «Sortilog»
  *     med status Aktiv på kundenummeret. Ren 1-1-kobling kunde ↔ varenummer, uten navn
  *     eller gruppering. Arkivert eller byttet vare faller ut overalt, automatisk.
+ *   - Vanlige nettregler gjelder alltid i bunn (Håkon 12.11): en vare som ikke vises
+ *     på nett, vises heller ikke i sortilogen, filteret eller merkelappen.
  *   - Standard: ÉN sortilog («Hele sortilogen») for alle brukerne hos kunden. Ingenting
  *     settes opp på web. Gjelder de aller fleste av 50–60 kunder.
  *   - Bare når kunden trenger det (et fåtall): MJ lager delsortiloger på web
