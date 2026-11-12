@@ -7,7 +7,7 @@
  *
  * Regler (revidert 03.11.2026, møte «Sortilog | Form og funksjon» med Håkon):
  *   - Sortilogen er en kobling kunde ↔ varenummer (variant). Vedlikeholdes av
- *     Molde Jarnvare i BC. Kunden redigerer ikke.
+ *     Molde Jarnvare i BC. Kunden endrer ikke hvilke varer som er i sortilogen.
  *   - Bestilling skjer i den vanlige nettbutikken: filteret «Kun varer i min
  *     sortilog» på PLP/søk + gul «I sortilog»-merkelapp (badge--sortilog).
  *     Sortilog-siden under Min konto er KUN en oversikt — ingen antall,
@@ -26,11 +26,13 @@
  *     på nett, vises heller ikke i sortilogen, filteret eller merkelappen.
  *   - Standard: ÉN sortilog («Hele sortilogen») for alle brukerne hos kunden. Ingenting
  *     settes opp på web. Gjelder de aller fleste av 50–60 kunder.
- *   - Bare når kunden trenger det (et fåtall): MJ lager delsortiloger på web
- *     (System › Sortilog, SysAdmin) og huker av hvilke av kundens BC-varer som hører
- *     til hver, f.eks. per avdeling eller type arbeid. Kunden redigerer ikke.
- *   - En vare kan ligge i flere delsortiloger. Varer som ikke er i noen ligger fortsatt
- *     i «Hele sortilogen» og vises for MJ som «Ikke fordelt».
+ *   - Bare når kunden trenger det (et fåtall): delsortiloger på web, f.eks. per avdeling
+ *     eller type arbeid. De lages og redigeres av MJ (System › Sortilog, SysAdmin) OG av
+ *     kundens Admin-brukere (Min konto › Sortilog), på lik linje (Simen 12.11).
+ *     Bestiller-brukere ser dem, men kan ikke redigere.
+ *   - En vare kan ligge i flere delsortiloger, eller i ingen. Det er ikke et krav at
+ *     alle varer plasseres. Nye varer fra BC blir bare liggende i «Hele sortilogen» med
+ *     den vanlige merkelappen «I sortilog» (Simen 12.11).
  *
  * Block:     .sortilog
  * Elements:  __header  __title  __count  __list  (oversikt over sortiloger)

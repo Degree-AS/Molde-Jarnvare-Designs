@@ -455,16 +455,21 @@
         - &laquo;Kan profileres&raquo; = varen har materialtype stoff (H&aring;kon 03.11). Vises bare n&aring;r kunden har profilavtale.
         - &laquo;Se produkt&raquo; &aring;pner produktsiden med varianten valgt (?variant=&lt;art.nr&gt;), som fra handlekurven.
         - Skissen viser 25 ekte linjer fra testuttrekket (Brunvoll AS, 28.09.2026).
-        - REVIDERT 12.11.2026 (AB#20556): siden viser her delsortilogen &laquo;Vedlikehold&raquo;, et utvalg MJ har satt opp p&aring; web.
+        - REVIDERT 12.11.2026 (AB#20556): siden viser her delsortilogen &laquo;Vedlikehold&raquo;, et utvalg satt opp p&aring; web av MJ
+          eller av kundens Admin-bruker. &laquo;Rediger&raquo; vises bare for Admin (account-sortilog-edit.html).
           For de fleste kunder er dette &laquo;Hele sortilogen&raquo; (alle aktive vareavtaler &laquo;Sortilog&raquo; i BC), og
           menylenken g&aring;r rett hit. &laquo;Handle fra sortilogen&raquo; &aring;pner PLP med samme valg i filteret.
       -->
       <header style="margin-bottom: var(--s-6); display: flex; flex-wrap: wrap; justify-content: space-between; align-items: flex-end; gap: var(--s-4);">
         <div>
           <h2 class="t-h2" style="margin: 0 0 var(--s-2);">Vedlikehold</h2>
-          <p style="color: var(--color-text-secondary); margin: 0;">Brunvoll AS &middot; 311936 &middot; 495 av 589 varer i sortilogen &middot; Utvalg satt opp av Molde Jarnvare</p>
+          <p style="color: var(--color-text-secondary); margin: 0;">Brunvoll AS &middot; 311936 &middot; 495 av 589 varer i sortilogen</p>
         </div>
-        <a class="btn btn--primary btn--md" href="category-sortilog.html" style="text-decoration: none;">Handle fra sortilogen &rarr;</a>
+        <div style="display: flex; flex-wrap: wrap; gap: var(--s-3);">
+          <!-- «Rediger» vises bare for Admin-brukere hos kunden (Simen 12.11) -->
+          <a class="btn btn--outline btn--md" href="account-sortilog-edit.html" style="text-decoration: none;">Rediger</a>
+          <a class="btn btn--primary btn--md" href="category-sortilog.html" style="text-decoration: none;">Handle fra sortilogen &rarr;</a>
+        </div>
       </header>
 
       <section class="card" style="padding: 0;">

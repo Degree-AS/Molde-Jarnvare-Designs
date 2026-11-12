@@ -435,10 +435,13 @@
     - Vanlige nettregler gjelder i bunn (H&aring;kon 12.11): en vare som ikke vises p&aring; nett, vises ikke for kunden,
       selv om den er huket av her.
     - Arkiveres en vare i BC, eller byttes varen i vareavtalen, forsvinner den herfra og fra alle delsortiloger automatisk.
-      Nye varer fra BC ligger i &laquo;Hele sortilogen&raquo; og merkes &laquo;Ny fra BC&raquo; til selgeren har plassert dem.
+      Nye varer fra BC blir bare liggende i &laquo;Hele sortilogen&raquo; med merkelappen &laquo;I sortilog&raquo;. Det er IKKE et krav at
+      alle varer plasseres i en delsortilog (Simen 12.11).
       &Aring;PENT (Vaclav): beholder vareavtalelinjen sin id n&aring;r varen byttes? I s&aring; fall kan erstatningen arve plasseringen.
     - Kunden ser delsortilogene som valg i filteret og som kort under Min konto. Alle brukere hos kunden ser alle
       delsortilogene, som profilene (H&aring;kon 05.11: &laquo;hold det s&aring; enkelt som mulig&raquo;). &Aring;PENT: knytte brukere til en delsortilog.
+    - Kundens Admin-brukere kan lage og redigere delsortiloger p&aring; lik linje med MJ, med samme skjema under
+      Min konto &rsaquo; Sortilog (account-sortilog-edit.html). Bestiller-brukere kan ikke redigere (Simen 12.11).
     - Slett fjerner bare inndelingen. Varene blir liggende i hele sortilogen.
   -->
   <h1 class="t-h1" style="margin-bottom: var(--s-7);">System</h1>
@@ -489,7 +492,7 @@
       <section style="display: flex; flex-direction: column; gap: var(--s-3);">
         <div>
           <h3 class="t-h3" style="margin: 0 0 var(--s-1);">Varer</h3>
-          <p class="field__hint" style="margin: 0; max-width: 72ch;">Listen er kundens sortilog fra BC. Huk av varene som h&oslash;rer til Vedlikehold. Nye varer i BC kommer inn her av seg selv og merkes &laquo;Ny fra BC&raquo;. Arkiveres en vare i BC, forsvinner den fra alle delsortiloger.</p>
+          <p class="field__hint" style="margin: 0; max-width: 72ch;">Listen er kundens sortilog fra BC. Huk av varene som h&oslash;rer til Vedlikehold. Nye varer fra BC havner i hele sortilogen og legges ikke i noen delsortilog av seg selv. Arkiveres en vare i BC, forsvinner den fra alle delsortiloger.</p>
         </div>
 
         <div class="card" style="padding: 0;">
@@ -510,14 +513,12 @@
                 <option>S&aring;ler og tilbeh&oslash;r (64)</option>
               </select>
             </div>
-            <div class="field" id="ikke-fordelt">
+            <div class="field">
               <label class="field__label" for="ds-show">Vis</label>
               <select class="select" id="ds-show">
                 <option selected>Alle i sortilogen (589)</option>
                 <option>Valgt i Vedlikehold (495)</option>
                 <option>Ikke valgt (94)</option>
-                <option>Ikke fordelt i noen delsortilog (14)</option>
-                <option>Ny fra BC siste 30 dager (3)</option>
               </select>
             </div>
           </div>
@@ -582,7 +583,7 @@
                 <td><span class="sortilog__sku">314118</span></td>
                 <td><span class="sortilog__customer-sku" aria-label="Ikke registrert">&mdash;</span></td>
                 <td><span class="sortilog__name">MASCOT VINTERJAKKE 18035041 ACCELERATE SAFE GUL/MAR XL</span></td>
-                <td><span class="sortilog__tags"><span class="badge badge--info">Ny fra BC</span><span class="badge badge--warning">Ikke fordelt</span></span></td>
+                <td></td>
               </tr>
               <tr class="sortilog__group"><th colspan="6">Gensere og T-skjorter<span class="sortilog__group-count">2 av 2 valgt</span> <button class="btn btn--ghost btn--sm" type="button">Velg alle 152 i kategorien</button></th></tr>
               <tr>
@@ -621,8 +622,9 @@
       <section class="card" style="margin-top: var(--s-7);">
         <h3 class="card__title" style="margin: 0 0 var(--s-3);">Endringslogg</h3>
         <ul class="profiling__log">
-          <li><time>12.11.2026 10:04</time><span>BC: 314118 lagt til i sortilogen (ikke fordelt)</span></li>
+          <li><time>12.11.2026 10:04</time><span>BC: 314118 lagt til i sortilogen</span></li>
           <li><time>12.11.2026 09:31</time><span>Leif Erling Aasan la til 12 varer i Vedlikehold</span></li>
+          <li><time>10.11.2026 13:20</time><span>Kundens Admin-bruker fjernet 3 varer fra Vedlikehold</span></li>
           <li><time>06.11.2026 02:00</time><span>BC: 451099 arkivert, fjernet fra Vedlikehold og Verksted</span></li>
           <li><time>05.11.2026 14:12</time><span>Leif Erling Aasan opprettet Vedlikehold</span></li>
         </ul>

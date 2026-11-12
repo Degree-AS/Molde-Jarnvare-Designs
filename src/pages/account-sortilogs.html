@@ -446,7 +446,11 @@
           rett til detaljsiden (account-sortilog-detail.html), og denne siden vises ikke.
         - BC har ingen navn eller gruppering. Har kunden behov for ulike utvalg per avdeling
           eller type arbeid, lager MJ delsortiloger på web (System › Sortilog). Da viser denne
-          siden «Hele sortilogen» først, og så ett kort per delsortilog. Kunden redigerer ikke.
+          siden «Hele sortilogen» først, og så ett kort per delsortilog.
+        - Kundens Admin-brukere kan lage og redigere delsortiloger på lik linje med MJ (Simen 12.11):
+          «+ Ny delsortilog» og «Rediger» vises bare for Admin (account-sortilog-edit.html). Bestiller ser kortene.
+          Hvilke varer som er i sortilogen, endres fortsatt bare av MJ i BC.
+        - Varer som ikke er i noen delsortilog, ligger i «Hele sortilogen». Ingen krav om å plassere alle.
         - Alle brukere hos kunden ser alle kortene (som profilene, Håkon 05.11).
         - Brunvoll i skissen: 589 varer i BC, Vedlikehold 495, Verksted 112.
       -->
@@ -479,7 +483,13 @@
         </a>
 
       </div>
-      <p class="field__hint" style="margin: var(--s-3) 0 0;">Inndelingen i Vedlikehold og Verksted er satt opp av Molde Jarnvare etter avtale med dere.</p>
+      <!-- Bare for Admin-brukere hos kunden -->
+      <div style="display: flex; flex-wrap: wrap; align-items: center; gap: var(--s-3); margin-top: var(--s-4);">
+        <a class="btn btn--outline btn--sm" href="account-sortilog-edit.html" style="text-decoration: none;">+ Ny delsortilog</a>
+        <a class="btn btn--ghost btn--sm" href="account-sortilog-edit.html" style="text-decoration: none;">Rediger Vedlikehold</a>
+        <a class="btn btn--ghost btn--sm" href="account-sortilog-edit.html" style="text-decoration: none;">Rediger Verksted</a>
+      </div>
+      <p class="field__hint" style="margin: var(--s-3) 0 0; max-width: 72ch;">Som Admin kan du dele sortilogen i utvalg, for eksempel per avdeling. Varer som ikke er med i noe utvalg, finnes fortsatt under &laquo;Hele sortilogen&raquo;. Molde Jarnvare kan ogs&aring; sette opp utvalgene for dere.</p>
 
       <div class="card card--flat" style="margin-top: var(--s-7);">
         <strong>Mangler en vare?</strong> Sortimentet vedlikeholdes av Molde Jarnvare. Kontakt selgeren din eller ordrekontoret p&aring; <a class="link" href="tel:71254200">71 25 42 00</a>, s&aring; legger vi den inn. Alle varer kan ogs&aring; bestilles fra nettbutikken som vanlig.
