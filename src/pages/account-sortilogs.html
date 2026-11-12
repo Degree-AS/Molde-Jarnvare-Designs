@@ -440,27 +440,38 @@
 
     <div class="account-dashboard__main">
       <!--
-        Sortilog = avtalt sortiment som MJ vedlikeholder i BC (vareavtaletype «sortilog»).
-        En kunde kan ha flere sortiloger. Har kunden bare én, går menylenken
-        «Sortilog» rett til detaljsiden (account-sortilog-detail.html).
-        Navn per sortilog må komme fra et sortilog-hode i BC — finnes ikke i
-        testuttrekket (kun linjer). «Vedlikehold» er hentet fra Brunvolls
-        gamle bestillingsliste.
+        Sortilog = avtalt sortiment som MJ vedlikeholder i BC (vareavtaletype «Sortilog», status Aktiv).
+        REVIDERT 12.11.2026 (Håkon Teams 10.11 og 12.11, Simen 12.11, AB#20556):
+        - De fleste kunder har ÉN sortilog for alle brukerne. Da går menylenken «Sortilog»
+          rett til detaljsiden (account-sortilog-detail.html), og denne siden vises ikke.
+        - BC har ingen navn eller gruppering. Har kunden behov for ulike utvalg per avdeling
+          eller type arbeid, lager MJ delsortiloger på web (System › Sortilog). Da viser denne
+          siden «Hele sortilogen» først, og så ett kort per delsortilog. Kunden redigerer ikke.
+        - Alle brukere hos kunden ser alle kortene (som profilene, Håkon 05.11).
+        - Brunvoll i skissen: 589 varer i BC, Vedlikehold 495, Verksted 112.
       -->
       <header style="margin-bottom: var(--s-6);">
         <h2 class="t-h2" style="margin: 0 0 var(--s-2);">Sortilog</h2>
-        <p style="color: var(--color-text-secondary); margin: 0; max-width: 60ch;">Avtalt sortiment som Molde Jarnvare vedlikeholder for dere. Her ser dere hva som ligger i sortilogen. Dere bestiller i nettbutikken som vanlig &mdash; sl&aring; p&aring; filteret &laquo;Kun varer i min sortilog&raquo;, eller se etter den gule merkelappen &laquo;I sortilog&raquo;.</p>
+        <p style="color: var(--color-text-secondary); margin: 0; max-width: 60ch;">Avtalt sortiment som Molde Jarnvare vedlikeholder for dere. Her ser dere hva som ligger i sortilogen. Dere bestiller i nettbutikken som vanlig &mdash; velg sortilogen i filteret, eller se etter den gule merkelappen &laquo;I sortilog&raquo;.</p>
       </header>
 
       <div class="sortilog__list">
 
         <a class="sortilog__card" href="account-sortilog-detail.html">
           <p class="sortilog__card-meta">Brunvoll AS &middot; 311936</p>
+          <h3 class="sortilog__card-name">Hele sortilogen</h3>
+          <p class="sortilog__card-meta">Alle varene i avtalen deres</p>
+          <span class="sortilog__card-count">589 varer</span>
+        </a>
+
+        <!-- Delsortiloger: bare når MJ har delt opp sortilogen for kunden -->
+        <a class="sortilog__card" href="account-sortilog-detail.html">
+          <p class="sortilog__card-meta">Brunvoll AS &middot; 311936</p>
           <h3 class="sortilog__card-name">Vedlikehold</h3>
+          <p class="sortilog__card-meta">For vedlikeholdsavdelingen</p>
           <span class="sortilog__card-count">495 varer</span>
         </a>
 
-        <!-- Eksempel på sortilog nr. 2 — viser at en kunde kan ha flere -->
         <a class="sortilog__card" href="account-sortilog-detail.html">
           <p class="sortilog__card-meta">Brunvoll AS &middot; 311936</p>
           <h3 class="sortilog__card-name">Verksted</h3>
@@ -468,6 +479,7 @@
         </a>
 
       </div>
+      <p class="field__hint" style="margin: var(--s-3) 0 0;">Inndelingen i Vedlikehold og Verksted er satt opp av Molde Jarnvare etter avtale med dere.</p>
 
       <div class="card card--flat" style="margin-top: var(--s-7);">
         <strong>Mangler en vare?</strong> Sortimentet vedlikeholdes av Molde Jarnvare. Kontakt selgeren din eller ordrekontoret p&aring; <a class="link" href="tel:71254200">71 25 42 00</a>, s&aring; legger vi den inn. Alle varer kan ogs&aring; bestilles fra nettbutikken som vanlig.

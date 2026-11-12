@@ -440,7 +440,11 @@
     - Med filteret p&aring; vises bare masterprodukter med minst &eacute;n sortilog-variant, og produktsiden viser
       alle variantene med sortilog-variantene merket.
     - &laquo;Deres varenr.&raquo; (kundens varenummer) vises p&aring; enkeltprodukter. P&aring; masterprodukt st&aring;r det per variant p&aring; produktsiden.
-    - Har kunden flere sortiloger, blir filteret en liste med &eacute;n avkrysning per sortilog (Vedlikehold, Verksted).
+    REVIDERT 12.11.2026 (AB#20556): de fleste kunder har &eacute;n sortilog. Da er filteret &eacute;n avkrysning:
+      &laquo;Kun varer i min sortilog (n)&raquo;. Har MJ delt opp sortilogen for kunden (System &rsaquo; Sortilog), blir filteret
+      et valg med &eacute;n rad: Alle varer / Hele sortilogen / &eacute;n per delsortilog. Delsortilogene er utvalg av hele
+      sortilogen, s&aring; bare &eacute;n kan v&aelig;re valgt. Skissen viser Brunvoll, som har Vedlikehold og Verksted.
+      Merkelappen &laquo;I sortilog&raquo; gjelder hele sortilogen, uansett hvilket valg som er gjort i filteret.
   -->
   <header style="margin-bottom: var(--s-6);">
     <h1 class="t-h1">Arbeidsbukser</h1>
@@ -457,10 +461,13 @@
         <div class="filter-sidebar">
           <div class="filter-sidebar__group">
             <h3 class="filter-sidebar__group-title">Sortilog</h3>
-            <div class="filter-sidebar__options">
-              <label class="checkbox"><input type="checkbox"><span class="checkbox__visual"></span><span class="checkbox__label">Kun varer i min sortilog (5)</span></label>
+            <div class="filter-sidebar__options" role="radiogroup" aria-label="Sortilog">
+              <label class="radio"><input type="radio" name="sortilog" checked><span class="radio__visual"></span><span class="radio__label">Alle varer</span></label>
+              <label class="radio"><input type="radio" name="sortilog"><span class="radio__visual"></span><span class="radio__label">Hele sortilogen (6)</span></label>
+              <label class="radio"><input type="radio" name="sortilog"><span class="radio__visual"></span><span class="radio__label">Vedlikehold (5)</span></label>
+              <label class="radio"><input type="radio" name="sortilog"><span class="radio__visual"></span><span class="radio__label">Verksted (2)</span></label>
             </div>
-            <p class="field__hint" style="margin: var(--s-2) 0 0;">Brunvoll AS &middot; Vedlikehold &middot; <a class="link" href="account-sortilog-detail.html">Se hele sortilogen</a></p>
+            <p class="field__hint" style="margin: var(--s-2) 0 0;">Brunvoll AS &middot; <a class="link" href="account-sortilogs.html">Se sortilogene</a></p>
           </div>
           <div class="filter-sidebar__group">
             <h3 class="filter-sidebar__group-title">Kategori</h3>

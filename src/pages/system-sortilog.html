@@ -433,6 +433,15 @@
     SYSTEM &rsaquo; SORTILOG &mdash; ansattvisningen (AB#20449), flyttet hit fra Min konto 03.11.2026 fordi System allerede er stedet
     der SysAdmin ser p&aring; tvers av kunder. Velg kunde &rarr; se sortilogen med bilder. INGEN priser: skjermen vendes mot kunden i butikken.
     &laquo;Vis i nettbutikken uten priser&raquo; er et forslag &mdash; m&aring; sjekkes om DW kan vise kundens sortiment uten kundens priser.
+    REVIDERT 12.11.2026 (H&aring;kon Teams 10.11 og 12.11, Simen 12.11) &mdash; INNDELING (AB#20556):
+    - BC bestemmer hvilke varer som er i sortilogen: vareavtaler type &laquo;Sortilog&raquo; med status Aktiv p&aring; kundenummeret.
+      Ingen navn eller gruppering i BC. Arkivert eller byttet vare faller ut her og i alle delsortiloger automatisk.
+    - Standard er &eacute;n sortilog for alle brukerne hos kunden (&laquo;Hele sortilogen&raquo;). Ingenting &aring; sette opp.
+    - Kortet &laquo;Inndeling&raquo; brukes bare for det f&aring;tallet kunder som trenger ulike utvalg per avdeling eller type arbeid.
+      Selgeren lager en delsortilog og huker av varer fra kundens BC-sortilog (system-sortilog-edit.html).
+    - &laquo;Ikke fordelt&raquo; = varer i sortilogen som ikke ligger i noen delsortilog (typisk nye varer fra BC). Kunden finner dem
+      fortsatt under &laquo;Hele sortilogen&raquo;. Merket vises bare n&aring;r kunden har delsortiloger.
+    - Brunvoll i skissen: 589 varer i BC, Vedlikehold 495, Verksted 112 (32 ligger i begge), 14 ikke fordelt.
   -->
   <h1 class="t-h1" style="margin-bottom: var(--s-7);">System</h1>
 
@@ -458,8 +467,9 @@
             <input class="input" id="emp-customer" type="search" value="Brunvoll AS &middot; 311936" placeholder="S&oslash;k p&aring; kundenavn eller kundenummer">
           </div>
           <div class="field" style="flex: 0 1 240px;">
-            <label class="field__label" for="emp-sortilog">Sortilog</label>
+            <label class="field__label" for="emp-sortilog">Vis</label>
             <select class="select" id="emp-sortilog">
+              <option selected>Hele sortilogen (589 varer)</option>
               <option>Vedlikehold (495 varer)</option>
               <option>Verksted (112 varer)</option>
             </select>
@@ -469,9 +479,37 @@
         <p class="field__hint" style="margin: var(--s-3) 0 0;">Profilavtale: <a class="link" href="system-profile-edit.html">5 profiler</a> &middot; Selger: Leif Erling Aasan &middot; Profilering kun p&aring; sortilog-varer: <strong>Nei</strong></p>
       </section>
 
+      <!-- Inndeling: bare for kunder som trenger mer enn &eacute;n sortilog -->
+      <section class="card" style="margin-bottom: var(--s-6); display: flex; flex-direction: column; gap: var(--s-4);">
+        <div style="display: flex; flex-wrap: wrap; justify-content: space-between; align-items: flex-start; gap: var(--s-3);">
+          <div style="max-width: 62ch;">
+            <h3 class="card__title" style="margin: 0 0 var(--s-1);">Inndeling</h3>
+            <p class="field__hint" style="margin: 0;">Varene i sortilogen styres i BC (vareavtale &laquo;Sortilog&raquo;, status Aktiv). De fleste kunder har bare &eacute;n sortilog for alle brukerne. Lag delsortiloger bare n&aring;r kunden trenger ulike utvalg per avdeling eller type arbeid.</p>
+          </div>
+          <a class="btn btn--outline btn--sm" href="system-sortilog-edit.html" style="text-decoration: none;">+ Ny delsortilog</a>
+        </div>
+        <ul class="sortilog__subs">
+          <li class="sortilog__sub">
+            <p class="sortilog__sub-name">Hele sortilogen</p>
+            <p class="sortilog__sub-meta">589 varer fra BC &middot; alle brukere hos kunden &middot; endres i BC</p>
+          </li>
+          <li class="sortilog__sub">
+            <p class="sortilog__sub-name">Vedlikehold</p>
+            <p class="sortilog__sub-meta">495 varer &middot; sist endret 12.11.2026 av Leif Erling Aasan</p>
+            <div class="sortilog__sub-actions"><a class="btn btn--ghost btn--sm" href="system-sortilog-edit.html" style="text-decoration: none;">Rediger</a></div>
+          </li>
+          <li class="sortilog__sub">
+            <p class="sortilog__sub-name">Verksted</p>
+            <p class="sortilog__sub-meta">112 varer, 32 av dem ogs&aring; i Vedlikehold &middot; sist endret 05.11.2026 av Leif Erling Aasan</p>
+            <div class="sortilog__sub-actions"><a class="btn btn--ghost btn--sm" href="system-sortilog-edit.html" style="text-decoration: none;">Rediger</a></div>
+          </li>
+        </ul>
+        <p class="field__hint" style="margin: 0; display: flex; flex-wrap: wrap; align-items: center; gap: var(--s-2);"><span class="badge badge--warning">14 ikke fordelt</span> Varer i sortilogen som ikke ligger i noen delsortilog, typisk nye fra BC. Kunden finner dem under &laquo;Hele sortilogen&raquo;. <a class="link" href="system-sortilog-edit.html#ikke-fordelt">Fordel dem</a></p>
+      </section>
+
       <header style="margin-bottom: var(--s-4);">
-        <h2 class="t-h2" style="margin: 0 0 var(--s-2);">Vedlikehold</h2>
-        <p style="color: var(--color-text-secondary); margin: 0;">Brunvoll AS &middot; 311936 &middot; 495 varer</p>
+        <h2 class="t-h2" style="margin: 0 0 var(--s-2);">Hele sortilogen</h2>
+        <p style="color: var(--color-text-secondary); margin: 0;">Brunvoll AS &middot; 311936 &middot; 589 varer</p>
       </header>
 
       <section class="card" style="padding: 0;">
@@ -483,13 +521,13 @@
             <div class="field">
               <label class="field__label" for="sl-cat">Kategori</label>
               <select class="select" id="sl-cat">
-                <option>Alle kategorier (495)</option>
-                <option>Arbeidsbukser (112)</option>
-                <option>Jakker (64)</option>
-                <option>Gensere og T-skjorter (138)</option>
-                <option>Kjeledresser og overaller (41)</option>
-                <option>Vernesko og st&oslash;vler (96)</option>
-                <option>S&aring;ler og tilbeh&oslash;r (44)</option>
+                <option>Alle kategorier (589)</option>
+                <option>Arbeidsbukser (131)</option>
+                <option>Jakker (75)</option>
+                <option>Gensere og T-skjorter (152)</option>
+                <option>Kjeledresser og overaller (49)</option>
+                <option>Vernesko og st&oslash;vler (118)</option>
+                <option>S&aring;ler og tilbeh&oslash;r (64)</option>
               </select>
             </div>
           </div>
@@ -583,7 +621,7 @@
             </tbody>
           </table>
           <div class="sortilog__footer">
-            <span>Viser 9 av 495 varer &middot; gruppert p&aring; kategori</span>
+            <span>Viser 9 av 589 varer &middot; gruppert p&aring; kategori</span>
             <button class="btn btn--outline btn--sm" type="button">Vis flere</button>
           </div>
       </section>

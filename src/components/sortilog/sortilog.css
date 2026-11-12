@@ -17,13 +17,27 @@
  *   - Ingen pris — siden brukes også av ansatte i butikken med skjermen
  *     vendt mot kunden (Håkon 03.11).
  *   - Nettordre sender artikkelnummer, ikke vareavtalenummer (Håkon 10.09 og 03.11).
- *   - En kunde kan ha flere sortiloger (f.eks. per leveringsadresse/avdeling).
+ *
+ * Revidert 12.11.2026 (Håkon Teams 10.11 og 12.11, Simen 12.11):
+ *   - BC bestemmer HVILKE varer som er i kundens sortilog: vareavtaler type «Sortilog»
+ *     med status Aktiv på kundenummeret. Ren 1-1-kobling kunde ↔ varenummer, uten navn
+ *     eller gruppering. Arkivert eller byttet vare faller ut overalt, automatisk.
+ *   - Standard: ÉN sortilog («Hele sortilogen») for alle brukerne hos kunden. Ingenting
+ *     settes opp på web. Gjelder de aller fleste av 50–60 kunder.
+ *   - Bare når kunden trenger det (et fåtall): MJ lager delsortiloger på web
+ *     (System › Sortilog, SysAdmin) og huker av hvilke av kundens BC-varer som hører
+ *     til hver, f.eks. per avdeling eller type arbeid. Kunden redigerer ikke.
+ *   - En vare kan ligge i flere delsortiloger. Varer som ikke er i noen ligger fortsatt
+ *     i «Hele sortilogen» og vises for MJ som «Ikke fordelt».
  *
  * Block:     .sortilog
  * Elements:  __header  __title  __count  __list  (oversikt over sortiloger)
  *            __card  __card-name  __card-meta  __card-count
  *            __toolbar  __search  __table  __group  __thumb  __sku  __customer-sku
  *            __name  __category  __link  __footer
+ *            __subs  __sub  __sub-name  __sub-meta  __sub-actions  (delsortiloger, System)
+ *            __tags  (hvilke andre delsortiloger en vare også ligger i)
+ * Modifiers: __table--pick  (velgertabell med avkrysning først, System › delsortilog)
  */
 .sortilog {
   display: flex;
@@ -156,6 +170,27 @@
 .sortilog__category { font-size: var(--fs-caption); color: var(--color-text-secondary); }
 .sortilog__link { font-size: var(--fs-body-sm); font-weight: var(--fw-semibold); color: var(--color-text-link); white-space: nowrap; }
 
+/* Delsortiloger — liste i System › Sortilog. Første rad er alltid «Hele sortilogen» fra BC. */
+.sortilog__subs { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; }
+.sortilog__sub {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--s-1) var(--s-4);
+  padding: var(--s-3) 0;
+  border-top: var(--bw-1) solid var(--color-border-soft);
+}
+.sortilog__sub:first-child { border-top: 0; padding-top: 0; }
+.sortilog__sub-name { margin: 0; flex: 0 0 180px; font-weight: var(--fw-semibold); }
+.sortilog__sub-meta { margin: 0; flex: 1 1 240px; font-size: var(--fs-caption); color: var(--color-text-secondary); }
+.sortilog__sub-actions { display: flex; gap: var(--s-2); margin-left: auto; }
+
+/* Hvilke andre delsortiloger varen også ligger i (velgertabellen) */
+.sortilog__tags { display: flex; flex-wrap: wrap; gap: var(--s-1); }
+
+/* Velgertabell: avkrysning i første kolonne. Kolonner: velg · bilde · art.nr · deres varenr. · produkt · også i */
+.sortilog__table--pick .checkbox { margin: 0; }
+
 /* Mobil: bilde til venstre, art.nr + kundens varenr. over navnet, lenke under */
 @media (max-width: 767px) {
   .sortilog__table thead { display: none; }
@@ -184,4 +219,21 @@
   .sortilog__table td:nth-child(6) { grid-area: link; }
   .sortilog__toolbar,
   .sortilog__footer { padding-inline: var(--s-4); }
+
+  /* Velgertabellen: avkrysning til venstre, deres varenr. skjules, «også i» under navnet */
+  .sortilog__table--pick tr {
+    grid-template-columns: auto 40px 1fr;
+    grid-template-areas:
+      "check thumb sku"
+      "check thumb name"
+      "check thumb tags";
+  }
+  .sortilog__table--pick td:nth-child(1) { grid-area: check; }
+  .sortilog__table--pick td:nth-child(2) { grid-area: thumb; }
+  .sortilog__table--pick td:nth-child(3) { grid-area: sku; }
+  .sortilog__table--pick td:nth-child(4) { display: none; }
+  .sortilog__table--pick td:nth-child(5) { display: block; grid-area: name; }
+  .sortilog__table--pick td:nth-child(6) { grid-area: tags; }
+  .sortilog__sub-name { flex-basis: 100%; }
+  .sortilog__sub-actions { margin-left: 0; }
 }
