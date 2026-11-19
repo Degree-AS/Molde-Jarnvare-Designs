@@ -492,7 +492,32 @@
           <button class="cart-line__remove">Fjern</button>
         </div>
       </article>
+
+      <!-- Tøm handlekurv (UAT-20, ønske fra Molde Jarnvare 18.11.2026): fjerner alle linjene etter et
+           bekreftelsesvindu. Tom handlekurv viser samme tomme tilstand som når siste linje fjernes. -->
+      <div class="commerce-layout__lines-actions">
+        <button class="btn btn--ghost btn--sm" type="button" onclick="document.getElementById('empty-cart-dialog').showModal()">
+          <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 7h16M10 11v6M14 11v6M5 7l1 12a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2l1-12M9 7V4h6v3"/></svg>
+          Tøm handlekurv
+        </button>
+      </div>
     </div>
+
+    <dialog class="modal modal--sm" id="empty-cart-dialog" aria-labelledby="empty-cart-title">
+      <form method="dialog">
+        <div class="modal__header">
+          <h2 class="modal__title" id="empty-cart-title">Tømme handlekurven?</h2>
+          <button class="modal__close" value="cancel" aria-label="Lukk">×</button>
+        </div>
+        <div class="modal__body">
+          <p style="margin: 0;">Alle 3 varene fjernes fra handlekurven. Du kan ikke angre.</p>
+        </div>
+        <div class="modal__footer">
+          <button class="btn btn--secondary" value="cancel">Avbryt</button>
+          <button class="btn btn--destructive" value="empty">Tøm handlekurv</button>
+        </div>
+      </form>
+    </dialog>
 
     <aside class="commerce-layout__summary" style="display: flex; flex-direction: column; gap: var(--s-4);">
       <div class="cart-summary">

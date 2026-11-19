@@ -56,6 +56,15 @@
   }
 }
 
+/* Under varelinjene: «Tøm handlekurv» til høyre, under linjenes «Fjern» (UAT-20, 19.11.2026).
+   Bevisst en diskré knapp langt fra «Til kassen», og den spør før den tømmer. */
+.commerce-layout__lines-actions {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: var(--s-3);
+}
+.commerce-layout__lines-actions .btn:hover { color: var(--mj-error); }
+
 /* ─── Checkout — form + summary ──────────────────────────────────────── */
 @media (min-width: 1024px) /* --bp-lg */ {
   .commerce-layout--checkout {

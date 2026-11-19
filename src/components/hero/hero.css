@@ -297,6 +297,33 @@
   text-shadow: 0 2px 12px rgba(0, 0, 0, 0.45);
 }
 
+/*
+ * Mobil (under 768): teksten flytter ut av bildet/videoen og står i et mørkt felt
+ * rett under, så motivet vises helt og uten mørk toning. På en smal skjerm dekket
+ * tittelen det viktigste i videoen, f.eks. bilene med logoen (UAT-26, 18.11.2026).
+ */
+@media (max-width: 767px) {
+  .hero--fullbleed .hero__bg {
+    position: relative;
+    inset: auto;
+    z-index: auto;
+    height: 56vh;
+    min-height: 280px;
+  }
+
+  .hero--fullbleed .hero__bg::after { content: none; }
+
+  .hero--fullbleed .hero__inner {
+    min-height: 0;
+    padding-block: var(--s-7) var(--s-8);
+  }
+
+  .hero--fullbleed .hero__eyebrow,
+  .hero--fullbleed .hero__title { text-shadow: none; }
+
+  .hero--fullbleed .hero__title { font-size: var(--fs-h1); }
+}
+
 /* Compact-variant ------------------------------------------------------- */
 /*
  * Toppen av innholds- og tjenestesider (2BOX, Slangeverksted …). Mindre luft
