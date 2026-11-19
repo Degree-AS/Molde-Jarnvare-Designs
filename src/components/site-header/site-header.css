@@ -3,7 +3,7 @@
  *
  * Ett oppsett på alle sider, speilet fra frontend-dev
  * (molde-jarnvare-frontend-dev.vercel.app). Kun ikonene i actions varierer:
- * innlogget = Min konto + Handlekurv, anonym = Logg inn.
+ * innlogget = Min konto + Handlekurv, anonym = Logg inn (knapp med tekst på desktop).
  *
  * Responsive (§17, mobile-first):
  *   Mobil/tablet (< 1024)
@@ -162,6 +162,30 @@
   stroke-width: 1.6;
   stroke-linecap: round;
   stroke-linejoin: round;
+}
+
+/* Anonym: «Logg inn» som knapp med tekst på desktop, ikonet alene på mobil/nettbrett (UAT-01, 19.11.2026).
+   Et ikon alene ble ikke oppfattet som innlogging. Under 1024 er det ikke plass til teksten. */
+.site-header__action-label { display: none; }
+
+@media (min-width: 1024px) {
+  .site-header__action--login {
+    width: auto;
+    height: 36px;
+    padding-inline: var(--s-4);
+    border: var(--bw-1) solid var(--color-border-brand);
+    color: var(--color-action-primary);
+  }
+  .site-header__action--login:hover { background: var(--color-bg-brand-soft); }
+  .site-header__action--login .site-header__action-icon { display: none; }
+  .site-header__action--login .site-header__action-label {
+    display: inline;
+    font-family: var(--ff-sans);
+    font-size: var(--fs-body-sm);
+    font-weight: var(--fw-semibold);
+    letter-spacing: var(--ls-wide);
+    white-space: nowrap;
+  }
 }
 
 .site-header__action-badge {
