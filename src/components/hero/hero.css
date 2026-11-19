@@ -222,7 +222,7 @@
   position: relative;
   overflow: hidden;
   padding-block: 0;
-  background: var(--mj-ink-9);
+  background: var(--color-bg-inverse);
   color: var(--color-text-on-brand);
   isolation: isolate;
 }
