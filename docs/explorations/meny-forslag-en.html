@@ -170,7 +170,7 @@
         <ul>
           <li>The menu tree stays the same for everyone and is cached as today (<code>navigation:menu</code> / <code>pages:area:N</code> tags).</li>
           <li>«Dine kategorier» is a separate small call (~1 KB) made only when logged in, after the menu has rendered. It reads precomputed rows for one customer and can be cached per session.</li>
-          <li><b>Nothing is counted per category when the menu renders.</b> The per-category product counts in the side menu caused the bursts of 585 queries and the PROD outage on 19-20.11 (AB#20648).</li>
+          <li><b>Nothing is counted per category when the menu renders.</b> The per-category product counts in the side menu caused the bursts of 585 queries and the PROD outage on 19-20.11 (AB#20648). The product counts in the rail come from the one query in PR 5549.</li>
         </ul>
       </article>
     </div>
@@ -205,7 +205,7 @@ FROM scored                 -- keep Rank &lt;= 12</pre>
         <ul>
           <li>Where is the product's primary group (BC's PIM master group) stored in DW, and is it set for all products?</li>
           <li>Step in the BC order sync task, or its own scheduled task?</li>
-          <li>The design shows a product count per main category. The menu payload has no counts today. Can they come precomputed (nightly or from the index), or do we drop them?</li>
+          <li>The product count per main category can reuse the counts from PR 5549 (<code>CategoryCounts.query</code>, one facet query on <code>ParentGroupIDs</code>). Fine to read them the same way for the menu?</li>
           <li>Your estimate. My rough guess is 2-3 days for backend and frontend together, as a separate change.</li>
         </ul>
       </article>
