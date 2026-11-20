@@ -245,6 +245,7 @@
 /* ── Temaoversikt ────────────────────────────────────────────────────────── */
 
 .ms-swatches { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: var(--s-4); }
+.ms-swatches[data-swatches="banner"] { grid-template-columns: minmax(0, 1fr); gap: var(--s-3); }
 .ms-swatch { display: flex; flex-direction: column; gap: var(--s-2); min-width: 0; }
 .ms-swatch__label { font-size: var(--fs-body-sm); color: var(--color-text-secondary); }
 .ms-swatch__label b { color: var(--color-text-primary); }
