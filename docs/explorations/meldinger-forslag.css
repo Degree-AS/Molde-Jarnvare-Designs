@@ -1,0 +1,267 @@
+/**
+ * Toppbanner og infoboks — forslag (utforskning 20.11.2026).
+ * Felles sideoppsett (mp-banner, mp-wrap, mp-card …) kommer fra meny-forslag.css.
+ * .ms-topbar og .ms-box er selve forslagene; resten er demo-ramme og kontroller.
+ */
+
+/* ── Kontroller ──────────────────────────────────────────────────────────── */
+
+.ms-controls {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: var(--s-4);
+  margin-bottom: var(--s-5);
+}
+.ms-group {
+  border: var(--bw-1) solid var(--color-border-default);
+  border-radius: var(--r-md);
+  background: var(--color-bg-surface);
+  padding: var(--s-3) var(--s-4) var(--s-4);
+  margin: 0;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: var(--s-3);
+}
+.ms-group legend {
+  font-size: var(--fs-overline);
+  font-weight: var(--fw-semibold);
+  letter-spacing: var(--ls-wider);
+  text-transform: uppercase;
+  color: var(--color-text-tertiary);
+  padding: 0 var(--s-1);
+}
+.ms-row { display: flex; flex-wrap: wrap; align-items: center; gap: var(--s-2) var(--s-4); }
+.ms-row[role="group"] { gap: 6px; }
+.ms-check { display: inline-flex; align-items: center; gap: var(--s-2); font-size: var(--fs-body-sm); cursor: pointer; }
+.ms-check input { width: 18px; height: 18px; accent-color: var(--mj-blue); }
+
+/* ── Demo-ramme ──────────────────────────────────────────────────────────── */
+
+.ms-stage {
+  background: var(--color-bg-surface-alt);
+  border-radius: var(--r-lg);
+  padding: var(--s-6);
+  display: flex;
+  justify-content: center;
+}
+.ms-frame {
+  position: relative;
+  width: 100%;
+  max-width: 1200px;
+  min-height: 560px;
+  background: var(--color-bg-page);
+  border: var(--bw-1) solid var(--color-border-default);
+  border-radius: var(--r-md);
+  overflow: hidden;
+  box-shadow: var(--shadow-2);
+  transition: max-width var(--duration-normal) var(--ease-standard);
+}
+.ms-stage[data-device="mobile"] .ms-frame { max-width: 390px; min-height: 720px; }
+
+.ms-header {
+  display: flex;
+  align-items: center;
+  gap: var(--s-5);
+  padding: var(--s-4) var(--s-6);
+  background: var(--color-bg-surface);
+  border-bottom: var(--bw-1) solid var(--color-border-soft);
+}
+.ms-header__logo { height: 34px; width: auto; display: block; }
+.ms-header__search {
+  flex: 1;
+  min-width: 0;
+  padding: var(--s-2) var(--s-4);
+  border: var(--bw-1) solid var(--color-border-default);
+  border-radius: var(--r-full);
+  color: var(--color-text-tertiary);
+  font-size: var(--fs-body-sm);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.ms-header__nav { display: flex; gap: var(--s-5); font-size: var(--fs-body-sm); color: var(--color-text-primary); }
+.ms-header__icons { display: flex; gap: var(--s-3); }
+.ms-header__icons span { width: 24px; height: 24px; border-radius: var(--r-full); background: var(--mj-surface-2); }
+.ms-stage[data-device="mobile"] .ms-header { flex-wrap: wrap; gap: var(--s-3); padding: var(--s-3) var(--s-4); }
+.ms-stage[data-device="mobile"] .ms-header__logo { height: 26px; }
+.ms-stage[data-device="mobile"] .ms-header__nav { display: none; }
+.ms-stage[data-device="mobile"] .ms-header__search { order: 3; flex-basis: 100%; }
+.ms-stage[data-device="mobile"] .ms-header__icons { margin-left: auto; }
+
+.ms-page { padding: var(--s-6); display: flex; flex-direction: column; gap: var(--s-4); }
+.ms-page__hero { height: 200px; border-radius: var(--r-lg); background: linear-gradient(120deg, var(--mj-blue-20), var(--mj-surface-2)); }
+.ms-page__row { display: grid; grid-template-columns: repeat(4, 1fr); gap: var(--s-4); }
+.ms-page__row span { height: 120px; border-radius: var(--r-md); background: var(--color-bg-surface); border: var(--bw-1) solid var(--color-border-soft); }
+.ms-stage[data-device="mobile"] .ms-page { padding: var(--s-4); }
+.ms-stage[data-device="mobile"] .ms-page__hero { height: 160px; }
+.ms-stage[data-device="mobile"] .ms-page__row { grid-template-columns: repeat(2, 1fr); }
+
+.ms-note { margin: var(--s-3) 0 0; font-size: var(--fs-caption); color: var(--color-text-tertiary); }
+.ms-h3 { font-size: var(--fs-h4); margin: var(--s-7) 0 var(--s-4); }
+
+/* ── Forslag 1: Toppbanner ───────────────────────────────────────────────── */
+
+.ms-topbar {
+  --_bg: var(--mj-info-bg);
+  --_fg: var(--mj-info);
+  --_line: var(--mj-blue-20);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--s-3);
+  min-height: 40px;
+  padding: var(--s-2) var(--s-12) var(--s-2) var(--s-6);
+  position: relative;
+  background: var(--_bg);
+  color: var(--_fg);
+  border-bottom: var(--bw-1) solid var(--_line);
+  font-size: var(--fs-body-sm);
+  line-height: var(--lh-snug);
+  text-align: center;
+}
+.ms-topbar__icon { flex: 0 0 auto; width: 18px; height: 18px; }
+.ms-topbar__text { margin: 0; min-width: 0; }
+.ms-topbar__text strong { font-weight: var(--fw-semibold); }
+.ms-topbar__link {
+  color: inherit;
+  font-weight: var(--fw-semibold);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  white-space: nowrap;
+  margin-left: var(--s-2);
+}
+.ms-topbar__link:hover { text-decoration-thickness: 2px; }
+.ms-topbar__link:focus-visible,
+.ms-topbar__close:focus-visible { outline: 2px solid currentColor; outline-offset: 2px; border-radius: var(--r-sm); }
+.ms-topbar__close {
+  position: absolute;
+  right: var(--s-3);
+  top: 50%;
+  transform: translateY(-50%);
+  width: 32px;
+  height: 32px;
+  display: grid;
+  place-items: center;
+  border: 0;
+  border-radius: var(--r-full);
+  background: transparent;
+  color: inherit;
+  cursor: pointer;
+}
+.ms-topbar__close:hover { background: rgba(0, 0, 0, 0.06); }
+.ms-topbar--brand    { --_bg: var(--mj-blue);       --_fg: var(--color-text-on-brand); --_line: transparent; }
+.ms-topbar--brand .ms-topbar__close:hover,
+.ms-topbar--campaign .ms-topbar__close:hover { background: rgba(255, 255, 255, 0.16); }
+.ms-topbar--campaign { --_bg: var(--mj-orange);     --_fg: var(--mj-ink);              --_line: transparent; }
+.ms-topbar--important{ --_bg: var(--mj-warning-bg); --_fg: var(--mj-warning);          --_line: rgba(122, 88, 14, 0.25); }
+.ms-topbar--alert    { --_bg: var(--mj-error-bg);   --_fg: var(--mj-error);            --_line: rgba(158, 40, 53, 0.25); }
+.ms-stage[data-device="mobile"] .ms-topbar { justify-content: flex-start; text-align: left; padding-left: var(--s-4); }
+
+/* ── Forslag 2: Infoboks ─────────────────────────────────────────────────── */
+
+.ms-box {
+  --_bg: var(--color-bg-surface);
+  --_fg: var(--color-text-primary);
+  --_muted: var(--color-text-secondary);
+  --_tag-bg: var(--mj-blue-10);
+  --_tag-fg: var(--mj-blue);
+  --_accent: var(--mj-orange);
+  position: absolute;
+  right: var(--s-6);
+  bottom: var(--s-6);
+  width: 360px;
+  max-width: calc(100% - 2 * var(--s-4));
+  background: var(--_bg);
+  color: var(--_fg);
+  border-radius: var(--r-lg);
+  box-shadow: var(--shadow-4);
+  overflow: hidden;
+  z-index: var(--z-toast);
+  border-top: var(--bw-3, 3px) solid var(--_accent);
+  animation: ms-box-in var(--duration-slow) var(--ease-decelerate) both;
+}
+.ms-box__media { display: block; width: 100%; aspect-ratio: 2 / 1; object-fit: cover; }
+.ms-box__body { padding: var(--s-5) var(--s-5) var(--s-5); display: flex; flex-direction: column; gap: var(--s-2); }
+.ms-box__tag {
+  align-self: flex-start;
+  padding: 2px var(--s-2);
+  border-radius: var(--r-sm);
+  background: var(--_tag-bg);
+  color: var(--_tag-fg);
+  font-size: var(--fs-overline);
+  font-weight: var(--fw-bold);
+  letter-spacing: var(--ls-wider);
+  text-transform: uppercase;
+}
+.ms-box__title { margin: 0; padding-right: var(--s-7); font-size: var(--fs-h4); font-weight: var(--fw-bold); line-height: var(--lh-snug); color: inherit; }
+.ms-box__text { margin: 0; font-size: var(--fs-body-sm); line-height: var(--lh-relaxed); color: var(--_muted); }
+.ms-box__cta { align-self: flex-start; margin-top: var(--s-2); }
+.ms-box__close {
+  position: absolute;
+  top: var(--s-2);
+  right: var(--s-2);
+  width: 36px;
+  height: 36px;
+  display: grid;
+  place-items: center;
+  border: 0;
+  border-radius: var(--r-full);
+  background: var(--_bg);
+  color: var(--_fg);
+  cursor: pointer;
+  box-shadow: var(--shadow-1);
+}
+.ms-box__close:hover { filter: brightness(0.95); }
+.ms-box__close:focus-visible { outline: 2px solid currentColor; outline-offset: 2px; }
+
+/* Temaer */
+.ms-box--blue   { --_bg: var(--mj-blue);     --_fg: var(--color-text-on-brand); --_muted: var(--mj-blue-10); --_tag-bg: rgba(255, 255, 255, 0.16); --_tag-fg: var(--mj-white); --_accent: var(--mj-orange); }
+.ms-box--orange { --_bg: var(--mj-orange);   --_fg: var(--mj-ink);              --_muted: var(--mj-ink);     --_tag-bg: var(--mj-ink);                 --_tag-fg: var(--mj-white); --_accent: var(--mj-ink); }
+.ms-box--dark   { --_bg: var(--mj-gray-dark); --_fg: var(--color-text-on-dark); --_muted: var(--mj-gray-dark-20); --_tag-bg: var(--mj-orange);          --_tag-fg: var(--mj-ink);   --_accent: var(--mj-orange); }
+
+/* Knapp per tema: primær blå på lys, lys knapp på mørke flater */
+.ms-box--blue .ms-box__cta,
+.ms-box--dark .ms-box__cta { background: var(--mj-white); color: var(--mj-blue); border-color: var(--mj-white); }
+.ms-box--blue .ms-box__cta:hover,
+.ms-box--dark .ms-box__cta:hover { background: var(--mj-blue-10); }
+.ms-box--orange .ms-box__cta { background: var(--mj-ink); color: var(--mj-white); border-color: var(--mj-ink); }
+.ms-box--orange .ms-box__cta:hover { background: var(--color-action-secondary-hover); }
+
+/* Mobil: nederst i full bredde, uten bilde */
+.ms-stage[data-device="mobile"] .ms-box { left: var(--s-3); right: var(--s-3); bottom: var(--s-3); width: auto; max-width: none; animation-name: ms-box-up; }
+.ms-stage[data-device="mobile"] .ms-box__media { display: none; }
+.ms-stage[data-device="mobile"] .ms-box__body { padding: var(--s-4); }
+
+@keyframes ms-box-in { from { opacity: 0; transform: translate(24px, 12px); } to { opacity: 1; transform: none; } }
+@keyframes ms-box-up { from { opacity: 0; transform: translateY(24px); } to { opacity: 1; transform: none; } }
+@media (prefers-reduced-motion: reduce) {
+  .ms-box { animation: ms-fade var(--duration-fast) linear both; }
+  .ms-stage[data-device="mobile"] .ms-box { animation-name: ms-fade; }
+  .ms-frame { transition: none; }
+}
+@keyframes ms-fade { from { opacity: 0; } to { opacity: 1; } }
+
+/* ── Temaoversikt ────────────────────────────────────────────────────────── */
+
+.ms-swatches { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: var(--s-4); }
+.ms-swatch { display: flex; flex-direction: column; gap: var(--s-2); min-width: 0; }
+.ms-swatch__label { font-size: var(--fs-body-sm); color: var(--color-text-secondary); }
+.ms-swatch__label b { color: var(--color-text-primary); }
+.ms-swatch .ms-topbar { border-radius: var(--r-md); justify-content: flex-start; text-align: left; padding-right: var(--s-10); }
+.ms-swatch .ms-box { position: relative; right: auto; bottom: auto; width: 100%; max-width: none; animation: none; box-shadow: var(--shadow-2); }
+
+/* ── Felttabeller ────────────────────────────────────────────────────────── */
+
+.ms-tables { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 520px), 1fr)); gap: var(--s-5); margin-top: var(--s-6); }
+.ms-table-wrap { overflow-x: auto; background: var(--color-bg-surface); border: var(--bw-1) solid var(--color-border-soft); border-radius: var(--r-md); }
+.ms-table { width: 100%; border-collapse: collapse; font-size: var(--fs-body-sm); }
+.ms-table caption { text-align: left; font-weight: var(--fw-bold); font-size: var(--fs-h5); padding: var(--s-4) var(--s-4) var(--s-2); }
+.ms-table th, .ms-table td { text-align: left; vertical-align: top; padding: var(--s-2) var(--s-4); border-top: var(--bw-1) solid var(--color-border-soft); line-height: var(--lh-snug); }
+.ms-table th { font-size: var(--fs-caption); color: var(--color-text-tertiary); font-weight: var(--fw-semibold); }
+.ms-table td:first-child { font-weight: var(--fw-semibold); white-space: nowrap; }
+.ms-table td:nth-child(2) { color: var(--color-text-secondary); }
+
+@media (max-width: 640px) {
+  .ms-stage { padding: var(--s-3); }
+}

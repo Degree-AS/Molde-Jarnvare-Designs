@@ -1,0 +1,225 @@
+<!doctype html>
+<html lang="nb">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Toppbanner og infoboks - forslag - Molde Jarnvare</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Source+Sans+3:wght@400;500;600;700;900&family=JetBrains+Mono:wght@400&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../../src/styles/index.css">
+  <link rel="stylesheet" href="meny-forslag.css">
+  <link rel="stylesheet" href="meldinger-forslag.css">
+  <script src="meldinger-forslag.js" defer></script>
+</head>
+<body>
+
+<div class="mp-banner">
+  <span><strong>Utforskning</strong> · Forslag til toppbanner og infoboks styrt i CMS · 20.11.2026</span>
+  <span>Ønsket av Leif Erling</span>
+</div>
+
+<main class="mp-wrap">
+
+  <header class="mp-hero">
+    <p class="mp-eyebrow">Meldinger på nettsiden</p>
+    <h1>Toppbanner og infoboks som dere styrer selv</h1>
+    <p>To nye flater som Molde Jarnvare endrer i Dynamicweb uten hjelp fra Degree: et smalt <b>toppbanner</b> over menyen for korte beskjeder, og en <b>infoboks</b> som glir inn nede til høyre for kampanjer og nyheter. Begge har tema, ikon og en periode de er aktive i. Prøv dem i demoen under.</p>
+  </header>
+
+  <!-- ── Demo ─────────────────────────────────────────────────────────── -->
+  <section aria-labelledby="demo-h">
+    <h2 class="mp-h2" id="demo-h">Prøv selv</h2>
+
+    <div class="ms-controls">
+      <fieldset class="ms-group">
+        <legend>Toppbanner</legend>
+        <div class="ms-row" role="group" aria-label="Tema for toppbanner" data-control="bannerTheme"></div>
+        <div class="ms-row">
+          <label class="ms-check"><input type="checkbox" data-toggle="bannerIcon" checked> Ikon</label>
+          <label class="ms-check"><input type="checkbox" data-toggle="bannerLink" checked> Lenke</label>
+          <label class="ms-check"><input type="checkbox" data-toggle="bannerClose" checked> Kan lukkes</label>
+          <label class="ms-check"><input type="checkbox" data-toggle="bannerOn" checked> Vis</label>
+        </div>
+      </fieldset>
+      <fieldset class="ms-group">
+        <legend>Infoboks</legend>
+        <div class="ms-row" role="group" aria-label="Tema for infoboks" data-control="boxTheme"></div>
+        <div class="ms-row">
+          <label class="ms-check"><input type="checkbox" data-toggle="boxImage"> Bilde</label>
+          <label class="ms-check"><input type="checkbox" data-toggle="boxTag" checked> Merkelapp</label>
+          <label class="ms-check"><input type="checkbox" data-toggle="boxButton" checked> Knapp</label>
+          <button type="button" class="mp-chip" data-replay>Spill av igjen ↻</button>
+        </div>
+      </fieldset>
+      <fieldset class="ms-group">
+        <legend>Skjerm</legend>
+        <div class="ms-row" role="group" aria-label="Skjermstørrelse" data-control="device"></div>
+      </fieldset>
+    </div>
+
+    <div class="ms-stage" data-stage>
+      <div class="ms-frame" data-frame>
+        <div data-banner-slot></div>
+        <div class="ms-header" aria-hidden="true">
+          <img class="ms-header__logo" src="../../src/assets/logos/molde-jarnvare-positive.png" alt="">
+          <span class="ms-header__search">Søk i 30 000+ artikler, NOBB-nr, EAN …</span>
+          <span class="ms-header__nav"><b>Produkter</b><span>Forsyningsløsninger</span><span>Tjenester</span><span>Kontakt</span></span>
+          <span class="ms-header__icons"><span></span><span></span></span>
+        </div>
+        <div class="ms-page" aria-hidden="true">
+          <div class="ms-page__hero"></div>
+          <div class="ms-page__row"><span></span><span></span><span></span><span></span></div>
+          <div class="ms-page__row"><span></span><span></span><span></span><span></span></div>
+        </div>
+        <div data-box-slot></div>
+      </div>
+    </div>
+    <p class="ms-note">Demoen viser bare utseendet. Lukkeknappene virker, og «Spill av igjen» viser innglidningen på nytt.</p>
+  </section>
+
+  <!-- ── Toppbanner ───────────────────────────────────────────────────── -->
+  <section aria-labelledby="banner-h">
+    <h2 class="mp-h2" id="banner-h">Toppbanner</h2>
+    <div class="mp-cards">
+      <article class="mp-card">
+        <h3>Hva det er til</h3>
+        <ul>
+          <li>Korte beskjeder alle bør se: endrede åpningstider, helligdager, forsinkelser, nye rutiner.</li>
+          <li>Kampanjer som gjelder hele butikken, for eksempel «25 % på arbeidshansker ut uke 49».</li>
+          <li>Ligger over menyen i hele bredden. Det følger ikke med når man scroller, så det tar ikke plass på mobil.</li>
+        </ul>
+      </article>
+      <article class="mp-card">
+        <h3>Lenke, men ingen knapper</h3>
+        <p>Vi foreslår <b>én valgfri tekstlenke</b> til slutt i meldingen («Se åpningstider →»), men <b>ingen knapper</b>.</p>
+        <p>En beskjed om endrede åpningstider uten vei videre gjør at folk må lete. En knapp øverst konkurrerer derimot med søkefeltet og med knappene på selve siden, og det er der støyen kommer fra. Med én lenke og maks 90 tegn holder banneret seg rolig.</p>
+      </article>
+      <article class="mp-card">
+        <h3>Regler som holder det rolig</h3>
+        <ul>
+          <li>Ett banner om gangen. Ingen rullering eller rullende tekst.</li>
+          <li>Maks 90 tegn, så det får plass på én linje på PC og to på mobil.</li>
+          <li>Fem faste temaer i MJs farger, ingen fri fargevelger. Da er kontrasten alltid god nok (WCAG AA).</li>
+          <li>Kan lukkes. Lukker kunden det, kommer det ikke tilbake før teksten endres. Avviksmeldinger kan settes til at de ikke kan lukkes.</li>
+        </ul>
+      </article>
+    </div>
+
+    <h3 class="ms-h3">Temaene</h3>
+    <div class="ms-swatches" data-swatches="banner"></div>
+  </section>
+
+  <!-- ── Infoboks ─────────────────────────────────────────────────────── -->
+  <section aria-labelledby="box-h">
+    <h2 class="mp-h2" id="box-h">Infoboks nede til høyre</h2>
+    <div class="mp-cards">
+      <article class="mp-card">
+        <h3>Hva den er til</h3>
+        <ul>
+          <li>Kampanjer, nyheter og tjenester som fortjener mer enn én linje: «Bli bedriftskunde», «Vinterkampanje», «Slangeverkstedet åpent i romjula».</li>
+          <li>Tittel, kort tekst og én knapp. Valgfritt: merkelapp («Kampanje», «Nyhet») og bilde.</li>
+        </ul>
+      </article>
+      <article class="mp-card">
+        <h3>Farger og uttrykk</h3>
+        <p>Fire temaer (Lys, Blå, Oransje og Mørk) kombinert med bilde eller ikke, og merkelapp eller ikke. Det gir 16 varianter som alle ser ut som Molde Jarnvare og alltid har lesbar kontrast.</p>
+        <p>En fri fargevelger gir fort grønn tekst på rødt. Trenger dere en farge til senere, legger vi den inn som et nytt tema.</p>
+      </article>
+      <article class="mp-card">
+        <h3>Slik oppfører den seg</h3>
+        <ul>
+          <li>Glir inn etter noen sekunder (standard 5). Den stjeler ikke fokus og sperrer ikke siden, så kunden kan handle videre.</li>
+          <li>Lukkes med krysset. Den kommer ikke igjen før innholdet endres, eller ved neste besøk hvis dere velger det.</li>
+          <li>Vises aldri i handlekurv, kasse eller innlogging, og ikke før kunden har svart på informasjonskapsler.</li>
+          <li>På mobil ligger den nederst i full bredde, uten bilde, så den ikke dekker «Legg i handlekurv».</li>
+          <li>Kunder som har slått av animasjoner i systemet sitt, får den uten bevegelse.</li>
+        </ul>
+      </article>
+    </div>
+
+    <h3 class="ms-h3">Temaene</h3>
+    <div class="ms-swatches" data-swatches="box"></div>
+  </section>
+
+  <!-- ── CMS ──────────────────────────────────────────────────────────── -->
+  <section aria-labelledby="cms-h">
+    <h2 class="mp-h2" id="cms-h">Slik blir det i Dynamicweb</h2>
+    <div class="mp-cards">
+      <article class="mp-card">
+        <h3>Én side per melding</h3>
+        <p>En ny mappe <b>«Meldinger»</b> ligger sammen med Header, Footer og Firma i innholdstreet, og vises ikke i menyen. Hver melding er en egen side av typen <b>Toppbanner</b> eller <b>Infoboks</b>.</p>
+        <p>Da kan dere lage flere på forhånd (jul, påske, kampanjer), kopiere en gammel og skru av og på med «Publisert» uten å slette noe.</p>
+      </article>
+      <article class="mp-card">
+        <h3>Hvilken som vises</h3>
+        <p>Er flere aktive samtidig, vises den <b>øverste i treet</b>. Dra en melding opp for å la den gå foran. Ett toppbanner og én infoboks kan være aktive samtidig.</p>
+      </article>
+      <article class="mp-card">
+        <h3>Tid og forhåndsvisning</h3>
+        <p>«Vis fra» og «Vis til» er norsk tid. Meldingen kommer og går innen fem minutter etter tidspunktet, fordi sidene bufres for å gå raskt. Uten «Vis til» står den til dere skrur den av.</p>
+        <p>I forhåndsvisningen i Dynamicweb vises meldingen også utenfor perioden, så dere kan se den før den går live.</p>
+      </article>
+    </div>
+
+    <div class="ms-tables">
+      <div class="ms-table-wrap">
+        <table class="ms-table">
+          <caption>Felter: Toppbanner</caption>
+          <thead><tr><th scope="col">Felt</th><th scope="col">Type</th><th scope="col">Hjelpetekst i Dynamicweb</th></tr></thead>
+          <tbody>
+            <tr><td>Tekst</td><td>Tekst, maks 90 tegn</td><td>Det viktigste først. Uten store bokstaver og utropstegn.</td></tr>
+            <tr><td>Lenketekst</td><td>Tekst, maks 25 tegn (valgfri)</td><td>For eksempel «Se åpningstider». Tom = ingen lenke.</td></tr>
+            <tr><td>Lenke</td><td>Lenke til side eller adresse</td><td>Brukes bare når lenketekst er fylt ut.</td></tr>
+            <tr><td>Tema</td><td>Nedtrekk</td><td>Informasjon, Merkevare, Kampanje, Viktig, Avvik.</td></tr>
+            <tr><td>Ikon</td><td>Nedtrekk</td><td>Ingen, Info, Klokke, Lastebil, Prosent, Varsel. Standard følger temaet.</td></tr>
+            <tr><td>Kan lukkes</td><td>Av/på (standard på)</td><td>Av for avvik alle må se.</td></tr>
+            <tr><td>Vis for</td><td>Nedtrekk</td><td>Alle, Innloggede kunder, Ikke innloggede.</td></tr>
+            <tr><td>Vis fra / Vis til</td><td>Dato og klokkeslett</td><td>Tom «Vis til» = til den skrus av.</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="ms-table-wrap">
+        <table class="ms-table">
+          <caption>Felter: Infoboks</caption>
+          <thead><tr><th scope="col">Felt</th><th scope="col">Type</th><th scope="col">Hjelpetekst i Dynamicweb</th></tr></thead>
+          <tbody>
+            <tr><td>Merkelapp</td><td>Tekst, maks 20 tegn (valgfri)</td><td>For eksempel «Kampanje» eller «Nyhet».</td></tr>
+            <tr><td>Tittel</td><td>Tekst, maks 50 tegn</td><td>Kort og konkret.</td></tr>
+            <tr><td>Tekst</td><td>Tekst, maks 160 tegn</td><td>To-tre linjer. Ingen lister.</td></tr>
+            <tr><td>Knappetekst og lenke</td><td>Tekst, maks 25 tegn, og lenke</td><td>Tom knappetekst = ingen knapp.</td></tr>
+            <tr><td>Bilde</td><td>Bilde (valgfri)</td><td>Liggende, minst 720 × 360. Vises ikke på mobil.</td></tr>
+            <tr><td>Tema</td><td>Nedtrekk</td><td>Lys, Blå, Oransje, Mørk.</td></tr>
+            <tr><td>Vis på</td><td>Nedtrekk og sidevelger</td><td>Alle sider, Forsiden, Produkt- og kategorisider, Valgte sider. Aldri i handlekurv, kasse og innlogging.</td></tr>
+            <tr><td>Vis for</td><td>Nedtrekk</td><td>Alle, Innloggede kunder, Ikke innloggede.</td></tr>
+            <tr><td>Forsinkelse</td><td>Tall, sekunder (standard 5)</td><td>Hvor lenge kunden er på siden før boksen glir inn.</td></tr>
+            <tr><td>Etter lukking</td><td>Nedtrekk</td><td>Ikke vis igjen før innholdet endres / Vis igjen ved neste besøk.</td></tr>
+            <tr><td>Vis fra / Vis til</td><td>Dato og klokkeslett</td><td>Tom «Vis til» = til den skrus av.</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── Spørsmål ─────────────────────────────────────────────────────── -->
+  <section aria-labelledby="q-h">
+    <h2 class="mp-h2" id="q-h">Det vi trenger svar på</h2>
+    <div class="mp-cards">
+      <article class="mp-card">
+        <h3>1. Lenke i toppbanneret</h3>
+        <p>Er dere enige i én valgfri tekstlenke og ingen knapper?</p>
+      </article>
+      <article class="mp-card">
+        <h3>2. Temaene</h3>
+        <p>Dekker de fem temaene for banneret og fire for infoboksen det dere ser for dere, eller mangler det et uttrykk?</p>
+      </article>
+      <article class="mp-card">
+        <h3>3. Hvem som redigerer</h3>
+        <p>Hvem hos Molde Jarnvare skal legge inn meldinger? De trenger tilgang til Dynamicweb og en kort gjennomgang.</p>
+      </article>
+    </div>
+  </section>
+
+</main>
+</body>
+</html>
