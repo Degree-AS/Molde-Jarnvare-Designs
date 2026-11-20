@@ -125,7 +125,7 @@ body { background: var(--color-bg-page); }
 
 /* ── A: Avdelingsmeny (desktop) ─────────────────────────────────────────── */
 
-.mp-dept { display: grid; grid-template-columns: 320px minmax(0, 1fr); min-height: 640px; }
+.mp-dept { display: grid; grid-template-columns: 300px minmax(0, 1fr); min-height: 640px; }
 .mp-rail { list-style: none; margin: 0; padding: var(--s-3); background: var(--color-bg-surface-alt); border-right: var(--bw-1) solid var(--color-border-soft); }
 .mp-rail__item {
   width: 100%;
@@ -143,26 +143,26 @@ body { background: var(--color-bg-page); }
 .mp-rail__item[aria-current="true"] .mp-rail__label { font-weight: var(--fw-semibold); color: var(--mj-blue); }
 .mp-rail__item[aria-current="true"] .mp-chev { opacity: 1; }
 
-.mp-dept__panel { padding: var(--s-6) var(--s-7); }
+.mp-dept__panel { padding: var(--s-5) var(--s-6); }
 .mp-dept__head { display: flex; align-items: baseline; justify-content: space-between; gap: var(--s-4); padding-bottom: var(--s-4); margin-bottom: var(--s-5); border-bottom: var(--bw-1) solid var(--color-border-soft); }
 .mp-dept__head h3 { display: flex; align-items: center; gap: var(--s-3); margin: 0; font-size: var(--fs-h3); }
 .mp-dept__head h3 .mp-ico { width: 28px; height: 28px; color: var(--mj-blue); }
 .mp-dept__all, .mp-aside__link, .mp-more { color: var(--color-text-link); font-weight: var(--fw-semibold); font-size: var(--fs-body-sm); text-decoration: none; display: inline-flex; align-items: center; gap: var(--s-1); }
 .mp-dept__all:hover, .mp-aside__link:hover { text-decoration: underline; }
-.mp-dept__body { display: grid; grid-template-columns: minmax(0, 1fr) 240px; gap: var(--s-7); }
-.mp-dept__groups { columns: 3 180px; column-gap: var(--s-6); }
-.mp-dept__group { break-inside: avoid; margin: 0 0 var(--s-5); }
+.mp-dept__body { display: grid; grid-template-columns: minmax(0, 1fr) 230px; gap: var(--s-6); }
+.mp-dept__groups { columns: 4 150px; column-gap: var(--s-5); }
+.mp-dept__group { break-inside: avoid; margin: 0 0 var(--s-4); }
 .mp-dept__l2 { display: block; font-weight: var(--fw-semibold); color: var(--color-text-primary); text-decoration: none; font-size: var(--fs-body-sm); margin-bottom: var(--s-1); }
 .mp-dept__l2:hover { color: var(--color-text-link); text-decoration: underline; }
 .mp-dept__group--compact { margin-bottom: var(--s-1); }
 .mp-dept__group--compact .mp-dept__l2 { font-weight: var(--fw-medium); padding: 5px 0; margin: 0; }
 .mp-dept__l2 small { color: var(--color-text-tertiary); font-weight: var(--fw-regular); font-size: var(--fs-caption); margin-left: var(--s-1); }
 .mp-dept__group ul { list-style: none; margin: 0; padding: 0; }
-.mp-dept__group li a { display: block; padding: 2px 0; font-size: var(--fs-body-sm); color: var(--color-text-secondary); text-decoration: none; }
+.mp-dept__group li a { display: block; padding: 1px 0; font-size: var(--fs-body-sm); line-height: var(--lh-snug); color: var(--color-text-secondary); text-decoration: none; }
 .mp-dept__group li a:hover { color: var(--color-text-link); text-decoration: underline; }
 .mp-more { font-weight: var(--fw-regular); }
 
-.mp-dept__aside { background: var(--color-bg-surface-alt); border-radius: var(--r-md); padding: var(--s-4); display: flex; flex-direction: column; gap: var(--s-2); align-self: start; }
+.mp-dept__aside { display: flex; flex-direction: column; gap: var(--s-3); align-self: start; }
 .mp-aside__title { margin: var(--s-2) 0 0; font-size: var(--fs-body-sm); font-weight: var(--fw-semibold); }
 .mp-aside__link { justify-content: space-between; padding: 4px 0; }
 .mp-aside__link span { color: var(--color-text-tertiary); font-weight: var(--fw-regular); }
@@ -319,3 +319,36 @@ body { background: var(--color-bg-page); }
 .mp-table th, .mp-table td { text-align: left; padding: var(--s-3) var(--s-4); border-bottom: var(--bw-1) solid var(--color-border-soft); vertical-align: top; }
 .mp-table th { background: var(--color-bg-surface-alt); font-weight: var(--fw-semibold); }
 .mp-table td:first-child { font-weight: var(--fw-semibold); white-space: nowrap; }
+
+/* Innholdsfeltet i A: kampanje + tjenester, styres i CMS */
+.mp-promo {
+  display: flex; flex-direction: column; gap: var(--s-1);
+  border-radius: var(--r-md); overflow: hidden;
+  background: var(--mj-blue); color: var(--color-text-on-brand); text-decoration: none;
+  padding: 0 0 var(--s-4);
+}
+.mp-promo > *:not(.mp-promo__img) { margin-inline: var(--s-4); }
+.mp-promo__img { display: grid; place-items: center; height: 96px; background: linear-gradient(135deg, var(--mj-blue-80), var(--mj-blue-60)); margin-bottom: var(--s-2); }
+.mp-promo__ico { width: 48px; height: 48px; fill: none; stroke: var(--mj-orange); stroke-width: 1.4; stroke-linecap: round; stroke-linejoin: round; }
+.mp-promo .mp-tag { align-self: flex-start; background: var(--mj-orange); }
+.mp-promo b { font-size: var(--fs-body); line-height: var(--lh-snug); }
+.mp-promo span { font-size: var(--fs-caption); opacity: 0.9; line-height: var(--lh-normal); }
+.mp-promo__cta { display: inline-flex; align-items: center; gap: var(--s-1); font-weight: var(--fw-semibold); opacity: 1 !important; color: var(--mj-orange); margin-top: var(--s-1); }
+.mp-promo-link {
+  display: flex; flex-direction: column; gap: 2px;
+  padding: var(--s-3) var(--s-4);
+  border: var(--bw-1) solid var(--color-border-soft); border-radius: var(--r-md);
+  color: var(--color-text-primary); text-decoration: none;
+}
+.mp-promo-link .mp-overline { margin: 0; }
+.mp-promo-link b { font-size: var(--fs-body-sm); }
+.mp-promo-link span:last-child { font-size: var(--fs-caption); color: var(--color-text-secondary); line-height: var(--lh-normal); }
+.mp-promo-link:hover { border-color: var(--color-border-brand); }
+.mp-promo-link:hover b { color: var(--color-text-link); }
+
+.mp-dept__body--wide { grid-template-columns: 1fr; gap: var(--s-4); }
+.mp-dept__body--wide .mp-dept__groups { columns: 5 150px; }
+.mp-dept__body--wide .mp-dept__aside { flex-direction: row; flex-wrap: wrap; align-items: stretch; border-top: var(--bw-1) solid var(--color-border-soft); padding-top: var(--s-4); }
+.mp-dept__body--wide .mp-promo-link { flex: 1 1 220px; }
+.mp-dept__body--wide .mp-note { flex-basis: 100%; margin: 0; }
+.mp-badge--off { background: var(--color-bg-surface-alt); color: var(--color-text-tertiary); }

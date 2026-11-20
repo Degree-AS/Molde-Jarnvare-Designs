@@ -70,64 +70,81 @@
     });
   }
 
-  /* Snarveier for festemidler: standard, dimensjon og kvalitet rett fra menyen.
-     Forutsetter at standard/dimensjon/kvalitet blir filtre i indeksen (finnes ikke i dag). */
-  var FASTENER_SHORTCUTS = [
-    { title: "Standard", chips: ["DIN 933", "DIN 931", "DIN 912", "DIN 934", "DIN 125", "DIN 985", "ISO 4017", "ISO 7380"] },
-    { title: "Dimensjon", chips: ["M4", "M5", "M6", "M8", "M10", "M12", "M16", "M20"] },
-    { title: "Kvalitet og overflate", chips: ["8.8", "10.9", "12.9", "A2", "A4", "Elforsinket", "Varmforsinket"] },
-  ];
+  /* Innholdsfeltet til høyre i panelet: styres i CMS per hovedkategori (eksempelinnhold her).
+     Kampanje først når det finnes en, deretter tjenester og forsyningsløsninger som hører til kategorien. */
+  var PROMO = {
+    "/festemidler": {
+      campaign: { tag: "Kampanje", title: "Sekskantskruer DIN 933, elforsinket", text: "Nettpris på hele serien M6-M16 ut desember.", cta: "Se kampanjen" },
+      links: [
+        { tag: "Forsyningsløsning", title: "2BOX", text: "Aldri tom for festemidler - to kasser, vi fyller på." },
+        { tag: "Forsyningsløsning", title: "Scan2order", text: "Skann hylla, bestillingen går rett inn." },
+      ],
+    },
+    "/hydraulikk-og-slanger": {
+      campaign: null,
+      links: [
+        { tag: "Tjeneste", title: "Slangeverksted", text: "Hydraulikkslanger laget på mål." },
+        { tag: "Tjeneste", title: "Parker Store", text: "Parker-deler og fittings." },
+      ],
+    },
+    "/bekledning-og-verneutstyr": {
+      campaign: { tag: "Nyhet", title: "Vinterkolleksjonen er her", text: "Jakker, bukser og ull for kalde arbeidsdager.", cta: "Se nyhetene" },
+      links: [{ tag: "Tjeneste", title: "Profiltøy", text: "Arbeidstøy med firmalogo." }],
+    },
+    "/verktoy-og-redskap": {
+      campaign: null,
+      links: [
+        { tag: "Tjeneste", title: "Analyse og kalibrering", text: "Kalibrering av momentverktøy og måleutstyr." },
+        { tag: "Tjeneste", title: "Serviceverksted", text: "Reparasjon og service av verktøy." },
+      ],
+    },
+  };
+  var PROMO_DEFAULT = {
+    campaign: { tag: "Kampanje", title: "Kampanjeplass", text: "Redaktøren velger kampanje, nyhet eller tjeneste for kategorien i CMS.", cta: "Les mer" },
+    links: [{ tag: "Kontakt", title: "Spør en produktansvarlig", text: "Vi hjelper deg å finne riktig vare." }],
+  };
+
+  function renderPromo(node) {
+    var promo = PROMO[node.url] || PROMO_DEFAULT;
+    var c = promo.campaign;
+    return (
+      '<aside class="mp-dept__aside">' +
+      (c
+        ? '<a class="mp-promo" href="#"><span class="mp-promo__img" aria-hidden="true">' + icon(node.url, "mp-promo__ico") + "</span>" +
+          '<span class="mp-tag">' + c.tag + "</span><b>" + esc(c.title) + "</b><span>" + esc(c.text) + '</span><span class="mp-promo__cta">' + c.cta + " " + CHEV + "</span></a>"
+        : "") +
+      promo.links.map(function (l) {
+        return '<a class="mp-promo-link" href="#"><span class="mp-overline">' + l.tag + "</span><b>" + esc(l.title) + "</b><span>" + esc(l.text) + "</span></a>";
+      }).join("") +
+      '<p class="mp-note">Eksempelinnhold - styres i CMS per hovedkategori.</p></aside>'
+    );
+  }
 
   /* ── A  Avdelingsmeny, desktop ────────────────────────────────────────── */
 
-  var L3_SHOWN = 5;
-  // Over 12 grupper (Verktøy og redskap har 22) får ikke nivå 3 plass uten scroll: da vises bare nivå 2.
-  var COMPACT_FROM = 13;
-
+  // Alle underkategoriene vises, ingen «+ N til»: det som er gjemt, blir ikke funnet.
   function renderDeptPanel(node) {
-    var compact = (node.children || []).length >= COMPACT_FROM;
+    // Over 90 lenker (Verktøy og redskap har 113): gruppene får hele bredden, innholdsfeltet legger seg under.
+    var links = (node.children || []).reduce(function (n, l2) { return n + 1 + (l2.children || []).length; }, 0);
+    var wide = links > 90;
     var groups = (node.children || [])
       .map(function (l2) {
         var l3 = l2.children || [];
-        var more = l3.length - L3_SHOWN;
-        if (compact) {
-          return '<section class="mp-dept__group mp-dept__group--compact"><a class="mp-dept__l2" href="#">' + esc(nice(l2.label)) +
-            (l3.length ? " <small>" + l3.length + "</small>" : "") + "</a></section>";
-        }
         return (
           '<section class="mp-dept__group">' +
           '<a class="mp-dept__l2" href="#">' + esc(nice(l2.label)) + "</a>" +
           (l3.length
-            ? "<ul>" +
-              l3.slice(0, L3_SHOWN).map(function (c) {
-                return '<li><a href="#">' + esc(nice(c.label)) + "</a></li>";
-              }).join("") +
-              (more > 0 ? '<li><a class="mp-more" href="#">+ ' + more + " til</a></li>" : "") +
-              "</ul>"
+            ? "<ul>" + l3.map(function (c) { return '<li><a href="#">' + esc(nice(c.label)) + "</a></li>"; }).join("") + "</ul>"
             : "") +
           "</section>"
         );
       })
       .join("");
 
-    var aside =
-      node.url === "/festemidler"
-        ? '<aside class="mp-dept__aside"><p class="mp-overline">Snarveier</p>' +
-          FASTENER_SHORTCUTS.map(function (g) {
-            return '<p class="mp-aside__title">' + g.title + '</p><div class="mp-chips">' +
-              g.chips.map(function (c) { return '<a class="mp-chip" href="#">' + c + "</a>"; }).join("") + "</div>";
-          }).join("") +
-          '<p class="mp-note">Krever at standard, dimensjon og kvalitet blir filtre i produktindeksen.</p></aside>'
-        : '<aside class="mp-dept__aside"><p class="mp-overline">Snarveier</p>' +
-          '<a class="mp-aside__link" href="#">Alle i ' + esc(nice(node.label)) + " <span>" + count(node.count) + "</span></a>" +
-          '<a class="mp-aside__link" href="#">Bare varer på lager</a>' +
-          '<a class="mp-aside__link" href="#">Nyheter</a>' +
-          '<a class="mp-aside__link" href="#">Kjøp igjen fra dine ordrer</a></aside>';
-
     return (
       '<div class="mp-dept__head"><h3>' + icon(node.url) + esc(nice(node.label)) + '</h3><a class="mp-dept__all" href="#">Se alle ' +
       count(node.count) + " produkter " + CHEV + "</a></div>" +
-      '<div class="mp-dept__body"><div class="mp-dept__groups">' + groups + "</div>" + aside + "</div>"
+      '<div class="mp-dept__body' + (wide ? " mp-dept__body--wide" : "") + '"><div class="mp-dept__groups">' + groups + "</div>" + renderPromo(node) + "</div>"
     );
   }
 
