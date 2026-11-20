@@ -1,0 +1,294 @@
+<!doctype html>
+<html lang="nb">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>CMS-gjennomgang - forslag - Molde Jarnvare</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Source+Sans+3:wght@400;500;600;700;900&family=JetBrains+Mono:wght@400&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../../src/styles/index.css">
+  <link rel="stylesheet" href="meny-forslag.css">
+  <link rel="stylesheet" href="meldinger-forslag.css">
+  <link rel="stylesheet" href="cms-forslag.css">
+</head>
+<body>
+
+<div class="mp-banner">
+  <span><strong>Utforskning</strong> · Gjennomgang av innholdsoppsettet i Dynamicweb · 20.11.2026</span>
+  <span>For Leif Erling og andre som redigerer nettsiden</span>
+</div>
+
+<main class="mp-wrap">
+
+  <header class="mp-hero">
+    <p class="mp-eyebrow">Dynamicweb for redaktører</p>
+    <h1>Et CMS som forklarer seg selv</h1>
+    <p>Squarespace lar deg velge en blokk ut fra et bilde av hvordan den ser ut, og spør bare om det du må fylle ut. Dynamicweb kan komme et godt stykke på vei med <b>oppsett alene</b>: navn, beskrivelser, ikoner, grupper og hjelpetekster er innstillinger, ikke kode. Her er det vi fant, og tre pakker med forbedringer.</p>
+  </header>
+
+  <!-- ── Funn ──────────────────────────────────────────────────────────── -->
+  <section aria-labelledby="funn-h">
+    <h2 class="mp-h2" id="funn-h">Det vi fant</h2>
+    <p class="cf-lead">Nettsiden har 39 egne innholdstyper (sider, blokker og rader i blokker). De er bygget for utviklere, ikke for den som skal skrive.</p>
+    <div class="mp-cards">
+      <article class="mp-card mp-card--problem">
+        <h3>Engelske og tekniske navn</h3>
+        <p>36 av 39 har engelske navn: «Rich Text», «Feature Section», «Call to Action». Felt heter «Eyebrow», «Lead», «IsCTA» og «DW Form (id)», der man måtte skrive inn et tall.</p>
+      </article>
+      <article class="mp-card mp-card--problem">
+        <h3>Alle ser like ut i listen</h3>
+        <p>25 av 39 har det samme dokumentikonet, ingen har bilde av hvordan blokken ser ut, og 24 mangler beskrivelse. Av de 15 som har en, er 12 på engelsk og skrevet for utviklere.</p>
+      </article>
+      <article class="mp-card mp-card--problem">
+        <h3>Utseende blandet med innhold</h3>
+        <p>19 blokker har «Spacing», «Width», «Alignment» og «Background» midt blant tekstfeltene. Valgene står på engelsk, for eksempel «Default for this block».</p>
+      </article>
+      <article class="mp-card mp-card--problem">
+        <h3>Kategorier som ikke sier noe</h3>
+        <p>Blokkene er sortert under «Paragraphs/Content» og «Paragraphs/Landing». Ingen av dem sier hva blokken er til.</p>
+      </article>
+      <article class="mp-card mp-card--problem">
+        <h3>Innstillinger blant sidene</h3>
+        <p>«Header», «Footer», «Branding» og «Molde Jarnvareforretning AS» (firmaopplysninger) ligger i innholdstreet som om de var vanlige sider. «Paragraph presets» er på engelsk.</p>
+      </article>
+      <article class="mp-card mp-card--problem">
+        <h3>Faste grenser</h3>
+        <p>«Spørsmål og svar» har faste felt for fem spørsmål, ikke flere. Tekstblokken har både «Wide» og «Width», som gjør det samme.</p>
+      </article>
+    </div>
+  </section>
+
+  <!-- ── Før og etter ──────────────────────────────────────────────────── -->
+  <section aria-labelledby="velger-h">
+    <h2 class="mp-h2" id="velger-h">«Legg til avsnitt», før og etter</h2>
+    <p class="cf-lead">«I dag» viser listen slik den er nå. «Forslag» viser de samme blokkene med norske navn, en setning om hva de er til, og en miniskisse av hvordan de ser ut. Skissene er et forslag. Pakke 2 sjekker om Dynamicweb 10 kan vise bilder i listen.</p>
+
+    <div class="cf-compare">
+      <div class="cf-dialog" aria-label="I dag">
+        <div class="cf-dialog__bar"><span>New paragraph</span><span class="cf-dialog__tag cf-dialog__tag--before">I dag</span></div>
+        <div class="cf-dialog__body">
+          <p class="cf-old-group">Paragraphs/Content</p>
+          <ul class="cf-old">
+            <li>Call to Action</li><li>Cards</li><li>Contact Details</li><li>Contact Form</li><li>Contact Info Bar</li><li>FAQ</li><li>Feature Section</li><li>Hero</li><li>Location Card</li><li>Opening Hours</li><li>Rich Text</li><li>Text &amp; Image</li>
+          </ul>
+          <p class="cf-old-group">Paragraphs/Landing</p>
+          <ul class="cf-old">
+            <li>Page Header</li><li>Product Expert</li><li>Supply Solutions</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="cf-dialog" aria-label="Forslag">
+        <div class="cf-dialog__bar"><span>Legg til blokk</span><span class="cf-dialog__tag cf-dialog__tag--after">Forslag</span></div>
+        <div class="cf-dialog__body">
+          <div class="cf-search">Søk etter blokk …</div>
+
+          <p class="cf-cat">Øverst på siden</p>
+          <div class="cf-tiles">
+            <div class="cf-tile">
+              <div class="cf-wire cf-wire--hero"><div class="w-col"><i class="w-h"></i><i style="width:80%"></i><i class="w-btn"></i></div></div>
+              <b>Toppbilde med tekst</b><span>Stort bilde eller video med overskrift og knapper.</span>
+            </div>
+            <div class="cf-tile">
+              <div class="cf-wire"><div class="w-col"><i class="w-h" style="width:55%"></i><i style="width:90%"></i><i style="width:70%"></i></div></div>
+              <b>Sidetittel og ingress</b><span>Overskrift og en kort innledning.</span>
+            </div>
+          </div>
+
+          <p class="cf-cat">Tekst og bilde</p>
+          <div class="cf-tiles">
+            <div class="cf-tile">
+              <div class="cf-wire"><div class="w-col"><i class="w-h" style="width:40%"></i><i></i><i></i><i style="width:60%"></i></div></div>
+              <b>Tekst</b><span>Brødtekst med mellomtitler, lister og lenker.</span>
+            </div>
+            <div class="cf-tile">
+              <div class="cf-wire"><div class="w-col"><i class="w-h"></i><i></i><i style="width:80%"></i></div><i class="w-img" style="flex:1"></i></div>
+              <b>Tekst og bilde</b><span>Tekst på den ene siden, bilde på den andre.</span>
+            </div>
+            <div class="cf-tile">
+              <div class="cf-wire cf-wire--band"><i class="w-img" style="flex:1"></i><div class="w-col"><i class="w-h"></i><i></i><i class="w-btn"></i></div></div>
+              <b>Bilde og tekst i full bredde</b><span>Bredt bånd som løfter fram en tjeneste.</span>
+            </div>
+            <div class="cf-tile">
+              <div class="cf-wire"><div class="w-card"><i class="w-img"></i><i></i></div><div class="w-card"><i class="w-img"></i><i></i></div><div class="w-card"><i class="w-img"></i><i></i></div></div>
+              <b>Kort i rutenett</b><span>Flere kort med bilde, tittel og lenke.</span>
+            </div>
+            <div class="cf-tile">
+              <div class="cf-wire"><div class="w-col"><div class="w-q"><i></i></div><div class="w-q"><i></i></div><div class="w-q"><i></i></div></div></div>
+              <b>Spørsmål og svar</b><span>Spørsmål kunden klikker på for å se svaret.</span>
+            </div>
+            <div class="cf-tile">
+              <div class="cf-wire"><div class="w-col" style="align-items:center"><i class="w-h" style="width:60%"></i><i style="width:75%"></i><i class="w-btn"></i></div></div>
+              <b>Oppfordring med knapp</b><span>Kort tekst og én knapp, for eksempel «Bli kunde».</span>
+            </div>
+          </div>
+
+          <p class="cf-cat">Kontakt</p>
+          <div class="cf-tiles">
+            <div class="cf-tile">
+              <div class="cf-wire"><div class="w-col"><i class="w-h" style="width:45%"></i><i class="w-field"></i><i class="w-field"></i><i class="w-btn"></i></div></div>
+              <b>Kontaktskjema</b><span>Velg et skjema fra listen.</span>
+            </div>
+            <div class="cf-tile">
+              <div class="cf-wire"><i class="w-img" style="width:38%"></i><div class="w-col"><i class="w-h"></i><i class="w-field"></i><i class="w-btn"></i></div></div>
+              <b>Spør en produktekspert</b><span>Bilde, tekst og skjema.</span>
+            </div>
+            <div class="cf-tile">
+              <div class="cf-wire"><div class="w-card"><i class="w-img"></i><i></i><i style="width:60%"></i></div><div class="w-card"><i class="w-img"></i><i></i><i style="width:60%"></i></div><div class="w-card"><i class="w-img"></i><i></i><i style="width:60%"></i></div><div class="w-card"><i class="w-img"></i><i></i><i style="width:60%"></i></div></div>
+              <b>Ansatte</b><span>Bilde, navn, rolle, telefon og e-post.</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── Prinsipper ────────────────────────────────────────────────────── -->
+  <section aria-labelledby="prinsipp-h">
+    <h2 class="mp-h2" id="prinsipp-h">Seks regler fra Squarespace</h2>
+    <div class="cf-principles">
+      <article class="mp-card"><h3>Velg fra bilder</h3><p>Hver blokk har et ikon eller en skisse og én setning om hva den er til.</p></article>
+      <article class="mp-card"><h3>Ett navn, én jobb</h3><p>Norske navn som sier hva blokken gjør, ikke hva utvikleren kalte den.</p></article>
+      <article class="mp-card"><h3>Innhold først</h3><p>Tekst og bilder øverst. Utseende i en egen gruppe som er lukket til man trenger den.</p></article>
+      <article class="mp-card"><h3>Riktig uten å røre noe</h3><p>Standardvalgene gir en blokk som ser riktig ut. Ingen må velge luft eller bredde for å komme i gang.</p></article>
+      <article class="mp-card"><h3>Hjelp der man skriver</h3><p>Hjelpetekst med eksempel, maks antall tegn og felt som må fylles ut.</p></article>
+      <article class="mp-card"><h3>Start fra en mal</h3><p>En ny tjenesteside eller kampanje starter som en kopi av en ferdig side, ikke som en tom side.</p></article>
+    </div>
+  </section>
+
+  <!-- ── Pakker ────────────────────────────────────────────────────────── -->
+  <section aria-labelledby="pakker-h">
+    <h2 class="mp-h2" id="pakker-h">Tre pakker</h2>
+    <p class="cf-lead">Pakke 1 er bare oppsett og kan tas uten risiko: systemnavnene som nettsiden leser, endres ikke. Pakke 2 må prøves i Dynamicweb før vi lover noe. Pakke 3 krever kode.</p>
+    <div class="cf-packs">
+      <article class="mp-card cf-pack cf-pack--config">
+        <header><h3>1. Oppsett</h3><span class="mp-badge">Ingen kode</span></header>
+        <ol>
+          <li><b>Velg skjema fra en liste</b> i stedet for å skrive et tall. Gjelder kontaktskjema, produktekspert og skjemaet på produktsidene. <span class="cf-done">Laget 20.11.</span></li>
+          <li><b>Norske navn og én setning</b> om hva hver blokk er til (tabellen under).</li>
+          <li><b>Ikon som viser innholdet</b>: konvolutt for kontaktskjema, klokke for åpningstider, spørsmålstegn for spørsmål og svar.</li>
+          <li><b>Kategorier på norsk</b>: Øverst på siden, Tekst og bilde, Kontakt, Produkter og tjenester, Nyheter.</li>
+          <li><b>Norske feltnavn med hjelpetekst</b> og samme ord overalt (ordlisten under).</li>
+          <li><b>«Utseende» som egen gruppe</b> nederst, lukket til man åpner den: luft, bredde, plassering og bakgrunn.</li>
+          <li><b>Påkrevde felt og maks antall tegn</b> der det betyr noe for hvordan siden ser ut.</li>
+          <li><b>Forståelige navn i innholdstreet</b>: «Meny og toppbanner», «Bunntekst», «Logo og deling», «Firmaopplysninger», «Ferdige blokker».</li>
+        </ol>
+      </article>
+      <article class="mp-card cf-pack cf-pack--test">
+        <header><h3>2. Prøves først</h3><span class="mp-badge mp-badge--new">Må testes</span></header>
+        <ol>
+          <li><b>Bilde av blokken i listen.</b> Innholdstypene har et felt for bilde som Dynamicweb 9 viste. Vi prøver med én blokk og ser om versjon 10 viser det.</li>
+          <li><b>Bare relevante valg.</b> Vanlige sider tillater allerede bare våre blokker. Vi sjekker at Swift-typene fra Dynamicweb heller ikke dukker opp når man lager en ny side.</li>
+          <li><b>Ferdige maler.</b> En skjult mappe med en tjenesteside og en kampanjeside å kopiere, og «Lagre som forhåndsinnstilling» for blokker man bruker ofte.</li>
+          <li><b>Vis felt bare når de trengs.</b> For eksempel videofeltene i toppbildet bare når det er valgt en video.</li>
+        </ol>
+      </article>
+      <article class="mp-card cf-pack cf-pack--code">
+        <header><h3>3. Krever kode</h3><span class="mp-badge mp-badge--off">Senere</span></header>
+        <ol>
+          <li><b>Spørsmål og svar som liste</b>, så man kan legge til så mange man vil. Dagens innhold flyttes over.</li>
+          <li><b>Rydde doble felt</b>, som «Wide» og «Width» i tekstblokken.</li>
+          <li><b>En kort redaktørguide</b> med skjermbilder: ny side, bytte bilde på forsiden, legge inn toppbanner og infoboks.</li>
+        </ol>
+      </article>
+    </div>
+  </section>
+
+  <!-- ── Navn ──────────────────────────────────────────────────────────── -->
+  <section aria-labelledby="navn-h">
+    <h2 class="mp-h2" id="navn-h">Forslag til navn</h2>
+    <p class="cf-lead">Systemnavnet i første kolonne er det nettsiden leser og står urørt. Det redaktøren ser, er navnet og beskrivelsen.</p>
+    <div class="ms-tables">
+      <div class="ms-table-wrap">
+        <table class="ms-table cf-table">
+          <caption>Blokker på vanlige sider</caption>
+          <thead><tr><th scope="col">System</th><th scope="col">Nytt navn</th><th scope="col">Beskrivelse i listen</th></tr></thead>
+          <tbody>
+            <tr><td>Hero</td><td>Toppbilde med tekst</td><td>Stort bilde eller video øverst på siden, med overskrift og opptil to knapper.</td></tr>
+            <tr><td>PageHeader</td><td>Sidetittel og ingress</td><td>Overskrift og en kort innledning øverst på en vanlig side.</td></tr>
+            <tr><td>RichText</td><td>Tekst</td><td>Brødtekst med mellomtitler, lister og lenker.</td></tr>
+            <tr><td>TextAndImage</td><td>Tekst og bilde</td><td>Tekst på den ene siden, bilde på den andre.</td></tr>
+            <tr><td>FeatureSection</td><td>Bilde og tekst i full bredde</td><td>Bredt bånd med bilde, tekst og knapp som løfter fram en tjeneste.</td></tr>
+            <tr><td>Cards</td><td>Kort i rutenett</td><td>Flere kort med bilde, tittel og lenke ved siden av hverandre.</td></tr>
+            <tr><td>CallToAction</td><td>Oppfordring med knapp</td><td>Kort tekst og én knapp, for eksempel «Bli kunde».</td></tr>
+            <tr><td>Faq</td><td>Spørsmål og svar</td><td>Spørsmål kunden klikker på for å se svaret.</td></tr>
+            <tr><td>ArticleList</td><td>Nyhetsliste</td><td>Viser de nyeste artiklene fra Aktuelt automatisk.</td></tr>
+            <tr><td>ProductNews</td><td>Produktnyheter</td><td>En rad med produktkort hentet fra nettbutikken.</td></tr>
+            <tr><td>SupplySolutions</td><td>Forsyningsløsninger</td><td>Bilde, tekst og en flis for hver løsning, som 2BOX og Scan2order.</td></tr>
+            <tr><td>ProductExpert</td><td>Spør en produktekspert</td><td>Bilde, tekst og et skjema kunden sender inn.</td></tr>
+            <tr><td>ContactForm</td><td>Kontaktskjema</td><td>Et skjema fra Forms for editors, med overskrift og personverntekst.</td></tr>
+            <tr><td>ContactDetails</td><td>Telefon og e-post</td><td>Telefon og e-post for hver avdeling.</td></tr>
+            <tr><td>ContactInfoBar</td><td>Kontaktstripe</td><td>Stripe med telefon og e-post fra firmaopplysningene.</td></tr>
+            <tr><td>OpeningHours</td><td>Åpningstider</td><td>Viser åpningstidene fra firmaopplysningene.</td></tr>
+            <tr><td>LocationCard</td><td>Kart og adresse</td><td>Adressen med lenke til kart.</td></tr>
+            <tr><td>EmployeeList</td><td>Ansatte</td><td>Kort med bilde, navn, rolle, telefon og e-post.</td></tr>
+            <tr><td>RelatedLinks</td><td>Lenker til lignende sider</td><td>En liste med lenker, for eksempel til de andre tjenestene.</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="ms-table-wrap">
+        <table class="ms-table cf-table">
+          <caption>Sider og innstillinger</caption>
+          <thead><tr><th scope="col">System</th><th scope="col">Nytt navn</th><th scope="col">Beskrivelse</th></tr></thead>
+          <tbody>
+            <tr><td>ContentPage</td><td>Vanlig side</td><td>En side du bygger med blokker.</td></tr>
+            <tr><td>ArticlePage</td><td>Artikkel</td><td>En nyhet i Aktuelt, med bilde, dato og forfatter.</td></tr>
+            <tr><td>Header</td><td>Meny og toppbanner</td><td>Menypunktene øverst og toppbanneret.</td></tr>
+            <tr><td>NavLink</td><td>Menypunkt</td><td>Ett punkt i menyen.</td></tr>
+            <tr><td>Footer</td><td>Bunntekst</td><td>Lenkene og teksten nederst på alle sider.</td></tr>
+            <tr><td>FooterLink</td><td>Lenke i bunnteksten</td><td>Én lenke i en kolonne nederst.</td></tr>
+            <tr><td>Branding</td><td>Logo og deling</td><td>Ikoner, nettstedsnavn og bildet som vises når siden deles.</td></tr>
+            <tr><td>Company</td><td>Firmaopplysninger</td><td>Adresse, telefon, org.nr. og åpningstider. Brukes på hele nettsiden.</td></tr>
+            <tr><td>LoginPage</td><td>Innlogging</td><td>Tekstene på innloggingssiden.</td></tr>
+            <tr><td>SearchPage</td><td>Søk</td><td>Tekstene når søket ikke finner noe.</td></tr>
+            <tr><td>OrderDetailPage</td><td>Ordre</td><td>«Spørsmål om ordren?» på ordresiden.</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="ms-table-wrap">
+        <table class="ms-table cf-table">
+          <caption>Ordliste for feltene</caption>
+          <thead><tr><th scope="col">System</th><th scope="col">I dag</th><th scope="col">Nytt navn</th></tr></thead>
+          <tbody>
+            <tr><td>Eyebrow</td><td><span class="cf-old-name">Eyebrow</span></td><td>Liten tekst over overskriften</td></tr>
+            <tr><td>Heading, Title</td><td><span class="cf-old-name">Heading / Title</span></td><td>Overskrift</td></tr>
+            <tr><td>Lead, Subtitle</td><td><span class="cf-old-name">Lead / Subtitle</span></td><td>Ingress</td></tr>
+            <tr><td>Body, Content</td><td><span class="cf-old-name">Body / Content</span></td><td>Tekst</td></tr>
+            <tr><td>ButtonText</td><td><span class="cf-old-name">ButtonText</span></td><td>Knappetekst</td></tr>
+            <tr><td>ButtonLink</td><td><span class="cf-old-name">ButtonLink</span></td><td>Knappen går til</td></tr>
+            <tr><td>IsCTA</td><td><span class="cf-old-name">IsCTA</span></td><td>Vis som knapp</td></tr>
+            <tr><td>ImageRight</td><td><span class="cf-old-name">Image Right</span></td><td>Bildet til høyre</td></tr>
+            <tr><td>FormId</td><td><span class="cf-old-name">DW Form (id)</span></td><td>Skjema (liste med navn)</td></tr>
+            <tr><td>Spacing</td><td><span class="cf-old-name">Spacing</span></td><td>Luft over og under</td></tr>
+            <tr><td>Width</td><td><span class="cf-old-name">Width</span></td><td>Tekstbredde</td></tr>
+            <tr><td>Alignment</td><td><span class="cf-old-name">Alignment</span></td><td>Plassering</td></tr>
+            <tr><td>Background</td><td><span class="cf-old-name">Background</span></td><td>Bakgrunn</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── Neste steg ────────────────────────────────────────────────────── -->
+  <section aria-labelledby="neste-h">
+    <h2 class="mp-h2" id="neste-h">Neste steg</h2>
+    <div class="mp-cards">
+      <article class="mp-card">
+        <h3>Navnene</h3>
+        <p>Leif Erling ser over navnene i tabellen. Det er han som skal kjenne dem igjen.</p>
+      </article>
+      <article class="mp-card">
+        <h3>Pakke 1</h3>
+        <p>Når navnene er godkjent, legger Degree inn pakke 1 på staging. Leif Erling prøver å lage en side før det går til produksjon.</p>
+      </article>
+      <article class="mp-card">
+        <h3>Pakke 2 og 3</h3>
+        <p>Vi prøver bildene i listen og malene på staging, og melder tilbake hva som virker, før pakke 3 planlegges.</p>
+      </article>
+    </div>
+  </section>
+
+</main>
+</body>
+</html>

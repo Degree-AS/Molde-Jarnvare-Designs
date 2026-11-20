@@ -1,0 +1,107 @@
+/* CMS-gjennomgang: «Legg til avsnitt» før og etter, miniskisser av blokkene */
+
+.cf-compare { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.6fr); gap: var(--s-5); align-items: start; }
+@media (max-width: 900px) { .cf-compare { grid-template-columns: minmax(0, 1fr); } }
+
+.cf-dialog {
+  background: var(--color-bg-surface);
+  border: var(--bw-1) solid var(--color-border-soft);
+  border-radius: var(--r-lg);
+  box-shadow: var(--shadow-2);
+  overflow: hidden;
+  min-width: 0;
+}
+.cf-dialog__bar {
+  display: flex; justify-content: space-between; align-items: center; gap: var(--s-3);
+  padding: var(--s-3) var(--s-4);
+  border-bottom: var(--bw-1) solid var(--color-border-soft);
+  font-weight: var(--fw-bold); font-size: var(--fs-body-sm);
+}
+.cf-dialog__tag { font-size: var(--fs-caption); font-weight: var(--fw-semibold); padding: 2px 10px; border-radius: var(--r-full); }
+.cf-dialog__tag--before { background: var(--color-bg-surface-alt); color: var(--color-text-tertiary); }
+.cf-dialog__tag--after { background: #FFF1E6; color: #A44A00; }
+.cf-dialog__body { padding: var(--s-3) var(--s-4) var(--s-4); }
+
+/* Før: lang liste med engelske navn og samme ikon */
+.cf-old-group { font-size: var(--fs-caption); color: var(--color-text-tertiary); margin: var(--s-3) 0 var(--s-1); font-family: var(--ff-mono); }
+.cf-old-group:first-child { margin-top: 0; }
+.cf-old { list-style: none; margin: 0; padding: 0; }
+.cf-old li { display: flex; align-items: center; gap: var(--s-2); padding: 6px 0; font-size: var(--fs-body-sm); border-top: var(--bw-1) solid var(--color-border-soft); }
+.cf-old li::before {
+  content: ""; flex: none; width: 14px; height: 16px;
+  border: 1.5px solid var(--color-text-tertiary); border-radius: 2px;
+}
+
+/* Etter: grupper med bildekort */
+.cf-search {
+  display: flex; align-items: center; gap: var(--s-2);
+  height: 36px; padding: 0 var(--s-3); margin-bottom: var(--s-3);
+  border: var(--bw-1) solid var(--color-border-strong, var(--color-border-soft)); border-radius: var(--r-md);
+  color: var(--color-text-tertiary); font-size: var(--fs-body-sm);
+}
+.cf-cat { font-size: var(--fs-overline, 12px); font-weight: var(--fw-bold); letter-spacing: var(--ls-wider, .08em); text-transform: uppercase; color: var(--color-text-tertiary); margin: var(--s-4) 0 var(--s-2); }
+.cf-cat:first-of-type { margin-top: 0; }
+.cf-tiles { display: grid; grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); gap: var(--s-3); }
+.cf-tile {
+  display: flex; flex-direction: column; gap: 6px;
+  padding: var(--s-2);
+  border: var(--bw-1) solid var(--color-border-soft); border-radius: var(--r-md);
+  background: var(--color-bg-surface);
+}
+.cf-tile:hover { border-color: var(--mj-blue); box-shadow: var(--shadow-1); }
+.cf-tile b { font-size: var(--fs-body-sm); line-height: var(--lh-snug); }
+.cf-tile span { font-size: var(--fs-caption); color: var(--color-text-secondary); line-height: var(--lh-snug); }
+
+/* Miniskisse av en blokk: grå streker for tekst, blått for bilde, oransje for knapp */
+.cf-wire {
+  aspect-ratio: 16 / 9;
+  border-radius: var(--r-sm);
+  background: var(--color-bg-surface-alt);
+  padding: 8px;
+  display: flex; gap: 6px;
+  overflow: hidden;
+}
+.cf-wire i { display: block; border-radius: 2px; background: #C9CED6; height: 4px; }
+.cf-wire .w-h { height: 7px; background: var(--mj-ink, #1D2733); width: 70%; }
+.cf-wire .w-img { background: #9DB7D6; border-radius: 3px; height: auto; }
+.cf-wire .w-btn { height: 8px; width: 34%; background: var(--mj-orange); border-radius: 2px; }
+.cf-wire .w-col { display: flex; flex-direction: column; gap: 4px; flex: 1; justify-content: center; }
+.cf-wire .w-card { display: flex; flex-direction: column; gap: 3px; flex: 1; background: #fff; border-radius: 3px; padding: 3px; }
+.cf-wire .w-card .w-img { height: 22px; }
+.cf-wire--hero { background: #46607C; position: relative; }
+.cf-wire--hero .w-col { align-items: flex-start; }
+.cf-wire--hero i { background: #E4E9EF; }
+.cf-wire--hero .w-h { background: #fff; }
+.cf-wire--band { background: var(--mj-blue); }
+.cf-wire--band i { background: #CFE0F2; }
+.cf-wire--band .w-h { background: #fff; }
+.cf-wire .w-q { display: flex; justify-content: space-between; align-items: center; background: #fff; border-radius: 2px; padding: 3px 4px; }
+.cf-wire .w-q i { width: 60%; }
+.cf-wire .w-q::after { content: "+"; font-size: 8px; line-height: 1; color: var(--color-text-tertiary); }
+.cf-wire .w-field { height: 8px; background: #fff; border: 1px solid #C9CED6; }
+
+/* Pakker */
+.cf-packs { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 300px), 1fr)); gap: var(--s-4); }
+.cf-pack { display: flex; flex-direction: column; gap: var(--s-3); }
+.cf-pack header { display: flex; justify-content: space-between; align-items: baseline; gap: var(--s-2); flex-wrap: wrap; }
+.cf-pack header h3 { margin: 0; }
+.cf-pack ol { margin: 0; padding-left: var(--s-5); display: flex; flex-direction: column; gap: var(--s-2); color: var(--color-text-secondary); font-size: var(--fs-body-sm); line-height: var(--lh-relaxed); }
+.cf-pack ol b { color: var(--color-text-primary); }
+.cf-pack--config { border-top: var(--bw-3) solid var(--mj-blue); }
+.cf-pack--test { border-top: var(--bw-3) solid var(--mj-orange); }
+.cf-pack--code { border-top: var(--bw-3) solid var(--color-text-tertiary); }
+.cf-done { color: #1E7B3A; font-weight: var(--fw-semibold); }
+
+.cf-table td:nth-child(3) { color: var(--color-text-secondary); white-space: normal; }
+.cf-table td:first-child { font-family: var(--ff-mono); font-weight: 400; font-size: var(--fs-caption); color: var(--color-text-tertiary); }
+.cf-table td:nth-child(2) { color: var(--color-text-primary); font-weight: var(--fw-semibold); white-space: nowrap; }
+.cf-old-name { text-decoration: line-through; color: var(--color-text-tertiary); font-weight: 400; }
+
+.cf-principles { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 240px), 1fr)); gap: var(--s-3); counter-reset: p; }
+.cf-principles .mp-card { counter-increment: p; }
+.cf-principles .mp-card h3::before { content: counter(p) ". "; color: var(--mj-orange); }
+
+section + section { margin-top: var(--s-11); }
+.mp-wrap > section > .mp-cards + .ms-tables,
+.mp-wrap > section > p + .mp-cards { margin-top: var(--s-5); }
+.cf-lead { max-width: 75ch; color: var(--color-text-secondary); margin: 0 0 var(--s-5); }
