@@ -1,0 +1,279 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Product menu A - developer handoff - Molde Jarnvare</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Source+Sans+3:wght@400;500;600;700;900&family=JetBrains+Mono:wght@400&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../../src/styles/index.css">
+  <link rel="stylesheet" href="meny-forslag.css">
+  <script src="meny-forslag-data.js" defer></script>
+  <script src="meny-forslag.js" defer></script>
+  <style>
+    .mp-code { font-family: "JetBrains Mono", monospace; font-size: var(--fs-caption); line-height: var(--lh-relaxed); background: var(--color-bg-surface-alt); border: var(--bw-1) solid var(--color-border-soft); border-radius: var(--r-md); padding: var(--s-4); overflow-x: auto; white-space: pre; margin: var(--s-3) 0 0; color: var(--color-text-primary); }
+    .mp-card code, .mp-table code { font-family: "JetBrains Mono", monospace; font-size: 0.92em; background: var(--color-bg-surface-alt); padding: 1px 4px; border-radius: var(--r-sm); }
+    .mp-callout { border-left: var(--bw-3) solid var(--mj-orange); }
+  </style>
+</head>
+<body>
+
+<div class="mp-banner">
+  <span><strong>Exploration</strong> · Product menu, proposal A (chosen) · developer handoff · 20.11.2026</span>
+  <a href="meny-forslag.html">Norsk versjon med alle tre forslag →</a>
+</div>
+
+<main class="mp-wrap" data-demo>
+
+  <header class="mp-hero">
+    <p class="mp-eyebrow">Product menu</p>
+    <h1>Department menu (A) - for developers</h1>
+    <p>Proposal A was chosen on 20.11.2026. The demo below is clickable and runs on Molde Jarnvare's real category tree from <code>/mj/web/api/navigation/menu?areaId=27</code>: 15 main categories, 125 subcategories and 445 on the third level. The explanations are in English. The menu copy stays in Norwegian because that is what ships, and there is a glossary at the bottom. Proposals B and C were dropped (C because the site search already does the job) and are only on the Norwegian page.</p>
+  </header>
+
+  <!-- ── Today's menu ─────────────────────────────────────────────────── -->
+  <section>
+    <h2 class="mp-h2">Why today's menu does not work</h2>
+    <div class="mp-cards">
+      <article class="mp-card mp-card--problem">
+        <h3>A wall of 125 links</h3>
+        <p>«Produkter» opens all 15 main categories with every subcategory at once, equally weighted, in one panel that has to be scrolled.</p>
+      </article>
+      <article class="mp-card mp-card--problem">
+        <h3>UPPER CASE FROM BC</h3>
+        <p>Names are shown as they are in BC. All-caps text is slower to read and looks like shouting.</p>
+      </article>
+      <article class="mp-card mp-card--problem">
+        <h3>445 categories are invisible</h3>
+        <p>The third level («Sekskantskruer», «Spiralbor (HSS)») is not shown, yet that is where professionals actually shop.</p>
+      </article>
+      <article class="mp-card mp-card--problem">
+        <h3>The menu knows nothing about the customer</h3>
+        <p>Trade customers buy the same things again and again, but the menu looks the same for everyone.</p>
+      </article>
+    </div>
+  </section>
+
+  <!-- ── A ───────────────────────────────────────────────────────────── -->
+  <section class="mp-proposal" id="a">
+    <div class="mp-proposal__head">
+      <span class="mp-letter">A</span>
+      <div>
+        <h2>Department menu <span class="mp-badge">Chosen 20.11.2026</span></h2>
+        <p>The main categories sit in a fixed rail on the left. The one you point at opens all its level 2 and level 3 subcategories in the panel next to it, with a content area for campaigns and services on the right. Logged-in customers get «Dine kategorier» (your categories) at the top. Mobile: a drill-down menu with the categories directly on the first level.</p>
+      </div>
+    </div>
+
+    <div class="mp-why">
+      <article class="mp-card">
+        <h3>Why this is a good choice</h3>
+        <ul>
+          <li><b>15 choices instead of 125.</b> One short list with icon and count, then level 2 and 3 for one category at a time.</li>
+          <li><b>All subcategories visible, no «+ N more».</b> Four columns fit everything in 14 of 15 categories without scrolling. Verktøy og redskap (113 links) gets the full width and five columns.</li>
+          <li><b>Content area per main category, managed in the CMS:</b> campaign or news on top, then the services and supply solutions that belong to the category.</li>
+          <li><b>Your categories for logged-in customers:</b> the customer's regular categories from their BC orders, one click away. Subcategories they bought from get a dot in every department.</li>
+          <li><b>Well-known pattern</b> from Grainger and Home Depot, with a 300 ms hover delay so it does not flicker.</li>
+        </ul>
+      </article>
+      <article class="mp-card">
+        <h3>Inspired by</h3>
+        <p>Grainger, Home Depot (rail + panel, «Buy It Again»), Digi-Key (counts), McMaster-Carr (specs as navigation).</p>
+      </article>
+      <article class="mp-card">
+        <h3>Downsides</h3>
+        <p>A rail shows only one department's content at a time; a customer who does not know where an item lives has to point through several. The search and «Dine kategorier» reduce this. The content area needs a CMS field per main category that someone keeps up to date. On mobile, NN/g warns against drill-down menus, so the back button must name the level («‹ Festemidler»).</p>
+      </article>
+    </div>
+
+    <div class="mp-stage">
+      <div class="mp-viewer" role="group" aria-label="Show the menu as">
+        <span>Show as:</span>
+        <button type="button" class="mp-chip mp-chip--tab" data-viewer="in" aria-pressed="true">Logged-in customer</button>
+        <button type="button" class="mp-chip mp-chip--tab" data-viewer="anon" aria-pressed="false">Anonymous</button>
+      </div>
+      <div class="mp-frame">
+        <div class="mp-bar">
+          <span class="mp-bar__logo">MOLDE JARNVARE</span>
+          <span class="mp-bar__search">Søk i 30 000+ artikler, NOBB-nr, EAN …</span>
+          <nav class="mp-bar__nav"><b>Produkter ▴</b><span>Forsyningsløsninger ▾</span><span>Øvrige tjenester ▾</span><span>Kontakt</span></nav>
+        </div>
+        <div class="mp-dept" data-proposal="dept">
+          <ul class="mp-rail" data-rail aria-label="Hovedkategorier"></ul>
+          <div class="mp-dept__panel" data-panel></div>
+        </div>
+      </div>
+      <div>
+        <p class="mp-stage__label">Mobile · tap down and back</p>
+        <div class="mp-phone">
+          <div class="mp-phone__bar"><span>✕ Lukk</span><span class="mp-bar__logo">MOLDE JARNVARE</span><span>Meny</span></div>
+          <div class="mp-phone__screen" data-proposal="drill"><div data-drill></div></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── Behaviour ───────────────────────────────────────────────────── -->
+  <section>
+    <h2 class="mp-h2">Behaviour</h2>
+    <div class="mp-cards">
+      <article class="mp-card">
+        <h3>Desktop</h3>
+        <ul>
+          <li>Hovering a rail item switches the panel after <b>300 ms</b>, so the mouse can move diagonally to the panel without switching. Click and keyboard focus switch at once; arrow up/down moves between rail items.</li>
+          <li>Logged in: «Dine kategorier» is the first rail item and is open when the menu opens. Anonymous: Festemidler is open.</li>
+          <li>All level 3 links are shown under their level 2 heading in a 4-column layout. Level 2 headings are links too.</li>
+          <li>Over 90 links in a department: the groups take the full width in 5 columns and the content area moves below.</li>
+          <li>The panel head has «Se alle N produkter» for the department. When the customer has bought from it: «Dere har kjøpt fra N av disse».</li>
+          <li>Labels are shown in sentence case; abbreviations stay upper case (DIN, ISO, HSS, SDS, TIG, MIG/MAG, MMA, PTFE, LOTO).</li>
+        </ul>
+      </article>
+      <article class="mp-card">
+        <h3>Mobile</h3>
+        <ul>
+          <li>First level: search field, «Dine kategorier» as a horizontally scrolling row of chips (logged in only), then the 15 main categories with icon and count.</li>
+          <li>Each level starts with «Se alle i …» and the back button names the parent level.</li>
+          <li>Dots show the way down: on a level 2 item that holds a category the customer bought from, and on that level 3 category itself.</li>
+        </ul>
+      </article>
+      <article class="mp-card">
+        <h3>Content area (CMS)</h3>
+        <ul>
+          <li>Per main category: an optional campaign (image, tag, title, text, link) and 0-3 links to services or supply solutions.</li>
+          <li>Without a campaign, only the links are shown. Without either, a default (contact a product manager).</li>
+          <li>In «Dine kategorier» the campaign is chosen from the existing CMS campaigns, by the customer's categories («I dine kategorier»).</li>
+        </ul>
+      </article>
+    </div>
+  </section>
+
+  <!-- ── Your categories: data ───────────────────────────────────────── -->
+  <section>
+    <h2 class="mp-h2">«Dine kategorier»: data, storage and load</h2>
+    <div class="mp-cards">
+      <article class="mp-card">
+        <h3>Source: already in Dynamicweb</h3>
+        <p>BC order sync (AB#20048) copies the BC orders of every web shop customer into <code>EcomOrders</code> / <code>EcomOrderLines</code>, including orders not placed on the web, with posted invoices for the last 730 days (<code>BcOrderSyncSettings.ImportFromDays</code>). No new BC integration is needed. The owner rule can be the same as in <code>MyOrdersReader</code>: <code>OrderCustomerNumber</code>, or the user id when there is no customer number.</p>
+      </article>
+      <article class="mp-card">
+        <h3>Computed nightly, stored small</h3>
+        <ul>
+          <li>One SQL aggregate per night, e.g. as a step after the nightly full BC order sync, or as its own scheduled task.</li>
+          <li>Order lines → the product's primary group (level 3) → grouped per customer.</li>
+          <li><b>Count orders, not quantity</b>, or 1 000 screws always beat one drill. Weight by recency, e.g. 1.0 for the last 3 months, 0.5 within a year, 0.25 older.</li>
+          <li>Keep the top 8-12 per customer. Skip inactive products and groups no longer in the menu.</li>
+          <li>A few thousand customers × 12 rows is a tiny table.</li>
+        </ul>
+      </article>
+      <article class="mp-card mp-callout">
+        <h3>Must not slow the menu down</h3>
+        <ul>
+          <li>The menu tree stays the same for everyone and is cached as today (<code>navigation:menu</code> / <code>pages:area:N</code> tags).</li>
+          <li>«Dine kategorier» is a separate small call (~1 KB) made only when logged in, after the menu has rendered. It reads precomputed rows for one customer and can be cached per session.</li>
+          <li><b>Nothing is counted per category when the menu renders.</b> The per-category product counts in the side menu caused the bursts of 585 queries and the PROD outage on 19-20.11 (AB#20648).</li>
+        </ul>
+      </article>
+    </div>
+
+    <pre class="mp-code">-- Sketch only: table and column names to be confirmed, especially how the primary group is stored.
+-- Nightly: rebuild MjCustomerCategories (CustomerNumber, GroupId, Orders, LastPurchased, Score, Rank)
+WITH bought AS (            -- one row per customer, group and order, however many lines
+  SELECT DISTINCT o.OrderCustomerNumber AS CustomerNumber, g.GroupId, o.OrderId, o.OrderCompletedDate AS Day
+  FROM EcomOrders o
+  JOIN EcomOrderLines l ON l.OrderLineOrderId = o.OrderId
+  JOIN &lt;primary group of l.OrderLineProductId&gt; g      -- the product's level 3 group
+  WHERE o.OrderComplete = 1 AND o.OrderCart = 0 AND ISNULL(o.OrderDeleted, 0) = 0
+    AND o.OrderCompletedDate &gt;= DATEADD(month, -24, GETDATE())
+), scored AS (
+  SELECT CustomerNumber, GroupId,
+         COUNT(*) AS Orders,
+         MAX(Day) AS LastPurchased,
+         SUM(CASE WHEN Day &gt;= DATEADD(month, -3, GETDATE()) THEN 1.0
+                  WHEN Day &gt;= DATEADD(month, -12, GETDATE()) THEN 0.5 ELSE 0.25 END) AS Score
+  FROM bought GROUP BY CustomerNumber, GroupId
+)
+SELECT *, ROW_NUMBER() OVER (PARTITION BY CustomerNumber ORDER BY Score DESC, LastPurchased DESC) AS Rank
+FROM scored                 -- keep Rank &lt;= 12</pre>
+
+    <div class="mp-cards" style="margin-top: var(--s-4)">
+      <article class="mp-card">
+        <h3>Endpoint (suggestion)</h3>
+        <p>For example <code>GET /mj/web/api/account/my-categories</code>, returning up to 12 items: <code>groupId</code>, label path (L1 › L2 › L3), <code>url</code>, <code>orders</code>, <code>lastPurchased</code>. Private, never cached across users. When a salesperson acts on behalf of a customer, it returns the acting customer's categories. Customers with no orders get an empty list, and the menu hides the section.</p>
+      </article>
+      <article class="mp-card">
+        <h3>Questions for you</h3>
+        <ul>
+          <li>Where is the product's primary group (BC's PIM master group) stored in DW, and is it set for all products?</li>
+          <li>Step in the BC order sync task, or its own scheduled task?</li>
+          <li>The design shows a product count per main category. The menu payload has no counts today. Can they come precomputed (nightly or from the index), or do we drop them?</li>
+          <li>Your estimate. My rough guess is 2-3 days for backend and frontend together, as a separate change.</li>
+        </ul>
+      </article>
+    </div>
+  </section>
+
+  <!-- ── Order ───────────────────────────────────────────────────────── -->
+  <section class="mp-reco">
+    <div>
+      <p class="mp-eyebrow">Chosen 20.11.2026</p>
+      <h2>Department menu (A)</h2>
+      <p>Known from the largest B2B shops, shows every subcategory and fixes the wall of links. Can be built in steps.</p>
+    </div>
+    <div>
+      <p class="mp-eyebrow">Order</p>
+      <ol>
+        <li><b>Now, with today's data:</b> rail and panel with all subcategories, sentence case and icons. Drill-down menu on mobile.</li>
+        <li><b>Content area:</b> a CMS field per main category for campaign, news and services.</li>
+        <li><b>Dine kategorier:</b> nightly aggregate, small table and endpoint, menu section on desktop and mobile. New scope, separate change.</li>
+        <li><b>Before launch:</b> a short test with 5 customers: find hex screws, work gloves and a hydraulic hose.</li>
+      </ol>
+    </div>
+  </section>
+
+  <!-- ── Glossary ────────────────────────────────────────────────────── -->
+  <section>
+    <h2 class="mp-h2">Glossary of the menu copy</h2>
+    <table class="mp-table">
+      <thead><tr><th>Norwegian (shipped)</th><th>English</th></tr></thead>
+      <tbody>
+        <tr><td>Dine kategorier</td><td>Your categories</td></tr>
+        <tr><td>Kjøp igjen fra tidligere ordrer</td><td>Buy again from previous orders</td></tr>
+        <tr><td>23 ordrer · sist 14.11</td><td>23 orders · last 14.11</td></tr>
+        <tr><td>Dere har kjøpt fra 3 av disse</td><td>You have bought from 3 of these</td></tr>
+        <tr><td>(kjøpt før)</td><td>(bought before) - screen reader text for the dot</td></tr>
+        <tr><td>I dine kategorier</td><td>In your categories - campaign tag</td></tr>
+        <tr><td>Tidligere ordrer</td><td>Previous orders</td></tr>
+        <tr><td>Se alle 1 068 produkter / Se alle i …</td><td>See all 1,068 products / See all in …</td></tr>
+        <tr><td>Kampanje · Nyhet · Tjeneste · Forsyningsløsning</td><td>Campaign · News · Service · Supply solution</td></tr>
+        <tr><td>Alle produkter · Lukk · Meny</td><td>All products · Close · Menu</td></tr>
+      </tbody>
+    </table>
+  </section>
+
+  <section>
+    <h2 class="mp-h2">Sources</h2>
+    <div class="mp-cards">
+      <article class="mp-card">
+        <h3>Research</h3>
+        <ul>
+          <li><a href="https://baymard.com/blog/ecommerce-navigation-best-practice">Baymard: E-commerce navigation best practices</a></li>
+          <li><a href="https://baymard.com/blog/dropdown-menu-flickering-issue">Baymard: Dropdown menu flickering</a></li>
+          <li><a href="https://baymard.com/blog/mobile-main-nav-view-all">Baymard: «View all» in mobile navigation</a></li>
+          <li><a href="https://www.nngroup.com/articles/mega-menus-work-well/">NN/g: Mega menus work well</a></li>
+          <li><a href="https://www.nngroup.com/articles/mobile-subnavigation/">NN/g: Mobile subnavigation</a></li>
+        </ul>
+      </article>
+      <article class="mp-card">
+        <h3>Code referenced</h3>
+        <ul>
+          <li>Backend: <code>DomainServices/OrderSync/BcOrderSyncDomainService.cs</code>, <code>Models/OrderSync/BcOrderSync.cs</code>, <code>DomainServices/Account/Readers/MyOrdersReader.cs</code></li>
+          <li>Frontend: <code>src/lib/dynamicweb/menu.ts</code></li>
+          <li>Demo: <code>docs/explorations/meny-forslag.js</code> and <code>meny-forslag-data.js</code> in this repo</li>
+        </ul>
+      </article>
+    </div>
+  </section>
+
+</main>
+</body>
+</html>

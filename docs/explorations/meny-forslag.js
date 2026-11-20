@@ -75,6 +75,19 @@
      Rangert etter hvor ofte og hvor nylig; «ordrer» teller ordrer med varer fra kategorien, ikke antall varer.
      Eksempelkunde: et mekanisk verksted. */
   var MINE_URL = "#mine";
+  // Merknadene i demoen følger språket på siden (meny-forslag-en.html er for utviklerne); teksten i selve menyen er alltid norsk.
+  var DOT_NOTE = '<span class="mp-dot" aria-hidden="true"></span>';
+  var NOTE = document.documentElement.lang === "en"
+    ? {
+        mine: "Ranked by how often and how recently the customer bought, last 24 months. Computed nightly from the BC orders. Subcategories the customer bought from are marked " + DOT_NOTE + " in every department. Example customer.",
+        mineAside: "The campaign is picked from those in the CMS, based on the customer's categories.",
+        promo: "Example content - managed in the CMS per main category.",
+      }
+    : {
+        mine: "Rangert etter hvor ofte og hvor nylig dere har kjøpt, siste 24 måneder. Regnes ut hver natt fra ordrene i BC. Underkategorier dere har kjøpt fra, er merket " + DOT_NOTE + " i alle avdelingene. Eksempelkunde.",
+        mineAside: "Kampanjen velges blant dem som ligger i CMS, ut fra kundens kategorier.",
+        promo: "Eksempelinnhold - styres i CMS per hovedkategori.",
+      };
   var MINE_A = [
     { l1: "/festemidler", l2: "SKRUER OG BOLTER", l3: "SEKSKANTSKRUER", orders: 23, last: "14.11" },
     { l1: "/festemidler", l2: "MUTTERE", l3: "SEKSKANTMUTTERE", orders: 19, last: "14.11" },
@@ -109,8 +122,7 @@
         );
       }).join("") +
       "</div>" +
-      '<p class="mp-note">Rangert etter hvor ofte og hvor nylig dere har kjøpt, siste 24 måneder. Regnes ut hver natt fra ordrene i BC. ' +
-      'Underkategorier dere har kjøpt fra, er merket <span class="mp-dot" aria-hidden="true"></span> i alle avdelingene. Eksempelkunde.</p></div>' +
+      '<p class="mp-note">' + NOTE.mine + "</p></div>" +
       renderMineAside() + "</div>"
     );
   }
@@ -125,7 +137,7 @@
           '<span class="mp-tag">I dine kategorier</span><b>' + esc(hit.c.title) + "</b><span>" + esc(hit.c.text) + '</span><span class="mp-promo__cta">' + hit.c.cta + " " + CHEV + "</span></a>"
         : "") +
       '<a class="mp-promo-link" href="#"><span class="mp-overline">Konto</span><b>Tidligere ordrer</b><span>Finn en ordre og legg hele eller deler av den i handlekurven.</span></a>' +
-      '<p class="mp-note">Kampanjen velges blant dem som ligger i CMS, ut fra kundens kategorier.</p></aside>'
+      '<p class="mp-note">' + NOTE.mineAside + "</p></aside>"
     );
   }
 
@@ -175,7 +187,7 @@
       promo.links.map(function (l) {
         return '<a class="mp-promo-link" href="#"><span class="mp-overline">' + l.tag + "</span><b>" + esc(l.title) + "</b><span>" + esc(l.text) + "</span></a>";
       }).join("") +
-      '<p class="mp-note">Eksempelinnhold - styres i CMS per hovedkategori.</p></aside>'
+      '<p class="mp-note">' + NOTE.promo + "</p></aside>"
     );
   }
 
