@@ -263,6 +263,20 @@
 .ms-table td:first-child { font-weight: var(--fw-semibold); white-space: nowrap; }
 .ms-table td:nth-child(2) { color: var(--color-text-secondary); }
 
-@media (max-width: 640px) {
+/* Smal skjerm: demoen viser alltid mobilversjonen, og ingenting får dytte siden bredere */
+.ms-frame { min-width: 0; }
+@media (max-width: 720px) {
   .ms-stage { padding: var(--s-3); }
+  .ms-header { flex-wrap: wrap; gap: var(--s-3); padding: var(--s-3) var(--s-4); }
+  .ms-header__logo { height: 26px; }
+  .ms-header__nav { display: none; }
+  .ms-header__search { order: 3; flex-basis: 100%; }
+  .ms-header__icons { margin-left: auto; }
+  .ms-page { padding: var(--s-4); }
+  .ms-page__row { grid-template-columns: repeat(2, 1fr); }
+  .ms-topbar { justify-content: flex-start; text-align: left; padding-left: var(--s-4); }
+  .ms-frame .ms-box { left: var(--s-3); right: var(--s-3); bottom: var(--s-3); width: auto; max-width: none; animation-name: ms-box-up; }
+  .ms-frame .ms-box__media { display: none; }
+  .ms-frame .ms-box__body { padding: var(--s-4); }
+  .ms-swatches { grid-template-columns: minmax(0, 1fr); }
 }
