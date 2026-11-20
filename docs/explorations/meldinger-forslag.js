@@ -50,10 +50,13 @@
 
   function find(list, key) { for (var i = 0; i < list.length; i++) if (list[i].key === key) return list[i]; return list[0]; }
 
+  // Tall-spenn som «07-16» og «1-2» skal ikke deles over to linjer
+  function keepRanges(text) { return text.replace(/(\d)-(\d)/g, "$1‑$2"); }
+
   function bannerHtml(t, o) {
     return '<div class="ms-topbar ' + t.mod + '" role="region" aria-label="Melding">' +
       (o.icon ? svg(t.icon, "ms-topbar__icon") : "") +
-      '<p class="ms-topbar__text">' + t.text +
+      '<p class="ms-topbar__text">' + keepRanges(t.text) +
       (o.link ? '<a class="ms-topbar__link" href="#" data-noop>' + t.link + " →</a>" : "") + "</p>" +
       (o.close ? '<button type="button" class="ms-topbar__close" aria-label="Lukk meldingen" data-close="banner">' + svg("close") + "</button>" : "") +
       "</div>";
