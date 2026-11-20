@@ -1,0 +1,322 @@
+<!doctype html>
+<html lang="nb">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Produktmenyen - tre forslag - Molde Jarnvare</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Source+Sans+3:wght@400;500;600;700;900&family=JetBrains+Mono:wght@400&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../../src/styles/index.css">
+  <link rel="stylesheet" href="meny-forslag.css">
+  <script src="meny-forslag-data.js" defer></script>
+  <script src="meny-forslag.js" defer></script>
+</head>
+<body>
+
+<div class="mp-banner">
+  <span><strong>Utforskning</strong> · Forslag til ny produktmeny, desktop og mobil · 20.11.2026</span>
+  <a href="../../src/pages/index.html">← Til sideoversikten</a>
+</div>
+
+<main class="mp-wrap" data-demo>
+
+  <header class="mp-hero">
+    <p class="mp-eyebrow">Produktmenyen</p>
+    <h1>Tre forslag til en meny proffene finner fram i</h1>
+    <p>Alle forslagene er klikkbare og bygget på Molde Jarnvares ekte kategoritre: 15 hovedkategorier, 125 underkategorier og 445 på tredje nivå, med antall produkter fra nettbutikken. Hvert forslag har både desktop og mobil, og en begrunnelse for hvorfor det er et godt valg.</p>
+  </header>
+
+  <!-- ── Dagens meny ─────────────────────────────────────────────────── -->
+  <section>
+    <h2 class="mp-h2">Hvorfor dagens meny ikke virker</h2>
+    <div class="mp-cards">
+      <article class="mp-card mp-card--problem">
+        <h3>En vegg av 125 lenker</h3>
+        <p>«Produkter» åpner alle 15 hovedkategorier med alle underkategorier samtidig, likt vektet, i ett panel som må scrolles. Øyet har ingenting å hvile på.</p>
+      </article>
+      <article class="mp-card mp-card--problem">
+        <h3>STORE BOKSTAVER FRA BC</h3>
+        <p>Navnene vises som de står i BC. Tekst i store bokstaver er tregere å lese fordi ordbildene forsvinner, og den ser ut som den roper.</p>
+      </article>
+      <article class="mp-card mp-card--problem">
+        <h3>445 kategorier er usynlige</h3>
+        <p>Tredje nivå («Sekskantskruer», «Arbeids- og monteringshansker», «Spiralbor (HSS)») vises ikke. Det er der proffene faktisk handler, så de må klikke seg ned via listesider.</p>
+      </article>
+      <article class="mp-card mp-card--problem">
+        <h3>Ingen snarvei for den som vet</h3>
+        <p>En kunde som vil ha DIN 933 i M8 må gjennom kategori, liste og filter. Menyen vet ingenting om kunden, standarder eller hva som ble kjøpt sist.</p>
+      </article>
+    </div>
+  </section>
+
+  <!-- ── Research ────────────────────────────────────────────────────── -->
+  <section>
+    <h2 class="mp-h2">Hva de beste gjør</h2>
+    <div class="mp-cards">
+      <article class="mp-card mp-card--source">
+        <h3>McMaster-Carr</h3>
+        <p><b>Søk først, nesten ingen meny.</b> Kategorisider med bilder og antall, og filtre som tegninger: hodetype, drev, <b>DIN/ISO-standard</b> og fasthetsklasse 8.8. Bildene er selve navigasjonen.</p>
+      </article>
+      <article class="mp-card mp-card--source">
+        <h3>Digi-Key</h3>
+        <p><b>Hele treet på én side, med antall</b> på hver gren («Barrel Power Cables 936»). Kan søkes med Ctrl+F. Ekspertene elsker det, nybegynnere går seg vill.</p>
+      </article>
+      <article class="mp-card mp-card--source">
+        <h3>Grainger og Home Depot</h3>
+        <p><b>Kategorirail til venstre, panel til høyre</b> med nivå 2 og 3. Proffverktøyene ligger ved siden av: lister, ordrehistorikk og «Buy It Again».</p>
+      </article>
+      <article class="mp-card mp-card--source">
+        <h3>Würth, Ahlsell og RS</h3>
+        <p><b>Enkel tekstmeny, sterke bestillingsverktøy:</b> «Bestill direkte» på varenummer, innkjøpslister, BOM-opplasting. Würth og Ahlsell lar deg også gå inn via bransje.</p>
+      </article>
+    </div>
+    <div class="mp-cards" style="margin-top: var(--s-4)">
+      <article class="mp-card">
+        <h3>Mønsteret</h3>
+        <p>De beste B2B-butikkene legger kreftene i søk, hurtigbestilling og ordrehistorikk, mens selve menyen er en vanlig tekstkaskade. <b>Ingen vi så kobler menyen til spesifikasjoner eller kundens egne kjøp.</b> Det er åpningen for Molde Jarnvare.</p>
+      </article>
+      <article class="mp-card">
+        <h3>Det forskningen sier (Baymard, NN/g)</h3>
+        <ul>
+          <li>Vent 300-500 ms før menyen bytter ved hover, ellers flimrer den.</li>
+          <li>Bredt panel uten egen scroll. Del lister rundt 10 punkter.</li>
+          <li>Overskrifter i menyen må være klikkbare.</li>
+          <li>«Se alle i …» øverst på hvert nivå på mobil.</li>
+          <li>Kategorier rett på første nivå i mobilmenyen, ikke bak «Produkter».</li>
+          <li>Dimensjon og standard bør være filtre, ikke kategorier.</li>
+        </ul>
+      </article>
+    </div>
+  </section>
+
+  <!-- ── A ───────────────────────────────────────────────────────────── -->
+  <section class="mp-proposal" id="a">
+    <div class="mp-proposal__head">
+      <span class="mp-letter">A</span>
+      <div>
+        <h2>Avdelingsmeny <span class="mp-badge">Trygt og velprøvd</span></h2>
+        <p>Hovedkategoriene står fast i en rail til venstre. Den du peker på, åpner nivå 2 og 3 i panelet ved siden av, med snarveier til høyre. Mobil: trinnvis meny med kategoriene rett på første nivå.</p>
+      </div>
+    </div>
+
+    <div class="mp-why">
+      <article class="mp-card">
+        <h3>Hvorfor dette er et godt valg</h3>
+        <ul>
+          <li><b>15 valg i stedet for 125.</b> Øyet skanner én kort liste med ikon og antall, og får nivå 2 og 3 for én kategori om gangen.</li>
+          <li><b>Tredje nivå blir synlig.</b> Inntil 5 per gruppe pluss «+ N til», så panelet holder seg uten scroll. Kategorier med over 12 grupper (Verktøy og redskap har 22) viser bare nivå 2, med antall under hver.</li>
+          <li><b>Antall produkter</b> viser hvor tyngden er (Verktøy 2 826, Hydraulikk 1 882).</li>
+          <li><b>Snarveier per kategori.</b> For festemidler: standard, dimensjon og kvalitet rett i menyen.</li>
+          <li><b>Velkjent mønster</b> fra Grainger og Home Depot, med 300 ms forsinkelse så den ikke flimrer.</li>
+        </ul>
+      </article>
+      <article class="mp-card">
+        <h3>Inspirert av</h3>
+        <p>Grainger, Home Depot (rail + panel), Digi-Key (antall), McMaster-Carr (spesifikasjon som navigasjon).</p>
+      </article>
+      <article class="mp-card">
+        <h3>Ulemper og hva det krever</h3>
+        <p>Rail-mønsteret får kritikk for å skjule de andre kategorienes innhold. Snarveiene for festemidler krever at standard, dimensjon og kvalitet blir filtre i produktindeksen. På mobil advarer NN/g mot trinnvise menyer, så tilbake-knappen må navngi nivået («‹ Festemidler»).</p>
+      </article>
+    </div>
+
+    <div class="mp-stage">
+      <div class="mp-frame">
+        <div class="mp-bar">
+          <span class="mp-bar__logo">MOLDE JARNVARE</span>
+          <span class="mp-bar__search">Søk i 30 000+ artikler, NOBB-nr, EAN …</span>
+          <nav class="mp-bar__nav"><b>Produkter ▴</b><span>Forsyningsløsninger ▾</span><span>Øvrige tjenester ▾</span><span>Kontakt</span></nav>
+        </div>
+        <div class="mp-dept" data-proposal="dept">
+          <ul class="mp-rail" data-rail aria-label="Hovedkategorier"></ul>
+          <div class="mp-dept__panel" data-panel></div>
+        </div>
+      </div>
+      <div>
+        <p class="mp-stage__label">Mobil · trykk deg ned og tilbake</p>
+        <div class="mp-phone">
+          <div class="mp-phone__bar"><span>✕ Lukk</span><span class="mp-bar__logo">MOLDE JARNVARE</span><span>Meny</span></div>
+          <div class="mp-phone__screen" data-proposal="drill"><div data-drill></div></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── B ───────────────────────────────────────────────────────────── -->
+  <section class="mp-proposal" id="b">
+    <div class="mp-proposal__head">
+      <span class="mp-letter">B</span>
+      <div>
+        <h2>Katalog i fire verdener <span class="mp-badge">Raskest å skanne</span></h2>
+        <p>De 15 hovedkategoriene samles i fire verdener etter hvordan kundene jobber. Hver verden viser alle sine kategorier side om side. Mobil: verdenene som knapper øverst, kategoriene som trekkspill under.</p>
+      </div>
+    </div>
+
+    <div class="mp-why">
+      <article class="mp-card">
+        <h3>Hvorfor dette er et godt valg</h3>
+        <ul>
+          <li><b>4 valg før 15.</b> En sveiser går rett til «Verktøy og maskiner», en HMS-ansvarlig til «HMS og drift».</li>
+          <li><b>Oversikt uten klikk.</b> En hel verden med 3-5 hovedkategorier og alle underkategoriene vises samtidig, som en katalogside.</li>
+          <li><b>Ingen flimring.</b> Fire store faner er lette å treffe, og panelet bytter ikke mens musa krysser lister.</li>
+          <li><b>Trekkspill på mobil</b> er det NN/g anbefaler for 6-15 underpunkter, og kunden ser hvor hun er hele tiden.</li>
+        </ul>
+      </article>
+      <article class="mp-card">
+        <h3>Inspirert av</h3>
+        <p>McMaster-Carr (katalogtanken), RS Components (grupperte hovedkategorier), Hornbach og Würth (inngang etter bruk og bransje).</p>
+      </article>
+      <article class="mp-card">
+        <h3>Ulemper og hva det krever</h3>
+        <p>Inndelingen i verdener er vår, ikke BCs. Den må testes med 5-8 kunder (kortsortering) før den låses. Tredje nivå vises ikke i menyen. Noen kategorier passer i to verdener (for eksempel Løft og lastsikring).</p>
+      </article>
+    </div>
+
+    <div class="mp-stage">
+      <div class="mp-frame">
+        <div class="mp-bar">
+          <span class="mp-bar__logo">MOLDE JARNVARE</span>
+          <span class="mp-bar__search">Søk i 30 000+ artikler, NOBB-nr, EAN …</span>
+          <nav class="mp-bar__nav"><b>Produkter ▴</b><span>Forsyningsløsninger ▾</span><span>Øvrige tjenester ▾</span><span>Kontakt</span></nav>
+        </div>
+        <div class="mp-cat" data-proposal="catalog">
+          <div class="mp-cat__tabs" role="tablist" data-tabs></div>
+          <div class="mp-cat__body" data-body></div>
+        </div>
+      </div>
+      <div>
+        <p class="mp-stage__label">Mobil · velg verden, åpne en kategori</p>
+        <div class="mp-phone">
+          <div class="mp-phone__bar"><span>✕ Lukk</span><span class="mp-bar__logo">MOLDE JARNVARE</span><span>Meny</span></div>
+          <div class="mp-phone__screen" data-proposal="catalog-m">
+            <div class="mp-m__chips" data-chips></div>
+            <div data-list></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── C ───────────────────────────────────────────────────────────── -->
+  <section class="mp-proposal mp-proposal--new" id="c">
+    <div class="mp-proposal__head">
+      <span class="mp-letter">C</span>
+      <div>
+        <h2>«Finn» - menyen som forstår proffene <span class="mp-badge mp-badge--new">Nytt, ikke sett hos andre</span></h2>
+        <p>Menyen åpner med et felt som filtrerer alle 585 kategoriene mens du skriver, og som kjenner igjen standard (DIN 933), dimensjon (M8 × 40) og varenummer. Før du skriver: dine mest kjøpte kategorier og alle hovedkategorier. Skriv selv i feltet, eller trykk på eksemplene.</p>
+      </div>
+    </div>
+
+    <div class="mp-why">
+      <article class="mp-card">
+        <h3>Hvorfor dette er et godt valg</h3>
+        <ul>
+          <li><b>Proffene vet hva de skal ha.</b> «DIN 933», «M8» eller et varenummer er raskere å skrive enn å lete fram. Menyen gjenkjenner det og går rett dit.</li>
+          <li><b>585 kategorier på ett tastetrykk.</b> «slange» finner blant annet Hydraulikk- og gummislanger, Trykkluftslanger og Vanning og hageslanger, med stien til hver.</li>
+          <li><b>Holder sammenhengen</b> som et vanlig søk mister: treffet er en kategori, ikke 400 produkter.</li>
+          <li><b>Personlig.</b> Kunder som handler ofte, ser sine egne kategorier først. Ingen av butikkene vi så, har det i menyen.</li>
+          <li><b>Tastatur hele veien:</b> skriv, ↑↓, Enter.</li>
+        </ul>
+      </article>
+      <article class="mp-card">
+        <h3>Inspirert av</h3>
+        <p>Digi-Key (hele treet, søkbart), McMaster-Carr (standard som filter), kommandopaletter i programvare (Slack, VS Code), «Buy It Again» hos Home Depot.</p>
+      </article>
+      <article class="mp-card">
+        <h3>Ulemper og hva det krever</h3>
+        <p>Nytt mønster, så det må testes med kunder. «Dine kategorier» krever en oppsummering av ordrehistorikken per kunde. Standard og dimensjon krever filtre i indeksen, akkurat som snarveiene i A. Kategorifiltreringen alene kan lages med dagens data.</p>
+      </article>
+    </div>
+
+    <div class="mp-stage">
+      <div class="mp-frame">
+        <div class="mp-bar">
+          <span class="mp-bar__logo">MOLDE JARNVARE</span>
+          <span class="mp-bar__search">Søk i 30 000+ artikler, NOBB-nr, EAN …</span>
+          <nav class="mp-bar__nav"><b>Produkter ▴</b><span>Forsyningsløsninger ▾</span><span>Øvrige tjenester ▾</span><span>Kontakt</span></nav>
+        </div>
+        <div class="mp-find" data-proposal="find">
+          <label class="mp-find__field">
+            <svg class="mp-ico" viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.35-4.35"/></svg>
+            <input type="search" data-find placeholder="Finn kategori, standard (DIN 933), dimensjon (M8) eller varenummer" aria-label="Finn i produktmenyen">
+            <kbd>Esc</kbd>
+          </label>
+          <div class="mp-find__out" data-results></div>
+        </div>
+      </div>
+      <div>
+        <p class="mp-stage__label">Mobil · samme felt øverst i menyen</p>
+        <div class="mp-phone">
+          <div class="mp-phone__bar"><span>✕ Lukk</span><span class="mp-bar__logo">MOLDE JARNVARE</span><span>Meny</span></div>
+          <div class="mp-phone__screen">
+            <div class="mp-find" data-proposal="find-m">
+              <label class="mp-find__field">
+                <svg class="mp-ico" viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.35-4.35"/></svg>
+                <input type="search" data-find placeholder="Finn kategori, DIN, M8 …" aria-label="Finn i produktmenyen">
+              </label>
+              <div class="mp-find__out" data-results></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── Anbefaling ──────────────────────────────────────────────────── -->
+  <section class="mp-reco">
+    <div>
+      <p class="mp-eyebrow">Anbefaling</p>
+      <h2>A som grunnmur, med «Finn» fra C øverst i panelet</h2>
+      <p>Avdelingsmenyen er det tryggeste valget. Den er kjent fra de største B2B-butikkene, viser tredje nivå og løser veggen av lenker. Legg filterfeltet fra C øverst i panelet og øverst i mobilmenyen. Da får proffene en snarvei ingen konkurrent har, uten at de som vil bla, mister noe.</p>
+    </div>
+    <div>
+      <p class="mp-eyebrow">Rekkefølge</p>
+      <ol>
+        <li><b>Nå, med dagens data:</b> avdelingsmeny (A), stor forbokstav, antall, ikoner, filterfelt for kategorier.</li>
+        <li><b>Neste:</b> «Dine kategorier» fra ordrehistorikken.</li>
+        <li><b>Når indeksen har filtrene:</b> standard, dimensjon og kvalitet som snarveier i festemidler og i «Finn».</li>
+        <li><b>Før lansering:</b> en kort test med 5 kunder: finn DIN 933 M8, arbeidshansker og en hydraulikkslange.</li>
+      </ol>
+    </div>
+  </section>
+
+  <!-- ── Rydd i treet ───────────────────────────────────────────────── -->
+  <section>
+    <h2 class="mp-h2">Uansett forslag: rydd i kategoritreet</h2>
+    <table class="mp-table">
+      <thead><tr><th>Funn i treet i dag</th><th>Eksempel</th><th>Forslag</th></tr></thead>
+      <tbody>
+        <tr><td>Store bokstaver</td><td>«SKRUER OG BOLTER»</td><td>Vis med stor forbokstav i menyen (gjort i alle forslagene), forkortelser som DIN, HSS og TIG beholdes. Eventuelt rett navnene i BC.</td></tr>
+        <tr><td>Dobbelt opp</td><td>«T-skjorter og pique» og «T-skjorter og piqué». «Filtre for åndedrettsvern» og «Filtre til åndedrettsvern».</td><td>Slå sammen i BC.</td></tr>
+        <tr><td>Samme gruppe to steder</td><td>«Filer og rasper» og «Håndbørster» under både Verktøy og Kapp- og slipeutstyr. «Sjakler» under to grupper i Løft og lastsikring.</td><td>Velg ett hjem. Lenk heller fra det andre stedet.</td></tr>
+        <tr><td>Tre kjettinggrupper</td><td>«Kjetting og komponenter», «… grade 80», «… grade 100»</td><td>Én gruppe med grade som filter (Baymard: filtre, ikke kategorier).</td></tr>
+        <tr><td>For brede hovedkategorier</td><td>«Verktøy og redskap» har 22 grupper og 2 826 produkter</td><td>Del i for eksempel Håndverktøy, Trykkluftverktøy og Måleverktøy. Forskningen anbefaler rundt 10 punkter per liste.</td></tr>
+        <tr><td>Merke som kategori</td><td>«Enerpac hydraulikkverktøy»</td><td>Flytt til Hydraulikkverktøy og bruk merke som filter.</td></tr>
+      </tbody>
+    </table>
+  </section>
+
+  <section>
+    <h2 class="mp-h2">Kilder</h2>
+    <div class="mp-cards">
+      <article class="mp-card">
+        <h3>Forskning</h3>
+        <ul>
+          <li><a href="https://baymard.com/blog/ecommerce-navigation-best-practice">Baymard: E-commerce navigation best practices</a></li>
+          <li><a href="https://baymard.com/blog/dropdown-menu-flickering-issue">Baymard: Dropdown menu flickering</a></li>
+          <li><a href="https://baymard.com/blog/mobile-main-nav-view-all">Baymard: «View all» in mobile navigation</a></li>
+          <li><a href="https://www.nngroup.com/articles/mega-menus-work-well/">NN/g: Mega menus work well</a></li>
+          <li><a href="https://www.nngroup.com/articles/mobile-subnavigation/">NN/g: Mobile subnavigation</a></li>
+        </ul>
+      </article>
+      <article class="mp-card">
+        <h3>Butikker sett på 20.11.2026</h3>
+        <p>McMaster-Carr, Digi-Key, RS Components, Würth Norge, Ahlsell, Toolstation og Hornbach er hentet direkte. Grainger, Home Depot, Screwfix, Fastenal og Zoro blokkerte henting, så det som står om dem bygger på dokumentasjon og kjent kunnskap.</p>
+      </article>
+    </div>
+  </section>
+
+</main>
+</body>
+</html>

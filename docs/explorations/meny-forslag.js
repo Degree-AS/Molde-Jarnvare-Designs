@@ -1,0 +1,453 @@
+/*
+ * Menyforslag (docs/explorations/meny-forslag.html): tre forslag til produktmeny, tegnet fra det ekte
+ * kategoritreet i meny-forslag-data.js. Ren JS uten avhengigheter.
+ *
+ *   A  Avdelingsmeny  - kategorirail + panel med nivå 2 og 3 (desktop), trinnvis meny (mobil)
+ *   B  Katalog        - hovedkategoriene samlet i fire «verdener» (desktop og mobil)
+ *   C  Finn           - søk-først-meny som filtrerer alle 585 kategorier og kjenner igjen
+ *                       standard, dimensjon og varenummer (desktop og mobil)
+ */
+(function () {
+  "use strict";
+
+  var MENU = window.MJ_MENU || [];
+
+  /* ── Tekst ─────────────────────────────────────────────────────────────── */
+
+  // BC-navnene er i store bokstaver. Menyen viser dem med stor forbokstav; forkortelser beholdes.
+  var KEEP = ["DIN", "ISO", "HSS", "SDS", "TIG", "MIG/MAG", "MMA", "PTFE", "LOTO", "MIG", "MAG"];
+  function nice(label) {
+    var s = String(label).toLowerCase();
+    s = s.charAt(0).toUpperCase() + s.slice(1);
+    KEEP.forEach(function (k) {
+      s = s.replace(new RegExp("(^|[^\\wæøå])" + k.toLowerCase().replace("/", "\\/") + "(?=$|[^\\wæøå])", "gi"), function (m, pre) {
+        return pre + k;
+      });
+    });
+    return s.replace(/\benerpac\b/gi, "Enerpac");
+  }
+
+  function esc(s) {
+    return String(s).replace(/[&<>"]/g, function (c) {
+      return { "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c];
+    });
+  }
+
+  var nf = new Intl.NumberFormat("nb-NO");
+  function count(n) {
+    return nf.format(n);
+  }
+
+  /* ── Ikoner per hovedkategori (strek, 24×24, samme stil som headeren) ───── */
+
+  var ICONS = {
+    "/festemidler": '<path d="M9 3h6l2 3-2 3H9L7 6z"/><path d="M10 9v10l2 2 2-2V9"/><path d="M10 12.5h4M10 15.5h4"/>',
+    "/bekledning-og-verneutstyr": '<path d="M4 16a8 8 0 0 1 16 0"/><path d="M2.5 16h19v2.5h-19z"/><path d="M12 8V5.5"/><path d="M9 9.5 8 6.8M15 9.5l1-2.7"/>',
+    "/olje-og-kjemikalier": '<path d="M12 3s6 6.6 6 10.8a6 6 0 0 1-12 0C6 9.6 12 3 12 3z"/><path d="M9.5 14.5a2.6 2.6 0 0 0 2.5 2.4"/>',
+    "/transport-og-innredning": '<path d="M5 3v18M19 3v18M5 8h14M5 13.5h14M5 19h14"/>',
+    "/rekvisita": '<circle cx="12" cy="12" r="8"/><circle cx="12" cy="12" r="3"/><path d="M20 12h2"/>',
+    "/verktoy-og-redskap": '<path d="M14.7 6.3a4 4 0 0 0-5.4 5.4L3.5 17.5l3 3 5.8-5.8a4 4 0 0 0 5.4-5.4l-2.4 2.4-2.4-.6-.6-2.4z"/>',
+    "/elektroverktoy-og-maskiner": '<path d="M3 7.5h11v6H3z"/><path d="M14 9.5h4.5M18.5 8.5v3"/><path d="M7 13.5 6 20.5h4.5l1-7"/>',
+    "/kapp-og-slipeutstyr": '<circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="2.2"/><path d="M12 3v3.5M12 17.5V21M3 12h3.5M17.5 12H21"/>',
+    "/skjaerende-verktoy": '<path d="M12 2v4"/><path d="M9 6h6l-1 11.5-2 4-2-4z"/><path d="M9.6 10.2 14.4 8M9.8 14l4.4-2.2"/>',
+    "/loft-og-lastsikring": '<circle cx="12" cy="4" r="2"/><path d="M12 6v8a4 4 0 1 1-4-4h1"/>',
+    "/hydraulikk-og-slanger": '<circle cx="12" cy="13" r="8"/><path d="m12 13 4-3"/><path d="M9.5 3h5"/><path d="M8 17h8"/>',
+    "/gass-og-gasstilbehor": '<rect x="7.5" y="6.5" width="9" height="14.5" rx="3"/><path d="M10 6.5V3h4v3.5"/><path d="M14 4.5h3"/>',
+    "/pakninger-og-tetninger": '<circle cx="12" cy="12" r="8.5"/><circle cx="12" cy="12" r="5"/>',
+    "/lager-og-transmisjon": '<circle cx="12" cy="12" r="8.5"/><circle cx="12" cy="12" r="3"/><circle cx="12" cy="6.3" r="1.1"/><circle cx="12" cy="17.7" r="1.1"/><circle cx="6.3" cy="12" r="1.1"/><circle cx="17.7" cy="12" r="1.1"/>',
+    "/sveis-og-sveisemateriell": '<path d="M12 3c2.3 3 5.2 5.2 5.2 9.2a5.2 5.2 0 0 1-10.4 0c0-2 1-3.3 2-4.2 0 2 .9 3.2 2.1 3.2 0-3.2-1-5.2 1.1-8.2z"/>',
+  };
+  function icon(url, cls) {
+    return '<svg class="' + (cls || "mp-ico") + '" viewBox="0 0 24 24" aria-hidden="true">' + (ICONS[url] || '<circle cx="12" cy="12" r="8"/>') + "</svg>";
+  }
+  var CHEV = '<svg class="mp-chev" viewBox="0 0 24 24" aria-hidden="true"><path d="m9 6 6 6-6 6"/></svg>';
+  var BACK = '<svg class="mp-chev" viewBox="0 0 24 24" aria-hidden="true"><path d="m15 6-6 6 6 6"/></svg>';
+  var SEARCH = '<svg class="mp-ico mp-ico--sm" viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.35-4.35"/></svg>';
+
+  function byUrl(url) {
+    return MENU.find(function (n) {
+      return n.url === url;
+    });
+  }
+
+  /* Snarveier for festemidler: standard, dimensjon og kvalitet rett fra menyen.
+     Forutsetter at standard/dimensjon/kvalitet blir filtre i indeksen (finnes ikke i dag). */
+  var FASTENER_SHORTCUTS = [
+    { title: "Standard", chips: ["DIN 933", "DIN 931", "DIN 912", "DIN 934", "DIN 125", "DIN 985", "ISO 4017", "ISO 7380"] },
+    { title: "Dimensjon", chips: ["M4", "M5", "M6", "M8", "M10", "M12", "M16", "M20"] },
+    { title: "Kvalitet og overflate", chips: ["8.8", "10.9", "12.9", "A2", "A4", "Elforsinket", "Varmforsinket"] },
+  ];
+
+  /* ── A  Avdelingsmeny, desktop ────────────────────────────────────────── */
+
+  var L3_SHOWN = 5;
+  // Over 12 grupper (Verktøy og redskap har 22) får ikke nivå 3 plass uten scroll: da vises bare nivå 2.
+  var COMPACT_FROM = 13;
+
+  function renderDeptPanel(node) {
+    var compact = (node.children || []).length >= COMPACT_FROM;
+    var groups = (node.children || [])
+      .map(function (l2) {
+        var l3 = l2.children || [];
+        var more = l3.length - L3_SHOWN;
+        if (compact) {
+          return '<section class="mp-dept__group mp-dept__group--compact"><a class="mp-dept__l2" href="#">' + esc(nice(l2.label)) +
+            (l3.length ? " <small>" + l3.length + "</small>" : "") + "</a></section>";
+        }
+        return (
+          '<section class="mp-dept__group">' +
+          '<a class="mp-dept__l2" href="#">' + esc(nice(l2.label)) + "</a>" +
+          (l3.length
+            ? "<ul>" +
+              l3.slice(0, L3_SHOWN).map(function (c) {
+                return '<li><a href="#">' + esc(nice(c.label)) + "</a></li>";
+              }).join("") +
+              (more > 0 ? '<li><a class="mp-more" href="#">+ ' + more + " til</a></li>" : "") +
+              "</ul>"
+            : "") +
+          "</section>"
+        );
+      })
+      .join("");
+
+    var aside =
+      node.url === "/festemidler"
+        ? '<aside class="mp-dept__aside"><p class="mp-overline">Snarveier</p>' +
+          FASTENER_SHORTCUTS.map(function (g) {
+            return '<p class="mp-aside__title">' + g.title + '</p><div class="mp-chips">' +
+              g.chips.map(function (c) { return '<a class="mp-chip" href="#">' + c + "</a>"; }).join("") + "</div>";
+          }).join("") +
+          '<p class="mp-note">Krever at standard, dimensjon og kvalitet blir filtre i produktindeksen.</p></aside>'
+        : '<aside class="mp-dept__aside"><p class="mp-overline">Snarveier</p>' +
+          '<a class="mp-aside__link" href="#">Alle i ' + esc(nice(node.label)) + " <span>" + count(node.count) + "</span></a>" +
+          '<a class="mp-aside__link" href="#">Bare varer på lager</a>' +
+          '<a class="mp-aside__link" href="#">Nyheter</a>' +
+          '<a class="mp-aside__link" href="#">Kjøp igjen fra dine ordrer</a></aside>';
+
+    return (
+      '<div class="mp-dept__head"><h3>' + icon(node.url) + esc(nice(node.label)) + '</h3><a class="mp-dept__all" href="#">Se alle ' +
+      count(node.count) + " produkter " + CHEV + "</a></div>" +
+      '<div class="mp-dept__body"><div class="mp-dept__groups">' + groups + "</div>" + aside + "</div>"
+    );
+  }
+
+  function mountDeptDesktop(root) {
+    var rail = root.querySelector("[data-rail]");
+    var panel = root.querySelector("[data-panel]");
+    var current = null;
+    var timer = null;
+
+    rail.innerHTML = MENU.map(function (n) {
+      return (
+        '<li><button type="button" class="mp-rail__item" data-url="' + n.url + '">' + icon(n.url) +
+        '<span class="mp-rail__label">' + esc(nice(n.label)) + '</span><span class="mp-rail__count">' + count(n.count) + "</span>" + CHEV + "</button></li>"
+      );
+    }).join("");
+
+    function show(url) {
+      if (url === current) return;
+      current = url;
+      rail.querySelectorAll(".mp-rail__item").forEach(function (b) {
+        b.setAttribute("aria-current", b.dataset.url === url ? "true" : "false");
+      });
+      panel.innerHTML = renderDeptPanel(byUrl(url));
+    }
+
+    rail.addEventListener("mouseover", function (e) {
+      var b = e.target.closest(".mp-rail__item");
+      if (!b) return;
+      clearTimeout(timer);
+      // 300 ms før kategorien byttes (Baymard/NN/g): musa kan gå på skrå over til panelet uten å bytte.
+      timer = setTimeout(function () { show(b.dataset.url); }, 300);
+    });
+    rail.addEventListener("mouseleave", function () { clearTimeout(timer); });
+    rail.addEventListener("click", function (e) {
+      var b = e.target.closest(".mp-rail__item");
+      if (b) show(b.dataset.url);
+    });
+    rail.addEventListener("focusin", function (e) {
+      var b = e.target.closest(".mp-rail__item");
+      if (b) show(b.dataset.url);
+    });
+    rail.addEventListener("keydown", function (e) {
+      if (e.key !== "ArrowDown" && e.key !== "ArrowUp") return;
+      var items = Array.prototype.slice.call(rail.querySelectorAll(".mp-rail__item"));
+      var i = items.indexOf(document.activeElement);
+      var next = items[(i + (e.key === "ArrowDown" ? 1 : -1) + items.length) % items.length];
+      if (next) { e.preventDefault(); next.focus(); }
+    });
+
+    show("/festemidler");
+  }
+
+  /* ── A  Trinnvis meny, mobil ──────────────────────────────────────────── */
+
+  function mountDrill(root) {
+    var stack = [];
+    var view = root.querySelector("[data-drill]");
+
+    function render(dir) {
+      var top = stack[stack.length - 1];
+      var html;
+      if (!top) {
+        html =
+          '<div class="mp-m__search">' + SEARCH + "<span>Søk i 30 000+ artikler</span></div>" +
+          '<p class="mp-m__overline">Produkter</p><ul class="mp-m__list">' +
+          MENU.map(function (n, i) {
+            return '<li><button type="button" data-go="' + i + '">' + icon(n.url) + '<span class="mp-m__label">' + esc(nice(n.label)) +
+              '</span><span class="mp-m__count">' + count(n.count) + "</span>" + CHEV + "</button></li>";
+          }).join("") +
+          '</ul><ul class="mp-m__list mp-m__list--plain"><li><a href="#">Forsyningsløsninger' + CHEV + '</a></li><li><a href="#">Øvrige tjenester' + CHEV +
+          '</a></li><li><a href="#">Kontakt</a></li></ul>';
+      } else {
+        var parentLabel = stack.length > 1 ? nice(stack[stack.length - 2].label) : "Alle produkter";
+        html =
+          '<button type="button" class="mp-m__back" data-back>' + BACK + esc(parentLabel) + "</button>" +
+          '<h4 class="mp-m__title">' + (stack.length === 1 ? icon(top.url) : "") + esc(nice(top.label)) + "</h4>" +
+          '<ul class="mp-m__list"><li><a class="mp-m__all" href="#">Se alle i ' + esc(nice(top.label)) +
+          (top.count ? ' <span class="mp-m__count">' + count(top.count) + "</span>" : "") + "</a></li>" +
+          (top.children || []).map(function (c, i) {
+            return c.children
+              ? '<li><button type="button" data-go="' + i + '"><span class="mp-m__label">' + esc(nice(c.label)) + '</span><span class="mp-m__count">' + c.children.length + "</span>" + CHEV + "</button></li>"
+              : '<li><a href="#"><span class="mp-m__label">' + esc(nice(c.label)) + "</span></a></li>";
+          }).join("") +
+          "</ul>";
+      }
+      view.innerHTML = '<div class="mp-m__pane mp-m__pane--' + (dir || "none") + '">' + html + "</div>";
+      view.scrollTop = 0;
+    }
+
+    view.addEventListener("click", function (e) {
+      var go = e.target.closest("[data-go]");
+      var back = e.target.closest("[data-back]");
+      if (go) {
+        var list = stack.length ? stack[stack.length - 1].children : MENU;
+        stack.push(list[Number(go.dataset.go)]);
+        render("in");
+      } else if (back) {
+        stack.pop();
+        render("out");
+      } else if (e.target.closest("a")) {
+        e.preventDefault();
+      }
+    });
+    render();
+  }
+
+  /* ── B  Katalog i fire verdener ───────────────────────────────────────── */
+
+  var WORLDS = [
+    { name: "Festing og montering", hint: "Skruer, muttere, ankere, pakninger, lager", urls: ["/festemidler", "/pakninger-og-tetninger", "/lager-og-transmisjon"] },
+    { name: "Verktøy og maskiner", hint: "Håndverktøy, elektroverktøy, slip, bor, sveis", urls: ["/verktoy-og-redskap", "/elektroverktoy-og-maskiner", "/kapp-og-slipeutstyr", "/skjaerende-verktoy", "/sveis-og-sveisemateriell"] },
+    { name: "Industri og hydraulikk", hint: "Hydraulikk, løft, gass, olje og kjemi", urls: ["/hydraulikk-og-slanger", "/loft-og-lastsikring", "/gass-og-gasstilbehor", "/olje-og-kjemikalier"] },
+    { name: "HMS og drift", hint: "Verneutstyr, rekvisita, lager og innredning", urls: ["/bekledning-og-verneutstyr", "/rekvisita", "/transport-og-innredning"] },
+  ];
+
+  function mountCatalogDesktop(root) {
+    var tabs = root.querySelector("[data-tabs]");
+    var body = root.querySelector("[data-body]");
+    tabs.innerHTML = WORLDS.map(function (w, i) {
+      var total = w.urls.reduce(function (s, u) { return s + (byUrl(u) || { count: 0 }).count; }, 0);
+      return '<button type="button" role="tab" class="mp-cat__tab" data-i="' + i + '"><span class="mp-cat__tabname">' + w.name +
+        '</span><span class="mp-cat__tabhint">' + w.hint + " · " + count(total) + "</span></button>";
+    }).join("");
+
+    function show(i) {
+      tabs.querySelectorAll(".mp-cat__tab").forEach(function (t) { t.setAttribute("aria-selected", String(Number(t.dataset.i) === i)); });
+      body.innerHTML = WORLDS[i].urls.map(function (u) {
+        var n = byUrl(u);
+        return '<section class="mp-cat__col"><a class="mp-cat__l1" href="#">' + icon(u) + "<span>" + esc(nice(n.label)) + '</span><small>' + count(n.count) + "</small></a><ul>" +
+          (n.children || []).map(function (c) {
+            return '<li><a href="#">' + esc(nice(c.label)) + "</a></li>";
+          }).join("") + "</ul></section>";
+      }).join("");
+    }
+    tabs.addEventListener("click", function (e) {
+      var t = e.target.closest(".mp-cat__tab");
+      if (t) show(Number(t.dataset.i));
+    });
+    tabs.addEventListener("mouseover", function (e) {
+      var t = e.target.closest(".mp-cat__tab");
+      if (t) show(Number(t.dataset.i));
+    });
+    show(0);
+  }
+
+  function mountCatalogMobile(root) {
+    var chips = root.querySelector("[data-chips]");
+    var list = root.querySelector("[data-list]");
+    chips.innerHTML = WORLDS.map(function (w, i) {
+      return '<button type="button" class="mp-chip mp-chip--tab" data-i="' + i + '">' + w.name + "</button>";
+    }).join("");
+    function show(i) {
+      chips.querySelectorAll("button").forEach(function (b) { b.setAttribute("aria-pressed", String(Number(b.dataset.i) === i)); });
+      list.innerHTML = WORLDS[i].urls.map(function (u) {
+        var n = byUrl(u);
+        return '<details class="mp-acc"><summary>' + icon(u) + '<span class="mp-m__label">' + esc(nice(n.label)) + '</span><span class="mp-m__count">' + count(n.count) +
+          '</span></summary><ul><li><a class="mp-m__all" href="#">Se alle i ' + esc(nice(n.label)) + "</a></li>" +
+          (n.children || []).map(function (c) { return '<li><a href="#">' + esc(nice(c.label)) + "</a></li>"; }).join("") + "</ul></details>";
+      }).join("");
+      var first = list.querySelector("details");
+      if (first) first.open = true;
+    }
+    chips.addEventListener("click", function (e) {
+      var b = e.target.closest("button");
+      if (b) show(Number(b.dataset.i));
+    });
+    list.addEventListener("click", function (e) { if (e.target.closest("a")) e.preventDefault(); });
+    show(0);
+  }
+
+  /* ── C  Finn: søk-først-meny ──────────────────────────────────────────── */
+
+  var FLAT = [];
+  MENU.forEach(function (l1) {
+    FLAT.push({ label: nice(l1.label), path: [], l1: l1.url, depth: 1, count: l1.count });
+    (l1.children || []).forEach(function (l2) {
+      FLAT.push({ label: nice(l2.label), path: [nice(l1.label)], l1: l1.url, depth: 2 });
+      (l2.children || []).forEach(function (l3) {
+        FLAT.push({ label: nice(l3.label), path: [nice(l1.label), nice(l2.label)], l1: l1.url, depth: 3 });
+      });
+    });
+  });
+
+  var STANDARDS = {
+    "933": "Sekskantskruer", "931": "Sekskantskruer", "4017": "Sekskantskruer", "4014": "Sekskantskruer",
+    "912": "Innvendig sekskantskruer", "4762": "Innvendig sekskantskruer", "7380": "Innvendig sekskantskruer",
+    "934": "Sekskantmuttere", "4032": "Sekskantmuttere", "985": "Låsemuttere", "125": "Underlagsskiver",
+    "127": "Låse- og sikringsskiver", "7985": "Maskinskruer", "975": "Gjengestenger",
+  };
+  var MINE = ["Sekskantskruer", "Arbeids- og monteringshansker", "Kappe-, slipe- og fiberskiver", "Spiralbor (HSS)", "Hydraulikk- og gummislanger", "Strips og festebånd"];
+
+  function fold(s) {
+    return s.toLowerCase().normalize("NFD").replace(/[̀-ͯ]/g, "");
+  }
+
+  function mark(label, words) {
+    var out = esc(label);
+    words.forEach(function (w) {
+      if (!w) return;
+      out = out.replace(new RegExp("(" + w.replace(/[.*+?^${}()|[\]\\]/g, "\\$&") + ")", "ig"), "<mark>$1</mark>");
+    });
+    return out;
+  }
+
+  function recognise(q) {
+    var hits = [];
+    var std = q.match(/\b(din|iso|en)\s*-?\s*(\d{2,5})\b/i);
+    if (std) {
+      var target = STANDARDS[std[2]];
+      hits.push({
+        kind: "Standard",
+        target: target,
+        title: std[1].toUpperCase() + " " + std[2],
+        sub: target ? "Gå til " + target + ", filtrert på " + std[1].toUpperCase() + " " + std[2] : "Søk etter produkter etter standarden",
+      });
+    }
+    var dim = q.match(/\bm\s?(\d{1,2})(?:\s*[x×]\s*(\d{1,3}))?\b/i);
+    if (dim) {
+      hits.push({ kind: "Dimensjon", title: "M" + dim[1] + (dim[2] ? " × " + dim[2] : ""), sub: "Alle festemidler i M" + dim[1] + (dim[2] ? ", lengde " + dim[2] + " mm" : "") });
+    }
+    var no = q.match(/\b\d{5,9}\b/);
+    if (no) hits.push({ kind: "Varenummer", title: no[0], sub: "Gå rett til produktet" });
+    return hits;
+  }
+
+  function mountFind(root, compact) {
+    var input = root.querySelector("[data-find]");
+    var out = root.querySelector("[data-results]");
+    var active = -1;
+
+    function idle() {
+      return (
+        '<p class="mp-overline">Dine mest kjøpte kategorier</p><div class="mp-chips">' +
+        MINE.map(function (m) { return '<a class="mp-chip" href="#">' + m + "</a>"; }).join("") +
+        '</div><p class="mp-overline">Alle kategorier</p><ul class="mp-find__grid">' +
+        MENU.map(function (n) {
+          return '<li><a href="#">' + icon(n.url) + "<span>" + esc(nice(n.label)) + "</span>" + (compact ? "" : "<small>" + count(n.count) + "</small>") + "</a></li>";
+        }).join("") +
+        "</ul>" +
+        '<p class="mp-tryit">Prøv: <button type="button" data-try="DIN 933">DIN 933</button><button type="button" data-try="m8">M8</button><button type="button" data-try="hansker">hansker</button><button type="button" data-try="slange">slange</button><button type="button" data-try="129385">129385</button></p>'
+      );
+    }
+
+    function results(q) {
+      var specs = recognise(q);
+      // Standard, dimensjon og varenummer er gjenkjent for seg; resten av ordene finner kategorien.
+      var rest = q.replace(/\b(din|iso|en)\s*-?\s*\d{2,5}\b/gi, " ").replace(/\bm\s?\d{1,2}(\s*[x×]\s*\d{1,3})?\b/gi, " ").replace(/\b\d{5,9}\b/g, " ");
+      var words = fold(rest).split(/\s+/).filter(Boolean);
+      var dim = specs.filter(function (s) { return s.kind === "Dimensjon"; })[0];
+      var std = specs.filter(function (s) { return s.kind === "Standard" && s.target; })[0];
+      if (std && !words.length) words = fold(std.target).split(/\s+/);
+      var matches = !words.length ? [] : FLAT.filter(function (c) {
+        var hay = fold(c.label + " " + c.path.join(" "));
+        return words.every(function (w) { return hay.indexOf(w) >= 0; });
+      }).sort(function (a, b) {
+        // Standardens egen kategori først; med dimensjon eller standard går festemidler foran resten.
+        var exact = std ? (b.label === std.target) - (a.label === std.target) : 0;
+        var fixing = dim || std ? (b.l1 === "/festemidler") - (a.l1 === "/festemidler") : 0;
+        var aa = fold(a.label).indexOf(words[0]) >= 0 ? 0 : 1;
+        var bb = fold(b.label).indexOf(words[0]) >= 0 ? 0 : 1;
+        return exact || fixing || aa - bb || a.depth - b.depth;
+      });
+      var html = "";
+      if (specs.length) {
+        html += '<p class="mp-overline">Gjenkjent</p><ul class="mp-find__specs">' + specs.map(function (s) {
+          return '<li><a href="#" class="mp-find__row"><span class="mp-tag">' + s.kind + "</span><b>" + esc(s.title) + "</b><span>" + esc(s.sub) + "</span></a></li>";
+        }).join("") + "</ul>";
+      }
+      if (matches.length) {
+        html += '<p class="mp-overline">Kategorier <span>' + matches.length + "</span></p><ul class=\"mp-find__list\">" +
+          matches.slice(0, compact ? 8 : 10).map(function (m) {
+            var narrowed = m.l1 === "/festemidler" ? [dim && dim.title, std && std.title].filter(Boolean).join(", ") : "";
+            return '<li><a href="#" class="mp-find__row">' + icon(m.l1, "mp-ico mp-ico--sm") + "<b>" + mark(m.label, rest.split(/\s+/)) +
+              (narrowed ? " <em>i " + esc(narrowed) + "</em>" : "") + "</b><span>" +
+              esc(m.path.join(" › ") || "Hovedkategori") + "</span></a></li>";
+          }).join("") + "</ul>";
+      }
+      html += '<a href="#" class="mp-find__row mp-find__search">' + SEARCH + "<b>Søk etter «" + esc(q) + "» i alle produkter</b><span>Enter</span></a>";
+      return html;
+    }
+
+    function update() {
+      var q = input.value.trim();
+      out.innerHTML = q ? results(q) : idle();
+      active = -1;
+    }
+
+    function rows() {
+      return Array.prototype.slice.call(out.querySelectorAll(".mp-find__row"));
+    }
+
+    input.addEventListener("input", update);
+    input.addEventListener("keydown", function (e) {
+      var r = rows();
+      if (!r.length) return;
+      if (e.key === "ArrowDown" || e.key === "ArrowUp") {
+        e.preventDefault();
+        active = (active + (e.key === "ArrowDown" ? 1 : -1) + r.length) % r.length;
+        r.forEach(function (x, i) { x.classList.toggle("is-active", i === active); });
+        r[active].scrollIntoView({ block: "nearest" });
+      }
+    });
+    out.addEventListener("click", function (e) {
+      var t = e.target.closest("[data-try]");
+      if (t) { input.value = t.dataset.try; update(); input.focus(); return; }
+      if (e.target.closest("a")) e.preventDefault();
+    });
+    update();
+  }
+
+  /* ── Oppstart ─────────────────────────────────────────────────────────── */
+
+  document.querySelectorAll('[data-proposal="dept"]').forEach(mountDeptDesktop);
+  document.querySelectorAll('[data-proposal="drill"]').forEach(mountDrill);
+  document.querySelectorAll('[data-proposal="catalog"]').forEach(mountCatalogDesktop);
+  document.querySelectorAll('[data-proposal="catalog-m"]').forEach(mountCatalogMobile);
+  document.querySelectorAll('[data-proposal="find"]').forEach(function (r) { mountFind(r, false); });
+  document.querySelectorAll('[data-proposal="find-m"]').forEach(function (r) { mountFind(r, true); });
+
+  document.querySelectorAll("[data-demo] a").forEach(function (a) {
+    a.addEventListener("click", function (e) { if (a.getAttribute("href") === "#") e.preventDefault(); });
+  });
+})();
