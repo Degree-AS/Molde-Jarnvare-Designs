@@ -56,6 +56,7 @@
     "/pakninger-og-tetninger": '<circle cx="12" cy="12" r="8.5"/><circle cx="12" cy="12" r="5"/>',
     "/lager-og-transmisjon": '<circle cx="12" cy="12" r="8.5"/><circle cx="12" cy="12" r="3"/><circle cx="12" cy="6.3" r="1.1"/><circle cx="12" cy="17.7" r="1.1"/><circle cx="6.3" cy="12" r="1.1"/><circle cx="17.7" cy="12" r="1.1"/>',
     "/sveis-og-sveisemateriell": '<path d="M12 3c2.3 3 5.2 5.2 5.2 9.2a5.2 5.2 0 0 1-10.4 0c0-2 1-3.3 2-4.2 0 2 .9 3.2 2.1 3.2 0-3.2-1-5.2 1.1-8.2z"/>',
+    "#mine": '<path d="M3.5 12a8.5 8.5 0 1 0 2.6-6.1"/><path d="M3.5 4v4h4"/><path d="M12 7.5V12l3 2"/>',
   };
   function icon(url, cls) {
     return '<svg class="' + (cls || "mp-ico") + '" viewBox="0 0 24 24" aria-hidden="true">' + (ICONS[url] || '<circle cx="12" cy="12" r="8"/>') + "</svg>";
@@ -68,6 +69,49 @@
     return MENU.find(function (n) {
       return n.url === url;
     });
+  }
+
+  /* «Dine kategorier» i A: kundens faste kategorier, regnet ut hver natt fra ordrene i BC (siste 24 måneder).
+     Rangert etter hvor ofte og hvor nylig; «ordrer» teller ordrer med varer fra kategorien, ikke antall varer.
+     Eksempelkunde: et mekanisk verksted. */
+  var MINE_URL = "#mine";
+  var MINE_A = [
+    { l1: "/festemidler", l2: "SKRUER OG BOLTER", l3: "SEKSKANTSKRUER", orders: 23, last: "14.11" },
+    { l1: "/festemidler", l2: "MUTTERE", l3: "SEKSKANTMUTTERE", orders: 19, last: "14.11" },
+    { l1: "/kapp-og-slipeutstyr", l2: "KAPPE- OG SLIPESKIVER", l3: "KAPPE-, SLIPE- OG FIBERSKIVER", orders: 14, last: "12.11" },
+    { l1: "/festemidler", l2: "SKIVER, LÅSERINGER OG SPLINTER", l3: "UNDERLAGSSKIVER", orders: 13, last: "06.11" },
+    { l1: "/bekledning-og-verneutstyr", l2: "HANSKER", l3: "ARBEIDS- OG MONTERINGSHANSKER", orders: 11, last: "30.10" },
+    { l1: "/hydraulikk-og-slanger", l2: "SLANGER", l3: "HYDRAULIKK- OG GUMMISLANGER", orders: 8, last: "22.10" },
+    { l1: "/skjaerende-verktoy", l2: "BOR", l3: "SPIRALBOR (HSS)", orders: 6, last: "02.10" },
+    { l1: "/sveis-og-sveisemateriell", l2: "SVEISETILSETT", l3: "SVEISETRÅD", orders: 5, last: "18.09" },
+  ];
+  var MINE_KEYS = {};
+  MINE_A.forEach(function (m) {
+    MINE_KEYS[m.l1 + "|" + m.l3] = true;
+    MINE_KEYS[m.l1 + "|" + m.l2 + "|*"] = true;
+  });
+  // Innlogget eller ikke: anonyme får menyen uten «Dine kategorier». Byttes med knappene over A.
+  var loggedIn = true;
+  var onViewer = [];
+  function isMine(l1, label) { return loggedIn && !!MINE_KEYS[l1 + "|" + label]; }
+  function holdsMine(l1, l2) { return loggedIn && !!MINE_KEYS[l1 + "|" + l2 + "|*"]; }
+  var DOT = '<span class="mp-dot" aria-hidden="true"></span><span class="mp-sr"> (kjøpt før)</span>';
+
+  function renderMinePanel() {
+    return (
+      '<div class="mp-dept__head"><h3>' + icon(MINE_URL) + 'Dine kategorier</h3><a class="mp-dept__all" href="#">Kjøp igjen fra tidligere ordrer ' + CHEV + "</a></div>" +
+      '<div class="mp-mine-grid">' +
+      MINE_A.map(function (m) {
+        var l1 = byUrl(m.l1);
+        return (
+          '<a class="mp-mine-card" href="#"><span class="mp-mine-card__path">' + icon(m.l1) + esc(nice(l1.label)) + " › " + esc(nice(m.l2)) + "</span>" +
+          "<b>" + esc(nice(m.l3)) + '</b><span class="mp-mine-card__meta">' + m.orders + " ordrer · sist " + m.last + "</span></a>"
+        );
+      }).join("") +
+      "</div>" +
+      '<p class="mp-note">Rangert etter hvor ofte og hvor nylig dere har kjøpt, siste 24 måneder. Regnes ut hver natt fra ordrene i BC. ' +
+      'Underkategorier dere har kjøpt fra, er merket <span class="mp-dot" aria-hidden="true"></span> i alle avdelingene. Eksempelkunde.</p>'
+    );
   }
 
   /* Innholdsfeltet til høyre i panelet: styres i CMS per hovedkategori (eksempelinnhold her).
@@ -127,6 +171,7 @@
     // Over 90 lenker (Verktøy og redskap har 113): gruppene får hele bredden, innholdsfeltet legger seg under.
     var links = (node.children || []).reduce(function (n, l2) { return n + 1 + (l2.children || []).length; }, 0);
     var wide = links > 90;
+    var bought = 0;
     var groups = (node.children || [])
       .map(function (l2) {
         var l3 = l2.children || [];
@@ -134,7 +179,11 @@
           '<section class="mp-dept__group">' +
           '<a class="mp-dept__l2" href="#">' + esc(nice(l2.label)) + "</a>" +
           (l3.length
-            ? "<ul>" + l3.map(function (c) { return '<li><a href="#">' + esc(nice(c.label)) + "</a></li>"; }).join("") + "</ul>"
+            ? "<ul>" + l3.map(function (c) {
+                if (!isMine(node.url, c.label)) return '<li><a href="#">' + esc(nice(c.label)) + "</a></li>";
+                bought++;
+                return '<li><a class="mp-is-mine" href="#">' + esc(nice(c.label)) + DOT + "</a></li>";
+              }).join("") + "</ul>"
             : "") +
           "</section>"
         );
@@ -142,8 +191,9 @@
       .join("");
 
     return (
-      '<div class="mp-dept__head"><h3>' + icon(node.url) + esc(nice(node.label)) + '</h3><a class="mp-dept__all" href="#">Se alle ' +
-      count(node.count) + " produkter " + CHEV + "</a></div>" +
+      '<div class="mp-dept__head"><h3>' + icon(node.url) + esc(nice(node.label)) + "</h3>" +
+      (bought ? '<span class="mp-dept__legend"><span class="mp-dot" aria-hidden="true"></span>Dere har kjøpt fra ' + bought + " av disse</span>" : "") +
+      '<a class="mp-dept__all" href="#">Se alle ' + count(node.count) + " produkter " + CHEV + "</a></div>" +
       '<div class="mp-dept__body' + (wide ? " mp-dept__body--wide" : "") + '"><div class="mp-dept__groups">' + groups + "</div>" + renderPromo(node) + "</div>"
     );
   }
@@ -154,12 +204,21 @@
     var current = null;
     var timer = null;
 
-    rail.innerHTML = MENU.map(function (n) {
-      return (
-        '<li><button type="button" class="mp-rail__item" data-url="' + n.url + '">' + icon(n.url) +
-        '<span class="mp-rail__label">' + esc(nice(n.label)) + '</span><span class="mp-rail__count">' + count(n.count) + "</span>" + CHEV + "</button></li>"
-      );
-    }).join("");
+    function renderRail() {
+      // Innlogget: «Dine kategorier» øverst og åpen som standard. Anonym: bare hovedkategoriene.
+      rail.innerHTML =
+        (loggedIn
+          ? '<li><button type="button" class="mp-rail__item mp-rail__item--mine" data-url="' + MINE_URL + '">' + icon(MINE_URL) +
+            '<span class="mp-rail__label">Dine kategorier</span><span class="mp-rail__count">' + MINE_A.length + "</span>" + CHEV +
+            '</button></li><li class="mp-rail__sep" role="presentation"></li>'
+          : "") +
+        MENU.map(function (n) {
+          return (
+            '<li><button type="button" class="mp-rail__item" data-url="' + n.url + '">' + icon(n.url) +
+            '<span class="mp-rail__label">' + esc(nice(n.label)) + '</span><span class="mp-rail__count">' + count(n.count) + "</span>" + CHEV + "</button></li>"
+          );
+        }).join("");
+    }
 
     function show(url) {
       if (url === current) return;
@@ -167,8 +226,15 @@
       rail.querySelectorAll(".mp-rail__item").forEach(function (b) {
         b.setAttribute("aria-current", b.dataset.url === url ? "true" : "false");
       });
-      panel.innerHTML = renderDeptPanel(byUrl(url));
+      panel.innerHTML = url === MINE_URL ? renderMinePanel() : renderDeptPanel(byUrl(url));
     }
+
+    function reset() {
+      current = null;
+      renderRail();
+      show(loggedIn ? MINE_URL : "/festemidler");
+    }
+    onViewer.push(reset);
 
     rail.addEventListener("mouseover", function (e) {
       var b = e.target.closest(".mp-rail__item");
@@ -194,7 +260,7 @@
       if (next) { e.preventDefault(); next.focus(); }
     });
 
-    show("/festemidler");
+    reset();
   }
 
   /* ── A  Trinnvis meny, mobil ──────────────────────────────────────────── */
@@ -209,6 +275,11 @@
       if (!top) {
         html =
           '<div class="mp-m__search">' + SEARCH + "<span>Søk i 30 000+ artikler</span></div>" +
+          (loggedIn
+            ? '<p class="mp-m__overline">Dine kategorier</p><div class="mp-m__mine">' +
+              MINE_A.map(function (m) { return '<a class="mp-chip" href="#">' + esc(nice(m.l3)) + "</a>"; }).join("") +
+              "</div>"
+            : "") +
           '<p class="mp-m__overline">Produkter</p><ul class="mp-m__list">' +
           MENU.map(function (n, i) {
             return '<li><button type="button" data-go="' + i + '">' + icon(n.url) + '<span class="mp-m__label">' + esc(nice(n.label)) +
@@ -224,9 +295,12 @@
           '<ul class="mp-m__list"><li><a class="mp-m__all" href="#">Se alle i ' + esc(nice(top.label)) +
           (top.count ? ' <span class="mp-m__count">' + count(top.count) + "</span>" : "") + "</a></li>" +
           (top.children || []).map(function (c, i) {
+            // Prikken viser veien ned: på nivå 2 der kunden har kjøpt fra en underkategori, på nivå 3 selve kategorien.
+            var l1 = stack[0].url;
+            var dot = (c.children ? holdsMine(l1, c.label) : isMine(l1, c.label)) ? DOT : "";
             return c.children
-              ? '<li><button type="button" data-go="' + i + '"><span class="mp-m__label">' + esc(nice(c.label)) + '</span><span class="mp-m__count">' + c.children.length + "</span>" + CHEV + "</button></li>"
-              : '<li><a href="#"><span class="mp-m__label">' + esc(nice(c.label)) + "</span></a></li>";
+              ? '<li><button type="button" data-go="' + i + '"><span class="mp-m__label">' + esc(nice(c.label)) + dot + '</span><span class="mp-m__count">' + c.children.length + "</span>" + CHEV + "</button></li>"
+              : '<li><a href="#"><span class="mp-m__label">' + esc(nice(c.label)) + dot + "</span></a></li>";
           }).join("") +
           "</ul>";
       }
@@ -248,6 +322,7 @@
         e.preventDefault();
       }
     });
+    onViewer.push(function () { stack = []; render(); });
     render();
   }
 
@@ -463,6 +538,14 @@
   document.querySelectorAll('[data-proposal="catalog-m"]').forEach(mountCatalogMobile);
   document.querySelectorAll('[data-proposal="find"]').forEach(function (r) { mountFind(r, false); });
   document.querySelectorAll('[data-proposal="find-m"]').forEach(function (r) { mountFind(r, true); });
+
+  document.querySelectorAll("[data-viewer]").forEach(function (b) {
+    b.addEventListener("click", function () {
+      loggedIn = b.dataset.viewer === "in";
+      document.querySelectorAll("[data-viewer]").forEach(function (o) { o.setAttribute("aria-pressed", String(o === b)); });
+      onViewer.forEach(function (f) { f(); });
+    });
+  });
 
   document.querySelectorAll("[data-demo] a").forEach(function (a) {
     a.addEventListener("click", function (e) { if (a.getAttribute("href") === "#") e.preventDefault(); });

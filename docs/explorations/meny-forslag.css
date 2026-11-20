@@ -352,3 +352,31 @@ body { background: var(--color-bg-page); }
 .mp-dept__body--wide .mp-promo-link { flex: 1 1 220px; }
 .mp-dept__body--wide .mp-note { flex-basis: 100%; margin: 0; }
 .mp-badge--off { background: var(--color-bg-surface-alt); color: var(--color-text-tertiary); }
+
+/* «Dine kategorier» i A: kundens faste kategorier fra kjøpshistorikken, bare for innloggede */
+.mp-viewer { display: flex; align-items: center; justify-content: center; gap: var(--s-2); font-size: var(--fs-body-sm); color: var(--color-text-secondary); }
+.mp-rail__sep { height: var(--bw-1); background: var(--color-border-soft); margin: var(--s-2) var(--s-3); }
+.mp-rail__item--mine .mp-ico { color: var(--mj-orange); }
+.mp-dot { display: inline-block; flex: none; width: 6px; height: 6px; border-radius: var(--r-full); background: var(--mj-orange); vertical-align: middle; }
+.mp-sr { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+.mp-dept__legend { display: inline-flex; align-items: center; gap: 6px; margin-left: auto; font-size: var(--fs-caption); color: var(--color-text-secondary); }
+.mp-dept__group li a.mp-is-mine { display: flex; align-items: center; gap: 6px; color: var(--color-text-primary); font-weight: var(--fw-medium); }
+.mp-mine-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(210px, 1fr)); gap: var(--s-3); }
+.mp-mine-card {
+  display: flex; flex-direction: column; gap: 2px;
+  padding: var(--s-3) var(--s-4);
+  border: var(--bw-1) solid var(--color-border-soft); border-radius: var(--r-md);
+  color: var(--color-text-primary); text-decoration: none;
+}
+.mp-mine-card:hover { border-color: var(--color-border-brand); }
+.mp-mine-card:hover b { color: var(--color-text-link); }
+.mp-mine-card__path { display: flex; align-items: center; gap: var(--s-1); font-size: var(--fs-caption); color: var(--color-text-tertiary); }
+.mp-mine-card__path .mp-ico { width: 16px; height: 16px; color: var(--mj-blue); }
+.mp-mine-card b { font-size: var(--fs-body); line-height: var(--lh-snug); }
+.mp-mine-card__meta { font-size: var(--fs-caption); color: var(--color-text-secondary); font-variant-numeric: tabular-nums; }
+.mp-dept__panel > .mp-note { margin-top: var(--s-4); }
+.mp-m__mine { display: flex; gap: 6px; overflow-x: auto; margin: 0 calc(var(--s-4) * -1) var(--s-3); padding: 0 var(--s-4) 2px; scrollbar-width: none; }
+.mp-m__mine::-webkit-scrollbar { display: none; }
+.mp-m__mine .mp-chip { flex: none; }
+.mp-m__label .mp-dot { margin-left: 6px; }
+.mp-card p + p { margin-top: var(--s-2); }

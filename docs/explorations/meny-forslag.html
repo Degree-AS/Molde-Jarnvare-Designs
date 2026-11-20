@@ -96,7 +96,7 @@
       <span class="mp-letter">A</span>
       <div>
         <h2>Avdelingsmeny <span class="mp-badge">Valgt 20.11.2026</span></h2>
-        <p>Hovedkategoriene står fast i en rail til venstre. Den du peker på, åpner alle underkategoriene på nivå 2 og 3 i panelet ved siden av, med et innholdsfelt for kampanjer og tjenester til høyre. Mobil: trinnvis meny med kategoriene rett på første nivå.</p>
+        <p>Hovedkategoriene står fast i en rail til venstre. Den du peker på, åpner alle underkategoriene på nivå 2 og 3 i panelet ved siden av, med et innholdsfelt for kampanjer og tjenester til høyre. Innloggede kunder får «Dine kategorier» øverst. Mobil: trinnvis meny med kategoriene rett på første nivå.</p>
       </div>
     </div>
 
@@ -108,6 +108,7 @@
           <li><b>Alle underkategoriene synes, uten «+ N til».</b> Det som er gjemt, blir ikke funnet. Fire kolonner får plass til alt i 14 av 15 kategorier uten scroll. Verktøy og redskap (113 lenker) får hele bredden og fem kolonner.</li>
           <li><b>Antall produkter</b> viser hvor tyngden er (Verktøy 2 826, Hydraulikk 1 882).</li>
           <li><b>Innholdsfelt per kategori, styrt i CMS:</b> kampanje eller nyhet øverst, deretter tjenester og forsyningsløsninger som hører til kategorien (Slangeverksted under Hydraulikk, Profiltøy under Bekledning, 2BOX under Festemidler).</li>
+          <li><b>Dine kategorier for innloggede kunder.</b> Øverst i railen og åpen når menyen åpnes: kundens faste kategorier fra ordrene i BC siste 24 måneder, med antall ordrer og sist kjøpt. Proffene kjøper det samme igjen og igjen, så det vanligste ærendet blir ett klikk. Underkategorier kunden har kjøpt fra, får en prikk i alle avdelingene, og på mobil viser prikken veien ned. Det demper også ulempen med railen: kunden ser sine kategorier på tvers av avdelingene.</li>
           <li><b>Velkjent mønster</b> fra Grainger og Home Depot, med 300 ms forsinkelse så den ikke flimrer.</li>
         </ul>
       </article>
@@ -118,10 +119,16 @@
       <article class="mp-card">
         <h3>Ulemper og hva det krever</h3>
         <p>Rail-mønsteret får kritikk for å skjule de andre kategorienes innhold. Innholdsfeltet trenger et nytt felt i CMS per hovedkategori, og noen må holde det oppdatert; uten innhold vises tjenestene alene. På mobil advarer NN/g mot trinnvise menyer, så tilbake-knappen må navngi nivået («‹ Festemidler»).</p>
+        <p>«Dine kategorier» regnes ut om natten og hentes i et eget lite kall etter innlogging. Menyen ellers er lik for alle og bufres som før, så den blir ikke tregere. Kategori per kjøp følger varens primærgruppe; selger som handler for en kunde ser kundens kategorier. Nye kunder uten ordrer ser menyen uten denne delen.</p>
       </article>
     </div>
 
     <div class="mp-stage">
+      <div class="mp-viewer" role="group" aria-label="Vis menyen som">
+        <span>Vis som:</span>
+        <button type="button" class="mp-chip mp-chip--tab" data-viewer="in" aria-pressed="true">Innlogget kunde</button>
+        <button type="button" class="mp-chip mp-chip--tab" data-viewer="anon" aria-pressed="false">Ikke innlogget</button>
+      </div>
       <div class="mp-frame">
         <div class="mp-bar">
           <span class="mp-bar__logo">MOLDE JARNVARE</span>
@@ -275,6 +282,7 @@
       <ol>
         <li><b>Nå, med dagens data:</b> rail og panel med alle underkategorier, stor forbokstav, antall og ikoner. Trinnvis mobilmeny.</li>
         <li><b>Innholdsfeltet:</b> et felt i CMS per hovedkategori for kampanje, nyhet og tjenester.</li>
+        <li><b>Dine kategorier:</b> nattlig utregning fra ordrene i BC og et lite kall etter innlogging. Nytt omfang, så det tas som en egen endring.</li>
         <li><b>Før lansering:</b> en kort test med 5 kunder: finn sekskantskruer, arbeidshansker og en hydraulikkslange.</li>
       </ol>
     </div>
