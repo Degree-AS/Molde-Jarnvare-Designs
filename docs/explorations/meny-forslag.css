@@ -361,7 +361,7 @@ body { background: var(--color-bg-page); }
 .mp-sr { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
 .mp-dept__legend { display: inline-flex; align-items: center; gap: 6px; margin-left: auto; font-size: var(--fs-caption); color: var(--color-text-secondary); }
 .mp-dept__group li a.mp-is-mine { display: flex; align-items: center; gap: 6px; color: var(--color-text-primary); font-weight: var(--fw-medium); }
-.mp-mine-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(210px, 1fr)); gap: var(--s-3); }
+.mp-mine-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(190px, 1fr)); gap: var(--s-3); }
 .mp-mine-card {
   display: flex; flex-direction: column; gap: 2px;
   padding: var(--s-3) var(--s-4);
@@ -371,6 +371,7 @@ body { background: var(--color-bg-page); }
 .mp-mine-card:hover { border-color: var(--color-border-brand); }
 .mp-mine-card:hover b { color: var(--color-text-link); }
 .mp-mine-card__path { display: flex; align-items: center; gap: var(--s-1); font-size: var(--fs-caption); color: var(--color-text-tertiary); }
+.mp-mine-card__path > span { min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
 .mp-mine-card__path .mp-ico { width: 16px; height: 16px; color: var(--mj-blue); }
 .mp-mine-card b { font-size: var(--fs-body); line-height: var(--lh-snug); }
 .mp-mine-card__meta { font-size: var(--fs-caption); color: var(--color-text-secondary); font-variant-numeric: tabular-nums; }

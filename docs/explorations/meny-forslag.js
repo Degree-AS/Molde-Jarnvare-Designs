@@ -100,17 +100,32 @@
   function renderMinePanel() {
     return (
       '<div class="mp-dept__head"><h3>' + icon(MINE_URL) + 'Dine kategorier</h3><a class="mp-dept__all" href="#">Kjøp igjen fra tidligere ordrer ' + CHEV + "</a></div>" +
-      '<div class="mp-mine-grid">' +
+      '<div class="mp-dept__body"><div><div class="mp-mine-grid">' +
       MINE_A.map(function (m) {
-        var l1 = byUrl(m.l1);
+        var path = nice(byUrl(m.l1).label) + " › " + nice(m.l2);
         return (
-          '<a class="mp-mine-card" href="#"><span class="mp-mine-card__path">' + icon(m.l1) + esc(nice(l1.label)) + " › " + esc(nice(m.l2)) + "</span>" +
+          '<a class="mp-mine-card" href="#"><span class="mp-mine-card__path" title="' + esc(path) + '">' + icon(m.l1) + "<span>" + esc(path) + "</span></span>" +
           "<b>" + esc(nice(m.l3)) + '</b><span class="mp-mine-card__meta">' + m.orders + " ordrer · sist " + m.last + "</span></a>"
         );
       }).join("") +
       "</div>" +
       '<p class="mp-note">Rangert etter hvor ofte og hvor nylig dere har kjøpt, siste 24 måneder. Regnes ut hver natt fra ordrene i BC. ' +
-      'Underkategorier dere har kjøpt fra, er merket <span class="mp-dot" aria-hidden="true"></span> i alle avdelingene. Eksempelkunde.</p>'
+      'Underkategorier dere har kjøpt fra, er merket <span class="mp-dot" aria-hidden="true"></span> i alle avdelingene. Eksempelkunde.</p></div>' +
+      renderMineAside() + "</div>"
+    );
+  }
+
+  // Innholdsfeltet her viser kampanjer i kundens egne kategorier: samme kampanjer som i CMS, valgt ut fra «Dine kategorier».
+  function renderMineAside() {
+    var hit = MINE_A.map(function (m) { return PROMO[m.l1] && PROMO[m.l1].campaign ? { url: m.l1, c: PROMO[m.l1].campaign } : null; }).filter(Boolean)[0];
+    return (
+      '<aside class="mp-dept__aside">' +
+      (hit
+        ? '<a class="mp-promo" href="#"><span class="mp-promo__img" aria-hidden="true">' + icon(hit.url, "mp-promo__ico") + "</span>" +
+          '<span class="mp-tag">I dine kategorier</span><b>' + esc(hit.c.title) + "</b><span>" + esc(hit.c.text) + '</span><span class="mp-promo__cta">' + hit.c.cta + " " + CHEV + "</span></a>"
+        : "") +
+      '<a class="mp-promo-link" href="#"><span class="mp-overline">Konto</span><b>Tidligere ordrer</b><span>Finn en ordre og legg hele eller deler av den i handlekurven.</span></a>' +
+      '<p class="mp-note">Kampanjen velges blant dem som ligger i CMS, ut fra kundens kategorier.</p></aside>'
     );
   }
 
