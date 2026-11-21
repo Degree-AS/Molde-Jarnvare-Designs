@@ -166,19 +166,19 @@
         <header><h3>1. Oppsett</h3><span class="mp-badge">Ingen kode</span></header>
         <ol>
           <li><b>Velg skjema fra en liste</b> i stedet for å skrive et tall. Gjelder kontaktskjema, produktekspert og skjemaet på produktsidene. <span class="cf-done">Laget 20.11.</span></li>
-          <li><b>Norske navn og én setning</b> om hva hver blokk er til (tabellen under).</li>
-          <li><b>Ikon som viser innholdet</b>: konvolutt for kontaktskjema, klokke for åpningstider, spørsmålstegn for spørsmål og svar.</li>
-          <li><b>Kategorier på norsk</b>: Øverst på siden, Tekst og bilde, Kontakt, Produkter og tjenester, Nyheter.</li>
-          <li><b>Norske feltnavn med hjelpetekst</b> og samme ord overalt (ordlisten under).</li>
-          <li><b>«Utseende» som egen gruppe</b> nederst, lukket til man åpner den: luft, bredde, plassering og bakgrunn.</li>
-          <li><b>Påkrevde felt og maks antall tegn</b> der det betyr noe for hvordan siden ser ut.</li>
-          <li><b>Forståelige navn i innholdstreet</b>: «Meny og toppbanner», «Bunntekst», «Logo og deling», «Firmaopplysninger», «Ferdige blokker».</li>
+          <li><b>Norske navn og én setning</b> om hva hver blokk er til (tabellen under). <span class="cf-done">Klar i PR 5556, 21.11.</span></li>
+          <li><b>Ikon som viser innholdet</b>: konvolutt for kontaktskjema, klokke for åpningstider, spørsmålstegn for spørsmål og svar. <span class="cf-done">Klar i PR 5556</span></li>
+          <li><b>Kategorier på norsk</b>: Øverst på siden, Tekst og bilde, Kontakt, Nyheter og produkter. Dialogen «Nytt avsnitt» i Dynamicweb 10 grupperer ikke innholdstyper etter kategori, bare ferdige maler, så kategoriene synes mest under Innstillinger. <span class="cf-done">Klar i PR 5556</span></li>
+          <li><b>Norske feltnavn med hjelpetekst</b> og samme ord overalt (ordlisten under). Også valgene i nedtrekkslistene. <span class="cf-done">Klar i PR 5556</span></li>
+          <li><b>«Utseende» som egen gruppe</b> nederst, lukket til man åpner den: luft, bredde, plassering og bakgrunn. <span class="cf-done">Klar i PR 5556</span></li>
+          <li><b>Påkrevde felt og maks antall tegn</b> der det betyr noe for hvordan siden ser ut. Venter til Leif Erling har sett navnene, fordi påkrevde felt kan hindre lagring av sider som mangler en verdi.</li>
+          <li><b>Forståelige navn i innholdstreet</b>: «Meny og toppbanner», «Bunntekst», «Logo og deling», «Firmaopplysninger», «Ferdige blokker». Gjøres i innholdet etter utrulling.</li>
         </ol>
       </article>
       <article class="mp-card cf-pack cf-pack--test">
         <header><h3>2. Prøves først</h3><span class="mp-badge mp-badge--new">Må testes</span></header>
         <ol>
-          <li><b>Bilde av blokken i listen.</b> Innholdstypene har et felt for bilde som Dynamicweb 9 viste. Vi prøver med én blokk og ser om versjon 10 viser det.</li>
+          <li><b>Bilde av blokken i listen.</b> Sjekket i kildekoden til Dynamicweb 10: dialogen viser bildet fra innholdstypen når filen finnes, ellers ikonet. Feltet kan ikke settes i admin, bare i oppsettfilen. Alle 19 blokkene har fått en miniskisse i PR 5556, og bildene rulles ut sammen med oppsettet. Den innebygde forhåndsvisningen i Dynamicweb krever Swift-maler og passer ikke vår løsning på Vercel. <span class="cf-done">Klar i PR 5556</span></li>
           <li><b>Bare relevante valg.</b> Vanlige sider tillater allerede bare våre blokker. Vi sjekker at Swift-typene fra Dynamicweb heller ikke dukker opp når man lager en ny side.</li>
           <li><b>Ferdige maler.</b> En skjult mappe med en tjenesteside og en kampanjeside å kopiere, og «Lagre som forhåndsinnstilling» for blokker man bruker ofte.</li>
           <li><b>Vis felt bare når de trengs.</b> For eksempel videofeltene i toppbildet bare når det er valgt en video.</li>
