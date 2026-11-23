@@ -1,0 +1,87 @@
+/*
+ * Avtalepris i variant-tabellen - forslag, 23.11.2026.
+ * Kun for denne utforskningen. Bygger på tokens fra src/styles/index.css og mp-klassene i meny-forslag.css.
+ * Prefiks ap- (avtalepris).
+ */
+
+.ap-frame {
+  background: var(--color-bg-surface);
+  border: var(--bw-1) solid var(--color-border-soft);
+  border-radius: var(--r-lg);
+  padding: var(--s-5);
+  box-shadow: var(--shadow-1);
+}
+.ap-frame--mobile { max-width: 375px; padding: var(--s-4); }
+
+/* Linja over tabellen: «Velg variant og antall» til venstre, forklaring og antall til høyre */
+.ap-label {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  flex-wrap: wrap;
+  gap: var(--s-2) var(--s-5);
+  font-size: var(--fs-body-sm);
+  font-weight: var(--fw-semibold);
+  color: var(--color-text-primary);
+  margin-bottom: var(--s-3);
+}
+.ap-label__right { display: flex; align-items: center; flex-wrap: wrap; gap: var(--s-2) var(--s-5); font-weight: var(--fw-regular); color: var(--color-text-secondary); }
+
+/* Forslag A: lite merke foran prisen */
+.ap-mark {
+  display: inline-grid;
+  place-items: center;
+  width: 18px;
+  height: 18px;
+  border-radius: var(--r-sm);
+  background: var(--color-bg-brand-soft);
+  color: var(--mj-blue);
+  font-size: 11px;
+  font-weight: var(--fw-bold);
+  line-height: 1;
+  margin-right: var(--s-2);
+  vertical-align: 1px;
+  cursor: help;
+}
+.ap-legend { display: inline-flex; align-items: center; gap: var(--s-2); font-size: var(--fs-caption); color: var(--color-text-secondary); }
+.ap-legend .ap-mark { margin-right: 0; }
+
+/* Forslag B: «Avtalepris» som andre linje i priscella */
+.ap-sub {
+  display: block;
+  font-size: var(--fs-caption);
+  font-weight: var(--fw-regular);
+  color: var(--color-text-secondary);
+  line-height: 1.2;
+  margin-top: 2px;
+}
+
+/* Forslag C: én linje over tabellen når alle radene har avtalepris */
+.ap-note {
+  display: flex;
+  align-items: center;
+  gap: var(--s-2);
+  background: var(--color-bg-brand-soft);
+  color: var(--mj-blue);
+  border-radius: var(--r-md);
+  padding: var(--s-2) var(--s-3);
+  font-size: var(--fs-body-sm);
+  margin-bottom: var(--s-3);
+}
+.ap-note svg { width: 16px; height: 16px; flex: none; fill: none; stroke: currentColor; stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; }
+
+/* Nye kolonner fra datamodellene - skravert i overskriften så de er lette å se */
+.ap-new { background: repeating-linear-gradient(135deg, var(--mj-surface-1) 0 6px, #EEF1F6 6px 12px) !important; }
+
+.ap-matrix-wrap { overflow-x: auto; -webkit-overflow-scrolling: touch; }
+.ap-frame .variant-selector__matrix { min-width: 860px; }
+.ap-frame--mobile .variant-selector__matrix { min-width: 760px; }
+
+.ap-scorecard { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: var(--s-3); }
+.ap-scorecard .mp-card { padding: var(--s-4); }
+.ap-scorecard b { display: block; color: var(--color-text-primary); margin-bottom: var(--s-1); }
+
+.ap-pair { display: grid; grid-template-columns: minmax(0, 1fr) 375px; gap: var(--s-6); align-items: start; }
+@media (max-width: 1000px) { .ap-pair { grid-template-columns: 1fr; } }
+
+.ap-caption { font-size: var(--fs-caption); color: var(--color-text-tertiary); margin: 0 0 var(--s-2); }

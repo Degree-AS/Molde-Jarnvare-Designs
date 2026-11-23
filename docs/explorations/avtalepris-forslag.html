@@ -1,0 +1,203 @@
+<!doctype html>
+<html lang="nb">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Avtalepris i variant-tabellen - forslag - Molde Jarnvare</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Source+Sans+3:wght@400;500;600;700;900&family=JetBrains+Mono:wght@400&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../../src/styles/index.css">
+  <link rel="stylesheet" href="meny-forslag.css">
+  <link rel="stylesheet" href="avtalepris-forslag.css">
+</head>
+<body>
+
+<div class="mp-banner">
+  <span><strong>Utforskning</strong> · Forslag til merking av avtalepris i variant-tabellen · 23.11.2026</span>
+  <span>Meldt av Håkon (983905 hos HD Construction)</span>
+</div>
+
+<main class="mp-wrap">
+
+  <header class="mp-hero">
+    <p class="mp-eyebrow">Produktside med varianter</p>
+    <h1>Hvordan viser vi «Avtalepris» i variant-tabellen?</h1>
+    <p>På produkter med én artikkel står «Avtalepris» under prisen når prisen kommer fra kundens avtale i BC. På produkter med flere varianter står prisen per rad i tabellen, og der vises ingen merking i dag. Prisen er riktig, men kunden ser ikke at det er avtaleprisen. Tabellen får snart flere kolonner fra datamodellene, så merkingen må ta minst mulig plass.</p>
+  </header>
+
+  <!-- ── Hva vi vet ───────────────────────────────────────────────────── -->
+  <section aria-labelledby="funn-h">
+    <h2 class="mp-h2" id="funn-h">Utgangspunkt</h2>
+    <div class="mp-cards">
+      <div class="mp-card">
+        <h3>Én artikkel: fungerer</h3>
+        <p>Prisen står øverst til høyre, og «Avtalepris» står under den når prisen kommer fra kundens prisliste i BC. Ellers står det ingenting.</p>
+      </div>
+      <div class="mp-card mp-card--problem">
+        <h3>Variant-tabell: mangler</h3>
+        <p>Hver rad har sin egen pris, men ingen av radene sier om prisen er avtalepris. En kunde kan ha avtalepris på noen varianter og vanlig pris på andre, så merkingen må gjelde per rad.</p>
+      </div>
+      <div class="mp-card">
+        <h3>Liten plass</h3>
+        <p>Når datamodellene er på plass, kommer det kolonner som dimensjon, lengde, fasthetsklasse og overflate (skravert under). Merkingen kan ikke få en egen kolonne eller gjøre priskolonnen bredere.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── Forslag A ────────────────────────────────────────────────────── -->
+  <section class="mp-proposal" aria-labelledby="a-h">
+    <div class="mp-proposal__head">
+      <div class="mp-letter">A</div>
+      <div>
+        <h2 id="a-h">Lite merke foran prisen, forklaring over tabellen <span class="mp-badge mp-badge--new">Anbefalt</span></h2>
+        <p>Et lite «A» foran prisen på rader med avtalepris. Forklaringen står én gang, på linja over tabellen, og bare når minst én rad har avtalepris. Prisene står fortsatt rett under hverandre, og merket bruker plassen som allerede er ledig i priskolonnen.</p>
+      </div>
+    </div>
+    <div class="ap-frame" data-option="a"></div>
+    <div class="ap-scorecard">
+      <div class="mp-card"><b>Plass</b><p>Ingen ny kolonne og ingen høyere rader. Merket er 18 px bredt.</p></div>
+      <div class="mp-card"><b>Tydelighet</b><p>Merket alene sier lite, så det trenger forklaringen. Hold musa over merket for å se «Avtalepris», og skjermlesere leser «Avtalepris».</p></div>
+      <div class="mp-card"><b>Andre steder</b><p>Det samme merket kan brukes senere på produktkort og i handlekurven, der det også er trangt.</p></div>
+    </div>
+  </section>
+
+  <!-- ── Forslag B ────────────────────────────────────────────────────── -->
+  <section class="mp-proposal" aria-labelledby="b-h">
+    <div class="mp-proposal__head">
+      <div class="mp-letter">B</div>
+      <div>
+        <h2 id="b-h">«Avtalepris» som liten tekst under prisen</h2>
+        <p>Samme løsning som på produkter med én artikkel: «Avtalepris» med liten skrift under prisen i raden. Den trenger ingen forklaring, men radene med avtalepris blir litt høyere.</p>
+      </div>
+    </div>
+    <div class="ap-frame" data-option="b"></div>
+    <div class="ap-scorecard">
+      <div class="mp-card"><b>Plass</b><p>Ikke bredere, men raden blir ca. 16 px høyere. Rader med og uten avtalepris får ulik høyde.</p></div>
+      <div class="mp-card"><b>Tydelighet</b><p>Best: ordet står der det gjelder, akkurat som på produkter med én artikkel.</p></div>
+      <div class="mp-card"><b>Mange rader</b><p>Med 30-40 varianter blir tabellen merkbart lengre, og ordet gjentas på nesten alle rader.</p></div>
+    </div>
+  </section>
+
+  <!-- ── Forslag C ────────────────────────────────────────────────────── -->
+  <section class="mp-proposal" aria-labelledby="c-h">
+    <div class="mp-proposal__head">
+      <div class="mp-letter">C</div>
+      <div>
+        <h2 id="c-h">Én beskjed over tabellen når alle radene har avtalepris</h2>
+        <p>Har kunden avtalepris på alle variantene, står det én gang over tabellen, og radene merkes ikke. Gjelder avtalen bare noen av variantene, får de radene merket fra forslag A. Ofte gjelder avtalen hele produktet, og da blir dette ryddigst.</p>
+      </div>
+    </div>
+    <div class="ap-frame" data-option="c"></div>
+    <div class="ap-scorecard">
+      <div class="mp-card"><b>Plass</b><p>Én linje over tabellen og ingenting i radene.</p></div>
+      <div class="mp-card"><b>Tydelighet</b><p>Tydelig når avtalen gjelder alle radene. Når den gjelder noen av dem, ser siden ut som i A.</p></div>
+      <div class="mp-card"><b>Bygging</b><p>To varianter av samme regel å bygge og teste. Krever litt mer arbeid enn A.</p></div>
+    </div>
+  </section>
+
+  <!-- ── Mobil ────────────────────────────────────────────────────────── -->
+  <section aria-labelledby="mob-h">
+    <h2 class="mp-h2" id="mob-h">Forslag A på mobil</h2>
+    <div class="ap-pair">
+      <div class="mp-card">
+        <h3>Hva skjer på smal skjerm</h3>
+        <p>Tabellen scroller sidelengs, som i dag. Forklaringen ligger over tabellen og blir stående når du scroller. Merket står i priscella og følger prisen.</p>
+      </div>
+      <div>
+        <p class="ap-caption">375 px bredde</p>
+        <div class="ap-frame ap-frame--mobile" data-option="a" data-mobile></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── Avklaringer ──────────────────────────────────────────────────── -->
+  <section aria-labelledby="q-h">
+    <h2 class="mp-h2" id="q-h">Å avklare med Molde Jarnvare</h2>
+    <div class="mp-cards">
+      <div class="mp-card">
+        <h3>Hvilket forslag?</h3>
+        <p>Vi anbefaler A, eventuelt C hvis det er vanlig at avtalen gjelder alle variantene.</p>
+      </div>
+      <div class="mp-card">
+        <h3>Merket</h3>
+        <p>Er et «A» godt nok, eller vil dere ha et annet tegn eller en annen farge? Grønt er brukt på lagerstatus, så vi har valgt blått.</p>
+      </div>
+      <div class="mp-card">
+        <h3>Valgknapper</h3>
+        <p>Produkter der variantene vises som valgknapper, viser én pris om gangen. Der bruker vi «Avtalepris» under prisen, som for én artikkel.</p>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<script>
+  // Demo-tabellen: samme rader i alle forslagene. agree = prisen kommer fra kundens prisliste i BC.
+  const rows = [
+    { name: 'M8 × 20', sku: '4815-160-30', dim: 'M8', len: '20 mm', cls: '8.8', surf: 'Elforsinket', stock: '1000+ på lager', price: 'kr 1,90', agree: true },
+    { name: 'M8 × 30', sku: '4815-161-30', dim: 'M8', len: '30 mm', cls: '8.8', surf: 'Elforsinket', stock: '1000+ på lager', price: 'kr 2,15', agree: true },
+    { name: 'M8 × 40', sku: '4815-162-30', dim: 'M8', len: '40 mm', cls: '8.8', surf: 'Elforsinket', stock: '640 på lager', price: 'kr 2,40', agree: true },
+    { name: 'M10 × 30', sku: '4815-170-30', dim: 'M10', len: '30 mm', cls: '8.8', surf: 'Elforsinket', stock: '420 på lager', price: 'kr 3,85', agree: false },
+    { name: 'M10 × 40', sku: '4815-171-30', dim: 'M10', len: '40 mm', cls: '8.8', surf: 'Elforsinket', stock: '1000+ på lager', price: 'kr 4,20', agree: true },
+    { name: 'M10 × 50', sku: '4815-172-30', dim: 'M10', len: '50 mm', cls: '8.8', surf: 'Elforsinket', stock: '85 på lager', price: 'kr 4,95', agree: false },
+  ];
+  const cart = '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M2 4h2.5l3 12h11l2.5-8H7"/><circle cx="10" cy="20" r="1.6"/><circle cx="17" cy="20" r="1.6"/></svg>';
+  const info = '<svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 11v5M12 8h.01"/></svg>';
+  const mark = '<abbr class="ap-mark" title="Avtalepris" aria-label="Avtalepris">A</abbr>';
+
+  function priceCell(r, option, allAgree) {
+    if (!r.agree || (option === 'c' && allAgree)) return r.price;
+    if (option === 'b') return r.price + '<span class="ap-sub">Avtalepris</span>';
+    return mark + r.price;
+  }
+
+  function render(el) {
+    const option = el.dataset.option;
+    // Forslag C viser beskjeden når alle radene har avtalepris, så den demoen bruker alle rader som avtalepris.
+    const data = option === 'c' ? rows.map((r) => ({ ...r, agree: true })) : rows;
+    const allAgree = data.every((r) => r.agree);
+    const anyAgree = data.some((r) => r.agree);
+    const legend = (option === 'a' || (option === 'c' && !allAgree)) && anyAgree
+      ? '<span class="ap-legend">' + mark.replace('aria-label="Avtalepris"', 'aria-hidden="true"') + ' Avtalepris - prisen fra avtalen deres</span>'
+      : '';
+    const note = option === 'c' && allAgree
+      ? '<div class="ap-note">' + info + '<span>Prisene i tabellen er <b>avtalepriser</b> - prisene fra avtalen deres.</span></div>'
+      : '';
+    const body = data.map((r) => `
+      <tr>
+        <th scope="row">${r.name}</th>
+        <td><span class="variant-selector__matrix-sku">${r.sku}</span></td>
+        <td>${r.dim}</td><td>${r.len}</td><td>${r.cls}</td><td>${r.surf}</td>
+        <td><span class="stock-indicator stock-indicator--in">${r.stock}</span></td>
+        <td class="is-numeric variant-selector__matrix-price">${priceCell(r, option, allAgree)}</td>
+        <td class="is-numeric"><div class="variant-selector__matrix-qty"><div class="qty-stepper qty-stepper--compact">
+          <button class="qty-stepper__btn" aria-label="Reduser antall">−</button>
+          <input class="qty-stepper__input" type="number" value="1" min="0">
+          <button class="qty-stepper__btn" aria-label="Øk antall">+</button></div></div></td>
+        <td><button class="variant-selector__matrix-add" aria-label="Legg ${r.name} i kurv">${cart}</button></td>
+      </tr>`).join('');
+    el.innerHTML = `
+      <div class="ap-label">
+        <span>Velg variant og antall</span>
+        <span class="ap-label__right">${legend}<span>${data.length} varianter</span></span>
+      </div>
+      ${note}
+      <div class="ap-matrix-wrap">
+        <table class="variant-selector__matrix">
+          <thead><tr>
+            <th scope="col">Variant</th><th scope="col">Art.nr</th>
+            <th scope="col" class="ap-new">Dimensjon</th><th scope="col" class="ap-new">Lengde</th>
+            <th scope="col" class="ap-new">Klasse</th><th scope="col" class="ap-new">Overflate</th>
+            <th scope="col">Lagerstatus</th><th scope="col" class="is-numeric">Pris/stk eks. mva</th>
+            <th scope="col" class="is-numeric">Antall</th><th scope="col"><span class="sr-only">Legg til</span></th>
+          </tr></thead>
+          <tbody>${body}</tbody>
+        </table>
+      </div>`;
+  }
+
+  document.querySelectorAll('[data-option]').forEach(render);
+</script>
+</body>
+</html>
