@@ -104,7 +104,7 @@
     MINE_KEYS[m.l1 + "|" + m.l2 + "|*"] = true;
   });
   // Innlogget eller ikke: anonyme får menyen uten «Dine kategorier». Byttes med knappene over A.
-  var loggedIn = true;
+  var loggedIn = false;
   var onViewer = [];
   function isMine(l1, label) { return loggedIn && !!MINE_KEYS[l1 + "|" + label]; }
   function holdsMine(l1, l2) { return loggedIn && !!MINE_KEYS[l1 + "|" + l2 + "|*"]; }

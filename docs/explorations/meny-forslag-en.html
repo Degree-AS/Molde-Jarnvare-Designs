@@ -20,7 +20,7 @@
 <body>
 
 <div class="mp-banner">
-  <span><strong>Exploration</strong> · Product menu, proposal A (chosen) · developer handoff · 20.11.2026</span>
+  <span><strong>Exploration</strong> · Product menu, proposal A (chosen) · developer handoff · 20.11.2026, updated 23.11.2026</span>
   <a href="meny-forslag.html">Norsk versjon med alle tre forslag →</a>
 </div>
 
@@ -30,6 +30,7 @@
     <p class="mp-eyebrow">Product menu</p>
     <h1>Department menu (A) - for developers</h1>
     <p>Proposal A was chosen on 20.11.2026. The demo below is clickable and runs on Molde Jarnvare's real category tree from <code>/mj/web/api/navigation/menu?areaId=27</code>: 15 main categories, 125 subcategories and 445 on the third level. The explanations are in English. The menu copy stays in Norwegian because that is what ships, and there is a glossary at the bottom. Proposals B and C were dropped (C because the site search already does the job) and are only on the Norwegian page.</p>
+    <p><b>Update 23.11.2026:</b> build the menu and the content area now, <b>without «Dine kategorier»</b>. MJ wants more clarity on it first, so it is specified and estimated later as a separate change. The sections about it stay on this page as input for that, marked «later». In the demo, «Build now» shows what ships.</p>
   </header>
 
   <!-- ── Today's menu ─────────────────────────────────────────────────── -->
@@ -61,7 +62,7 @@
       <span class="mp-letter">A</span>
       <div>
         <h2>Department menu <span class="mp-badge">Chosen 20.11.2026</span></h2>
-        <p>The main categories sit in a fixed rail on the left. The one you point at opens all its level 2 and level 3 subcategories in the panel next to it, with a content area for campaigns and services on the right. Logged-in customers get «Dine kategorier» (your categories) at the top. Mobile: a drill-down menu with the categories directly on the first level.</p>
+        <p>The main categories sit in a fixed rail on the left. The one you point at opens all its level 2 and level 3 subcategories in the panel next to it, with a content area for campaigns and services on the right. «Dine kategorier» (your categories) for logged-in customers comes later as a separate change. Mobile: a drill-down menu with the categories directly on the first level.</p>
       </div>
     </div>
 
@@ -72,7 +73,7 @@
           <li><b>15 choices instead of 125.</b> One short list with icon and count, then level 2 and 3 for one category at a time.</li>
           <li><b>All subcategories visible, no «+ N more».</b> Four columns fit everything in 14 of 15 categories without scrolling. Verktøy og redskap (113 links) gets the full width and five columns.</li>
           <li><b>Content area per main category, managed in the CMS:</b> campaign or news on top, then the services and supply solutions that belong to the category.</li>
-          <li><b>Your categories for logged-in customers:</b> the customer's regular categories from their BC orders, one click away. Subcategories they bought from get a dot in every department.</li>
+          <li><b>Later, separate change - your categories for logged-in customers:</b> the customer's regular categories from their BC orders, one click away. Subcategories they bought from get a dot in every department.</li>
           <li><b>Well-known pattern</b> from Grainger and Home Depot, with a 300 ms hover delay so it does not flicker.</li>
         </ul>
       </article>
@@ -89,8 +90,8 @@
     <div class="mp-stage">
       <div class="mp-viewer" role="group" aria-label="Show the menu as">
         <span>Show as:</span>
-        <button type="button" class="mp-chip mp-chip--tab" data-viewer="in" aria-pressed="true">Logged-in customer</button>
-        <button type="button" class="mp-chip mp-chip--tab" data-viewer="anon" aria-pressed="false">Anonymous</button>
+        <button type="button" class="mp-chip mp-chip--tab" data-viewer="anon" aria-pressed="true">Build now</button>
+        <button type="button" class="mp-chip mp-chip--tab" data-viewer="in" aria-pressed="false">With «Dine kategorier» (later)</button>
       </div>
       <div class="mp-frame">
         <div class="mp-bar">
@@ -121,19 +122,19 @@
         <h3>Desktop</h3>
         <ul>
           <li>Hovering a rail item switches the panel after <b>300 ms</b>, so the mouse can move diagonally to the panel without switching. Click and keyboard focus switch at once; arrow up/down moves between rail items.</li>
-          <li>Logged in: «Dine kategorier» is the first rail item and is open when the menu opens. Anonymous: Festemidler is open.</li>
+          <li>Festemidler is open when the menu opens. (Later, with «Dine kategorier»: that is the first rail item and is open instead.)</li>
           <li>All level 3 links are shown under their level 2 heading in a 4-column layout. Level 2 headings are links too.</li>
           <li>Over 90 links in a department: the groups take the full width in 5 columns and the content area moves below.</li>
-          <li>The panel head has «Se alle N produkter» for the department. When the customer has bought from it: «Dere har kjøpt fra N av disse».</li>
+          <li>The panel head has «Se alle N produkter» for the department. (Later: «Dere har kjøpt fra N av disse» when the customer has bought from it.)</li>
           <li>Labels are shown in sentence case; abbreviations stay upper case (DIN, ISO, HSS, SDS, TIG, MIG/MAG, MMA, PTFE, LOTO).</li>
         </ul>
       </article>
       <article class="mp-card">
         <h3>Mobile</h3>
         <ul>
-          <li>First level: search field, «Dine kategorier» as a horizontally scrolling row of chips (logged in only), then the 15 main categories with icon and count.</li>
+          <li>First level: search field, then the 15 main categories with icon and count. (Later: «Dine kategorier» as a horizontally scrolling row of chips above them, logged in only.)</li>
           <li>Each level starts with «Se alle i …» and the back button names the parent level.</li>
-          <li>Dots show the way down: on a level 2 item that holds a category the customer bought from, and on that level 3 category itself.</li>
+          <li>Later, with «Dine kategorier»: dots show the way down: on a level 2 item that holds a category the customer bought from, and on that level 3 category itself.</li>
         </ul>
       </article>
       <article class="mp-card">
@@ -141,7 +142,7 @@
         <ul>
           <li>Per main category: an optional campaign (image, tag, title, text, link) and 0-3 links to services or supply solutions.</li>
           <li>Without a campaign, only the links are shown. Without either, a default (contact a product manager).</li>
-          <li>In «Dine kategorier» the campaign is chosen from the existing CMS campaigns, by the customer's categories («I dine kategorier»).</li>
+          <li>Later: in «Dine kategorier» the campaign is chosen from the existing CMS campaigns, by the customer's categories («I dine kategorier»).</li>
         </ul>
       </article>
     </div>
@@ -149,7 +150,7 @@
 
   <!-- ── Your categories: data ───────────────────────────────────────── -->
   <section>
-    <h2 class="mp-h2">«Dine kategorier»: data, storage and load</h2>
+    <h2 class="mp-h2">«Dine kategorier» (later, separate change): data, storage and load</h2>
     <div class="mp-cards">
       <article class="mp-card">
         <h3>Source: already in Dynamicweb</h3>
@@ -224,7 +225,7 @@ FROM scored                 -- keep Rank &lt;= 12</pre>
       <ol>
         <li><b>Now, with today's data:</b> rail and panel with all subcategories, sentence case and icons. Drill-down menu on mobile.</li>
         <li><b>Content area:</b> a CMS field per main category for campaign, news and services.</li>
-        <li><b>Dine kategorier:</b> nightly aggregate, small table and endpoint, menu section on desktop and mobile. New scope, separate change.</li>
+        <li><b>Later, separate change - Dine kategorier:</b> nightly aggregate, small table and endpoint, menu section on desktop and mobile. Not in this build; clarified, specified and estimated on its own.</li>
         <li><b>Before launch:</b> a short test with 5 customers: find hex screws, work gloves and a hydraulic hose.</li>
       </ol>
     </div>
