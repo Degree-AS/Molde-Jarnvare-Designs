@@ -1,31 +1,38 @@
 /**
- * Profilering — logo og navnelapp på klær (§14.18, utkast 03.11.2026)
+ * Profilering - logo og navnelapp på klær (§14.18). Utkast 03.11.2026, vedtatt i samtale
+ * Vaclav + Simen 17.11.2026, estimert 24.11.2026 (AB#20452: #20462, #20454, #20455, #20456).
  *
- * Bakgrunn: møte «Sortilog | Form og funksjon» (Håkon, Marius, Simen 03.11.2026).
- *   - Kunder med profilavtale har ferdige profiler (én eller flere per plaggtype:
- *     T-skjorte, genser, jakke, bukse …, f.eks. per avdeling — Håkon 04.11) med
- *     godkjent bilde, antall logoer, plassering og om plagget skal ha navnelapp. Profilene legges inn av MJ (selger) i
- *     nettløsningen — de finnes ikke i BC eller PIM i dag.
- *   - Profilering velges per varelinje i handlekurven: ja/nei, hvilken profil,
- *     hvor mange av plaggene som skal profileres (miks med og uten logo er lov),
- *     og navn per plagg når profilen har navnelapp.
- *   - Ordren går til BC som vanlig, med påføringslinjer (479350 logo, 479355
- *     navnelapp) i riktig antall, merknadslinjer med navn rett etter varelinjen,
- *     og Ordreinstruksjoner = LOGO på hodet. Detaljene avklares med Knowit.
- *   - Kunde uten avtale: ingen profilvalg, bare en henvisning til selger.
+ *   - MJ setter opp avtalen per kunde i System › Profilering (bare SysAdmin, aldri ved «Logg inn som»):
+ *     avtale på/av, omfang «Alle profilerbare varer» / «Kun profilerbare varer i sortilogen», selger
+ *     (brukergruppen «Salg og produktansvarlige»), internt notat til trykkeriet, private logofiler og
+ *     profiler med plasseringer. Lagres i egne tabeller på nettløsningen, ikke i BC eller PIM.
+ *   - «Kan profileres» er en avkryssingsboks MJ setter på varen i Dynamicweb-admin. Ingen egen design
+ *     i nettbutikken.
+ *   - Handlekurven, per linje: avkryssingsboksen «Profilering» (av som standard, erstatter «Uten
+ *     profilering»). Én profil som passer velges automatisk; finnes flere, velger kunden én.
+ *     «Antall som skal profileres» 1 … antallet på linjen, ett navn per plagg (maks 30 tegn).
+ *     Manglende navn stopper ikke bestillingen - det flagges til trykkeriet.
+ *   - Påføringslinjer med kundens pris: 479350 = plagg × logoplasseringer, 479355 = antall navn.
+ *   - Kassen har ingen profileringsseksjon; beløpet ligger i totalsummen.
+ *   - Ordredetalj og ordrehistorikk viser profileringen per linje, lest tilbake fra BC (order-history.css).
+ *   - Kunden ser de aktive profilene skrivebeskyttet under Min konto › Profilering, aldri logofilene.
+ *
+ * Ikke med i estimatet: plasseringsverktøy for logo (fase 3), slagord og annen tekst enn navnelapper,
+ * egne tilgangsgrupper «Profilering» og «Trykkeri», profiler begrenset per avdeling eller bruker.
  *
  * Block:     .profiling
- * Elements:  __summary  __summary-text  __toggle
+ * Elements:  __check  __check-hint                         (avkryssingsboksen per kurvlinje)
+ *            __summary  __summary-text  __toggle
  *            __panel  __panel-title  __options  __option  __option-media
  *            __option-body  __option-title  __option-meta
- *            __row  __names  __name  __name-index
+ *            __row  __names  __name  __name-index  __flag
  *            __addons  __addon  __addon-sku  __addon-price
  *            __notice
  *            __card  __card-media  __card-body  __card-title  __card-meta
  *            __placements  __placement  __rule
  *            __editor  __editor-head  __fields  __chips  __placement-rows
  *            __placement-row  __remove  __calc  __log   (System › Profilering)
- * Modifiers: __option--selected, __card--inactive
+ * Modifiers: __option--selected, __option--auto, __card--inactive, __placement-row--name
  */
 
 .profiling {
@@ -36,7 +43,18 @@
   font-size: var(--fs-body-sm);
 }
 
-/* Lukket tilstand — én linje med valgt profil eller «Legg til profilering» */
+/* Avkryssingsboksen «Profilering» per kurvlinje - av som standard. Vises bare på varer med
+   «Kan profileres» når kunden har avtale (og varen er i sortilogen når omfanget er «kun sortilog»). */
+.profiling__check {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--s-1) var(--s-3);
+}
+.profiling__check .checkbox { font-size: var(--fs-body-sm); font-weight: var(--fw-semibold); }
+.profiling__check-hint { font-size: var(--fs-caption); color: var(--color-text-secondary); }
+
+/* Lukket tilstand - én linje med valgt profil og antall */
 .profiling__summary {
   display: flex;
   flex-wrap: wrap;
@@ -101,6 +119,8 @@
   border-color: var(--color-action-primary);
   box-shadow: inset 0 0 0 1px var(--color-action-primary);
 }
+/* Bare én profil passer: valgt automatisk, vises uten radioknapp */
+.profiling__option--auto { cursor: default; border-color: var(--color-border-brand); }
 .profiling__option-media {
   width: 56px;
   height: 56px;
@@ -137,6 +157,17 @@
   font-size: var(--fs-mono-sm);
   color: var(--color-text-tertiary);
   text-align: right;
+}
+
+/* Manglende navn stopper ikke bestillingen - det flagges til trykkeriet (H3, 17.11.2026) */
+.profiling__flag {
+  margin: 0;
+  padding: var(--s-2) var(--s-3);
+  border-inline-start: var(--bw-3) solid var(--color-accent);
+  background: var(--color-bg-surface);
+  border-radius: var(--r-sm);
+  font-size: var(--fs-caption);
+  color: var(--color-text-secondary);
 }
 
 /* Påføringslinjene som legges på ordren — vises så kunden ser prisen */
@@ -236,6 +267,9 @@
   border-radius: var(--r-sm);
 }
 .profiling__placement-row .field__label { font-size: var(--fs-caption); }
+/* Navnelapp: bare posisjon - navnet skrives per plagg i handlekurven, maks 30 tegn */
+.profiling__placement-row--name { grid-template-columns: 140px 1fr 2fr auto; }
+.profiling__placement-row--name .field__hint { margin: 0; padding-bottom: var(--s-3); }
 .profiling__remove {
   height: 44px;
   padding-inline: var(--s-3);

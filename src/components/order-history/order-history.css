@@ -51,3 +51,52 @@
   font-weight: var(--fw-semibold);
   font-variant-numeric: tabular-nums;
 }
+
+/* Varelinjer i ordredetaljen (account-order-detail.html) - estimert 24.11.2026.
+   Produkt-cellen: navn + ÉN sortilog-merkelapp + «+N» (AB#19790/#20679, felles stil i badge.css).
+   Art.nr-cellen: MJ sitt art.nr alltid, «Deres varenr.» under i mono når kunden har eget nummer
+   (AB#20458). Ordrehistorikken viser kundens nummer slik det er NÅ, ikke slik det var da ordren ble lagt.
+   Profilering (AB#20452, #20456): profil, plasseringer og navn under plagget, og påføringslinjene
+   479350/479355 som egne rader rett etter plagglinjen. Alt lest tilbake fra BC, med antall slik
+   trykkeriet har justert dem.
+     <td data-label="Art.nr"><span class="order-history__ids"><code>314045</code>
+       <span class="order-history__customer-sku">Deres varenr. BV-30410</span></span></td>
+     <td data-label="Produkt"><div class="order-history__product">Navn <span class="badge-group">…</span>
+       <div class="order-history__profiling">…</div></div></td>
+     <tr class="order-history__addon-row">…</tr> */
+.order-history__ids { display: inline-flex; flex-direction: column; align-items: flex-start; gap: var(--s-1); }
+.order-history__customer-sku {
+  font-family: var(--ff-mono);
+  font-size: var(--fs-mono-sm);
+  color: var(--color-text-secondary);
+  font-variant-numeric: tabular-nums;
+  white-space: nowrap;
+}
+.order-history__product { display: flex; flex-direction: column; align-items: flex-start; gap: var(--s-2); min-width: 0; text-align: left; }
+
+/* Profilering på plagglinjen - kort tekst fra BC-merknadslinjene */
+.order-history__profiling {
+  display: flex;
+  flex-direction: column;
+  gap: var(--s-1);
+  padding: var(--s-2) var(--s-3);
+  background: var(--color-bg-brand-soft);
+  border-radius: var(--r-sm);
+  font-size: var(--fs-caption);
+  color: var(--color-text-secondary);
+}
+.order-history__profiling strong { color: var(--color-text-primary); font-weight: var(--fw-semibold); }
+.order-history__profiling p { margin: 0; }
+
+/* Påføringslinjene 479350/479355 hører til plagglinjen over - innrykk og dempet tekst */
+.data-table tbody tr.order-history__addon-row,
+.data-table tbody tr.order-history__addon-row:hover { background: var(--color-bg-surface-alt); }
+.order-history__addon-row td { font-size: var(--fs-body-sm); color: var(--color-text-secondary); }
+.order-history__addon-name { display: inline-flex; align-items: baseline; gap: var(--s-2); padding-inline-start: var(--s-4); }
+.order-history__addon-name::before { content: "↳"; color: var(--color-text-tertiary); }
+
+@media (max-width: 639.98px) {
+  .order-history__ids { align-items: flex-end; }
+  .order-history__product { align-items: flex-end; text-align: right; }
+  .order-history__addon-name { padding-inline-start: 0; }
+}

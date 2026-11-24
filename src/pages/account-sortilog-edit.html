@@ -425,13 +425,19 @@
 <main class="container container--wide" style="padding-block: var(--s-7);">
 
   <!--
-    MIN KONTO &rsaquo; SORTILOG &rsaquo; REDIGER DELSORTILOG (utkast 12.11.2026, AB#20556). Kun for kundens Admin-brukere.
-    Simen 12.11: Admin hos kunden kan lage og redigere delsortiloger p&aring; lik linje med MJ (System &rsaquo; Sortilog,
-    system-sortilog-edit.html). Samme skjema, samme regler. Bestiller-brukere ser delsortilogene, men ikke denne siden.
-    - Listen er alltid kundens sortilog fra BC. Admin velger bare hvilke av varene som h&oslash;rer til delsortilogen.
-      Hvilke varer som er i sortilogen, endres fortsatt bare av Molde Jarnvare i BC (&laquo;Mangler en vare?&raquo;).
-    - Nye varer fra BC blir liggende i &laquo;Hele sortilogen&raquo; med merkelappen &laquo;I sortilog&raquo;. Ingen krav om &aring; plassere dem.
+    MIN KONTO &rsaquo; SORTILOG &rsaquo; REDIGER DELSORTILOG (estimert 24.11.2026, AB#20677). Bare for kundens Firmaadmin.
+    Bestiller ser delsortilogene, men ikke denne siden. Visning ser ingen av sortilog-sidene. Under &laquo;Logg inn som&raquo;
+    kan ingen redigere (backend nekter, siden vises ikke). Samme redigering som SysAdmin har i System &rsaquo; Sortilog.
+    - Gi nytt navn her. Opprette og sortere (opp/ned) gj&oslash;res i listen p&aring; Min konto &rsaquo; Sortilog. Slette: knappen nederst.
+    - Listen er alltid kundens sortilog fra BC (~500 varer), gruppert, med s&oslash;k og &laquo;velg alle&raquo; i en kategori.
+      Firmaadmin krysser bare av hvilke av varene som h&oslash;rer til delsortilogen. Hvilke varer som er i sortilogen,
+      endres fortsatt bare av Molde Jarnvare i BC (&laquo;Mangler en vare?&raquo;).
+    - En vare kan ligge i flere delsortiloger eller i ingen. Nye varer fra BC ligger i &laquo;Hele sortilogen&raquo; med merkelappen
+      &laquo;I sortilog&raquo;. Ingen krav om &aring; plassere dem.
+    - Slettes delsortilogen, ligger varene fortsatt i hele sortilogen.
+    - Ingen brukere knyttes til delsortilogen: alle brukere hos kunden ser den (besluttet 24.11.2026).
     - Endringsloggen viser endringer fra b&aring;de MJ og kunden.
+    - IKKE MED I ESTIMATET: beskrivelse, egen merkelapptekst eller prioritetsfelt, import fra Excel.
   -->
   <h1 class="t-h1" style="margin-bottom: var(--s-7);">Min konto</h1>
 
@@ -459,23 +465,16 @@
           <h2 class="t-h2" style="margin: 0 0 var(--s-2);">Vedlikehold</h2>
           <p style="color: var(--color-text-secondary); margin: 0;">Delsortilog for Brunvoll AS &middot; 495 av 589 varer valgt &middot; sist endret 12.11.2026 av Leif Erling Aasan, Molde Jarnvare</p>
         </div>
-        <span class="badge badge--brand">Du er Admin</span>
+        <span class="badge badge--brand">Du er Firmaadmin</span>
       </header>
 
       <!-- 1. Navn -->
       <section class="card" style="margin-bottom: var(--s-5); display: flex; flex-direction: column; gap: var(--s-4);">
         <h3 class="card__title" style="margin: 0;">Delsortilog</h3>
-        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: var(--s-4);">
-          <div class="field">
-            <label class="field__label field__label--required" for="ds-name">Navn</label>
-            <input class="input" id="ds-name" value="Vedlikehold">
-            <p class="field__hint" style="margin: var(--s-1) 0 0;">Alle brukerne hos dere ser navnet i filteret og under Min konto.</p>
-          </div>
-          <div class="field">
-            <label class="field__label" for="ds-desc">Beskrivelse</label>
-            <input class="input" id="ds-desc" value="For vedlikeholdsavdelingen" placeholder="Valgfritt">
-            <p class="field__hint" style="margin: var(--s-1) 0 0;">Valgfritt. Vises under navnet p&aring; kortet under Min konto.</p>
-          </div>
+        <div class="field" style="max-width: 480px;">
+          <label class="field__label field__label--required" for="ds-name">Navn</label>
+          <input class="input" id="ds-name" value="Vedlikehold">
+          <p class="field__hint" style="margin: var(--s-1) 0 0;">Alle brukerne hos dere ser navnet i filteret, under Min konto og som merkelapp p&aring; varene.</p>
         </div>
       </section>
 
@@ -483,7 +482,7 @@
       <section style="display: flex; flex-direction: column; gap: var(--s-3);">
         <div>
           <h3 class="t-h3" style="margin: 0 0 var(--s-1);">Varer</h3>
-          <p class="field__hint" style="margin: 0; max-width: 72ch;">Listen er hele sortilogen deres. Huk av varene som h&oslash;rer til Vedlikehold. Mangler en vare i sortilogen, kontakt selgeren din. Nye varer i sortilogen legges ikke i noen delsortilog av seg selv. Tar Molde Jarnvare en vare ut av sortilogen, forsvinner den ogs&aring; herfra.</p>
+          <p class="field__hint" style="margin: 0; max-width: 72ch;">Listen er hele sortilogen deres. Kryss av varene som h&oslash;rer til Vedlikehold. Mangler en vare i sortilogen, kontakt selgeren din. Nye varer i sortilogen legges ikke i noen delsortilog av seg selv. Tar Molde Jarnvare en vare ut av sortilogen, forsvinner den ogs&aring; herfra.</p>
         </div>
 
         <div class="card" style="padding: 0;">
@@ -606,7 +605,7 @@
           <a class="btn btn--ghost btn--md" href="account-sortilog-detail.html" style="text-decoration: none;">Avbryt</a>
           <button class="btn btn--ghost btn--md" type="button" style="margin-left: auto; color: var(--mj-error);">Slett delsortilog</button>
         </div>
-        <p class="field__hint" style="margin: 0; text-align: right;">Sletting fjerner bare inndelingen. Varene blir liggende i hele sortilogen.</p>
+        <p class="field__hint" style="margin: 0; text-align: right;">Sletting fjerner bare delsortilogen. Varene blir liggende i hele sortilogen.</p>
       </section>
 
       <!-- 3. Endringslogg -->

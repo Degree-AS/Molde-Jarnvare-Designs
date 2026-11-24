@@ -425,24 +425,23 @@
 <main class="container container--wide" style="padding-block: var(--s-7);">
 
   <!--
-    SYSTEM &rsaquo; SORTILOG &rsaquo; DELSORTILOG (utkast 12.11.2026, AB#20556). Kun SysAdmin (MJ-ansatte), aldri under &laquo;Logg inn som&raquo;.
-    Bakgrunn: H&aring;kon Teams 09.11, 10.11 og 12.11, Simen 12.11.
-    - BC bestemmer HVILKE varer som er i kundens sortilog (vareavtale &laquo;Sortilog&raquo;, status Aktiv). Her bestemmer MJ bare
-      HVILKE AV DEM som h&oslash;rer til denne delsortilogen. Listen under er alltid kundens BC-sortilog &mdash; ingen andre varer kan legges til.
-    - Standard er &eacute;n sortilog for alle brukerne. Delsortiloger lages bare for det f&aring;tallet som trenger ulike utvalg
-      per avdeling eller type arbeid (H&aring;kon 12.11: &laquo;selgeren m&aring; gj&oslash;re den ekstra konfigureringen i etterkant p&aring; web&raquo;).
-    - En vare kan ligge i flere delsortiloger (kolonnen &laquo;Ogs&aring; i&raquo;).
+    SYSTEM &rsaquo; SORTILOG &rsaquo; DELSORTILOG (estimert 24.11.2026, AB#20678). Bare SysAdmin (MJ-ansatte), og nektes under &laquo;Logg inn som&raquo;.
+    Samme redigering som Firmaadmin har under Min konto &rsaquo; Sortilog (account-sortilog-edit.html, AB#20677).
+    - BC bestemmer HVILKE varer som er i kundens sortilog (vareavtale &laquo;Sortilog&raquo;, status Aktiv). Her krysses det bare av
+      hvilke av dem som h&oslash;rer til delsortilogen. Listen er alltid kundens sortilog fra BC (~500 varer), gruppert, med s&oslash;k
+      og &laquo;velg alle&raquo; i en kategori. Ingen andre varer kan legges til.
+    - Gi nytt navn her. Opprette og sortere (opp/ned) gj&oslash;res i listen p&aring; System &rsaquo; Sortilog. Slette: knappen nederst.
+    - En vare kan ligge i flere delsortiloger (kolonnen &laquo;Ogs&aring; i&raquo;) eller i ingen.
     - Vanlige nettregler gjelder i bunn (H&aring;kon 12.11): en vare som ikke vises p&aring; nett, vises ikke for kunden,
-      selv om den er huket av her.
-    - Arkiveres en vare i BC, eller byttes varen i vareavtalen, forsvinner den herfra og fra alle delsortiloger automatisk.
-      Nye varer fra BC blir bare liggende i &laquo;Hele sortilogen&raquo; med merkelappen &laquo;I sortilog&raquo;. Det er IKKE et krav at
-      alle varer plasseres i en delsortilog (Simen 12.11).
-      &Aring;PENT (Vaclav): beholder vareavtalelinjen sin id n&aring;r varen byttes? I s&aring; fall kan erstatningen arve plasseringen.
-    - Kunden ser delsortilogene som valg i filteret og som kort under Min konto. Alle brukere hos kunden ser alle
-      delsortilogene, som profilene (H&aring;kon 05.11: &laquo;hold det s&aring; enkelt som mulig&raquo;). &Aring;PENT: knytte brukere til en delsortilog.
-    - Kundens Admin-brukere kan lage og redigere delsortiloger p&aring; lik linje med MJ, med samme skjema under
-      Min konto &rsaquo; Sortilog (account-sortilog-edit.html). Bestiller-brukere kan ikke redigere (Simen 12.11).
-    - Slett fjerner bare inndelingen. Varene blir liggende i hele sortilogen.
+      selv om den er krysset av her. Avkrysningen beholdes.
+    - Arkiveres en vare i BC, eller byttes den i vareavtalen, forsvinner den herfra og fra alle delsortiloger ved neste
+      synk, og det logges. Avkrysninger f&oslash;lger IKKE med til en erstatningsvare (besluttet 24.11.2026). Nye varer fra BC ligger
+      i &laquo;Hele sortilogen&raquo; med merkelappen &laquo;I sortilog&raquo; til noen krysser dem av.
+    - Delsortiloger har ingen brukere: alle brukere hos kunden ser alle delsortilogene (besluttet 24.11.2026, &laquo;knytte
+      brukere til en delsortilog&raquo; er lukket: nei).
+    - Slett fjerner bare delsortilogen. Varene blir liggende i hele sortilogen.
+    - Endringsloggen viser endringer fra b&aring;de MJ, kunden og BC-synken.
+    - IKKE MED I ESTIMATET: beskrivelse, egen merkelapptekst eller prioritetsfelt, import fra Excel.
   -->
   <h1 class="t-h1" style="margin-bottom: var(--s-7);">System</h1>
 
@@ -474,17 +473,10 @@
       <!-- 1. Navn -->
       <section class="card" style="margin-bottom: var(--s-5); display: flex; flex-direction: column; gap: var(--s-4);">
         <h3 class="card__title" style="margin: 0;">Delsortilog</h3>
-        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: var(--s-4);">
-          <div class="field">
-            <label class="field__label field__label--required" for="ds-name">Navn</label>
-            <input class="input" id="ds-name" value="Vedlikehold">
-            <p class="field__hint" style="margin: var(--s-1) 0 0;">Kunden ser navnet i filteret og under Min konto.</p>
-          </div>
-          <div class="field">
-            <label class="field__label" for="ds-desc">Beskrivelse til kunden</label>
-            <input class="input" id="ds-desc" value="For vedlikeholdsavdelingen" placeholder="Valgfritt">
-            <p class="field__hint" style="margin: var(--s-1) 0 0;">Vises under navnet p&aring; kortet under Min konto.</p>
-          </div>
+        <div class="field" style="max-width: 480px;">
+          <label class="field__label field__label--required" for="ds-name">Navn</label>
+          <input class="input" id="ds-name" value="Vedlikehold">
+          <p class="field__hint" style="margin: var(--s-1) 0 0;">Navnet er merkelappen p&aring; produktkortet, i kurven og p&aring; ordrelinjene, og valget i filteret. Kunden ser det ogs&aring; under Min konto.</p>
         </div>
       </section>
 
@@ -492,7 +484,7 @@
       <section style="display: flex; flex-direction: column; gap: var(--s-3);">
         <div>
           <h3 class="t-h3" style="margin: 0 0 var(--s-1);">Varer</h3>
-          <p class="field__hint" style="margin: 0; max-width: 72ch;">Listen er kundens sortilog fra BC. Huk av varene som h&oslash;rer til Vedlikehold. Nye varer fra BC havner i hele sortilogen og legges ikke i noen delsortilog av seg selv. Arkiveres en vare i BC, forsvinner den fra alle delsortiloger.</p>
+          <p class="field__hint" style="margin: 0; max-width: 72ch;">Listen er kundens sortilog fra BC. Kryss av varene som h&oslash;rer til Vedlikehold. Nye varer fra BC havner i hele sortilogen og legges ikke i noen delsortilog av seg selv. Arkiveres en vare i BC, forsvinner den fra alle delsortiloger.</p>
         </div>
 
         <div class="card" style="padding: 0;">
@@ -615,7 +607,7 @@
           <a class="btn btn--ghost btn--md" href="system-sortilog.html" style="text-decoration: none;">Avbryt</a>
           <button class="btn btn--ghost btn--md" type="button" style="margin-left: auto; color: var(--mj-error);">Slett delsortilog</button>
         </div>
-        <p class="field__hint" style="margin: 0; text-align: right;">Sletting fjerner bare inndelingen. Varene blir liggende i hele sortilogen.</p>
+        <p class="field__hint" style="margin: 0; text-align: right;">Sletting fjerner bare delsortilogen. Varene blir liggende i hele sortilogen.</p>
       </section>
 
       <!-- 3. Endringslogg -->
@@ -624,7 +616,7 @@
         <ul class="profiling__log">
           <li><time>12.11.2026 10:04</time><span>BC: 314118 lagt til i sortilogen</span></li>
           <li><time>12.11.2026 09:31</time><span>Leif Erling Aasan la til 12 varer i Vedlikehold</span></li>
-          <li><time>10.11.2026 13:20</time><span>Kundens Admin-bruker fjernet 3 varer fra Vedlikehold</span></li>
+          <li><time>10.11.2026 13:20</time><span>Kari Nordmann (Firmaadmin) fjernet 3 varer fra Vedlikehold</span></li>
           <li><time>06.11.2026 02:00</time><span>BC: 451099 arkivert, fjernet fra Vedlikehold og Verksted</span></li>
           <li><time>05.11.2026 14:12</time><span>Leif Erling Aasan opprettet Vedlikehold</span></li>
         </ul>

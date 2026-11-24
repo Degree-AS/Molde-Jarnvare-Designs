@@ -489,6 +489,12 @@
         </div>
       </div>
       <!-- «Kun varer på lager» er fjernet for anonyme — filteret avslører reell beholdning (ADO 19544, krit. 4) -->
+      <!-- Onix (estimert 24.11.2026, AB#20460): samme mønster som «Kun varer på lager», sender Onix=true.
+           Samme for alle besøkende, også anonyme. Et masterprodukt treffer når minst én variant er Onix. -->
+      <div class="filter-sidebar__group">
+        <h3 class="filter-sidebar__group-title">Sertifisering</h3>
+        <label class="checkbox"><input type="checkbox"><span class="checkbox__visual"></span><span class="checkbox__label">Sertifisert løfteutstyr (Onix)</span></label>
+      </div>
       <button class="filter-sidebar__clear">Nullstill alle filtre</button>
     </div>
       </div>
@@ -529,12 +535,15 @@
         </div>
         </div>
 
+      <!-- Anonym: ingen sortilog-merkelapp, intet sortilogfilter og ingen «Deres varenr.» (estimert 24.11.2026, AB#19790/AB#20458).
+           Onix-filteret og -merket er det samme som for innloggede (AB#20460). -->
       <!-- Product grid — anonym tilstand (ADO 19544 + 19545).
            Ingen pris, ingen handlekurv. Lagerstatus fra itemCategoryCode, aldri antall.
-           De fire kortene viser alle tilstandene:
+           Kortene viser alle tilstandene:
              1–2  LAGERVARE             → Normalt på lager + «Logg inn for å se priser»
              3    bestillingsvare (BC-koden vises aldri) → Bestillingsvare + «Logg inn for å se priser»
-             4    ukjent kode, pris skjult i BC → ingen indikator + «Kontakt oss for tilbud» -->
+             4    ukjent kode, pris skjult i BC → ingen indikator + «Kontakt oss for tilbud»
+             5    Onix-merket masterprodukt (AB#20460) -->
       <div class="plp-layout__grid">
         <!-- Én kort per produkt, aldri per variant (beslutning 07.10.2026, ADO 19055).
              Masterprodukt: antall varianter + «Fra» laveste variantpris når prisene er ulike, ellers bare prisen.
@@ -562,6 +571,13 @@
           <span class="product-card__sku">4870-162-00</span>
           <h3 class="product-card__title"><a href="product-anonym.html">Gjengestang M8 × 1000 mm A4 syrefast</a></h3>
           <span class="stock-indicator stock-indicator--in">Normalt på lager</span>
+          <p class="price-gate"><a class="price-gate__link" href="login.html">Logg inn for å se priser</a></p>
+        </article>
+        <!-- Onix-merket vises også for anonyme (AB#20460) -->
+        <article class="product-card">
+          <div class="product-card__media"><div class="product-card__badges"><span class="badge badge--onix">Onix</span></div></div>
+          <span class="product-card__variants">7 varianter</span>
+          <h3 class="product-card__title"><a href="product-anonym.html">Øyebolt DIN 580 C15 galvanisert</a></h3>
           <p class="price-gate"><a class="price-gate__link" href="login.html">Logg inn for å se priser</a></p>
         </article>
       </div>

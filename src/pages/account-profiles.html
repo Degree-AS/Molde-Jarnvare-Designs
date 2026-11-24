@@ -440,18 +440,19 @@
 
     <div class="account-dashboard__main">
       <!--
-        PROFILERING (m&oslash;te 03.11.2026). Viser det som er AVTALT mellom selger og kunde om logo/navn p&aring; kl&aelig;r.
-        - &Eacute;n eller flere profiler per plaggtype (T-skjorte, genser, jakke, bukse &hellip;). Flere n&aring;r avdelinger vil ha ulik
-          merking, f.eks. Brunvoll produksjon og ettermarked p&aring; gensere (H&aring;kon 04.11). Avdelingen vises som merkelapp.
-          Kunden velger profil per linje i handlekurven. Sortert p&aring; plaggtype, deretter avdeling.
-        - Hver profil: navn, godkjent bilde av ferdig plagg, plasseringer (logo bryst, logo rygg, navnelapp &hellip;),
-          antall logoer per plagg og om plagget har navnelapp. Antallet styrer p&aring;f&oslash;ringslinjene p&aring; ordren.
-        - Legges inn og vedlikeholdes av MJ (selger, f.eks. Leif Erling) i Dynamicweb &mdash; finnes ikke i BC/PIM i dag.
-          Kunden kan bare se. Erstatter SharePoint-mappen og lappene p&aring; tavla over trykkeriet.
-        - Regelen &laquo;Profilering kun p&aring; sortilog-varer&raquo; settes per kunde av MJ (H&aring;kon 03.11). Standard: alle
-          varer med materialtype stoff kan profileres.
-        - Kunde uten profiler ser en tom tilstand med kontakt til selger (se nederst).
+        MIN KONTO › PROFILERING - estimert 24.11.2026 (AB#20452 / #20454). Utkast 03.11.2026.
+        - Skrivebeskyttede kort med kundens AKTIVE profiler. Alle bestillere hos kunden ser alle aktive profiler
+          (H&aring;kon 05.11). Deaktiverte profiler vises ikke.
+        - &laquo;Avdeling&raquo; er bare en etikett p&aring; profilen (f.eks. Produksjon / Ettermarked p&aring; gensere, H&aring;kon 04.11).
+          Den styrer ikke hvem som ser profilen. Profiler begrenset per avdeling eller bruker er ikke med i estimatet.
+        - Hver profil: navn, hovedbildet av ferdig plagg, plasseringer (logo + posisjon + bredde, navnelapp + posisjon).
+          Kunden velger profil per linje i handlekurven (cart-profilering.html).
+        - Kunden ser ALDRI logofilene. De er private og vises bare i System &rsaquo; Profilering.
+        - Omfanget settes per kunde av MJ: &laquo;Alle profilerbare varer&raquo; eller &laquo;Kun profilerbare varer i sortilogen&raquo;.
+          &laquo;Kan profileres&raquo; er en avkryssingsboks MJ setter p&aring; varen i Dynamicweb-admin.
+        - Tom tilstand n&aring;r kunden ikke har noen aktive profiler (nederst).
         - MJ setter opp og endrer profilene i System &rsaquo; Profilering (system-profiles.html), ikke her.
+        Ikke med i estimatet: slagord og annen tekst enn navnelapper, plasseringsverkt&oslash;y for logo (fase 3).
       -->
       <header style="margin-bottom: var(--s-6);">
         <h2 class="t-h2" style="margin: 0 0 var(--s-2);">Profilering</h2>
@@ -459,16 +460,16 @@
       </header>
 
       <div class="profiling__rule" style="margin-bottom: var(--s-6);">
-        <p><strong>Gjelder:</strong> alle kl&aelig;r som kan profileres, ogs&aring; utenfor sortilogen</p>
+        <p><strong>Gjelder:</strong> alle profilerbare varer, ogs&aring; utenfor sortilogen</p>
         <p style="color: var(--color-text-secondary);">Avtalt med Leif Erling Aasan &middot; sist endret 14.10.2026</p>
       </div>
 
       <div style="display: flex; flex-direction: column; gap: var(--s-4);">
         <article class="profiling__card">
-          <div class="profiling__card-media" role="img" aria-label="Godkjent bilde: Jakke &ndash; standard"></div>
+          <div class="profiling__card-media" role="img" aria-label="Godkjent bilde: Jakke - standard"></div>
           <div class="profiling__card-body">
             <div>
-              <h3 class="profiling__card-title">Jakke &ndash; standard</h3>
+              <h3 class="profiling__card-title">Jakke - standard</h3>
               <p class="profiling__card-meta">Skalljakker, fleecejakker og vester &middot; 2 logoer + navnelapp per plagg</p>
             </div>
             <ul class="profiling__placements">
@@ -479,10 +480,10 @@
           </div>
         </article>
         <article class="profiling__card">
-          <div class="profiling__card-media" role="img" aria-label="Godkjent bilde: Bukse &ndash; standard"></div>
+          <div class="profiling__card-media" role="img" aria-label="Godkjent bilde: Bukse - standard"></div>
           <div class="profiling__card-body">
             <div>
-              <h3 class="profiling__card-title">Bukse &ndash; standard</h3>
+              <h3 class="profiling__card-title">Bukse - standard</h3>
               <p class="profiling__card-meta">Arbeidsbukser og servicebukser &middot; 1 logo per plagg</p>
             </div>
             <ul class="profiling__placements">
@@ -491,11 +492,11 @@
           </div>
         </article>
         <article class="profiling__card">
-          <div class="profiling__card-media" role="img" aria-label="Godkjent bilde: Genser &ndash; produksjon"></div>
+          <div class="profiling__card-media" role="img" aria-label="Godkjent bilde: Genser - produksjon"></div>
           <div class="profiling__card-body">
             <div>
               <span class="badge">Produksjon</span>
-              <h3 class="profiling__card-title">Genser &ndash; produksjon</h3>
+              <h3 class="profiling__card-title">Genser - produksjon</h3>
               <p class="profiling__card-meta">Gensere, pique og T-skjorter &middot; 1 logo + navnelapp per plagg</p>
             </div>
             <ul class="profiling__placements">
@@ -505,16 +506,16 @@
           </div>
         </article>
         <article class="profiling__card">
-          <div class="profiling__card-media" role="img" aria-label="Godkjent bilde: Genser &ndash; ettermarked"></div>
+          <div class="profiling__card-media" role="img" aria-label="Godkjent bilde: Genser - ettermarked"></div>
           <div class="profiling__card-body">
             <div>
               <span class="badge">Ettermarked</span>
-              <h3 class="profiling__card-title">Genser &ndash; ettermarked</h3>
+              <h3 class="profiling__card-title">Genser - ettermarked</h3>
               <p class="profiling__card-meta">Gensere, pique og T-skjorter &middot; 2 logoer per plagg</p>
             </div>
             <ul class="profiling__placements">
               <li class="profiling__placement">Logo bryst venstre &middot; 8 cm</li>
-              <li class="profiling__placement">Tekst &laquo;Brunvoll Service&raquo; rygg &middot; 25 cm</li>
+              <li class="profiling__placement">Logo rygg &middot; 25 cm</li>
             </ul>
           </div>
         </article>
@@ -537,17 +538,12 @@
         <strong>Vil dere endre en profil eller legge til en ny?</strong> Ta kontakt med selgeren deres, s&aring; legger vi den inn. Nye logoer m&aring; godkjennes f&oslash;r de kan trykkes.
       </div>
 
-      <!-- Variant: SysAdmin er logget inn som en kunde (&laquo;Logg inn som&raquo;). Siden er lik kundens (kun lese).
-           Redigering skjer i System &rsaquo; Profilering; knappen avslutter impersoneringen og &aring;pner kunden der,
-           samme m&oslash;nster som &laquo;Tilbake til meg og &aring;pne denne siden&raquo; (AB#20391). -->
-      <p class="preview-label" style="margin-top: var(--s-10); font-size: var(--fs-overline); text-transform: uppercase; letter-spacing: var(--ls-wider); color: var(--color-text-tertiary);">Variant: SysAdmin logget inn som kunden</p>
-      <div class="profiling__rule">
-        <p>Du ser siden slik <strong>Kjetil Kvendseth (Brunvoll AS)</strong> ser den. Profilene endres i System.</p>
-        <a class="btn btn--outline btn--sm" href="system-profile-edit.html" style="text-decoration: none;">Tilbake til meg og endre profilene</a>
-      </div>
+      <!-- Under &laquo;Logg inn som&raquo; ser SysAdmin siden akkurat som kunden (kun lese). Profilene endres bare i
+           System &rsaquo; Profilering, som aldri kan brukes under &laquo;Logg inn som&raquo; (System-sidene viser
+           &laquo;Tilbake til meg og &aring;pne denne siden&raquo;, AB#20391). Egen snarvei herfra er ikke med i estimatet. -->
 
-      <!-- Tom tilstand: kunde uten profilavtale -->
-      <p class="preview-label" style="margin-top: var(--s-10); font-size: var(--fs-overline); text-transform: uppercase; letter-spacing: var(--ls-wider); color: var(--color-text-tertiary);">Variant: kunde uten profilavtale</p>
+      <!-- Tom tilstand: kunden har ingen aktive profiler (ingen avtale, eller alle er deaktivert) -->
+      <p class="preview-label" style="margin-top: var(--s-10); font-size: var(--fs-overline); text-transform: uppercase; letter-spacing: var(--ls-wider); color: var(--color-text-tertiary);">Variant: kunde uten profiler</p>
       <div class="profiling__notice">
         <p><strong>Dere har ingen avtalt profilering.</strong> Vil dere ha logo eller navn p&aring; kl&aelig;rne? Kontakt selgeren deres eller ordrekontoret p&aring; <a class="link" href="tel:71254200">71 25 42 00</a>. Vi kan ogs&aring; lage logo fra deres egen fil.</p>
       </div>

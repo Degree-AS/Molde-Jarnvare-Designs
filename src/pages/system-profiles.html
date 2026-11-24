@@ -430,9 +430,12 @@
     Mens en SysAdmin er logget inn som en annen bruker (&laquo;Logg inn som&raquo;), viser System-sidene
     &laquo;Tilbake til meg og &aring;pne denne siden&raquo; (AB#20391) &mdash; profilene redigeres derfor ALDRI under impersonering.
     Cache, BC Sync, Alerts og Users er dagens menypunkter; Sortilog og Profilering er nye (utkast 03.11.2026).
-    SYSTEM &rsaquo; PROFILERING &mdash; oversikt over alle kunder. Hvem som f&aring;r se menypunktet, er et &aring;pent sp&oslash;rsm&aring;l:
-    selgere og trykkeriet er ikke n&oslash;dvendigvis SysAdmin, og SysAdmin gir ogs&aring; Cache/BC Sync/Users.
-    Forslag: egen gruppe &laquo;Profilering&raquo; (rediger) + &laquo;Trykkeri&raquo; (kun lese).
+    SYSTEM &rsaquo; PROFILERING - kundelisten. Estimert 24.11.2026 (AB#20452 / #20462).
+    - Bare SysAdmin, aldri ved &laquo;Logg inn som&raquo; (H4 besluttet: SysAdmin i denne CR-en).
+    - S&oslash;k p&aring; kundenavn eller kundenummer, filter p&aring; selger og &laquo;Kun kunder med avtale&raquo;.
+    - Selgerlisten er brukerne i brukergruppen &laquo;Salg og produktansvarlige&raquo;.
+    - &laquo;Gjelder&raquo; er avtalens omfang: &laquo;Alle profilerbare varer&raquo; eller &laquo;Kun profilerbare varer i sortilogen&raquo;.
+    Ikke med i estimatet: egne tilgangsgrupper &laquo;Profilering&raquo; (rediger) og &laquo;Trykkeri&raquo; (kun lese).
   -->
   <h1 class="t-h1" style="margin-bottom: var(--s-7);">System</h1>
 
@@ -479,8 +482,8 @@
               <td data-label="Kunde"><strong>Brunvoll AS</strong></td>
               <td data-label="Kundenr"><span class="t-mono-md">311936</span></td>
               <td data-label="Status"><span class="status-pill status-pill--success">Avtale</span></td>
-              <td data-label="Profiler">5 aktive</td>
-              <td data-label="Gjelder">Alle profilerbare</td>
+              <td data-label="Profiler">5 aktive &middot; 1 deaktivert</td>
+              <td data-label="Gjelder">Alle profilerbare varer</td>
               <td data-label="Selger">Leif Erling Aasan</td>
               <td data-label="Sist endret">14.10.2026</td>
               <td data-label=""><a class="link" href="system-profile-edit.html">&Aring;pne</a></td>
@@ -490,7 +493,7 @@
               <td data-label="Kundenr"><span class="t-mono-md">310452</span></td>
               <td data-label="Status"><span class="status-pill status-pill--success">Avtale</span></td>
               <td data-label="Profiler">3 aktive</td>
-              <td data-label="Gjelder">Kun sortilog</td>
+              <td data-label="Gjelder">Kun i sortilogen</td>
               <td data-label="Selger">Hilmar Askeland</td>
               <td data-label="Sist endret">02.10.2026</td>
               <td data-label=""><a class="link" href="system-profile-edit.html">&Aring;pne</a></td>
@@ -500,7 +503,7 @@
               <td data-label="Kundenr"><span class="t-mono-md">312087</span></td>
               <td data-label="Status"><span class="status-pill status-pill--success">Avtale</span></td>
               <td data-label="Profiler">2 aktive</td>
-              <td data-label="Gjelder">Kun sortilog</td>
+              <td data-label="Gjelder">Kun i sortilogen</td>
               <td data-label="Selger">Leif Erling Aasan</td>
               <td data-label="Sist endret">21.09.2026</td>
               <td data-label=""><a class="link" href="system-profile-edit.html">&Aring;pne</a></td>
@@ -510,7 +513,7 @@
               <td data-label="Kundenr"><span class="t-mono-md">300118</span></td>
               <td data-label="Status"><span class="status-pill status-pill--success">Avtale</span></td>
               <td data-label="Profiler">5 aktive &middot; 1 inaktiv</td>
-              <td data-label="Gjelder">Alle profilerbare</td>
+              <td data-label="Gjelder">Alle profilerbare varer</td>
               <td data-label="Selger">Hilmar Askeland</td>
               <td data-label="Sist endret">30.08.2026</td>
               <td data-label=""><a class="link" href="system-profile-edit.html">&Aring;pne</a></td>

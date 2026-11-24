@@ -440,23 +440,26 @@
 
     <div class="account-dashboard__main">
       <!--
-        Sortilog = avtalt sortiment som MJ vedlikeholder i BC (vareavtaletype «Sortilog», status Aktiv).
-        REVIDERT 12.11.2026 (Håkon Teams 10.11 og 12.11, Simen 12.11, AB#20556):
-        - De fleste kunder har ÉN sortilog for alle brukerne. Da går menylenken «Sortilog»
-          rett til detaljsiden (account-sortilog-detail.html), og denne siden vises ikke.
-        - BC har ingen navn eller gruppering. Har kunden behov for ulike utvalg per avdeling
-          eller type arbeid, lager MJ delsortiloger på web (System › Sortilog). Da viser denne
-          siden «Hele sortilogen» først, og så ett kort per delsortilog.
-        - Kundens Admin-brukere kan lage og redigere delsortiloger på lik linje med MJ (Simen 12.11):
-          «+ Ny delsortilog» og «Rediger» vises bare for Admin (account-sortilog-edit.html). Bestiller ser kortene.
-          Hvilke varer som er i sortilogen, endres fortsatt bare av MJ i BC.
-        - Varer som ikke er i noen delsortilog, ligger i «Hele sortilogen». Ingen krav om å plassere alle.
-        - Alle brukere hos kunden ser alle kortene (som profilene, Håkon 05.11).
-        - Brunvoll i skissen: 589 varer i BC, Vedlikehold 495, Verksted 112.
+        MIN KONTO &rsaquo; SORTILOG (estimert 24.11.2026, AB#19837 oversikt og AB#20677 redigering for Firmaadmin).
+        Sortilog = avtalt sortiment som MJ vedlikeholder i BC (vareavtaletype &laquo;Sortilog&raquo;, status Aktiv) = &laquo;Hele sortilogen&raquo;.
+        - Tilgang: Bestiller og Firmaadmin ser siden. Visning ser den ikke (ingen menylenke). Bare Firmaadmin redigerer.
+        - Har kunden ingen delsortiloger, g&aring;r menylenken &laquo;Sortilog&raquo; rett til oversikten
+          (account-sortilog-detail.html), og denne siden vises ikke. Det gjelder de fleste kundene.
+        - Har kunden delsortiloger: &laquo;Hele sortilogen&raquo; f&oslash;rst, s&aring; ett kort per delsortilog i rekkef&oslash;lgen admin har satt.
+        - Delsortiloger er varelister. Ingen brukere eller avdelinger knyttes til dem: alle brukere hos kunden ser
+          alle kortene og velger delsortilog i filteret i nettbutikken.
+        - Firmaadmin: opprette, gi nytt navn, sortere (opp/ned), slette og krysse av varer (account-sortilog-edit.html).
+          Rekkef&oslash;lgen styrer filteret og hvilken merkelapp som st&aring;r f&oslash;rst p&aring; produktkortet.
+          SysAdmin kan det samme i System &rsaquo; Sortilog.
+        - En vare kan ligge i flere delsortiloger eller i ingen. Slettes en delsortilog, ligger varene fortsatt i hele sortilogen.
+        - Under &laquo;Logg inn som&raquo; kan ingen redigere (se varianten nederst).
+        - IKKE MED I ESTIMATET: brukere p&aring; delsortiloger, beskrivelse per delsortilog, egen merkelapptekst eller
+          prioritetsfelt, import av MJs Excel-oppdeling (bygges opp for h&aring;nd i redigeringen).
+        - Brunvoll i skissen: 589 varer i BC, Vedlikehold 495, Verksted 112, Thrustermontasje og pr&oslash;vestand 64.
       -->
       <header style="margin-bottom: var(--s-6);">
         <h2 class="t-h2" style="margin: 0 0 var(--s-2);">Sortilog</h2>
-        <p style="color: var(--color-text-secondary); margin: 0; max-width: 60ch;">Avtalt sortiment som Molde Jarnvare vedlikeholder for dere. Her ser dere hva som ligger i sortilogen. Dere bestiller i nettbutikken som vanlig &mdash; velg sortilogen i filteret, eller se etter den gule merkelappen &laquo;I sortilog&raquo;.</p>
+        <p style="color: var(--color-text-secondary); margin: 0; max-width: 60ch;">Avtalt sortiment som Molde Jarnvare vedlikeholder for dere. Her ser dere hva som ligger i sortilogen og i delsortilogene. Dere bestiller i nettbutikken som vanlig - velg sortilogen i filteret, eller se etter den gule merkelappen.</p>
       </header>
 
       <div class="sortilog__list">
@@ -468,31 +471,79 @@
           <span class="sortilog__card-count">589 varer</span>
         </a>
 
-        <!-- Delsortiloger: bare når MJ har delt opp sortilogen for kunden -->
+        <!-- Ett kort per delsortilog, i rekkef&oslash;lgen admin har satt. Bare n&aring;r kunden har delsortiloger. -->
         <a class="sortilog__card" href="account-sortilog-detail.html">
-          <p class="sortilog__card-meta">Brunvoll AS &middot; 311936</p>
+          <p class="sortilog__card-meta">Delsortilog</p>
           <h3 class="sortilog__card-name">Vedlikehold</h3>
-          <p class="sortilog__card-meta">For vedlikeholdsavdelingen</p>
           <span class="sortilog__card-count">495 varer</span>
         </a>
 
         <a class="sortilog__card" href="account-sortilog-detail.html">
-          <p class="sortilog__card-meta">Brunvoll AS &middot; 311936</p>
+          <p class="sortilog__card-meta">Delsortilog</p>
           <h3 class="sortilog__card-name">Verksted</h3>
           <span class="sortilog__card-count">112 varer</span>
         </a>
 
+        <a class="sortilog__card" href="account-sortilog-detail.html">
+          <p class="sortilog__card-meta">Delsortilog</p>
+          <h3 class="sortilog__card-name">Thrustermontasje og pr&oslash;vestand</h3>
+          <span class="sortilog__card-count">64 varer</span>
+        </a>
+
       </div>
-      <!-- Bare for Admin-brukere hos kunden -->
-      <div style="display: flex; flex-wrap: wrap; align-items: center; gap: var(--s-3); margin-top: var(--s-4);">
-        <a class="btn btn--outline btn--sm" href="account-sortilog-edit.html" style="text-decoration: none;">+ Ny delsortilog</a>
-        <a class="btn btn--ghost btn--sm" href="account-sortilog-edit.html" style="text-decoration: none;">Rediger Vedlikehold</a>
-        <a class="btn btn--ghost btn--sm" href="account-sortilog-edit.html" style="text-decoration: none;">Rediger Verksted</a>
-      </div>
-      <p class="field__hint" style="margin: var(--s-3) 0 0; max-width: 72ch;">Som Admin kan du dele sortilogen i utvalg, for eksempel per avdeling. Varer som ikke er med i noe utvalg, finnes fortsatt under &laquo;Hele sortilogen&raquo;. Molde Jarnvare kan ogs&aring; sette opp utvalgene for dere.</p>
+
+      <!-- Bare for Firmaadmin (AB#20677). Bestiller ser bare kortene over. -->
+      <section class="card" style="margin-top: var(--s-6); display: flex; flex-direction: column; gap: var(--s-4);">
+        <div style="display: flex; flex-wrap: wrap; justify-content: space-between; align-items: flex-start; gap: var(--s-3);">
+          <div style="max-width: 62ch;">
+            <h3 class="card__title" style="margin: 0 0 var(--s-1);">Delsortiloger</h3>
+            <p class="field__hint" style="margin: 0;">Som Firmaadmin kan du lage egne utvalg av sortilogen. Alle brukerne hos dere ser dem. Varer som ikke er med i noe utvalg, finnes fortsatt i hele sortilogen. Molde Jarnvare kan ogs&aring; sette dem opp for dere.</p>
+          </div>
+          <a class="btn btn--outline btn--sm" href="account-sortilog-edit.html" style="text-decoration: none;">+ Ny delsortilog</a>
+        </div>
+        <ul class="sortilog__subs">
+          <li class="sortilog__sub">
+            <p class="sortilog__sub-name">Vedlikehold</p>
+            <p class="sortilog__sub-meta">495 varer &middot; sist endret 12.11.2026 av Leif Erling Aasan, Molde Jarnvare</p>
+            <div class="sortilog__sub-actions">
+              <button class="btn btn--ghost btn--sm" type="button" aria-label="Flytt Vedlikehold opp" disabled>&uarr;</button>
+              <button class="btn btn--ghost btn--sm" type="button" aria-label="Flytt Vedlikehold ned">&darr;</button>
+              <a class="btn btn--outline btn--sm" href="account-sortilog-edit.html" style="text-decoration: none;">Rediger</a>
+            </div>
+          </li>
+          <li class="sortilog__sub">
+            <p class="sortilog__sub-name">Verksted</p>
+            <p class="sortilog__sub-meta">112 varer &middot; sist endret 10.11.2026 av Kari Nordmann</p>
+            <div class="sortilog__sub-actions">
+              <button class="btn btn--ghost btn--sm" type="button" aria-label="Flytt Verksted opp">&uarr;</button>
+              <button class="btn btn--ghost btn--sm" type="button" aria-label="Flytt Verksted ned">&darr;</button>
+              <a class="btn btn--outline btn--sm" href="account-sortilog-edit.html" style="text-decoration: none;">Rediger</a>
+            </div>
+          </li>
+          <li class="sortilog__sub">
+            <p class="sortilog__sub-name">Thrustermontasje og pr&oslash;vestand</p>
+            <p class="sortilog__sub-meta">64 varer &middot; sist endret 20.11.2026 av Kari Nordmann</p>
+            <div class="sortilog__sub-actions">
+              <button class="btn btn--ghost btn--sm" type="button" aria-label="Flytt Thrustermontasje og pr&oslash;vestand opp">&uarr;</button>
+              <button class="btn btn--ghost btn--sm" type="button" aria-label="Flytt Thrustermontasje og pr&oslash;vestand ned" disabled>&darr;</button>
+              <a class="btn btn--outline btn--sm" href="account-sortilog-edit.html" style="text-decoration: none;">Rediger</a>
+            </div>
+          </li>
+        </ul>
+        <p class="field__hint" style="margin: 0;">Rekkef&oslash;lgen her er rekkef&oslash;lgen i filteret. Den bestemmer ogs&aring; hvilken merkelapp som st&aring;r f&oslash;rst n&aring;r en vare ligger i flere delsortiloger. Navn, varer og sletting endrer du under &laquo;Rediger&raquo;.</p>
+      </section>
 
       <div class="card card--flat" style="margin-top: var(--s-7);">
         <strong>Mangler en vare?</strong> Sortimentet vedlikeholdes av Molde Jarnvare. Kontakt selgeren din eller ordrekontoret p&aring; <a class="link" href="tel:71254200">71 25 42 00</a>, s&aring; legger vi den inn. Alle varer kan ogs&aring; bestilles fra nettbutikken som vanlig.
+      </div>
+
+      <!-- Variant: SysAdmin er logget inn som en Firmaadmin hos kunden (&laquo;Logg inn som&raquo;). Siden er kun lesing:
+           seksjonen &laquo;Delsortiloger&raquo; med &laquo;+ Ny&raquo;, piler og &laquo;Rediger&raquo; vises ikke, og backend nekter endringer.
+           Samme m&oslash;nster som &laquo;Tilbake til meg og &aring;pne denne siden&raquo; (AB#20391). -->
+      <p class="preview-label" style="margin-top: var(--s-10); font-size: var(--fs-overline); text-transform: uppercase; letter-spacing: var(--ls-wider); color: var(--color-text-tertiary);">Variant: SysAdmin logget inn som kunden</p>
+      <div class="card card--flat" style="display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: var(--s-3);">
+        <p style="margin: 0; max-width: 60ch;">Du ser siden slik <strong>Kjetil Kvendseth (Brunvoll AS)</strong> ser den. Delsortilogene kan ikke endres mens du er logget inn som en annen bruker.</p>
+        <a class="btn btn--outline btn--sm" href="system-sortilog.html" style="text-decoration: none;">Tilbake til meg og endre i System &rsaquo; Sortilog</a>
       </div>
     </div>
   </div>

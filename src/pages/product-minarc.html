@@ -424,6 +424,16 @@
 
 <main class="container container--wide" style="padding-block: var(--s-6);">
 
+  <!--
+    PDP FOR ENKELTPRODUKT (VARIANTER SOM VALG), INNLOGGET KUNDE.
+    - &laquo;Deres varenr.&raquo; (estimert 24.11.2026, AB#20458): kundens eget varenummer fra BC, under Art.nr, monospace.
+      Bare for innlogget kunde, og bare n&aring;r varen har et nummer for kunden; ellers ingen linje.
+      F&oslash;lger valgt variant, som Art.nr. Variantmatrise: egen kolonne (se product-sortilog.html).
+    - Sortilog-merkelapper (estimert 24.11.2026, AB#19790): denne kunden har ikke varen i sortilogen, s&aring; ingen merkelapp.
+      Ellers samme regel som product-sortilog.html: alle merkelappene ved tittelen.
+    - Sikkerhetsdatablad (AB#20459) og Onix (AB#20460): se tilstandseksemplene nederst p&aring; product.html.
+  -->
+
   <nav class="breadcrumb" style="margin-bottom: var(--s-5);">
     <span class="breadcrumb__item"><a class="breadcrumb__link" href="#">Forside</a></span>
     <span class="breadcrumb__item"><a class="breadcrumb__link" href="#">Sveis</a></span>
@@ -457,9 +467,13 @@
     <!-- Product info -->
     <div style="display: flex; flex-direction: column; gap: var(--s-4);">
       <h1 class="t-h2" style="margin: 0;">Kemppi Minarc Evo 180 sveiseapparat</h1>
-      <div style="display: flex; gap: var(--s-4); align-items: center; font-size: var(--fs-body-sm); color: var(--color-text-secondary);">
-        <span class="t-mono-md">Art.nr 6121-180-01</span>
-        <span>NOBB <span class="t-mono-md">52899144</span></span>
+      <div style="display: flex; flex-direction: column; gap: var(--s-1); font-size: var(--fs-body-sm); color: var(--color-text-secondary);">
+        <div style="display: flex; gap: var(--s-4); align-items: center;">
+          <span class="t-mono-md">Art.nr 6121-180-01</span>
+          <span>NOBB <span class="t-mono-md">52899144</span></span>
+        </div>
+        <!-- &laquo;Deres varenr.&raquo; under Art.nr (AB#20458, estimert 24.11.2026) - bare innlogget, bare n&aring;r nummeret finnes -->
+        <span>Deres varenr. <span class="t-mono-md" style="color: var(--color-text-primary);">BV-61180</span></span>
       </div>
 
       <!-- Kort produktbeskrivelse — ligger mellom artikkelnummer og lagerstatus -->

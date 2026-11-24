@@ -231,3 +231,27 @@
 
 /* Merkelapp i variantcellen (f.eks. «I sortilog», 03.11.2026) */
 .variant-selector__matrix tbody th .badge { margin-inline-start: var(--s-2); vertical-align: middle; }
+
+/* Sortilog-merkelapper per variant (AB#19790, estimert 24.11.2026): alle variantens merkelapper -
+   delsortilogenes navn, eller «I sortilog» når varianten ikke ligger i noen delsortilog.
+   Bare for innlogget kunde med sortilog; ingen merkelapp ellers.
+     <span class="variant-selector__matrix-tags">
+       <span class="badge badge--sortilog badge--truncate" title="Vedlikehold">Vedlikehold</span> …
+     </span> */
+.variant-selector__matrix-tags {
+  display: inline-flex;
+  flex-wrap: wrap;
+  gap: var(--s-1);
+  margin-inline-start: var(--s-2);
+  vertical-align: middle;
+}
+.variant-selector__matrix tbody th .variant-selector__matrix-tags .badge { margin-inline-start: 0; }
+
+/* «Deres varenr.» (AB#20458, estimert 24.11.2026): kundens eget varenummer fra BC, monospace.
+   Bare for innlogget kunde. Kolonnen skjules når ingen variant har nummer; tom celle når én variant mangler. */
+.variant-selector__matrix-custno {
+  font-family: var(--ff-mono);
+  font-size: var(--fs-mono-sm);
+  color: var(--color-text-primary);
+  white-space: nowrap;
+}

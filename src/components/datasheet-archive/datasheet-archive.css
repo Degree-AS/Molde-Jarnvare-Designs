@@ -48,3 +48,107 @@
   color: var(--color-text-tertiary);
   font-variant-numeric: tabular-nums;
 }
+
+/* -------------------------------------------------------------------------
+ * Sikkerhetsdatablad fra EcoOnline (AB#20459, estimert 24.11.2026)
+ * Bare for varer merket «Kjemi» i BC. Ligger i fanen «Datablad og sertifikater», sammen med
+ * varens andre dokumenter. Lenkene går rett til PDF-en i EcoOnline og åpnes i ny fane.
+ * Samme for alle besøkende, også anonyme. Følger valgt variant.
+ *   1   Norsk finnes: «Sikkerhetsdatablad (norsk)» direkte; svensk, dansk, engelsk, finsk bak «Vis flere».
+ *   2   Ingen norsk: de andre språkene direkte, engelsk først.
+ *   3a  EcoOnline svarte, ingen datablad: ingenting vises (ingen fane hvis varen ikke har andre dokumenter).
+ *   3b  EcoOnline svarte ikke: «Søk i EcoOnline» til MJ sin søkeside + varenummeret til å kopiere.
+ *   Lasting: én skjelett-rad (__item--loading), ingen spinner. Siden venter aldri på EcoOnline.
+ * Utenfor estimatet: farepiktogrammer, kjemikaliefilter, egne kopier av PDF-ene.
+ * ------------------------------------------------------------------------- */
+
+.datasheet-archive__heading {
+  margin: var(--s-3) 0 0;
+  font-size: var(--fs-body-sm);
+  font-weight: var(--fw-semibold);
+  color: var(--color-text-secondary);
+}
+.datasheet-archive__heading:first-child { margin-top: 0; }
+
+/* «Åpnes i ny fane» - liten pil bak tittelen */
+.datasheet-archive__external {
+  width: var(--icon-sm);
+  height: var(--icon-sm);
+  flex: 0 0 auto;
+  color: var(--color-text-tertiary);
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.8;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+.datasheet-archive__item:focus-visible { outline: none; box-shadow: var(--focus-ring); }
+
+/* Lasting: skjelett-rad i samme mål som en vanlig rad */
+.datasheet-archive__item--loading { cursor: default; }
+.datasheet-archive__item--loading:hover { border-color: var(--color-border-soft); }
+.datasheet-archive__item--loading .skeleton--text { width: 40%; }
+.datasheet-archive__item--loading .skeleton--text-sm { width: 25%; }
+
+/* «Vis flere» - de andre språkene. <details>, så det virker uten JS. */
+.datasheet-archive__more { display: flex; flex-direction: column; gap: var(--s-2); }
+.datasheet-archive__more-toggle {
+  align-self: flex-start;
+  display: inline-flex;
+  align-items: center;
+  gap: var(--s-1);
+  padding: var(--s-1) 0;
+  font-size: var(--fs-body-sm);
+  font-weight: var(--fw-semibold);
+  color: var(--color-text-link);
+  cursor: pointer;
+  list-style: none;
+}
+.datasheet-archive__more-toggle::-webkit-details-marker { display: none; }
+.datasheet-archive__more-toggle::after { content: "▾"; transition: transform var(--duration-fast) var(--ease-standard); }
+.datasheet-archive__more[open] > .datasheet-archive__more-toggle::after { transform: rotate(180deg); }
+.datasheet-archive__more-toggle:hover { color: var(--color-text-link-hover); }
+.datasheet-archive__more-toggle:focus-visible { outline: none; box-shadow: var(--focus-ring); border-radius: var(--r-sm); }
+.datasheet-archive__more-list { display: flex; flex-direction: column; gap: var(--s-2); }
+
+/* 3b: EcoOnline svarte ikke - lenke til MJ sin søkeside og varenummeret til å kopiere.
+   Søkesiden kan ikke fylles ut fra adressen, så kunden limer inn nummeret i «Internnummer». */
+.datasheet-archive__fallback {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--s-2) var(--s-4);
+  padding: var(--s-3) var(--s-4);
+  background: var(--color-bg-surface-alt);
+  border: var(--bw-1) solid var(--color-border-soft);
+  border-radius: var(--r-sm);
+  font-size: var(--fs-body-sm);
+  color: var(--color-text-secondary);
+}
+.datasheet-archive__fallback p { margin: 0; flex: 1 1 32ch; }
+.datasheet-archive__fallback-actions { display: flex; flex-wrap: wrap; align-items: center; gap: var(--s-2) var(--s-3); }
+.datasheet-archive__itemno {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--s-2);
+  padding: var(--s-1) var(--s-1) var(--s-1) var(--s-3);
+  background: var(--color-bg-surface);
+  border: var(--bw-1) solid var(--color-border-default);
+  border-radius: var(--r-sm);
+  font-family: var(--ff-mono);
+  font-size: var(--fs-mono-md);
+  color: var(--color-text-primary);
+}
+.datasheet-archive__copy {
+  padding: var(--s-1) var(--s-2);
+  font-family: var(--ff-sans);
+  font-size: var(--fs-caption);
+  font-weight: var(--fw-semibold);
+  color: var(--color-text-link);
+  background: transparent;
+  border: 0;
+  border-radius: var(--r-sm);
+  cursor: pointer;
+}
+.datasheet-archive__copy:hover { background: var(--color-bg-brand-soft); }
+.datasheet-archive__copy:focus-visible { outline: none; box-shadow: var(--focus-ring); }

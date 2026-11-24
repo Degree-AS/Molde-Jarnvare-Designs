@@ -18,6 +18,7 @@
   <link rel="stylesheet" href="../select/select.css">
   <link rel="stylesheet" href="../tag/tag.css">
   <link rel="stylesheet" href="../badge/badge.css">
+  <link rel="stylesheet" href="../tooltip/tooltip.css">
   <link rel="stylesheet" href="../pagination/pagination.css">
   <link rel="stylesheet" href="../button/button.css">
   <link rel="stylesheet" href="../card/card.css">
@@ -56,9 +57,14 @@
 </head>
 <body>
 
-  <p class="preview-label">Oversikt — ett kort per sortilog</p>
+  <p class="preview-label">Oversikt - «Hele sortilogen» + ett kort per delsortilog (bare når kunden har delsortiloger)</p>
   <div class="preview-frame">
     <div class="sortilog__list" style="max-width: 640px;">
+      <a class="sortilog__card" href="#">
+        <p class="sortilog__card-meta">Brunvoll AS &middot; 311936</p>
+        <h3 class="sortilog__card-name">Hele sortilogen</h3>
+        <span class="sortilog__card-count">589 varer</span>
+      </a>
       <a class="sortilog__card" href="#">
         <p class="sortilog__card-meta">Brunvoll AS &middot; 311936</p>
         <h3 class="sortilog__card-name">Vedlikehold</h3>
@@ -67,10 +73,18 @@
     </div>
   </div>
 
-  <p class="preview-label">Merkelapp — badge--sortilog (PLP, PDP, handlekurv)</p>
-  <div class="preview-frame"><span class="badge badge--sortilog">I sortilog</span></div>
+  <p class="preview-label">Merkelapp - «I sortilog», delsortilogens navn, «+N» med tooltip, langt navn kuttes (estimert 24.11.2026, AB#19790)</p>
+  <div class="preview-frame" style="display: flex; flex-wrap: wrap; gap: var(--s-4); align-items: center; padding-top: var(--s-8);">
+    <span class="badge badge--sortilog">I sortilog</span>
+    <span class="badge badge--sortilog">Vedlikehold</span>
+    <span class="badge-group">
+      <span class="badge badge--sortilog badge--truncate" title="Vedlikehold">Vedlikehold</span>
+      <button type="button" class="badge badge--sortilog badge--more tooltip tooltip--plain" data-tooltip="Også i: Verksted, Thrustermontasje og prøvestand" aria-label="Også i 2 delsortiloger til: Verksted, Thrustermontasje og prøvestand">+2</button>
+    </span>
+    <span class="badge badge--sortilog badge--truncate" title="Thrustermontasje og prøvestand">Thrustermontasje og prøvestand</span>
+  </div>
 
-  <p class="preview-label">Oversikt over én sortilog — søk, kategori, gruppert, deres varenr. (ingen antall eller pris)</p>
+  <p class="preview-label">Oversikt over én sortilog - søk, hovedkategori → underkategori, masterprodukt med antall varianter, deres varenr., kan profileres (ingen antall eller pris)</p>
   <div class="preview-frame">
     <section class="card">
       <div class="sortilog__toolbar">
@@ -85,27 +99,29 @@
       </div>
       <table class="sortilog__table">
         <thead>
-          <tr><th><span class="sr-only">Bilde</span></th><th>Art.nr</th><th>Deres varenr.</th><th>Produkt</th><th>Profilering</th><th><span class="sr-only">Lenke</span></th></tr>
+          <tr><th><span class="sr-only">Bilde</span></th><th>Art.nr</th><th>Deres varenr.</th><th>Produkt</th><th>Kan profileres</th><th><span class="sr-only">Lenke</span></th></tr>
         </thead>
         <tbody>
-          <tr class="sortilog__group"><th colspan="6">Jakker<span class="sortilog__group-count">2 varer</span></th></tr>
+          <tr class="sortilog__group sortilog__group--main"><th colspan="6">Arbeidskl&aelig;r</th></tr>
+          <tr class="sortilog__group"><th colspan="6">Jakker<span class="sortilog__group-count">2 produkter</span></th></tr>
+          <tr>
+            <td><span class="sortilog__thumb"></span></td>
+            <td><span class="sortilog__variants">2 varianter</span></td>
+            <td><span class="sortilog__variants">per variant</span></td>
+            <td><span class="sortilog__name">MASCOT FLEECEJAKKE ACCELERATE BLÅ/MAR</span></td>
+            <td><span class="chip">Ja</span></td>
+            <td><a class="sortilog__link" href="#">Se produkt &rarr;</a></td>
+          </tr>
           <tr>
             <td><span class="sortilog__thumb"></span></td>
             <td><span class="sortilog__sku">314045</span></td>
             <td><span class="sortilog__customer-sku">BV-30410</span></td>
             <td><span class="sortilog__name">MASCOT SKALLJAKKE 18301231 ACCELERATE BLÅ/MAR 2XL</span></td>
-            <td><span class="chip">Kan profileres</span></td>
+            <td><span class="chip">Ja</span></td>
             <td><a class="sortilog__link" href="#">Se produkt &rarr;</a></td>
           </tr>
-          <tr>
-            <td><span class="sortilog__thumb"></span></td>
-            <td><span class="sortilog__sku">314093</span></td>
-            <td><span class="sortilog__customer-sku">&mdash;</span></td>
-            <td><span class="sortilog__name">MASCOT FLEECEJAKKE 18303137 ACCELERATE BLÅ/MAR L</span></td>
-            <td><span class="chip">Kan profileres</span></td>
-            <td><a class="sortilog__link" href="#">Se produkt &rarr;</a></td>
-          </tr>
-          <tr class="sortilog__group"><th colspan="6">Vernesko og støvler<span class="sortilog__group-count">1 vare</span></th></tr>
+          <tr class="sortilog__group sortilog__group--main"><th colspan="6">Verneutstyr</th></tr>
+          <tr class="sortilog__group"><th colspan="6">Vernesko og støvler<span class="sortilog__group-count">1 produkt</span></th></tr>
           <tr>
             <td><span class="sortilog__thumb"></span></td>
             <td><span class="sortilog__sku">448034</span></td>

@@ -440,6 +440,14 @@
       <div class="plp-layout__filter-body">
         <div class="filter-sidebar">
 
+          <!-- Sortilog, kunde UTEN delsortiloger (estimert 24.11.2026, AB#19838): én avkrysning.
+               Har kunden delsortiloger, blir det radioknapper Alle varer / Hele sortilogen / én delsortilog (category-sortilog.html).
+               Vises bare for innlogget kunde med sortilog. Antallet = produkter i sortilogen blant treffene. -->
+          <div class="filter-sidebar__group">
+            <h3 class="filter-sidebar__group-title">Sortilog</h3>
+            <label class="checkbox"><input type="checkbox"><span class="checkbox__visual"></span><span class="checkbox__label">Kun varer i min sortilog (3)</span></label>
+          </div>
+
           <div class="filter-sidebar__group">
             <h3 class="filter-sidebar__group-title">Kategori</h3>
             <div class="filter-sidebar__options">
@@ -505,6 +513,13 @@
             <label class="checkbox"><input type="checkbox" checked><span class="checkbox__visual"></span><span class="checkbox__label">Kun varer på lager</span></label>
           </div>
 
+          <!-- Onix (estimert 24.11.2026, AB#20460): samme mønster som «Kun varer på lager». Samme for alle besøkende.
+               Et masterprodukt treffer når minst én variant er Onix. -->
+          <div class="filter-sidebar__group">
+            <h3 class="filter-sidebar__group-title">Sertifisering</h3>
+            <label class="checkbox"><input type="checkbox"><span class="checkbox__visual"></span><span class="checkbox__label">Sertifisert løfteutstyr (Onix)</span></label>
+          </div>
+
           <div class="filter-sidebar__group">
             <h3 class="filter-sidebar__group-title">Kampanje</h3>
             <label class="checkbox"><input type="checkbox"><span class="checkbox__visual"></span><span class="checkbox__label">På tilbud (8)</span></label>
@@ -553,10 +568,13 @@
       <div class="plp-layout__grid">
         <!-- Én kort per produkt, aldri per variant (beslutning 07.10.2026, ADO 19055).
              Masterprodukt: antall varianter + «Fra» laveste variantpris når prisene er ulike, ellers bare prisen.
-             Enkeltprodukt: art.nr, lagerstatus og egen pris. -->
+             Enkeltprodukt: art.nr, lagerstatus og egen pris.
+             Innlogget kunde med sortilog, uten delsortiloger: merkelappen er alltid «I sortilog» (AB#19838).
+             «Deres varenr.» bare på enkeltprodukt når kunden har et nummer på varen (AB#20458), aldri på masterprodukt.
+             «Onix» på sertifisert løfteutstyr (AB#20460), samme for alle. -->
         <article class="product-card">
-          <div class="product-card__media"></div>
-          <span class="product-card__variants">6 varianter</span>
+          <div class="product-card__media"><div class="product-card__badges"><span class="badge badge--sortilog">I sortilog</span></div></div>
+          <span class="product-card__variants">6 varianter &middot; 2 i sortilog</span>
           <h3 class="product-card__title"><a href="product.html">Sekskantskrue DIN 933 A4 syrefast</a></h3>
           <div class="product-card__price"><span class="product-card__price-from">Fra</span>kr 1,90<span class="product-card__price-suffix">eks. mva</span></div>
           <div class="product-card__actions"><a class="btn btn--outline btn--sm btn--full" href="product.html" style="text-decoration: none;">Velg variant</a></div>
@@ -576,8 +594,9 @@
           <div class="product-card__actions"><a class="btn btn--outline btn--sm btn--full" href="product.html" style="text-decoration: none;">Velg variant</a></div>
         </article>
         <article class="product-card">
-          <div class="product-card__media"></div>
+          <div class="product-card__media"><div class="product-card__badges"><span class="badge badge--sortilog">I sortilog</span></div></div>
           <span class="product-card__sku">7220-080-00</span>
+          <span class="product-card__customer-sku"><span class="product-card__customer-sku-label">Deres varenr.</span>110458</span>
           <h3 class="product-card__title"><a href="product.html">Boltkutter 600 mm — Knipex</a></h3>
           <span class="stock-indicator stock-indicator--in">12 på lager</span>
           <div class="product-card__price">kr 1 240,–<span class="product-card__price-suffix">eks. mva</span></div>
@@ -598,6 +617,13 @@
           <div class="product-card__price">kr 389,–<span class="product-card__price-suffix">eks. mva</span></div>
           <div class="product-card__actions"><button class="btn btn--primary btn--sm btn--full">Legg i handlekurv</button></div>
         </article>
+        <article class="product-card">
+          <div class="product-card__media"><div class="product-card__badges"><span class="badge badge--sortilog">I sortilog</span><span class="badge badge--onix">Onix</span></div></div>
+          <span class="product-card__variants">7 varianter &middot; 1 i sortilog</span>
+          <h3 class="product-card__title"><a href="product.html">Øyebolt DIN 580 C15 galvanisert</a></h3>
+          <div class="product-card__price"><span class="product-card__price-from">Fra</span>kr 38,00<span class="product-card__price-suffix">eks. mva</span></div>
+          <div class="product-card__actions"><a class="btn btn--outline btn--sm btn--full" href="product.html" style="text-decoration: none;">Velg variant</a></div>
+        </article>
       </div>
 
       <!-- Pagination -->
@@ -610,6 +636,31 @@
         <button class="pagination__btn">12</button>
         <button class="pagination__btn">Neste →</button>
       </nav>
+
+      <!-- Variant: søk på kundens eget varenummer (estimert 24.11.2026, AB#20458, del 2c).
+           - Bare for innlogget kunde. Før søket slår nettbutikken opp hvilke MJ-varenumre som matcher teksten blant
+             DENNE kundens numre (varereferanse type Kunde i BC), og legger dem til som én ekstra produktspørring.
+           - Regel: eksakt treff, pluss «starter med» fra 3 tegn (maks 50). «110» finner alle kundens numre som starter
+             på 110, «11» finner ingenting på kundens numre. Gjelder både søkeresultatet og forslagene mens man skriver.
+           - Ett kundenummer kan peke på flere MJ-varer: alle vises.
+           - Ikke innlogget: søket virker som i dag. Andre kunder finner aldri disse numrene.
+           - Treffet viser «Deres varenr.» under art.nr, som ellers på enkeltprodukter. -->
+      <p class="preview-label" style="margin-top: var(--s-10); font-size: var(--fs-overline); text-transform: uppercase; letter-spacing: var(--ls-wider); color: var(--color-text-tertiary);">Variant: kunden søker på sitt eget varenummer</p>
+      <header style="margin-bottom: var(--s-5);">
+        <h2 class="t-h2" style="margin: 0;">Søkeresultat for «110032»</h2>
+        <p style="color: var(--color-text-secondary); margin-top: var(--s-2);">1 produkt &middot; treff på deres varenummer</p>
+      </header>
+      <div class="plp-layout__grid">
+        <article class="product-card">
+          <div class="product-card__media"><div class="product-card__badges"><span class="badge badge--sortilog">I sortilog</span></div></div>
+          <span class="product-card__sku">30164</span>
+          <span class="product-card__customer-sku"><span class="product-card__customer-sku-label">Deres varenr.</span>110032</span>
+          <h3 class="product-card__title"><a href="product.html">Sekskantbolt DIN 931 8.8 M12 × 80 galvanisert</a></h3>
+          <span class="stock-indicator stock-indicator--in">240 på lager</span>
+          <div class="product-card__price">kr 6,40<span class="product-card__price-suffix">eks. mva</span></div>
+          <div class="product-card__actions"><button class="btn btn--primary btn--sm btn--full">Legg i handlekurv</button></div>
+        </article>
+      </div>
     </div>
   </div>
 

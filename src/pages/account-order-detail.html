@@ -486,7 +486,13 @@ Ring Bjarte på 912 34 567 ved ankomst.</dd></div>
       <section class="card" style="margin-top: var(--s-6);">
         <h3 class="card__title">Varelinjer</h3>
         <!-- Bestilt, sendt og fakturert antall per linje kommer fra BC-ordrelinjene (beslutning 15.10.2026, AB#19601).
-             Viser hva som mangler ved delleveranse; summene gjelder hele ordren. -->
+             Viser hva som mangler ved delleveranse; summene gjelder hele ordren.
+             Estimert 24.11.2026:
+             - Art.nr: MJ sitt nummer alltid; «Deres varenr.» under, i mono, når kunden har eget nummer (AB#20458).
+               Backenden legger nummeret på linjene. Det er kundens nummer slik det er NÅ, ikke slik det var
+               da ordren ble lagt (beslutning Simen 24.11.2026).
+             - Sortilog-merkelapp i Produkt (AB#19790/#20679). Industriservice Vest har ingen sortilog, så her
+               vises ingen merkelapp. Kunde med sortilog og profilering: se varianten nederst. -->
         <div class="data-table__wrap data-table__wrap--responsive">
           <table class="data-table">
             <thead>
@@ -502,7 +508,7 @@ Ring Bjarte på 912 34 567 ved ankomst.</dd></div>
             </thead>
             <tbody>
               <tr>
-                <td data-label="Art.nr"><code>4815-162-30</code></td>
+                <td data-label="Art.nr"><span class="order-history__ids"><code>4815-162-30</code><span class="order-history__customer-sku">Deres varenr. ISV-88120</span></span></td>
                 <td data-label="Produkt">Sekskantskrue M8 × 40 mm A4 syrefast</td>
                 <td class="is-numeric" data-label="Bestilt">2 000</td>
                 <td class="is-numeric" data-label="Sendt">2 000</td>
@@ -511,7 +517,7 @@ Ring Bjarte på 912 34 567 ved ankomst.</dd></div>
                 <td class="is-numeric" data-label="Sum">kr 5 600,–</td>
               </tr>
               <tr>
-                <td data-label="Art.nr"><code>5012-008-00</code></td>
+                <td data-label="Art.nr"><span class="order-history__ids"><code>5012-008-00</code><span class="order-history__customer-sku">Deres varenr. ISV-88131</span></span></td>
                 <td data-label="Produkt">Skive M8 A4 syrefast</td>
                 <td class="is-numeric" data-label="Bestilt">2 000</td>
                 <td class="is-numeric" data-label="Sendt">1 200</td>
@@ -625,6 +631,127 @@ Ring Bjarte på 912 34 567 ved ankomst.</dd></div>
           <a class="btn btn--outline btn--sm" href="tel:71254200">71 25 42 00</a>
           <a class="btn btn--ghost btn--sm" href="mailto:post@moldejarnvare.no">post@moldejarnvare.no</a>
         </div>
+      </section>
+
+      <!--
+        VARIANT: ordre med sortilog, kundens varenummer og profilering (Brunvoll AS) - estimert 24.11.2026.
+        Profilering per linje (AB#20452 / #20456), forutsetter svar fra Knowit K1-K5:
+        - Lest tilbake fra BC (salesOrdersExt): merknadslinjene (profil, posisjoner, navn) og påføringslinjene
+          479350/479355 er knyttet til plagglinjen. Ordren må kunne bygges opp igjen fra BC (Vaclav 17.11).
+        - Antallet på påføringslinjene er slik det står i BC, også etter at trykkeriet har justert det
+          («ANTALL PÅFØRES ETTER TRYKKING»).
+        - Plagglinjen viser profil, plasseringer og navn; påføringslinjene står rett under, med innrykk.
+        - Et navn som manglet ved bestilling, vises som «uten navn» - trykkeriet har fått beskjed.
+        Sortilog-merkelapp: ÉN merkelapp + «+N» med tooltip, delsortilogens navn (Vedlikehold / Verksted),
+        «I sortilog» uten delsortilog, ingen merkelapp når varen ikke er i sortilogen.
+      -->
+      <p style="margin: var(--s-10) 0 var(--s-2); font-size: var(--fs-overline); text-transform: uppercase; letter-spacing: var(--ls-wider); color: var(--color-text-tertiary);">Variant: ordre med sortilog og profilering (Brunvoll AS)</p>
+      <section class="card">
+        <h3 class="card__title">Varelinjer</h3>
+        <div class="data-table__wrap data-table__wrap--responsive">
+          <table class="data-table">
+            <thead>
+              <tr>
+                <th>Art.nr</th>
+                <th>Produkt</th>
+                <th class="is-numeric">Bestilt</th>
+                <th class="is-numeric">Sendt</th>
+                <th class="is-numeric">Fakturert</th>
+                <th class="is-numeric">Pris/stk</th>
+                <th class="is-numeric">Sum</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td data-label="Art.nr"><span class="order-history__ids"><code>314045</code><span class="order-history__customer-sku">Deres varenr. BV-30410</span></span></td>
+                <td data-label="Produkt">
+                  <div class="order-history__product">
+                    <span>MASCOT Skalljakke 18301231 Accelerate bl&aring;/marine 2XL</span>
+                    <span class="badge-group">
+                      <span class="badge badge--sortilog badge--truncate" title="Vedlikehold">Vedlikehold</span>
+                      <button type="button" class="badge badge--sortilog badge--more tooltip tooltip--plain" data-tooltip="Ogs&aring; i: Verksted" aria-label="Ogs&aring; i 1 delsortilog til: Verksted">+1</button>
+                    </span>
+                    <div class="order-history__profiling">
+                      <p><strong>Profilering:</strong> Jakke - standard p&aring; 2 av 3</p>
+                      <p>Logo bryst venstre 8 cm &middot; navnelapp under logo &middot; logo rygg 25 cm</p>
+                      <p>Navn: Kjetil Kvendseth &middot; 1 uten navn</p>
+                    </div>
+                  </div>
+                </td>
+                <td class="is-numeric" data-label="Bestilt">3</td>
+                <td class="is-numeric" data-label="Sendt">3</td>
+                <td class="is-numeric" data-label="Fakturert">3</td>
+                <td class="is-numeric" data-label="Pris/stk">kr 1 890,-</td>
+                <td class="is-numeric" data-label="Sum">kr 5 670,-</td>
+              </tr>
+              <tr class="order-history__addon-row">
+                <td data-label="Art.nr"><code>479350</code></td>
+                <td data-label="Produkt"><span class="order-history__addon-name">P&aring;f&oslash;ring av logo</span></td>
+                <td class="is-numeric" data-label="Bestilt">4</td>
+                <td class="is-numeric" data-label="Sendt">4</td>
+                <td class="is-numeric" data-label="Fakturert">4</td>
+                <td class="is-numeric" data-label="Pris/stk">kr 20,-</td>
+                <td class="is-numeric" data-label="Sum">kr 80,-</td>
+              </tr>
+              <tr class="order-history__addon-row">
+                <td data-label="Art.nr"><code>479355</code></td>
+                <td data-label="Produkt"><span class="order-history__addon-name">P&aring;f&oslash;ring av navnelapp</span></td>
+                <td class="is-numeric" data-label="Bestilt">1</td>
+                <td class="is-numeric" data-label="Sendt">1</td>
+                <td class="is-numeric" data-label="Fakturert">1</td>
+                <td class="is-numeric" data-label="Pris/stk">kr 28,-</td>
+                <td class="is-numeric" data-label="Sum">kr 28,-</td>
+              </tr>
+              <tr>
+                <td data-label="Art.nr"><span class="order-history__ids"><code>451120</code><span class="order-history__customer-sku">Deres varenr. BV-20115</span></span></td>
+                <td data-label="Produkt">
+                  <div class="order-history__product">
+                    <span>MASCOT Bukse Stretch 18079511 Accelerate marine 82C68</span>
+                    <span class="badge-group">
+                      <span class="badge badge--sortilog badge--truncate" title="Vedlikehold">Vedlikehold</span>
+                    </span>
+                    <div class="order-history__profiling">
+                      <p><strong>Profilering:</strong> Bukse - standard p&aring; 2 av 4</p>
+                      <p>Logo l&aring;r venstre 8 cm</p>
+                    </div>
+                  </div>
+                </td>
+                <td class="is-numeric" data-label="Bestilt">4</td>
+                <td class="is-numeric" data-label="Sendt">4</td>
+                <td class="is-numeric" data-label="Fakturert">4</td>
+                <td class="is-numeric" data-label="Pris/stk">kr 1 290,-</td>
+                <td class="is-numeric" data-label="Sum">kr 5 160,-</td>
+              </tr>
+              <tr class="order-history__addon-row">
+                <td data-label="Art.nr"><code>479350</code></td>
+                <td data-label="Produkt"><span class="order-history__addon-name">P&aring;f&oslash;ring av logo</span></td>
+                <td class="is-numeric" data-label="Bestilt">2</td>
+                <td class="is-numeric" data-label="Sendt">2</td>
+                <td class="is-numeric" data-label="Fakturert">2</td>
+                <td class="is-numeric" data-label="Pris/stk">kr 20,-</td>
+                <td class="is-numeric" data-label="Sum">kr 40,-</td>
+              </tr>
+              <tr>
+                <td data-label="Art.nr"><code>7700-099-00</code></td>
+                <td data-label="Produkt">3M arbeidshansker, str. 10</td>
+                <td class="is-numeric" data-label="Bestilt">6</td>
+                <td class="is-numeric" data-label="Sendt">6</td>
+                <td class="is-numeric" data-label="Fakturert">6</td>
+                <td class="is-numeric" data-label="Pris/stk">kr 79,-</td>
+                <td class="is-numeric" data-label="Sum">kr 474,-</td>
+              </tr>
+            </tbody>
+            <tfoot>
+              <tr><td colspan="6">Varer</td><td class="is-numeric">kr 11 304,-</td></tr>
+              <tr><td colspan="6">Profilering<span class="data-table__meta">p&aring;f&oslash;ring</span></td><td class="is-numeric">kr 148,-</td></tr>
+              <tr><td colspan="6">Frakt<span class="data-table__meta">Standard levering</span></td><td class="is-numeric">kr 99,-</td></tr>
+              <tr class="data-table__total"><td colspan="6">Sum eks. mva</td><td class="is-numeric">kr 11 551,-</td></tr>
+              <tr class="data-table__total-sub"><td colspan="6">Mva (25 %)</td><td class="is-numeric">kr 2 887,75</td></tr>
+              <tr class="data-table__total-sub"><td colspan="6">Totalt inkl. mva</td><td class="is-numeric">kr 14 438,75</td></tr>
+            </tfoot>
+          </table>
+        </div>
+        <p class="field__hint" style="margin: var(--s-3) 0 0;">Antallet p&aring; p&aring;f&oslash;ringslinjene er slik trykkeriet har registrert det i BC.</p>
       </section>
     </div>
   </div>

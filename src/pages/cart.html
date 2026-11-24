@@ -430,12 +430,26 @@
     <div>
       <!-- Varelinjen lenker til masterproduktets adresse med varianten som parameter (statusmøte 15.10.2026):
            /<masterprodukt>?variant=<art.nr> — produktsiden velger varianten og ruller til den i matrisen.
-           Uten parameter (fra PLP) åpnes produktsiden øverst, uten valgt variant. Én kanonisk adresse per produkt. -->
+           Uten parameter (fra PLP) åpnes produktsiden øverst, uten valgt variant. Én kanonisk adresse per produkt.
+           Under tittelen (estimert 24.11.2026):
+           - MJ sitt art.nr alltid; «Deres varenr.» rett under, i mono, når kunden har eget nummer for varen i BC
+             (AB#20458). Ett kall for alle linjene i kurven.
+           - ÉN sortilog-merkelapp + «+N» med tooltip (AB#19790/#20679). Merkelappen er delsortilogens navn
+             (Vedlikehold / Verksted, som på account-sortilogs.html); «I sortilog» når varen ikke er i noen
+             delsortilog. Ingen merkelapp når kunden ikke har sortilog eller varen ikke er i den (linje 3).
+           Profilering per linje: se cart-profilering.html. -->
       <article class="cart-line">
         <div class="cart-line__media"></div>
         <div class="cart-line__main">
           <h3 class="cart-line__title"><a href="product.html?variant=4815-162-30">Sekskantskrue M8 × 40 mm A4 syrefast</a></h3>
-          <span class="cart-line__sku">Art.nr 4815-162-30</span>
+          <div class="cart-line__meta">
+            <span class="cart-line__sku">Art.nr 4815-162-30</span>
+            <span class="cart-line__customer-sku">Deres varenr. 110032</span>
+            <span class="badge-group">
+              <span class="badge badge--sortilog badge--truncate" title="Vedlikehold">Vedlikehold</span>
+              <button type="button" class="badge badge--sortilog badge--more tooltip tooltip--plain" data-tooltip="Også i: Verksted" aria-label="Også i 1 delsortilog til: Verksted">+1</button>
+            </span>
+          </div>
           <div class="cart-line__qty">
             <div class="qty-stepper qty-stepper--compact">
               <button class="qty-stepper__btn">−</button>
@@ -456,7 +470,12 @@
         <div class="cart-line__media"></div>
         <div class="cart-line__main">
           <h3 class="cart-line__title"><a href="product.html?variant=7700-099-00">3M arbeidshansker, str. 10</a></h3>
-          <span class="cart-line__sku">Art.nr 7700-099-00</span>
+          <div class="cart-line__meta">
+            <span class="cart-line__sku">Art.nr 7700-099-00</span>
+            <span class="badge-group">
+              <span class="badge badge--sortilog badge--truncate" title="I sortilog">I sortilog</span>
+            </span>
+          </div>
           <div class="cart-line__qty">
             <div class="qty-stepper qty-stepper--compact">
               <button class="qty-stepper__btn">−</button>
@@ -477,7 +496,9 @@
         <div class="cart-line__media"></div>
         <div class="cart-line__main">
           <h3 class="cart-line__title"><a href="product.html?variant=2210-507-12">Hilti TE 6-A36 borhammer 36V</a></h3>
-          <span class="cart-line__sku">Art.nr 2210-507-12</span>
+          <div class="cart-line__meta">
+            <span class="cart-line__sku">Art.nr 2210-507-12</span>
+          </div>
           <div class="cart-line__qty">
             <div class="qty-stepper qty-stepper--compact">
               <button class="qty-stepper__btn">−</button>

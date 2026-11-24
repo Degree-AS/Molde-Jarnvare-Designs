@@ -430,21 +430,31 @@
   </nav>
 
   <!--
-    PLP FOR INNLOGGET KUNDE MED SORTILOG (H&aring;kon 03.11.2026) &mdash; bygger p&aring; category.html.
-    - Filteret &laquo;Kun varer i min sortilog&raquo; ligger &oslash;verst i filterkolonnen og finnes ogs&aring; i s&oslash;k.
-      Vises bare for kunder som har en sortilog. Antallet i parentes = varer i sortilogen i denne kategorien.
-    - Uten filter vises alle varer, og varer i sortilogen f&aring;r gul merkelapp &laquo;I sortilog&raquo; (badge--sortilog),
-      s&aring; kunden ser at 5 av 14 bukser er de avtalte.
-    - Sortilogen er per variant (varenummer). Et masterprodukt merkes n&aring;r minst &eacute;n variant er i sortilogen,
-      og varianttellingen viser hvor mange: &laquo;24 varianter &middot; 3 i sortilog&raquo;.
-    - Med filteret p&aring; vises bare masterprodukter med minst &eacute;n sortilog-variant, og produktsiden viser
-      alle variantene med sortilog-variantene merket.
-    - &laquo;Deres varenr.&raquo; (kundens varenummer) vises p&aring; enkeltprodukter. P&aring; masterprodukt st&aring;r det per variant p&aring; produktsiden.
-    REVIDERT 12.11.2026 (AB#20556): de fleste kunder har &eacute;n sortilog. Da er filteret &eacute;n avkrysning:
-      &laquo;Kun varer i min sortilog (n)&raquo;. Har MJ delt opp sortilogen for kunden (System &rsaquo; Sortilog), blir filteret
-      et valg med &eacute;n rad: Alle varer / Hele sortilogen / &eacute;n per delsortilog. Delsortilogene er utvalg av hele
-      sortilogen, s&aring; bare &eacute;n kan v&aelig;re valgt. Skissen viser Brunvoll, som har Vedlikehold og Verksted.
-      Merkelappen &laquo;I sortilog&raquo; gjelder hele sortilogen, uansett hvilket valg som er gjort i filteret.
+    PLP FOR INNLOGGET KUNDE MED SORTILOG (H&aring;kon 03.11.2026) - bygger p&aring; category.html.
+    ESTIMERT 24.11.2026 (AB#19790: #19838 filter og &laquo;I sortilog&raquo;, #20679 delsortiloger i merkelapp og filter).
+    Skissen viser Brunvoll, som har tre delsortiloger i denne rekkef&oslash;lgen (satt av Firmaadmin eller MJ):
+    Vedlikehold, Verksted, Thrustermontasje og pr&oslash;vestand.
+    FILTER - ett valg (radioknapper): Alle varer / Hele sortilogen / &eacute;n delsortilog.
+    - Vises bare for innlogget kunde med sortilog. Antallet i parentes = produkter i denne kategorien.
+    - Kunde UTEN delsortiloger f&aring;r i stedet &eacute;n avkrysning &laquo;Kun varer i min sortilog&raquo; (se search.html).
+    - Delsortiloger skjuler aldri produkter. Det er bare filteret som gj&oslash;r det, n&aring;r brukeren velger det.
+    - Alle brukere hos kunden ser hele sortilogen og alle delsortilogene. Ingen brukere knyttes til en delsortilog.
+    - Finnes ogs&aring; i s&oslash;k. Filtrering p&aring; delsortilog bruker eksakte variant-id-er.
+    MERKELAPP p&aring; kortet (badge-group, se badge.css):
+    - Delsortilogens navn. &laquo;I sortilog&raquo; n&aring;r varen er i sortilogen, men ikke i noen delsortilog.
+    - &Eacute;N merkelapp + &laquo;+N&raquo;. &laquo;+N&raquo; viser de andre i en tooltip (hover, fokus og trykk; trykk &aring;pner ikke produktsiden).
+    - Hvilken st&aring;r f&oslash;rst: valgt delsortilog i filteret f&oslash;rst, ellers delsortilogenes rekkef&oslash;lge (satt av admin).
+      Her er &laquo;Alle varer&raquo; valgt, s&aring; rekkef&oslash;lgen gjelder. Velger brukeren &laquo;Verksted&raquo;, blir kort 1
+      &laquo;Verksted +2&raquo; og kort 5 &laquo;Verksted +1&raquo;.
+    - Lange navn kuttes med &laquo;&hellip;&raquo; og st&aring;r i sin helhet i tooltipen (eller i title n&aring;r det ikke er &laquo;+N&raquo;).
+    - Produktsiden viser alle merkelappene. Kurvlinje, ordrebekreftelse og ordrehistorikk: som kortet.
+    - Ingen merkelapp n&aring;r kunden ikke er logget inn eller ikke har sortilog.
+    - Masterprodukt: merkes n&aring;r minst &eacute;n variant er i sortilogen, &laquo;24 varianter &middot; 3 i sortilog&raquo;.
+    &laquo;DERES VARENR.&raquo; (estimert 24.11.2026, AB#20458): bare p&aring; enkeltprodukt (kort 7), aldri p&aring; masterprodukt,
+      bare for innlogget kunde, monospace.
+    &laquo;ONIX&raquo; (estimert 24.11.2026, AB#20460): filteret &laquo;Sertifisert l&oslash;fteutstyr (Onix)&raquo; finnes her ogs&aring;, likt
+      &laquo;Kun varer p&aring; lager&raquo;. Ingen arbeidskl&aelig;r er Onix, s&aring; ingen kort har merket her (se category.html og search.html).
+    IKKE MED I ESTIMATET: brukere p&aring; delsortiloger, egen merkelapptekst eller prioritetsfelt per delsortilog.
   -->
   <header style="margin-bottom: var(--s-6);">
     <h1 class="t-h1">Arbeidsbukser</h1>
@@ -464,8 +474,9 @@
             <div class="filter-sidebar__options" role="radiogroup" aria-label="Sortilog">
               <label class="radio"><input type="radio" name="sortilog" checked><span class="radio__visual"></span><span class="radio__label">Alle varer</span></label>
               <label class="radio"><input type="radio" name="sortilog"><span class="radio__visual"></span><span class="radio__label">Hele sortilogen (6)</span></label>
-              <label class="radio"><input type="radio" name="sortilog"><span class="radio__visual"></span><span class="radio__label">Vedlikehold (5)</span></label>
+              <label class="radio"><input type="radio" name="sortilog"><span class="radio__visual"></span><span class="radio__label">Vedlikehold (3)</span></label>
               <label class="radio"><input type="radio" name="sortilog"><span class="radio__visual"></span><span class="radio__label">Verksted (2)</span></label>
+              <label class="radio"><input type="radio" name="sortilog"><span class="radio__visual"></span><span class="radio__label">Thrustermontasje og pr&oslash;vestand (2)</span></label>
             </div>
             <p class="field__hint" style="margin: var(--s-2) 0 0;">Brunvoll AS &middot; <a class="link" href="account-sortilogs.html">Se sortilogene</a></p>
           </div>
@@ -493,6 +504,11 @@
             <h3 class="filter-sidebar__group-title">Lager</h3>
             <label class="checkbox"><input type="checkbox"><span class="checkbox__visual"></span><span class="checkbox__label">Kun varer p&aring; lager</span></label>
           </div>
+          <!-- Onix (estimert 24.11.2026, AB#20460): samme m&oslash;nster som &laquo;Kun varer p&aring; lager&raquo;. Et masterprodukt treffer n&aring;r minst &eacute;n variant er Onix. -->
+          <div class="filter-sidebar__group">
+            <h3 class="filter-sidebar__group-title">Sertifisering</h3>
+            <label class="checkbox"><input type="checkbox"><span class="checkbox__visual"></span><span class="checkbox__label">Sertifisert l&oslash;fteutstyr (Onix)</span></label>
+          </div>
         </div>
       </div>
     </aside>
@@ -512,15 +528,17 @@
       </div>
 
       <div class="plp-layout__grid">
+            <!-- Kort 1: tre delsortiloger (+2) &middot; kort 2: &eacute;n &middot; kort 4: langt navn kuttes &middot; kort 5: to (+1)
+                 kort 7 og 8: i sortilogen, men ikke i noen delsortilog = &laquo;I sortilog&raquo; &middot; kort 3 og 6: ikke i sortilogen -->
             <article class="product-card">
-              <div class="product-card__media"><div class="product-card__badges"><span class="badge badge--sortilog">I sortilog</span></div></div>
+              <div class="product-card__media"><div class="product-card__badges"><span class="badge-group"><span class="badge badge--sortilog badge--truncate" title="Vedlikehold">Vedlikehold</span><button type="button" class="badge badge--sortilog badge--more tooltip tooltip--plain" data-tooltip="Ogs&aring; i: Verksted, Thrustermontasje og pr&oslash;vestand" aria-label="Ogs&aring; i 2 delsortiloger til: Verksted, Thrustermontasje og pr&oslash;vestand">+2</button></span></div></div>
               <span class="product-card__variants">24 varianter &middot; 3 i sortilog</span>
               <h3 class="product-card__title"><a href="product-sortilog.html">MASCOT Bukse Stretch 18079511 Accelerate</a></h3>
               <div class="product-card__price"><span class="product-card__price-from">Fra</span>kr 1 290,00<span class="product-card__price-suffix">eks. mva</span></div>
               <div class="product-card__actions"><a class="btn btn--outline btn--sm btn--full" href="product-sortilog.html" style="text-decoration: none;">Velg variant</a></div>
             </article>
             <article class="product-card">
-              <div class="product-card__media"><div class="product-card__badges"><span class="badge badge--sortilog">I sortilog</span></div></div>
+              <div class="product-card__media"><div class="product-card__badges"><span class="badge badge--sortilog badge--truncate" title="Vedlikehold">Vedlikehold</span></div></div>
               <span class="product-card__variants">18 varianter &middot; 2 i sortilog</span>
               <h3 class="product-card__title"><a href="product-sortilog.html">MASCOT Bukse 21579281 Accelerate Multisafe</a></h3>
               <div class="product-card__price"><span class="product-card__price-from">Fra</span>kr 1 690,00<span class="product-card__price-suffix">eks. mva</span></div>
@@ -534,14 +552,14 @@
               <div class="product-card__actions"><a class="btn btn--outline btn--sm btn--full" href="product-sortilog.html" style="text-decoration: none;">Velg variant</a></div>
             </article>
             <article class="product-card">
-              <div class="product-card__media"><div class="product-card__badges"><span class="badge badge--sortilog">I sortilog</span></div></div>
+              <div class="product-card__media"><div class="product-card__badges"><span class="badge badge--sortilog badge--truncate" title="Thrustermontasje og pr&oslash;vestand">Thrustermontasje og pr&oslash;vestand</span></div></div>
               <span class="product-card__variants">12 varianter &middot; 1 i sortilog</span>
               <h3 class="product-card__title"><a href="product-sortilog.html">Fristads Servicebukse 120954 ESD</a></h3>
               <div class="product-card__price"><span class="product-card__price-from">Fra</span>kr 1 049,00<span class="product-card__price-suffix">eks. mva</span></div>
               <div class="product-card__actions"><a class="btn btn--outline btn--sm btn--full" href="product-sortilog.html" style="text-decoration: none;">Velg variant</a></div>
             </article>
             <article class="product-card">
-              <div class="product-card__media"><div class="product-card__badges"><span class="badge badge--sortilog">I sortilog</span></div></div>
+              <div class="product-card__media"><div class="product-card__badges"><span class="badge-group"><span class="badge badge--sortilog badge--truncate" title="Vedlikehold">Vedlikehold</span><button type="button" class="badge badge--sortilog badge--more tooltip tooltip--plain" data-tooltip="Ogs&aring; i: Verksted" aria-label="Ogs&aring; i 1 delsortilog til: Verksted">+1</button></span></div></div>
               <span class="product-card__variants">20 varianter &middot; 1 i sortilog</span>
               <h3 class="product-card__title"><a href="product-sortilog.html">MASCOT Bukse Stretch 17179311 Advanced</a></h3>
               <div class="product-card__price"><span class="product-card__price-from">Fra</span>kr 1 490,00<span class="product-card__price-suffix">eks. mva</span></div>
@@ -564,8 +582,8 @@
               <div class="product-card__actions"><button class="btn btn--primary btn--sm btn--full">Legg i handlekurv</button></div>
             </article>
             <article class="product-card">
-              <div class="product-card__media"></div>
-              <span class="product-card__variants">22 varianter</span>
+              <div class="product-card__media"><div class="product-card__badges"><span class="badge badge--sortilog">I sortilog</span></div></div>
+              <span class="product-card__variants">22 varianter &middot; 2 i sortilog</span>
               <h3 class="product-card__title"><a href="product-sortilog.html">Blåkläder Servicebukse 1459 Stretch</a></h3>
               <div class="product-card__price"><span class="product-card__price-from">Fra</span>kr 999,00<span class="product-card__price-suffix">eks. mva</span></div>
               <div class="product-card__actions"><a class="btn btn--outline btn--sm btn--full" href="product-sortilog.html" style="text-decoration: none;">Velg variant</a></div>

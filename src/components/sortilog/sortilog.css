@@ -24,24 +24,34 @@
  *     eller gruppering. Arkivert eller byttet vare faller ut overalt, automatisk.
  *   - Vanlige nettregler gjelder alltid i bunn (Håkon 12.11): en vare som ikke vises
  *     på nett, vises heller ikke i sortilogen, filteret eller merkelappen.
- *   - Standard: ÉN sortilog («Hele sortilogen») for alle brukerne hos kunden. Ingenting
- *     settes opp på web. Gjelder de aller fleste av 50–60 kunder.
- *   - Bare når kunden trenger det (et fåtall): delsortiloger på web, f.eks. per avdeling
- *     eller type arbeid. De lages og redigeres av MJ (System › Sortilog, SysAdmin) OG av
- *     kundens Admin-brukere (Min konto › Sortilog), på lik linje (Simen 12.11).
- *     Bestiller-brukere ser dem, men kan ikke redigere.
- *   - En vare kan ligge i flere delsortiloger, eller i ingen. Det er ikke et krav at
- *     alle varer plasseres. Nye varer fra BC blir bare liggende i «Hele sortilogen» med
- *     den vanlige merkelappen «I sortilog» (Simen 12.11).
+ *
+ * Estimert 24.11.2026 (AB#19790, 40 t; delsortiloger uten brukere, samtale Vaclav + Simen):
+ *   - «Hele sortilogen» = alle aktive sortilog-linjer i BC. De fleste kunder har bare den.
+ *   - Delsortiloger er valgfrie varelister på web. INGEN brukere eller avdelinger knyttes
+ *     til dem: alle brukere hos kunden ser hele sortilogen og alle delsortilogene.
+ *   - Firmaadmin (Min konto › Sortilog) og SysAdmin (System › Sortilog) oppretter, gir nytt
+ *     navn, sorterer (opp/ned), sletter og krysser av varer fra kundens sortilog. Ingen kan
+ *     redigere under «Logg inn som». Bestiller ser sidene, Visning gjør ikke.
+ *   - En vare kan ligge i flere delsortiloger eller i ingen. Slettes en delsortilog, ligger
+ *     varene fortsatt i hele sortilogen. Avkrysninger følger ikke med til en erstatningsvare.
+ *   - Oversikten er gruppert hovedkategori → underkategori, masterprodukter med antall
+ *     varianter, kolonnene «Deres varenr.» og «Kan profileres», søk. Ingen antall/priser/kurv.
+ *   - Merkelappen på kortet er delsortilogens navn («I sortilog» når varen ikke ligger i noen),
+ *     én merkelapp + «+N» (se badge.css). Rekkefølgen satt av admin styrer hvilken som står først.
+ *   - Ikke med i estimatet: brukere på delsortiloger, egen merkelapptekst eller prioritetsfelt,
+ *     beskrivelse per delsortilog, «Vis i nettbutikken uten priser», import fra Excel,
+ *     lesetilgang-gruppe for System › Sortilog.
  *
  * Block:     .sortilog
  * Elements:  __header  __title  __count  __list  (oversikt over sortiloger)
  *            __card  __card-name  __card-meta  __card-count
  *            __toolbar  __search  __table  __group  __thumb  __sku  __customer-sku
  *            __name  __category  __link  __footer
- *            __subs  __sub  __sub-name  __sub-meta  __sub-actions  (delsortiloger, System)
+ *            __subs  __sub  __sub-name  __sub-meta  __sub-actions  (delsortiloger, rekkefølge)
  *            __tags  (hvilke andre delsortiloger en vare også ligger i)
- * Modifiers: __table--pick  (velgertabell med avkrysning først, System › delsortilog)
+ *            __variants  (antall varianter på masterprodukt, i stedet for art.nr)
+ * Modifiers: __table--pick  (velgertabell med avkrysning først, redigering av delsortilog)
+ *            __group--main  (hovedkategori; vanlig __group er underkategori)
  */
 .sortilog {
   display: flex;
@@ -160,6 +170,17 @@
   border-bottom: var(--bw-1) solid var(--color-border-default);
 }
 .sortilog__group-count { margin-left: var(--s-2); font-weight: var(--fw-regular); color: var(--color-text-tertiary); }
+/* Hovedkategori over underkategoriene (estimert 24.11.2026): hovedkategori → underkategori */
+.sortilog__group--main th {
+  padding-top: var(--s-6);
+  font-size: var(--fs-body);
+  font-weight: var(--fw-bold);
+  border-bottom: var(--bw-2) solid var(--color-border-default);
+}
+.sortilog__group--main + .sortilog__group th { padding-top: var(--s-3); }
+
+/* Masterprodukt: antall varianter i sortilogen i stedet for art.nr (som product-card__variants) */
+.sortilog__variants { font-size: var(--fs-caption); color: var(--color-text-tertiary); white-space: nowrap; }
 
 .sortilog__thumb {
   display: block;
@@ -174,7 +195,8 @@
 .sortilog__category { font-size: var(--fs-caption); color: var(--color-text-secondary); }
 .sortilog__link { font-size: var(--fs-body-sm); font-weight: var(--fw-semibold); color: var(--color-text-link); white-space: nowrap; }
 
-/* Delsortiloger — liste i System › Sortilog. Første rad er alltid «Hele sortilogen» fra BC. */
+/* Delsortiloger - liste med rekkefølge (opp/ned) i Min konto › Sortilog (Firmaadmin) og System › Sortilog.
+   I System er første rad alltid «Hele sortilogen» fra BC. */
 .sortilog__subs { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; }
 .sortilog__sub {
   display: flex;

@@ -448,12 +448,20 @@ Ring Bjarte på 912 34 567 ved ankomst.</dd></div>
 
   <section class="card" style="margin-top: var(--s-6);">
     <h2 class="card__title">Leveringsoversikt</h2>
+    <!-- Linjene (estimert 24.11.2026):
+         - Art.nr: MJ sitt nummer alltid; «Deres varenr.» under, i mono, når kunden har eget nummer for varen
+           (AB#20458). Linjene kommer fra nettleserens økt, skrevet i kassen; nummeret legges til der.
+           Ikke med i estimatet: kundens varenummer i e-posten med ordrebekreftelse.
+         - Artikkel: ÉN sortilog-merkelapp + «+N» med tooltip (AB#19790/#20679). Delsortilogens navn,
+           «I sortilog» når varen ikke er i noen delsortilog, ingen merkelapp uten sortilog (linje 3).
+         - Har ordren profilering, ligger beløpet for påføringslinjene 479350/479355 i summen. Profileringen
+           per linje vises i ordredetaljen (account-order-detail.html) når BC har ordren. -->
     <div class="data-table__wrap">
       <table class="data-table">
-        <thead><tr><th>Artikkel</th><th>SKU</th><th class="is-numeric">Antall</th><th class="is-numeric">Pris</th></tr></thead>
+        <thead><tr><th>Artikkel</th><th>Art.nr</th><th class="is-numeric">Antall</th><th class="is-numeric">Pris</th></tr></thead>
         <tbody>
-          <tr><td>Sekskantskrue M8 × 40 mm A4</td><td><code>4815-162-30</code></td><td class="is-numeric">200</td><td class="is-numeric">kr 560,–</td></tr>
-          <tr><td>3M arbeidshansker, str. 10</td><td><code>7700-099-00</code></td><td class="is-numeric">6</td><td class="is-numeric">kr 474,–</td></tr>
+          <tr><td><div class="order-confirmation__product">Sekskantskrue M8 × 40 mm A4<span class="badge-group"><span class="badge badge--sortilog badge--truncate" title="Vedlikehold">Vedlikehold</span><button type="button" class="badge badge--sortilog badge--more tooltip tooltip--plain" data-tooltip="Også i: Verksted" aria-label="Også i 1 delsortilog til: Verksted">+1</button></span></div></td><td><span class="order-confirmation__ids"><code>4815-162-30</code><span class="order-confirmation__customer-sku">Deres varenr. 110032</span></span></td><td class="is-numeric">200</td><td class="is-numeric">kr 560,–</td></tr>
+          <tr><td><div class="order-confirmation__product">3M arbeidshansker, str. 10<span class="badge-group"><span class="badge badge--sortilog badge--truncate" title="I sortilog">I sortilog</span></span></div></td><td><code>7700-099-00</code></td><td class="is-numeric">6</td><td class="is-numeric">kr 474,–</td></tr>
           <tr><td>Hilti TE 6-A36 borhammer</td><td><code>2210-507-12</code></td><td class="is-numeric">1</td><td class="is-numeric">kr 8 990,–</td></tr>
   </tbody>
         <!-- Summer i tabellen, så beløpene står under Pris (statusmøte 15.10.2026). Samme hierarki som ordredetalj. -->

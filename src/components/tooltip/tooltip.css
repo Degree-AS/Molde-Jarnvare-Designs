@@ -37,3 +37,6 @@
 
 .tooltip:hover::after,
 .tooltip:focus-within::after { opacity: 1; }
+
+/* Uten stiplet linje og hjelpe-peker - for knapper som «+N» på sortilog-merkelapper */
+.tooltip--plain { border-bottom: 0; cursor: pointer; }

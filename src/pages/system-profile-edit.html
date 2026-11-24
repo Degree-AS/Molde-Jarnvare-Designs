@@ -430,17 +430,23 @@
     Mens en SysAdmin er logget inn som en annen bruker (&laquo;Logg inn som&raquo;), viser System-sidene
     &laquo;Tilbake til meg og &aring;pne denne siden&raquo; (AB#20391) &mdash; profilene redigeres derfor ALDRI under impersonering.
     Cache, BC Sync, Alerts og Users er dagens menypunkter; Sortilog og Profilering er nye (utkast 03.11.2026).
-    SYSTEM &rsaquo; PROFILERING &rsaquo; KUNDE &mdash; her setter MJ opp avtalen. Lagres i Dynamicweb per kunde (Account), ikke i BC/PIM.
-    - Avtale: av/p&aring;, regel &laquo;alle profilerbare&raquo; / &laquo;kun sortilog&raquo;, selger, intern merknad (trykkeriet).
-    - Logoer: kundens originalfiler for trykk og logo-kutter. Private filer: lagres utenfor den offentlige /Files-mappen
-      og hentes via backend med tilgangssjekk (frontend videresender /Files offentlig, AB#20086).
-    - Profiler: navn, valgfri avdeling, kategorier fra PIM, godkjente bilder (hovedbilde vises kunden), plasseringer.
-      Flere profiler kan gjelde samme kategori (H&aring;kon 04.11: Brunvoll produksjon vs. ettermarked p&aring; gensere).
-      Avdelinger skilles IKKE i BC (krever dupliserte sortiloger per kundenr./leveringsadresse) &mdash; bare her.
-      Antall p&aring;f&oslash;ringer regnes ut fra plasseringene: Logo-rader = 479350 per plagg, Navnelapp = 479355 per navn.
+    SYSTEM &rsaquo; PROFILERING &rsaquo; KUNDE - estimert 24.11.2026 (AB#20452 / #20462, data i #20454).
+    Bare SysAdmin, aldri ved &laquo;Logg inn som&raquo;. Lagres i egne tabeller p&aring; nettl&oslash;sningen per kunde, ikke i BC/PIM.
+    - Avtale: p&aring;/av; omfang &laquo;Alle profilerbare varer&raquo; / &laquo;Kun profilerbare varer i sortilogen&raquo;; selger fra
+      brukergruppen &laquo;Salg og produktansvarlige&raquo;; internt notat til trykkeriet.
+    - &laquo;Kan profileres&raquo; er en avkryssingsboks MJ setter p&aring; varen i Dynamicweb-admin (H1). Ingen design her.
+    - Logofiler: SVG, PDF, AI, EPS og PNG, maks 25 MB. PRIVATE: lagres utenfor den offentlige /Files-mappen og hentes
+      via backend med tilgangssjekk. Vises aldri for kunden, heller ikke i &laquo;Se det kunden ser&raquo;.
+    - Profiler: navn; &laquo;Avdeling&raquo; (bare en etikett); PIM-kategorier; godkjente bilder med ett hovedbilde (det
+      kunden ser); plasseringer; notat til trykkeriet; aktiv/deaktivert; kopier.
+      Plasseringer: Logo = logofil + posisjon fra fast liste + bredde i cm + metode. Navnelapp = posisjon; navnet
+      skrives per plagg i handlekurven, maks 30 tegn.
+      P&aring;f&oslash;ringslinjene regnes ut fra plasseringene: hver logo = 1 &times; 479350 per plagg, navnelapp = 1 &times; 479355 per navn.
     - Deaktiver i stedet for slett, s&aring; gamle ordrer fortsatt viser hvilken profil som ble brukt.
     - Endringslogg: hvem endret hva, n&aring;r.
     - &laquo;Se det kunden ser&raquo; viser kundens side (account-profiles.html) uten &aring; logge inn som kunden.
+    Ikke med i estimatet: plasseringsverkt&oslash;y for logo (fase 3), slagord og annen tekst enn navnelapper,
+    egne tilgangsgrupper &laquo;Profilering&raquo; og &laquo;Trykkeri&raquo;, profiler begrenset per avdeling eller bruker.
   -->
   <h1 class="t-h1" style="margin-bottom: var(--s-7);">System</h1>
 
@@ -476,18 +482,19 @@
         <label class="switch"><input type="checkbox" checked><span class="switch__track"></span><span>Profilering er avtalt med kunden</span></label>
         <p class="field__hint" style="margin: calc(-1 * var(--s-2)) 0 0;">Av: kunden ser ingen profilvalg, bare &laquo;Kontakt selgeren din&raquo;.</p>
         <fieldset class="radio-group">
-          <legend class="radio-group__legend">Hvilke varer kan profileres?</legend>
-          <label class="radio"><input type="radio" name="scope" checked><span class="radio__visual"></span><span class="radio__label"><strong>Alle kl&aelig;r som kan profileres</strong><span class="radio__desc">Materialtype stoff, ogs&aring; utenfor sortilogen</span></span></label>
-          <label class="radio"><input type="radio" name="scope"><span class="radio__visual"></span><span class="radio__label"><strong>Kun varer i sortilogen</strong><span class="radio__desc">For kunder der bare den avtalte kolleksjonen skal ha logo</span></span></label>
+          <legend class="radio-group__legend">Omfang</legend>
+          <label class="radio"><input type="radio" name="scope" checked><span class="radio__visual"></span><span class="radio__label"><strong>Alle profilerbare varer</strong><span class="radio__desc">Alle varer med &laquo;Kan profileres&raquo;, ogs&aring; utenfor sortilogen</span></span></label>
+          <label class="radio"><input type="radio" name="scope"><span class="radio__visual"></span><span class="radio__label"><strong>Kun profilerbare varer i sortilogen</strong><span class="radio__desc">Varer med &laquo;Kan profileres&raquo; som ligger i kundens sortilog</span></span></label>
         </fieldset>
         <div class="profiling__fields">
           <div class="field">
-            <label class="field__label" for="ag-rep">Selger / kontakt</label>
-            <select class="select" id="ag-rep"><option selected>Leif Erling Aasan</option><option>Hilmar Askeland</option></select>
+            <label class="field__label" for="ag-rep">Selger</label>
+            <select class="select" id="ag-rep" aria-describedby="ag-rep-hint"><option selected>Leif Erling Aasan</option><option>Hilmar Askeland</option></select>
+            <p class="field__hint" id="ag-rep-hint" style="margin: var(--s-1) 0 0;">Fra brukergruppen &laquo;Salg og produktansvarlige&raquo;.</p>
           </div>
           <div class="field" style="grid-column: 1 / -1;">
-            <label class="field__label" for="ag-note">Intern merknad</label>
-            <p class="field__hint" id="ag-note-hint" style="margin: 0 0 var(--s-1);">Vises ikke for kunden. Vises for trykkeriet.</p>
+            <label class="field__label" for="ag-note">Internt notat til trykkeriet</label>
+            <p class="field__hint" id="ag-note-hint" style="margin: 0 0 var(--s-1);">Vises aldri for kunden.</p>
             <textarea class="textarea" id="ag-note" rows="2" aria-describedby="ag-note-hint">Navnelapp alltid med fornavn + etternavn. Ryggtrykk kun p&aring; jakker i marine.</textarea>
           </div>
         </div>
@@ -497,7 +504,7 @@
       <section class="card" style="margin-bottom: var(--s-5); display: flex; flex-direction: column; gap: var(--s-4);">
         <div>
           <h3 class="card__title" style="margin: 0 0 var(--s-1);">Logoer</h3>
-          <p class="field__hint" style="margin: 0;">Originalfilene trykkeriet og logo-kutteren bruker. Vises ikke for kunden.</p>
+          <p class="field__hint" style="margin: 0;">Originalfilene trykkeriet bruker. Private: vises aldri for kunden, heller ikke i &laquo;Se det kunden ser&raquo;.</p>
         </div>
         <div class="file-upload">
           <ul class="file-upload__list">
@@ -545,21 +552,21 @@
         <!-- &Aring;pen profil: redigering -->
         <article class="profiling__editor">
           <div class="profiling__editor-head">
-            <strong>Jakke &ndash; standard</strong>
+            <strong>Jakke - standard</strong>
             <label class="switch"><input type="checkbox" checked><span class="switch__track"></span><span>Aktiv</span></label>
           </div>
 
           <div class="profiling__fields">
             <div class="field">
               <label class="field__label field__label--required" for="pr-name">Navn</label>
-              <input class="input" id="pr-name" value="Jakke &ndash; standard">
+              <input class="input" id="pr-name" value="Jakke - standard">
               <p class="field__hint" style="margin: var(--s-1) 0 0;">Kunden ser navnet i handlekurven.</p>
             </div>
             <div class="field">
               <label class="field__label" for="pr-dept">Avdeling</label>
               <input class="input" id="pr-dept" list="pr-dept-list" placeholder="Valgfritt, f.eks. Produksjon">
               <datalist id="pr-dept-list"><option value="Produksjon"><option value="Ettermarked"></datalist>
-              <p class="field__hint" style="margin: var(--s-1) 0 0;">Skiller profiler for samme plagg. Vises som merkelapp for kunden.</p>
+              <p class="field__hint" style="margin: var(--s-1) 0 0;">Bare en etikett som skiller profiler for samme plagg. Alle bestillere hos kunden ser alle aktive profiler.</p>
             </div>
             <div class="field" style="grid-column: span 2;">
               <span class="field__label">Gjelder for</span>
@@ -609,31 +616,30 @@
             <span class="field__label">Plasseringer</span>
             <ol class="profiling__placement-rows">
                   <li class="profiling__placement-row">
-                    <div class="field"><label class="field__label" for="pl1-type">Type</label><select class="select" id="pl1-type"><option selected>Logo</option><option>Navnelapp</option><option>Tekst</option></select></div>
+                    <div class="field"><label class="field__label" for="pl1-type">Type</label><select class="select" id="pl1-type"><option selected>Logo</option><option>Navnelapp</option></select></div>
                     <div class="field"><label class="field__label" for="pl1-logo">Logo</label><select class="select" id="pl1-logo"><option>&mdash;</option><option selected>Brunvoll logo farge</option><option>Brunvoll logo hvit</option><option>Brunvoll logo sort</option></select></div>
-                    <div class="field"><label class="field__label" for="pl1-where">Plassering</label><select class="select" id="pl1-where"><option selected>Bryst venstre</option><option>Bryst h&oslash;yre</option><option>Under logo bryst</option><option>Rygg</option><option>Arm venstre</option><option>Arm h&oslash;yre</option><option>L&aring;r venstre</option><option>Annet</option></select></div>
+                    <div class="field"><label class="field__label" for="pl1-where">Plassering</label><select class="select" id="pl1-where"><option selected>Bryst venstre</option><option>Bryst h&oslash;yre</option><option>Under logo bryst</option><option>Rygg</option><option>Arm venstre</option><option>Arm h&oslash;yre</option><option>L&aring;r venstre</option></select></div>
                     <div class="field"><label class="field__label" for="pl1-size">Bredde (cm)</label><input class="input" id="pl1-size" inputmode="decimal" value="8"></div>
                     <div class="field"><label class="field__label" for="pl1-method">Metode</label><select class="select" id="pl1-method"><option selected>Trykk (transfer)</option><option>Brodering</option><option>Kuttet logo</option></select></div>
                     <button class="profiling__remove" type="button" aria-label="Fjern plassering 1">Fjern</button>
                   </li>
-                  <li class="profiling__placement-row">
-                    <div class="field"><label class="field__label" for="pl2-type">Type</label><select class="select" id="pl2-type"><option>Logo</option><option selected>Navnelapp</option><option>Tekst</option></select></div>
-                    <div class="field"><label class="field__label" for="pl2-logo">Logo</label><select class="select" id="pl2-logo"><option selected>&mdash;</option><option>Brunvoll logo farge</option><option>Brunvoll logo hvit</option><option>Brunvoll logo sort</option></select></div>
-                    <div class="field"><label class="field__label" for="pl2-where">Plassering</label><select class="select" id="pl2-where"><option>Bryst venstre</option><option>Bryst h&oslash;yre</option><option selected>Under logo bryst</option><option>Rygg</option><option>Arm venstre</option><option>Arm h&oslash;yre</option><option>L&aring;r venstre</option><option>Annet</option></select></div>
-                    <div class="field"><label class="field__label" for="pl2-size">Bredde (cm)</label><input class="input" id="pl2-size" inputmode="decimal" value="8"></div>
-                    <div class="field"><label class="field__label" for="pl2-method">Metode</label><select class="select" id="pl2-method"><option selected>Trykk (transfer)</option><option>Brodering</option><option>Kuttet logo</option></select></div>
+                  <li class="profiling__placement-row profiling__placement-row--name">
+                    <div class="field"><label class="field__label" for="pl2-type">Type</label><select class="select" id="pl2-type"><option>Logo</option><option selected>Navnelapp</option></select></div>
+                    <div class="field"><label class="field__label" for="pl2-where">Plassering</label><select class="select" id="pl2-where"><option>Bryst venstre</option><option>Bryst h&oslash;yre</option><option selected>Under logo bryst</option><option>Rygg</option><option>Arm venstre</option><option>Arm h&oslash;yre</option><option>L&aring;r venstre</option></select></div>
+                    <p class="field__hint">Kunden skriver ett navn per plagg i handlekurven, maks 30 tegn.</p>
                     <button class="profiling__remove" type="button" aria-label="Fjern plassering 2">Fjern</button>
                   </li>
                   <li class="profiling__placement-row">
-                    <div class="field"><label class="field__label" for="pl3-type">Type</label><select class="select" id="pl3-type"><option selected>Logo</option><option>Navnelapp</option><option>Tekst</option></select></div>
+                    <div class="field"><label class="field__label" for="pl3-type">Type</label><select class="select" id="pl3-type"><option selected>Logo</option><option>Navnelapp</option></select></div>
                     <div class="field"><label class="field__label" for="pl3-logo">Logo</label><select class="select" id="pl3-logo"><option>&mdash;</option><option>Brunvoll logo farge</option><option selected>Brunvoll logo hvit</option><option>Brunvoll logo sort</option></select></div>
-                    <div class="field"><label class="field__label" for="pl3-where">Plassering</label><select class="select" id="pl3-where"><option>Bryst venstre</option><option>Bryst h&oslash;yre</option><option>Under logo bryst</option><option selected>Rygg</option><option>Arm venstre</option><option>Arm h&oslash;yre</option><option>L&aring;r venstre</option><option>Annet</option></select></div>
+                    <div class="field"><label class="field__label" for="pl3-where">Plassering</label><select class="select" id="pl3-where"><option>Bryst venstre</option><option>Bryst h&oslash;yre</option><option>Under logo bryst</option><option selected>Rygg</option><option>Arm venstre</option><option>Arm h&oslash;yre</option><option>L&aring;r venstre</option></select></div>
                     <div class="field"><label class="field__label" for="pl3-size">Bredde (cm)</label><input class="input" id="pl3-size" inputmode="decimal" value="25"></div>
                     <div class="field"><label class="field__label" for="pl3-method">Metode</label><select class="select" id="pl3-method"><option selected>Trykk (transfer)</option><option>Brodering</option><option>Kuttet logo</option></select></div>
                     <button class="profiling__remove" type="button" aria-label="Fjern plassering 3">Fjern</button>
                   </li>
             </ol>
             <button class="btn btn--ghost btn--sm" type="button" style="align-self: flex-start; margin-top: var(--s-2);">+ Legg til plassering</button>
+            <p class="field__hint" style="margin: var(--s-2) 0 0;">Posisjonen velges fra en fast liste. Bare logo og navnelapp - slagord og annen tekst er ikke med i estimatet.</p>
           </div>
 
           <p class="profiling__calc"><strong>Per plagg:</strong> 2 &times; 479350 P&aring;f&oslash;ring av logo + 1 &times; 479355 P&aring;f&oslash;ring av navnelapp (ett navn per plagg). Regnes ut fra plasseringene.</p>
@@ -646,22 +652,25 @@
           <div style="display: flex; flex-wrap: wrap; gap: var(--s-3); align-items: center;">
             <button class="btn btn--primary btn--md" type="button">Lagre profil</button>
             <button class="btn btn--ghost btn--md" type="button">Avbryt</button>
-            <button class="btn btn--ghost btn--md" type="button" style="margin-left: auto; color: var(--mj-error);">Deaktiver profil</button>
+            <button class="btn btn--ghost btn--md" type="button" style="margin-left: auto;">Kopier</button>
+            <button class="btn btn--ghost btn--md" type="button" style="color: var(--color-text-error);">Deaktiver profil</button>
           </div>
         </article>
 
         <!-- Lukkede profiler -->
-        <div class="profiling__summary"><p class="profiling__summary-text"><strong>Bukse &ndash; standard</strong> &middot; Arbeidsbukser, servicebukser &middot; 1 logo</p><button class="profiling__toggle" type="button">Rediger</button></div>
-        <div class="profiling__summary"><span class="badge">Produksjon</span><p class="profiling__summary-text"><strong>Genser &ndash; produksjon</strong> &middot; Gensere, pique, T-skjorter &middot; 1 logo + navnelapp</p><button class="profiling__toggle" type="button">Kopier</button><button class="profiling__toggle" type="button" style="margin-left: 0;">Rediger</button></div>
-        <div class="profiling__summary"><span class="badge">Ettermarked</span><p class="profiling__summary-text"><strong>Genser &ndash; ettermarked</strong> &middot; Gensere, pique, T-skjorter &middot; 2 logoer</p><button class="profiling__toggle" type="button">Kopier</button><button class="profiling__toggle" type="button" style="margin-left: 0;">Rediger</button></div>
-        <div class="profiling__summary"><p class="profiling__summary-text"><strong>Kjeledress</strong> &middot; Kjeledresser &middot; 2 logoer</p><button class="profiling__toggle" type="button">Rediger</button></div>
+        <div class="profiling__summary"><p class="profiling__summary-text"><strong>Bukse - standard</strong> &middot; Arbeidsbukser, servicebukser &middot; 1 logo</p><button class="profiling__toggle" type="button">Kopier</button><button class="profiling__toggle" type="button" style="margin-left: 0;">Rediger</button></div>
+        <div class="profiling__summary"><span class="badge">Produksjon</span><p class="profiling__summary-text"><strong>Genser - produksjon</strong> &middot; Gensere, pique, T-skjorter &middot; 1 logo + navnelapp</p><button class="profiling__toggle" type="button">Kopier</button><button class="profiling__toggle" type="button" style="margin-left: 0;">Rediger</button></div>
+        <div class="profiling__summary"><span class="badge">Ettermarked</span><p class="profiling__summary-text"><strong>Genser - ettermarked</strong> &middot; Gensere, pique, T-skjorter &middot; 2 logoer</p><button class="profiling__toggle" type="button">Kopier</button><button class="profiling__toggle" type="button" style="margin-left: 0;">Rediger</button></div>
+        <div class="profiling__summary"><p class="profiling__summary-text"><strong>Kjeledress</strong> &middot; Kjeledresser &middot; 2 logoer</p><button class="profiling__toggle" type="button">Kopier</button><button class="profiling__toggle" type="button" style="margin-left: 0;">Rediger</button></div>
+        <!-- Deaktivert profil: vises ikke for kunden og tilbys ikke i handlekurven. Kan aktiveres igjen. -->
+        <div class="profiling__summary"><span class="status-pill status-pill--neutral">Deaktivert</span><p class="profiling__summary-text"><strong>Vest - 2025</strong> &middot; Vester &middot; 1 logo</p><button class="profiling__toggle" type="button">Kopier</button><button class="profiling__toggle" type="button" style="margin-left: 0;">Aktiver</button></div>
       </section>
 
       <!-- 4. Endringslogg -->
       <section class="card" style="margin-top: var(--s-7);">
         <h3 class="card__title" style="margin: 0 0 var(--s-3);">Endringslogg</h3>
         <ul class="profiling__log">
-          <li><time>14.10.2026 09:12</time><span>Leif Erling Aasan endret &laquo;Jakke &ndash; standard&raquo;: rygglogo 30 &rarr; 25 cm</span></li>
+          <li><time>14.10.2026 09:12</time><span>Leif Erling Aasan endret &laquo;Jakke - standard&raquo;: rygglogo 30 &rarr; 25 cm</span></li>
           <li><time>14.10.2026 09:05</time><span>Leif Erling Aasan lastet opp &laquo;Brunvoll logo hvit.svg&raquo;</span></li>
           <li><time>02.09.2026 13:40</time><span>Hilmar Askeland opprettet avtalen</span></li>
         </ul>

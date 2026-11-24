@@ -1,6 +1,6 @@
 /**
  * Badge (§12.9) — liten markør for status, antall, kategori.
- * Variants: default, brand, success, warning, error, info, numeric, sortilog
+ * Variants: default, brand, success, warning, error, info, numeric, sortilog (+ badge-group/--more), onix
  */
 
 .badge {
@@ -28,6 +28,35 @@
 /* «I sortilog» — gul merkelapp på PLP, PDP, kurv (Håkon 03.11.2026). Brand orange + ink,
    samme par som sales-impersonation; kontrast ca. 5:1. Kun for innlogget kunde med sortilog. */
 .badge--sortilog { background: var(--mj-orange); color: var(--mj-ink); }
+
+/* Delsortiloger (AB#19790, estimert 24.11.2026): merkelappen er delsortilogens navn, «I sortilog» for
+   varer som ikke ligger i noen delsortilog. På kort, kurvlinje og ordrelinjer vises ÉN merkelapp + «+N»;
+   «+N» viser resten i en tooltip (hover, fokus og trykk - trykk åpner ikke produktsiden).
+   Rekkefølge: valgt delsortilog i filteret først, ellers delsortilogenes rekkefølge (satt av admin).
+   Produktsiden viser alle merkelappene. Lange navn kuttes med «…» og står i sin helhet i tooltipen.
+     <span class="badge-group">
+       <span class="badge badge--sortilog badge--truncate" title="Vedlikehold">Vedlikehold</span>
+       <button type="button" class="badge badge--sortilog badge--more tooltip tooltip--plain"
+               data-tooltip="Også i: Verksted" aria-label="Også i 1 delsortilog til: Verksted">+1</button>
+     </span> */
+.badge-group { display: inline-flex; align-items: center; gap: var(--s-1); max-width: 100%; min-width: 0; }
+.badge--truncate {
+  display: inline-block;
+  max-width: 18ch;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  line-height: 20px;
+}
+.badge--more {
+  border: 0;
+  cursor: pointer;
+  font-variant-numeric: tabular-nums;
+  letter-spacing: 0;
+}
+.badge--more:focus-visible { outline: none; box-shadow: var(--focus-ring); }
+
+/* «Onix» - sertifisert løfteutstyr (AB#20460, estimert 24.11.2026). Samme for alle besøkende. */
+.badge--onix { background: var(--color-bg-surface); color: var(--mj-blue); box-shadow: inset 0 0 0 1px var(--mj-blue); }
 
 .badge--numeric {
   min-width: 20px;

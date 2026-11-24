@@ -492,6 +492,12 @@
         <h3 class="filter-sidebar__group-title">Lager</h3>
         <label class="checkbox"><input type="checkbox" checked><span class="checkbox__visual"></span><span class="checkbox__label">Kun varer på lager</span></label>
       </div>
+      <!-- Onix (estimert 24.11.2026, AB#20460): samme mønster som «Kun varer på lager», sender Onix=true.
+           Samme for alle besøkende, også anonyme. Et masterprodukt treffer når minst én variant er Onix. -->
+      <div class="filter-sidebar__group">
+        <h3 class="filter-sidebar__group-title">Sertifisering</h3>
+        <label class="checkbox"><input type="checkbox"><span class="checkbox__visual"></span><span class="checkbox__label">Sertifisert løfteutstyr (Onix)</span></label>
+      </div>
       <button class="filter-sidebar__clear">Nullstill alle filtre</button>
     </div>
       </div>
@@ -531,6 +537,9 @@
         </div>
         </div>
 
+      <!-- Innlogget kunde UTEN sortilog: ingen sortilogfilter og ingen sortilog-merkelapp (estimert 24.11.2026, AB#19790).
+           Med sortilog: se category-sortilog.html. «Deres varenr.» (AB#20458) vises under art.nr på enkeltprodukter
+           når kunden har et eget nummer på varen i BC, aldri på masterprodukt. -->
       <!-- Product grid -->
       <div class="plp-layout__grid">
         <!-- Én kort per produkt, aldri per variant (beslutning 07.10.2026, ADO 19055).
@@ -564,6 +573,14 @@
           <span class="stock-indicator stock-indicator--in">90 på lager</span>
           <div class="product-card__price">kr 64,00<span class="product-card__price-suffix">eks. mva</span></div>
           <div class="product-card__actions"><button class="btn btn--primary btn--sm btn--full">Legg i handlekurv</button></div>
+        </article>
+        <!-- Onix-merket (AB#20460): masterprodukt der minst én variant er sertifisert løfteutstyr -->
+        <article class="product-card">
+          <div class="product-card__media"><div class="product-card__badges"><span class="badge badge--onix">Onix</span></div></div>
+          <span class="product-card__variants">7 varianter</span>
+          <h3 class="product-card__title"><a href="product.html">Øyebolt DIN 580 C15 galvanisert</a></h3>
+          <div class="product-card__price"><span class="product-card__price-from">Fra</span>kr 38,00<span class="product-card__price-suffix">eks. mva</span></div>
+          <div class="product-card__actions"><a class="btn btn--outline btn--sm btn--full" href="product.html" style="text-decoration: none;">Velg variant</a></div>
         </article>
       </div>
 

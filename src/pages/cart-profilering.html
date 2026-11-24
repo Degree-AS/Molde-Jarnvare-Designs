@@ -426,29 +426,35 @@
   <h1 class="t-h1" style="margin-bottom: var(--s-7);">Handlekurv</h1>
 
   <!--
-    HANDLEKURV MED PROFILERING (m&oslash;te 03.11.2026) &mdash; bygger p&aring; cart.html.
-    Kunden (Brunvoll AS) har profilavtale. Regler:
-    - Profilering velges PER VARELINJE (&eacute;n linje = &eacute;n variant/st&oslash;rrelse). Ja/nei er et aktivt valg; standard er nei.
-    - En kunde kan ha FLERE profiler for samme plaggtype, f.eks. per avdeling (Produksjon / Ettermarked, H&aring;kon 04.11).
-      Kunden velger hvilken per linje. Avdelingen vises som merkelapp og f&oslash;lger med i merknaden til BC.
-    - Valget vises bare p&aring; varer som kan profileres (materialtype stoff) og som kunden har en profil for.
-      Er kundens regel &laquo;kun sortilog&raquo;, vises valget bare p&aring; sortilog-varer.
-    - Kunden kan profilere en del av antallet (miks med og uten logo): &laquo;2 av 4&raquo;.
-    - Har profilen navnelapp, skrives ett navn per plagg som skal profileres.
-    - P&aring;f&oslash;ringslinjene beregnes fra profilen og legges p&aring; ordren med pris:
-        479350 P&Aring;F&Oslash;RING AV LOGO      antall = plagg som profileres &times; logoer i profilen
-        479355 P&Aring;F&Oslash;RING AV NAVNELAPP antall = antall navn
-    - Til BC (avklares med Daniel/Knowit, m&oslash;te uke 46):
-        Ordrehode: Ordreinstruksjoner = LOGO n&aring;r minst &eacute;n linje er profilert, s&aring; trykkeriet plukker ordren.
-        Linjer i rekkef&oslash;lge: varelinje &rarr; p&aring;f&oslash;ringslinjer &rarr; merknadslinjer (Type = Merknad) med profilnavn og navn,
-        maks 100 tegn per merknadslinje (flere linjer ved behov). Alternativ: samlet tekst i Arbeidsbeskrivelse.
-        Vareavtalenummer sendes ikke (H&aring;kon 03.11).
-    - Kunde uten profilavtale: se varianten nederst.
+    HANDLEKURV MED PROFILERING - estimert 24.11.2026 (AB#20452 / #20455), vedtatt i samtale Vaclav + Simen 17.11.2026.
+    Bygger p&aring; cart.html. Kunden (Brunvoll AS) har profilavtale med omfang &laquo;Alle profilerbare varer&raquo;.
+    - Per linje (&eacute;n linje = &eacute;n variant): avkryssingsboksen &laquo;Profilering&raquo;, AV som standard. Den erstatter
+      det gamle valget &laquo;Uten profilering&raquo;.
+    - Boksen vises bare p&aring; varer med &laquo;Kan profileres&raquo; (avkryssingsboks MJ setter p&aring; varen i Dynamicweb-admin,
+      ingen egen design i nettbutikken) og som minst &eacute;n aktiv profil passer for (PIM-kategoriene p&aring; profilen).
+      Er omfanget &laquo;Kun profilerbare varer i sortilogen&raquo;, vises den bare p&aring; varer i sortilogen (variant nederst).
+    - Passer &eacute;n profil, velges den automatisk. Passer flere, velger kunden &eacute;n (radioknapper, ingen forh&aring;ndsvalgt).
+      &laquo;Avdeling&raquo; p&aring; profilen er bare en etikett: alle bestillere ser alle aktive profiler.
+    - &laquo;Antall som skal profileres&raquo;: 1 &hellip; antallet p&aring; linjen, s&aring; noen plagg kan v&aelig;re med logo og noen uten.
+    - Har profilen navnelapp: ett navn per plagg som profileres, maks 30 tegn. Manglende navn stopper IKKE
+      bestillingen; det flagges til trykkeriet p&aring; ordren (H3).
+    - P&aring;f&oslash;ringslinjer med kundens pris fra BC (ingen rabatter):
+        479350 P&aring;f&oslash;ring av logo       antall = plagg som profileres &times; logoplasseringer i profilen
+        479355 P&aring;f&oslash;ring av navnelapp  antall = antall navn
+      Veil. pris 28,- per stk; Brunvoll har 20,- p&aring; 479350. Begge er skjulte tjenestevarer (ikke i s&oslash;k eller meny).
+    - Kassen har ingen profileringsseksjon; bel&oslash;pet ligger i totalsummen (checkout-profilering.html).
+    - Til BC (#20456, forutsetter svar fra Knowit K1-K5): Ordreinstruksjoner = LOGO, og p&aring;f&oslash;ringslinjene og
+      merknadslinjene (profil, posisjoner, navn) knyttet til plagglinjen.
+    - Varenummer (AB#20458): MJ sitt art.nr alltid, &laquo;Deres varenr.&raquo; under n&aring;r kunden har eget nummer.
+    - Sortilog-merkelapp (AB#19790/#20679): &eacute;n merkelapp + &laquo;+N&raquo; med tooltip. Navnet er delsortilogens
+      (Vedlikehold / Verksted, som p&aring; account-sortilogs.html); &laquo;I sortilog&raquo; n&aring;r varen ikke er i noen delsortilog.
+    Ikke med i estimatet: plasseringsverkt&oslash;y for logo (fase 3), slagord og annen tekst enn navnelapper,
+    profiler begrenset per avdeling eller bruker.
   -->
   <div class="commerce-layout commerce-layout--cart">
     <div>
 
-      <!-- 1. Profilert, panelet &aring;pent: velg profil, antall og navn -->
+      <!-- 1. Profilering p&aring;, &eacute;n profil passer (valgt automatisk), 2 av 3 profileres, ett navn mangler -->
       <article class="cart-line">
         <div class="cart-line__media"></div>
         <div class="cart-line__main">
@@ -456,50 +462,49 @@
           <div class="cart-line__meta">
             <span class="cart-line__sku">Art.nr 314045</span>
             <span class="cart-line__customer-sku">Deres varenr. BV-30410</span>
-            <span class="badge badge--sortilog">I sortilog</span>
+            <span class="badge-group">
+              <span class="badge badge--sortilog badge--truncate" title="Vedlikehold">Vedlikehold</span>
+              <button type="button" class="badge badge--sortilog badge--more tooltip tooltip--plain" data-tooltip="Ogs&aring; i: Verksted" aria-label="Ogs&aring; i 1 delsortilog til: Verksted">+1</button>
+            </span>
           </div>
           <div class="cart-line__qty">
-              <div class="qty-stepper qty-stepper--compact">
-                <button class="qty-stepper__btn">&minus;</button>
-                <input class="qty-stepper__input" type="number" value="3">
-                <button class="qty-stepper__btn">+</button>
-                <span class="qty-stepper__unit">stk</span>
-              </div>
+            <div class="qty-stepper qty-stepper--compact">
+              <button class="qty-stepper__btn">&minus;</button>
+              <input class="qty-stepper__input" type="number" value="3">
+              <button class="qty-stepper__btn">+</button>
+              <span class="qty-stepper__unit">stk</span>
+            </div>
           </div>
         </div>
         <div>
-          <div class="cart-line__price">kr 5 670,&ndash;</div>
-          <div class="cart-line__unit-price">kr 1 890,&ndash; / stk</div>
+          <div class="cart-line__price">kr 5 670,-</div>
+          <div class="cart-line__unit-price">kr 1 890,- / stk</div>
           <button class="cart-line__remove">Fjern</button>
         </div>
         <div class="cart-line__extra">
           <div class="profiling">
+            <div class="profiling__check">
+              <label class="checkbox"><input type="checkbox" checked><span class="checkbox__visual"></span><span class="checkbox__label">Profilering</span></label>
+            </div>
             <div class="profiling__panel">
-              <h4 class="profiling__panel-title">Profilering</h4>
-              <fieldset class="profiling__options">
-                <legend class="sr-only">Velg profil</legend>
-                <label class="profiling__option">
-                  <input type="radio" name="prof-314045"><span class="profiling__option-media"></span>
-                  <span class="profiling__option-body"><span class="profiling__option-title">Uten profilering</span><span class="profiling__option-meta">Leveres uten logo og navn</span></span>
-                </label>
-                <label class="profiling__option">
-                  <input type="radio" name="prof-314045" checked><span class="profiling__option-media" role="img" aria-label="Godkjent bilde"></span>
-                  <span class="profiling__option-body"><span class="profiling__option-title">Jakke &ndash; standard</span><span class="profiling__option-meta">Logo bryst &middot; navnelapp &middot; logo rygg</span></span>
-                </label>
-                <label class="profiling__option">
-                  <input type="radio" name="prof-314045"><span class="profiling__option-media" role="img" aria-label="Godkjent bilde"></span>
-                  <span class="profiling__option-body"><span class="profiling__option-title">Jakke &ndash; kun bryst</span><span class="profiling__option-meta">Logo bryst</span></span>
-                </label>
-              </fieldset>
+              <div class="profiling__option profiling__option--auto">
+                <span class="profiling__option-media" role="img" aria-label="Godkjent bilde: Jakke - standard"></span>
+                <span class="profiling__option-body">
+                  <span class="profiling__option-title">Jakke - standard</span>
+                  <span class="profiling__option-meta">Logo bryst venstre &middot; navnelapp under logo &middot; logo rygg</span>
+                  <span class="profiling__option-meta">Valgt automatisk - den eneste profilen for jakker</span>
+                </span>
+              </div>
               <div class="profiling__row">
                 <div class="field">
-                  <label class="field__label">Antall som skal profileres</label>
+                  <label class="field__label" for="pq-314045">Antall som skal profileres</label>
                   <div class="qty-stepper qty-stepper--compact">
                     <button class="qty-stepper__btn">&minus;</button>
-                    <input class="qty-stepper__input" type="number" value="3" min="1" max="3">
+                    <input class="qty-stepper__input" id="pq-314045" type="number" value="2" min="1" max="3">
                     <button class="qty-stepper__btn">+</button>
                     <span class="qty-stepper__unit">av 3</span>
                   </div>
+                  <p class="field__hint" style="margin: var(--s-1) 0 0;">1 jakke leveres uten logo og navn.</p>
                 </div>
               </div>
               <div class="field">
@@ -507,13 +512,13 @@
                 <p class="field__hint" style="margin: 0 0 var(--s-2);">Ett navn per jakke. Maks 30 tegn.</p>
                 <ol class="profiling__names">
                   <li class="profiling__name"><span class="profiling__name-index">1</span><input class="input" value="Kjetil Kvendseth" maxlength="30" aria-label="Navn p&aring; jakke 1"></li>
-                  <li class="profiling__name"><span class="profiling__name-index">2</span><input class="input" value="Martin Ellingseter" maxlength="30" aria-label="Navn p&aring; jakke 2"></li>
-                  <li class="profiling__name"><span class="profiling__name-index">3</span><input class="input" placeholder="Navn" maxlength="30" aria-label="Navn p&aring; jakke 3"></li>
+                  <li class="profiling__name"><span class="profiling__name-index">2</span><input class="input" placeholder="Navn" maxlength="30" aria-label="Navn p&aring; jakke 2"></li>
                 </ol>
               </div>
+              <p class="profiling__flag">1 navn mangler. Du kan sende bestillingen likevel - trykkeriet f&aring;r beskjed og tar kontakt.</p>
               <ul class="profiling__addons" aria-label="P&aring;f&oslash;ring som legges p&aring; ordren">
-                <li class="profiling__addon"><span><span class="profiling__addon-sku">479350</span>P&aring;f&oslash;ring av logo</span><span>6 stk &times; kr 28,&ndash;</span><span class="profiling__addon-price">kr 168,&ndash;</span></li>
-                <li class="profiling__addon"><span><span class="profiling__addon-sku">479355</span>P&aring;f&oslash;ring av navnelapp</span><span>3 stk &times; kr 28,&ndash;</span><span class="profiling__addon-price">kr 84,&ndash;</span></li>
+                <li class="profiling__addon"><span><span class="profiling__addon-sku">479350</span>P&aring;f&oslash;ring av logo</span><span>2 jakker &times; 2 logoer = 4 stk &times; kr 20,-</span><span class="profiling__addon-price">kr 80,-</span></li>
+                <li class="profiling__addon"><span><span class="profiling__addon-sku">479355</span>P&aring;f&oslash;ring av navnelapp</span><span>1 navn &times; kr 28,-</span><span class="profiling__addon-price">kr 28,-</span></li>
               </ul>
               <div style="display: flex; gap: var(--s-3); flex-wrap: wrap;">
                 <button class="btn btn--primary btn--sm" type="button">Lagre profilering</button>
@@ -524,7 +529,7 @@
         </div>
       </article>
 
-      <!-- 2. Profilert, panelet lukket: kort oppsummering, delvis antall -->
+      <!-- 2. Profilering p&aring;, panelet lukket: kort oppsummering, 2 av 4 -->
       <article class="cart-line">
         <div class="cart-line__media"></div>
         <div class="cart-line__main">
@@ -532,35 +537,40 @@
           <div class="cart-line__meta">
             <span class="cart-line__sku">Art.nr 451120</span>
             <span class="cart-line__customer-sku">Deres varenr. BV-20115</span>
-            <span class="badge badge--sortilog">I sortilog</span>
+            <span class="badge-group">
+              <span class="badge badge--sortilog badge--truncate" title="Vedlikehold">Vedlikehold</span>
+            </span>
           </div>
           <div class="cart-line__qty">
-              <div class="qty-stepper qty-stepper--compact">
-                <button class="qty-stepper__btn">&minus;</button>
-                <input class="qty-stepper__input" type="number" value="4">
-                <button class="qty-stepper__btn">+</button>
-                <span class="qty-stepper__unit">stk</span>
-              </div>
+            <div class="qty-stepper qty-stepper--compact">
+              <button class="qty-stepper__btn">&minus;</button>
+              <input class="qty-stepper__input" type="number" value="4">
+              <button class="qty-stepper__btn">+</button>
+              <span class="qty-stepper__unit">stk</span>
+            </div>
           </div>
         </div>
         <div>
-          <div class="cart-line__price">kr 5 160,&ndash;</div>
-          <div class="cart-line__unit-price">kr 1 290,&ndash; / stk</div>
+          <div class="cart-line__price">kr 5 160,-</div>
+          <div class="cart-line__unit-price">kr 1 290,- / stk</div>
           <button class="cart-line__remove">Fjern</button>
         </div>
         <div class="cart-line__extra">
           <div class="profiling">
+            <div class="profiling__check">
+              <label class="checkbox"><input type="checkbox" checked><span class="checkbox__visual"></span><span class="checkbox__label">Profilering</span></label>
+            </div>
             <div class="profiling__summary">
-              <p class="profiling__summary-text"><strong>Bukse &ndash; standard</strong> p&aring; 2 av 4 &middot; logo l&aring;r venstre &middot; p&aring;f&oslash;ring kr 56,&ndash;</p>
+              <p class="profiling__summary-text"><strong>Bukse - standard</strong> p&aring; 2 av 4 &middot; logo l&aring;r venstre &middot; p&aring;f&oslash;ring kr 40,-</p>
               <button class="profiling__toggle" type="button" aria-expanded="false">Endre</button>
             </div>
           </div>
         </div>
       </article>
 
-      <!-- 3. Flere profiler for samme plaggtype (H&aring;kon 04.11.2026): Brunvoll produksjon vil ha &eacute;n merking p&aring; gensere,
-           ettermarked en annen. MJ legger inn begge, med avdeling. Kunden velger i kurven; standard er fortsatt &laquo;Uten profilering&raquo;.
-           Panelet viser alle aktive profiler som gjelder kategorien til varen, med avdelingen som merkelapp. -->
+      <!-- 3. Flere profiler passer (H&aring;kon 04.11.2026): kunden velger &eacute;n. Ingen er forh&aring;ndsvalgt.
+           &laquo;Avdeling&raquo; vises som etikett p&aring; profilen, men styrer ikke hvem som ser den.
+           Varen ligger i sortilogen, men ikke i noen delsortilog: merkelappen er &laquo;I sortilog&raquo;. -->
       <article class="cart-line">
         <div class="cart-line__media"></div>
         <div class="cart-line__main">
@@ -568,48 +578,83 @@
           <div class="cart-line__meta">
             <span class="cart-line__sku">Art.nr 314076</span>
             <span class="cart-line__customer-sku">Deres varenr. BV-40150</span>
-            <span class="badge badge--sortilog">I sortilog</span>
+            <span class="badge-group">
+              <span class="badge badge--sortilog badge--truncate" title="I sortilog">I sortilog</span>
+            </span>
           </div>
           <div class="cart-line__qty">
-              <div class="qty-stepper qty-stepper--compact">
-                <button class="qty-stepper__btn">&minus;</button>
-                <input class="qty-stepper__input" type="number" value="4">
-                <button class="qty-stepper__btn">+</button>
-                <span class="qty-stepper__unit">stk</span>
-              </div>
+            <div class="qty-stepper qty-stepper--compact">
+              <button class="qty-stepper__btn">&minus;</button>
+              <input class="qty-stepper__input" type="number" value="4">
+              <button class="qty-stepper__btn">+</button>
+              <span class="qty-stepper__unit">stk</span>
+            </div>
           </div>
         </div>
         <div>
-          <div class="cart-line__price">kr 2 980,&ndash;</div>
-          <div class="cart-line__unit-price">kr 745,&ndash; / stk</div>
+          <div class="cart-line__price">kr 2 980,-</div>
+          <div class="cart-line__unit-price">kr 745,- / stk</div>
           <button class="cart-line__remove">Fjern</button>
         </div>
         <div class="cart-line__extra">
           <div class="profiling">
+            <div class="profiling__check">
+              <label class="checkbox"><input type="checkbox" checked><span class="checkbox__visual"></span><span class="checkbox__label">Profilering</span></label>
+            </div>
             <div class="profiling__panel">
-              <h4 class="profiling__panel-title">Profilering</h4>
               <fieldset class="profiling__options">
-                <legend class="sr-only">Velg profil</legend>
+                <legend class="field__label" style="padding: 0; margin-bottom: var(--s-2);">Dere har to profiler for gensere. Velg &eacute;n.</legend>
                 <label class="profiling__option">
-                  <input type="radio" name="prof-314076" checked><span class="profiling__option-media"></span>
-                  <span class="profiling__option-body"><span class="profiling__option-title">Uten profilering</span><span class="profiling__option-meta">Leveres uten logo og navn</span></span>
+                  <input type="radio" name="prof-314076"><span class="profiling__option-media" role="img" aria-label="Godkjent bilde"></span>
+                  <span class="profiling__option-body"><span class="badge">Produksjon</span><span class="profiling__option-title">Genser - produksjon</span><span class="profiling__option-meta">Logo bryst venstre &middot; navnelapp</span></span>
                 </label>
                 <label class="profiling__option">
                   <input type="radio" name="prof-314076"><span class="profiling__option-media" role="img" aria-label="Godkjent bilde"></span>
-                  <span class="profiling__option-body"><span class="badge">Produksjon</span><span class="profiling__option-title">Genser &ndash; produksjon</span><span class="profiling__option-meta">Logo bryst &middot; navnelapp</span></span>
-                </label>
-                <label class="profiling__option">
-                  <input type="radio" name="prof-314076"><span class="profiling__option-media" role="img" aria-label="Godkjent bilde"></span>
-                  <span class="profiling__option-body"><span class="badge">Ettermarked</span><span class="profiling__option-title">Genser &ndash; ettermarked</span><span class="profiling__option-meta">Logo bryst &middot; &laquo;Brunvoll Service&raquo; rygg</span></span>
+                  <span class="profiling__option-body"><span class="badge">Ettermarked</span><span class="profiling__option-title">Genser - ettermarked</span><span class="profiling__option-meta">Logo bryst venstre &middot; logo rygg</span></span>
                 </label>
               </fieldset>
-              <p class="field__hint" style="margin: 0;">Skal noen av genserne ha den andre merkingen? Legg genseren i kurven p&aring; nytt, s&aring; f&aring;r den sin egen linje.</p>
+              <p class="field__hint" style="margin: 0;">Skal noen av genserne ha den andre profilen? Legg genseren i kurven p&aring; nytt, s&aring; f&aring;r den sin egen linje.</p>
             </div>
           </div>
         </div>
       </article>
 
-      <!-- 4. Kan ikke profileres (ikke stoff): ingen profilering -->
+      <!-- 4. Kan profileres, men profilering er av (standard). Merkelapp fra delsortilogen &laquo;Verksted&raquo;. -->
+      <article class="cart-line">
+        <div class="cart-line__media"></div>
+        <div class="cart-line__main">
+          <h3 class="cart-line__title"><a href="product-sortilog.html?variant=448210">MASCOT Kjeledress 15919 Hardwear marine C52</a></h3>
+          <div class="cart-line__meta">
+            <span class="cart-line__sku">Art.nr 448210</span>
+            <span class="badge-group">
+              <span class="badge badge--sortilog badge--truncate" title="Verksted">Verksted</span>
+            </span>
+          </div>
+          <div class="cart-line__qty">
+            <div class="qty-stepper qty-stepper--compact">
+              <button class="qty-stepper__btn">&minus;</button>
+              <input class="qty-stepper__input" type="number" value="2">
+              <button class="qty-stepper__btn">+</button>
+              <span class="qty-stepper__unit">stk</span>
+            </div>
+          </div>
+        </div>
+        <div>
+          <div class="cart-line__price">kr 2 300,-</div>
+          <div class="cart-line__unit-price">kr 1 150,- / stk</div>
+          <button class="cart-line__remove">Fjern</button>
+        </div>
+        <div class="cart-line__extra">
+          <div class="profiling">
+            <div class="profiling__check">
+              <label class="checkbox"><input type="checkbox"><span class="checkbox__visual"></span><span class="checkbox__label">Profilering</span></label>
+              <span class="profiling__check-hint">Kjeledress &middot; 2 logoer per plagg</span>
+            </div>
+          </div>
+        </div>
+      </article>
+
+      <!-- 5. Kan ikke profileres (ikke &laquo;Kan profileres&raquo;): ingen boks. Ikke i sortilogen: ingen merkelapp, ingen eget varenr. -->
       <article class="cart-line">
         <div class="cart-line__media"></div>
         <div class="cart-line__main">
@@ -618,60 +663,62 @@
             <span class="cart-line__sku">Art.nr 7700-099-00</span>
           </div>
           <div class="cart-line__qty">
-              <div class="qty-stepper qty-stepper--compact">
-                <button class="qty-stepper__btn">&minus;</button>
-                <input class="qty-stepper__input" type="number" value="6">
-                <button class="qty-stepper__btn">+</button>
-                <span class="qty-stepper__unit">stk</span>
-              </div>
+            <div class="qty-stepper qty-stepper--compact">
+              <button class="qty-stepper__btn">&minus;</button>
+              <input class="qty-stepper__input" type="number" value="6">
+              <button class="qty-stepper__btn">+</button>
+              <span class="qty-stepper__unit">stk</span>
+            </div>
           </div>
         </div>
         <div>
-          <div class="cart-line__price">kr 474,&ndash;</div>
-          <div class="cart-line__unit-price">kr 79,&ndash; / stk</div>
+          <div class="cart-line__price">kr 474,-</div>
+          <div class="cart-line__unit-price">kr 79,- / stk</div>
           <button class="cart-line__remove">Fjern</button>
         </div>
       </article>
 
-      <!-- Variant: kunde UTEN profilavtale. Ingen valg, bare henvisning til selger (H&aring;kon 03.11). -->
-      <p style="margin: var(--s-10) 0 var(--s-2); font-size: var(--fs-overline); text-transform: uppercase; letter-spacing: var(--ls-wider); color: var(--color-text-tertiary);">Variant: kunde uten profilavtale</p>
+      <!-- Variant: omfang &laquo;Kun profilerbare varer i sortilogen&raquo;. En profilerbar vare utenfor sortilogen f&aring;r ingen boks,
+           bare en kort forklaring. (Kunde uten profilavtale: ingen boks og ingen tekst i kurven; henvisningen
+           &laquo;Vil du ha logo p&aring; kl&aelig;rne? Kontakt selgeren din&raquo; st&aring;r p&aring; produktsiden, product-sortilog.html.) -->
+      <p style="margin: var(--s-10) 0 var(--s-2); font-size: var(--fs-overline); text-transform: uppercase; letter-spacing: var(--ls-wider); color: var(--color-text-tertiary);">Variant: avtalen gjelder bare varer i sortilogen</p>
       <article class="cart-line">
         <div class="cart-line__media"></div>
         <div class="cart-line__main">
           <h3 class="cart-line__title"><a href="product-sortilog.html?variant=447907">MASCOT T-skjorte 50567959 Potsdam bl&aring;/marine 3XL</a></h3>
           <div class="cart-line__meta"><span class="cart-line__sku">Art.nr 447907</span></div>
           <div class="cart-line__qty">
-              <div class="qty-stepper qty-stepper--compact">
-                <button class="qty-stepper__btn">&minus;</button>
-                <input class="qty-stepper__input" type="number" value="20">
-                <button class="qty-stepper__btn">+</button>
-                <span class="qty-stepper__unit">stk</span>
-              </div>
+            <div class="qty-stepper qty-stepper--compact">
+              <button class="qty-stepper__btn">&minus;</button>
+              <input class="qty-stepper__input" type="number" value="20">
+              <button class="qty-stepper__btn">+</button>
+              <span class="qty-stepper__unit">stk</span>
+            </div>
           </div>
         </div>
         <div>
-          <div class="cart-line__price">kr 2 980,&ndash;</div>
-          <div class="cart-line__unit-price">kr 149,&ndash; / stk</div>
+          <div class="cart-line__price">kr 2 980,-</div>
+          <div class="cart-line__unit-price">kr 149,- / stk</div>
           <button class="cart-line__remove">Fjern</button>
         </div>
         <div class="cart-line__extra">
           <div class="profiling">
-            <div class="profiling__notice">
-              <p><strong>Vil du ha logo p&aring; kl&aelig;rne?</strong> Kontakt selgeren din for &aring; avtale profilering f&oslash;r ordren ferdigstilles, p&aring; <a class="link" href="tel:71254200">71 25 42 00</a> eller <a class="link" href="team.html">kontakt oss</a>.</p>
-            </div>
+            <p class="profiling__check-hint" style="margin: 0;">Profilering gjelder bare varer i sortilogen deres. Kontakt selgeren din hvis denne skal ha logo.</p>
           </div>
         </div>
       </article>
     </div>
 
+    <!-- Summen: &laquo;Profilering&raquo; er p&aring;f&oslash;ringslinjene 479350/479355 samlet. Linje 3 har ingen profil valgt enn&aring;,
+         s&aring; den teller ikke f&oslash;r kunden velger. -->
     <aside class="commerce-layout__summary" style="display: flex; flex-direction: column; gap: var(--s-4);">
       <div class="cart-summary">
         <h2 class="cart-summary__title">Oversikt</h2>
-        <div class="cart-summary__row"><span>Varer <span class="cart-summary__label-meta">4 varer</span></span><span>kr 14 284,&ndash;</span></div>
-        <div class="cart-summary__row"><span>Profilering <span class="cart-summary__label-meta">p&aring;f&oslash;ring p&aring; 2 linjer</span></span><span>kr 308,&ndash;</span></div>
-        <div class="cart-summary__row cart-summary__row--total"><span>Sum eks. mva</span><span>kr 14 592,&ndash;</span></div>
-        <div class="cart-summary__row cart-summary__row--secondary"><span>Mva (25 %)</span><span>kr 3 648,&ndash;</span></div>
-        <div class="cart-summary__row cart-summary__row--secondary"><span>Totalt inkl. mva</span><span>kr 18 240,&ndash;</span></div>
+        <div class="cart-summary__row"><span>Varer <span class="cart-summary__label-meta">5 varer</span></span><span>kr 16 584,-</span></div>
+        <div class="cart-summary__row"><span>Profilering <span class="cart-summary__label-meta">p&aring;f&oslash;ring p&aring; 2 linjer</span></span><span>kr 148,-</span></div>
+        <div class="cart-summary__row cart-summary__row--total"><span>Sum eks. mva</span><span>kr 16 732,-</span></div>
+        <div class="cart-summary__row cart-summary__row--secondary"><span>Mva (25 %)</span><span>kr 4 183,-</span></div>
+        <div class="cart-summary__row cart-summary__row--secondary"><span>Totalt inkl. mva</span><span>kr 20 915,-</span></div>
         <p class="cart-summary__note">Ordren har profilering og g&aring;r via trykkeriet. Det kan gi noe lengre leveringstid. Frakt beregnes i kassen.</p>
         <div class="cart-summary__actions">
           <a class="btn btn--primary btn--lg btn--full" href="checkout-profilering.html">Til kassen</a>

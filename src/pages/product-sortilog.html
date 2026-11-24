@@ -431,14 +431,25 @@
   </nav>
 
   <!--
-    PDP FOR KL&AElig;R, INNLOGGET SOM KUNDE MED SORTILOG OG PROFILAVTALE (03.11.2026) &mdash; bygger p&aring; product.html.
-    - Gul &laquo;I sortilog&raquo; ved tittelen n&aring;r minst &eacute;n variant er i kundens sortilog, med antall.
-    - I matrisen merkes sortilog-variantene, og kolonnen &laquo;Deres varenr.&raquo; viser kundens varenummer per variant.
-      Kolonnen skjules n&aring;r ingen varianter har kundens varenummer. Gjelder alle produkter, ikke bare sortilog.
-    - Profileringsboksen vises n&aring;r varen kan profileres (materialtype stoff) og kunden har en profil for plaggtypen.
-      Selve valget gj&oslash;res i handlekurven, per linje.
-      Kunde uten profilavtale: &laquo;Vil du ha logo p&aring; kl&aelig;rne? Kontakt selgeren din for &aring; avtale profilering.&raquo;
-      Er regelen &laquo;kun sortilog&raquo; satt og varen ikke i sortilogen: boksen vises ikke.
+    PDP FOR KL&AElig;R, INNLOGGET SOM KUNDE MED SORTILOG OG PROFILERINGSAVTALE - bygger p&aring; product.html.
+    Oppdatert til estimatene 24.11.2026:
+    - Sortilog-merkelapper (estimert 24.11.2026, AB#19790 / #20679): produktsiden viser ALLE merkelappene,
+      ingen &laquo;+N&raquo;. Merkelappen er delsortilogens navn (Brunvoll: &laquo;Vedlikehold&raquo;, &laquo;Verksted&raquo;, som p&aring;
+      account-sortilogs.html), eller &laquo;I sortilog&raquo; n&aring;r varen ligger i sortilogen men ikke i noen delsortilog.
+      Ved tittelen: alle merkelappene variantene har til sammen. I matrisen: hver variants egne merkelapper.
+      Kunde uten delsortiloger: bare &laquo;I sortilog&raquo;. Ikke innlogget, eller ingen sortilog: ingen merkelapp.
+      Lange navn kuttes med &laquo;&hellip;&raquo; og st&aring;r i sin helhet i title.
+    - &laquo;Deres varenr.&raquo; (estimert 24.11.2026, AB#20458): kolonne i matrisen med kundens eget varenummer fra BC
+      (itemReferences), monospace. Bare for innlogget kunde. Kolonnen skjules n&aring;r ingen variant har nummer;
+      tom celle n&aring;r &eacute;n variant mangler. Gjelder alle produkter, ikke bare sortilog. Et enkeltprodukt viser
+      nummeret under Art.nr (se product-minarc.html).
+    - Profileringsboksen (estimert 24.11.2026, AB#20452 / #20455): vises p&aring; varer med &laquo;Kan profileres&raquo;
+      (avkrysning MJ setter i Dynamicweb) for kunder med profileringsavtale. Den bare forteller at varen kan profileres
+      i handlekurven, per linje (vedtak 17.11.2026). Ingen valg av profil her, og ingen egen seksjon i kassen.
+      Avtalen gjelder &laquo;kun profilerbare varer i sortilogen&raquo; og varen er ikke i sortilogen: boksen vises ikke.
+      Kunde uten avtale: &laquo;Vil du ha logo p&aring; kl&aelig;rne? Kontakt selgeren din&raquo; (se tilstandseksempelet nederst).
+    - Fjernet: antall sortilog-varianter ved tittelen og i matrisen, og avtalt profil med plassering i boksen.
+      Det var ikke med i estimatene.
   -->
   <div class="commerce-layout commerce-layout--pdp">
     <div class="product-gallery">
@@ -451,9 +462,11 @@
     </div>
 
     <div style="display: flex; flex-direction: column; gap: var(--s-4);">
-      <div style="display: flex; flex-wrap: wrap; gap: var(--s-2); align-items: center;">
+      <!-- Alle sortilog-merkelappene (AB#19790, estimert 24.11.2026) -->
+      <div style="display: flex; flex-wrap: wrap; gap: var(--s-1); align-items: center;" aria-label="Sortilog">
+        <span class="badge badge--sortilog badge--truncate" title="Vedlikehold">Vedlikehold</span>
+        <span class="badge badge--sortilog badge--truncate" title="Verksted">Verksted</span>
         <span class="badge badge--sortilog">I sortilog</span>
-        <span style="font-size: var(--fs-body-sm); color: var(--color-text-secondary);">3 av 8 st&oslash;rrelser er i <a class="link" href="account-sortilog-detail.html">sortilogen</a></span>
       </div>
       <h1 class="t-h2" style="margin: 0;">MASCOT Bukse Stretch 18079511 Accelerate</h1>
       <div style="display: flex; gap: var(--s-4); align-items: center; font-size: var(--fs-body-sm); color: var(--color-text-secondary);">
@@ -465,10 +478,11 @@
       </div>
       <a href="#varianter" style="font-size: var(--fs-body-sm); font-weight: var(--fw-semibold); color: var(--color-text-link);">8 varianter &mdash; se pris og lagerstatus per variant i tabellen &darr;</a>
 
+      <!-- Profileringsboks, kunde med avtale (AB#20452, estimert 24.11.2026). Valget gj&oslash;res per linje i handlekurven. -->
       <section class="profiling__rule" aria-label="Profilering">
         <div>
           <p style="font-weight: var(--fw-semibold);">Kan profileres med deres logo</p>
-          <p style="color: var(--color-text-secondary); font-size: var(--fs-body-sm);">Avtalt profil: <strong>Bukse &ndash; standard</strong> &middot; logo l&aring;r venstre. Velg profilering i handlekurven.</p>
+          <p style="color: var(--color-text-secondary); font-size: var(--fs-body-sm);">Legg varen i handlekurven og velg profilering p&aring; linjen der.</p>
         </div>
         <a class="link" href="account-profiles.html" style="font-size: var(--fs-body-sm);">Se profilene deres</a>
       </section>
@@ -479,7 +493,7 @@
     <div class="variant-selector variant-selector--matrix" style="width: 100%;">
       <div class="variant-selector__label">
         <span>Velg variant og antall</span>
-        <span class="variant-selector__label-value">8 varianter &middot; 3 i sortilog</span>
+        <span class="variant-selector__label-value">8 varianter</span>
       </div>
       <div class="variant-selector__matrix-wrap">
         <table class="variant-selector__matrix">
@@ -487,6 +501,7 @@
             <tr>
               <th scope="col">Variant</th>
               <th scope="col">Art.nr</th>
+              <!-- Skjules n&aring;r ingen variant har kundens varenummer (AB#20458) -->
               <th scope="col">Deres varenr.</th>
               <th scope="col">Lagerstatus</th>
               <th scope="col" class="is-numeric">Pris/stk</th>
@@ -498,7 +513,7 @@
               <tr>
                 <th scope="row">76C44 &middot; Marine</th>
                 <td><span class="variant-selector__matrix-sku">451050</span></td>
-                <td><span style="color: var(--color-text-tertiary);">&mdash;</span></td>
+                <td></td>
                 <td><span class="stock-indicator stock-indicator--in">18 på lager</span></td>
                 <td class="is-numeric variant-selector__matrix-price">kr 1 290,00</td>
                 <td class="is-numeric">
@@ -513,9 +528,9 @@
                 <td><button class="variant-selector__matrix-add" aria-label="Legg 76C44 i kurv"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M2 4h2.5l3 12h11l2.5-8H7"/><circle cx="10" cy="20" r="1.6"/><circle cx="17" cy="20" r="1.6"/></svg></button></td>
               </tr>
               <tr>
-                <th scope="row">82C44 &middot; Marine <span class="badge badge--sortilog">I sortilog</span></th>
+                <th scope="row">82C44 &middot; Marine <span class="variant-selector__matrix-tags"><span class="badge badge--sortilog badge--truncate" title="Vedlikehold">Vedlikehold</span><span class="badge badge--sortilog badge--truncate" title="Verksted">Verksted</span></span></th>
                 <td><span class="variant-selector__matrix-sku">451104</span></td>
-                <td><span class="variant-selector__matrix-sku">BV-20114</span></td>
+                <td><span class="variant-selector__matrix-custno">BV-20114</span></td>
                 <td><span class="stock-indicator stock-indicator--in">24 på lager</span></td>
                 <td class="is-numeric variant-selector__matrix-price">kr 1 290,00</td>
                 <td class="is-numeric">
@@ -532,7 +547,7 @@
               <tr>
                 <th scope="row">82C56 &middot; Marine</th>
                 <td><span class="variant-selector__matrix-sku">451110</span></td>
-                <td><span style="color: var(--color-text-tertiary);">&mdash;</span></td>
+                <td></td>
                 <td><span class="stock-indicator stock-indicator--in">9 på lager</span></td>
                 <td class="is-numeric variant-selector__matrix-price">kr 1 290,00</td>
                 <td class="is-numeric">
@@ -549,7 +564,7 @@
               <tr>
                 <th scope="row">82C64 &middot; Marine</th>
                 <td><span class="variant-selector__matrix-sku">451115</span></td>
-                <td><span style="color: var(--color-text-tertiary);">&mdash;</span></td>
+                <td></td>
                 <td><span class="stock-indicator stock-indicator--in">14 på lager</span></td>
                 <td class="is-numeric variant-selector__matrix-price">kr 1 290,00</td>
                 <td class="is-numeric">
@@ -564,9 +579,9 @@
                 <td><button class="variant-selector__matrix-add" aria-label="Legg 82C64 i kurv"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M2 4h2.5l3 12h11l2.5-8H7"/><circle cx="10" cy="20" r="1.6"/><circle cx="17" cy="20" r="1.6"/></svg></button></td>
               </tr>
               <tr>
-                <th scope="row">82C68 &middot; Marine <span class="badge badge--sortilog">I sortilog</span></th>
+                <th scope="row">82C68 &middot; Marine <span class="variant-selector__matrix-tags"><span class="badge badge--sortilog badge--truncate" title="Vedlikehold">Vedlikehold</span></span></th>
                 <td><span class="variant-selector__matrix-sku">451120</span></td>
-                <td><span class="variant-selector__matrix-sku">BV-20115</span></td>
+                <td><span class="variant-selector__matrix-custno">BV-20115</span></td>
                 <td><span class="stock-indicator stock-indicator--in">6 på lager</span></td>
                 <td class="is-numeric variant-selector__matrix-price">kr 1 290,00</td>
                 <td class="is-numeric">
@@ -583,7 +598,7 @@
               <tr>
                 <th scope="row">90C56 &middot; Marine</th>
                 <td><span class="variant-selector__matrix-sku">451130</span></td>
-                <td><span style="color: var(--color-text-tertiary);">&mdash;</span></td>
+                <td></td>
                 <td><span class="stock-indicator stock-indicator--in">11 på lager</span></td>
                 <td class="is-numeric variant-selector__matrix-price">kr 1 290,00</td>
                 <td class="is-numeric">
@@ -598,9 +613,9 @@
                 <td><button class="variant-selector__matrix-add" aria-label="Legg 90C56 i kurv"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M2 4h2.5l3 12h11l2.5-8H7"/><circle cx="10" cy="20" r="1.6"/><circle cx="17" cy="20" r="1.6"/></svg></button></td>
               </tr>
               <tr>
-                <th scope="row">90C62 &middot; Marine <span class="badge badge--sortilog">I sortilog</span></th>
+                <th scope="row">90C62 &middot; Marine <span class="variant-selector__matrix-tags"><span class="badge badge--sortilog">I sortilog</span></span></th>
                 <td><span class="variant-selector__matrix-sku">451137</span></td>
-                <td><span class="variant-selector__matrix-sku">BV-20116</span></td>
+                <td><span class="variant-selector__matrix-custno">BV-20116</span></td>
                 <td><span class="stock-indicator stock-indicator--in">3 på lager</span></td>
                 <td class="is-numeric variant-selector__matrix-price">kr 1 290,00</td>
                 <td class="is-numeric">
@@ -617,7 +632,7 @@
               <tr>
                 <th scope="row">90C68 &middot; Marine</th>
                 <td><span class="variant-selector__matrix-sku">451140</span></td>
-                <td><span style="color: var(--color-text-tertiary);">&mdash;</span></td>
+                <td></td>
                 <td><span class="stock-indicator stock-indicator--in">7 på lager</span></td>
                 <td class="is-numeric variant-selector__matrix-price">kr 1 290,00</td>
                 <td class="is-numeric">
@@ -634,6 +649,15 @@
           </tbody>
         </table>
       </div>
+    </div>
+  </section>
+
+  <!-- Tilstandseksempel (AB#20452, estimert 24.11.2026): samme vare, kunde UTEN profileringsavtale.
+       Profileringsboksen over byttes med denne henvisningen. Ingen valg, ingen lenke til profiler. -->
+  <section aria-label="Tilstandseksempel: kunde uten profileringsavtale" style="margin-top: var(--s-10); max-width: 56ch;">
+    <p class="preview-label" style="margin: 0 0 var(--s-3); font-size: var(--fs-overline); text-transform: uppercase; letter-spacing: var(--ls-wider); color: var(--color-text-tertiary);">Variant: kunde uten profileringsavtale</p>
+    <div class="profiling__notice">
+      <p>Vil du ha logo p&aring; kl&aelig;rne? <a class="link" href="team.html">Kontakt selgeren din</a></p>
     </div>
   </section>
 </main>

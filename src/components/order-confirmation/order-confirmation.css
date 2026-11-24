@@ -37,3 +37,19 @@
 }
 
 .order-confirmation__actions { display: flex; gap: var(--s-3); }
+
+/* Varelinjene på bekreftelsen (estimert 24.11.2026):
+   - Art.nr: MJ sitt nummer alltid, «Deres varenr.» under i mono når kunden har eget nummer (AB#20458).
+     Linjene kommer fra nettleserens økt (skrevet i kassen); nummeret legges til der.
+     Ikke i e-posten med ordrebekreftelse - det er ikke med i estimatet.
+   - Artikkel: navn + ÉN sortilog-merkelapp + «+N» (AB#19790/#20679, felles stil i badge.css).
+     Ingen merkelapp når kunden ikke har sortilog. */
+.order-confirmation__ids { display: inline-flex; flex-direction: column; align-items: flex-start; gap: var(--s-1); }
+.order-confirmation__customer-sku {
+  font-family: var(--ff-mono);
+  font-size: var(--fs-mono-sm);
+  color: var(--color-text-secondary);
+  font-variant-numeric: tabular-nums;
+  white-space: nowrap;
+}
+.order-confirmation__product { display: flex; flex-direction: column; align-items: flex-start; gap: var(--s-1); }

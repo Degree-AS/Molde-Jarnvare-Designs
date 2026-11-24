@@ -63,8 +63,19 @@
 }
 .cart-line__remove:hover { color: var(--mj-error); }
 
-/* Kundens varenummer + merkelapper (I sortilog) på linjen — 03.11.2026 */
-.cart-line__meta { display: flex; flex-wrap: wrap; align-items: center; gap: var(--s-1) var(--s-3); }
+/* Varenummer og sortilog-merkelapp under tittelen (estimert 24.11.2026, AB#20458 og AB#19790/#20679).
+   - MJ sitt art.nr vises alltid. «Deres varenr.» står rett under, i mono, bare når kunden har eget
+     nummer for varen i BC (itemReferences). Ingen tom rad når kunden ikke har nummer.
+   - Under numrene: ÉN sortilog-merkelapp + «+N» (felles stil, se badge.css). Merkelappen er
+     delsortilogens navn, «I sortilog» når varen ikke ligger i noen delsortilog. Ingen merkelapp
+     når kunden ikke har sortilog, eller varen ikke er i den.
+     <div class="cart-line__meta">
+       <span class="cart-line__sku">Art.nr 4815-162-30</span>
+       <span class="cart-line__customer-sku">Deres varenr. 110032</span>
+       <span class="badge-group">…</span>
+     </div> */
+.cart-line__meta { display: flex; flex-direction: column; align-items: flex-start; gap: var(--s-1); min-width: 0; }
+.cart-line__meta .badge-group { margin-top: var(--s-1); }
 .cart-line__customer-sku {
   font-family: var(--ff-mono);
   font-size: var(--fs-mono-sm);

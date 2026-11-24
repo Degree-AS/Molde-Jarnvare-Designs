@@ -424,6 +424,17 @@
 
 <main class="container container--wide" style="padding-block: var(--s-6);">
 
+  <!--
+    PDP MED VARIANTMATRISE, INNLOGGET KUNDE UTEN SORTILOG OG UTEN EGNE VARENUMMER P&Aring; DENNE VAREN.
+    Estimert 24.11.2026 (CR #20457 Produktdata fra BC og #19790 Sortilog):
+    - &laquo;Deres varenr.&raquo; (estimert 24.11.2026, AB#20458): kolonnen vises bare n&aring;r minst &eacute;n variant har
+      kundens varenummer. Her har ingen det, s&aring; kolonnen er skjult. Med nummer: se product-sortilog.html.
+    - Sortilog-merkelapper (estimert 24.11.2026, AB#19790): kunden har ingen sortilog, s&aring; ingen merkelapp.
+      Med sortilog: se product-sortilog.html.
+    - Nederst, merket &laquo;Variant&raquo;: to tilstandseksempler som ikke h&oslash;rer til denne varen -
+      kjemivare med sikkerhetsdatablad (AB#20459) og Onix-vare (AB#20460).
+  -->
+
   <nav class="breadcrumb" style="margin-bottom: var(--s-5);">
     <span class="breadcrumb__item"><a class="breadcrumb__link" href="#">Forside</a></span>
     <span class="breadcrumb__item"><a class="breadcrumb__link" href="#">Festemidler</a></span>
@@ -627,6 +638,88 @@
     </div>
   </section>
 
+
+  <!-- Tilstandseksempel (estimert 24.11.2026, AB#20459 + AB#20458): kjemivare 30164, innlogget kunde.
+       - Fanen &laquo;Datablad og sertifikater&raquo; f&aring;r sikkerhetsdatablad fra EcoOnline n&aring;r varen er merket &laquo;Kjemi&raquo; i BC.
+         Tilfelle 1 vist: norsk direkte, svensk/dansk/finsk bak &laquo;Vis flere&raquo;. Alle tilfellene (2, 3a, 3b, lasting):
+         ../components/datasheet-archive/datasheet-archive.html. Lenkene &aring;pner PDF-en i ny fane.
+       - Samme datablad for alle, ogs&aring; anonyme. F&oslash;lger valgt variant.
+       - &laquo;Deres varenr.&raquo; under Art.nr: enkeltprodukt, bare innlogget kunde, monospace. Uten nummer: ingen linje.
+       - Ikke med: farepiktogrammer og kjemikaliefilter (utenfor estimatet). -->
+  <section aria-label="Tilstandseksempel: kjemivare med sikkerhetsdatablad" style="margin-top: var(--s-10); padding: var(--s-6); border: var(--bw-1) dashed var(--color-border-strong); border-radius: var(--r-md); display: flex; flex-direction: column; gap: var(--s-4);">
+    <p class="preview-label" style="margin: 0; font-size: var(--fs-overline); font-weight: var(--fw-semibold); text-transform: uppercase; letter-spacing: var(--ls-wider); color: var(--color-text-tertiary);">Variant: kjemivare - sikkerhetsdatablad fra EcoOnline (AB#20459)</p>
+    <div style="display: flex; flex-direction: column; gap: var(--s-2);">
+      <h2 class="t-h3" style="margin: 0;">LOCTITE 243-10ML gjengesikring middels sterk</h2>
+      <div style="display: flex; flex-direction: column; gap: var(--s-1); font-size: var(--fs-body-sm); color: var(--color-text-secondary);">
+        <span class="t-mono-md">Art.nr 30164</span>
+        <!-- &laquo;Deres varenr.&raquo; (AB#20458): enkeltprodukt viser nummeret under Art.nr -->
+        <span>Deres varenr. <span class="t-mono-md" style="color: var(--color-text-primary);">110032</span></span>
+      </div>
+    </div>
+    <div class="tabs">
+      <div class="tabs__list" role="tablist">
+        <button class="tabs__tab" role="tab" aria-selected="false">Spesifikasjoner</button>
+        <button class="tabs__tab" role="tab" aria-selected="true">Datablad og sertifikater</button>
+      </div>
+      <div class="tabs__panel is-active">
+        <div class="datasheet-archive" style="max-width: 720px;">
+          <h3 class="datasheet-archive__heading">Sikkerhetsdatablad</h3>
+        <a class="datasheet-archive__item" href="#" target="_blank" rel="noopener">
+                  <svg class="datasheet-archive__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round" aria-hidden="true"><path d="M5 3h11l4 4v14H5z"/><path d="M16 3v4h4"/><path d="M8 12h8M8 16h6M8 8h4"/></svg>
+                  <div class="datasheet-archive__main">
+                    <p class="datasheet-archive__title">Sikkerhetsdatablad (norsk)</p>
+                    <span class="datasheet-archive__meta">PDF &middot; EcoOnline</span>
+                  </div>
+                  <svg class="datasheet-archive__external" viewBox="0 0 24 24" aria-hidden="true"><path d="M14 4h6v6"/><path d="M20 4l-9 9"/><path d="M18 14v5a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1V7a1 1 0 0 1 1-1h5"/></svg><span class="sr-only">(&aring;pnes i ny fane)</span>
+                </a>
+        <details class="datasheet-archive__more">
+                  <summary class="datasheet-archive__more-toggle">Vis flere (3)</summary>
+                  <div class="datasheet-archive__more-list">
+                <a class="datasheet-archive__item" href="#" target="_blank" rel="noopener">
+                  <svg class="datasheet-archive__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round" aria-hidden="true"><path d="M5 3h11l4 4v14H5z"/><path d="M16 3v4h4"/><path d="M8 12h8M8 16h6M8 8h4"/></svg>
+                  <div class="datasheet-archive__main">
+                    <p class="datasheet-archive__title">Sikkerhetsdatablad (svensk)</p>
+                    <span class="datasheet-archive__meta">PDF &middot; EcoOnline</span>
+                  </div>
+                  <svg class="datasheet-archive__external" viewBox="0 0 24 24" aria-hidden="true"><path d="M14 4h6v6"/><path d="M20 4l-9 9"/><path d="M18 14v5a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1V7a1 1 0 0 1 1-1h5"/></svg><span class="sr-only">(&aring;pnes i ny fane)</span>
+                </a>
+                <a class="datasheet-archive__item" href="#" target="_blank" rel="noopener">
+                  <svg class="datasheet-archive__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round" aria-hidden="true"><path d="M5 3h11l4 4v14H5z"/><path d="M16 3v4h4"/><path d="M8 12h8M8 16h6M8 8h4"/></svg>
+                  <div class="datasheet-archive__main">
+                    <p class="datasheet-archive__title">Sikkerhetsdatablad (dansk)</p>
+                    <span class="datasheet-archive__meta">PDF &middot; EcoOnline</span>
+                  </div>
+                  <svg class="datasheet-archive__external" viewBox="0 0 24 24" aria-hidden="true"><path d="M14 4h6v6"/><path d="M20 4l-9 9"/><path d="M18 14v5a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1V7a1 1 0 0 1 1-1h5"/></svg><span class="sr-only">(&aring;pnes i ny fane)</span>
+                </a>
+                <a class="datasheet-archive__item" href="#" target="_blank" rel="noopener">
+                  <svg class="datasheet-archive__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round" aria-hidden="true"><path d="M5 3h11l4 4v14H5z"/><path d="M16 3v4h4"/><path d="M8 12h8M8 16h6M8 8h4"/></svg>
+                  <div class="datasheet-archive__main">
+                    <p class="datasheet-archive__title">Sikkerhetsdatablad (finsk)</p>
+                    <span class="datasheet-archive__meta">PDF &middot; EcoOnline</span>
+                  </div>
+                  <svg class="datasheet-archive__external" viewBox="0 0 24 24" aria-hidden="true"><path d="M14 4h6v6"/><path d="M20 4l-9 9"/><path d="M18 14v5a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1V7a1 1 0 0 1 1-1h5"/></svg><span class="sr-only">(&aring;pnes i ny fane)</span>
+                </a>
+                  </div>
+                </details>
+        </div>
+        <p style="margin: var(--s-4) 0 0; font-size: var(--fs-caption); color: var(--color-text-secondary);">Alle tilfellene: <a class="link" href="../components/datasheet-archive/datasheet-archive.html">Datablad / sertifikat-arkiv</a></p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Tilstandseksempel (estimert 24.11.2026, AB#20460): Onix-vare (sertifisert l&oslash;fteutstyr, &laquo;Onix vare&raquo; i BC).
+       - Merket &laquo;Onix&raquo; ved tittelen og notatet &laquo;Leveres med sertifikat i Onix&raquo; med lenke til MJ sin side
+         &laquo;&Oslash;vrige tjenester &rsaquo; Onix&raquo; (/ovrige-tjenester/onix, CMS).
+       - Samme for alle, ogs&aring; anonyme. Ingen kundens eget sertifikat og ingen Onix-integrasjon (utenfor estimatet).
+       - Variantprodukt: merket og notatet n&aring;r minst &eacute;n variant er Onix (som filteret). -->
+  <section aria-label="Tilstandseksempel: Onix-vare" style="margin-top: var(--s-10); padding: var(--s-6); border: var(--bw-1) dashed var(--color-border-strong); border-radius: var(--r-md); display: flex; flex-direction: column; gap: var(--s-4);">
+    <p class="preview-label" style="margin: 0; font-size: var(--fs-overline); font-weight: var(--fw-semibold); text-transform: uppercase; letter-spacing: var(--ls-wider); color: var(--color-text-tertiary);">Variant: Onix-vare - sertifisert l&oslash;fteutstyr (AB#20460)</p>
+    <div style="display: flex; flex-direction: column; gap: var(--s-3); max-width: 56ch;">
+      <div><span class="badge badge--onix">Onix</span></div>
+      <h2 class="t-h3" style="margin: 0;">Sjakkel med bolt og mutter, grade 8, 2 t (eksempel)</h2>
+      <p style="margin: 0; padding: var(--s-3) var(--s-4); background: var(--color-bg-surface-alt); border-radius: var(--r-md); font-size: var(--fs-body-sm); color: var(--color-text-primary);">Leveres med sertifikat i Onix. <a class="link" href="/ovrige-tjenester/onix">Les mer om Onix</a></p>
+    </div>
+  </section>
 
   <!-- Lignende produkter — karusell-blokk -->
   <section class="container" style="margin-top: var(--s-10);">

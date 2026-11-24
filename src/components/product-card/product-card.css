@@ -32,9 +32,32 @@
 
 .product-card__badges {
   position: absolute;
-  top: var(--s-2); left: var(--s-2);
+  top: var(--s-2); left: var(--s-2); right: var(--s-2);
   display: flex; gap: var(--s-1);
   flex-wrap: wrap;
+  z-index: 2; /* over den strukne tittel-lenken, så «+N» kan trykkes */
+  pointer-events: none; /* klikk på merkelappene åpner fortsatt produktsiden */
+}
+/* «+N» og kuttede navn (title med hele navnet) må kunne treffes; et klikk på dem åpner ikke produktsiden */
+.product-card__badges .badge--more,
+.product-card__badges .badge--truncate { pointer-events: auto; }
+
+/* Merkelapper på kortet (estimert 24.11.2026):
+   - Sortilog (AB#19790): ÉN merkelapp + «+N» (badge-group, se badge.css). Delsortilogens navn, eller
+     «I sortilog» når varen ikke ligger i noen delsortilog. Bare for innlogget kunde med sortilog.
+   - «Onix» (AB#20460): sertifisert løfteutstyr, samme for alle besøkende. Står etter sortilog-merkelappen.
+   Bildet har overflow: hidden, så tooltipen til «+N» åpnes NEDOVER og måles mot merkelapp-raden
+   (ikke mot den smale knappen), ellers kuttes den i toppen av bildet. */
+.product-card__badges .tooltip { position: static; }
+.product-card__badges .tooltip[data-tooltip]::after {
+  top: calc(100% + var(--s-1));
+  bottom: auto;
+  left: 0;
+  transform: none;
+  max-width: 100%;
+  text-transform: none;
+  letter-spacing: 0;
+  font-weight: var(--fw-regular);
 }
 
 .product-card__sku {
@@ -124,8 +147,10 @@
 .product-card--list .product-card__main { flex: 1; min-width: 0; }
 .product-card--list .product-card__actions { flex: 0 0 auto; margin-top: 0; }
 
-/* Kundens varenummer — vises under art.nr når kunden har et eget nummer på varen i BC
-   (Håkon 03.11.2026). Gjelder alle produkter, ikke bare sortilog. */
+/* «Deres varenr.» - kundens eget varenummer fra BC (varereferanse type Kunde), under art.nr
+   (Håkon 03.11.2026; estimert 24.11.2026, AB#20458). Gjelder alle produkter, ikke bare sortilog.
+   Bare på enkeltprodukt (aldri masterprodukt - der står det per variant på produktsiden),
+   bare for innlogget kunde, og bare når kunden har et nummer på varen. Monospace som art.nr. */
 .product-card__customer-sku {
   font-family: var(--ff-mono);
   font-size: var(--fs-mono-sm);
