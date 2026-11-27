@@ -1,0 +1,270 @@
+<!doctype html>
+<html lang="nb">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Veil. pris og rabatt - forslag - Molde Jarnvare</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Source+Sans+3:wght@400;500;600;700;900&family=JetBrains+Mono:wght@400&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../../src/styles/index.css">
+  <link rel="stylesheet" href="meny-forslag.css">
+  <link rel="stylesheet" href="avtalepris-forslag.css">
+  <link rel="stylesheet" href="veil-pris-forslag.css">
+</head>
+<body>
+
+<div class="mp-banner">
+  <span><strong>Utforskning</strong> · Forslag til visning av «Veil. pris» og rabatt · 27.11.2026</span>
+  <span>Ønske fra Håkon i akseptansetesten, 24.11</span>
+</div>
+
+<main class="mp-wrap">
+
+  <header class="mp-hero">
+    <p class="mp-eyebrow">Produktside</p>
+    <h1>Hvordan viser vi «Veil. pris» og rabatten?</h1>
+    <p>Når en kunde ikke har avtalepris på en vare, er prisen veiledende pris minus rabatten for kundens rabattgruppe i BC. I dag ser kunden bare den ferdige prisen. Med dette forslaget står prisen fortsatt stort og tydelig, og under den står veiledende pris og rabatten i prosent, smått og grått. Slik gjør også leverandøren som Håkon viste oss.</p>
+  </header>
+
+  <!-- ── Hva vi vet ───────────────────────────────────────────────────── -->
+  <section aria-labelledby="funn-h">
+    <h2 class="mp-h2" id="funn-h">Fire slags priser</h2>
+    <div class="mp-cards">
+      <div class="mp-card">
+        <h3>Avtalepris</h3>
+        <p>Prisen kommer fra kundens egen prisliste i BC. Under prisen står «Avtalepris», som i dag. Ingen «Veil. pris».</p>
+      </div>
+      <div class="mp-card vp-card--new">
+        <h3>Veil. pris minus rabatt: nytt</h3>
+        <p>Kunden har ingen avtalepris, men får rabatt gjennom rabattgruppen sin. Under prisen står veiledende pris og rabatten. Rabatten er avrundet til hele prosent.</p>
+      </div>
+      <div class="mp-card">
+        <h3>Veiledende pris</h3>
+        <p>Ingen avtale og ingen rabatt. Bare prisen vises, som i dag. Det samme gjelder når rabatten avrundes til 0 %.</p>
+      </div>
+      <div class="mp-card">
+        <h3>Kampanjepris</h3>
+        <p>Bare kampanjeprisen vises. Et eget kampanjemerke kommer senere, når kampanjemerkingen er bestemt.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── Prisboksen ───────────────────────────────────────────────────── -->
+  <section class="mp-proposal" aria-labelledby="box-h">
+    <div class="mp-proposal__head">
+      <div class="mp-letter">1</div>
+      <div>
+        <h2 id="box-h">Prisen øverst på produktsiden</h2>
+        <p>Gjelder produkter med én artikkel, og produkter der variantene vises som valgknapper (prisen for valgt variant). Prisen står der den står i dag. Linja under er ny og vises bare når kunden har rabatt.</p>
+      </div>
+    </div>
+    <div class="vp-states">
+      <div class="vp-box">
+        <span class="vp-box__case">Avtalepris</span>
+        <h3 class="vp-box__name">MINARC Evo 180</h3>
+        <span class="vp-box__sku t-mono-md">Art.nr 6121-180-01</span>
+        <span class="stock-indicator stock-indicator--in">8 på lager</span>
+        <div class="price-display">
+          <div class="price-display__value">kr 10 450,–<span class="price-display__suffix">eks. mva</span></div>
+          <div class="price-display__meta"><span>Avtalepris</span></div>
+        </div>
+        <p class="vp-box__rule">Som i dag.</p>
+      </div>
+      <div class="vp-box">
+        <span class="vp-box__case">Veil. pris minus rabatt</span>
+        <h3 class="vp-box__name">MINARC Evo 180</h3>
+        <span class="vp-box__sku t-mono-md">Art.nr 6121-180-01</span>
+        <span class="stock-indicator stock-indicator--in">8 på lager</span>
+        <div class="price-display">
+          <div class="price-display__value">kr 10 875,–<span class="price-display__suffix">eks. mva</span></div>
+          <div class="vp-veil">Veil. pris kr 14 500,– (25 % rabatt)</div>
+        </div>
+        <p class="vp-box__rule"><b>Nytt.</b> Rabatten er rabattgruppens rabatt fra BC, avrundet til hele prosent.</p>
+      </div>
+      <div class="vp-box">
+        <span class="vp-box__case">Veiledende pris</span>
+        <h3 class="vp-box__name">MINARC Evo 180</h3>
+        <span class="vp-box__sku t-mono-md">Art.nr 6121-180-01</span>
+        <span class="stock-indicator stock-indicator--in">8 på lager</span>
+        <div class="price-display">
+          <div class="price-display__value">kr 14 500,–<span class="price-display__suffix">eks. mva</span></div>
+        </div>
+        <p class="vp-box__rule">Som i dag. Ingen linje under prisen.</p>
+      </div>
+      <div class="vp-box">
+        <span class="vp-box__case">Kampanjepris</span>
+        <h3 class="vp-box__name">MINARC Evo 180</h3>
+        <span class="vp-box__sku t-mono-md">Art.nr 6121-180-01</span>
+        <span class="stock-indicator stock-indicator--in">8 på lager</span>
+        <div class="price-display">
+          <div class="price-display__value">kr 12 490,–<span class="price-display__suffix">eks. mva</span></div>
+        </div>
+        <p class="vp-box__rule">Bare kampanjeprisen. Kampanjemerket kommer senere.</p>
+      </div>
+      <div class="vp-box vp-box--optional">
+        <span class="vp-box__case">Kampanjepris, hvis dere ønsker det</span>
+        <h3 class="vp-box__name">MINARC Evo 180</h3>
+        <span class="vp-box__sku t-mono-md">Art.nr 6121-180-01</span>
+        <span class="stock-indicator stock-indicator--in">8 på lager</span>
+        <div class="price-display">
+          <div class="price-display__value">kr 12 490,–<span class="price-display__suffix">eks. mva</span></div>
+          <div class="vp-veil">Veil. pris kr 14 500,– (14 % rabatt)</div>
+        </div>
+        <p class="vp-box__rule">Samme linje på kampanjepriser. Et lite tillegg som er med i estimatet.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── Variant-tabellen, forslag A ──────────────────────────────────── -->
+  <section class="mp-proposal" aria-labelledby="a-h">
+    <div class="mp-proposal__head">
+      <div class="mp-letter">2</div>
+      <div>
+        <h2 id="a-h">Variant-tabellen: veil. pris og rabatt under prisen <span class="mp-badge mp-badge--new">Anbefalt</span></h2>
+        <p>Hver rad viser sin egen pris, så linja står per rad. «Veil. pris» og rabatten står på hver sin linje, så priskolonnen ikke blir bredere. Rader med avtalepris får det lille «A»-merket fra forslaget om avtalepris i tabellen. Rader med veiledende pris står som i dag.</p>
+      </div>
+    </div>
+    <div class="ap-frame vp-frame" data-table="a"></div>
+    <div class="ap-scorecard">
+      <div class="mp-card"><b>Tydelighet</b><p>Alt Håkon ba om står synlig på raden, som hos leverandøren: prisen, veiledende pris og rabatten.</p></div>
+      <div class="mp-card"><b>Plass</b><p>Priskolonnen blir ikke bredere. Rader med rabatt blir ca. 30 px høyere, så tabellen blir lengre når et produkt har mange varianter.</p></div>
+      <div class="mp-card"><b>Bygging</b><p>Dette er løsningen som er estimert.</p></div>
+    </div>
+  </section>
+
+  <!-- ── Variant-tabellen, forslag B ──────────────────────────────────── -->
+  <section class="mp-proposal" aria-labelledby="b-h">
+    <div class="mp-proposal__head">
+      <div class="mp-letter">3</div>
+      <div>
+        <h2 id="b-h">Alternativ: bare rabatten i tabellen</h2>
+        <p>Et lite «−50 %» etter prisen, og veiledende pris når du holder musa over. Radene blir ikke høyere, men veiledende pris står ikke synlig.</p>
+      </div>
+    </div>
+    <div class="ap-frame vp-frame" data-table="b"></div>
+    <div class="ap-scorecard">
+      <div class="mp-card"><b>Tydelighet</b><p>Kunden ser at det er rabatt, men må holde musa over for å se veiledende pris. Det går ikke på mobil.</p></div>
+      <div class="mp-card"><b>Plass</b><p>Ingen høyere rader. Priskolonnen blir litt bredere på rader med rabatt.</p></div>
+      <div class="mp-card"><b>Bygging</b><p>Omtrent like mye arbeid som forslaget over.</p></div>
+    </div>
+  </section>
+
+  <!-- ── Mobil ────────────────────────────────────────────────────────── -->
+  <section aria-labelledby="mob-h">
+    <h2 class="mp-h2" id="mob-h">Tabellen på mobil</h2>
+    <div class="ap-pair">
+      <div class="mp-card">
+        <h3>Hva skjer på smal skjerm</h3>
+        <p>Tabellen scroller sidelengs, som i dag. Veil. pris og rabatt står i priscella og følger prisen. Prisen øverst på produktsiden ser ut som på stor skjerm.</p>
+      </div>
+      <div>
+        <p class="ap-caption">375 px bredde</p>
+        <div class="ap-frame ap-frame--mobile vp-frame" data-table="a"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── Ikke med ─────────────────────────────────────────────────────── -->
+  <section aria-labelledby="ut-h">
+    <h2 class="mp-h2" id="ut-h">Ikke med nå</h2>
+    <div class="mp-cards">
+      <div class="mp-card">
+        <h3>Produktkort i lister og søk</h3>
+        <p>Kortene viser «Fra»-prisen for produkter med varianter, og rabatten kan være ulik fra variant til variant. Derfor står det ingen «Veil. pris» på kortene.</p>
+      </div>
+      <div class="mp-card">
+        <h3>Handlekurv</h3>
+        <p>Handlekurven viser allerede prisen før rabatt, overstreket. Den beholdes som i dag.</p>
+      </div>
+      <div class="mp-card">
+        <h3>Ordrebekreftelse og ordrehistorikk</h3>
+        <p>Uendret.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── Avklaringer ──────────────────────────────────────────────────── -->
+  <section aria-labelledby="q-h">
+    <h2 class="mp-h2" id="q-h">Å avklare med Molde Jarnvare</h2>
+    <div class="mp-cards">
+      <div class="mp-card">
+        <h3>Ordene</h3>
+        <p>Er «Veil. pris» og «25 % rabatt» riktige ord for dere? Leverandøren skriver «Veil.pris». Vi beholder «Avtalepris» og bruker ikke «Nettopris».</p>
+      </div>
+      <div class="mp-card">
+        <h3>Variant-tabellen</h3>
+        <p>Vi anbefaler forslaget med veil. pris og rabatt under prisen. Alternativet passer bedre hvis produktene ofte har mange varianter.</p>
+      </div>
+      <div class="mp-card">
+        <h3>Kampanjepriser</h3>
+        <p>Skal kampanjepriser også vise «Veil. pris» og rabatt, eller bare kampanjeprisen?</p>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<script>
+  // Demo-tabellen. type: agree = avtalepris fra kundens prisliste i BC, disc = veil. pris minus rabattgruppens rabatt, list = veil. pris.
+  const rows = [
+    { name: 'M8 × 20', sku: '4815-160-30', dim: 'M8', len: '20 mm', cls: '8.8', surf: 'Elforsinket', stock: '1000+ på lager', price: 'kr 1,90', type: 'agree' },
+    { name: 'M8 × 30', sku: '4815-161-30', dim: 'M8', len: '30 mm', cls: '8.8', surf: 'Elforsinket', stock: '1000+ på lager', price: 'kr 1,08', type: 'disc', veil: 'kr 2,15', pct: 50 },
+    { name: 'M8 × 40', sku: '4815-162-30', dim: 'M8', len: '40 mm', cls: '8.8', surf: 'Elforsinket', stock: '640 på lager', price: 'kr 1,20', type: 'disc', veil: 'kr 2,40', pct: 50 },
+    { name: 'M10 × 30', sku: '4815-170-30', dim: 'M10', len: '30 mm', cls: '8.8', surf: 'Elforsinket', stock: '420 på lager', price: 'kr 3,85', type: 'list' },
+    { name: 'M10 × 40', sku: '4815-171-30', dim: 'M10', len: '40 mm', cls: '8.8', surf: 'Elforsinket', stock: '1000+ på lager', price: 'kr 4,20', type: 'agree' },
+    { name: 'M10 × 50', sku: '4815-172-30', dim: 'M10', len: '50 mm', cls: '8.8', surf: 'Elforsinket', stock: '85 på lager', price: 'kr 2,48', type: 'disc', veil: 'kr 4,95', pct: 50 },
+  ];
+  const cart = '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M2 4h2.5l3 12h11l2.5-8H7"/><circle cx="10" cy="20" r="1.6"/><circle cx="17" cy="20" r="1.6"/></svg>';
+  const mark = '<abbr class="ap-mark" title="Avtalepris" aria-label="Avtalepris">A</abbr>';
+
+  function priceCell(r, option) {
+    if (r.type === 'agree') return mark + r.price;
+    if (r.type !== 'disc') return r.price;
+    if (option === 'b') {
+      return r.price + `<abbr class="vp-pct" title="Veil. pris ${r.veil}" aria-label="${r.pct} % rabatt fra veil. pris ${r.veil}">−${r.pct} %</abbr>`;
+    }
+    return r.price + `<span class="vp-sub">Veil. pris ${r.veil}</span><span class="vp-sub">(${r.pct} % rabatt)</span>`;
+  }
+
+  function render(el) {
+    const option = el.dataset.table;
+    const legend = '<span class="ap-legend">' + mark.replace('aria-label="Avtalepris"', 'aria-hidden="true"') + ' Avtalepris - prisen fra avtalen deres</span>';
+    const body = rows.map((r) => `
+      <tr>
+        <th scope="row">${r.name}</th>
+        <td><span class="variant-selector__matrix-sku">${r.sku}</span></td>
+        <td>${r.dim}</td><td>${r.len}</td><td>${r.cls}</td><td>${r.surf}</td>
+        <td><span class="stock-indicator stock-indicator--in">${r.stock}</span></td>
+        <td class="is-numeric variant-selector__matrix-price">${priceCell(r, option)}</td>
+        <td class="is-numeric"><div class="variant-selector__matrix-qty"><div class="qty-stepper qty-stepper--compact">
+          <button class="qty-stepper__btn" aria-label="Reduser antall">−</button>
+          <input class="qty-stepper__input" type="number" value="1" min="0">
+          <button class="qty-stepper__btn" aria-label="Øk antall">+</button></div></div></td>
+        <td><button class="variant-selector__matrix-add" aria-label="Legg ${r.name} i kurv">${cart}</button></td>
+      </tr>`).join('');
+    el.innerHTML = `
+      <div class="ap-label">
+        <span>Velg variant og antall</span>
+        <span class="ap-label__right">${legend}<span>${rows.length} varianter</span></span>
+      </div>
+      <div class="ap-matrix-wrap">
+        <table class="variant-selector__matrix">
+          <thead><tr>
+            <th scope="col">Variant</th><th scope="col">Art.nr</th>
+            <th scope="col">Dimensjon</th><th scope="col">Lengde</th>
+            <th scope="col">Klasse</th><th scope="col">Overflate</th>
+            <th scope="col">Lagerstatus</th><th scope="col" class="is-numeric">Pris/stk eks. mva</th>
+            <th scope="col" class="is-numeric">Antall</th><th scope="col"><span class="sr-only">Legg til</span></th>
+          </tr></thead>
+          <tbody>${body}</tbody>
+        </table>
+      </div>`;
+  }
+
+  document.querySelectorAll('[data-table]').forEach(render);
+  // På mobil: scroll tabellen så priskolonnen synes, slik kunden ser den etter å ha scrollet sidelengs.
+  document.querySelectorAll('.ap-frame--mobile .ap-matrix-wrap').forEach((w) => { w.scrollLeft = w.scrollWidth; });
+</script>
+</body>
+</html>

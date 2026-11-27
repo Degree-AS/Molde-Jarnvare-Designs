@@ -1,0 +1,81 @@
+/*
+ * «Veil. pris» og rabatt - forslag, 27.11.2026 (AB#20686).
+ * Kun for denne utforskningen. Bygger på tokens fra src/styles/index.css, mp-klassene i meny-forslag.css
+ * og ap-klassene i avtalepris-forslag.css (merket «A» og rammen rundt variant-tabellen fra AB#20661).
+ * Prefiks vp- (veil. pris).
+ */
+
+/* Fire priskasser ved siden av hverandre */
+.vp-states { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: var(--s-4); }
+
+.vp-box {
+  display: flex;
+  flex-direction: column;
+  gap: var(--s-3);
+  background: var(--color-bg-surface);
+  border: var(--bw-1) solid var(--color-border-soft);
+  border-radius: var(--r-lg);
+  padding: var(--s-5);
+  box-shadow: var(--shadow-1);
+}
+.vp-box--optional { border-style: dashed; box-shadow: none; }
+
+.vp-box__case {
+  font-size: var(--fs-overline);
+  font-weight: var(--fw-semibold);
+  letter-spacing: var(--ls-wider);
+  text-transform: uppercase;
+  color: var(--color-text-tertiary);
+}
+.vp-box__name { margin: 0; font-size: var(--fs-h4); line-height: var(--lh-snug); color: var(--color-text-primary); }
+.vp-box__sku { font-size: var(--fs-body-sm); color: var(--color-text-secondary); }
+.vp-box__rule {
+  margin: auto 0 0;
+  padding-top: var(--s-3);
+  border-top: var(--bw-1) solid var(--color-border-soft);
+  font-size: var(--fs-body-sm);
+  color: var(--color-text-secondary);
+}
+.vp-box .price-display__value { font-size: var(--fs-h3); }
+
+/* Den grå linja under prisen: «Veil. pris kr 14 500,– (25 % rabatt)» */
+.vp-veil {
+  font-size: var(--fs-caption);
+  color: var(--color-text-secondary);
+  font-variant-numeric: tabular-nums;
+}
+
+/* Variant-tabellen, forslag A: to små grå linjer under prisen */
+.vp-sub {
+  display: block;
+  font-size: var(--fs-caption);
+  font-weight: var(--fw-regular);
+  color: var(--color-text-secondary);
+  line-height: 1.25;
+  white-space: nowrap;
+}
+.vp-sub:first-of-type { margin-top: 2px; }
+
+/* Variant-tabellen, forslag B: rabatten som et lite merke etter prisen, veil. pris når du holder musa over */
+.vp-pct {
+  display: inline-block;
+  margin-left: var(--s-2);
+  padding: 0 var(--s-1);
+  border-radius: var(--r-sm);
+  background: var(--color-bg-surface-alt);
+  color: var(--color-text-secondary);
+  font-size: var(--fs-caption);
+  font-weight: var(--fw-semibold);
+  line-height: 18px;
+  vertical-align: 1px;
+  cursor: help;
+  text-decoration: none;
+}
+
+.vp-frame .variant-selector__matrix td.variant-selector__matrix-price { white-space: nowrap; }
+
+/* Kortet for det nye tilfellet: oransje kant i stedet for rød, det er ikke en feil */
+.vp-card--new { border-left: var(--bw-3) solid var(--mj-orange); }
+
+/* Grid- og flex-barn krymper ikke under innholdet sitt uten dette, og da dytter den brede tabellen siden ut på mobil */
+.ap-pair > *, .mp-proposal__head > div { min-width: 0; }
